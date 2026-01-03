@@ -1,0 +1,2885 @@
+﻿{
+    "summary":  {
+                    "generated_at":  "2025-08-13T21:05:21.273Z",
+                    "duration_ms":  3236.78,
+                    "total_evaluated":  205,
+                    "mismatches":  5,
+                    "pester_tag_count":  23,
+                    "pssa_tag_count":  205,
+                    "workspace_root":  "C:\\Users\\james.e.hardy\\OneDrive - Avanade\\PowerShell Projects",
+                    "coverage_map_path":  "C:\\Users\\james.e.hardy\\OneDrive - Avanade\\PowerShell Projects\\docs\\context\\evidence\\phase4.1\\MPV-Coverage-Map.json",
+                    "tags_dir":  "C:\\Users\\james.e.hardy\\OneDrive - Avanade\\PowerShell Projects\\docs\\context\\cache\\tags_latest"
+                },
+    "results":  [
+                    {
+                        "path":  "C:\\Users\\james.e.hardy\\OneDrive - Avanade\\PowerShell Projects\\build\\Artifacts-Common.ps1",
+                        "type":  "ps",
+                        "expected":  [
+                                         "PSSA"
+                                     ],
+                        "has_pester":  false,
+                        "has_pssa":  true,
+                        "pre":  false,
+                        "mid":  false,
+                        "post":  false,
+                        "covered":  false,
+                        "ext":  ".ps1"
+                    },
+                    {
+                        "path":  "C:\\Users\\james.e.hardy\\OneDrive - Avanade\\PowerShell Projects\\build\\Bootstrap-Quality.ps1",
+                        "type":  "ps",
+                        "expected":  [
+                                         "PSSA"
+                                     ],
+                        "has_pester":  false,
+                        "has_pssa":  true,
+                        "pre":  false,
+                        "mid":  false,
+                        "post":  false,
+                        "covered":  false,
+                        "ext":  ".ps1"
+                    },
+                    {
+                        "path":  "C:\\Users\\james.e.hardy\\OneDrive - Avanade\\PowerShell Projects\\build\\Check-QualityEnvironment.ps1",
+                        "type":  "ps",
+                        "expected":  [
+                                         "PSSA"
+                                     ],
+                        "has_pester":  false,
+                        "has_pssa":  true,
+                        "pre":  false,
+                        "mid":  false,
+                        "post":  false,
+                        "covered":  false,
+                        "ext":  ".ps1"
+                    },
+                    {
+                        "path":  "C:\\Users\\james.e.hardy\\OneDrive - Avanade\\PowerShell Projects\\build\\Clean-Artifacts.ps1",
+                        "type":  "ps",
+                        "expected":  [
+                                         "PSSA"
+                                     ],
+                        "has_pester":  false,
+                        "has_pssa":  true,
+                        "pre":  false,
+                        "mid":  false,
+                        "post":  false,
+                        "covered":  false,
+                        "ext":  ".ps1"
+                    },
+                    {
+                        "path":  "C:\\Users\\james.e.hardy\\OneDrive - Avanade\\PowerShell Projects\\build\\Demo-Incremental-Tags.ps1",
+                        "type":  "ps",
+                        "expected":  [
+                                         "PSSA"
+                                     ],
+                        "has_pester":  false,
+                        "has_pssa":  true,
+                        "pre":  false,
+                        "mid":  false,
+                        "post":  false,
+                        "covered":  false,
+                        "ext":  ".ps1"
+                    },
+                    {
+                        "path":  "C:\\Users\\james.e.hardy\\OneDrive - Avanade\\PowerShell Projects\\build\\Ensure-ExecutionPolicy.ps1",
+                        "type":  "ps",
+                        "expected":  [
+                                         "PSSA"
+                                     ],
+                        "has_pester":  false,
+                        "has_pssa":  true,
+                        "pre":  false,
+                        "mid":  false,
+                        "post":  false,
+                        "covered":  false,
+                        "ext":  ".ps1"
+                    },
+                    {
+                        "path":  "C:\\Users\\james.e.hardy\\OneDrive - Avanade\\PowerShell Projects\\build\\Fix-PesterConflicts.ps1",
+                        "type":  "ps",
+                        "expected":  [
+                                         "PSSA"
+                                     ],
+                        "has_pester":  false,
+                        "has_pssa":  true,
+                        "pre":  false,
+                        "mid":  false,
+                        "post":  false,
+                        "covered":  false,
+                        "ext":  ".ps1"
+                    },
+                    {
+                        "path":  "C:\\Users\\james.e.hardy\\OneDrive - Avanade\\PowerShell Projects\\build\\Format-PowerShell.ps1",
+                        "type":  "ps",
+                        "expected":  [
+                                         "PSSA"
+                                     ],
+                        "has_pester":  false,
+                        "has_pssa":  true,
+                        "pre":  false,
+                        "mid":  false,
+                        "post":  false,
+                        "covered":  false,
+                        "ext":  ".ps1"
+                    },
+                    {
+                        "path":  "C:\\Users\\james.e.hardy\\OneDrive - Avanade\\PowerShell Projects\\build\\Forward-LogsToAzureMonitor.ps1",
+                        "type":  "ps",
+                        "expected":  [
+                                         "PSSA"
+                                     ],
+                        "has_pester":  false,
+                        "has_pssa":  true,
+                        "pre":  false,
+                        "mid":  true,
+                        "post":  false,
+                        "covered":  false,
+                        "ext":  ".ps1"
+                    },
+                    {
+                        "path":  "C:\\Users\\james.e.hardy\\OneDrive - Avanade\\PowerShell Projects\\build\\Get-CodeSigningStatus.ps1",
+                        "type":  "ps",
+                        "expected":  [
+                                         "PSSA"
+                                     ],
+                        "has_pester":  false,
+                        "has_pssa":  true,
+                        "pre":  false,
+                        "mid":  false,
+                        "post":  false,
+                        "covered":  false,
+                        "ext":  ".ps1"
+                    },
+                    {
+                        "path":  "C:\\Users\\james.e.hardy\\OneDrive - Avanade\\PowerShell Projects\\build\\Get-IncrementalQualityScope.ps1",
+                        "type":  "ps",
+                        "expected":  [
+                                         "PSSA"
+                                     ],
+                        "has_pester":  false,
+                        "has_pssa":  true,
+                        "pre":  false,
+                        "mid":  false,
+                        "post":  false,
+                        "covered":  false,
+                        "ext":  ".ps1"
+                    },
+                    {
+                        "path":  "C:\\Users\\james.e.hardy\\OneDrive - Avanade\\PowerShell Projects\\build\\Get-TaskLogs.ps1",
+                        "type":  "ps",
+                        "expected":  [
+                                         "PSSA"
+                                     ],
+                        "has_pester":  false,
+                        "has_pssa":  true,
+                        "pre":  false,
+                        "mid":  false,
+                        "post":  false,
+                        "covered":  false,
+                        "ext":  ".ps1"
+                    },
+                    {
+                        "path":  "C:\\Users\\james.e.hardy\\OneDrive - Avanade\\PowerShell Projects\\build\\Get-TaskLogs-Simple.ps1",
+                        "type":  "ps",
+                        "expected":  [
+                                         "PSSA"
+                                     ],
+                        "has_pester":  false,
+                        "has_pssa":  true,
+                        "pre":  false,
+                        "mid":  false,
+                        "post":  false,
+                        "covered":  false,
+                        "ext":  ".ps1"
+                    },
+                    {
+                        "path":  "C:\\Users\\james.e.hardy\\OneDrive - Avanade\\PowerShell Projects\\build\\Incremental-Tags.ps1",
+                        "type":  "ps",
+                        "expected":  [
+                                         "PSSA"
+                                     ],
+                        "has_pester":  false,
+                        "has_pssa":  true,
+                        "pre":  false,
+                        "mid":  false,
+                        "post":  false,
+                        "covered":  false,
+                        "ext":  ".ps1"
+                    },
+                    {
+                        "path":  "C:\\Users\\james.e.hardy\\OneDrive - Avanade\\PowerShell Projects\\build\\Initialize-LocalLogging.ps1",
+                        "type":  "ps",
+                        "expected":  [
+                                         "PSSA"
+                                     ],
+                        "has_pester":  false,
+                        "has_pssa":  true,
+                        "pre":  false,
+                        "mid":  false,
+                        "post":  false,
+                        "covered":  false,
+                        "ext":  ".ps1"
+                    },
+                    {
+                        "path":  "C:\\Users\\james.e.hardy\\OneDrive - Avanade\\PowerShell Projects\\build\\Invoke-ContextForgeCommit.ps1",
+                        "type":  "ps",
+                        "expected":  [
+                                         "PSSA"
+                                     ],
+                        "has_pester":  false,
+                        "has_pssa":  true,
+                        "pre":  false,
+                        "mid":  false,
+                        "post":  false,
+                        "covered":  false,
+                        "ext":  ".ps1"
+                    },
+                    {
+                        "path":  "C:\\Users\\james.e.hardy\\OneDrive - Avanade\\PowerShell Projects\\build\\Invoke-GitCommitCycle.ps1",
+                        "type":  "ps",
+                        "expected":  [
+                                         "PSSA"
+                                     ],
+                        "has_pester":  false,
+                        "has_pssa":  true,
+                        "pre":  false,
+                        "mid":  false,
+                        "post":  false,
+                        "covered":  false,
+                        "ext":  ".ps1"
+                    },
+                    {
+                        "path":  "C:\\Users\\james.e.hardy\\OneDrive - Avanade\\PowerShell Projects\\build\\Invoke-MPVAudit-Phase4_1.ps1",
+                        "type":  "ps",
+                        "expected":  [
+                                         "PSSA"
+                                     ],
+                        "has_pester":  false,
+                        "has_pssa":  true,
+                        "pre":  true,
+                        "mid":  true,
+                        "post":  true,
+                        "covered":  true,
+                        "ext":  ".ps1"
+                    },
+                    {
+                        "path":  "C:\\Users\\james.e.hardy\\OneDrive - Avanade\\PowerShell Projects\\build\\Invoke-P010-CleanReorganization.ps1",
+                        "type":  "ps",
+                        "expected":  [
+                                         "PSSA"
+                                     ],
+                        "has_pester":  false,
+                        "has_pssa":  true,
+                        "pre":  false,
+                        "mid":  false,
+                        "post":  false,
+                        "covered":  false,
+                        "ext":  ".ps1"
+                    },
+                    {
+                        "path":  "C:\\Users\\james.e.hardy\\OneDrive - Avanade\\PowerShell Projects\\build\\Invoke-P010-LiveReorganization.ps1",
+                        "type":  "ps",
+                        "expected":  [
+                                         "PSSA"
+                                     ],
+                        "has_pester":  false,
+                        "has_pssa":  true,
+                        "pre":  false,
+                        "mid":  false,
+                        "post":  false,
+                        "covered":  false,
+                        "ext":  ".ps1"
+                    },
+                    {
+                        "path":  "C:\\Users\\james.e.hardy\\OneDrive - Avanade\\PowerShell Projects\\build\\Invoke-P010-Phase1-Discovery.ps1",
+                        "type":  "ps",
+                        "expected":  [
+                                         "PSSA"
+                                     ],
+                        "has_pester":  false,
+                        "has_pssa":  true,
+                        "pre":  false,
+                        "mid":  false,
+                        "post":  false,
+                        "covered":  false,
+                        "ext":  ".ps1"
+                    },
+                    {
+                        "path":  "C:\\Users\\james.e.hardy\\OneDrive - Avanade\\PowerShell Projects\\build\\Invoke-P010-WorkspaceReorganization.ps1",
+                        "type":  "ps",
+                        "expected":  [
+                                         "PSSA"
+                                     ],
+                        "has_pester":  false,
+                        "has_pssa":  true,
+                        "pre":  false,
+                        "mid":  false,
+                        "post":  false,
+                        "covered":  false,
+                        "ext":  ".ps1"
+                    },
+                    {
+                        "path":  "C:\\Users\\james.e.hardy\\OneDrive - Avanade\\PowerShell Projects\\build\\Invoke-PesterTBV.ps1",
+                        "type":  "ps",
+                        "expected":  [
+                                         "PSSA"
+                                     ],
+                        "has_pester":  false,
+                        "has_pssa":  true,
+                        "pre":  false,
+                        "mid":  true,
+                        "post":  false,
+                        "covered":  false,
+                        "ext":  ".ps1"
+                    },
+                    {
+                        "path":  "C:\\Users\\james.e.hardy\\OneDrive - Avanade\\PowerShell Projects\\build\\Invoke-PSSA.ps1",
+                        "type":  "ps",
+                        "expected":  [
+                                         "PSSA"
+                                     ],
+                        "has_pester":  false,
+                        "has_pssa":  true,
+                        "pre":  false,
+                        "mid":  false,
+                        "post":  true,
+                        "covered":  false,
+                        "ext":  ".ps1"
+                    },
+                    {
+                        "path":  "C:\\Users\\james.e.hardy\\OneDrive - Avanade\\PowerShell Projects\\build\\Invoke-PSSA-Incremental.ps1",
+                        "type":  "ps",
+                        "expected":  [
+                                         "PSSA"
+                                     ],
+                        "has_pester":  false,
+                        "has_pssa":  true,
+                        "pre":  true,
+                        "mid":  false,
+                        "post":  false,
+                        "covered":  false,
+                        "ext":  ".ps1"
+                    },
+                    {
+                        "path":  "C:\\Users\\james.e.hardy\\OneDrive - Avanade\\PowerShell Projects\\build\\Invoke-PSSA-Mode.ps1",
+                        "type":  "ps",
+                        "expected":  [
+                                         "PSSA"
+                                     ],
+                        "has_pester":  false,
+                        "has_pssa":  true,
+                        "pre":  false,
+                        "mid":  false,
+                        "post":  false,
+                        "covered":  false,
+                        "ext":  ".ps1"
+                    },
+                    {
+                        "path":  "C:\\Users\\james.e.hardy\\OneDrive - Avanade\\PowerShell Projects\\build\\Invoke-PSSATBV.ps1",
+                        "type":  "ps",
+                        "expected":  [
+                                         "PSSA"
+                                     ],
+                        "has_pester":  false,
+                        "has_pssa":  true,
+                        "pre":  false,
+                        "mid":  false,
+                        "post":  false,
+                        "covered":  false,
+                        "ext":  ".ps1"
+                    },
+                    {
+                        "path":  "C:\\Users\\james.e.hardy\\OneDrive - Avanade\\PowerShell Projects\\build\\Invoke-WUHarnessTBV.ps1",
+                        "type":  "ps",
+                        "expected":  [
+                                         "PSSA"
+                                     ],
+                        "has_pester":  false,
+                        "has_pssa":  true,
+                        "pre":  false,
+                        "mid":  false,
+                        "post":  false,
+                        "covered":  false,
+                        "ext":  ".ps1"
+                    },
+                    {
+                        "path":  "C:\\Users\\james.e.hardy\\OneDrive - Avanade\\PowerShell Projects\\build\\Local-CI.ps1",
+                        "type":  "ps",
+                        "expected":  [
+                                         "PSSA"
+                                     ],
+                        "has_pester":  false,
+                        "has_pssa":  true,
+                        "pre":  false,
+                        "mid":  true,
+                        "post":  false,
+                        "covered":  false,
+                        "ext":  ".ps1"
+                    },
+                    {
+                        "path":  "C:\\Users\\james.e.hardy\\OneDrive - Avanade\\PowerShell Projects\\build\\Local-RepoPlan.ps1",
+                        "type":  "ps",
+                        "expected":  [
+                                         "PSSA"
+                                     ],
+                        "has_pester":  false,
+                        "has_pssa":  true,
+                        "pre":  false,
+                        "mid":  false,
+                        "post":  false,
+                        "covered":  false,
+                        "ext":  ".ps1"
+                    },
+                    {
+                        "path":  "C:\\Users\\james.e.hardy\\OneDrive - Avanade\\PowerShell Projects\\build\\Local-RepoPlan-Fixed.ps1",
+                        "type":  "ps",
+                        "expected":  [
+                                         "PSSA"
+                                     ],
+                        "has_pester":  false,
+                        "has_pssa":  true,
+                        "pre":  false,
+                        "mid":  false,
+                        "post":  false,
+                        "covered":  false,
+                        "ext":  ".ps1"
+                    },
+                    {
+                        "path":  "C:\\Users\\james.e.hardy\\OneDrive - Avanade\\PowerShell Projects\\build\\Logging-Common.ps1",
+                        "type":  "ps",
+                        "expected":  [
+                                         "PSSA"
+                                     ],
+                        "has_pester":  false,
+                        "has_pssa":  true,
+                        "pre":  false,
+                        "mid":  true,
+                        "post":  false,
+                        "covered":  false,
+                        "ext":  ".ps1"
+                    },
+                    {
+                        "path":  "C:\\Users\\james.e.hardy\\OneDrive - Avanade\\PowerShell Projects\\build\\Logging-Trials.ps1",
+                        "type":  "ps",
+                        "expected":  [
+                                         "PSSA"
+                                     ],
+                        "has_pester":  false,
+                        "has_pssa":  true,
+                        "pre":  false,
+                        "mid":  false,
+                        "post":  false,
+                        "covered":  false,
+                        "ext":  ".ps1"
+                    },
+                    {
+                        "path":  "C:\\Users\\james.e.hardy\\OneDrive - Avanade\\PowerShell Projects\\build\\MCP-Helpers.ps1",
+                        "type":  "ps",
+                        "expected":  [
+                                         "PSSA"
+                                     ],
+                        "has_pester":  false,
+                        "has_pssa":  true,
+                        "pre":  false,
+                        "mid":  false,
+                        "post":  false,
+                        "covered":  false,
+                        "ext":  ".ps1"
+                    },
+                    {
+                        "path":  "C:\\Users\\james.e.hardy\\OneDrive - Avanade\\PowerShell Projects\\build\\New-QualityContext.ps1",
+                        "type":  "ps",
+                        "expected":  [
+                                         "PSSA"
+                                     ],
+                        "has_pester":  false,
+                        "has_pssa":  true,
+                        "pre":  false,
+                        "mid":  true,
+                        "post":  false,
+                        "covered":  false,
+                        "ext":  ".ps1"
+                    },
+                    {
+                        "path":  "C:\\Users\\james.e.hardy\\OneDrive - Avanade\\PowerShell Projects\\build\\Phase2-Targeted-Trials.ps1",
+                        "type":  "ps",
+                        "expected":  [
+                                         "PSSA"
+                                     ],
+                        "has_pester":  false,
+                        "has_pssa":  true,
+                        "pre":  false,
+                        "mid":  false,
+                        "post":  false,
+                        "covered":  false,
+                        "ext":  ".ps1"
+                    },
+                    {
+                        "path":  "C:\\Users\\james.e.hardy\\OneDrive - Avanade\\PowerShell Projects\\build\\Refactor\\Fix-WriteHost.ps1",
+                        "type":  "ps",
+                        "expected":  [
+                                         "PSSA"
+                                     ],
+                        "has_pester":  false,
+                        "has_pssa":  true,
+                        "pre":  false,
+                        "mid":  false,
+                        "post":  false,
+                        "covered":  false,
+                        "ext":  ".ps1"
+                    },
+                    {
+                        "path":  "C:\\Users\\james.e.hardy\\OneDrive - Avanade\\PowerShell Projects\\build\\Run-MockScenarioTests.ps1",
+                        "type":  "ps",
+                        "expected":  [
+                                         "PSSA"
+                                     ],
+                        "has_pester":  false,
+                        "has_pssa":  true,
+                        "pre":  false,
+                        "mid":  false,
+                        "post":  false,
+                        "covered":  false,
+                        "ext":  ".ps1"
+                    },
+                    {
+                        "path":  "C:\\Users\\james.e.hardy\\OneDrive - Avanade\\PowerShell Projects\\build\\Run-PesterCategory.ps1",
+                        "type":  "ps",
+                        "expected":  [
+                                         "PSSA"
+                                     ],
+                        "has_pester":  false,
+                        "has_pssa":  true,
+                        "pre":  false,
+                        "mid":  false,
+                        "post":  false,
+                        "covered":  false,
+                        "ext":  ".ps1"
+                    },
+                    {
+                        "path":  "C:\\Users\\james.e.hardy\\OneDrive - Avanade\\PowerShell Projects\\build\\Run-Pester-Incremental.ps1",
+                        "type":  "ps",
+                        "expected":  [
+                                         "PSSA"
+                                     ],
+                        "has_pester":  false,
+                        "has_pssa":  true,
+                        "pre":  true,
+                        "mid":  false,
+                        "post":  false,
+                        "covered":  false,
+                        "ext":  ".ps1"
+                    },
+                    {
+                        "path":  "C:\\Users\\james.e.hardy\\OneDrive - Avanade\\PowerShell Projects\\build\\Run-PesterTests.ps1",
+                        "type":  "ps",
+                        "expected":  [
+                                         "PSSA"
+                                     ],
+                        "has_pester":  false,
+                        "has_pssa":  true,
+                        "pre":  false,
+                        "mid":  false,
+                        "post":  true,
+                        "covered":  false,
+                        "ext":  ".ps1"
+                    },
+                    {
+                        "path":  "C:\\Users\\james.e.hardy\\OneDrive - Avanade\\PowerShell Projects\\build\\Run-Phase1-Quality.ps1",
+                        "type":  "ps",
+                        "expected":  [
+                                         "PSSA"
+                                     ],
+                        "has_pester":  false,
+                        "has_pssa":  true,
+                        "pre":  false,
+                        "mid":  false,
+                        "post":  false,
+                        "covered":  false,
+                        "ext":  ".ps1"
+                    },
+                    {
+                        "path":  "C:\\Users\\james.e.hardy\\OneDrive - Avanade\\PowerShell Projects\\build\\Run-Phase2-FinalSweep.ps1",
+                        "type":  "ps",
+                        "expected":  [
+                                         "PSSA"
+                                     ],
+                        "has_pester":  false,
+                        "has_pssa":  true,
+                        "pre":  false,
+                        "mid":  false,
+                        "post":  false,
+                        "covered":  false,
+                        "ext":  ".ps1"
+                    },
+                    {
+                        "path":  "C:\\Users\\james.e.hardy\\OneDrive - Avanade\\PowerShell Projects\\build\\Run-QualityGenericChain.ps1",
+                        "type":  "ps",
+                        "expected":  [
+                                         "PSSA"
+                                     ],
+                        "has_pester":  false,
+                        "has_pssa":  true,
+                        "pre":  false,
+                        "mid":  false,
+                        "post":  true,
+                        "covered":  false,
+                        "ext":  ".ps1"
+                    },
+                    {
+                        "path":  "C:\\Users\\james.e.hardy\\OneDrive - Avanade\\PowerShell Projects\\build\\Run-QualitySuite.ps1",
+                        "type":  "ps",
+                        "expected":  [
+                                         "PSSA"
+                                     ],
+                        "has_pester":  false,
+                        "has_pssa":  true,
+                        "pre":  false,
+                        "mid":  false,
+                        "post":  false,
+                        "covered":  false,
+                        "ext":  ".ps1"
+                    },
+                    {
+                        "path":  "C:\\Users\\james.e.hardy\\OneDrive - Avanade\\PowerShell Projects\\build\\Run-TaskDbTests.ps1",
+                        "type":  "ps",
+                        "expected":  [
+                                         "PSSA"
+                                     ],
+                        "has_pester":  false,
+                        "has_pssa":  true,
+                        "pre":  false,
+                        "mid":  false,
+                        "post":  false,
+                        "covered":  false,
+                        "ext":  ".ps1"
+                    },
+                    {
+                        "path":  "C:\\Users\\james.e.hardy\\OneDrive - Avanade\\PowerShell Projects\\build\\Run-ViewerParserTests.ps1",
+                        "type":  "ps",
+                        "expected":  [
+                                         "PSSA"
+                                     ],
+                        "has_pester":  false,
+                        "has_pssa":  true,
+                        "pre":  false,
+                        "mid":  false,
+                        "post":  false,
+                        "covered":  false,
+                        "ext":  ".ps1"
+                    },
+                    {
+                        "path":  "C:\\Users\\james.e.hardy\\OneDrive - Avanade\\PowerShell Projects\\build\\Run-WUScanSource.ps1",
+                        "type":  "ps",
+                        "expected":  [
+                                         "PSSA"
+                                     ],
+                        "has_pester":  false,
+                        "has_pssa":  true,
+                        "pre":  false,
+                        "mid":  false,
+                        "post":  false,
+                        "covered":  false,
+                        "ext":  ".ps1"
+                    },
+                    {
+                        "path":  "C:\\Users\\james.e.hardy\\OneDrive - Avanade\\PowerShell Projects\\build\\Run-WUScanSourceHarness.ps1",
+                        "type":  "ps",
+                        "expected":  [
+                                         "PSSA"
+                                     ],
+                        "has_pester":  false,
+                        "has_pssa":  true,
+                        "pre":  false,
+                        "mid":  false,
+                        "post":  false,
+                        "covered":  false,
+                        "ext":  ".ps1"
+                    },
+                    {
+                        "path":  "C:\\Users\\james.e.hardy\\OneDrive - Avanade\\PowerShell Projects\\build\\Run-WUScanSource-ISE.ps1",
+                        "type":  "ps",
+                        "expected":  [
+                                         "PSSA"
+                                     ],
+                        "has_pester":  false,
+                        "has_pssa":  true,
+                        "pre":  false,
+                        "mid":  false,
+                        "post":  false,
+                        "covered":  false,
+                        "ext":  ".ps1"
+                    },
+                    {
+                        "path":  "C:\\Users\\james.e.hardy\\OneDrive - Avanade\\PowerShell Projects\\build\\Run-WUScanSourceTests.ps1",
+                        "type":  "ps",
+                        "expected":  [
+                                         "PSSA"
+                                     ],
+                        "has_pester":  false,
+                        "has_pssa":  true,
+                        "pre":  false,
+                        "mid":  false,
+                        "post":  false,
+                        "covered":  false,
+                        "ext":  ".ps1"
+                    },
+                    {
+                        "path":  "C:\\Users\\james.e.hardy\\OneDrive - Avanade\\PowerShell Projects\\build\\scripts\\Build.ps1",
+                        "type":  "ps",
+                        "expected":  [
+                                         "PSSA"
+                                     ],
+                        "has_pester":  false,
+                        "has_pssa":  true,
+                        "pre":  false,
+                        "mid":  false,
+                        "post":  false,
+                        "covered":  false,
+                        "ext":  ".ps1"
+                    },
+                    {
+                        "path":  "C:\\Users\\james.e.hardy\\OneDrive - Avanade\\PowerShell Projects\\build\\scripts\\Invoke-EnhancedPythonDiagnostics.ps1",
+                        "type":  "ps",
+                        "expected":  [
+                                         "PSSA"
+                                     ],
+                        "has_pester":  false,
+                        "has_pssa":  true,
+                        "pre":  false,
+                        "mid":  false,
+                        "post":  false,
+                        "covered":  false,
+                        "ext":  ".ps1"
+                    },
+                    {
+                        "path":  "C:\\Users\\james.e.hardy\\OneDrive - Avanade\\PowerShell Projects\\build\\scripts\\Invoke-Formatter-All.ps1",
+                        "type":  "ps",
+                        "expected":  [
+                                         "PSSA"
+                                     ],
+                        "has_pester":  false,
+                        "has_pssa":  true,
+                        "pre":  false,
+                        "mid":  true,
+                        "post":  false,
+                        "covered":  false,
+                        "ext":  ".ps1"
+                    },
+                    {
+                        "path":  "C:\\Users\\james.e.hardy\\OneDrive - Avanade\\PowerShell Projects\\build\\scripts\\Invoke-PS-P006-AdvancedOrchestration.ps1",
+                        "type":  "ps",
+                        "expected":  [
+                                         "PSSA"
+                                     ],
+                        "has_pester":  false,
+                        "has_pssa":  true,
+                        "pre":  false,
+                        "mid":  false,
+                        "post":  false,
+                        "covered":  false,
+                        "ext":  ".ps1"
+                    },
+                    {
+                        "path":  "C:\\Users\\james.e.hardy\\OneDrive - Avanade\\PowerShell Projects\\build\\scripts\\Invoke-PS-P006-CleanOrchestration.ps1",
+                        "type":  "ps",
+                        "expected":  [
+                                         "PSSA"
+                                     ],
+                        "has_pester":  false,
+                        "has_pssa":  true,
+                        "pre":  false,
+                        "mid":  false,
+                        "post":  false,
+                        "covered":  false,
+                        "ext":  ".ps1"
+                    },
+                    {
+                        "path":  "C:\\Users\\james.e.hardy\\OneDrive - Avanade\\PowerShell Projects\\build\\scripts\\Invoke-PS-P006-SimpleOrchestration.ps1",
+                        "type":  "ps",
+                        "expected":  [
+                                         "PSSA"
+                                     ],
+                        "has_pester":  false,
+                        "has_pssa":  true,
+                        "pre":  false,
+                        "mid":  false,
+                        "post":  false,
+                        "covered":  false,
+                        "ext":  ".ps1"
+                    },
+                    {
+                        "path":  "C:\\Users\\james.e.hardy\\OneDrive - Avanade\\PowerShell Projects\\build\\scripts\\Invoke-PSScriptAnalyzerValidation.ps1",
+                        "type":  "ps",
+                        "expected":  [
+                                         "PSSA"
+                                     ],
+                        "has_pester":  false,
+                        "has_pssa":  true,
+                        "pre":  false,
+                        "mid":  false,
+                        "post":  false,
+                        "covered":  false,
+                        "ext":  ".ps1"
+                    },
+                    {
+                        "path":  "C:\\Users\\james.e.hardy\\OneDrive - Avanade\\PowerShell Projects\\build\\scripts\\Invoke-PythonInstallationValidation.ps1",
+                        "type":  "ps",
+                        "expected":  [
+                                         "PSSA"
+                                     ],
+                        "has_pester":  false,
+                        "has_pssa":  true,
+                        "pre":  false,
+                        "mid":  false,
+                        "post":  false,
+                        "covered":  false,
+                        "ext":  ".ps1"
+                    },
+                    {
+                        "path":  "C:\\Users\\james.e.hardy\\OneDrive - Avanade\\PowerShell Projects\\build\\scripts\\Invoke-SCCMClientHealthEvaluation.ps1",
+                        "type":  "ps",
+                        "expected":  [
+                                         "PSSA"
+                                     ],
+                        "has_pester":  false,
+                        "has_pssa":  true,
+                        "pre":  false,
+                        "mid":  false,
+                        "post":  false,
+                        "covered":  false,
+                        "ext":  ".ps1"
+                    },
+                    {
+                        "path":  "C:\\Users\\james.e.hardy\\OneDrive - Avanade\\PowerShell Projects\\build\\scripts\\Invoke-SCCMClientSettingsEvaluation.ps1",
+                        "type":  "ps",
+                        "expected":  [
+                                         "PSSA"
+                                     ],
+                        "has_pester":  false,
+                        "has_pssa":  true,
+                        "pre":  false,
+                        "mid":  false,
+                        "post":  false,
+                        "covered":  false,
+                        "ext":  ".ps1"
+                    },
+                    {
+                        "path":  "C:\\Users\\james.e.hardy\\OneDrive - Avanade\\PowerShell Projects\\build\\scripts\\Invoke-SCCMConfigurationAnalysis.ps1",
+                        "type":  "ps",
+                        "expected":  [
+                                         "PSSA"
+                                     ],
+                        "has_pester":  false,
+                        "has_pssa":  true,
+                        "pre":  false,
+                        "mid":  false,
+                        "post":  false,
+                        "covered":  false,
+                        "ext":  ".ps1"
+                    },
+                    {
+                        "path":  "C:\\Users\\james.e.hardy\\OneDrive - Avanade\\PowerShell Projects\\build\\scripts\\Invoke-SCCMInfrastructureEvaluation.ps1",
+                        "type":  "ps",
+                        "expected":  [
+                                         "PSSA"
+                                     ],
+                        "has_pester":  false,
+                        "has_pssa":  true,
+                        "pre":  false,
+                        "mid":  false,
+                        "post":  false,
+                        "covered":  false,
+                        "ext":  ".ps1"
+                    },
+                    {
+                        "path":  "C:\\Users\\james.e.hardy\\OneDrive - Avanade\\PowerShell Projects\\build\\scripts\\Invoke-SingleAgentCoordination.ps1",
+                        "type":  "ps",
+                        "expected":  [
+                                         "PSSA"
+                                     ],
+                        "has_pester":  false,
+                        "has_pssa":  true,
+                        "pre":  false,
+                        "mid":  false,
+                        "post":  false,
+                        "covered":  false,
+                        "ext":  ".ps1"
+                    },
+                    {
+                        "path":  "C:\\Users\\james.e.hardy\\OneDrive - Avanade\\PowerShell Projects\\build\\scripts\\Invoke-Windows11DeploymentAnalysis.ps1",
+                        "type":  "ps",
+                        "expected":  [
+                                         "PSSA"
+                                     ],
+                        "has_pester":  false,
+                        "has_pssa":  true,
+                        "pre":  false,
+                        "mid":  false,
+                        "post":  true,
+                        "covered":  false,
+                        "ext":  ".ps1"
+                    },
+                    {
+                        "path":  "C:\\Users\\james.e.hardy\\OneDrive - Avanade\\PowerShell Projects\\build\\Show-QualityLogs.ps1",
+                        "type":  "ps",
+                        "expected":  [
+                                         "PSSA"
+                                     ],
+                        "has_pester":  false,
+                        "has_pssa":  true,
+                        "pre":  false,
+                        "mid":  false,
+                        "post":  false,
+                        "covered":  false,
+                        "ext":  ".ps1"
+                    },
+                    {
+                        "path":  "C:\\Users\\james.e.hardy\\OneDrive - Avanade\\PowerShell Projects\\build\\Sign-Workspace.ps1",
+                        "type":  "ps",
+                        "expected":  [
+                                         "PSSA"
+                                     ],
+                        "has_pester":  false,
+                        "has_pssa":  true,
+                        "pre":  false,
+                        "mid":  false,
+                        "post":  false,
+                        "covered":  false,
+                        "ext":  ".ps1"
+                    },
+                    {
+                        "path":  "C:\\Users\\james.e.hardy\\OneDrive - Avanade\\PowerShell Projects\\build\\Summarize-StructuredLogs.ps1",
+                        "type":  "ps",
+                        "expected":  [
+                                         "PSSA"
+                                     ],
+                        "has_pester":  false,
+                        "has_pssa":  true,
+                        "pre":  false,
+                        "mid":  false,
+                        "post":  false,
+                        "covered":  false,
+                        "ext":  ".ps1"
+                    },
+                    {
+                        "path":  "C:\\Users\\james.e.hardy\\OneDrive - Avanade\\PowerShell Projects\\build\\Test-P010-Clean.ps1",
+                        "type":  "ps",
+                        "expected":  [
+                                         "PSSA"
+                                     ],
+                        "has_pester":  false,
+                        "has_pssa":  true,
+                        "pre":  false,
+                        "mid":  false,
+                        "post":  false,
+                        "covered":  false,
+                        "ext":  ".ps1"
+                    },
+                    {
+                        "path":  "C:\\Users\\james.e.hardy\\OneDrive - Avanade\\PowerShell Projects\\build\\Test-P010-LiveReorganization.ps1",
+                        "type":  "ps",
+                        "expected":  [
+                                         "PSSA"
+                                     ],
+                        "has_pester":  false,
+                        "has_pssa":  true,
+                        "pre":  false,
+                        "mid":  false,
+                        "post":  false,
+                        "covered":  false,
+                        "ext":  ".ps1"
+                    },
+                    {
+                        "path":  "C:\\Users\\james.e.hardy\\OneDrive - Avanade\\PowerShell Projects\\build\\Test-P010-SafetyCheck.ps1",
+                        "type":  "ps",
+                        "expected":  [
+                                         "PSSA"
+                                     ],
+                        "has_pester":  false,
+                        "has_pssa":  true,
+                        "pre":  false,
+                        "mid":  false,
+                        "post":  false,
+                        "covered":  false,
+                        "ext":  ".ps1"
+                    },
+                    {
+                        "path":  "C:\\Users\\james.e.hardy\\OneDrive - Avanade\\PowerShell Projects\\build\\Test-P010-Simple.ps1",
+                        "type":  "ps",
+                        "expected":  [
+                                         "PSSA"
+                                     ],
+                        "has_pester":  false,
+                        "has_pssa":  true,
+                        "pre":  false,
+                        "mid":  false,
+                        "post":  false,
+                        "covered":  false,
+                        "ext":  ".ps1"
+                    },
+                    {
+                        "path":  "C:\\Users\\james.e.hardy\\OneDrive - Avanade\\PowerShell Projects\\build\\Test-WUScanSourceMenu.ps1",
+                        "type":  "ps",
+                        "expected":  [
+                                         "PSSA"
+                                     ],
+                        "has_pester":  false,
+                        "has_pssa":  true,
+                        "pre":  false,
+                        "mid":  false,
+                        "post":  false,
+                        "covered":  false,
+                        "ext":  ".ps1"
+                    },
+                    {
+                        "path":  "C:\\Users\\james.e.hardy\\OneDrive - Avanade\\PowerShell Projects\\build\\Validate-WUScanEvidence.ps1",
+                        "type":  "ps",
+                        "expected":  [
+                                         "PSSA"
+                                     ],
+                        "has_pester":  false,
+                        "has_pssa":  true,
+                        "pre":  false,
+                        "mid":  false,
+                        "post":  false,
+                        "covered":  false,
+                        "ext":  ".ps1"
+                    },
+                    {
+                        "path":  "C:\\Users\\james.e.hardy\\OneDrive - Avanade\\PowerShell Projects\\build\\View-QualityResults.ps1",
+                        "type":  "ps",
+                        "expected":  [
+                                         "PSSA"
+                                     ],
+                        "has_pester":  false,
+                        "has_pssa":  true,
+                        "pre":  false,
+                        "mid":  false,
+                        "post":  false,
+                        "covered":  false,
+                        "ext":  ".ps1"
+                    },
+                    {
+                        "path":  "C:\\Users\\james.e.hardy\\OneDrive - Avanade\\PowerShell Projects\\cli\\Show-ValidationStatus.ps1",
+                        "type":  "ps",
+                        "expected":  [
+                                         "PSSA"
+                                     ],
+                        "has_pester":  false,
+                        "has_pssa":  true,
+                        "pre":  false,
+                        "mid":  false,
+                        "post":  false,
+                        "covered":  false,
+                        "ext":  ".ps1"
+                    },
+                    {
+                        "path":  "C:\\Users\\james.e.hardy\\OneDrive - Avanade\\PowerShell Projects\\cli\\Show-ValidationTrends.ps1",
+                        "type":  "ps",
+                        "expected":  [
+                                         "PSSA"
+                                     ],
+                        "has_pester":  false,
+                        "has_pssa":  true,
+                        "pre":  false,
+                        "mid":  false,
+                        "post":  false,
+                        "covered":  false,
+                        "ext":  ".ps1"
+                    },
+                    {
+                        "path":  "C:\\Users\\james.e.hardy\\OneDrive - Avanade\\PowerShell Projects\\cli\\Test-MPV.ps1",
+                        "type":  "ps",
+                        "expected":  [
+                                         "PSSA"
+                                     ],
+                        "has_pester":  false,
+                        "has_pssa":  true,
+                        "pre":  false,
+                        "mid":  false,
+                        "post":  false,
+                        "covered":  false,
+                        "ext":  ".ps1"
+                    },
+                    {
+                        "path":  "C:\\Users\\james.e.hardy\\OneDrive - Avanade\\PowerShell Projects\\docs\\Test-AgentCapabilities.ps1",
+                        "type":  "ps",
+                        "expected":  [
+                                         "PSSA"
+                                     ],
+                        "has_pester":  false,
+                        "has_pssa":  true,
+                        "pre":  false,
+                        "mid":  false,
+                        "post":  true,
+                        "covered":  false,
+                        "ext":  ".ps1"
+                    },
+                    {
+                        "path":  "C:\\Users\\james.e.hardy\\OneDrive - Avanade\\PowerShell Projects\\docs\\Validate-AgentCapabilities.ps1",
+                        "type":  "ps",
+                        "expected":  [
+                                         "PSSA"
+                                     ],
+                        "has_pester":  false,
+                        "has_pssa":  true,
+                        "pre":  false,
+                        "mid":  false,
+                        "post":  true,
+                        "covered":  false,
+                        "ext":  ".ps1"
+                    },
+                    {
+                        "path":  "C:\\Users\\james.e.hardy\\OneDrive - Avanade\\PowerShell Projects\\docs\\Validate-AgentCapabilities-Simple.ps1",
+                        "type":  "ps",
+                        "expected":  [
+                                         "PSSA"
+                                     ],
+                        "has_pester":  false,
+                        "has_pssa":  true,
+                        "pre":  false,
+                        "mid":  false,
+                        "post":  true,
+                        "covered":  false,
+                        "ext":  ".ps1"
+                    },
+                    {
+                        "path":  "C:\\Users\\james.e.hardy\\OneDrive - Avanade\\PowerShell Projects\\githooks\\pre-commit.ps1",
+                        "type":  "ps",
+                        "expected":  [
+                                         "PSSA"
+                                     ],
+                        "has_pester":  false,
+                        "has_pssa":  true,
+                        "pre":  false,
+                        "mid":  false,
+                        "post":  false,
+                        "covered":  false,
+                        "ext":  ".ps1"
+                    },
+                    {
+                        "path":  "C:\\Users\\james.e.hardy\\OneDrive - Avanade\\PowerShell Projects\\githooks\\pre-push.ps1",
+                        "type":  "ps",
+                        "expected":  [
+                                         "PSSA"
+                                     ],
+                        "has_pester":  false,
+                        "has_pssa":  true,
+                        "pre":  false,
+                        "mid":  false,
+                        "post":  false,
+                        "covered":  false,
+                        "ext":  ".ps1"
+                    },
+                    {
+                        "path":  "C:\\Users\\james.e.hardy\\OneDrive - Avanade\\PowerShell Projects\\SCCM\\Get-WUScanSource.ps1",
+                        "type":  "ps",
+                        "expected":  [
+                                         "PSSA"
+                                     ],
+                        "has_pester":  false,
+                        "has_pssa":  true,
+                        "pre":  false,
+                        "mid":  false,
+                        "post":  false,
+                        "covered":  false,
+                        "ext":  ".ps1"
+                    },
+                    {
+                        "path":  "C:\\Users\\james.e.hardy\\OneDrive - Avanade\\PowerShell Projects\\SCCM\\Get-WUUpdatesource2.ps1",
+                        "type":  "ps",
+                        "expected":  [
+                                         "PSSA"
+                                     ],
+                        "has_pester":  false,
+                        "has_pssa":  true,
+                        "pre":  false,
+                        "mid":  false,
+                        "post":  false,
+                        "covered":  false,
+                        "ext":  ".ps1"
+                    },
+                    {
+                        "path":  "C:\\Users\\james.e.hardy\\OneDrive - Avanade\\PowerShell Projects\\scripts\\Add-Task.ps1",
+                        "type":  "ps",
+                        "expected":  [
+                                         "PSSA"
+                                     ],
+                        "has_pester":  false,
+                        "has_pssa":  true,
+                        "pre":  false,
+                        "mid":  false,
+                        "post":  false,
+                        "covered":  false,
+                        "ext":  ".ps1"
+                    },
+                    {
+                        "path":  "C:\\Users\\james.e.hardy\\OneDrive - Avanade\\PowerShell Projects\\scripts\\Convert-MasterTaskListToCsv.ps1",
+                        "type":  "ps",
+                        "expected":  [
+                                         "PSSA"
+                                     ],
+                        "has_pester":  false,
+                        "has_pssa":  true,
+                        "pre":  false,
+                        "mid":  false,
+                        "post":  false,
+                        "covered":  false,
+                        "ext":  ".ps1"
+                    },
+                    {
+                        "path":  "C:\\Users\\james.e.hardy\\OneDrive - Avanade\\PowerShell Projects\\scripts\\Get-Tasks.ps1",
+                        "type":  "ps",
+                        "expected":  [
+                                         "PSSA"
+                                     ],
+                        "has_pester":  false,
+                        "has_pssa":  true,
+                        "pre":  false,
+                        "mid":  false,
+                        "post":  false,
+                        "covered":  false,
+                        "ext":  ".ps1"
+                    },
+                    {
+                        "path":  "C:\\Users\\james.e.hardy\\OneDrive - Avanade\\PowerShell Projects\\scripts\\Get-TaskStatusHistory.ps1",
+                        "type":  "ps",
+                        "expected":  [
+                                         "PSSA"
+                                     ],
+                        "has_pester":  false,
+                        "has_pssa":  true,
+                        "pre":  false,
+                        "mid":  false,
+                        "post":  false,
+                        "covered":  false,
+                        "ext":  ".ps1"
+                    },
+                    {
+                        "path":  "C:\\Users\\james.e.hardy\\OneDrive - Avanade\\PowerShell Projects\\scripts\\Inspect-TaskDb.ps1",
+                        "type":  "ps",
+                        "expected":  [
+                                         "PSSA"
+                                     ],
+                        "has_pester":  false,
+                        "has_pssa":  true,
+                        "pre":  false,
+                        "mid":  false,
+                        "post":  false,
+                        "covered":  false,
+                        "ext":  ".ps1"
+                    },
+                    {
+                        "path":  "C:\\Users\\james.e.hardy\\OneDrive - Avanade\\PowerShell Projects\\scripts\\Invoke-TaskMigrations.ps1",
+                        "type":  "ps",
+                        "expected":  [
+                                         "PSSA"
+                                     ],
+                        "has_pester":  false,
+                        "has_pssa":  true,
+                        "pre":  false,
+                        "mid":  false,
+                        "post":  false,
+                        "covered":  false,
+                        "ext":  ".ps1"
+                    },
+                    {
+                        "path":  "C:\\Users\\james.e.hardy\\OneDrive - Avanade\\PowerShell Projects\\scripts\\Parse-MasterTaskList.ps1",
+                        "type":  "ps",
+                        "expected":  [
+                                         "PSSA"
+                                     ],
+                        "has_pester":  false,
+                        "has_pssa":  true,
+                        "pre":  false,
+                        "mid":  false,
+                        "post":  false,
+                        "covered":  false,
+                        "ext":  ".ps1"
+                    },
+                    {
+                        "path":  "C:\\Users\\james.e.hardy\\OneDrive - Avanade\\PowerShell Projects\\scripts\\Seed-Tasks.ps1",
+                        "type":  "ps",
+                        "expected":  [
+                                         "PSSA"
+                                     ],
+                        "has_pester":  false,
+                        "has_pssa":  true,
+                        "pre":  false,
+                        "mid":  false,
+                        "post":  false,
+                        "covered":  false,
+                        "ext":  ".ps1"
+                    },
+                    {
+                        "path":  "C:\\Users\\james.e.hardy\\OneDrive - Avanade\\PowerShell Projects\\scripts\\Set-TaskStatus.ps1",
+                        "type":  "ps",
+                        "expected":  [
+                                         "PSSA"
+                                     ],
+                        "has_pester":  false,
+                        "has_pssa":  true,
+                        "pre":  false,
+                        "mid":  false,
+                        "post":  false,
+                        "covered":  false,
+                        "ext":  ".ps1"
+                    },
+                    {
+                        "path":  "C:\\Users\\james.e.hardy\\OneDrive - Avanade\\PowerShell Projects\\scripts\\Smoke-TaskDb.ps1",
+                        "type":  "ps",
+                        "expected":  [
+                                         "PSSA"
+                                     ],
+                        "has_pester":  false,
+                        "has_pssa":  true,
+                        "pre":  false,
+                        "mid":  false,
+                        "post":  false,
+                        "covered":  false,
+                        "ext":  ".ps1"
+                    },
+                    {
+                        "path":  "C:\\Users\\james.e.hardy\\OneDrive - Avanade\\PowerShell Projects\\scripts\\utilities\\CDNChecks.ps1",
+                        "type":  "ps",
+                        "expected":  [
+                                         "PSSA"
+                                     ],
+                        "has_pester":  false,
+                        "has_pssa":  true,
+                        "pre":  false,
+                        "mid":  false,
+                        "post":  false,
+                        "covered":  false,
+                        "ext":  ".ps1"
+                    },
+                    {
+                        "path":  "C:\\Users\\james.e.hardy\\OneDrive - Avanade\\PowerShell Projects\\scripts\\utilities\\Check-SQLPerformance.ps1",
+                        "type":  "ps",
+                        "expected":  [
+                                         "PSSA"
+                                     ],
+                        "has_pester":  false,
+                        "has_pssa":  true,
+                        "pre":  false,
+                        "mid":  false,
+                        "post":  false,
+                        "covered":  false,
+                        "ext":  ".ps1"
+                    },
+                    {
+                        "path":  "C:\\Users\\james.e.hardy\\OneDrive - Avanade\\PowerShell Projects\\scripts\\utilities\\SFXArchive.ps1",
+                        "type":  "ps",
+                        "expected":  [
+                                         "PSSA"
+                                     ],
+                        "has_pester":  false,
+                        "has_pssa":  true,
+                        "pre":  false,
+                        "mid":  false,
+                        "post":  false,
+                        "covered":  false,
+                        "ext":  ".ps1"
+                    },
+                    {
+                        "path":  "C:\\Users\\james.e.hardy\\OneDrive - Avanade\\PowerShell Projects\\src\\core\\Core.psm1",
+                        "type":  "ps",
+                        "expected":  [
+                                         "PSSA"
+                                     ],
+                        "has_pester":  false,
+                        "has_pssa":  false,
+                        "pre":  false,
+                        "mid":  false,
+                        "post":  false,
+                        "covered":  false,
+                        "ext":  ".psm1"
+                    },
+                    {
+                        "path":  "C:\\Users\\james.e.hardy\\OneDrive - Avanade\\PowerShell Projects\\src\\core\\Public\\Activate.ps1",
+                        "type":  "ps",
+                        "expected":  [
+                                         "PSSA"
+                                     ],
+                        "has_pester":  false,
+                        "has_pssa":  true,
+                        "pre":  false,
+                        "mid":  false,
+                        "post":  false,
+                        "covered":  false,
+                        "ext":  ".ps1"
+                    },
+                    {
+                        "path":  "C:\\Users\\james.e.hardy\\OneDrive - Avanade\\PowerShell Projects\\src\\core\\Public\\Analyze-SCCMClientSettingConflicts.ps1",
+                        "type":  "ps",
+                        "expected":  [
+                                         "PSSA"
+                                     ],
+                        "has_pester":  false,
+                        "has_pssa":  true,
+                        "pre":  false,
+                        "mid":  false,
+                        "post":  false,
+                        "covered":  false,
+                        "ext":  ".ps1"
+                    },
+                    {
+                        "path":  "C:\\Users\\james.e.hardy\\OneDrive - Avanade\\PowerShell Projects\\src\\core\\Public\\Demo-SCCMAnalysis-P001Integration.ps1",
+                        "type":  "ps",
+                        "expected":  [
+                                         "PSSA"
+                                     ],
+                        "has_pester":  false,
+                        "has_pssa":  true,
+                        "pre":  false,
+                        "mid":  false,
+                        "post":  false,
+                        "covered":  false,
+                        "ext":  ".ps1"
+                    },
+                    {
+                        "path":  "C:\\Users\\james.e.hardy\\OneDrive - Avanade\\PowerShell Projects\\src\\core\\Public\\DisableCredGuard.ps1",
+                        "type":  "ps",
+                        "expected":  [
+                                         "PSSA"
+                                     ],
+                        "has_pester":  false,
+                        "has_pssa":  true,
+                        "pre":  false,
+                        "mid":  false,
+                        "post":  false,
+                        "covered":  false,
+                        "ext":  ".ps1"
+                    },
+                    {
+                        "path":  "C:\\Users\\james.e.hardy\\OneDrive - Avanade\\PowerShell Projects\\src\\core\\Public\\GatherUpgradeLogs.ps1",
+                        "type":  "ps",
+                        "expected":  [
+                                         "PSSA"
+                                     ],
+                        "has_pester":  false,
+                        "has_pssa":  true,
+                        "pre":  false,
+                        "mid":  false,
+                        "post":  false,
+                        "covered":  false,
+                        "ext":  ".ps1"
+                    },
+                    {
+                        "path":  "C:\\Users\\james.e.hardy\\OneDrive - Avanade\\PowerShell Projects\\src\\core\\Public\\Initialize-ContextForgeModernization.ps1",
+                        "type":  "ps",
+                        "expected":  [
+                                         "PSSA"
+                                     ],
+                        "has_pester":  false,
+                        "has_pssa":  true,
+                        "pre":  false,
+                        "mid":  false,
+                        "post":  false,
+                        "covered":  false,
+                        "ext":  ".ps1"
+                    },
+                    {
+                        "path":  "C:\\Users\\james.e.hardy\\OneDrive - Avanade\\PowerShell Projects\\src\\core\\Public\\Initialize-SCCMConfigurationCache.ps1",
+                        "type":  "ps",
+                        "expected":  [
+                                         "PSSA"
+                                     ],
+                        "has_pester":  false,
+                        "has_pssa":  true,
+                        "pre":  false,
+                        "mid":  false,
+                        "post":  false,
+                        "covered":  false,
+                        "ext":  ".ps1"
+                    },
+                    {
+                        "path":  "C:\\Users\\james.e.hardy\\OneDrive - Avanade\\PowerShell Projects\\src\\core\\Public\\Initialize-SCCMConfigurationCache-MockData.ps1",
+                        "type":  "ps",
+                        "expected":  [
+                                         "PSSA"
+                                     ],
+                        "has_pester":  false,
+                        "has_pssa":  true,
+                        "pre":  false,
+                        "mid":  false,
+                        "post":  false,
+                        "covered":  false,
+                        "ext":  ".ps1"
+                    },
+                    {
+                        "path":  "C:\\Users\\james.e.hardy\\OneDrive - Avanade\\PowerShell Projects\\src\\core\\Public\\Initialize-SCCMConfigurationCache-MockData-Concise.ps1",
+                        "type":  "ps",
+                        "expected":  [
+                                         "PSSA"
+                                     ],
+                        "has_pester":  false,
+                        "has_pssa":  true,
+                        "pre":  false,
+                        "mid":  false,
+                        "post":  false,
+                        "covered":  false,
+                        "ext":  ".ps1"
+                    },
+                    {
+                        "path":  "C:\\Users\\james.e.hardy\\OneDrive - Avanade\\PowerShell Projects\\src\\core\\Public\\Initialize-SCCMConfigurationCache-MockData-P001.ps1",
+                        "type":  "ps",
+                        "expected":  [
+                                         "PSSA"
+                                     ],
+                        "has_pester":  false,
+                        "has_pssa":  true,
+                        "pre":  false,
+                        "mid":  false,
+                        "post":  false,
+                        "covered":  false,
+                        "ext":  ".ps1"
+                    },
+                    {
+                        "path":  "C:\\Users\\james.e.hardy\\OneDrive - Avanade\\PowerShell Projects\\src\\core\\Public\\Initialize-SCCMConfigurationCache-MockData-P001-Complete.ps1",
+                        "type":  "ps",
+                        "expected":  [
+                                         "PSSA"
+                                     ],
+                        "has_pester":  false,
+                        "has_pssa":  true,
+                        "pre":  false,
+                        "mid":  false,
+                        "post":  false,
+                        "covered":  false,
+                        "ext":  ".ps1"
+                    },
+                    {
+                        "path":  "C:\\Users\\james.e.hardy\\OneDrive - Avanade\\PowerShell Projects\\src\\core\\Public\\Initialize-SCCMConfigurationCache-MockData-P001-Part2.ps1",
+                        "type":  "ps",
+                        "expected":  [
+                                         "PSSA"
+                                     ],
+                        "has_pester":  false,
+                        "has_pssa":  true,
+                        "pre":  false,
+                        "mid":  false,
+                        "post":  false,
+                        "covered":  false,
+                        "ext":  ".ps1"
+                    },
+                    {
+                        "path":  "C:\\Users\\james.e.hardy\\OneDrive - Avanade\\PowerShell Projects\\src\\core\\Public\\Initialize-SCCMConfigurationCache-MockData-P001-Part3.ps1",
+                        "type":  "ps",
+                        "expected":  [
+                                         "PSSA"
+                                     ],
+                        "has_pester":  false,
+                        "has_pssa":  true,
+                        "pre":  false,
+                        "mid":  false,
+                        "post":  false,
+                        "covered":  false,
+                        "ext":  ".ps1"
+                    },
+                    {
+                        "path":  "C:\\Users\\james.e.hardy\\OneDrive - Avanade\\PowerShell Projects\\src\\core\\Public\\Initialize-SCCMConfigurationCache-Production.ps1",
+                        "type":  "ps",
+                        "expected":  [
+                                         "PSSA"
+                                     ],
+                        "has_pester":  false,
+                        "has_pssa":  true,
+                        "pre":  false,
+                        "mid":  false,
+                        "post":  false,
+                        "covered":  false,
+                        "ext":  ".ps1"
+                    },
+                    {
+                        "path":  "C:\\Users\\james.e.hardy\\OneDrive - Avanade\\PowerShell Projects\\src\\core\\Public\\LastUser.ps1",
+                        "type":  "ps",
+                        "expected":  [
+                                         "PSSA"
+                                     ],
+                        "has_pester":  false,
+                        "has_pssa":  true,
+                        "pre":  false,
+                        "mid":  false,
+                        "post":  false,
+                        "covered":  false,
+                        "ext":  ".ps1"
+                    },
+                    {
+                        "path":  "C:\\Users\\james.e.hardy\\OneDrive - Avanade\\PowerShell Projects\\src\\core\\Public\\MockEnv-SchemaValidation.ps1",
+                        "type":  "ps",
+                        "expected":  [
+                                         "PSSA"
+                                     ],
+                        "has_pester":  false,
+                        "has_pssa":  true,
+                        "pre":  false,
+                        "mid":  false,
+                        "post":  false,
+                        "covered":  false,
+                        "ext":  ".ps1"
+                    },
+                    {
+                        "path":  "C:\\Users\\james.e.hardy\\OneDrive - Avanade\\PowerShell Projects\\src\\core\\Public\\New-CommunicationHandoff.ps1",
+                        "type":  "ps",
+                        "expected":  [
+                                         "PSSA"
+                                     ],
+                        "has_pester":  false,
+                        "has_pssa":  true,
+                        "pre":  false,
+                        "mid":  false,
+                        "post":  false,
+                        "covered":  false,
+                        "ext":  ".ps1"
+                    },
+                    {
+                        "path":  "C:\\Users\\james.e.hardy\\OneDrive - Avanade\\PowerShell Projects\\src\\core\\Public\\New-ContextForgeAAR.ps1",
+                        "type":  "ps",
+                        "expected":  [
+                                         "PSSA"
+                                     ],
+                        "has_pester":  false,
+                        "has_pssa":  true,
+                        "pre":  false,
+                        "mid":  false,
+                        "post":  false,
+                        "covered":  false,
+                        "ext":  ".ps1"
+                    },
+                    {
+                        "path":  "C:\\Users\\james.e.hardy\\OneDrive - Avanade\\PowerShell Projects\\src\\core\\Public\\New-Windows11MockEnvironment.ps1",
+                        "type":  "ps",
+                        "expected":  [
+                                         "PSSA"
+                                     ],
+                        "has_pester":  false,
+                        "has_pssa":  true,
+                        "pre":  false,
+                        "mid":  false,
+                        "post":  false,
+                        "covered":  false,
+                        "ext":  ".ps1"
+                    },
+                    {
+                        "path":  "C:\\Users\\james.e.hardy\\OneDrive - Avanade\\PowerShell Projects\\src\\core\\Public\\Remove-MicrosoftStorePython.ps1",
+                        "type":  "ps",
+                        "expected":  [
+                                         "PSSA"
+                                     ],
+                        "has_pester":  false,
+                        "has_pssa":  true,
+                        "pre":  false,
+                        "mid":  false,
+                        "post":  false,
+                        "covered":  false,
+                        "ext":  ".ps1"
+                    },
+                    {
+                        "path":  "C:\\Users\\james.e.hardy\\OneDrive - Avanade\\PowerShell Projects\\src\\core\\Public\\Remove-StorePython-Simple.ps1",
+                        "type":  "ps",
+                        "expected":  [
+                                         "PSSA"
+                                     ],
+                        "has_pester":  false,
+                        "has_pssa":  true,
+                        "pre":  false,
+                        "mid":  false,
+                        "post":  false,
+                        "covered":  false,
+                        "ext":  ".ps1"
+                    },
+                    {
+                        "path":  "C:\\Users\\james.e.hardy\\OneDrive - Avanade\\PowerShell Projects\\src\\core\\Public\\Remove-StoresPython-Enhanced.ps1",
+                        "type":  "ps",
+                        "expected":  [
+                                         "PSSA"
+                                     ],
+                        "has_pester":  false,
+                        "has_pssa":  true,
+                        "pre":  false,
+                        "mid":  false,
+                        "post":  false,
+                        "covered":  false,
+                        "ext":  ".ps1"
+                    },
+                    {
+                        "path":  "C:\\Users\\james.e.hardy\\OneDrive - Avanade\\PowerShell Projects\\src\\core\\Public\\sacred-geometry-rules.ps1",
+                        "type":  "ps",
+                        "expected":  [
+                                         "PSSA"
+                                     ],
+                        "has_pester":  false,
+                        "has_pssa":  true,
+                        "pre":  false,
+                        "mid":  false,
+                        "post":  false,
+                        "covered":  false,
+                        "ext":  ".ps1"
+                    },
+                    {
+                        "path":  "C:\\Users\\james.e.hardy\\OneDrive - Avanade\\PowerShell Projects\\src\\core\\Public\\SCCMCommonSlow.ps1",
+                        "type":  "ps",
+                        "expected":  [
+                                         "PSSA"
+                                     ],
+                        "has_pester":  false,
+                        "has_pssa":  true,
+                        "pre":  false,
+                        "mid":  false,
+                        "post":  false,
+                        "covered":  false,
+                        "ext":  ".ps1"
+                    },
+                    {
+                        "path":  "C:\\Users\\james.e.hardy\\OneDrive - Avanade\\PowerShell Projects\\src\\core\\Public\\TSAudit.ps1",
+                        "type":  "ps",
+                        "expected":  [
+                                         "PSSA"
+                                     ],
+                        "has_pester":  false,
+                        "has_pssa":  true,
+                        "pre":  false,
+                        "mid":  false,
+                        "post":  false,
+                        "covered":  false,
+                        "ext":  ".ps1"
+                    },
+                    {
+                        "path":  "C:\\Users\\james.e.hardy\\OneDrive - Avanade\\PowerShell Projects\\src\\core\\Public\\Verify-EnhancementCoverage.ps1",
+                        "type":  "ps",
+                        "expected":  [
+                                         "PSSA"
+                                     ],
+                        "has_pester":  false,
+                        "has_pssa":  true,
+                        "pre":  false,
+                        "mid":  false,
+                        "post":  false,
+                        "covered":  false,
+                        "ext":  ".ps1"
+                    },
+                    {
+                        "path":  "C:\\Users\\james.e.hardy\\OneDrive - Avanade\\PowerShell Projects\\src\\core\\Public\\Verify-SoftwareCompatibilityEnhancement.ps1",
+                        "type":  "ps",
+                        "expected":  [
+                                         "PSSA"
+                                     ],
+                        "has_pester":  false,
+                        "has_pssa":  true,
+                        "pre":  false,
+                        "mid":  false,
+                        "post":  false,
+                        "covered":  false,
+                        "ext":  ".ps1"
+                    },
+                    {
+                        "path":  "C:\\Users\\james.e.hardy\\OneDrive - Avanade\\PowerShell Projects\\src\\modules\\ContextForge.AAR\\ContextForge.AAR.psm1",
+                        "type":  "ps",
+                        "expected":  [
+                                         "PSSA"
+                                     ],
+                        "has_pester":  false,
+                        "has_pssa":  false,
+                        "pre":  false,
+                        "mid":  false,
+                        "post":  false,
+                        "covered":  false,
+                        "ext":  ".psm1"
+                    },
+                    {
+                        "path":  "C:\\Users\\james.e.hardy\\OneDrive - Avanade\\PowerShell Projects\\src\\modules\\ContextForge.AAR\\Public\\Get-AARWorkspace.ps1",
+                        "type":  "ps",
+                        "expected":  [
+                                         "PSSA"
+                                     ],
+                        "has_pester":  false,
+                        "has_pssa":  true,
+                        "pre":  false,
+                        "mid":  false,
+                        "post":  false,
+                        "covered":  false,
+                        "ext":  ".ps1"
+                    },
+                    {
+                        "path":  "C:\\Users\\james.e.hardy\\OneDrive - Avanade\\PowerShell Projects\\src\\modules\\ContextForge.AAR\\Public\\Get-ConfigurationData.ps1",
+                        "type":  "ps",
+                        "expected":  [
+                                         "PSSA"
+                                     ],
+                        "has_pester":  false,
+                        "has_pssa":  true,
+                        "pre":  false,
+                        "mid":  false,
+                        "post":  false,
+                        "covered":  false,
+                        "ext":  ".ps1"
+                    },
+                    {
+                        "path":  "C:\\Users\\james.e.hardy\\OneDrive - Avanade\\PowerShell Projects\\src\\modules\\ContextForge.AAR\\Public\\Invoke-AARAnalysis.ps1",
+                        "type":  "ps",
+                        "expected":  [
+                                         "PSSA"
+                                     ],
+                        "has_pester":  false,
+                        "has_pssa":  true,
+                        "pre":  false,
+                        "mid":  false,
+                        "post":  false,
+                        "covered":  false,
+                        "ext":  ".ps1"
+                    },
+                    {
+                        "path":  "C:\\Users\\james.e.hardy\\OneDrive - Avanade\\PowerShell Projects\\src\\modules\\ContextForge.AAR\\Public\\Move-AARForAnalysis.ps1",
+                        "type":  "ps",
+                        "expected":  [
+                                         "PSSA"
+                                     ],
+                        "has_pester":  false,
+                        "has_pssa":  true,
+                        "pre":  false,
+                        "mid":  false,
+                        "post":  false,
+                        "covered":  false,
+                        "ext":  ".ps1"
+                    },
+                    {
+                        "path":  "C:\\Users\\james.e.hardy\\OneDrive - Avanade\\PowerShell Projects\\src\\modules\\ContextForge.AAR\\Public\\Publish-LessonsLearned.ps1",
+                        "type":  "ps",
+                        "expected":  [
+                                         "PSSA"
+                                     ],
+                        "has_pester":  false,
+                        "has_pssa":  true,
+                        "pre":  false,
+                        "mid":  false,
+                        "post":  false,
+                        "covered":  false,
+                        "ext":  ".ps1"
+                    },
+                    {
+                        "path":  "C:\\Users\\james.e.hardy\\OneDrive - Avanade\\PowerShell Projects\\src\\modules\\ContextForge.AAR\\Public\\Test-EnvironmentConstraints.ps1",
+                        "type":  "ps",
+                        "expected":  [
+                                         "PSSA"
+                                     ],
+                        "has_pester":  false,
+                        "has_pssa":  true,
+                        "pre":  false,
+                        "mid":  false,
+                        "post":  false,
+                        "covered":  false,
+                        "ext":  ".ps1"
+                    },
+                    {
+                        "path":  "C:\\Users\\james.e.hardy\\OneDrive - Avanade\\PowerShell Projects\\src\\modules\\Validation-Framework\\Validation-Framework.psm1",
+                        "type":  "ps",
+                        "expected":  [
+                                         "PSSA"
+                                     ],
+                        "has_pester":  false,
+                        "has_pssa":  false,
+                        "pre":  true,
+                        "mid":  true,
+                        "post":  true,
+                        "covered":  true,
+                        "ext":  ".psm1"
+                    },
+                    {
+                        "path":  "C:\\Users\\james.e.hardy\\OneDrive - Avanade\\PowerShell Projects\\src\\Scripts\\Invoke-AAROrganization.ps1",
+                        "type":  "ps",
+                        "expected":  [
+                                         "PSSA"
+                                     ],
+                        "has_pester":  false,
+                        "has_pssa":  true,
+                        "pre":  false,
+                        "mid":  true,
+                        "post":  false,
+                        "covered":  false,
+                        "ext":  ".ps1"
+                    },
+                    {
+                        "path":  "C:\\Users\\james.e.hardy\\OneDrive - Avanade\\PowerShell Projects\\src\\Scripts\\Invoke-AAROrganization-Clean.ps1",
+                        "type":  "ps",
+                        "expected":  [
+                                         "PSSA"
+                                     ],
+                        "has_pester":  false,
+                        "has_pssa":  true,
+                        "pre":  false,
+                        "mid":  true,
+                        "post":  false,
+                        "covered":  false,
+                        "ext":  ".ps1"
+                    },
+                    {
+                        "path":  "C:\\Users\\james.e.hardy\\OneDrive - Avanade\\PowerShell Projects\\src\\TaskDatabase\\Demo-TaskDatabase.ps1",
+                        "type":  "ps",
+                        "expected":  [
+                                         "PSSA"
+                                     ],
+                        "has_pester":  false,
+                        "has_pssa":  true,
+                        "pre":  false,
+                        "mid":  false,
+                        "post":  false,
+                        "covered":  false,
+                        "ext":  ".ps1"
+                    },
+                    {
+                        "path":  "C:\\Users\\james.e.hardy\\OneDrive - Avanade\\PowerShell Projects\\src\\TaskDatabase\\Initialize-TaskDatabase.ps1",
+                        "type":  "ps",
+                        "expected":  [
+                                         "PSSA"
+                                     ],
+                        "has_pester":  false,
+                        "has_pssa":  true,
+                        "pre":  false,
+                        "mid":  false,
+                        "post":  false,
+                        "covered":  false,
+                        "ext":  ".ps1"
+                    },
+                    {
+                        "path":  "C:\\Users\\james.e.hardy\\OneDrive - Avanade\\PowerShell Projects\\src\\TaskDatabase\\Invoke-TaskDashboard.ps1",
+                        "type":  "ps",
+                        "expected":  [
+                                         "PSSA"
+                                     ],
+                        "has_pester":  false,
+                        "has_pssa":  true,
+                        "pre":  false,
+                        "mid":  false,
+                        "post":  false,
+                        "covered":  false,
+                        "ext":  ".ps1"
+                    },
+                    {
+                        "path":  "C:\\Users\\james.e.hardy\\OneDrive - Avanade\\PowerShell Projects\\src\\TaskDatabase\\TaskManagement.psm1",
+                        "type":  "ps",
+                        "expected":  [
+                                         "PSSA"
+                                     ],
+                        "has_pester":  false,
+                        "has_pssa":  false,
+                        "pre":  false,
+                        "mid":  false,
+                        "post":  false,
+                        "covered":  false,
+                        "ext":  ".psm1"
+                    },
+                    {
+                        "path":  "C:\\Users\\james.e.hardy\\OneDrive - Avanade\\PowerShell Projects\\src\\utilities\\ConvertESAEv1.ps1",
+                        "type":  "ps",
+                        "expected":  [
+                                         "PSSA"
+                                     ],
+                        "has_pester":  false,
+                        "has_pssa":  true,
+                        "pre":  false,
+                        "mid":  false,
+                        "post":  false,
+                        "covered":  false,
+                        "ext":  ".ps1"
+                    },
+                    {
+                        "path":  "C:\\Users\\james.e.hardy\\OneDrive - Avanade\\PowerShell Projects\\src\\utilities\\ConvertESAEv3.ps1",
+                        "type":  "ps",
+                        "expected":  [
+                                         "PSSA"
+                                     ],
+                        "has_pester":  false,
+                        "has_pssa":  true,
+                        "pre":  false,
+                        "mid":  false,
+                        "post":  false,
+                        "covered":  false,
+                        "ext":  ".ps1"
+                    },
+                    {
+                        "path":  "C:\\Users\\james.e.hardy\\OneDrive - Avanade\\PowerShell Projects\\src\\utilities\\Export-ConfigurationBaselineScripts.ps1",
+                        "type":  "ps",
+                        "expected":  [
+                                         "PSSA"
+                                     ],
+                        "has_pester":  false,
+                        "has_pssa":  true,
+                        "pre":  false,
+                        "mid":  false,
+                        "post":  true,
+                        "covered":  false,
+                        "ext":  ".ps1"
+                    },
+                    {
+                        "path":  "C:\\Users\\james.e.hardy\\OneDrive - Avanade\\PowerShell Projects\\src\\utilities\\Export-GPO.ps1",
+                        "type":  "ps",
+                        "expected":  [
+                                         "PSSA"
+                                     ],
+                        "has_pester":  false,
+                        "has_pssa":  true,
+                        "pre":  false,
+                        "mid":  false,
+                        "post":  false,
+                        "covered":  false,
+                        "ext":  ".ps1"
+                    },
+                    {
+                        "path":  "C:\\Users\\james.e.hardy\\OneDrive - Avanade\\PowerShell Projects\\src\\utilities\\Get-ComputeOUs.ps1",
+                        "type":  "ps",
+                        "expected":  [
+                                         "PSSA"
+                                     ],
+                        "has_pester":  false,
+                        "has_pssa":  true,
+                        "pre":  false,
+                        "mid":  false,
+                        "post":  false,
+                        "covered":  false,
+                        "ext":  ".ps1"
+                    },
+                    {
+                        "path":  "C:\\Users\\james.e.hardy\\OneDrive - Avanade\\PowerShell Projects\\src\\utilities\\verification\\Verification-Common.ps1",
+                        "type":  "ps",
+                        "expected":  [
+                                         "PSSA"
+                                     ],
+                        "has_pester":  false,
+                        "has_pssa":  true,
+                        "pre":  false,
+                        "mid":  false,
+                        "post":  true,
+                        "covered":  false,
+                        "ext":  ".ps1"
+                    },
+                    {
+                        "path":  "C:\\Users\\james.e.hardy\\OneDrive - Avanade\\PowerShell Projects\\src\\utilities\\verification-harness\\Invoke-VerificationHarness.ps1",
+                        "type":  "ps",
+                        "expected":  [
+                                         "PSSA"
+                                     ],
+                        "has_pester":  false,
+                        "has_pssa":  true,
+                        "pre":  false,
+                        "mid":  false,
+                        "post":  false,
+                        "covered":  false,
+                        "ext":  ".ps1"
+                    },
+                    {
+                        "path":  "C:\\Users\\james.e.hardy\\OneDrive - Avanade\\PowerShell Projects\\temp\\Run-WUScanSource-Demo.ps1",
+                        "type":  "ps",
+                        "expected":  [
+                                         "PSSA"
+                                     ],
+                        "has_pester":  false,
+                        "has_pssa":  true,
+                        "pre":  false,
+                        "mid":  false,
+                        "post":  false,
+                        "covered":  false,
+                        "ext":  ".ps1"
+                    },
+                    {
+                        "path":  "C:\\Users\\james.e.hardy\\OneDrive - Avanade\\PowerShell Projects\\Test-AARSystem.ps1",
+                        "type":  "ps",
+                        "expected":  [
+                                         "PSSA"
+                                     ],
+                        "has_pester":  false,
+                        "has_pssa":  true,
+                        "pre":  false,
+                        "mid":  false,
+                        "post":  false,
+                        "covered":  false,
+                        "ext":  ".ps1"
+                    },
+                    {
+                        "path":  "C:\\Users\\james.e.hardy\\OneDrive - Avanade\\PowerShell Projects\\Test-AARSystem-Fixed.ps1",
+                        "type":  "ps",
+                        "expected":  [
+                                         "PSSA"
+                                     ],
+                        "has_pester":  false,
+                        "has_pssa":  true,
+                        "pre":  false,
+                        "mid":  false,
+                        "post":  false,
+                        "covered":  false,
+                        "ext":  ".ps1"
+                    },
+                    {
+                        "path":  "C:\\Users\\james.e.hardy\\OneDrive - Avanade\\PowerShell Projects\\Test-AARSystem-Fixed-V2.ps1",
+                        "type":  "ps",
+                        "expected":  [
+                                         "PSSA"
+                                     ],
+                        "has_pester":  false,
+                        "has_pssa":  true,
+                        "pre":  false,
+                        "mid":  false,
+                        "post":  false,
+                        "covered":  false,
+                        "ext":  ".ps1"
+                    },
+                    {
+                        "path":  "C:\\Users\\james.e.hardy\\OneDrive - Avanade\\PowerShell Projects\\tests\\Quality.Environment.Tests.ps1",
+                        "type":  "test",
+                        "expected":  [
+                                         "Pester"
+                                     ],
+                        "has_pester":  true,
+                        "has_pssa":  true,
+                        "pre":  false,
+                        "mid":  false,
+                        "post":  false,
+                        "covered":  false,
+                        "ext":  ".ps1"
+                    },
+                    {
+                        "path":  "C:\\Users\\james.e.hardy\\OneDrive - Avanade\\PowerShell Projects\\tests\\Quality.ReportSchema.Tests.ps1",
+                        "type":  "test",
+                        "expected":  [
+                                         "Pester"
+                                     ],
+                        "has_pester":  true,
+                        "has_pssa":  true,
+                        "pre":  false,
+                        "mid":  true,
+                        "post":  false,
+                        "covered":  false,
+                        "ext":  ".ps1"
+                    },
+                    {
+                        "path":  "C:\\Users\\james.e.hardy\\OneDrive - Avanade\\PowerShell Projects\\tests\\Quality.Runtime.Tests.ps1",
+                        "type":  "test",
+                        "expected":  [
+                                         "Pester"
+                                     ],
+                        "has_pester":  true,
+                        "has_pssa":  true,
+                        "pre":  false,
+                        "mid":  false,
+                        "post":  false,
+                        "covered":  false,
+                        "ext":  ".ps1"
+                    },
+                    {
+                        "path":  "C:\\Users\\james.e.hardy\\OneDrive - Avanade\\PowerShell Projects\\tests\\Quality.TBV.Smoke.Tests.ps1",
+                        "type":  "test",
+                        "expected":  [
+                                         "Pester"
+                                     ],
+                        "has_pester":  true,
+                        "has_pssa":  true,
+                        "pre":  false,
+                        "mid":  false,
+                        "post":  false,
+                        "covered":  false,
+                        "ext":  ".ps1"
+                    },
+                    {
+                        "path":  "C:\\Users\\james.e.hardy\\OneDrive - Avanade\\PowerShell Projects\\tests\\SCCM.Get-WUScanSource.Evidence.Tests.ps1",
+                        "type":  "test",
+                        "expected":  [
+                                         "Pester"
+                                     ],
+                        "has_pester":  true,
+                        "has_pssa":  true,
+                        "pre":  false,
+                        "mid":  false,
+                        "post":  false,
+                        "covered":  false,
+                        "ext":  ".ps1"
+                    },
+                    {
+                        "path":  "C:\\Users\\james.e.hardy\\OneDrive - Avanade\\PowerShell Projects\\tests\\SCCM.Get-WUScanSource.Matrix.Tests.ps1",
+                        "type":  "test",
+                        "expected":  [
+                                         "Pester"
+                                     ],
+                        "has_pester":  true,
+                        "has_pssa":  true,
+                        "pre":  false,
+                        "mid":  false,
+                        "post":  false,
+                        "covered":  false,
+                        "ext":  ".ps1"
+                    },
+                    {
+                        "path":  "C:\\Users\\james.e.hardy\\OneDrive - Avanade\\PowerShell Projects\\tests\\SCCM.Get-WUScanSource.MockScenarios.Tests.ps1",
+                        "type":  "test",
+                        "expected":  [
+                                         "Pester"
+                                     ],
+                        "has_pester":  true,
+                        "has_pssa":  true,
+                        "pre":  false,
+                        "mid":  false,
+                        "post":  false,
+                        "covered":  false,
+                        "ext":  ".ps1"
+                    },
+                    {
+                        "path":  "C:\\Users\\james.e.hardy\\OneDrive - Avanade\\PowerShell Projects\\tests\\SCCM.Get-WUScanSource.NewFlags.Tests.ps1",
+                        "type":  "test",
+                        "expected":  [
+                                         "Pester"
+                                     ],
+                        "has_pester":  true,
+                        "has_pssa":  true,
+                        "pre":  false,
+                        "mid":  false,
+                        "post":  false,
+                        "covered":  false,
+                        "ext":  ".ps1"
+                    },
+                    {
+                        "path":  "C:\\Users\\james.e.hardy\\OneDrive - Avanade\\PowerShell Projects\\tests\\SCCM.Get-WUScanSource.OSDefaultsAndPrecedence.Tests.ps1",
+                        "type":  "test",
+                        "expected":  [
+                                         "Pester"
+                                     ],
+                        "has_pester":  true,
+                        "has_pssa":  true,
+                        "pre":  false,
+                        "mid":  false,
+                        "post":  false,
+                        "covered":  false,
+                        "ext":  ".ps1"
+                    },
+                    {
+                        "path":  "C:\\Users\\james.e.hardy\\OneDrive - Avanade\\PowerShell Projects\\tests\\SCCM.Get-WUScanSource.Tests.ps1",
+                        "type":  "test",
+                        "expected":  [
+                                         "Pester"
+                                     ],
+                        "has_pester":  true,
+                        "has_pssa":  true,
+                        "pre":  false,
+                        "mid":  false,
+                        "post":  false,
+                        "covered":  false,
+                        "ext":  ".ps1"
+                    },
+                    {
+                        "path":  "C:\\Users\\james.e.hardy\\OneDrive - Avanade\\PowerShell Projects\\tests\\SCCM.Get-WUScanSource.ValueTranslation.Tests.ps1",
+                        "type":  "test",
+                        "expected":  [
+                                         "Pester"
+                                     ],
+                        "has_pester":  true,
+                        "has_pssa":  true,
+                        "pre":  false,
+                        "mid":  false,
+                        "post":  false,
+                        "covered":  false,
+                        "ext":  ".ps1"
+                    },
+                    {
+                        "path":  "C:\\Users\\james.e.hardy\\OneDrive - Avanade\\PowerShell Projects\\tests\\TaskDatabase\\00_Bootstrap.Tests.ps1",
+                        "type":  "test",
+                        "expected":  [
+                                         "Pester"
+                                     ],
+                        "has_pester":  true,
+                        "has_pssa":  true,
+                        "pre":  false,
+                        "mid":  false,
+                        "post":  false,
+                        "covered":  false,
+                        "ext":  ".ps1"
+                    },
+                    {
+                        "path":  "C:\\Users\\james.e.hardy\\OneDrive - Avanade\\PowerShell Projects\\tests\\TaskDatabase\\01_SchemaAndCounts.Tests.ps1",
+                        "type":  "test",
+                        "expected":  [
+                                         "Pester"
+                                     ],
+                        "has_pester":  true,
+                        "has_pssa":  true,
+                        "pre":  false,
+                        "mid":  false,
+                        "post":  false,
+                        "covered":  false,
+                        "ext":  ".ps1"
+                    },
+                    {
+                        "path":  "C:\\Users\\james.e.hardy\\OneDrive - Avanade\\PowerShell Projects\\tests\\TaskDatabase\\02_Idempotency.Tests.ps1",
+                        "type":  "test",
+                        "expected":  [
+                                         "Pester"
+                                     ],
+                        "has_pester":  true,
+                        "has_pssa":  true,
+                        "pre":  false,
+                        "mid":  false,
+                        "post":  false,
+                        "covered":  false,
+                        "ext":  ".ps1"
+                    },
+                    {
+                        "path":  "C:\\Users\\james.e.hardy\\OneDrive - Avanade\\PowerShell Projects\\tests\\TaskDatabase\\03_SeedingIntegrity.Tests.ps1",
+                        "type":  "test",
+                        "expected":  [
+                                         "Pester"
+                                     ],
+                        "has_pester":  true,
+                        "has_pssa":  true,
+                        "pre":  false,
+                        "mid":  false,
+                        "post":  false,
+                        "covered":  false,
+                        "ext":  ".ps1"
+                    },
+                    {
+                        "path":  "C:\\Users\\james.e.hardy\\OneDrive - Avanade\\PowerShell Projects\\tests\\TaskDatabase\\04_ViewsAndLogs.Tests.ps1",
+                        "type":  "test",
+                        "expected":  [
+                                         "Pester"
+                                     ],
+                        "has_pester":  true,
+                        "has_pssa":  true,
+                        "pre":  false,
+                        "mid":  false,
+                        "post":  false,
+                        "covered":  false,
+                        "ext":  ".ps1"
+                    },
+                    {
+                        "path":  "C:\\Users\\james.e.hardy\\OneDrive - Avanade\\PowerShell Projects\\tests\\TaskDatabase\\05_StatusHistory.Tests.ps1",
+                        "type":  "test",
+                        "expected":  [
+                                         "Pester"
+                                     ],
+                        "has_pester":  true,
+                        "has_pssa":  true,
+                        "pre":  false,
+                        "mid":  false,
+                        "post":  false,
+                        "covered":  false,
+                        "ext":  ".ps1"
+                    },
+                    {
+                        "path":  "C:\\Users\\james.e.hardy\\OneDrive - Avanade\\PowerShell Projects\\tests\\TaskDatabase\\TaskDb-TestCommon.ps1",
+                        "type":  "ps",
+                        "expected":  [
+                                         "PSSA"
+                                     ],
+                        "has_pester":  false,
+                        "has_pssa":  true,
+                        "pre":  false,
+                        "mid":  false,
+                        "post":  false,
+                        "covered":  false,
+                        "ext":  ".ps1"
+                    },
+                    {
+                        "path":  "C:\\Users\\james.e.hardy\\OneDrive - Avanade\\PowerShell Projects\\tests\\Test-ContextForgeCompliance.ps1",
+                        "type":  "ps",
+                        "expected":  [
+                                         "PSSA"
+                                     ],
+                        "has_pester":  false,
+                        "has_pssa":  true,
+                        "pre":  false,
+                        "mid":  false,
+                        "post":  false,
+                        "covered":  false,
+                        "ext":  ".ps1"
+                    },
+                    {
+                        "path":  "C:\\Users\\james.e.hardy\\OneDrive - Avanade\\PowerShell Projects\\tests\\TestHelpers.psm1",
+                        "type":  "ps",
+                        "expected":  [
+                                         "PSSA"
+                                     ],
+                        "has_pester":  false,
+                        "has_pssa":  false,
+                        "pre":  false,
+                        "mid":  false,
+                        "post":  false,
+                        "covered":  false,
+                        "ext":  ".psm1"
+                    },
+                    {
+                        "path":  "C:\\Users\\james.e.hardy\\OneDrive - Avanade\\PowerShell Projects\\tests\\unit\\Initialize-SCCMConfigurationCache.Basic.Tests.ps1",
+                        "type":  "test",
+                        "expected":  [
+                                         "Pester"
+                                     ],
+                        "has_pester":  true,
+                        "has_pssa":  true,
+                        "pre":  false,
+                        "mid":  false,
+                        "post":  false,
+                        "covered":  false,
+                        "ext":  ".ps1"
+                    },
+                    {
+                        "path":  "C:\\Users\\james.e.hardy\\OneDrive - Avanade\\PowerShell Projects\\tests\\unit\\Initialize-SCCMConfigurationCache.Tests.ps1",
+                        "type":  "test",
+                        "expected":  [
+                                         "Pester"
+                                     ],
+                        "has_pester":  true,
+                        "has_pssa":  true,
+                        "pre":  false,
+                        "mid":  false,
+                        "post":  false,
+                        "covered":  false,
+                        "ext":  ".ps1"
+                    },
+                    {
+                        "path":  "C:\\Users\\james.e.hardy\\OneDrive - Avanade\\PowerShell Projects\\tests\\unit\\Logging-LocalOnly.Tests.ps1",
+                        "type":  "test",
+                        "expected":  [
+                                         "Pester"
+                                     ],
+                        "has_pester":  true,
+                        "has_pssa":  true,
+                        "pre":  false,
+                        "mid":  false,
+                        "post":  false,
+                        "covered":  false,
+                        "ext":  ".ps1"
+                    },
+                    {
+                        "path":  "C:\\Users\\james.e.hardy\\OneDrive - Avanade\\PowerShell Projects\\tests\\unit\\MockEnv-DataQualityTests.ps1",
+                        "type":  "ps",
+                        "expected":  [
+                                         "PSSA"
+                                     ],
+                        "has_pester":  false,
+                        "has_pssa":  true,
+                        "pre":  false,
+                        "mid":  false,
+                        "post":  false,
+                        "covered":  false,
+                        "ext":  ".ps1"
+                    },
+                    {
+                        "path":  "C:\\Users\\james.e.hardy\\OneDrive - Avanade\\PowerShell Projects\\tests\\unit\\Test-AgentCapabilitiesWithTimeout.ps1",
+                        "type":  "ps",
+                        "expected":  [
+                                         "PSSA"
+                                     ],
+                        "has_pester":  false,
+                        "has_pssa":  true,
+                        "pre":  false,
+                        "mid":  false,
+                        "post":  false,
+                        "covered":  false,
+                        "ext":  ".ps1"
+                    },
+                    {
+                        "path":  "C:\\Users\\james.e.hardy\\OneDrive - Avanade\\PowerShell Projects\\tests\\unit\\Test-ConfigurationBaselineScripts.ps1",
+                        "type":  "ps",
+                        "expected":  [
+                                         "PSSA"
+                                     ],
+                        "has_pester":  false,
+                        "has_pssa":  true,
+                        "pre":  false,
+                        "mid":  false,
+                        "post":  true,
+                        "covered":  false,
+                        "ext":  ".ps1"
+                    },
+                    {
+                        "path":  "C:\\Users\\james.e.hardy\\OneDrive - Avanade\\PowerShell Projects\\tests\\unit\\Test-EnhancedCompatibility.ps1",
+                        "type":  "ps",
+                        "expected":  [
+                                         "PSSA"
+                                     ],
+                        "has_pester":  false,
+                        "has_pssa":  true,
+                        "pre":  false,
+                        "mid":  false,
+                        "post":  false,
+                        "covered":  false,
+                        "ext":  ".ps1"
+                    },
+                    {
+                        "path":  "C:\\Users\\james.e.hardy\\OneDrive - Avanade\\PowerShell Projects\\tests\\unit\\Test-SCCMAnalysis-P007-Pester.Tests.ps1",
+                        "type":  "test",
+                        "expected":  [
+                                         "Pester"
+                                     ],
+                        "has_pester":  true,
+                        "has_pssa":  true,
+                        "pre":  false,
+                        "mid":  false,
+                        "post":  false,
+                        "covered":  false,
+                        "ext":  ".ps1"
+                    },
+                    {
+                        "path":  "C:\\Users\\james.e.hardy\\OneDrive - Avanade\\PowerShell Projects\\tests\\unit\\Test-SCCMAnalysis-P007-PSSA.ps1",
+                        "type":  "ps",
+                        "expected":  [
+                                         "PSSA"
+                                     ],
+                        "has_pester":  false,
+                        "has_pssa":  true,
+                        "pre":  false,
+                        "mid":  false,
+                        "post":  false,
+                        "covered":  false,
+                        "ext":  ".ps1"
+                    },
+                    {
+                        "path":  "C:\\Users\\james.e.hardy\\OneDrive - Avanade\\PowerShell Projects\\tests\\unit\\Test-SCCMAnalysis-P007-Simple.Tests.ps1",
+                        "type":  "test",
+                        "expected":  [
+                                         "Pester"
+                                     ],
+                        "has_pester":  true,
+                        "has_pssa":  true,
+                        "pre":  false,
+                        "mid":  false,
+                        "post":  false,
+                        "covered":  false,
+                        "ext":  ".ps1"
+                    },
+                    {
+                        "path":  "C:\\Users\\james.e.hardy\\OneDrive - Avanade\\PowerShell Projects\\tests\\unit\\Test-SCCMHealthEvaluationCompliance.ps1",
+                        "type":  "ps",
+                        "expected":  [
+                                         "PSSA"
+                                     ],
+                        "has_pester":  false,
+                        "has_pssa":  true,
+                        "pre":  false,
+                        "mid":  false,
+                        "post":  true,
+                        "covered":  false,
+                        "ext":  ".ps1"
+                    },
+                    {
+                        "path":  "C:\\Users\\james.e.hardy\\OneDrive - Avanade\\PowerShell Projects\\tests\\unit\\Test-SCCMHealthEvaluationCompliance-Simple.ps1",
+                        "type":  "ps",
+                        "expected":  [
+                                         "PSSA"
+                                     ],
+                        "has_pester":  false,
+                        "has_pssa":  true,
+                        "pre":  false,
+                        "mid":  false,
+                        "post":  true,
+                        "covered":  false,
+                        "ext":  ".ps1"
+                    },
+                    {
+                        "path":  "C:\\Users\\james.e.hardy\\OneDrive - Avanade\\PowerShell Projects\\tests\\unit\\Test-SCCMInfrastructureEvaluation.ps1",
+                        "type":  "ps",
+                        "expected":  [
+                                         "PSSA"
+                                     ],
+                        "has_pester":  false,
+                        "has_pssa":  true,
+                        "pre":  false,
+                        "mid":  false,
+                        "post":  false,
+                        "covered":  false,
+                        "ext":  ".ps1"
+                    },
+                    {
+                        "path":  "C:\\Users\\james.e.hardy\\OneDrive - Avanade\\PowerShell Projects\\tests\\unit\\Test-SCCMInfrastructureEvaluationCompliance.ps1",
+                        "type":  "ps",
+                        "expected":  [
+                                         "PSSA"
+                                     ],
+                        "has_pester":  false,
+                        "has_pssa":  true,
+                        "pre":  false,
+                        "mid":  false,
+                        "post":  true,
+                        "covered":  false,
+                        "ext":  ".ps1"
+                    },
+                    {
+                        "path":  "C:\\Users\\james.e.hardy\\OneDrive - Avanade\\PowerShell Projects\\tests\\unit\\Test-ToolAvailability.ps1",
+                        "type":  "ps",
+                        "expected":  [
+                                         "PSSA"
+                                     ],
+                        "has_pester":  false,
+                        "has_pssa":  true,
+                        "pre":  false,
+                        "mid":  false,
+                        "post":  false,
+                        "covered":  false,
+                        "ext":  ".ps1"
+                    },
+                    {
+                        "path":  "C:\\Users\\james.e.hardy\\OneDrive - Avanade\\PowerShell Projects\\tests\\unit\\Test-Windows11DeploymentAnalysis.ps1",
+                        "type":  "ps",
+                        "expected":  [
+                                         "PSSA"
+                                     ],
+                        "has_pester":  false,
+                        "has_pssa":  true,
+                        "pre":  false,
+                        "mid":  false,
+                        "post":  true,
+                        "covered":  false,
+                        "ext":  ".ps1"
+                    },
+                    {
+                        "path":  "C:\\Users\\james.e.hardy\\OneDrive - Avanade\\PowerShell Projects\\tests\\utilities\\verification-harness\\Test-VerificationHarness.ps1",
+                        "type":  "ps",
+                        "expected":  [
+                                         "PSSA"
+                                     ],
+                        "has_pester":  false,
+                        "has_pssa":  true,
+                        "pre":  false,
+                        "mid":  false,
+                        "post":  false,
+                        "covered":  false,
+                        "ext":  ".ps1"
+                    },
+                    {
+                        "path":  "C:\\Users\\james.e.hardy\\OneDrive - Avanade\\PowerShell Projects\\tests\\Viewer.View-QualityResults.Tests.ps1",
+                        "type":  "test",
+                        "expected":  [
+                                         "Pester"
+                                     ],
+                        "has_pester":  true,
+                        "has_pssa":  true,
+                        "pre":  false,
+                        "mid":  false,
+                        "post":  false,
+                        "covered":  false,
+                        "ext":  ".ps1"
+                    },
+                    {
+                        "path":  "C:\\Users\\james.e.hardy\\OneDrive - Avanade\\PowerShell Projects\\tools\\development\\check-braces.ps1",
+                        "type":  "ps",
+                        "expected":  [
+                                         "PSSA"
+                                     ],
+                        "has_pester":  false,
+                        "has_pssa":  true,
+                        "pre":  false,
+                        "mid":  false,
+                        "post":  false,
+                        "covered":  false,
+                        "ext":  ".ps1"
+                    },
+                    {
+                        "path":  "C:\\Users\\james.e.hardy\\OneDrive - Avanade\\PowerShell Projects\\tools\\development\\Enable-GitHooks.ps1",
+                        "type":  "ps",
+                        "expected":  [
+                                         "PSSA"
+                                     ],
+                        "has_pester":  false,
+                        "has_pssa":  true,
+                        "pre":  false,
+                        "mid":  false,
+                        "post":  false,
+                        "covered":  false,
+                        "ext":  ".ps1"
+                    },
+                    {
+                        "path":  "C:\\Users\\james.e.hardy\\OneDrive - Avanade\\PowerShell Projects\\tools\\development\\Fix-WriteHost.ps1",
+                        "type":  "ps",
+                        "expected":  [
+                                         "PSSA"
+                                     ],
+                        "has_pester":  false,
+                        "has_pssa":  true,
+                        "pre":  false,
+                        "mid":  true,
+                        "post":  false,
+                        "covered":  false,
+                        "ext":  ".ps1"
+                    },
+                    {
+                        "path":  "C:\\Users\\james.e.hardy\\OneDrive - Avanade\\PowerShell Projects\\tools\\development\\Normalize-FunctionNames.ps1",
+                        "type":  "ps",
+                        "expected":  [
+                                         "PSSA"
+                                     ],
+                        "has_pester":  false,
+                        "has_pssa":  true,
+                        "pre":  false,
+                        "mid":  false,
+                        "post":  false,
+                        "covered":  false,
+                        "ext":  ".ps1"
+                    },
+                    {
+                        "path":  "C:\\Users\\james.e.hardy\\OneDrive - Avanade\\PowerShell Projects\\tools\\development\\Repair-LongLines.ps1",
+                        "type":  "ps",
+                        "expected":  [
+                                         "PSSA"
+                                     ],
+                        "has_pester":  false,
+                        "has_pssa":  true,
+                        "pre":  false,
+                        "mid":  false,
+                        "post":  false,
+                        "covered":  false,
+                        "ext":  ".ps1"
+                    },
+                    {
+                        "path":  "C:\\Users\\james.e.hardy\\OneDrive - Avanade\\PowerShell Projects\\tools\\development\\Resolve-UnusedParameters.ps1",
+                        "type":  "ps",
+                        "expected":  [
+                                         "PSSA"
+                                     ],
+                        "has_pester":  false,
+                        "has_pssa":  true,
+                        "pre":  false,
+                        "mid":  false,
+                        "post":  false,
+                        "covered":  false,
+                        "ext":  ".ps1"
+                    },
+                    {
+                        "path":  "C:\\Users\\james.e.hardy\\OneDrive - Avanade\\PowerShell Projects\\tools\\Execute-Clean-Scaffolding.ps1",
+                        "type":  "ps",
+                        "expected":  [
+                                         "PSSA"
+                                     ],
+                        "has_pester":  false,
+                        "has_pssa":  true,
+                        "pre":  false,
+                        "mid":  false,
+                        "post":  false,
+                        "covered":  false,
+                        "ext":  ".ps1"
+                    },
+                    {
+                        "path":  "C:\\Users\\james.e.hardy\\OneDrive - Avanade\\PowerShell Projects\\tools\\Execute-Folder-Scaffolding.ps1",
+                        "type":  "ps",
+                        "expected":  [
+                                         "PSSA"
+                                     ],
+                        "has_pester":  false,
+                        "has_pssa":  true,
+                        "pre":  false,
+                        "mid":  false,
+                        "post":  false,
+                        "covered":  false,
+                        "ext":  ".ps1"
+                    },
+                    {
+                        "path":  "C:\\Users\\james.e.hardy\\OneDrive - Avanade\\PowerShell Projects\\tools\\Invoke-Comprehensive-Folder-Scaffolding.ps1",
+                        "type":  "ps",
+                        "expected":  [
+                                         "PSSA"
+                                     ],
+                        "has_pester":  false,
+                        "has_pssa":  true,
+                        "pre":  false,
+                        "mid":  false,
+                        "post":  false,
+                        "covered":  false,
+                        "ext":  ".ps1"
+                    },
+                    {
+                        "path":  "C:\\Users\\james.e.hardy\\OneDrive - Avanade\\PowerShell Projects\\tools\\Invoke-Comprehensive-Folder-Scaffolding-Fixed.ps1",
+                        "type":  "ps",
+                        "expected":  [
+                                         "PSSA"
+                                     ],
+                        "has_pester":  false,
+                        "has_pssa":  true,
+                        "pre":  false,
+                        "mid":  false,
+                        "post":  false,
+                        "covered":  false,
+                        "ext":  ".ps1"
+                    },
+                    {
+                        "path":  "C:\\Users\\james.e.hardy\\OneDrive - Avanade\\PowerShell Projects\\tools\\Refactors\\Fix-WriteHost.ps1",
+                        "type":  "ps",
+                        "expected":  [
+                                         "PSSA"
+                                     ],
+                        "has_pester":  false,
+                        "has_pssa":  true,
+                        "pre":  false,
+                        "mid":  false,
+                        "post":  false,
+                        "covered":  false,
+                        "ext":  ".ps1"
+                    },
+                    {
+                        "path":  "C:\\Users\\james.e.hardy\\OneDrive - Avanade\\PowerShell Projects\\tools\\Refactors\\Invoke-Formatter-All.ps1",
+                        "type":  "ps",
+                        "expected":  [
+                                         "PSSA"
+                                     ],
+                        "has_pester":  false,
+                        "has_pssa":  true,
+                        "pre":  false,
+                        "mid":  false,
+                        "post":  false,
+                        "covered":  false,
+                        "ext":  ".ps1"
+                    },
+                    {
+                        "path":  "C:\\Users\\james.e.hardy\\OneDrive - Avanade\\PowerShell Projects\\tools\\Refactors\\Normalize-FunctionNames.ps1",
+                        "type":  "ps",
+                        "expected":  [
+                                         "PSSA"
+                                     ],
+                        "has_pester":  false,
+                        "has_pssa":  true,
+                        "pre":  false,
+                        "mid":  false,
+                        "post":  false,
+                        "covered":  false,
+                        "ext":  ".ps1"
+                    },
+                    {
+                        "path":  "C:\\Users\\james.e.hardy\\OneDrive - Avanade\\PowerShell Projects\\tools\\Refactors\\Repair-LongLines.ps1",
+                        "type":  "ps",
+                        "expected":  [
+                                         "PSSA"
+                                     ],
+                        "has_pester":  false,
+                        "has_pssa":  true,
+                        "pre":  false,
+                        "mid":  false,
+                        "post":  false,
+                        "covered":  false,
+                        "ext":  ".ps1"
+                    },
+                    {
+                        "path":  "C:\\Users\\james.e.hardy\\OneDrive - Avanade\\PowerShell Projects\\tools\\Refactors\\Resolve-UnusedParameters.ps1",
+                        "type":  "ps",
+                        "expected":  [
+                                         "PSSA"
+                                     ],
+                        "has_pester":  false,
+                        "has_pssa":  true,
+                        "pre":  false,
+                        "mid":  false,
+                        "post":  false,
+                        "covered":  false,
+                        "ext":  ".ps1"
+                    },
+                    {
+                        "path":  "C:\\Users\\james.e.hardy\\OneDrive - Avanade\\PowerShell Projects\\Validate-LessonsLearned.ps1",
+                        "type":  "ps",
+                        "expected":  [
+                                         "PSSA"
+                                     ],
+                        "has_pester":  false,
+                        "has_pssa":  true,
+                        "pre":  false,
+                        "mid":  false,
+                        "post":  false,
+                        "covered":  false,
+                        "ext":  ".ps1"
+                    }
+                ]
+}

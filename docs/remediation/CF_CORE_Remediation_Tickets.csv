@@ -1,0 +1,23 @@
+Ticket ID,Title,Priority,Owner,Due Date,Dependencies,Status,Audit Ref,RiskIds
+REM-001,Parse DeprecationLog → structured deprecation index,High,Engineering (CLI),2025-11-17,,new,.QSE/v2/.../DeprecationLog...20251110.yaml; Report §6–7,R-002|R-011
+REM-002,Define lifecycle taxonomy + tag all CLIs,High,Engineering (CLI),2025-11-17,REM-001,new,Report §6–7; Inventory §§1–5,R-003|R-002
+REM-003,Build risk table w/ severity + owners,High,Governance/PM + Engineering,2025-11-17,REM-001|REM-002,new,Report §8–9,
+REM-004,Materialize all remediation tickets in tracker,High,Governance/PM,2025-11-17,REM-001|REM-002|REM-003,new,This plan; Report §10,
+REM-005,Reconcile DB actual_hours vs actual_minutes,High,Engineering (DB) + Docs,2025-11-17,,new,README.md data integrity note,
+REM-006,Enforce WSL-only Docker constraint (docs/CI),High,DevOps + Docs,2025-11-17,,new,README.md Docker WSL-Only,
+REM-007,Compute .QSE v1/v2 subcounts + evolution narrative,Medium,Engineering (Analytics) + Docs,2025-11-24,REM-001,new,Inventory §§1–5; Report §3–5,
+REM-008,Dependency matrix + parallelization plan,Medium,Engineering (Planning),2025-11-24,REM-002|REM-003,new,Report §9–10,
+REM-009,Owner workload distribution,Medium,Governance/PM,2025-11-24,REM-004,new,This plan,
+REM-010,Completion criteria + sign-off sequence,Medium,Governance/PM,2025-11-24,REM-003|REM-004,new,Report §10,
+REM-011,Communication plan + escalation triggers,Medium,Governance/PM + Docs,2025-11-24,REM-004,new,This plan,
+REM-012,"Progress tracking framework (statuses, KPIs)",Medium,Governance/PM,2025-11-24,REM-004,new,This plan,
+REM-013,Confirm adjunct boundaries (TaskMan‑v2/shadow),Medium,Architecture + Governance,2025-11-24,REM-002,new,Report §9,R-004
+REM-014,Wrapper invocation line citations,Low,Docs + Engineering,2025-12-01,,new,Inventory §2,4; scripts/*,
+REM-015,CF_CORE internal spec surrogate (Typer-based),Low,Docs + Engineering,2025-12-01,,new,Report §2 (external negative),R-001|R-012
+REM-016,Validate/replace simulated placeholders,Low,Docs + Engineering,2025-12-01,,new,Report §6–7,R-013
+REM-017,TaskMan‑v2 → cf_cli contract tests & schema pinning,High,Platform + Engineering,2025-11-24,REM-002|REM-004,new,Report §9–10,R-004|R-008
+REM-018,CLI deprecation policy & contract tests (cf_cli),High,Engineering (CLI),2025-11-24,REM-002,new,Report §5–6,R-005
+REM-019,Wrapper-to-CLI contract tests & env bootstrap,High,Platform + DevOps,2025-11-24,REM-018,new,Report §6–7,R-006|R-007
+REM-020,Bridge schema versioning & integration tests (VS Code),Medium,DevEx,2025-11-24,,new,Report §9,R-009
+REM-021,Performance baselines & CI perf checks (TaskMan‑v2),Medium,SRE + Platform,2025-11-24,REM-017,new,Report §9–10,R-010
+REM-022,Known Issues & Negative Findings doc section + CI doc validation,Medium,Docs + Governance,2025-11-24,REM-003,new,Report §6–7,R-013

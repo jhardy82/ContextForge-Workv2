@@ -1,0 +1,123 @@
+# Research Plan - Ontology Module Scaffold (Phase 2)
+version: 1.0
+correlation_id: 6b6d5f5e-4b3a-4c2a-9fb1-6d8f3e2c9c11
+created_at: 2025-09-23T20:00:00Z
+related_tasks:
+  - ontology-research-plan
+  - ontology-module-scaffold
+  - ontology-parity-snapshot-cli
+odr_reference:
+  file: OntologyDecisionRecord.md
+  sha256: B5C65153451F81EFB90F3B22EB7DA1C0B277D5969ECAD63848657BD13F13FA80
+objectives:
+  - Operationalize parity metrics defined in ODR (sections 3-5)
+  - Produce repeatable methodology for generating first parity snapshot (expected partial)
+  - De-risk discovery divergence via static + runtime inventory dry-run
+  - Define JSON Schema draft for parity snapshot (schema_version 1.0.0) prior to implementation
+  - Establish validation protocol & test scaffolds (Gate B readiness)
+methodology_phases:
+  - name: inventory_sources
+    description: Enumerate static handlers (AST / filesystem) + runtime registrations; capture counts.
+    outputs:
+      - inventory/raw_static_list.txt
+      - inventory/raw_runtime_list.txt
+      - inventory/union_summary.json
+    metrics:
+      - static_count
+      - runtime_count
+      - union_count
+      - overlap_pct
+  - name: field_and_dimension_mapping
+    description: Map universal schema fields & COF dimensions to existing cf_cli/dbcli artifacts; classify missing.
+    outputs:
+      - mapping/field_mapping.csv
+      - mapping/dimension_mapping.csv
+    metrics:
+      - field_coverage_pct (simulation)
+      - dimension_coverage_pct (simulation)
+  - name: critical_ops_verification
+    description: Confirm presence/absence of mandatory operations (status, task CRUD, migration export, parity snapshot placeholder).
+    outputs:
+      - mapping/critical_ops_matrix.csv
+    metrics:
+      - critical_ops_completeness (simulation)
+  - name: overlap_orphan_analysis
+    description: Compute overlap & orphan op sets; record candidates for remediation.
+    outputs:
+      - analysis/overlap_sets.json
+    metrics:
+      - operation_overlap_pct (simulation)
+      - orphan_ops_pct (simulation)
+  - name: composite_index_dry_run
+    description: Apply composite formula with simulated metrics; record pass/fail gating expectation.
+    outputs:
+      - analysis/composite_index_trial.json
+    metrics:
+      - composite_index
+  - name: snapshot_schema_draft
+    description: Author JSON Schema draft for parity snapshot (align ODR section 5) & validate with synthetic sample.
+    outputs:
+      - schema/parity_snapshot.schema.json
+      - schema/sample_valid_snapshot.json
+  - name: validation_protocol
+    description: Define pytest test list & fixtures for Gate B (schema validation, threshold logic, divergence warning emission).
+    outputs:
+      - tests/plan/ontology_validation_tests.md
+cof_dimension_alignment:
+  Identity: "Research scope tied to ontology parity module"
+  Intent: "Ensure metrics operationalization before code"
+  Stakeholders: "governance, cli_architect, evidence_custodian"
+  Context: "ODR-0001 locked specification"
+  Scope: "Pre-implementation research & validation design only"
+  Time: "Single phase; expected duration < 1 day; snapshot draft by end"
+  Space: "docs/ontology + temporary inventory/ mapping/ analysis/ directories (.gitignored if large)"
+  Modality: "YAML plan, CSV mappings, JSON metrics, JSON Schema"
+  State: "Research completed when all outputs exist & reviewed"
+  Scale: "Module-level, influences CLI status surfacing"
+  Risk: "Divergence, incomplete mappings, premature coding"
+  Evidence: "All outputs hashed & logged via artifact_emit events"
+  Ethics: "Transparent, reproducible methodology; no proprietary data"
+risks:
+  - name: incomplete_static_discovery
+    impact: lowers field coverage accuracy
+    mitigation: dual-pass pattern + verify union_count consistency
+  - name: runtime_plugin_latency
+    impact: slows research inventory
+    mitigation: impose soft timeout & log divergence event
+  - name: misclassified_dimension
+    impact: distorted dimension coverage
+    mitigation: peer review dimension mapping CSV
+acceptance_criteria:
+  - All methodology phases produce listed outputs
+  - Simulated metrics computed & stored
+  - JSON Schema draft validates sample snapshot
+  - Validation test plan enumerated (Gate B ready)
+  - No production code added (only research artifacts)
+  - All artifacts hashed & correlation_id included in log events
+exclusions:
+  - Implementation of parity logic
+  - Real snapshot generation
+  - Retention enforcement
+  - CLI integration changes (deferred)
+quality_gates_prep:
+  gate_b_requirements:
+    - snapshot schema draft ready
+    - schema validation test cases enumerated
+    - threshold simulation shows gating logic paths
+logging_plan:
+  baseline_events:
+    - session_start
+    - task_start (ontology-research-plan)
+    - artifact_emit (each output)
+    - decision (divergence warnings if overlap_pct<0.70)
+    - task_end
+    - session_summary
+  evidence_promotion_conditions:
+    - composite_index_trial.json exists
+    - parity_snapshot.schema.json drafted
+hash_chain:
+  odr_sha256: B5C65153451F81EFB90F3B22EB7DA1C0B277D5969ECAD63848657BD13F13FA80
+  plan_sha256: 74FC74AD7CBD0627BE13540D52B0EA7D00227608A5EA48FDDF1F8B13204FA754
+notes: |
+  This plan formalizes research outputs so scaffold code can reference stable artifacts.
+  plan_sha256 will be populated by automation once committed.

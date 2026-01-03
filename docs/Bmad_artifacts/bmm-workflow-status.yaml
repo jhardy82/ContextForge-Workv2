@@ -1,0 +1,134 @@
+# Workflow Status Template
+# This tracks progress through BMM methodology Analysis, Planning, and Solutioning phases.
+# Implementation phase is tracked separately in sprint-status.yaml
+
+# STATUS DEFINITIONS:
+# ==================
+# Initial Status (before completion):
+#   - required: Must be completed to progress
+#   - optional: Can be completed but not required
+#   - recommended: Strongly suggested but not required
+#   - conditional: Required only if certain conditions met (e.g., if_has_ui)
+#
+# Completion Status:
+#   - {file-path}: File created/found (e.g., "docs/product-brief.md")
+#   - skipped: Optional/conditional workflow that was skipped
+
+generated: "2025-12-05"
+project: "ContextForge-Work"
+project_type: "refactoring"
+selected_track: "bmad-method"
+field_type: "brownfield"
+workflow_path: "method-brownfield.yaml"
+
+# User-selected discovery workflows
+discovery_selections:
+  brainstorm_requested: true
+  research_requested: true
+  product_brief_requested: false
+
+workflow_status:
+  # Prerequisites (brownfield)
+  prerequisite:
+    - id: "document-project"
+      name: "Document Project"
+      status: "required"
+      agent: "analyst"
+      command: "/bmad:bmm:workflows:document-project"
+      purpose: "Understand existing codebase before planning"
+      note: "Run this first to analyze and document your existing codebase"
+
+  # Phase 0: Discovery (Optional - user selected)
+  phase_0_discovery:
+    - id: "brainstorm-project"
+      name: "Brainstorm"
+      status: "optional"
+      agent: "analyst"
+      command: "/bmad:cis:workflows:brainstorm"
+      included: true
+      note: "Creative exploration and ideation for refactoring approaches"
+
+    - id: "research"
+      name: "Research"
+      status: "optional"
+      agent: "analyst"
+      command: "/bmad:cis:workflows:research"
+      included: true
+      note: "Technical/domain analysis for architecture decisions"
+
+  # Phase 1: Planning
+  phase_1_planning:
+    - id: "prd"
+      name: "Product Requirements Document"
+      status: "required"
+      agent: "pm"
+      command: "/bmad:bmm:workflows:prd"
+      output: "PRD focused on new features/changes"
+      note: "Must consider existing system constraints"
+
+    - id: "validate-prd"
+      name: "Validate PRD"
+      status: "optional"
+      agent: "pm"
+      command: "/bmad:bmm:workflows:validate-prd"
+
+    - id: "create-ux-design"
+      name: "UX Design"
+      status: "conditional"
+      condition: "if_has_ui"
+      agent: "ux-designer"
+      command: "/bmad:bmm:workflows:create-ux-design"
+
+  # Phase 2: Solutioning
+  phase_2_solutioning:
+    - id: "create-architecture"
+      name: "Create Architecture"
+      status: "recommended"
+      agent: "architect"
+      command: "/bmad:bmm:workflows:create-architecture"
+      output: "Integration architecture - solution design for THIS project"
+      note: "HIGHLY RECOMMENDED: Distills massive brownfield context into focused solution design"
+
+    - id: "create-epics-and-stories"
+      name: "Create Epics and Stories"
+      status: "required"
+      agent: "pm"
+      command: "/bmad:bmm:workflows:create-epics-and-stories"
+      note: "Break down PRD into implementable epics and stories with full context"
+
+    - id: "test-design"
+      name: "Test Design"
+      status: "recommended"
+      agent: "tea"
+      command: "/bmad:bmm:workflows:test-design"
+      output: "System-level testability review"
+
+    - id: "validate-architecture"
+      name: "Validate Architecture"
+      status: "optional"
+      agent: "architect"
+      command: "/bmad:bmm:workflows:validate-architecture"
+
+    - id: "implementation-readiness"
+      name: "Implementation Readiness"
+      status: "required"
+      agent: "architect"
+      command: "/bmad:bmm:workflows:implementation-readiness"
+      note: "Validates PRD + UX + Architecture + Epics cohesion before implementation"
+
+  # Phase 3: Implementation
+  phase_3_implementation:
+    - id: "sprint-planning"
+      name: "Sprint Planning"
+      status: "required"
+      agent: "sm"
+      command: "/bmad:bmm:workflows:sprint-planning"
+      note: "Creates sprint plan with stories"
+
+# Next workflow recommendation
+next:
+  workflow_id: "document-project"
+  workflow_name: "Document Project"
+  agent: "analyst"
+  command: "/bmad:bmm:workflows:document-project"
+  reason: "For brownfield projects, first analyze and document the existing codebase"

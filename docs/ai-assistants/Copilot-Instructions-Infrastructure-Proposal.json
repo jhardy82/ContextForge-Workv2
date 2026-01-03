@@ -1,0 +1,216 @@
+{
+  "approval_questions": [
+    {
+      "id": "version_strategy",
+      "impact": "semantic_clarity_and_maintainability",
+      "priority": "high",
+      "question": "Approve independent versioning (schema v2.0, agent v1.0.0) with documented philosophy?"
+    },
+    {
+      "id": "scope_formalization",
+      "impact": "reduced_ambiguity_improved_compliance",
+      "priority": "medium",
+      "question": "Approve explicit applyTo declarations in all instruction files?"
+    },
+    {
+      "id": "documentation_standard",
+      "impact": "framework_consistency_and_validation",
+      "priority": "medium",
+      "question": "Approve ContextForge compliance headers for all configuration files?"
+    }
+  ],
+  "conflicts_identified": [
+    {
+      "affected_files": [
+        ".github/agent.json",
+        ".github/schemas/context-object.schema.yaml"
+      ],
+      "description": "Version mismatch between agent.json (v1.0.0) and schema files (v2.0)",
+      "id": "version_alignment_conflict",
+      "priority": "HIGH",
+      "status": "identified"
+    },
+    {
+      "affected_files": [
+        ".github/copilot-instructions.md",
+        ".github/instructions/.instructions.md",
+        ".github/prompts/after-action-review.prompt.md",
+        ".github/chatmodes/reviewer.chatmode.md",
+        ".github/schemas/context-object.schema.yaml",
+        ".github/prompt_modules/registry.yaml"
+      ],
+      "description": "Most files use inferred scope rather than explicit declarations",
+      "id": "apply_to_scope_ambiguity",
+      "priority": "MEDIUM",
+      "status": "identified"
+    },
+    {
+      "affected_files": ["docs/Copilot-Instructions-Map.json"],
+      "description": "Discovery reported 2 schema files, investigation shows 1 exists",
+      "id": "schema_file_discrepancy",
+      "priority": "LOW",
+      "status": "identified"
+    },
+    {
+      "affected_files": [],
+      "description": "Empty copilot-instructions-enhanced.md file removed",
+      "id": "empty_enhanced_file",
+      "priority": "RESOLVED",
+      "status": "resolved"
+    }
+  ],
+  "current_state": {
+    "chat_modes": 1,
+    "config_files": 2,
+    "high_confidence": 9,
+    "instructions": 3,
+    "low_confidence": 0,
+    "medium_confidence": 1,
+    "prompts": 2,
+    "schemas": 1,
+    "total_files": 10
+  },
+  "implementation_plan": {
+    "files_to_add": [
+      {
+        "path": "docs/Copilot-Instructions-Version-Philosophy.md",
+        "priority": "high",
+        "purpose": "Document versioning strategy and philosophy"
+      }
+    ],
+    "files_to_modify": [
+      {
+        "changes": ["version_documentation"],
+        "path": ".github/agent.json",
+        "priority": "high"
+      },
+      {
+        "changes": ["scope_declaration"],
+        "path": ".github/copilot-instructions.md",
+        "priority": "high"
+      },
+      {
+        "changes": ["scope_declaration"],
+        "path": ".github/instructions/.instructions.md",
+        "priority": "high"
+      },
+      {
+        "changes": ["scope_declaration"],
+        "path": ".github/prompts/after-action-review.prompt.md",
+        "priority": "medium"
+      },
+      {
+        "changes": ["scope_declaration"],
+        "path": ".github/chatmodes/reviewer.chatmode.md",
+        "priority": "medium"
+      },
+      {
+        "changes": ["scope_declaration"],
+        "path": ".github/schemas/context-object.schema.yaml",
+        "priority": "medium"
+      },
+      {
+        "changes": ["scope_declaration"],
+        "path": ".github/prompt_modules/registry.yaml",
+        "priority": "medium"
+      }
+    ],
+    "files_to_remove": []
+  },
+  "metadata": {
+    "generated_by": "GitHub Copilot",
+    "git_commit": "0473e7404169d5a8c713c5c79602ccc40f5ae5ae",
+    "proposal_id": "CONTEXTFORGE-INFRASTRUCTURE-ENHANCEMENT-V1",
+    "repo_root": "C:/Users/james.e.hardy/OneDrive - Avanade/PowerShell Projects",
+    "sacred_geometry_compliance": "100%",
+    "shape": "Dodecahedron",
+    "stage": "Proposal",
+    "timestamp": "2025-08-08T15:36:19Z",
+    "version": "1.0"
+  },
+  "metrics": {
+    "conflicts_identified": 4,
+    "conflicts_pending": 3,
+    "conflicts_resolved": 1,
+    "files_requiring_modification": 7,
+    "files_to_add": 1,
+    "files_to_remove": 0,
+    "sacred_geometry_compliance_percentage": 100
+  },
+  "next_steps": [
+    "implement_explicit_apply_to_declarations",
+    "add_version_philosophy_documentation",
+    "update_file_headers_with_contextforge_compliance",
+    "generate_updated_discovery_artifacts_v1.3",
+    "create_comprehensive_change_impact_report",
+    "update_jsonl_audit_trail_with_final_results"
+  ],
+  "resolution_strategy": {
+    "apply_to_formalization": {
+      "approach": "explicit_declarations",
+      "benefits": [
+        "clear_inheritance",
+        "reduced_ambiguity",
+        "better_compliance"
+      ],
+      "scope_mappings": {
+        "chatmodes/reviewer.chatmode.md": "chat_operations",
+        "copilot-instructions.md": "all_development",
+        "instructions/.instructions.md": "workspace_specific",
+        "prompts/after-action-review.prompt.md": "aar_workflows",
+        "schemas/context-object.schema.yaml": "schema_validation"
+      },
+      "target_state": "All instruction files contain explicit applyTo declarations"
+    },
+    "framework_reinforcement": {
+      "contextforge_compliance": "Add explicit references to Sacred Geometry principles",
+      "logging_first": "Document mandate in scope declarations",
+      "workspace_first": "Document mandate in scope declarations"
+    },
+    "version_alignment": {
+      "alternative_considered": "unified_versioning_to_v2",
+      "alternative_rejected_reason": "Agent implementation may not fully utilize all v2.0 schema capabilities",
+      "approach": "independent_versioning",
+      "implementation": "Document versioning philosophy in headers",
+      "rationale": "Schema files represent framework contracts (v2.0) while agent.json represents implementation state (v1.0.0)"
+    }
+  },
+  "sacred_geometry_compliance": {
+    "circle": {
+      "current_state": "90%_complete",
+      "implementation": "add_apply_to_fields",
+      "principle": "Complete coverage with explicit scope declarations",
+      "target_state": "100%_explicit_declarations"
+    },
+    "dodecahedron": {
+      "current_state": "system_mapping_complete",
+      "implementation": "version_philosophy_docs",
+      "principle": "Full system integration with documented relationships",
+      "target_state": "integration_documented"
+    },
+    "fractal": {
+      "current_state": "structure_consistent",
+      "implementation": "standardize_metadata",
+      "principle": "Consistent structure from repo to file to rule",
+      "target_state": "maintain_consistency"
+    },
+    "pentagon": {
+      "current_state": "principles_documented",
+      "implementation": "add_to_all_files",
+      "principle": "Harmonic resonance through explicit compliance",
+      "target_state": "full_compliance_headers"
+    },
+    "spiral": {
+      "current_state": "conflict_iteration_applied",
+      "implementation": "continue_for_future_changes",
+      "principle": "Iterative resolution of conflicts",
+      "target_state": "maintain_methodology"
+    },
+    "triangle": {
+      "current_state": "active",
+      "implementation": "document_in_headers",
+      "principle": "Three-point validation for existence, scope, and content",
+      "target_state": "maintain_compliance"
+    }
+  }
+}

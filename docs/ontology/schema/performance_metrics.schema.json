@@ -1,0 +1,56 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "$id": "https://contextforge.local/schemas/performance_metrics.schema.json",
+  "title": "CF-Enhanced Performance Metrics (get_performance_metrics)",
+  "oneOf": [
+    {
+      "type": "object",
+      "additionalProperties": false,
+      "properties": {
+        "status": {
+          "type": "string",
+          "const": "No performance data available"
+        },
+        "plugin_initialization": { "$ref": "./plugin_init_metrics.schema.json" }
+      },
+      "required": ["status" ]
+    },
+    {
+      "type": "object",
+      "additionalProperties": false,
+      "properties": {
+        "total_requests": { "type": "integer", "minimum": 0 },
+        "average_response_time_ms": { "type": "number", "minimum": 0 },
+        "max_response_time_ms": { "type": "number", "minimum": 0 },
+        "min_response_time_ms": { "type": "number", "minimum": 0 },
+        "p50_response_time_ms": { "type": ["number", "null"], "minimum": 0 },
+        "p90_response_time_ms": { "type": ["number", "null"], "minimum": 0 },
+        "p99_response_time_ms": { "type": ["number", "null"], "minimum": 0 },
+        "constitutional_target_ms": { "type": "number", "minimum": 0 },
+        "constitutional_compliance_rate": { "type": "number", "minimum": 0, "maximum": 100 },
+        "performance_status": { "type": "string", "enum": ["COMPLIANT", "NON_COMPLIANT"] },
+        "quantum_context_ready": { "type": "boolean" },
+        "multi_agent_foundation": { "type": "boolean" },
+        "sacred_geometry_foundation": { "type": "boolean" },
+        "correlation_id": { "type": ["string", "null"] },
+        "plugin_initialization": { "$ref": "./plugin_init_metrics.schema.json" }
+      },
+      "required": [
+        "total_requests",
+        "average_response_time_ms",
+        "max_response_time_ms",
+        "min_response_time_ms",
+        "p50_response_time_ms",
+        "p90_response_time_ms",
+        "p99_response_time_ms",
+        "constitutional_target_ms",
+        "constitutional_compliance_rate",
+        "performance_status",
+        "quantum_context_ready",
+        "multi_agent_foundation",
+        "sacred_geometry_foundation",
+        "correlation_id"
+      ]
+    }
+  ]
+}

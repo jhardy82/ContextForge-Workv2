@@ -1,0 +1,41 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "$id": "https://contextforge.local/schemas/error_obj.schema.json",
+  "title": "CF-Enhanced Structured Error Object (Plugin Initialization)",
+  "type": "object",
+  "additionalProperties": false,
+  "properties": {
+    "code": {
+      "oneOf": [
+        {
+          "type": "string",
+          "enum": [
+            "missing_configuration",
+            "initialization_exception",
+            "dependency_unavailable",
+            "timeout",
+            "unexpected_exception"
+          ]
+        },
+        {
+          "type": "string",
+          "pattern": "^PluginErrorCode\\.[A-Z_]+$"
+        }
+      ]
+    },
+    "severity": {
+      "oneOf": [
+        { "type": "string", "enum": ["info", "warning", "error"] },
+        { "type": "string", "pattern": "^PluginErrorSeverity\\.[A-Z]+$" }
+      ]
+    },
+    "message": { "type": "string", "minLength": 1 },
+    "exception_type": { "type": "string" },
+    "exception_message": { "type": "string" },
+    "detail": {
+      "type": "object",
+      "additionalProperties": true
+    }
+  },
+  "required": ["code", "severity", "message"]
+}

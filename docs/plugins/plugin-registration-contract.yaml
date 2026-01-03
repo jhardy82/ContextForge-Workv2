@@ -1,0 +1,481 @@
+# Plugin Registration Contract v2.0
+# CF CORE Consolidation Project
+# Specification Date: 2025-11-16
+
+contract_version: "2.0"
+specification: plugin_registration
+
+# Overview
+# ========
+# This contract defines the requirements that all CF CORE plugins must meet
+# to successfully register with the main CLI application. The registration
+# mechanism enables plugins to expose commands, share services, and integrate
+# with the unified CLI ecosystem.
+
+# Registration Function Signature
+# ================================
+registration_function:
+  name: "register"
+  required: true
+  signature:
+    python: |
+      def register(app: typer.Typer, context: dict) -> list[str]:
+          """Register plugin commands with main CLI application.
+
+          Args:
+              app: Main Typer application instance
+              context: Shared context dictionary containing services and config
+
+          Returns:
+              List of registered command names in format "plugin_name.command"
+              Example: ["tasks.list", "tasks.add", "tasks.update"]
+          """
+          pass
+
+  parameters:
+    - name: app
+      type: typer.Typer
+      description: "Main Typer application instance to register commands with"
+      required: true
+
+    - name: context
+      type: dict
+      description: "Shared context containing services, config, and logger"
+      required: true
+      structure:
+        services:
+          type: dict
+          description: "Shared services registry"
+          contains:
+            logger:
+              type: callable
+              description: "Unified logging function (ulog)"
+              required: true
+            db:
+              type: object
+              description: "Database connection (if available)"
+              required: false
+            # Plugins can register additional services here
+
+        config:
+          type: dict
+          description: "Configuration dictionary"
+          required: true
+
+        plugins:
+          type: dict
+          description: "Plugin-specific data and services"
+          required: true
+          structure: "{plugin_name: {service_name: service}}"
+
+        utc:
+          type: callable
+          description: "UTC timestamp function"
+          required: true
+
+  return_value:
+    type: list[str]
+    description: "List of command names registered by this plugin"
+    format: "plugin_name.command_name"
+    examples:
+      - ["tasks.list", "tasks.add", "tasks.delete"]
+      - ["db.status", "db.migrate"]
+      - ["velocity.report"]
+    requirements:
+      - "Must be a list (not None or other type)"
+      - "Each command name should follow 'plugin.command' format"
+      - "Empty list is acceptable if plugin registers no commands"
+      - "Command names must match actual registered commands"
+
+# Registration Process
+# ====================
+registration_process:
+  steps:
+    1_discovery:
+      description: "Plugin discovered via discover_plugins()"
+      output: "List of PluginRecord instances"
+
+    2_dependency_sort:
+      description: "Plugins sorted in dependency order"
+      algorithm: "Topological sort (Kahn's algorithm)"
+      output: "Sorted list of plugins"
+
+    3_import:
+      description: "Plugin module imported dynamically"
+      method: "importlib.import_module()"
+      error_handling: "Fail-soft - continue with next plugin"
+
+    4_metadata_parse:
+      description: "PLUGIN_META extracted and parsed"
+      fields_extracted:
+        - name
+        - version
+        - depends
+        - min_cli_version
+        - max_cli_version
+        - enabled_by_default
+
+    5_version_check:
+      description: "CLI version compatibility verified"
+      action_if_incompatible: "Skip plugin, log warning"
+
+    6_enable_check:
+      description: "Enable/disable status verified"
+      action_if_disabled: "Skip plugin, log info"
+
+    7_register_call:
+      description: "Plugin register() function invoked"
+      parameters: [app, context]
+      error_handling: "Rollback on failure"
+
+    8_command_tracking:
+      description: "Registered commands tracked in PluginRecord"
+      update: "PluginRecord.commands updated with return value"
+
+    9_status_update:
+      description: "Registration status updated"
+      success: "PluginRecord.registered = True"
+      failure: "PluginRecord.error set with details"
+
+# Service Registration Pattern
+# ============================
+service_registration:
+  description: "How plugins register services for other plugins to consume"
+
+  pattern:
+    code: |
+      def register(app, context):
+          # Create service
+          my_service = MyService()
+
+          # Register in context under plugin namespace
+          if "my_plugin" not in context["plugins"]:
+              context["plugins"]["my_plugin"] = {}
+          context["plugins"]["my_plugin"]["service"] = my_service
+
+          # Register commands
+          app.add_typer(my_app, name="myplugin")
+
+          return ["myplugin.command1", "myplugin.command2"]
+
+  requirements:
+    - "Services must be registered under context['plugins'][plugin_name]"
+    - "Plugin name must match PLUGIN_META['name']"
+    - "Services should be registered before registering commands"
+    - "Service objects should be fully initialized"
+
+  best_practices:
+    - "Use descriptive service names"
+    - "Document service API in docstrings"
+    - "Handle missing dependencies gracefully"
+    - "Validate service initialization"
+
+# Service Consumption Pattern
+# ===========================
+service_consumption:
+  description: "How plugins consume services from dependencies"
+
+  prerequisites:
+    - "Plugin must declare dependency in PLUGIN_META.depends"
+    - "Dependency must be registered before this plugin"
+    - "Dependency must have registered the service"
+
+  pattern:
+    code: |
+      def register(app, context):
+          # Access dependency service
+          db_service = context["plugins"]["db"]["service"]
+
+          # Use service in plugin commands
+          my_service = MyService(db_service)
+
+          # Register own service
+          context["plugins"]["tasks"]["service"] = my_service
+
+          # Register commands
+          app.add_typer(tasks_app, name="tasks")
+
+          return ["tasks.list", "tasks.add"]
+
+  error_handling:
+    missing_dependency:
+      check: "dependency_name in context['plugins']"
+      action_if_missing: "Log error, skip registration, set PluginRecord.error"
+
+    missing_service:
+      check: "service_name in context['plugins'][dependency_name]"
+      action_if_missing: "Log error, skip registration, set PluginRecord.error"
+
+  best_practices:
+    - "Always validate dependency availability before use"
+    - "Handle missing services gracefully"
+    - "Log errors with context for debugging"
+    - "Don't assume service structure"
+
+# Error Handling Requirements
+# ===========================
+error_handling:
+  import_errors:
+    description: "Module import fails (syntax error, missing dependency)"
+    behavior: "Fail-soft - log error, skip plugin, continue with next"
+    record_update: "PluginRecord.error = 'import_failed: {details}'"
+
+  registration_errors:
+    description: "register() function raises exception"
+    behavior: "Fail-soft - rollback registration, log error, continue"
+    rollback_actions:
+      - "Remove all commands registered by this plugin"
+      - "Remove plugin services from context"
+      - "Restore Typer app to pre-registration state"
+    record_update: "PluginRecord.error = 'registration_failed: {details}'"
+
+  missing_register:
+    description: "Plugin has no register() function"
+    behavior: "Log warning, mark as imported but not registered"
+    record_update: "PluginRecord.imported = True, registered = False"
+
+  invalid_return:
+    description: "register() returns non-list value"
+    behavior: "Log warning, treat as empty command list"
+    record_update: "PluginRecord.commands = []"
+
+  version_incompatible:
+    description: "Plugin min/max version not compatible with CLI"
+    behavior: "Skip registration, log warning"
+    record_update: "PluginRecord.error = 'version_incompatible: {details}'"
+
+  circular_dependency:
+    description: "Dependency graph has circular reference"
+    behavior: "Fail-fast - log error, skip all affected plugins"
+    record_update: "All plugins in cycle: error = 'circular_dependency: {cycle}'"
+
+# Contract Validation
+# ===================
+validation:
+  register_function_exists:
+    check: "hasattr(module, 'register')"
+    required: true
+    failure_action: "Skip registration, log warning"
+
+  register_is_callable:
+    check: "callable(module.register)"
+    required: true
+    failure_action: "Skip registration, log error"
+
+  register_signature:
+    check: "Accept 2 parameters (app, context)"
+    required: true
+    failure_action: "Log warning, attempt call anyway"
+    note: "Python allows flexible signatures, validate via introspection"
+
+  register_return_type:
+    check: "Return value is list or list-like"
+    required: false
+    failure_action: "Treat as empty list, log warning"
+
+  command_format:
+    check: "Each command follows 'plugin.command' pattern"
+    required: false
+    failure_action: "Log warning, accept anyway"
+    note: "Plugin may have reasons for different format"
+
+# Logging Requirements
+# ====================
+logging_events:
+  plugin_register_start:
+    level: DEBUG
+    fields:
+      - plugin_name
+      - plugin_version
+      - depends
+      - timestamp
+
+  plugin_register_success:
+    level: INFO
+    fields:
+      - plugin_name
+      - commands_registered (list)
+      - services_registered (list)
+      - duration_ms
+
+  plugin_register_skip:
+    level: WARNING
+    fields:
+      - plugin_name
+      - reason (version_incompatible, disabled, etc.)
+      - details
+
+  plugin_register_rollback:
+    level: WARNING
+    fields:
+      - plugin_name
+      - commands_removed (list)
+      - rollback_reason
+
+  registration_summary:
+    level: INFO
+    fields:
+      - total_plugins_discovered
+      - plugins_registered
+      - plugins_skipped
+      - total_commands_registered
+      - total_duration_ms
+
+# Performance Requirements
+# ========================
+performance:
+  registration_time:
+    target: "<100ms for 7 plugins"
+    measurement: "Time from start of load_and_register() to completion"
+
+  per_plugin_overhead:
+    target: "<10ms overhead per plugin"
+    measurement: "Registration time minus plugin-specific work"
+
+  memory_usage:
+    target: "Reasonable memory footprint"
+    constraint: "No memory leaks from failed registrations"
+
+# Backward Compatibility
+# ======================
+backward_compatibility:
+  v1_plugins:
+    description: "Plugins without v2.0 PLUGIN_META fields"
+    support: "Fully supported"
+    defaults:
+      depends: []
+      min_cli_version: null
+      max_cli_version: null
+      enabled_by_default: true
+
+  missing_return_value:
+    description: "Plugin register() returns None"
+    support: "Supported"
+    behavior: "Treat as empty command list"
+
+  old_context_structure:
+    description: "Plugin expects different context structure"
+    support: "Best effort"
+    recommendation: "Update plugin to v2.0 contract"
+
+# Examples
+# ========
+examples:
+  minimal_plugin:
+    code: |
+      # plugin_minimal.py
+      import typer
+
+      PLUGIN_META = {
+          "name": "minimal",
+          "version": "1.0.0",
+      }
+
+      app = typer.Typer()
+
+      @app.command()
+      def hello():
+          """Say hello."""
+          typer.echo("Hello from minimal plugin!")
+
+      def register(main_app, context):
+          main_app.add_typer(app, name="minimal")
+          return ["minimal.hello"]
+
+  service_provider:
+    code: |
+      # plugin_db.py
+      import typer
+
+      PLUGIN_META = {
+          "name": "db",
+          "version": "1.0.0",
+          "summary": "Database service provider",
+      }
+
+      class DatabaseService:
+          def get_connection(self):
+              return "mock_connection"
+
+      app = typer.Typer()
+
+      @app.command()
+      def status():
+          """Show database status."""
+          typer.echo("Database OK")
+
+      def register(main_app, context):
+          # Create and register service
+          db_service = DatabaseService()
+          context["plugins"]["db"] = {"service": db_service}
+
+          # Register commands
+          main_app.add_typer(app, name="db")
+          return ["db.status"]
+
+  service_consumer:
+    code: |
+      # plugin_tasks.py
+      import typer
+
+      PLUGIN_META = {
+          "name": "tasks",
+          "version": "1.0.0",
+          "depends": ["db"],  # Requires db plugin
+      }
+
+      app = typer.Typer()
+
+      @app.command()
+      def list_tasks():
+          """List all tasks."""
+          typer.echo("Task list")
+
+      def register(main_app, context):
+          # Consume dependency service
+          db_service = context["plugins"]["db"]["service"]
+
+          # Use service (pass to commands via closure or app state)
+          app.state = {"db": db_service}
+
+          # Register commands
+          main_app.add_typer(app, name="tasks")
+          return ["tasks.list"]
+
+# Contract Compliance Checklist
+# ==============================
+compliance_checklist:
+  required:
+    - "✓ PLUGIN_META dictionary defined at module level"
+    - "✓ PLUGIN_META['name'] matches plugin file name"
+    - "✓ register(app, context) function defined"
+    - "✓ register() returns list of command names"
+    - "✓ Commands registered match returned command names"
+
+  recommended:
+    - "○ PLUGIN_META includes version, summary, features"
+    - "○ Dependencies declared in PLUGIN_META['depends']"
+    - "○ Version constraints specified if needed"
+    - "○ Services registered under plugin namespace"
+    - "○ Dependency services validated before use"
+    - "○ Comprehensive error handling"
+    - "○ Unit tests for plugin functionality"
+
+  optional:
+    - "○ Type hints on register() function"
+    - "○ Docstrings for register() and commands"
+    - "○ Integration tests with dependencies"
+
+# Version History
+# ===============
+version_history:
+  "2.0":
+    date: "2025-11-16"
+    changes:
+      - "Initial contract specification"
+      - "Defined registration process"
+      - "Service registration/consumption patterns"
+      - "Error handling requirements"
+      - "Logging requirements"
+      - "Performance targets"
+      - "Complete examples"

@@ -1,0 +1,157 @@
+# Gate C Implementation Plan – Ontology Parity Logic
+version: 1.0
+created_at: 2025-09-23T22:30:00Z
+correlation_id: 9c7af2e2-1c3a-4c9c-8f8c-6e7d2aa0c2f1
+related_artifacts:
+  execution_plan: ExecutionPlan.ontology-module-scaffold.20250923T213000Z.yaml
+  odr_file: OntologyDecisionRecord.md
+  research_plan: ResearchPlan.ontology-module-scaffold.20250923T200000Z.yaml
+hash_chain_inputs:
+  odr_sha256: B5C65153451F81EFB90F3B22EB7DA1C0B277D5969ECAD63848657BD13F13FA80
+  research_plan_sha256: 74FC74AD7CBD0627BE13540D52B0EA7D00227608A5EA48FDDF1F8B13204FA754
+  execution_plan_sha256: D4E35EE4FFC8795EBFE73AD0D63730F224F78E932D4830B8AD3A4849314BC208
+objectives:
+  - Implement compute_parity to derive metrics from discovered source sets without side effects
+  - Implement emit_snapshot to assemble JSON structure conforming to parity_snapshot.schema.json
+  - Add retention scaffold: maintain last 10 snapshots + daily anchor for 30 days (no deletion until Gate D)
+  - Integrate logging baseline events (artifact_emit, decision, parity_snapshot_emit, ontology_discovery_divergence)
+  - Provide new pytest coverage for parity computation correctness & snapshot schema conformance
+non_goals:
+  - Deletion of old snapshots (will be activated Gate D)
+  - CLI integration (separate task ontology-parity-snapshot-cli)
+  - Performance optimization beyond correctness (fast-path benchmark later)
+inputs_definition:
+  sources.static: "Set[str] – statically enumerated canonical operations / fields"
+  sources.runtime: "Set[str] – runtime introspected operations / fields"
+  sources.dimensions: "Set[str] – discovered dimension names"
+  sources.critical_ops: "Set[str] – required operations (from ODR critical list)"
+  sources.field_catalog: "Set[str] – universal field catalog baseline"
+metric_formulas:
+  field_coverage_pct: "len(intersection(field_catalog, runtime_fields)) / len(field_catalog)"
+  dimension_coverage_pct: "len(dimensions_present) / len(expected_dimensions)  (expected_dimensions from ODR)"
+  critical_ops_completeness: "1.0 if critical_ops ⊆ union(static, runtime) else |covered|/|critical_ops|"
+  operation_overlap_pct: "len(intersection(static, runtime)) / max(1, len(union(static, runtime)))"
+  orphan_ops_pct: "len(orphan_ops)/max(1,len(union(static,runtime)))  (orphan_ops = runtime - static)"
+  composite_index: "0.30*field_coverage_pct + 0.25*dimension_coverage_pct + 0.25*critical_ops_completeness + 0.10*operation_overlap_pct + 0.10*(1 - orphan_ops_pct)"
+sets_computation:
+  missing_fields: "field_catalog - runtime_fields"
+  missing_dimensions: "expected_dimensions - dimensions_present"
+  orphan_operations: "runtime - static"
+  new_operations_candidate: "static - runtime  (pending classification)"
+  expected_dimensions: ["Core","Logging","Evidence","Performance","Security","Risk"]
+threshold_targets:
+  field_coverage_pct: ">= 0.90"
+  dimension_coverage_pct: ">= 0.85"
+  critical_ops_completeness: "== 1.0"
+  operation_overlap_pct: ">= 0.80"
+  orphan_ops_pct: "<= 0.10"
+  composite_index: ">= 0.88"
+parity_algorithm_pseudocode: |
+  def compute_parity(sources):
+      static = set(sources['static'])
+      runtime = set(sources['runtime'])
+      field_catalog = set(sources['field_catalog'])
+      dimensions_present = set(sources.get('dimensions', []))
+      critical_ops = set(sources.get('critical_ops', []))
+      expected_dimensions = EXPECTED_DIMENSIONS
+
+      union_ops = static | runtime
+      overlap_ops = static & runtime
+      orphan_ops = runtime - static
+      new_ops_candidate = static - runtime
+
+      field_coverage_pct = len(field_catalog & runtime) / max(1, len(field_catalog))
+      dimension_coverage_pct = len(dimensions_present & expected_dimensions) / max(1, len(expected_dimensions))
+      covered_critical = critical_ops & union_ops
+      critical_ops_completeness = 1.0 if critical_ops <= union_ops else len(covered_critical) / max(1, len(critical_ops))
+      operation_overlap_pct = len(overlap_ops) / max(1, len(union_ops))
+      orphan_ops_pct = len(orphan_ops) / max(1, len(union_ops))
+      composite_index = 0.30*field_coverage_pct + 0.25*dimension_coverage_pct + 0.25*critical_ops_completeness + 0.10*operation_overlap_pct + 0.10*(1 - orphan_ops_pct)
+
+      metrics = { ... rounded to 3 decimals }
+      sets = { missing_fields, missing_dimensions, orphan_operations, new_operations_candidate }
+      discovery = { static_count=len(static), runtime_count=len(runtime), union_count=len(union_ops), overlap_pct=operation_overlap_pct }
+      return { 'metrics': metrics, 'sets': sets, 'discovery': discovery }
+
+snapshot_emission_pseudocode: |
+  def emit_snapshot(parity):
+      correlation_id = uuid4()
+      generated_at = utc_now_iso()
+      body = {
+        'schema_version': '1.0.0',
+        'generated_at': generated_at,
+        'correlation_id': str(correlation_id),
+        'metrics': parity['metrics'],
+        'discovery': parity['discovery'],
+        'sets': parity['sets'],
+        'hashes': gather_hashes(),
+      }
+      validate_against_schema(body)
+      path = write_json(body, snapshots_dir / f"parity_snapshot_{generated_at}.json")
+      log artifact_emit + parity_snapshot_emit
+      return body
+
+logging_events:
+  - name: parity_snapshot_emit
+    when: "After successful write & schema validation"
+  - name: ontology_discovery_divergence
+    trigger: "operation_overlap_pct < 0.70 OR field_coverage_pct < 0.80"
+  - name: ontology_decision_amended
+    guard: "Only if thresholds changed (not expected in Gate C)"
+retention_policy_scaffold:
+  description: "Maintain last 10 chronological snapshots + 30 daily anchor files (prefix anchor_YYYYMMDD). Gate C: only list & log what WOULD be removed (no deletion)."
+  algorithm: |
+    def plan_retention(files):
+        # classify into anchors vs rolling
+        anchors = {f for f in files if f.name.startswith('anchor_')}
+        non_anchors = sorted([f for f in files if not f.name.startswith('anchor_')])
+        excess = len(non_anchors) - 10
+        planned_removals = non_anchors[0:excess] if excess > 0 else []
+        return {'planned_removals': [f.name for f in planned_removals], 'anchors': len(anchors)}
+
+tests_new:
+  - name: test_compute_parity_metrics_values
+    asserts: "Metrics within [0,1], composite formula exact, rounding to 3 decimals"
+  - name: test_sets_derivations
+    asserts: "missing_fields, missing_dimensions, orphan_operations correct for synthetic inputs"
+  - name: test_emit_snapshot_schema_valid
+    asserts: "Emitted snapshot validates against schema & correlation_id pattern"
+  - name: test_retention_plan_no_delete
+    asserts: "Retention planner lists planned removals only; does not delete"
+  - name: test_divergence_event_trigger
+    asserts: "Overlap/divergence below threshold logs ontology_discovery_divergence"
+quality_gates:
+  constitutional: ["Schema conformity", "ODR threshold alignment"]
+  operational: ["Logging baseline events present", "No file deletions yet"]
+  cognitive: ["Divergence trigger rationale documented"]
+  integration: ["Snapshot output consumable by future CLI command"]
+risk_register_updates:
+  - id: retention_over_deletion
+    description: "Premature deletion may lose forensic value"
+    mitigation: "Log-only planning in Gate C"
+  - id: threshold_misapplication
+    description: "Incorrect composite weighting"
+    mitigation: "Explicit formula test + recompute check"
+next_gate_readiness:
+  evidence_required: ["All new tests passing", "At least one real snapshot emitted", "Divergence event covered in logs"]
+  blocked_by: []
+ucl_compliance:
+  verifiability: "Metrics recalculated deterministically from sets"
+  precedence: "ODR metrics & formula remain source"
+  provenance: "Snapshot includes constituent hash references"
+  reproducibility: "Given same sources sets, metrics identical"
+  integrity: "No mutation of prior artifacts; retention plan non-destructive"
+cof_dimensions_summary:
+  identity: "Ontology parity module (Gate C logic layer)"
+  intent: "Produce reproducible parity metrics & schema-compliant snapshots"
+  stakeholders: ["Engineering", "Quality", "Observability"]
+  context: "Post Gate B: schema + sample + tests exist"
+  scope: "Compute metrics + snapshot emission (no CLI wiring, no deletions)"
+  time: "One iteration; anchors support longitudinal tracking"
+  space: "Filesystem docs/ontology/snapshots directory (to create)"
+  modality: "JSON snapshots + log events"
+  state: "Transitioning to implementation"
+  scale: "Module-local now; cross-tool later"
+  risk: "Metric miscalculation, silent schema drift"
+  evidence: "Tests + logs + hashes"
+  ethics: "Transparency via deterministic formula"

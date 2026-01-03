@@ -1,0 +1,14 @@
+# Manual trial script (record-only) for MCP helpers
+# Run in PowerShell 5.1 from repo root
+
+. .\build\MCP-Helpers.ps1
+
+# Log a sample event
+mcp_log_event -EventType 'test' -Data @{ hello = 'world' }
+
+# Append JSONL to a local evidence file
+$path = '.\logs\phase2\20250813\mcp-evidence.jsonl'
+mcp_jsonl_append -Path $path -Entry @{ ts = (Get-Date -Format o); note = 'append test' }
+
+# List artifacts
+mcp_artifacts_list -Root '.\docs\context\evidence' | Out-File '.\docs\context\evidence\phase2\mcp-tests\artifact-list.txt'

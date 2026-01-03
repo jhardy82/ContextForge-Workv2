@@ -1,0 +1,210 @@
+$schema: https://contextforge/schemas/research-plan-v1
+workId: W-MCP-BACKEND-SPIRAL-1-ENHANCED
+timestamp: 20250927-2240
+contextRef:
+  id: "cf_cli/context/Context.json"
+  version: "1.0"
+  hash: "e8f7a4b2c9d1"
+
+research_plan_comprehensive:
+  objective: "Conduct systematic research for CF-Work Phase 1 MCP Backend implementation to achieve ≥0.95 SME confidence"
+
+  research_methodology: "MCP-first discovery with ContextForge tool hierarchy: Context7 → Microsoft Docs → GitHub Repo → Database → Search → Fetch"
+
+  priority_research_domains:
+    mcp_server_protocol_mastery:
+      priority: "P0 - CRITICAL"
+      confidence_gap: "0.70 → 0.95 (0.25 improvement needed)"
+      research_activities:
+        - activity: "MCP Protocol Specification Deep-Dive"
+          method: "Context7 MCP library documentation + Microsoft Docs"
+          deliverable: "MCP implementation patterns document"
+          estimated_hours: 3
+
+        - activity: "Node.js to Python REST Integration Patterns"
+          method: "GitHub repository analysis + Context7 integration examples"
+          deliverable: "Integration architecture document with code examples"
+          estimated_hours: 2
+
+        - activity: "MCP Server Tool Definition Best Practices"
+          method: "Context7 MCP server examples + Microsoft Learn MCP guides"
+          deliverable: "Tool definition templates and validation patterns"
+          estimated_hours: 2
+
+    python_fastapi_optimization:
+      priority: "P0 - CRITICAL"
+      confidence_gap: "0.85 → 0.95 (0.10 improvement needed)"
+      research_activities:
+        - activity: "FastAPI Async Performance Optimization"
+          method: "Context7 FastAPI documentation + Microsoft Learn Python guides"
+          deliverable: "Performance optimization checklist and patterns"
+          estimated_hours: 2
+
+        - activity: "SQLAlchemy Async Integration with FastAPI"
+          method: "Context7 SQLAlchemy docs + GitHub repository patterns"
+          deliverable: "Database integration best practices document"
+          estimated_hours: 2
+
+        - activity: "FastAPI Testing with TestClient Advanced Patterns"
+          method: "Context7 pytest + FastAPI testing documentation"
+          deliverable: "Comprehensive testing framework blueprint"
+          estimated_hours: 1
+
+    cf_work_specification_compliance:
+      priority: "P0 - CRITICAL"
+      confidence_gap: "0.75 → 0.95 (0.20 improvement needed)"
+      research_activities:
+        - activity: "CF-Work Phase 1 Requirements Analysis"
+          method: "Detailed study of CF-Work-MCP-Integration-Analysis document"
+          deliverable: "Requirements compliance matrix and validation criteria"
+          estimated_hours: 2
+
+        - activity: "MCP Task Management Tool Best Practices"
+          method: "Context7 MCP server patterns + Microsoft Docs task management"
+          deliverable: "CF-Work implementation guidelines and patterns"
+          estimated_hours: 2
+
+  supporting_research_domains:
+    database_relationship_modeling:
+      priority: "P1 - HIGH"
+      confidence_gap: "0.80 → 0.95 (0.15 improvement needed)"
+      research_activities:
+        - activity: "SQLAlchemy Relationship Patterns for Task Dependencies"
+          method: "Context7 SQLAlchemy relationship documentation"
+          deliverable: "Database schema design with relationship patterns"
+          estimated_hours: 2
+
+        - activity: "Graph Algorithm Implementation for Cycle Detection"
+          method: "GitHub repository analysis + algorithm documentation"
+          deliverable: "Dependency graph algorithms and implementation patterns"
+          estimated_hours: 1
+
+    search_architecture_design:
+      priority: "P2 - MEDIUM"
+      confidence_gap: "0.60 → 0.90 (0.30 improvement needed)"
+      research_activities:
+        - activity: "FastAPI Search Endpoint Optimization"
+          method: "Context7 search patterns + performance documentation"
+          deliverable: "Search architecture design and indexing strategies"
+          estimated_hours: 2
+
+        - activity: "Query Parsing and Filtering Implementation"
+          method: "GitHub repository search patterns + Context7 examples"
+          deliverable: "Query parsing framework and filtering implementation"
+          estimated_hours: 1
+
+  contextforge_tooling_sequence:
+    primary_tools:
+      - tool: "mcp_context7_resolve-library-id + get-library-docs"
+        usage: "Primary documentation source for FastAPI, SQLAlchemy, MCP protocols"
+        priority: 1
+
+      - tool: "mcp_microsoft_doc_microsoft_docs_search + fetch"
+        usage: "Microsoft Learn Python, Node.js, and MCP documentation"
+        priority: 2
+
+      - tool: "github_repo"
+        usage: "Real-world implementation patterns and integration examples"
+        priority: 3
+
+    secondary_tools:
+      - tool: "semantic_search"
+        usage: "Workspace-specific pattern discovery and integration examples"
+        priority: 4
+
+      - tool: "fetch_webpage"
+        usage: "External documentation and specification sources"
+        priority: 5
+
+  research_execution_plan:
+    phase_2a_mcp_mastery:
+      duration: "4 hours"
+      focus: "MCP protocol specification, Node.js integration patterns, tool definitions"
+      deliverables:
+        - "MCP Protocol Implementation Guide"
+        - "Node.js to Python Integration Architecture"
+        - "MCP Tool Definition Templates"
+
+    phase_2b_python_optimization:
+      duration: "3 hours"
+      focus: "FastAPI async patterns, SQLAlchemy integration, testing frameworks"
+      deliverables:
+        - "FastAPI Performance Optimization Guide"
+        - "Database Integration Best Practices"
+        - "Comprehensive Testing Blueprint"
+
+    phase_2c_cf_work_compliance:
+      duration: "4 hours"
+      focus: "CF-Work specification analysis, implementation guidelines, validation"
+      deliverables:
+        - "CF-Work Requirements Compliance Matrix"
+        - "Implementation Guidelines and Patterns"
+
+  evidence_collection_strategy:
+    structured_logging: "All research activities logged via UnifiedLogger with JSONL emission"
+
+    evidence_artifacts:
+      - "Source documentation URLs and version information"
+      - "Code example snippets with proper attribution"
+      - "Performance benchmarks and optimization measurements"
+      - "Implementation pattern comparisons and recommendations"
+      - "Compliance validation checklists and criteria"
+
+    correlation_tracking: "Research session correlation ID linking all evidence to workId"
+
+  success_criteria:
+    confidence_targets:
+      mcp_integration: "≥0.95"
+      fastapi_optimization: "≥0.95"
+      cf_work_compliance: "≥0.95"
+      database_modeling: "≥0.90"
+      search_architecture: "≥0.90"
+      overall_confidence: "≥0.95"
+
+    deliverable_quality:
+      - "All research documented with proper source attribution"
+      - "Implementation patterns validated with working code examples"
+      - "Performance targets confirmed achievable through research"
+      - "CF-Work compliance validated against specification"
+
+    knowledge_validation:
+      - "Dry-run scenarios confirmed feasible through research"
+      - "Integration patterns validated with reference implementations"
+      - "Testing approaches confirmed comprehensive and achievable"
+
+research_timeline:
+  total_duration: "11 hours (Phase 2 allocation from enhanced planning)"
+
+  execution_sequence:
+    hour_1_3: "MCP Protocol Mastery (3h) - Context7 + Microsoft Docs + GitHub examples"
+    hour_4_6: "FastAPI Optimization (3h) - Context7 FastAPI + SQLAlchemy + pytest patterns"
+    hour_7_10: "CF-Work Compliance (4h) - Specification analysis + implementation guidelines"
+    hour_11: "Integration validation and evidence consolidation (1h)"
+
+deliverable_templates:
+  research_artifacts:
+    - artifact: "ResearchPlan.[workId].[timestamp].yaml (this document)"
+      status: "COMPLETED"
+
+    - artifact: "SME.KnowledgeDepth.[workId].[timestamp].yaml"
+      status: "PENDING - to be created during research execution"
+
+    - artifact: "OptionsMatrix.[workId].[timestamp].yaml"
+      status: "PENDING - to be created during research execution"
+
+    - artifact: "SourceTrustReport.[workId].[timestamp].yaml"
+      status: "PENDING - to be created during research execution"
+
+next_phase_preparation:
+  phase_3_planning_readiness:
+    - "SME confidence ≥0.95 across all critical domains"
+    - "Implementation patterns validated through research"
+    - "CF-Work compliance requirements clearly understood"
+    - "Performance optimization strategies documented"
+    - "Testing framework approach confirmed feasible"
+
+  delegation_to_planner:
+    - "Research artifacts complete and validated"
+    - "Knowledge depth sufficient for detailed planning"
+    - "Options matrix provides clear technical direction"
+    - "Source trust established for implementation guidance"

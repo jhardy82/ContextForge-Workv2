@@ -1,0 +1,97 @@
+sprint_id: WU-SCAN-2025-08
+generated: "2025-08-12T00:00:00Z"
+goal: Close gaps in Get-WUScanSource and pass focused quality gates
+scope:
+  scripts:
+    - SCCM/Get-WUScanSource.ps1
+  tests:
+    - tests/SCCM.Get-WUScanSource*.Tests.ps1
+  tasks:
+    - Quality: Static Analysis (Focused)
+    - Quality: Tests (Focused - WU Scan Source)
+items:
+  - id: C1
+    title: Mockable WU API default and services
+    status: todo
+    owners: []
+    due: null
+    files:
+      - SCCM/Get-WUScanSource.ps1
+    acceptance:
+      - Tests pass using -MockWUApiDefault and do not require COM
+    tests:
+      - tests/SCCM.Get-WUScanSource.Matrix.Tests.ps1
+      - NEW: tests/SCCM.Get-WUScanSource.MockApi.Tests.ps1
+  - id: C2
+    title: Effective scan source per update type
+    status: todo
+    acceptance:
+      - MDM_CSP_EffectiveScanSource_* emitted and correct
+      - Conflict raised when CSP=WSUS and URL missing
+    tests:
+      - NEW: tests/SCCM.Get-WUScanSource.EffectiveScanSource.Tests.ps1
+  - id: C3
+    title: BranchReadiness mapping alignment
+    status: todo
+    acceptance:
+      - ValueTranslation tests pass
+    tests:
+      - tests/SCCM.Get-WUScanSource.ValueTranslation.Tests.ps1
+  - id: C4
+    title: CSP MU + internet-location parity
+    status: todo
+    acceptance:
+      - CSP and GPO states captured and reflected in conflicts
+    tests:
+      - tests/SCCM.Get-WUScanSource.Matrix.Tests.ps1
+  - id: C5
+    title: Provenance split (Computer/User)
+    status: todo
+    acceptance:
+      - WSUS_PolicySource_Computer and _User present when available; decisions use Computer
+    tests:
+      - tests/SCCM.Get-WUScanSource.Evidence.Tests.ps1
+  - id: C6
+    title: Timeouts and cancellation
+    status: todo
+    acceptance:
+      - No hangs; timeout/cancellation logged; run completes
+    tests:
+      - tests/SCCM.Get-WUScanSource.Tests.ps1
+  - id: C7
+    title: Evidence/logging consistency
+    status: todo
+    acceptance:
+      - All external calls log operation+error context; JSONL entries present
+    tests:
+      - tests/Quality.ReportSchema.Tests.ps1
+  - id: C8
+    title: Proxy depth (optional)
+    status: todo
+    acceptance:
+      - WinINET and policy proxy discrepancies flagged
+    tests:
+      - NEW: tests/SCCM.Get-WUScanSource.Proxy.Tests.ps1
+  - id: C9
+    title: Co-management WU workload
+    status: todo
+    acceptance:
+      - CoMgmt_WUWorkloadState derived and included in outputs
+    tests:
+      - tests/SCCM.Get-WUScanSource.MockScenarios.Tests.ps1
+  - id: C10
+    title: Docs and changelog
+    status: todo
+    acceptance:
+      - CHANGELOG updated; doc note for test params added
+    tests: []
+quality_gates:
+  static_analysis_task: "Quality: Static Analysis (Focused)"
+  test_task: "Quality: Tests (Focused - WU Scan Source)"
+artifacts:
+  - build/artifacts/PSSA-Report.json
+  - build/artifacts/PSSA-Findings.txt
+  - build/artifacts/Pester-Console-*.txt
+  - build/artifacts/Pester-Results-NUnit-*.xml
+notes: |
+  Update items with status (todo|in_progress|done), owners, and due dates as work proceeds.

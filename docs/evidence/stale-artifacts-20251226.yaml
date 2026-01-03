@@ -1,0 +1,781 @@
+# Stale Artifacts Catalog - Workspace Hygiene Audit
+# Generated: 2025-12-25
+# Workspace: c:\Users\James\Documents\Github\GHrepos\SCCMScripts
+# Purpose: Catalog root-level files for cleanup review
+# Authority: ContextForge Governance - P4.3
+
+metadata:
+  audit_date: "2025-12-25"
+  auditor: "github-copilot"
+  workspace_root: "c:\\Users\\James\\Documents\\Github\\GHrepos\\SCCMScripts"
+  total_files_cataloged: 95
+  recommendation_summary:
+    delete: 54
+    archive: 22
+    keep: 19
+
+# =============================================================================
+# CATEGORY 1: DEBUG OUTPUT FILES (*.txt - debug/test artifacts)
+# Recommendation: DELETE - Temporary debug output from development sessions
+# =============================================================================
+debug_output_files:
+  - path: "build_log.txt"
+    size_bytes: 164
+    last_modified: "2025-12-25T17:29:39"
+    action: delete
+    reason: "Temporary build log output"
+
+  - path: "build_test.txt"
+    size_bytes: 1150
+    last_modified: "2025-12-25T17:29:39"
+    action: delete
+    reason: "Temporary build test output"
+
+  - path: "cf_test.txt"
+    size_bytes: 2319
+    last_modified: "2025-12-25T15:16:46"
+    action: delete
+    reason: "CLI test output"
+
+  - path: "cf_version.txt"
+    size_bytes: 93
+    last_modified: "2025-12-25T14:58:25"
+    action: delete
+    reason: "Version check output"
+
+  - path: "cf_version2.txt"
+    size_bytes: 25
+    last_modified: "2025-12-25T14:58:39"
+    action: delete
+    reason: "Version check output duplicate"
+
+  - path: "collection.txt"
+    size_bytes: 5496
+    last_modified: "2025-12-25T17:35:20"
+    action: delete
+    reason: "Temporary collection debug output"
+
+  - path: "create_out.txt"
+    size_bytes: 671
+    last_modified: "2025-12-25T14:15:32"
+    action: delete
+    reason: "Create operation debug output"
+
+  - path: "create_out_2.txt"
+    size_bytes: 114
+    last_modified: "2025-12-25T14:15:47"
+    action: delete
+    reason: "Create operation debug output duplicate"
+
+  - path: "db_check.txt"
+    size_bytes: 1216
+    last_modified: "2025-12-25T19:59:56"
+    action: delete
+    reason: "Database check debug output"
+
+  - path: "db_check_simple.txt"
+    size_bytes: 343
+    last_modified: "2025-12-25T20:18:09"
+    action: delete
+    reason: "Database check debug output"
+
+  - path: "debug_output.txt"
+    size_bytes: 1698
+    last_modified: "2025-12-25T14:00:57"
+    action: delete
+    reason: "Generic debug output file"
+
+  - path: "docker_inspect.txt"
+    size_bytes: 22980
+    last_modified: "2025-12-25T20:39:46"
+    action: delete
+    reason: "Docker inspection debug output"
+
+  - path: "docker_status.txt"
+    size_bytes: 1194
+    last_modified: "2025-12-25T20:29:36"
+    action: delete
+    reason: "Docker status debug output"
+
+  - path: "filter_status.txt"
+    size_bytes: 2032
+    last_modified: "2025-12-25T14:22:31"
+    action: delete
+    reason: "Filter status debug output"
+
+  - path: "fixtures.txt"
+    size_bytes: 26382
+    last_modified: "2025-12-25T17:35:29"
+    action: delete
+    reason: "Test fixtures debug output"
+
+  - path: "health_check_opt.txt"
+    size_bytes: 161
+    last_modified: "2025-12-25T14:22:15"
+    action: delete
+    reason: "Health check debug output"
+
+  - path: "health_conn.txt"
+    size_bytes: 161
+    last_modified: "2025-12-25T14:24:11"
+    action: delete
+    reason: "Health connection debug output"
+
+  - path: "health_final.txt"
+    size_bytes: 161
+    last_modified: "2025-12-25T14:25:25"
+    action: delete
+    reason: "Health check final debug output"
+
+  - path: "list_conn.txt"
+    size_bytes: 5476
+    last_modified: "2025-12-25T14:24:12"
+    action: delete
+    reason: "List connection debug output"
+
+  - path: "list_final.txt"
+    size_bytes: 58
+    last_modified: "2025-12-25T14:25:24"
+    action: delete
+    reason: "List final debug output"
+
+  - path: "list_opt.txt"
+    size_bytes: 5476
+    last_modified: "2025-12-25T14:22:16"
+    action: delete
+    reason: "List optimization debug output"
+
+  - path: "list_out.txt"
+    size_bytes: 5290
+    last_modified: "2025-12-25T14:15:33"
+    action: delete
+    reason: "List output debug"
+
+  - path: "list_out_2.txt"
+    size_bytes: 5476
+    last_modified: "2025-12-25T14:16:00"
+    action: delete
+    reason: "List output debug duplicate"
+
+  - path: "list_ver2.txt"
+    size_bytes: 1377
+    last_modified: "2025-12-25T14:26:03"
+    action: delete
+    reason: "List version 2 debug output"
+
+  - path: "output_check.txt"
+    size_bytes: 3025
+    last_modified: "2025-12-25T14:14:40"
+    action: delete
+    reason: "Output verification debug"
+
+  - path: "pip_install.txt"
+    size_bytes: 481
+    last_modified: "2025-12-25T15:07:43"
+    action: delete
+    reason: "Pip installation debug output"
+
+  - path: "project_create_test.txt"
+    size_bytes: 71
+    last_modified: "2025-12-25T15:00:43"
+    action: delete
+    reason: "Project creation test output"
+
+  - path: "project_list.txt"
+    size_bytes: 961
+    last_modified: "2025-12-25T14:49:12"
+    action: delete
+    reason: "Project list debug output"
+
+  - path: "project_list_2.txt"
+    size_bytes: 965
+    last_modified: "2025-12-25T14:50:04"
+    action: delete
+    reason: "Project list debug output duplicate"
+
+  - path: "project_list_3.txt"
+    size_bytes: 963
+    last_modified: "2025-12-25T14:51:00"
+    action: delete
+    reason: "Project list debug output duplicate"
+
+  - path: "project_test.txt"
+    size_bytes: 42
+    last_modified: "2025-12-25T14:58:59"
+    action: delete
+    reason: "Project test debug output"
+
+  - path: "project_test2.txt"
+    size_bytes: 179
+    last_modified: "2025-12-25T14:59:42"
+    action: delete
+    reason: "Project test debug output duplicate"
+
+  - path: "project_test3.txt"
+    size_bytes: 840
+    last_modified: "2025-12-25T15:00:28"
+    action: delete
+    reason: "Project test debug output duplicate"
+
+  - path: "psycopg2_check.txt"
+    size_bytes: 30
+    last_modified: "2025-12-25T19:57:51"
+    action: delete
+    reason: "Psycopg2 dependency check output"
+
+  - path: "pytest_final.txt"
+    size_bytes: 5355
+    last_modified: "2025-12-25T16:16:06"
+    action: delete
+    reason: "Pytest final run output"
+
+  - path: "pytest_service_results.txt"
+    size_bytes: 7808
+    last_modified: "2025-12-25T16:13:58"
+    action: delete
+    reason: "Pytest service results output"
+
+  - path: "scan_large_results.txt"
+    size_bytes: 9266
+    last_modified: "2025-12-25T14:03:48"
+    action: delete
+    reason: "Large scan results debug output"
+
+  - path: "scan_results.txt"
+    size_bytes: 0
+    last_modified: "2025-12-25T14:00:10"
+    action: delete
+    reason: "Empty scan results file"
+
+  - path: "scan_results_stderr.txt"
+    size_bytes: 564
+    last_modified: "2025-12-25T14:01:18"
+    action: delete
+    reason: "Scan stderr output"
+
+  - path: "schema_dump.txt"
+    size_bytes: 990
+    last_modified: "2025-12-25T01:12:42"
+    action: delete
+    reason: "Schema dump debug output"
+
+  - path: "search_final.txt"
+    size_bytes: 58
+    last_modified: "2025-12-25T14:25:24"
+    action: delete
+    reason: "Search final debug output"
+
+  - path: "search_ver2.txt"
+    size_bytes: 438
+    last_modified: "2025-12-25T14:26:04"
+    action: delete
+    reason: "Search version 2 debug output"
+
+  - path: "spiral6_cli_test.txt"
+    size_bytes: 1157
+    last_modified: "2025-12-25T17:29:39"
+    action: delete
+    reason: "Spiral 6 CLI test output"
+
+  - path: "spiral6_verify_build.txt"
+    size_bytes: 423
+    last_modified: "2025-12-25T17:29:39"
+    action: delete
+    reason: "Spiral 6 build verification output"
+
+  - path: "spiral7_cf_core_tests.txt"
+    size_bytes: 39666
+    last_modified: "2025-12-25T17:29:39"
+    action: delete
+    reason: "Spiral 7 CF core test output"
+
+  - path: "spiral7_tests_fixed.txt"
+    size_bytes: 4514
+    last_modified: "2025-12-25T17:29:39"
+    action: delete
+    reason: "Spiral 7 fixed tests output"
+
+  - path: "sprint_test.txt"
+    size_bytes: 1306
+    last_modified: "2025-12-25T15:19:31"
+    action: delete
+    reason: "Sprint test debug output"
+
+  - path: "task_list_test.txt"
+    size_bytes: 1377
+    last_modified: "2025-12-25T15:07:45"
+    action: delete
+    reason: "Task list test debug output"
+
+  - path: "test_output.txt"
+    size_bytes: 47281
+    last_modified: "2025-12-25T16:11:43"
+    action: delete
+    reason: "Test output debug file"
+
+  - path: "uv_build_final.txt"
+    size_bytes: 1141
+    last_modified: "2025-12-25T17:29:39"
+    action: delete
+    reason: "UV build final output"
+
+  - path: "uv_build_final2.txt"
+    size_bytes: 1144
+    last_modified: "2025-12-25T17:29:39"
+    action: delete
+    reason: "UV build final output duplicate"
+
+  - path: "uv_build_final3.txt"
+    size_bytes: 134
+    last_modified: "2025-12-25T17:29:39"
+    action: delete
+    reason: "UV build final output duplicate"
+
+  - path: "uv_check.txt"
+    size_bytes: 33
+    last_modified: "2025-12-25T17:29:39"
+    action: delete
+    reason: "UV check output"
+
+  - path: "uv_clean_build.txt"
+    size_bytes: 424
+    last_modified: "2025-12-25T17:29:39"
+    action: delete
+    reason: "UV clean build output"
+
+  - path: "uv_final_test.txt"
+    size_bytes: 1023
+    last_modified: "2025-12-25T17:29:39"
+    action: delete
+    reason: "UV final test output"
+
+  - path: "uv_final_test2.txt"
+    size_bytes: 1149
+    last_modified: "2025-12-25T17:29:39"
+    action: delete
+    reason: "UV final test output duplicate"
+
+  - path: "uv_final_test3.txt"
+    size_bytes: 1149
+    last_modified: "2025-12-25T17:29:39"
+    action: delete
+    reason: "UV final test output duplicate"
+
+  - path: "uv_install_final.txt"
+    size_bytes: 1142
+    last_modified: "2025-12-25T17:29:39"
+    action: delete
+    reason: "UV install final output"
+
+  - path: "uv_install_retry.txt"
+    size_bytes: 1017
+    last_modified: "2025-12-25T17:29:39"
+    action: delete
+    reason: "UV install retry output"
+
+  - path: "uv_install_retry2.txt"
+    size_bytes: 1025
+    last_modified: "2025-12-25T17:29:39"
+    action: delete
+    reason: "UV install retry output duplicate"
+
+  - path: "uv_install_retry3.txt"
+    size_bytes: 1022
+    last_modified: "2025-12-25T17:29:39"
+    action: delete
+    reason: "UV install retry output duplicate"
+
+  - path: "uv_install_retry4.txt"
+    size_bytes: 1023
+    last_modified: "2025-12-25T17:29:39"
+    action: delete
+    reason: "UV install retry output duplicate"
+
+  - path: "uv_install.txt"
+    size_bytes: 1019
+    last_modified: "2025-12-25T17:29:39"
+    action: delete
+    reason: "UV install output"
+
+  - path: "version.txt"
+    size_bytes: 16
+    last_modified: "2025-12-25T14:00:21"
+    action: delete
+    reason: "Version debug output"
+
+  - path: "warning_check.txt"
+    size_bytes: 239
+    last_modified: "2025-12-25T14:28:24"
+    action: delete
+    reason: "Warning check debug output"
+
+# =============================================================================
+# CATEGORY 2: LOG FILES (*.log)
+# Recommendation: DELETE or ARCHIVE based on value
+# =============================================================================
+log_files:
+  - path: "e2e_playwright_test.log"
+    size_bytes: 0
+    last_modified: "2025-12-25T16:01:44"
+    action: delete
+    reason: "Empty log file"
+
+  - path: "init_schema.log"
+    size_bytes: 249
+    last_modified: "2025-12-25T20:41:06"
+    action: delete
+    reason: "Schema initialization log - temporary"
+
+  - path: "migration_docker_retry.log"
+    size_bytes: 309
+    last_modified: "2025-12-25T20:41:28"
+    action: delete
+    reason: "Migration retry log - temporary"
+
+  - path: "migration_docker_run.log"
+    size_bytes: 309
+    last_modified: "2025-12-25T20:40:31"
+    action: delete
+    reason: "Migration run log - temporary"
+
+  - path: "migration_run.log"
+    size_bytes: 243
+    last_modified: "2025-12-25T20:23:41"
+    action: delete
+    reason: "Migration run log - temporary"
+
+  - path: "test_error_full.log"
+    size_bytes: 4922
+    last_modified: "2024-11-24T23:11:13"
+    action: archive
+    reason: "Test error log - may contain historical debugging value"
+
+  - path: "test_results_after_fix.log"
+    size_bytes: 146981
+    last_modified: "2024-11-24T23:45:24"
+    action: archive
+    reason: "Post-fix test results - potential historical value"
+
+  - path: "test_results_full.log"
+    size_bytes: 200361
+    last_modified: "2024-11-24T23:26:12"
+    action: archive
+    reason: "Full test results - potential historical value"
+
+  - path: "test_results.log"
+    size_bytes: 8957
+    last_modified: "2025-12-25T20:27:12"
+    action: delete
+    reason: "Recent test results log - temporary"
+
+# =============================================================================
+# CATEGORY 3: COVERAGE JSON FILES
+# Recommendation: ARCHIVE - Historical coverage data, consolidate to docs/evidence
+# =============================================================================
+coverage_json_files:
+  - path: "coverage-analysis.json"
+    size_bytes: 421831
+    last_modified: "2025-12-15T11:43:26"
+    action: archive
+    reason: "Coverage analysis - move to docs/evidence/coverage/"
+
+  - path: "coverage-branch-analysis.json"
+    size_bytes: 697968
+    last_modified: "2025-12-15T11:43:26"
+    action: archive
+    reason: "Branch coverage analysis - move to docs/evidence/coverage/"
+
+  - path: "coverage-branch-cfcore-full.json"
+    size_bytes: 697968
+    last_modified: "2025-12-15T11:43:26"
+    action: archive
+    reason: "CF Core branch coverage - move to docs/evidence/coverage/"
+
+  - path: "coverage-branch-cfcore.json"
+    size_bytes: 421831
+    last_modified: "2025-12-15T11:43:26"
+    action: archive
+    reason: "CF Core branch coverage - move to docs/evidence/coverage/"
+
+  - path: "coverage-branch-ulog.json"
+    size_bytes: 65740
+    last_modified: "2025-12-15T11:43:26"
+    action: archive
+    reason: "ULog branch coverage - move to docs/evidence/coverage/"
+
+  - path: "coverage-bravo-baseline.json"
+    size_bytes: 697968
+    last_modified: "2025-12-15T11:43:26"
+    action: archive
+    reason: "Bravo baseline coverage - move to docs/evidence/coverage/"
+
+  - path: "coverage-bravo-current.json"
+    size_bytes: 772721
+    last_modified: "2025-12-15T11:43:26"
+    action: archive
+    reason: "Bravo current coverage - move to docs/evidence/coverage/"
+
+  - path: "coverage-cf-core-branch-baseline.json"
+    size_bytes: 697968
+    last_modified: "2025-12-15T11:43:26"
+    action: archive
+    reason: "CF Core branch baseline - move to docs/evidence/coverage/"
+
+  - path: "coverage-cf-core-bravo.json"
+    size_bytes: 6336
+    last_modified: "2025-12-15T11:43:26"
+    action: archive
+    reason: "CF Core bravo coverage - move to docs/evidence/coverage/"
+
+  - path: "coverage-cf-core-detailed.json"
+    size_bytes: 697968
+    last_modified: "2025-12-15T11:43:26"
+    action: archive
+    reason: "CF Core detailed coverage - move to docs/evidence/coverage/"
+
+  - path: "coverage-cfcore-bravo.json"
+    size_bytes: 697968
+    last_modified: "2025-12-15T11:43:26"
+    action: archive
+    reason: "CF Core bravo coverage duplicate - move to docs/evidence/coverage/"
+
+  - path: "coverage-current.json"
+    size_bytes: 2144012
+    last_modified: "2025-12-15T11:43:26"
+    action: archive
+    reason: "Current coverage snapshot - move to docs/evidence/coverage/"
+
+  - path: "coverage-latest.json"
+    size_bytes: 697968
+    last_modified: "2025-12-15T11:43:26"
+    action: archive
+    reason: "Latest coverage - move to docs/evidence/coverage/"
+
+  - path: "coverage-quick-analysis.json"
+    size_bytes: 2144012
+    last_modified: "2025-12-15T11:43:26"
+    action: archive
+    reason: "Quick coverage analysis - move to docs/evidence/coverage/"
+
+  - path: "coverage-quick-wins-baseline.json"
+    size_bytes: 75788
+    last_modified: "2025-12-15T11:43:26"
+    action: archive
+    reason: "Quick wins baseline - move to docs/evidence/coverage/"
+
+  - path: "coverage-ulog-branch.json"
+    size_bytes: 65740
+    last_modified: "2025-12-15T11:43:26"
+    action: archive
+    reason: "ULog branch coverage - move to docs/evidence/coverage/"
+
+  - path: "coverage-ulog-bravo.json"
+    size_bytes: 65740
+    last_modified: "2025-12-15T11:43:26"
+    action: archive
+    reason: "ULog bravo coverage - move to docs/evidence/coverage/"
+
+  - path: "coverage-with-contexts.json"
+    size_bytes: 971376
+    last_modified: "2025-12-15T11:43:26"
+    action: archive
+    reason: "Coverage with contexts - move to docs/evidence/coverage/"
+
+# =============================================================================
+# CATEGORY 4: ORPHANED ANALYSIS/REPORT JSON FILES
+# Recommendation: ARCHIVE - Historical analysis data
+# =============================================================================
+analysis_json_files:
+  - path: "copilot-report-test.json"
+    size_bytes: 76694
+    last_modified: "2025-12-25T01:20:38"
+    action: archive
+    reason: "Copilot report test - move to docs/evidence/"
+
+  - path: "DEVSECOPS-MATURITY-GAP-ANALYSIS-REPORT.json"
+    size_bytes: 22543
+    last_modified: "2025-12-15T11:43:26"
+    action: archive
+    reason: "DevSecOps maturity analysis - move to docs/evidence/"
+
+  - path: "P0-005-EVIDENCE-BUNDLE.json"
+    size_bytes: 649
+    last_modified: "2025-12-15T11:43:26"
+    action: archive
+    reason: "P0-005 evidence bundle - move to docs/evidence/"
+
+  - path: "P0-BRANCH-COVERAGE-QUICK-WINS-REPORT.json"
+    size_bytes: 8908
+    last_modified: "2025-12-15T11:43:26"
+    action: archive
+    reason: "Quick wins report - move to docs/evidence/"
+
+  - path: "P1-001-MCP-PARITY-MIGRATION-RESEARCH-REPORT.json"
+    size_bytes: 16511
+    last_modified: "2025-12-15T11:43:26"
+    action: archive
+    reason: "MCP parity research report - move to docs/evidence/"
+
+  - path: "taskman_v2_schema_inspection.json"
+    size_bytes: 80011
+    last_modified: "2025-12-05T18:12:59"
+    action: archive
+    reason: "TaskMan schema inspection - move to docs/evidence/database/"
+
+  - path: "recommended_claude_desktop_config.json"
+    size_bytes: 465
+    last_modified: "2025-12-25T12:06:07"
+    action: keep
+    reason: "Active configuration reference - useful for setup"
+
+# =============================================================================
+# CATEGORY 5: FILES TO KEEP (Essential project files)
+# Recommendation: KEEP - Required for project functionality
+# =============================================================================
+essential_files:
+  - path: ".markdownlint.json"
+    size_bytes: 1320
+    last_modified: "2025-12-25T20:40:19"
+    action: keep
+    reason: "Markdown linting configuration"
+
+  - path: ".mcp.json"
+    size_bytes: 6084
+    last_modified: "2025-12-05T18:12:58"
+    action: keep
+    reason: "MCP server configuration"
+
+  - path: ".report.json"
+    size_bytes: 33840
+    last_modified: "2025-12-05T18:12:58"
+    action: keep
+    reason: "Report configuration"
+
+  - path: "package.json"
+    size_bytes: 1746
+    last_modified: "2025-12-24T11:30:49"
+    action: keep
+    reason: "NPM package configuration"
+
+  - path: "package-lock.json"
+    size_bytes: 389522
+    last_modified: "2025-12-24T11:29:14"
+    action: keep
+    reason: "NPM lock file"
+
+  - path: "requirements.txt"
+    size_bytes: 1247
+    last_modified: "2025-12-05T18:12:59"
+    action: keep
+    reason: "Python dependencies"
+
+  - path: "requirements-dev.txt"
+    size_bytes: 420
+    last_modified: "2025-12-05T18:12:59"
+    action: keep
+    reason: "Python dev dependencies"
+
+  - path: "requirements-cf-testing.txt"
+    size_bytes: 989
+    last_modified: "2025-11-21T14:35:20"
+    action: keep
+    reason: "CF testing dependencies"
+
+  - path: "requirements-docker.txt"
+    size_bytes: 793
+    last_modified: "2025-11-21T14:35:20"
+    action: keep
+    reason: "Docker dependencies"
+
+  - path: "requirements-extra.txt"
+    size_bytes: 221
+    last_modified: "2025-11-21T14:35:20"
+    action: keep
+    reason: "Extra dependencies"
+
+  - path: "requirements-testing-enhanced.txt"
+    size_bytes: 1890
+    last_modified: "2025-11-21T14:35:20"
+    action: keep
+    reason: "Enhanced testing dependencies"
+
+  - path: "tsconfig.json"
+    size_bytes: 552
+    last_modified: "2025-11-21T14:35:21"
+    action: keep
+    reason: "TypeScript configuration"
+
+# =============================================================================
+# CLEANUP SCRIPT (PowerShell - for human execution)
+# =============================================================================
+cleanup_commands:
+  description: |
+    The following PowerShell commands can be used to clean up stale artifacts.
+    IMPORTANT: Review this manifest before executing. Execute only after human approval.
+
+  archive_coverage_files: |
+    # Create archive directory
+    New-Item -ItemType Directory -Force -Path "docs/evidence/coverage/archive-20251226"
+    
+    # Move coverage JSON files
+    Get-ChildItem -Path "." -Filter "coverage-*.json" | 
+      Move-Item -Destination "docs/evidence/coverage/archive-20251226/"
+
+  archive_analysis_files: |
+    # Move analysis/report JSON files
+    $files = @(
+      "copilot-report-test.json",
+      "DEVSECOPS-MATURITY-GAP-ANALYSIS-REPORT.json",
+      "P0-005-EVIDENCE-BUNDLE.json",
+      "P0-BRANCH-COVERAGE-QUICK-WINS-REPORT.json",
+      "P1-001-MCP-PARITY-MIGRATION-RESEARCH-REPORT.json",
+      "taskman_v2_schema_inspection.json"
+    )
+    $files | ForEach-Object { 
+      if (Test-Path $_) { Move-Item $_ "docs/evidence/" }
+    }
+
+  delete_debug_files: |
+    # Delete debug txt files (after verification)
+    $debugPatterns = @(
+      "build_log.txt", "build_test.txt", "cf_test.txt", "cf_version*.txt",
+      "collection.txt", "create_out*.txt", "db_check*.txt", "debug_output.txt",
+      "docker_*.txt", "filter_status.txt", "fixtures.txt", "health_*.txt",
+      "list_*.txt", "output_check.txt", "pip_install.txt", "project_*.txt",
+      "psycopg2_check.txt", "pytest_*.txt", "scan_*.txt", "schema_dump.txt",
+      "search_*.txt", "spiral*.txt", "sprint_test.txt", "task_list_test.txt",
+      "test_output.txt", "uv_*.txt", "version.txt", "warning_check.txt"
+    )
+    $debugPatterns | ForEach-Object {
+      Get-ChildItem -Path "." -Filter $_ | Remove-Item -WhatIf
+    }
+
+  delete_log_files: |
+    # Delete temporary log files
+    $logFiles = @(
+      "e2e_playwright_test.log", "init_schema.log", 
+      "migration_docker_retry.log", "migration_docker_run.log",
+      "migration_run.log", "test_results.log"
+    )
+    $logFiles | ForEach-Object {
+      if (Test-Path $_) { Remove-Item $_ -WhatIf }
+    }
+
+# =============================================================================
+# SUMMARY STATISTICS
+# =============================================================================
+summary:
+  total_files: 95
+  by_action:
+    delete: 54
+    archive: 22
+    keep: 19
+  by_category:
+    debug_txt: 54
+    log_files: 9
+    coverage_json: 18
+    analysis_json: 7
+    essential: 12
+  total_size_bytes_deletable: 243542  # ~238 KB
+  total_size_bytes_archivable: 11071162  # ~10.6 MB
+  disk_recovery_potential: "~10.8 MB"

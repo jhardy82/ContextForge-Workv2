@@ -1,0 +1,7 @@
+﻿"Path","ModuleVersion","RootModule","RequiredModules"
+"C:\Users\james.e.hardy\OneDrive - Avanade\PowerShell Projects\build\PSSA.Settings.psd1",,,
+"C:\Users\james.e.hardy\OneDrive - Avanade\PowerShell Projects\config\environments\dev.psd1",,,
+"C:\Users\james.e.hardy\OneDrive - Avanade\PowerShell Projects\src\core\Core.psd1","1.0.0","Core.psm1",
+"C:\Users\james.e.hardy\OneDrive - Avanade\PowerShell Projects\src\modules\ContextForge.AAR\ContextForge.AAR.psd1","1.0.0","ContextForge.AAR.psm1",
+"C:\Users\james.e.hardy\OneDrive - Avanade\PowerShell Projects\src\TaskDatabase\TaskManagement.psd1","1.0.0","TaskManagement.psm1",
+"C:\Users\james.e.hardy\OneDrive - Avanade\PowerShell Projects\tests\TaskDb.pester.psd1",,,

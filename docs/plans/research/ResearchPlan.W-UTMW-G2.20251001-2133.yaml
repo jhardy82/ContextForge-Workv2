@@ -1,0 +1,196 @@
+$schema: https://contextforge/schemas/research-plan-v1
+workId: W-UTMW-G2
+planId: RP-UTMW-G2-20251001-2133
+timestamp: 2025-10-01T21:33:00Z
+sessionLogRef: QSE-20251001-2100-001
+contextRef:
+  id: cf_cli_context_20251001
+  version: 1.0.0
+  hash: a1b2c3d4e5f6
+
+# UTMW Group 2: Research & SME Study Plan
+# Phase 2 - Advanced Research for Plan & Design Foundation
+
+research_objectives:
+  primary_goals:
+    workflow_orchestration: "Research cutting-edge patterns for complex multi-phase workflows"
+    terminal_output_excellence: "Deep dive into Rich library best practices and terminal standards"
+    mcp_server_integration: "Advanced patterns for MCP server orchestration and coordination"
+    constitutional_framework_evolution: "Next-generation COF+UCL applications and enhancements"
+    qse_methodology_advancement: "Research emerging QSE patterns and quantum sync techniques"
+
+  success_criteria:
+    - "≥15 high-trust sources identified and evaluated"
+    - "≥3 quantified options per research domain"
+    - "Complete trust assessment for all sources"
+    - "Research foundation supporting robust OptionsMatrix"
+    - "SME-level knowledge depth achieved (≥0.95 confidence)"## Research Categories & Source Requirements
+
+### Category 1: Advanced Workflow Orchestration (≥3 sources)
+**Focus**: Multi-phase workflows, orchestration patterns, state management
+- **MCP Tools**: Context7 library research, workflow orchestration docs
+- **VS Code Extensions**: Workflow management extensions, task orchestration
+- **Python Plugins**: Advanced orchestration libraries (Prefect, Airflow patterns)
+- **Documentation**: Workflow design patterns, orchestration best practices
+- **Target Knowledge**: Advanced state transitions, error recovery, parallel execution
+
+### Category 2: Terminal Output Standards & Rich Library (≥3 sources)
+**Focus**: ContextForge Terminal Output Standard implementation and enhancement
+- **MCP Tools**: Rich library documentation via Context7
+- **Python Plugins**: Rich library advanced features, terminal enhancement patterns
+- **Documentation**: Terminal output best practices, accessibility standards
+- **Implementation Examples**: Rich progress bars, multi-phase displays, professional styling
+- **Target Knowledge**: Advanced Rich components, performance optimization, accessibility
+
+### Category 3: MCP Server Coordination & Integration (≥3 sources)
+**Focus**: Advanced MCP server patterns, multi-server orchestration
+- **MCP Tools**: MCP server documentation, integration patterns
+- **VS Code Extensions**: MCP client patterns, server management
+- **Documentation**: MCP protocol specifications, coordination patterns
+- **Implementation Examples**: Multi-server workflows, error handling, performance
+- **Target Knowledge**: Server orchestration, protocol optimization, reliability patterns
+
+### Category 4: Constitutional Framework Enhancement (≥3 sources)
+**Focus**: Advanced COF+UCL applications, framework evolution
+- **Documentation**: Constitutional framework theory, advanced applications
+- **Implementation Examples**: Multi-dimensional analysis, UCL automation
+- **Research Sources**: Framework enhancement patterns, governance automation
+- **Target Knowledge**: Next-generation constitutional applications, automated compliance
+
+### Category 5: QSE Methodology & Quantum Sync (≥3 sources)
+**Focus**: Advanced QSE patterns, quantum sync optimization
+- **Documentation**: QSE methodology advancement, quantum sync patterns
+- **Implementation Examples**: Advanced QSE workflows, optimization techniques
+- **Research Sources**: Quantum sync theory, methodology enhancement
+- **Target Knowledge**: Next-generation QSE patterns, optimization strategies
+
+## Research Methodology
+
+### Phase 2.1: Source Discovery & Initial Assessment (30 minutes)
+1. **MCP Tool Research**: Use Context7 for authoritative documentation
+2. **Workspace Scanning**: Review existing .github/instructions and QSE artifacts
+3. **VS Code Extension Research**: Identify relevant workflow and terminal extensions
+4. **Python Plugin Research**: Advanced orchestration and terminal libraries
+5. **Initial Source Trust Assessment**: Evaluate source credibility and relevance
+
+### Phase 2.2: Deep Dive Research & Knowledge Building (45 minutes)
+1. **Comprehensive Source Analysis**: Deep research per category
+2. **Knowledge Synthesis**: Build comprehensive understanding per domain
+3. **Options Identification**: Identify ≥3 quantified options per category
+4. **Trust Assessment**: Complete source trust evaluation
+5. **Knowledge Validation**: Ensure SME-level depth achieved
+
+### Phase 2.3: Research Consolidation & Index Updates (15 minutes)
+1. **Research.Index Updates**: Add all new sources with trust ratings
+2. **Knowledge Depth Documentation**: Record SME progression metrics
+3. **Source Trust Baseline Updates**: Update persistent trust assessments
+4. **Evidence Correlation**: Link all research to session log and todo tasks
+5. **Preparation for OptionsMatrix**: Organize research for next phase
+
+## Source Trust Criteria
+
+### High Trust (8.0-10.0)
+- Official documentation from authoritative sources
+- Peer-reviewed technical documentation
+- Established best practice repositories
+- Verified implementation examples with evidence
+
+### Medium Trust (6.0-7.9)
+- Community-driven documentation with validation
+- Implementation examples with partial verification
+- Technical blogs from recognized experts
+- Well-maintained open source examples
+
+### Low Trust (4.0-5.9)
+- Unverified community content
+- Personal blogs without validation
+- Experimental implementations
+- Outdated or inconsistent sources
+
+### Exclude (<4.0)
+- Clearly outdated or deprecated information
+- Unverified claims without evidence
+- Contradictory or inconsistent sources
+- Sources with known reliability issues
+
+## Research Tools & Resources
+
+### Primary Research Tools (MCP-first per UTMW-Group2)
+1. **Context7**: Library documentation and implementation patterns
+2. **Microsoft Docs MCP**: Official documentation and best practices
+3. **GitHub Repo MCP**: Source code analysis and implementation examples
+4. **Database MCP**: Research data storage and organization
+5. **Fetch Webpage**: Direct source research when MCP unavailable
+
+### Workspace Resources
+- `.github/instructions/`: Established patterns and requirements
+- `.QSE/v1/`: Existing QSE methodology and artifacts
+- `python/`: Implementation examples and patterns
+- `docs/`: Documentation standards and examples
+- Previous Group 1 artifacts for context continuity
+
+### Documentation Standards
+- All sources must include URL, access date, trust rating
+- Implementation examples must include working code references
+- Research findings must link to evidence bundles
+- Knowledge progression must be measurable and documented
+
+## Evidence & Correlation Requirements
+
+### Research Evidence Bundle
+- **Source Documentation**: Complete source inventory with trust ratings
+- **Knowledge Progression**: SME confidence metrics and progression tracking
+- **Implementation Examples**: Verified code examples and patterns
+- **Options Analysis**: Quantified options with evaluation criteria
+- **Correlation IDs**: Link to session log and todo task progress
+
+### Session Log Integration
+- Research start/progress/completion events
+- Source evaluation and trust assessment events
+- Knowledge depth progression tracking
+- Options identification and evaluation events
+- Evidence bundle correlation and hash verification
+
+## Success Gates & Validation
+
+### Research Completion Gates
+1. **Source Quantity**: ≥15 high-quality sources identified and evaluated
+2. **Category Coverage**: ≥3 sources per research category with high trust
+3. **Knowledge Depth**: SME confidence ≥0.95 across all research domains
+4. **Options Identification**: ≥3 quantified options identified per category
+5. **Evidence Integrity**: Complete evidence bundle with correlation tracking
+
+### Quality Validation
+- All sources evaluated for trust and relevance
+- Research findings support robust OptionsMatrix creation
+- Knowledge depth sufficient for expert-level design decisions
+- Evidence bundle complete with verifiable correlation
+- Research.Index updated with all new sources and assessments
+
+## Next Phase Preparation
+
+### OptionsMatrix Foundation
+- Research provides ≥3 quantified options per domain
+- Options include evaluation criteria and trade-off analysis
+- Implementation feasibility assessed for each option
+- Cost/benefit analysis framework established
+
+### SourceTrustReport Preparation
+- Complete trust assessment for all sources
+- Trust rating methodology documented and applied
+- Source reliability patterns identified
+- Baseline updates prepared for SourceTrust.Baseline
+
+### ExecutionPlan Prerequisites
+- Research provides technical foundation for execution planning
+- Implementation patterns and best practices identified
+- Risk assessment framework established from research
+- Rollback feasibility patterns documented
+
+---
+
+status:
+  research_plan_status: "INITIATED"
+  next_action: "Begin Phase 2.1 - Source Discovery & Initial Assessment"
+  success_metric: "SME confidence ≥0.95 across all research domains"
+  evidence_bundle: "Research findings correlated to session QSE-20251001-2100-001"

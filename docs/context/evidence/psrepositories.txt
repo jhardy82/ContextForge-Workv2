@@ -1,0 +1,7 @@
+﻿
+Name      InstallationPolicy SourceLocation                          
+----      ------------------ --------------                          
+PSGallery Trusted            https://www.powershellgallery.com/api/v2
+
+
+

@@ -1,0 +1,316 @@
+---
+$schema: https://contextforge/schemas/consolidation-plan-v1
+workId: W-WORKSPACE-MESS-INVESTIGATION-001
+timestamp: 2025-09-30T12:30:00Z
+contextRef:
+  id: CF-CLI-TERMINAL-OUTPUT-STANDARD-20250929
+  version: 2.1.0
+  hash: 6AE9DE5828FE8A1E5EE9DB3859D554C9228C284A5166C6CB970ADE158420B45C
+
+title: "Workspace Tracking Systems Consolidation Roadmap"
+plan_type: "SACRED_GEOMETRY_GUIDED_CONSOLIDATION"
+
+# ==========================================
+# CONSOLIDATION PHILOSOPHY
+# ==========================================
+
+consolidation_principles:
+  sacred_geometry_guided: "Follow Triangle → Circle → Spiral → Fractal → Pentagon progression"
+  preserve_wisdom: "Archive historical artifacts; don't destroy evolutionary evidence"
+  honor_authority_triangle: "CF_CLI ↔ CSV ↔ MCP as stability foundation"
+  maintain_continuity: "No disruption to active workflows during consolidation"
+  evidence_first: "Complete evidence capture before any destructive operations"
+
+# ==========================================
+# PHASE 1: TRIANGLE - FOUNDATION STABILITY
+# ==========================================
+
+phase_1_foundation:
+  objectives:
+    - "Establish single source of truth hierarchy"
+    - "Enable MCP Todos integration"
+    - "Create authority resolution protocol"
+
+  tasks:
+    enable_mcp_todos:
+      priority: "CRITICAL"
+      description: "Enable MCP todos tool to access the integration vertex of authority triangle"
+      prerequisites: []
+      deliverables:
+        - "MCP todos tool functional"
+        - "Current MCP todo state documented"
+      estimated_effort: "0.5 hours"
+
+    verify_vs_code_task_manager:
+      priority: "HIGH"
+      description: "Verify VS Code Task Manager extension status and service availability"
+      prerequisites: []
+      deliverables:
+        - "Extension status report"
+        - "Service availability confirmation (localhost:5173)"
+        - "API connectivity test"
+      estimated_effort: "1 hour"
+
+    create_authority_resolution_protocol:
+      priority: "HIGH"
+      description: "Implement sync protocol for the authority triangle"
+      prerequisites: ["enable_mcp_todos", "verify_vs_code_task_manager"]
+      deliverables:
+        - "SyncReport.W-WORKSPACE-MESS-001.20250930.yaml"
+        - "Authority precedence enforcement script"
+        - "Conflict resolution procedures"
+      estimated_effort: "2 hours"
+
+# ==========================================
+# PHASE 2: CIRCLE - INTEGRATION CYCLES
+# ==========================================
+
+phase_2_integration:
+  objectives:
+    - "Complete pending CSV migrations"
+    - "Harmonize active task datasets"
+    - "Establish unified task lifecycle"
+
+  tasks:
+    complete_csv_migration:
+      priority: "HIGH"
+      description: "Complete all pending migrations identified in cf_cli status"
+      prerequisites: ["phase_1_foundation"]
+      pending_migrations:
+        - "projects_clean.csv"
+        - "sprints_clean.csv"
+        - "tasks_clean.csv"
+        - "task_acceptance.csv"
+        - "task_actions.csv"
+        - "task_definition_of_done.csv"
+        - "task_labels.csv"
+        - "task_quality_gates.csv"
+        - "task_risks.csv"
+        - "task_verification_mpv_plan.csv"
+      deliverables:
+        - "All pending migrations completed"
+        - "Migration completion report"
+        - "Data integrity validation"
+      estimated_effort: "3 hours"
+
+    harmonize_task_datasets:
+      priority: "MEDIUM"
+      description: "Reconcile the 126 CSV tasks with 50 DTM tasks"
+      prerequisites: ["complete_csv_migration"]
+      approach:
+        - "Map CSV unified logging tasks to DTM equivalents where possible"
+        - "Identify gaps and overlaps"
+        - "Create reconciliation report"
+        - "Establish task ID mapping table"
+      deliverables:
+        - "Task reconciliation matrix"
+        - "Gap analysis report"
+        - "Harmonized task dataset"
+      estimated_effort: "4 hours"
+
+    implement_sacred_geometry_consistency:
+      priority: "MEDIUM"
+      description: "Apply sacred geometry patterns to all tasks consistently"
+      prerequisites: ["harmonize_task_datasets"]
+      approach:
+        - "Analyze current DTM tasks for geometry assignment"
+        - "Apply natural progression patterns discovered in CSV analysis"
+        - "Maintain Triangle(foundation) → Pentagon(completion) evolution"
+      deliverables:
+        - "Sacred geometry assignment rules"
+        - "All tasks assigned appropriate geometry"
+        - "Geometry progression validation"
+      estimated_effort: "2 hours"
+
+# ==========================================
+# PHASE 3: SPIRAL - ITERATIVE ENHANCEMENT
+# ==========================================
+
+phase_3_enhancement:
+  objectives:
+    - "Archive historical layers appropriately"
+    - "Optimize active tracking performance"
+    - "Establish continuous improvement cycles"
+
+  tasks:
+    archive_historical_artifacts:
+      priority: "MEDIUM"
+      description: "Preserve historical artifacts with proper categorization"
+      classification_strategy:
+        keep_active:
+          - "Current DTM tasks (50+)"
+          - "Active GitHub TODOs (domain-specific)"
+          - "Recent QSE session logs (last 30 days)"
+          - "Sacred geometry linkage files"
+
+        archive_historical:
+          - "Legacy JSON project files → trackers/archive/json_era/"
+          - "Completed CSV tasks → trackers/archive/csv_completed/"
+          - "Old QSE session logs (90+ days) → qse/archive/"
+          - "Template/prototype tasks → trackers/archive/templates/"
+
+        analyze_and_archive:
+          - "124 QSE session logs → analysis report + selective archival"
+          - "80+ individual task files → consolidation assessment"
+      deliverables:
+        - "Archive taxonomy structure"
+        - "Historical artifacts safely archived"
+        - "Archive inventory manifest"
+      estimated_effort: "6 hours"
+
+    optimize_tracking_performance:
+      priority: "LOW"
+      description: "Streamline active tracking systems for performance"
+      optimizations:
+        - "Database index optimization for frequent queries"
+        - "Cleanup redundant tracker files"
+        - "Implement automated sync procedures"
+        - "Performance monitoring for DTM operations"
+      deliverables:
+        - "Performance optimization report"
+        - "Automated sync implementation"
+        - "Monitoring dashboard"
+      estimated_effort: "4 hours"
+
+# ==========================================
+# PHASE 4: FRACTAL - PATTERN REPLICATION
+# ==========================================
+
+phase_4_scaling:
+  objectives:
+    - "Establish reusable consolidation patterns"
+    - "Create maintenance procedures"
+    - "Document lessons learned"
+
+  tasks:
+    create_consolidation_patterns:
+      priority: "LOW"
+      description: "Extract reusable patterns from this consolidation"
+      deliverables:
+        - "Consolidation pattern templates"
+        - "Authority triangle implementation guide"
+        - "Sacred geometry evolution documentation"
+      estimated_effort: "3 hours"
+
+    implement_maintenance_procedures:
+      priority: "MEDIUM"
+      description: "Automated maintenance to prevent future mess accumulation"
+      procedures:
+        - "Weekly authority sync validation"
+        - "Monthly archive cleanup"
+        - "Quarterly sacred geometry pattern assessment"
+        - "Drift detection and early warning"
+      deliverables:
+        - "Automated maintenance scripts"
+        - "Monitoring and alerting setup"
+        - "Maintenance schedule documentation"
+      estimated_effort: "4 hours"
+
+# ==========================================
+# PHASE 5: PENTAGON - HARMONIC COMPLETION
+# ==========================================
+
+phase_5_harmony:
+  objectives:
+    - "Achieve harmonious multi-system operation"
+    - "Complete sacred geometry integration"
+    - "Generate comprehensive AAR"
+
+  tasks:
+    validate_system_harmony:
+      priority: "HIGH"
+      description: "Comprehensive testing of consolidated system"
+      validation_areas:
+        - "Authority triangle operates smoothly"
+        - "No data loss during consolidation"
+        - "Performance meets or exceeds baseline"
+        - "Sacred geometry patterns are preserved and enhanced"
+      deliverables:
+        - "System harmony validation report"
+        - "Performance benchmark comparison"
+        - "User acceptance testing results"
+      estimated_effort: "3 hours"
+
+    generate_consolidation_aar:
+      priority: "HIGH"
+      description: "Complete After Action Review for this consolidation project"
+      aar_components:
+        - "What worked: Successful consolidation strategies"
+        - "What didn't: Challenges and obstacles encountered"
+        - "Lessons learned: Key insights for future consolidations"
+        - "Sacred geometry insights: Patterns discovered and applied"
+        - "Recommendations: Future workspace evolution guidance"
+      deliverables:
+        - "AAR.W-WORKSPACE-MESS-CONSOLIDATION.20250930.yaml"
+        - "Lessons learned documentation"
+        - "Future workspace evolution recommendations"
+      estimated_effort: "2 hours"
+
+# ==========================================
+# RISK MANAGEMENT
+# ==========================================
+
+consolidation_risks:
+  data_loss:
+    probability: "LOW"
+    impact: "HIGH"
+    mitigation: "Complete backup before any destructive operations; evidence capture first"
+
+  workflow_disruption:
+    probability: "MEDIUM"
+    impact: "MEDIUM"
+    mitigation: "Maintain parallel operations during transition; gradual cutover"
+
+  authority_conflicts:
+    probability: "HIGH"
+    impact: "MEDIUM"
+    mitigation: "Clear precedence rules; conflict resolution procedures"
+
+  sacred_geometry_loss:
+    probability: "LOW"
+    impact: "MEDIUM"
+    mitigation: "Preserve geometry metadata; validate patterns post-consolidation"
+
+# ==========================================
+# SUCCESS CRITERIA
+# ==========================================
+
+consolidation_success_metrics:
+  authority_clarity:
+    measure: "Single, clear authority hierarchy operational"
+    target: "100% of queries resolve to single authoritative source"
+
+  data_integrity:
+    measure: "No task data lost during consolidation"
+    target: "100% data preservation with full audit trail"
+
+  performance_improvement:
+    measure: "Tracking operations faster and more reliable"
+    target: "≥20% improvement in query response time"
+
+  sacred_geometry_enhancement:
+    measure: "Consistent sacred geometry application across all tasks"
+    target: "100% of active tasks have appropriate geometry assignment"
+
+  maintenance_reduction:
+    measure: "Reduced manual maintenance overhead"
+    target: "≥50% reduction in manual sync operations"
+
+# ==========================================
+# EXECUTION TIMELINE
+# ==========================================
+
+estimated_timeline:
+  phase_1_foundation: "1 day (4 hours total)"
+  phase_2_integration: "2 days (9 hours total)"
+  phase_3_enhancement: "2.5 days (10 hours total)"
+  phase_4_scaling: "1.5 days (7 hours total)"
+  phase_5_harmony: "1 day (5 hours total)"
+  total_estimated_effort: "8 days (35 hours total)"
+
+execution_approach: "ITERATIVE_WITH_VALIDATION"
+rollback_strategy: "COMPLETE_WORKSPACE_BACKUP_BEFORE_PHASE_1"
+validation_checkpoints: "END_OF_EACH_PHASE"
+
+consolidation_readiness: "READY_TO_BEGIN"
+sacred_geometry_alignment: "TRIANGLE_FOUNDATION_ESTABLISHED"

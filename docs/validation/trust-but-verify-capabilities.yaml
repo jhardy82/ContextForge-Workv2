@@ -1,0 +1,298 @@
+# Trust-but-Verify Configuration for Agent Capabilities
+# ContextForge Universal Methodology - Pentagon Phase (Resonant Harmony)
+# Created: 2025-08-06T15:45:00Z
+
+validation_framework: "trust_but_verify"
+validation_scope: "agent_capabilities"
+agent_version: "v2.0.0"
+copilot_instruction_version: "v3.2.1"
+
+# Core Assumptions to Verify
+assumptions:
+  - name: "PowerShell_5_1_Environment"
+    description: "PowerShell 5.1 is available and functional"
+    test_method: "$PSVersionTable.PSVersion validation"
+    critical: true
+
+  - name: "JSONL_Logging_Capability"
+    description: "JSONL structured logging functions correctly"
+    test_method: "JSON creation and parsing validation"
+    critical: true
+
+  - name: "Error_Handling_Framework"
+    description: "Try/catch error handling works as documented"
+    test_method: "Exception handling pattern testing"
+    critical: true
+
+  - name: "Configuration_Flag_Support"
+    description: "Standard and custom parameters function correctly"
+    test_method: "Parameter binding and environment variable testing"
+    critical: false
+
+  - name: "Sacred_Geometry_Implementation"
+    description: "Shape-based validation framework is implemented"
+    test_method: "Validation file existence and structure checks"
+    critical: true
+
+  - name: "Module_Architecture"
+    description: "Plugin and extension model functions as designed"
+    test_method: "Module interface and structure validation"
+    critical: false
+
+  - name: "Security_Capabilities"
+    description: "Credential management and audit features work"
+    test_method: "Security module availability and pattern testing"
+    critical: true
+
+  - name: "Platform_Integration"
+    description: "SCCM, M365, and Azure integration patterns function"
+    test_method: "Integration documentation and pattern validation"
+    critical: false
+
+  - name: "Documentation_Generation"
+    description: "Artifact and documentation generation capabilities"
+    test_method: "File existence and structure validation"
+    critical: true
+
+# Validation Checks by Category
+validation_checks:
+  powershell_environment:
+    - check: "powershell_version"
+      test: "$PSVersionTable.PSVersion.Major -eq 5 -and $PSVersionTable.PSVersion.Minor -ge 1"
+      expected: true
+      description: "PowerShell 5.1+ availability"
+
+    - check: "error_action_preference"
+      test: "Set and verify ErrorActionPreference = 'Stop'"
+      expected: "Stop"
+      description: "Error action preference configuration"
+
+    - check: "transcript_capability"
+      test: "Start-Transcript and Stop-Transcript functionality"
+      expected: "Transcript file created"
+      description: "Logging transcript capability"
+
+    - check: "requires_directive"
+      test: "#Requires -Version 5.1 directive support"
+      expected: "Directive recognized"
+      description: "PowerShell version requirements"
+
+  logging_system:
+    - check: "jsonl_creation"
+      test: "Create JSONL log file with structured data"
+      expected: "File created successfully"
+      description: "JSONL log file generation"
+
+    - check: "json_parsing"
+      test: "Parse JSONL content back to objects"
+      expected: "Valid JSON structure"
+      description: "JSON parsing validation"
+
+    - check: "timestamp_format"
+      test: "ISO 8601 timestamp format validation"
+      expected: "Valid ISO format"
+      description: "Standardized timestamp format"
+
+    - check: "structured_data"
+      test: "Complex data structure logging"
+      expected: "ConvertTo-Json successful"
+      description: "Structured data serialization"
+
+  configuration_flags:
+    - check: "standard_parameters"
+      test: "WhatIf, Verbose, Force, Confirm parameter support"
+      expected: "Parameters recognized"
+      description: "Standard PowerShell parameters"
+
+    - check: "contextforge_parameters"
+      test: "ChaosMode, ErrorRate, SampleDevices, MockMode definitions"
+      expected: "Custom parameters documented"
+      description: "ContextForge-specific parameters"
+
+    - check: "environment_variables"
+      test: "Environment variable set/get operations"
+      expected: "Variables accessible"
+      description: "Environment variable handling"
+
+  validation_framework:
+    - check: "schema_files"
+      test: "Context object schema file existence"
+      expected: "Schema file found"
+      description: "Validation schema availability"
+
+    - check: "geometry_rules"
+      test: "Sacred Geometry validation rules file"
+      expected: "Rules file found"
+      description: "Shape validation implementation"
+
+    - check: "compliance_testing"
+      test: "ContextForge compliance test framework"
+      expected: "Test framework available"
+      description: "Compliance validation capability"
+
+    - check: "trust_but_verify_pattern"
+      test: "Current validation demonstrates pattern"
+      expected: "Pattern implemented"
+      description: "Trust-but-Verify methodology"
+
+  sacred_geometry:
+    - check: "shape_definitions"
+      test: "All six sacred shapes documented"
+      expected: "Triangle, Circle, Spiral, Fractal, Pentagon, Dodecahedron"
+      description: "Complete shape framework"
+
+    - check: "tree_architecture"
+      test: "Sacred Tree layers defined"
+      expected: "Roots, Trunk, Branches, Leaves"
+      description: "Architectural layer structure"
+
+    - check: "validation_mapping"
+      test: "Shape-specific validation requirements"
+      expected: "Each shape has validation criteria"
+      description: "Shape validation requirements"
+
+    - check: "core_mandates"
+      test: "Workspace First, Logs First, Trust-but-Verify"
+      expected: "All mandates documented"
+      description: "Core methodology mandates"
+
+  module_architecture:
+    - check: "plugin_interface"
+      test: "Required module functions defined"
+      expected: "Initialize, Test, Export functions"
+      description: "Plugin interface specification"
+
+    - check: "event_system"
+      test: "Event bus types documented"
+      expected: "BeforeExecution, AfterValidation, OnError, OnCompletion"
+      description: "Event-driven architecture"
+
+    - check: "external_integration"
+      test: "Git submodules and PowerShell Gallery support"
+      expected: "External module integration"
+      description: "Module ecosystem integration"
+
+  security_capabilities:
+    - check: "credential_management"
+      test: "SecretManagement module pattern availability"
+      expected: "Module installable/available"
+      description: "Secure credential handling"
+
+    - check: "environment_security"
+      test: "Secure environment variable handling"
+      expected: "Variables set and cleared securely"
+      description: "Environment variable security"
+
+    - check: "pii_detection"
+      test: "PII detection patterns defined"
+      expected: "Regex patterns for common PII"
+      description: "Data protection patterns"
+
+    - check: "audit_capabilities"
+      test: "JSONL audit trail functionality"
+      expected: "Structured audit logging"
+      description: "Compliance audit trail"
+
+  platform_integration:
+    - check: "sccm_integration"
+      test: "ConfigurationManager cmdlet patterns"
+      expected: "SCCM cmdlets documented"
+      description: "SCCM platform integration"
+
+    - check: "m365_integration"
+      test: "Microsoft Graph integration patterns"
+      expected: "Graph SDK integration documented"
+      description: "Microsoft 365 integration"
+
+    - check: "azure_integration"
+      test: "Azure PowerShell integration"
+      expected: "Azure cmdlet patterns documented"
+      description: "Azure platform integration"
+
+    - check: "rate_limiting"
+      test: "Rate limiting and retry patterns"
+      expected: "Exponential backoff documented"
+      description: "API rate limiting handling"
+
+  error_handling:
+    - check: "basic_try_catch"
+      test: "Basic exception handling functionality"
+      expected: "Exceptions caught and handled"
+      description: "Fundamental error handling"
+
+    - check: "specific_exceptions"
+      test: "Specific exception type handling"
+      expected: "Type-specific catch blocks"
+      description: "Targeted exception handling"
+
+    - check: "error_classification"
+      test: "Error category definitions"
+      expected: "Transient, Configuration, Data, System categories"
+      description: "Error classification system"
+
+    - check: "retry_patterns"
+      test: "Retry logic implementation"
+      expected: "Configurable retry with backoff"
+      description: "Resilient operation patterns"
+
+    - check: "aar_generation"
+      test: "After Action Review triggers and structure"
+      expected: "AAR framework documented"
+      description: "Post-incident analysis"
+
+  documentation_capabilities:
+    - check: "agent_capabilities_doc"
+      test: "Agent-Capabilities.md file existence and structure"
+      expected: "Comprehensive documentation file"
+      description: "Primary capability documentation"
+
+    - check: "communication_handoff"
+      test: "Communication-to-ChatGPT.yaml structure"
+      expected: "YAML handoff file with required fields"
+      description: "Agent communication protocol"
+
+    - check: "markdown_structure"
+      test: "Markdown document formatting and sections"
+      expected: "Proper heading hierarchy and content"
+      description: "Documentation structure validation"
+
+    - check: "code_examples"
+      test: "PowerShell code examples in documentation"
+      expected: "Multiple working code examples"
+      description: "Practical implementation examples"
+
+# Success Criteria
+success_criteria:
+  minimum_pass_rate: 0.85 # 85% of checks must pass
+  critical_checks_pass_rate: 1.0 # 100% of critical checks must pass
+  warning_threshold: 5 # Maximum acceptable warnings
+
+# Expected Outcomes
+expected_outcomes:
+  - "All critical capabilities validated and functional"
+  - "Documentation matches actual implementation"
+  - "Security and compliance features verified"
+  - "Error handling and recovery mechanisms tested"
+  - "Platform integration patterns confirmed"
+  - "Sacred Geometry framework compliance validated"
+
+# Remediation Guidelines
+remediation:
+  - category: "Failed Critical Check"
+    action: "Immediate investigation and correction required"
+    escalation: "Block deployment until resolved"
+
+  - category: "Failed Non-Critical Check"
+    action: "Document as known limitation or enhancement opportunity"
+    escalation: "Include in next iteration planning"
+
+  - category: "Warning Condition"
+    action: "Document for monitoring and future improvement"
+    escalation: "Track in technical debt backlog"
+
+# Validation Execution
+execution:
+  validator_script: "Validate-AgentCapabilities.ps1"
+  output_format: "JSONL logs + structured results"
+  report_generation: "Detailed JSON report on request"
+  continuous_validation: "Run on capability documentation updates"

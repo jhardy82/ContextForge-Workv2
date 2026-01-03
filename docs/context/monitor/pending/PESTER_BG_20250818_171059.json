@@ -1,0 +1,22 @@
+{
+  "status": "Running",
+  "type": "Process",
+  "cwd": "C:\\Users\\james.e.hardy\\OneDrive - Avanade\\PowerShell Projects",
+  "job_id": 0,
+  "created": "2025-08-18T17:10:59.911Z",
+  "pid": 28536,
+  "expected_artifacts": [
+    "build/artifacts/Quality-Summary-PESTER_BG_20250818_171059.json"
+  ],
+  "run_id": "PESTER_BG_20250818_171059",
+  "args": [
+    "-Path",
+    "C:\\Users\\james.e.hardy\\OneDrive - Avanade\\PowerShell Projects",
+    "-EnableCache",
+    "-RunId",
+    "PESTER_BG_20250818_171059",
+    "-NonInteractive"
+  ],
+  "script": "C:\\Users\\james.e.hardy\\OneDrive - Avanade\\PowerShell Projects\\build\\Run-PesterTests.ps1",
+  "owner": "james.e.hardy"
+}

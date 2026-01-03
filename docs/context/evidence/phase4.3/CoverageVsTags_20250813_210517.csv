@@ -1,0 +1,6 @@
+﻿"path","type","expected","has_pester","has_pssa","pre","mid","post","covered","ext"
+"C:\Users\james.e.hardy\OneDrive - Avanade\PowerShell Projects\src\core\Core.psm1","ps","System.Object[]","False","False","False","False","False","False",".psm1"
+"C:\Users\james.e.hardy\OneDrive - Avanade\PowerShell Projects\src\modules\ContextForge.AAR\ContextForge.AAR.psm1","ps","System.Object[]","False","False","False","False","False","False",".psm1"
+"C:\Users\james.e.hardy\OneDrive - Avanade\PowerShell Projects\src\modules\Validation-Framework\Validation-Framework.psm1","ps","System.Object[]","False","False","True","True","True","True",".psm1"
+"C:\Users\james.e.hardy\OneDrive - Avanade\PowerShell Projects\src\TaskDatabase\TaskManagement.psm1","ps","System.Object[]","False","False","False","False","False","False",".psm1"
+"C:\Users\james.e.hardy\OneDrive - Avanade\PowerShell Projects\tests\TestHelpers.psm1","ps","System.Object[]","False","False","False","False","False","False",".psm1"

@@ -1,0 +1,75 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "schema_version": "1.0.0",
+  "title": "OutputManager Recommendations",
+  "type": "object",
+  "required": ["metadata","recommendations"],
+  "properties": {
+    "metadata": {
+      "type": "object",
+      "required": ["project_id","session_id","generated_at","personas","version"],
+      "properties": {
+        "project_id": {"type": "string"},
+        "session_id": {"type": "string"},
+        "generated_at": {"type": "string", "format": "date-time"},
+        "personas": {"type": "array", "items": {"type": "string"}},
+        "version": {"type": "string"},
+        "authoring_agent": {"type": "string"}
+      }
+    },
+    "recommendations": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "required": ["id","title","description","category","rice","moscow","risk_level","mitigation","strategic_alignment","estimated_hours","priority_rank","status"],
+        "properties": {
+          "id": {"type": "string"},
+          "title": {"type": "string"},
+          "description": {"type": "string"},
+          "category": {"type": "string"},
+          "rice": {
+            "type": "object",
+            "required": ["reach","impact","confidence","effort","score"],
+            "properties": {
+              "reach": {"type": "number"},
+              "impact": {"type": "number"},
+              "confidence": {"type": "number"},
+              "effort": {"type": "number"},
+              "score": {"type": "number"}
+            }
+          },
+          "moscow": {"type": "string", "enum": ["Must","Should","Could","Won't"]},
+          "risk_level": {"type": "string", "enum": ["Low","Medium","High","Critical"]},
+          "mitigation": {"type": "string"},
+          "dependencies": {"type": "array", "items": {"type": "string"}},
+          "geometry_alignment": {"type": "array", "items": {"type": "string"}},
+          "cof_dimension_focus": {"type": "array", "items": {"type": "string"}},
+          "ucl_impact": {"type": "string"},
+          "strategic_alignment": {"type": "string"},
+          "estimated_hours": {"type": "number"},
+          "owner_role": {"type": "string"},
+          "priority_rank": {"type": "integer"},
+          "evidence_refs": {"type": "array", "items": {"type": "string"}},
+          "status": {"type": "string", "enum": ["proposed","approved","in_progress","completed","deferred"]}
+        }
+      }
+    },
+    "classification_summary": {
+      "type": "object",
+      "properties": {
+        "must_count": {"type": "integer"},
+        "should_count": {"type": "integer"},
+        "could_count": {"type": "integer"},
+        "wont_count": {"type": "integer"}
+      }
+    },
+    "risk_overview": {
+      "type": "object",
+      "properties": {
+        "high_risk_items": {"type": "integer"},
+        "mitigation_coverage_pct": {"type": "number"}
+      }
+    },
+    "evidence_hash": {"type": "string"}
+  }
+}

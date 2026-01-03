@@ -1,0 +1,107 @@
+sprint_id: HUB-PHASE1-2025-08
+generated: "2025-08-15T00:00:00Z"
+goal: Establish Hub Phase1 foundations (event schema_version, plugin manifest schema, execution skeleton)
+scope:
+  scripts:
+    - scripts/helpers/Write-GovernanceEvent.ps1
+    - scripts/Invoke-GovernanceFullSuite.ps1
+    - scripts/Invoke-HubTask.ps1 (NEW)
+    - scripts/Ensure-DevModules.ps1 (NEW)
+  tests:
+    - tests/Hub.EventSchema.Tests.ps1 (NEW)
+    - tests/Hub.PluginManifestSchema.Tests.ps1 (NEW)
+  tasks:
+    - Hub: Schema Version Injection
+    - Hub: Plugin Manifest Schema
+    - Hub: Invoke-HubTask Skeleton
+    - Hub: Dev Module Bootstrap
+    - Hub: Parity Stabilization
+    - Hub: Warning Exit Code
+    - Hub: Analytics Flag Stub
+    - Hub: Minimal Plugin Loader
+    - Hub: Docs Overview
+items:
+  - id: H1
+    backlog_ref: hub-schema-version
+    title: Event schema_version + host metadata
+    status: todo
+    acceptance:
+      - All new events include schema_version and host.ps_version
+      - Legacy writer path still works
+    tests:
+      - tests/Hub.EventSchema.Tests.ps1
+  - id: H2
+    backlog_ref: hub-plugin-manifest-schema
+    title: Plugin manifest schema + validator
+    status: todo
+    acceptance:
+      - plugin.schema.json exists with $schema, id pattern, version semver
+      - Validate-PluginManifest.ps1 exits nonzero on invalid sample
+    tests:
+      - tests/Hub.PluginManifestSchema.Tests.ps1
+  - id: H3
+    backlog_ref: hub-invoke-hubtask
+    title: Invoke-HubTask skeleton
+    status: todo
+    acceptance:
+      - Supports -Descriptor <file> (YAML/JSON)
+      - Emits task_start/task_exit events with duration_ms
+    tests:
+      - tests/Hub.InvokeHubTask.Tests.ps1 (NEW)
+  - id: H4
+    backlog_ref: hub-ensure-devmodules
+    title: Ensure-DevModules bootstrap
+    status: todo
+    acceptance:
+      - Installs or confirms Pester, PSScriptAnalyzer, SecretManagement, SecretStore
+      - Idempotent rerun (no errors if already present)
+    tests: []
+  - id: H5
+    backlog_ref: hub-parity-stabilize
+    title: Parity event stabilization
+    status: todo
+    acceptance:
+      - governance_parity event emitted on every suite run (success OR fail)
+      - Includes fields: rules_count, anchors_count, inventory_count
+    tests: []
+  - id: H6
+    backlog_ref: hub-warning-exit-code
+    title: TreatWarningsAsError enforcement
+    status: todo
+    acceptance:
+      - -TreatWarningsAsError triggers exit code 2 when compliance warnings exist
+      - Exit code documented in README
+    tests: []
+  - id: H7
+    backlog_ref: hub-analytics-flag
+    title: Analytics flag stub
+    status: todo
+    acceptance:
+      - -RunAnalytics logs analytics_stub event if Python not present
+      - Invokes placeholder Python script when available
+    tests: []
+  - id: H8
+    backlog_ref: hub-plugin-loader-min
+    title: Minimal plugin loader
+    status: todo
+    acceptance:
+      - Scans plugins/ for *.plugin.json
+      - Emits plugin_load event for each valid manifest
+    tests: []
+  - id: H9
+    backlog_ref: hub-docs-overview
+    title: Hub docs overview & architecture
+    status: todo
+    acceptance:
+      - /docs/hub/01-Overview.md and 02-Architecture.md created
+      - Cross-linked from Hub-Project-Plan.md
+    tests: []
+quality_gates:
+  static_analysis: "Quality: PSSA (Incremental)"
+  tests: "Quality: Run Pester (Generic Path)"
+artifacts:
+  - build/artifacts/Hub-Event-Sample.json
+  - build/artifacts/plugin.schema.json
+  - build/artifacts/Invoke-HubTask.log.jsonl
+notes: |
+  Update items with status (todo|in_progress|done), owners, and due dates as work proceeds. Keep backlog_ref aligned with tasks_backlog.csv for traceability.

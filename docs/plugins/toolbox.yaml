@@ -1,0 +1,643 @@
+# Toolbox Catalog (auto-generated)
+# Purpose: Map friendly tool labels to actual callable tools available in this workspace, with source, function, and examples.
+# Notes:
+# - source: functions.* = built-in VS Code agent tools; mcp_* = Model Context Protocol servers
+# - examples show typical parameters; adjust paths/ids for your session.
+# - status: unavailable marks items requested but not present as tools in this workspace.
+
+generatedAt: "2025-09-23T00:00:00Z"
+version: v1
+
+tools:
+  - label: edit
+    aliases: [apply_patch, insert_edit_into_file]
+    source:
+      origin: built-in
+      primary: functions.apply_patch
+      alternates: [functions.insert_edit_into_file]
+    function: Edit text files in the workspace. Use apply_patch for diff-based multi-hunk edits; use insert_edit_into_file for small surgical insertions.
+    examples:
+      - description: Replace code via unified patch
+        call:
+          tool: functions.apply_patch
+          input_preview: |
+            *** Begin Patch
+            *** Update File: C:\\path\\to\\file.py
+            @@
+            -old_line
+            +new_line
+            *** End Patch
+      - description: Insert a method into an existing class (surgical)
+        call:
+          tool: functions.insert_edit_into_file
+          parameters:
+            filePath: C:\\path\\to\\file.py
+            explanation: Add getAge method
+            code: |
+              class Person:
+                # ...existing code...
+                def getAge(self):
+                  return self.age
+
+  - label: runNotebooks
+    aliases: [edit_notebook_file, run_notebook_cell, copilot_getNotebookSummary, configure_notebook]
+    source:
+      origin: built-in
+      tools: [functions.edit_notebook_file, functions.run_notebook_cell, functions.copilot_getNotebookSummary, functions.configure_notebook]
+    function: Create, edit, summarize, configure, and run cells within Jupyter notebooks.
+    examples:
+      - description: Configure kernel before first run
+        call:
+          tool: functions.configure_notebook
+          parameters: { filePath: C:\\repo\\notebooks\\demo.ipynb }
+      - description: Insert a new Python cell at bottom
+        call:
+          tool: functions.edit_notebook_file
+          parameters:
+            filePath: C:\\repo\\notebooks\\demo.ipynb
+            editType: insert
+            cellId: BOTTOM
+            language: python
+            newCode: |
+              import sys
+              print(sys.version)
+      - description: Run the first code cell
+        call:
+          tool: functions.run_notebook_cell
+          parameters:
+            filePath: C:\\repo\\notebooks\\demo.ipynb
+            cellId: "<first-code-cell-id>"
+
+  - label: search
+    aliases: [semantic_search, grep_search, file_search]
+    source:
+      origin: built-in
+      tools: [functions.semantic_search, functions.grep_search, functions.file_search]
+    function: Search the workspace. semantic_search = semantic code/doc retrieval; grep_search = regex in matched files; file_search = glob locate files.
+    examples:
+      - description: Semantic search for logger usage
+        call:
+          tool: functions.semantic_search
+          parameters: { query: "unified logger helper or Write-ULog" }
+      - description: Grep regex within tests folder
+        call:
+          tool: functions.grep_search
+          parameters:
+            includePattern: tests/**
+            isRegexp: true
+            query: "test_.*logging"
+
+  - label: new
+    aliases: [create_new_workspace, create_file]
+    source:
+      origin: built-in
+      tools: [functions.create_new_workspace, functions.create_file]
+    function: Create a new project scaffolding or a single new file.
+    examples:
+      - description: Create a single file
+        call:
+          tool: functions.create_file
+          parameters:
+            filePath: C:\\repo\\docs\\README.md
+            content: "# Project\nQuick start..."
+      - description: Scaffold a new project (framework-aware)
+        call:
+          tool: functions.create_new_workspace
+          parameters: { query: "Initialize a TypeScript Node CLI project with ESLint" }
+
+  - label: runCommands
+    aliases: [run_in_terminal, terminal]
+    source:
+      origin: built-in
+      primary: functions.run_in_terminal
+    function: Run a shell command in a persistent terminal (pwsh on Windows). Use absolute paths; one-line commands only.
+    examples:
+      - description: Run pytest via venv Python
+        call:
+          tool: functions.run_in_terminal
+          parameters:
+            command: "\"C:/repo/.venv/Scripts/python.exe\" -m pytest -q"
+            explanation: "Run tests quietly"
+            isBackground: false
+
+  - label: usages
+    aliases: [list_code_usages]
+    source:
+      origin: built-in
+      primary: functions.list_code_usages
+    function: Find references/definitions/implementations for a symbol across the workspace.
+    examples:
+      - description: List usages of Write-ULog
+        call:
+          tool: functions.list_code_usages
+          parameters: { symbolName: "Write-ULog" }
+
+  - label: vscodeAPI
+    aliases: [get_vscode_api]
+    source:
+      origin: built-in
+      primary: functions.get_vscode_api
+    function: Retrieve authoritative VS Code extension API docs and examples.
+    examples:
+      - description: Look up TreeView API
+        call:
+          tool: functions.get_vscode_api
+          parameters: { query: "TreeDataProvider refresh examples" }
+
+  - label: think
+    aliases: [think]
+    source:
+      origin: built-in
+      primary: functions.think
+    function: Structured planning/brainstorming to improve response quality before changes.
+    examples:
+      - description: Outline refactor plan
+        call:
+          tool: functions.think
+          parameters:
+            thoughts: |
+              Goals: reduce duplication; keep API stable.
+              Steps: identify hotspots, write tests, refactor.
+
+  - label: problems
+    aliases: [get_errors]
+    source:
+      origin: built-in
+      primary: functions.get_errors
+    function: Retrieve compile/lint errors across files or a specific file.
+    examples:
+      - description: Get global errors
+        call:
+          tool: functions.get_errors
+          parameters: {}
+      - description: Check single file
+        call:
+          tool: functions.get_errors
+          parameters: { filePaths: [ C:\\repo\\src\\main.py ] }
+
+  - label: testFailure
+    aliases: [test_failure]
+    source:
+      origin: built-in
+      primary: functions.test_failure
+    function: Include details about the last captured test failure in the prompt (enrich troubleshooting).
+    examples:
+      - description: Pull latest test failure context
+        call:
+          tool: functions.test_failure
+          parameters: {}
+
+  - label: openSimpleBrowser
+    aliases: [open_simple_browser]
+    source:
+      origin: built-in
+      primary: functions.open_simple_browser
+    function: Preview an http/https URL inside VS Code’s Simple Browser.
+    examples:
+      - description: Open local docs site
+        call:
+          tool: functions.open_simple_browser
+          parameters: { url: "http://localhost:3000" }
+
+  - label: fetch
+    aliases: [fetch_webpage]
+    source:
+      origin: built-in
+      primary: functions.fetch_webpage
+    function: Fetch and summarize the main content of one or more web pages.
+    examples:
+      - description: Fetch docs content
+        call:
+          tool: functions.fetch_webpage
+          parameters:
+            query: "API authentication section"
+            urls: [ "https://example.com/docs/auth" ]
+
+  - label: githubRepo
+    aliases: [github_repo]
+    source:
+      origin: built-in
+      primary: functions.github_repo
+    function: Search code snippets in a specific public GitHub repository.
+    examples:
+      - description: Find usage examples in repo
+        call:
+          tool: functions.github_repo
+          parameters:
+            query: "connect database example"
+            repo: "owner/project"
+
+  - label: extensions
+    aliases: [vscode_searchExtensions_internal, install_extension]
+    source:
+      origin: built-in
+      tools: [functions.vscode_searchExtensions_internal, functions.install_extension]
+    function: Discover and (during new workspace setup) install VS Code extensions.
+    examples:
+      - description: Search for Docker extensions
+        call:
+          tool: functions.vscode_searchExtensions_internal
+          parameters: { category: "Other", keywords: ["Docker"] }
+
+  - label: runTests
+    aliases: [runTests]
+    source:
+      origin: built-in
+      primary: functions.runTests
+    function: Run unit tests with optional file/name filters; returns structured results.
+    examples:
+      - description: Run all tests
+        call:
+          tool: functions.runTests
+          parameters: {}
+
+  - label: Todos
+    aliases: [mcp_todos]
+    source:
+      origin: mcp
+      provider: Agent Todos MCP
+      tools: [functions.mcp_todos_todo_read, functions.mcp_todos_todo_write]
+    function: Read/update the authoritative session todo list (Agent Todos MCP store).
+    examples:
+      - description: Read current todos
+        call:
+          tool: functions.mcp_todos_todo_read
+          parameters: {}
+      - description: Replace todo list and mark one in progress
+        call:
+          tool: functions.mcp_todos_todo_write
+          parameters:
+            title: "Sprint — Logging & Tests"
+            todos:
+              - { id: implement-ulog, content: "Implement UnifiedLogger helper", status: in_progress, priority: high }
+              - { id: add-tests, content: "Add unit tests for helper", status: pending, priority: medium }
+
+  - label: Microsoft Docs
+    aliases: [microsoft_docs]
+    source:
+      origin: mcp
+      provider: Microsoft Docs MCP
+      tools: [functions.mcp_microsoft_doc_microsoft_docs_search, functions.mcp_microsoft_doc_microsoft_docs_fetch]
+    function: Search and fetch official Microsoft/Azure documentation (search for breadth, fetch for depth).
+    examples:
+      - description: Search Graph API docs
+        call:
+          tool: functions.mcp_microsoft_doc_microsoft_docs_search
+          parameters: { query: "Microsoft Graph delegated permissions mail.read" }
+      - description: Fetch a specific doc page
+        call:
+          tool: functions.mcp_microsoft_doc_microsoft_docs_fetch
+          parameters: { url: "https://learn.microsoft.com/en-us/graph/permissions-reference" }
+
+  - label: DuckDB
+    aliases: [mcp_duckdb_query]
+    source:
+      origin: mcp
+      provider: DuckDB MCP
+      primary: functions.mcp_duckdb_query
+    function: Execute SQL against the DuckDB database embedded/configured for analytics/metrics.
+    examples:
+      - description: List completed tasks by day
+        call:
+          tool: functions.mcp_duckdb_query
+          parameters: { query: "SELECT date, COUNT(*) FROM tasks GROUP BY 1 ORDER BY 1;" }
+
+  - label: Memory
+    aliases: [mcp_memory]
+    source:
+      origin: mcp
+      provider: Memory MCP
+      tools:
+        - functions.mcp_memory_read_graph
+        - functions.mcp_memory_search_nodes
+        - functions.mcp_memory_open_nodes
+        - functions.mcp_memory_create_entities
+        - functions.mcp_memory_add_observations
+        - functions.mcp_memory_create_relations
+        - functions.mcp_memory_delete_entities
+        - functions.mcp_memory_delete_observations
+        - functions.mcp_memory_delete_relations
+    function: Operate on a knowledge graph of entities/relations/observations (read, search, add, link, delete).
+    examples:
+      - description: Search memory for "UnifiedLogger"
+        call:
+          tool: functions.mcp_memory_search_nodes
+          parameters: { query: "UnifiedLogger" }
+
+  - label: SeqThinking
+    aliases: [mcp_seqthinking]
+    source:
+      origin: mcp
+      provider: SequentialThinking MCP
+      primary: functions.mcp_seqthinking_sequentialthinking
+    function: Guided multi-step reasoning/planning with hypothesis and verification support.
+    examples:
+      - description: Start a short 3-thought plan
+        call:
+          tool: functions.mcp_seqthinking_sequentialthinking
+          parameters:
+            thought: "Define success criteria for logging refactor"
+            thoughtNumber: 1
+            totalThoughts: 3
+            nextThoughtNeeded: true
+
+  - label: context7
+    aliases: [mcp_context7]
+    source:
+      origin: mcp
+      provider: Context7 MCP
+      tools: [functions.mcp_context7_resolve-library-id, functions.mcp_context7_get-library-docs]
+    function: Resolve library IDs and fetch up-to-date docs/snippets from Context7 (always resolve first unless ID provided as /org/project).
+    examples:
+      - description: Resolve and fetch pytest docs
+        call:
+          tool: functions.mcp_context7_resolve-library-id
+          parameters: { libraryName: "pytest" }
+      - description: Get focused docs content
+        call:
+          tool: functions.mcp_context7_get-library-docs
+          parameters: { context7CompatibleLibraryID: "/pytest-dev/pytest", topic: "fixtures" }
+
+  - label: pylance mcp server
+    status: unavailable
+    function: Requested tool name not found in current tooling. Consider installing/configuring a Pylance MCP server if needed.
+
+  - label: copilotCodingAgent
+    status: unavailable
+    function: Not exposed as a callable tool in this workspace; functionality is provided by the current assistant.
+
+  - label: activePullRequest
+    status: unavailable
+    function: No PR management tool exposed here.
+
+  - label: openPullRequest
+    status: unavailable
+    function: No PR creation tool exposed here.
+
+  - label: mssql_show_schema
+    source:
+      origin: extension
+      provider: SQL Server (mssql) Extension (VS Code)
+      primary: functions.mssql_show_schema
+    function: Visualize MSSQL database schema relationships (graphical view).
+    examples:
+      - description: Show schema for an existing connection
+        call:
+          tool: functions.mssql_show_schema
+          parameters: { connectionId: "<mssql-connection-id>" }
+
+  - label: mssql_connect
+    source:
+      origin: extension
+      provider: SQL Server (mssql) Extension (VS Code)
+      primary: functions.mssql_connect
+    function: Connect to a Microsoft SQL Server instance (optionally specify database).
+    examples:
+      - description: List servers then connect
+        call:
+          tool: functions.mssql_list_servers
+          parameters: {}
+      - description: Connect to server
+        call:
+          tool: functions.mssql_connect
+          parameters: { serverName: "MY-SQLSERVER" }
+
+  - label: mssql_disconnect
+    source:
+      origin: extension
+      provider: SQL Server (mssql) Extension (VS Code)
+      primary: functions.mssql_disconnect
+    function: Disconnect a current MSSQL connection by id.
+
+  - label: mssql_list_servers
+    source:
+      origin: extension
+      provider: SQL Server (mssql) Extension (VS Code)
+      primary: functions.mssql_list_servers
+    function: List available MSSQL servers configured for this environment.
+
+  - label: mssql_list_databases
+    source:
+      origin: extension
+      provider: SQL Server (mssql) Extension (VS Code)
+      primary: functions.mssql_list_databases
+    function: List databases for a connected MSSQL server.
+
+  - label: mssql_get_connection_details
+    source:
+      origin: extension
+      provider: SQL Server (mssql) Extension (VS Code)
+      primary: functions.mssql_get_connection_details
+    function: Inspect connection parameters for a connection id.
+
+  - label: mssql_change_database
+    source:
+      origin: extension
+      provider: SQL Server (mssql) Extension (VS Code)
+      primary: functions.mssql_change_database
+    function: Switch databases on an existing MSSQL connection.
+
+  - label: mssql_list_tables
+    source:
+      origin: extension
+      provider: SQL Server (mssql) Extension (VS Code)
+      primary: functions.mssql_list_tables
+    function: List tables for the connected MSSQL database.
+
+  - label: mssql_list_schemas
+    source:
+      origin: extension
+      provider: SQL Server (mssql) Extension (VS Code)
+      primary: functions.mssql_list_schemas
+    function: List schemas for the connected MSSQL database.
+
+  - label: mssql_list_views
+    source:
+      origin: extension
+      provider: SQL Server (mssql) Extension (VS Code)
+      primary: functions.mssql_list_views
+    function: List views for the connected MSSQL database.
+
+  - label: mssql_list_functions
+    source:
+      origin: extension
+      provider: SQL Server (mssql) Extension (VS Code)
+      primary: functions.mssql_list_functions
+    function: List functions for the connected MSSQL database.
+
+  - label: mssql_run_query
+    source:
+      origin: extension
+      provider: SQL Server (mssql) Extension (VS Code)
+      primary: functions.mssql_run_query
+    function: Execute a SQL query against MSSQL. Be careful with writes (INSERT/UPDATE/DELETE/DDL).
+
+  - label: pgsql_listServers
+    aliases: [pgsql_list_servers]
+    source:
+      origin: extension
+      provider: PostgreSQL Extension (VS Code)
+      primary: functions.pgsql_list_servers
+    function: List PostgreSQL servers configured with the extension.
+
+  - label: pgsql_connect
+    source:
+      origin: extension
+      provider: PostgreSQL Extension (VS Code)
+      primary: functions.pgsql_connect
+    function: Connect to a PostgreSQL server (and optional database).
+
+  - label: pgsql_disconnect
+    source:
+      origin: extension
+      provider: PostgreSQL Extension (VS Code)
+      primary: functions.pgsql_disconnect
+    function: Disconnect a PostgreSQL connection.
+
+  - label: pgsql_open_script
+    source:
+      origin: extension
+      provider: PostgreSQL Extension (VS Code)
+      primary: functions.pgsql_open_script
+    function: Open a multi-statement SQL script editor connected to a PostgreSQL connection.
+
+  - label: pgsql_visualizeSchema
+    aliases: [pgsql_visualize_schema]
+    source:
+      origin: extension
+      provider: PostgreSQL Extension (VS Code)
+      primary: functions.pgsql_visualize_schema
+    function: Open an interactive schema visualization for a PostgreSQL connection.
+
+  - label: pgsql_query
+    source:
+      origin: extension
+      provider: PostgreSQL Extension (VS Code)
+      primary: functions.pgsql_query
+    function: Run a single read-only SQL query (SELECT/SHOW/EXPLAIN) against PostgreSQL with validation queries.
+
+  - label: pgsql_modifyDatabase
+    aliases: [pgsql_modify]
+    source:
+      origin: extension
+      provider: PostgreSQL Extension (VS Code)
+      primary: functions.pgsql_modify
+    function: Execute a single DDL/DML modification statement against PostgreSQL (with explicit description/name).
+
+  - label: database
+    aliases: [mcp_database]
+    source:
+      origin: mcp
+      provider: Database MCP
+      tools:
+        - functions.mcp_database-mcp_list_connections
+        - functions.mcp_database-mcp_list_databases
+        - functions.mcp_database-mcp_execute_query
+        - functions.mcp_database-mcp_retry_failed_connections
+    function: Generic database MCP suite (connection listing, DB listing, safe query execution, retry failed connections).
+
+  - label: pgsql_listDatabases
+    aliases: [pgsql_list_databases]
+    source:
+      origin: extension
+      provider: PostgreSQL Extension (VS Code)
+      primary: functions.pgsql_list_databases
+    function: List databases available on the connected PostgreSQL server.
+
+  - label: pgsql_describeCsv
+    aliases: [pgsql_describe_csv]
+    source:
+      origin: extension
+      provider: PostgreSQL Extension (VS Code)
+      primary: functions.pgsql_describe_csv
+    function: Generate a Frictionless YAML descriptor for a CSV file (schema inference).
+
+  - label: pgsql_bulkLoadCsv
+    aliases: [pgsql_bulk_load_csv]
+    source:
+      origin: extension
+      provider: PostgreSQL Extension (VS Code)
+      primary: functions.pgsql_bulk_load_csv
+    function: Bulk-load a CSV file into an existing PostgreSQL table (insert/truncate_insert/upsert modes).
+
+  - label: getPythonEnvironmentInfo
+    aliases: [get_python_environment_details]
+    source:
+      origin: built-in
+      primary: functions.get_python_environment_details
+    function: Retrieve details of the configured Python environment (venv/conda, version, installed packages).
+
+  - label: getPythonExecutableCommand
+    aliases: [get_python_executable_details]
+    source:
+      origin: built-in
+      primary: functions.get_python_executable_details
+    function: Get the fully-qualified command needed to run Python for this workspace (prefer over calling `python`).
+
+  - label: installPythonPackage
+    aliases: [install_python_packages]
+    source:
+      origin: built-in
+      primary: functions.install_python_packages
+    function: Install one or more Python packages into the configured environment.
+
+  - label: configurePythonEnvironment
+    aliases: [configure_python_environment]
+    source:
+      origin: built-in
+      primary: functions.configure_python_environment
+    function: Configure and/or select the Python environment for this workspace.
+
+  - label: configureNotebook
+    aliases: [configure_notebook]
+    source:
+      origin: built-in
+      primary: functions.configure_notebook
+    function: Configure the notebook kernel and environment prior to running cells.
+
+  - label: listNotebookPackages
+    aliases: [notebook_list_packages]
+    source:
+      origin: built-in
+      primary: functions.notebook_list_packages
+    function: List installed packages in the active notebook kernel.
+
+  - label: installNotebookPackages
+    aliases: [notebook_install_packages]
+    source:
+      origin: built-in
+      primary: functions.notebook_install_packages
+    function: Install packages into the active notebook kernel environment.
+
+  - label: aitk_get_ai_model_guidance
+    source:
+      origin: extension
+      provider: AI Toolkit (VS Code)
+      primary: functions.aitk-get_ai_model_guidance
+    function: Get best-practice guidance for model selection and implementation patterns.
+
+  - label: aitk_get_tracing_code_gen_best_practices
+    source:
+      origin: extension
+      provider: AI Toolkit (VS Code)
+      primary: functions.aitk-get_tracing_code_gen_best_practices
+    function: Best practices for generating code with tracing (language/SDK-specific).
+
+  - label: aitk_open_tracing_page
+    source:
+      origin: extension
+      provider: AI Toolkit (VS Code)
+      primary: functions.aitk-open_tracing_page
+    function: Open the AI Toolkit tracing page to view traces.
+
+metadata:
+  conventions:
+    - Prefer direct Python invocation (no nested pwsh wrappers) when running Python commands.
+    - Use semantic_search first for broad queries, then refine with grep_search/file_search.
+    - For Microsoft docs: search → fetch flow (breadth then depth).
+    - For Context7: Resolve library ID first unless you have a specific /org/project ID. Then fetch docs/snippets.
+    - For PostgreSQL modifications, always fetch DB context first and validate before modifying.
+  warnings:
+    - MSSQL/PGSQL write operations are destructive; validate queries and confirm scope.
+    - run_in_terminal supports single-line commands; avoid multiline/pagers.
+    - Notebook cells: configure_notebook once before first run.

@@ -1,0 +1,123 @@
+$schema: https://contextforge/schemas/sme-domain-list-v1
+workId: W-MCP-BACKEND-SPIRAL-1-ENHANCED
+timestamp: 20250927-2230
+contextRef:
+  id: "cf_cli/context/Context.json"
+  version: "1.0"
+  hash: "e8f7a4b2c9d1"
+
+sme_domain_analysis:
+  objective: "Identify SME expertise domains required for CF-Work Phase 1 MCP Backend implementation"
+
+  critical_domains:
+    - domain: "Python FastAPI Architecture"
+      expertise_level: "EXPERT"
+      rationale: "Core backend implementation requires deep FastAPI knowledge for async REST APIs"
+      knowledge_areas:
+        - "FastAPI async route handlers and dependency injection"
+        - "SQLAlchemy ORM integration with FastAPI"
+        - "Pydantic model validation and serialization"
+        - "FastAPI testing with TestClient"
+        - "Performance optimization for <10ms response times"
+
+    - domain: "MCP Server Protocol Integration"
+      expertise_level: "ADVANCED"
+      rationale: "Node.js MCP server must properly communicate with Python backend"
+      knowledge_areas:
+        - "Model Context Protocol specification and implementation"
+        - "Node.js to Python REST API integration patterns"
+        - "MCP server tool definitions and routing"
+        - "Error handling across MCP → REST boundaries"
+        - "Performance optimization for dual-language architecture"
+
+    - domain: "CF-Work Specification Compliance"
+      expertise_level: "ADVANCED"
+      rationale: "Must implement CF-Work Phase 1 endpoints to specification"
+      knowledge_areas:
+        - "CF-Work Phase 1 essential operations (delete_task)"
+        - "CF-Work search and filtering requirements (search_tasks)"
+        - "CF-Work collaboration features (add_comment)"
+        - "MCP best practices for task management tools"
+        - "Progressive enhancement for CF-Work Phases 2-5"
+
+    - domain: "Database Design & ORM"
+      expertise_level: "ADVANCED"
+      rationale: "Complex relationships for dependencies, comments, and history require solid data modeling"
+      knowledge_areas:
+        - "SQLAlchemy relationship modeling and cascades"
+        - "Database schema design for task dependencies (DAG structures)"
+        - "Comment system with proper foreign key relationships"
+        - "Audit trail implementation with timeline integrity"
+        - "Query optimization for search and filtering operations"
+
+    - domain: "Python Testing Excellence"
+      expertise_level: "EXPERT"
+      rationale: "pytest-based comprehensive testing critical for 5-endpoint quality assurance"
+      knowledge_areas:
+        - "pytest fixtures and parameterized testing"
+        - "FastAPI TestClient integration testing"
+        - "Mock/patch strategies for external dependencies"
+        - "Performance testing and benchmarking"
+        - "Coverage analysis and quality metrics"
+
+  supporting_domains:
+    - domain: "RESTful API Design"
+      expertise_level: "INTERMEDIATE"
+      rationale: "Proper REST principles for consistent API interface"
+
+    - domain: "Search Engine Architecture"
+      expertise_level: "INTERMEDIATE"
+      rationale: "GET /api/tasks/search requires efficient query parsing and indexing"
+
+    - domain: "Graph Algorithms"
+      expertise_level: "INTERMEDIATE"
+      rationale: "Dependency management requires cycle detection and traversal"
+
+  knowledge_gaps_identified:
+    - gap: "MCP Protocol Deep Implementation"
+      impact: "MEDIUM"
+      mitigation: "Research MCP specification documentation and reference implementations"
+
+    - gap: "CF-Work Specification Details"
+      impact: "HIGH"
+      mitigation: "Detailed study of CF-Work-MCP-Integration-Analysis document"
+
+    - gap: "FastAPI + SQLAlchemy Performance Optimization"
+      impact: "MEDIUM"
+      mitigation: "Research async database patterns and connection pooling"
+
+  confidence_baseline:
+    python_fastapi: 0.85
+    mcp_integration: 0.70
+    cf_work_compliance: 0.75
+    database_design: 0.80
+    testing_framework: 0.90
+    overall_confidence: 0.80
+
+sme_development_plan:
+  phase_2_research_priorities:
+    - "MCP server protocol deep-dive with Node.js integration patterns"
+    - "FastAPI async best practices and performance optimization techniques"
+    - "CF-Work specification compliance requirements analysis"
+    - "SQLAlchemy relationship modeling for complex task dependencies"
+    - "pytest testing strategies for REST API comprehensive validation"
+
+  target_confidence_thresholds:
+    minimum_execution: 0.95
+    current_trajectory: "0.80 → 0.95 via Phase 2 research and SME study"
+    blockers_if_below: "Cannot proceed to Phase 6 execution without ≥0.95 confidence"
+
+domain_prioritization:
+  immediate_focus:
+    - "Python FastAPI Architecture (Phase 2 research)"
+    - "MCP Server Protocol Integration (Phase 2 research)"
+    - "CF-Work Specification Compliance (Phase 2 research)"
+
+  secondary_focus:
+    - "Database Design & ORM (Phase 3 planning)"
+    - "Python Testing Excellence (Phase 3 planning)"
+
+  foundation_knowledge:
+    - "RESTful API Design (assumed competent)"
+    - "Search Engine Architecture (research in Phase 2)"
+    - "Graph Algorithms (research in Phase 2)"

@@ -1,0 +1,331 @@
+---
+$schema: https://cf/qse/ExecutionPlan.schema.json
+workId: "W-DTM-ITSM-001"
+createdAt: "2025-09-30T07:20:00Z"
+contextRef:
+  id: "CF-CLI-TERMINAL-OUTPUT-STANDARD-20250929"
+  version: "2.1.0"
+  hash: "sha256:8f4a9b2c1e3d5f6a8b9c0d1e2f3a4b5c6d7e8f9a0b1c2d3e4f5a6b7c8d9e0f1a"
+hash: "sha256:ep-dtm-itsm-001-20250930-0720"
+
+# Execution Plan Metadata
+execution_metadata:
+  title: "DTM ITSM Interface Enhancement - Professional Navigation System"
+  version: "1.0.0"
+  execution_mode: "dry_run"  # switches to "apply" after Phase 4 validation
+  estimated_duration: "12-16 hours"
+  complexity_score: 7.5
+  risk_level: "MEDIUM"
+
+# Implementation Strategy
+implementation_strategy:
+  approach: "4-Phase Sequential Implementation with Evidence-Based Validation"
+  methodology: "QSE UTMW with DTM MCP Truth Source Integration"
+  foundation: "Siemens IX + Ant Design Hybrid Architecture"
+  testing_framework: "React Testing Library + Microsoft MCP Testing Patterns"
+
+# Phase 1: Foundation & Setup (2-3 hours estimated)
+phase_1_foundation:
+  name: "Foundation & Setup"
+  objective: "Establish development environment, validate integrations, implement base infrastructure"
+  estimated_hours: 2.5
+  priority: "CRITICAL"
+
+  checklist:
+    - id: "CHK-F001"
+      task: "Virtual Environment Activation & Validation"
+      description: "Activate .venv and validate Python interpreter path and dependencies"
+      dtm_mapping: "TBD_DTM_TASK_ID"
+      acceptance: "Virtual environment active, all dependencies resolved"
+      xref: []
+      estimated_minutes: 15
+
+    - id: "CHK-F002"
+      task: "DTM MCP Integration Validation"
+      description: "Confirm DTM Task Manager API operational and establish task bindings"
+      dtm_mapping: "TBD_DTM_TASK_ID"
+      acceptance: "Health check passed, 15 tasks accessible, task creation/update functional"
+      xref: []
+      estimated_minutes: 30
+
+    - id: "CHK-F003"
+      task: "Rich Terminal Output Standard Implementation"
+      description: "Implement ContextForge Terminal Output Standard with RichProgressManager pattern"
+      dtm_mapping: "TBD_DTM_TASK_ID"
+      acceptance: "Rich library integrated, multi-phase progress indicators, enhanced panels"
+      xref: [".github/instructions/terminal-output.instructions.md", "python/run_tests.py"]
+      estimated_minutes: 60
+
+    - id: "CHK-F004"
+      task: "Testing Framework Establishment"
+      description: "Set up React Testing Library + MCP testing patterns from Microsoft guidance"
+      dtm_mapping: "TBD_DTM_TASK_ID"
+      acceptance: "Testing environment configured, example tests passing, MCP test patterns ready"
+      xref: ["ResearchPlan.W-DTM-ITSM-001.20250930-0650.yaml"]
+      estimated_minutes: 45
+
+  dependencies:
+    internal: []
+    external: ["Python venv", "Node.js runtime", "DTM Task Manager service"]
+
+  risks:
+    - risk: "DTM MCP service unavailable"
+      probability: "LOW"
+      impact: "HIGH"
+      mitigation: "Validate service health before proceeding, fallback to CSV mode if needed"
+
+  quality_gates:
+    - "Virtual environment activation verified"
+    - "DTM API health check passes"
+    - "Rich terminal output displays correctly"
+    - "Test framework ready for component testing"
+
+# Phase 2: UI Architecture Implementation (4-5 hours estimated)
+phase_2_ui_architecture:
+  name: "UI Architecture Implementation"
+  objective: "Implement Siemens IX + Ant Design hybrid navigation architecture"
+  estimated_hours: 4.5
+  priority: "HIGH"
+
+  checklist:
+    - id: "CHK-UI001"
+      task: "Siemens IX Base Integration"
+      description: "Integrate Siemens IX navigation components and professional styling themes"
+      dtm_mapping: "TBD_DTM_TASK_ID"
+      acceptance: "Siemens IX components imported, base styling applied, theme integration complete"
+      xref: ["ResearchPlan.W-DTM-ITSM-001.20250930-0650.yaml#siemens_ix_findings"]
+      estimated_minutes: 90
+
+    - id: "CHK-UI002"
+      task: "Ant Design Menu Integration"
+      description: "Implement Ant Design Menu components with hierarchical navigation patterns"
+      dtm_mapping: "TBD_DTM_TASK_ID"
+      acceptance: "Menu components integrated, horizontal/vertical modes working, submenu support"
+      xref: ["ResearchPlan.W-DTM-ITSM-001.20250930-0650.yaml#ant_design_findings"]
+      estimated_minutes: 75
+
+    - id: "CHK-UI003"
+      task: "Navigation Sections Implementation"
+      description: "Create Dashboard, My Tasks, All Tasks, Reports, Admin navigation sections"
+      dtm_mapping: "TBD_DTM_TASK_ID"
+      acceptance: "All 5 navigation sections accessible, routing functional, visual hierarchy clear"
+      xref: ["TaskScope.W-DTM-ITSM-001.20250930-0630.yaml#success_criteria"]
+      estimated_minutes: 120
+
+    - id: "CHK-UI004"
+      task: "User Profile Section"
+      description: "Implement user profile with permissions context and activity timeline"
+      dtm_mapping: "TBD_DTM_TASK_ID"
+      acceptance: "Profile section displays user info, permissions, recent activity timeline"
+      xref: []
+      estimated_minutes: 90
+
+    - id: "CHK-UI005"
+      task: "TypeScript Type Safety Integration"
+      description: "Ensure full TypeScript coverage for navigation components and props"
+      dtm_mapping: "TBD_DTM_TASK_ID"
+      acceptance: "No TypeScript errors, proper prop types, component hierarchy typed"
+      xref: [".github/instructions/python.instructions.md#type_hints"]
+      estimated_minutes: 45
+
+  dependencies:
+    internal: ["Phase 1 completion"]
+    external: ["Siemens IX library", "Ant Design library"]
+
+  risks:
+    - risk: "Component library version conflicts"
+      probability: "MEDIUM"
+      impact: "MEDIUM"
+      mitigation: "Version lock in package.json, test integration before proceeding"
+
+  quality_gates:
+    - "All navigation sections functional"
+    - "TypeScript compilation clean"
+    - "Visual hierarchy matches ITSM professional standards"
+    - "Component integration tests passing"
+
+# Phase 3: Advanced Features & Integration (3-4 hours estimated)
+phase_3_advanced_features:
+  name: "Advanced Features & Integration"
+  objective: "Implement advanced ITSM features with MCP automation compatibility"
+  estimated_hours: 3.5
+  priority: "HIGH"
+
+  checklist:
+    - id: "CHK-ADV001"
+      task: "Advanced Search Interface"
+      description: "Implement advanced search with filtering capabilities for ITSM tasks"
+      dtm_mapping: "TBD_DTM_TASK_ID"
+      acceptance: "Search interface operational, multiple filters working, results display correct"
+      xref: []
+      estimated_minutes: 90
+
+    - id: "CHK-ADV002"
+      task: "Bulk Operations Support"
+      description: "Add bulk task management operations (assign, update status, etc.)"
+      dtm_mapping: "TBD_DTM_TASK_ID"
+      acceptance: "Bulk selection working, operations apply to multiple tasks, confirmation dialogs"
+      xref: []
+      estimated_minutes: 75
+
+    - id: "CHK-ADV003"
+      task: "MCP Automation Compatibility Validation"
+      description: "Validate MCP automation compatibility using Microsoft testing patterns"
+      dtm_mapping: "TBD_DTM_TASK_ID"
+      acceptance: "MCP integration tests passing, automation workflows validated"
+      xref: ["ResearchPlan.W-DTM-ITSM-001.20250930-0650.yaml#mcp_testing_findings"]
+      estimated_minutes: 60
+
+    - id: "CHK-ADV004"
+      task: "Responsive Design Implementation"
+      description: "Ensure responsive behavior across desktop and mobile viewports"
+      dtm_mapping: "TBD_DTM_TASK_ID"
+      acceptance: "Layout adapts to screen sizes, mobile navigation functional, touch-friendly"
+      xref: []
+      estimated_minutes: 90
+
+  dependencies:
+    internal: ["Phase 2 completion"]
+    external: ["MCP server operational"]
+
+  risks:
+    - risk: "MCP automation integration complexity"
+      probability: "MEDIUM"
+      impact: "HIGH"
+      mitigation: "Use established Microsoft patterns, fallback to manual testing if needed"
+
+  quality_gates:
+    - "Advanced search returns accurate results"
+    - "Bulk operations work reliably"
+    - "MCP automation tests pass"
+    - "Responsive design validated across breakpoints"
+
+# Phase 4: Quality Assurance & Validation (2-3 hours estimated)
+phase_4_quality_assurance:
+  name: "Quality Assurance & Validation"
+  objective: "Comprehensive validation, accessibility compliance, performance verification"
+  estimated_hours: 2.5
+  priority: "CRITICAL"
+
+  checklist:
+    - id: "CHK-QA001"
+      task: "Accessibility Compliance Validation"
+      description: "Validate WCAG 2.1 AA compliance with ≥90% audit score"
+      dtm_mapping: "TBD_DTM_TASK_ID"
+      acceptance: "Accessibility audit passes with ≥90% score, screen reader compatible"
+      xref: ["TaskScope.W-DTM-ITSM-001.20250930-0630.yaml#success_criteria"]
+      estimated_minutes: 60
+
+    - id: "CHK-QA002"
+      task: "Performance Testing & Regression Validation"
+      description: "Verify no performance regression in task loading and operations"
+      dtm_mapping: "TBD_DTM_TASK_ID"
+      acceptance: "Performance metrics within baseline, no regression detected"
+      xref: []
+      estimated_minutes: 45
+
+    - id: "CHK-QA003"
+      task: "Professional ITSM Appearance Verification"
+      description: "Visual design review for professional enterprise appearance"
+      dtm_mapping: "TBD_DTM_TASK_ID"
+      acceptance: "Visual design review passed, professional appearance confirmed"
+      xref: []
+      estimated_minutes: 30
+
+    - id: "CHK-QA004"
+      task: "Complete Test Coverage & Documentation"
+      description: "Ensure test coverage maintained/improved and documentation updated"
+      dtm_mapping: "TBD_DTM_TASK_ID"
+      acceptance: "Test coverage ≥80%, documentation complete for new features"
+      xref: [".github/instructions/python.instructions.md"]
+      estimated_minutes: 75
+
+  dependencies:
+    internal: ["Phase 3 completion"]
+    external: ["Accessibility testing tools"]
+
+  risks:
+    - risk: "Accessibility compliance gaps"
+      probability: "MEDIUM"
+      impact: "HIGH"
+      mitigation: "Use automated tools + manual testing, address issues incrementally"
+
+  quality_gates:
+    - "Accessibility compliance ≥90%"
+    - "Performance within acceptable limits"
+    - "Visual design approved"
+    - "Test coverage and documentation complete"
+
+# Rollback Strategy
+rollback_strategy:
+  phases:
+    - phase: "Phase 1"
+      rollback: "Deactivate virtual environment, restore original DTM state"
+      validation: "Check system returns to pre-implementation state"
+
+    - phase: "Phase 2"
+      rollback: "Remove UI component changes, restore original navigation"
+      validation: "Original navigation functionality intact"
+
+    - phase: "Phase 3"
+      rollback: "Disable advanced features, remove MCP integrations"
+      validation: "Core functionality preserved without advanced features"
+
+    - phase: "Phase 4"
+      rollback: "Revert quality improvements while preserving functionality"
+      validation: "System functional with original quality baseline"
+
+  emergency_procedure:
+    - "Stop current phase execution immediately"
+    - "Document current state and failure point"
+    - "Execute rollback for current phase"
+    - "Log rollback evidence in DTM task"
+    - "Report to QSE session log with failure analysis"
+
+# Success Metrics
+success_metrics:
+  completion_criteria:
+    - "All 4 phases completed successfully"
+    - "All quality gates passed"
+    - "DTM evidence trail complete"
+    - "No critical issues remaining"
+
+  quality_targets:
+    accessibility_score: 90
+    performance_regression: 0
+    test_coverage: 80
+    typescript_errors: 0
+
+  evidence_requirements:
+    - "Phase completion artifacts with hashes"
+    - "Quality gate validation reports"
+    - "Test results and coverage reports"
+    - "MCP integration validation evidence"
+
+# Resource Requirements
+resources:
+  development_hours: "12-16 hours total"
+  dependencies: ["Python 3.11+", "Node.js", "DTM Task Manager", "Siemens IX", "Ant Design"]
+  tools: ["React Testing Library", "Rich library", "TypeScript", "Accessibility testing tools"]
+
+# Risk Assessment
+overall_risk_assessment:
+  level: "MEDIUM"
+  primary_risks:
+    - "MCP automation integration complexity"
+    - "Component library compatibility"
+    - "Accessibility compliance achievement"
+  mitigation_confidence: "HIGH"
+
+# Approval Requirements
+approval_requirements:
+  required: false
+  reason: "UI enhancement with established patterns, no infrastructure or security changes"
+
+# Evidence Logging
+evidence_logging:
+  jsonl_file: "EvidenceBundle.W-DTM-ITSM-001.20250930-0720.jsonl"
+  correlation_id: "ep-dtm-itsm-001"
+  required_fields: ["phase", "checklist_id", "dtm_task_id", "status", "evidence_hash"]
+
+---

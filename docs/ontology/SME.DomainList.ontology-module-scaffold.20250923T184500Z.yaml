@@ -1,0 +1,54 @@
+# SME Domain List - Ontology Module Scaffold (Phase 1)
+version: 1.0
+correlation_id: 6b6d5f5e-4b3a-4c2a-9fb1-6d8f3e2c9c11
+created_at: 2025-09-23T18:45:00Z
+primary_domain: ontology_parity
+adjacent_domains:
+  - logging
+  - cli_design
+  - migration_governance
+  - performance_engineering
+  - evidence_management
+cof_dimension_domain_mapping:
+  Identity: ontology_parity
+  Intent: ontology_parity
+  Stakeholders: governance
+  Context: migration_governance
+  Scope: ontology_parity
+  Time: retention_policy
+  Space: repository_structure
+  Modality: snapshot_schema
+  State: quality_gates
+  Scale: performance_engineering
+  Risk: governance
+  Evidence: evidence_management
+  Ethics: compliance
+sme_contacts:
+  - role: ontology_governor
+    placeholder: true
+  - role: cli_architect
+    placeholder: true
+  - role: logging_standards_owner
+    placeholder: true
+  - role: performance_engineer
+    placeholder: true
+  - role: evidence_custodian
+    placeholder: true
+knowledge_sources:
+  locked_decision_record: OntologyDecisionRecord.md
+  universal_schema: TBD (add path to universal context object schema v2.0)
+  cli_codebase: cf_cli.py
+  dbcli_codebase: dbcli.py (if present) or legacy references
+validation_focus:
+  - ODR v1.0 immutability
+  - Threshold reproducibility
+  - Snapshot schema alignment
+  - Event taxonomy completeness
+  - Retention policy feasibility
+risk_domains:
+  - drift_from_locked_spec
+  - premature_implementation
+  - retention_edge_cases
+  - performance_regression
+notes: |
+  Domain list sets explicit mapping of COF dimensions to ownership domains enabling targeted SME reviews in later phases.

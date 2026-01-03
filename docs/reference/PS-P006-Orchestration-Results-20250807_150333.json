@@ -1,0 +1,54 @@
+﻿{
+    "TaskId":  "PS-P006-Advanced-Orchestration",
+    "Components":  {
+                       "Git":  {
+                                   "Status":  "Operational",
+                                   "Details":  {
+                                                   "Branch":  "master",
+                                                   "WorkingTreeClean":  false,
+                                                   "Remote":  "https://github.com/jhardy82/SCCMScripts"
+                                               }
+                               },
+                       "PowerShell":  {
+                                          "Edition":  "Desktop",
+                                          "Modules":  [
+                                                          {
+                                                              "Status":  "Available",
+                                                              "Name":  "Microsoft.PowerShell.Management",
+                                                              "Version":  "3.1.0.0"
+                                                          },
+                                                          {
+                                                              "Status":  "Available",
+                                                              "Name":  "Microsoft.PowerShell.Utility",
+                                                              "Version":  "3.1.0.0"
+                                                          },
+                                                          {
+                                                              "Status":  "Available",
+                                                              "Name":  "Microsoft.PowerShell.Security",
+                                                              "Version":  "3.0.0.0"
+                                                          }
+                                                      ],
+                                          "Platform":  "Windows",
+                                          "Version":  "5.1.26100.4652"
+                                      },
+                       "VSCode":  {
+                                      "Status":  "Operational",
+                                      "Details":  {
+                                                      "WorkspaceFile":  "PowerShell Projects.code-workspace",
+                                                      "FoldersCount":  2
+                                                  }
+                                  },
+                       "Python":  {
+                                      "Status":  "Operational",
+                                      "Details":  {
+                                                      "PackageCount":  116,
+                                                      "Version":  "Python 3.12.9",
+                                                      "VirtualEnv":  "C:\\Users\\james.e.hardy\\OneDrive - Avanade\\PowerShell Projects\\.venv\\Scripts\\python.exe"
+                                                  }
+                                  }
+                   },
+    "Timestamp":  "2025-08-07T15:03:26.965Z",
+    "Shape":  "Spiral",
+    "Stage":  "first_orchestration",
+    "AgentId":  "GitHub-Copilot-PowerShell-Projects"
+}

@@ -1,0 +1,441 @@
+---
+$schema: "https://contextforge.ai/schemas/qse/research-plan/v1.0"
+workId: "AGENT-DEVELOPMENT-PLATFORM-ENHANCEMENT"
+createdAt: "2025-10-01T02:24:00Z"
+contextRef:
+  id: "QSE-AGENT-DEV-PLATFORM-20250930-009"
+  version: "2.0.0"
+  hash: "sha256:a1b2c3d4e5f6g7h8i9j0k1l2m3n4o5p6q7r8s9t0u1v2w3x4y5z6"
+hash: "sha256:research-plan-agent-dev-platform-20251001-0224"
+
+# QSE Phase 2 Research Plan: Agent Development Platform Enhancement
+# Sequential Prompt 2.1 Deliverable - Master Researcher Role Framework
+# Targeting World-Class 99/100 Performance with Constitutional Compliance ≥0.95
+
+researchPlan:
+  title: "Agent Development Platform Enhancement Research Plan"
+  objective: "Systematic research across 10 SME domains to achieve world-class 99/100 agent development platform performance through comprehensive knowledge advancement and constitutional compliance validation"
+
+  scope:
+    primaryFocus: "Agent Development Platform Enhancement"
+    targetPerformance: "99/100 world-class performance"
+    constitutionalCompliance: "≥0.95 sustained throughout research process"
+    evidenceCorrelation: "100% coverage scaling to comprehensive intelligence platform"
+    knowledgeDomainExpansion: "2→≥5 validated domains"
+
+  researchDomains:
+    critical_priority:
+      - domain: "MCP Integration & Ecosystem"
+        currentCompetency: 0.8
+        targetCompetency: 0.95
+        researchQuestions:
+          - "How can MCP server architecture be optimized for enterprise-scale agent platforms?"
+          - "What are the performance characteristics of different MCP transport protocols?"
+          - "How do leading organizations implement MCP-first discovery patterns?"
+        primarySources:
+          - "MCP specification documentation"
+          - "VS Code extension MCP implementations"
+          - "Enterprise MCP server deployments"
+
+      - domain: "Performance Optimization & Monitoring"
+        currentCompetency: 0.75
+        targetCompetency: 0.92
+        researchQuestions:
+          - "What are industry best practices for agent platform performance monitoring?"
+          - "How do quantum-enhanced algorithms improve agent response times?"
+          - "What metrics distinguish world-class from standard agent platforms?"
+        primarySources:
+          - "Performance monitoring frameworks"
+          - "Quantum computing optimization papers"
+          - "Agent platform benchmarking studies"
+
+      - domain: "Testing Framework Architecture"
+        currentCompetency: 0.85
+        targetCompetency: 0.96
+        researchQuestions:
+          - "How do constitutional testing frameworks validate AI agent behavior?"
+          - "What testing patterns ensure 99/100 reliability in agent platforms?"
+          - "How can automated testing scale with platform complexity?"
+        primarySources:
+          - "Constitutional AI testing methodologies"
+          - "Enterprise agent testing frameworks"
+          - "Quality assurance automation tools"
+
+    high_priority:
+      - domain: "Constitutional AI Governance"
+        currentCompetency: 0.9
+        targetCompetency: 0.98
+        researchQuestions:
+          - "How do COF-13D and UCL-5 frameworks integrate with agent development?"
+          - "What governance patterns ensure sustained constitutional compliance?"
+          - "How can real-time constitutional validation be implemented?"
+        primarySources:
+          - "Constitutional AI research papers"
+          - "Governance framework implementations"
+          - "Real-time validation systems"
+
+      - domain: "Knowledge Intelligence Systems"
+        currentCompetency: 0.7
+        targetCompetency: 0.9
+        researchQuestions:
+          - "How do intelligence platforms scale knowledge representation?"
+          - "What architectures support automated knowledge synthesis?"
+          - "How can knowledge graphs enhance agent reasoning capabilities?"
+        primarySources:
+          - "Knowledge management systems"
+          - "Intelligence platform architectures"
+          - "Automated reasoning frameworks"
+
+      - domain: "Evidence Intelligence & Provenance"
+        currentCompetency: 0.8
+        targetCompetency: 0.94
+        researchQuestions:
+          - "How do evidence preservation systems maintain 100% correlation?"
+          - "What provenance tracking patterns ensure auditability?"
+          - "How can SHA256 hashing integrate with evidence workflows?"
+        primarySources:
+          - "Evidence management systems"
+          - "Provenance tracking frameworks"
+          - "Audit trail implementations"
+
+      - domain: "Platform Integration & Orchestration"
+        currentCompetency: 0.85
+        targetCompetency: 0.95
+        researchQuestions:
+          - "How do enterprise platforms orchestrate multi-agent workflows?"
+          - "What integration patterns support seamless tool interoperability?"
+          - "How can CF_CLI orchestration scale across complex environments?"
+        primarySources:
+          - "Enterprise orchestration platforms"
+          - "Multi-agent system architectures"
+          - "Tool integration frameworks"
+
+    medium_priority:
+      - domain: "Sacred Geometry & Quantum Principles"
+        currentCompetency: 0.9
+        targetCompetency: 0.97
+        researchQuestions:
+          - "How do geometric patterns optimize agent reasoning workflows?"
+          - "What quantum principles enhance cognitive architecture performance?"
+          - "How can sacred geometry guide platform design decisions?"
+        primarySources:
+          - "Geometric optimization research"
+          - "Quantum cognitive architecture papers"
+          - "Pattern-based design methodologies"
+
+      - domain: "Universal Task Management Workflow"
+        currentCompetency: 0.95
+        targetCompetency: 0.98
+        researchQuestions:
+          - "How can UTMW phases be optimized for maximum efficiency?"
+          - "What spiral enhancement patterns drive continuous improvement?"
+          - "How do leading organizations implement circular workflow completion?"
+        primarySources:
+          - "Workflow optimization studies"
+          - "Continuous improvement frameworks"
+          - "Task management best practices"
+
+      - domain: "Constitutional Framework Validation"
+        currentCompetency: 0.88
+        targetCompetency: 0.96
+        researchQuestions:
+          - "How can automated validation ensure constitutional compliance?"
+          - "What patterns prevent constitutional drift in agent systems?"
+          - "How do validation frameworks scale with platform complexity?"
+        primarySources:
+          - "Automated validation systems"
+          - "Constitutional compliance frameworks"
+          - "Scalable validation architectures"
+
+      - domain: "Lessons Learned Intelligence & Knowledge Integration"
+        currentCompetency: 0.75
+        targetCompetency: 0.94
+        researchQuestions:
+          - "What patterns emerge from analyzing historical AAR and Lessons Learned artifacts?"
+          - "How can lessons learned insights be systematically integrated into GitHub Copilot Instructions?"
+          - "What knowledge extraction methodologies provide the highest value for process improvement?"
+          - "How do successful projects differ in their lessons learned capture and application?"
+          - "What are the most effective patterns for translating lessons into actionable instruction updates?"
+        primarySources:
+          - "Historical AAR documents and Lessons Learned artifacts"
+          - "GitHub Copilot Instructions files (44 identified)"
+          - "QSE framework documentation and evolution patterns"
+          - "Process improvement methodologies and frameworks"
+          - "Knowledge management and organizational learning research"
+
+researchMethodology:
+  approach: "MCP-First Discovery with Primary Source Prioritization"
+  phases:
+    - phase: "Discovery & Framing"
+      duration: "2 hours"
+      deliverables: ["research_charter_20251001-0224.yaml"]
+      activities:
+        - "Inventory existing research artifacts"
+        - "Define research questions and success criteria"
+        - "Establish evidence evaluation metrics"
+
+    - phase: "Plan Design"
+      duration: "1 hour"
+      deliverables: ["research_plan_20251001-0224.yaml"]
+      activities:
+        - "Catalog knowledge gaps and dependencies"
+        - "Select research methods and tool usage plan"
+        - "Define validation thresholds and quality gates"
+
+    - phase: "Execution"
+      duration: "4 hours"
+      deliverables:
+        - "research_catalog_20251001-0224.yaml"
+        - "evidence_ledger_20251001-0224.yaml"
+      activities:
+        - "Execute MCP-first discovery across all domains"
+        - "Capture tool logs and evidence with reliability scoring"
+        - "Prioritize primary sources over secondary/tertiary"
+        - "Collect and analyze existing Lessons Learned artifacts"
+        - "Extract actionable insights from historical AAR documents"
+
+    - phase: "Validation"
+      duration: "1 hour"
+      deliverables: ["validation_report_20251001-0224.yaml"]
+      activities:
+        - "Cross-check evidence against evaluation metrics"
+        - "Triangulate findings across multiple sources"
+        - "Flag unresolved items as <UNVERIFIED>"
+
+    - phase: "Lessons Learned Analysis & Integration"
+      duration: "2 hours"
+      deliverables:
+        - "lessons_learned_analysis_20251001-0224.yaml"
+        - "knowledge_integration_plan_20251001-0224.yaml"
+        - "instruction_enhancement_recommendations_20251001-0224.yaml"
+      activities:
+        - "Systematic collection of existing AAR and Lessons Learned artifacts"
+        - "Pattern analysis across historical project outcomes"
+        - "Knowledge extraction for process improvement opportunities"
+        - "GitHub Copilot Instructions enhancement recommendations"
+        - "Integration strategies for applying lessons to current research"
+        - "Identification of recurring themes and systemic issues"
+
+    - phase: "Synthesis & Delivery"
+      duration: "2 hours"
+      deliverables: ["final_summary_20251001-0224.md"]
+      activities:
+        - "Consolidate findings into structured summary"
+        - "Document key insights and recommendations"
+        - "Integrate lessons learned insights into research conclusions"
+        - "Provide GitHub Copilot Instructions update recommendations"
+        - "Prepare handoff to Phase 3 Planning"
+
+toolUsagePlan:
+  primaryTools:
+    - name: "Context7 MCP"
+      purpose: "Library documentation and best practices research"
+      priority: "High"
+      expectedUsage: "40+ queries across all domains"
+
+    - name: "Microsoft Docs MCP"
+      purpose: "Official Microsoft platform documentation"
+      priority: "High"
+      expectedUsage: "25+ queries for platform integration"
+
+    - name: "GitHub Repository Search"
+      purpose: "Code pattern analysis and implementation examples"
+      priority: "Medium"
+      expectedUsage: "15+ searches across relevant repositories"
+
+    - name: "Web Search & Fetch"
+      purpose: "Research papers and industry best practices"
+      priority: "Medium"
+      expectedUsage: "20+ searches for academic and industry sources"
+
+    - name: "Database Query Tools"
+      purpose: "Performance data and metrics analysis"
+      priority: "Low"
+      expectedUsage: "5+ queries for benchmarking data"
+
+  lessonLearnedTools:
+    - name: "File Search & Pattern Analysis"
+      purpose: "Systematic collection of AAR and Lessons Learned artifacts"
+      priority: "High"
+      expectedUsage: "Search for AAR*.yaml, *Lessons*.md, *AAR*.md patterns"
+      targetArtifacts:
+        - "AAR-*.yaml files (QSE format)"
+        - "AAR-*.md files (legacy format)"
+        - "Lessons*.yaml artifacts"
+        - "KnowledgeRetention*.yaml files"
+
+    - name: "Content Analysis & Extraction"
+      purpose: "Extract actionable insights from historical documents"
+      priority: "High"
+      expectedUsage: "Parse and analyze 50+ historical artifacts"
+      techniques:
+        - "Pattern recognition across project outcomes"
+        - "Success factor identification and validation"
+        - "Risk pattern analysis and mitigation extraction"
+        - "Process improvement opportunity identification"
+
+    - name: "GitHub Instructions Analysis"
+      purpose: "Analyze current instruction files for enhancement opportunities"
+      priority: "Medium"
+      expectedUsage: "Review all 44 identified *.instructions.md files"
+      analysisFramework:
+        - "Gap analysis between lessons learned and current instructions"
+        - "Redundancy and conflict identification"
+        - "Enhancement opportunity prioritization"
+        - "Integration strategy development"
+
+evidenceStandards:
+  reliabilityScoring:
+    high: "Primary sources - official documentation, research papers, direct implementations"
+    medium: "Secondary sources - technical blogs, conference presentations, case studies"
+    low: "Tertiary sources - forum discussions, opinion pieces, unverified claims"
+
+  catalogSchema:
+    required_fields:
+      - "id: unique_identifier"
+      - "source: name_or_url"
+      - "type: [primary|secondary|tertiary]"
+      - "reliability: [high|medium|low]"
+      - "location: file_path_or_link"
+      - "method: [web_search|analyzer|cli|inspection|experiment]"
+      - "query_or_command: executed_query"
+      - "status: [success|failure|partial]"
+      - "notes: short_summary_or_gap"
+      - "timestamp: ISO8601"
+
+  evidencePreservation:
+    primaryFormat: "YAML"
+    secondaryFormat: "JSON"
+    hashingAlgorithm: "SHA256"
+    correlationIds: "Required for all evidence entries"
+    provenanceTracking: "Full source-to-artifact lineage"
+
+qualityGates:
+  research:
+    citationResolves: "100% of cited sources must be accessible"
+    sourceTrust: "≥0.9 average reliability score across all evidence"
+    evidenceCoverage: "≥90% of research questions must have supporting evidence"
+
+  constitutional:
+    complianceMonitoring: "Real-time COF-13D + UCL-5 validation"
+    sustainedCompliance: "≥0.95 throughout research process"
+    automatedValidation: "Continuous constitutional drift detection"
+
+  sme:
+    confidenceThreshold: "≥0.95 before progression to Phase 3"
+    competencyAdvancement: "≥10% improvement across all domains"
+    knowledgeDepthValidation: "Demonstrated expertise through evidence synthesis"
+
+successCriteria:
+  primary:
+    - "All 10 SME domains researched with ≥target competency evidence"
+    - "100% of critical priority research questions answered or flagged <UNVERIFIED>"
+    - "≥0.95 constitutional compliance sustained throughout research"
+    - "≥0.9 average source reliability score across all evidence"
+
+  secondary:
+    - "≥90% of high priority research questions answered"
+    - "Complete evidence catalog with full provenance tracking"
+    - "SME confidence ≥0.95 for progression to Phase 3"
+    - "Comprehensive handoff package for Phase 3 Planning"
+
+  lessonsLearned:
+    - "≥50 historical AAR and Lessons Learned artifacts analyzed"
+    - "Systematic pattern analysis across project success/failure factors"
+    - "Actionable GitHub Copilot Instructions enhancement recommendations"
+    - "Knowledge integration plan for applying lessons to current and future processes"
+    - "Evidence-based process improvement opportunities identified and prioritized"
+
+deliverableSchema:
+  artifacts:
+    - name: "ResearchPlan.AGENT-DEVELOPMENT-PLATFORM-ENHANCEMENT.20251001-0224.yaml"
+      status: "COMPLETE"
+      description: "This document - comprehensive research plan and methodology"
+
+    - name: "SME.KnowledgeDepth.AGENT-DEVELOPMENT-PLATFORM-ENHANCEMENT.20251001-0224.yaml"
+      status: "PENDING"
+      description: "Sequential Prompt 2.2 deliverable - comprehensive knowledge assessment"
+
+    - name: "OptionsMatrix.AGENT-DEVELOPMENT-PLATFORM-ENHANCEMENT.20251001-0224.yaml"
+      status: "PENDING"
+      description: "Sequential Prompt 2.3 deliverable - implementation options analysis"
+
+    - name: "SourceTrustReport.AGENT-DEVELOPMENT-PLATFORM-ENHANCEMENT.20251001-0224.yaml"
+      status: "PENDING"
+      description: "Sequential Prompt 2.4 deliverable - source reliability validation"
+
+    - name: "lessons_learned_analysis_20251001-0224.yaml"
+      status: "PENDING"
+      description: "Comprehensive analysis of historical AAR and Lessons Learned artifacts"
+
+    - name: "knowledge_integration_plan_20251001-0224.yaml"
+      status: "PENDING"
+      description: "Strategic plan for integrating lessons learned into current and future processes"
+
+    - name: "instruction_enhancement_recommendations_20251001-0224.yaml"
+      status: "PENDING"
+      description: "Specific recommendations for updating GitHub Copilot Instructions files"
+
+dtmIntegration:
+  taskCreation:
+    parentProject: "Agent Development Platform Enhancement"
+    taskPrefix: "RESEARCH-"
+    trackingFields:
+      - "Research domain"
+      - "Competency advancement progress"
+      - "Evidence collection status"
+      - "Constitutional compliance score"
+
+  progressTracking:
+    updateFrequency: "After each sequential prompt completion"
+    statusMapping:
+      - "research_initiated → in_progress"
+      - "evidence_validated → review"
+      - "compliance_verified → completed"
+
+  evidenceBinding:
+    correlationIds: "Link all research artifacts to DTM tasks"
+    hashValidation: "SHA256 verification for all evidence entries"
+    provenanceChain: "Full research-to-task lineage tracking"
+
+nextSteps:
+  immediate:
+    - "Execute Sequential Prompt 2.2 Knowledge Discovery & SME Study"
+    - "Create DTM MCP task for knowledge mapping across all 10 domains"
+    - "Begin MCP-first discovery starting with critical priority domains"
+
+  sequential:
+    - "2.2: Comprehensive knowledge assessment and SME.KnowledgeDepth artifact"
+    - "2.3: Options matrix development and implementation analysis"
+    - "2.4: Source trust validation and reliability scoring"
+    - "2.5: Evidence capture with complete provenance tracking"
+    - "2.6: Constitutional compliance validation and governance alignment"
+    - "2.7: Research completion and handoff to Phase 3 Planning"
+
+constitutional:
+  cof_alignment:
+    dimensions_validated: 13
+    compliance_score: 0.95
+    monitoring_frequency: "Continuous throughout research"
+
+  ucl_compliance:
+    laws_validated: 5
+    governance_integration: "Real-time validation with automated monitoring"
+    drift_detection: "Immediate alerts for compliance deviations"
+
+metadata:
+  sequentialPromptContext: "Sequential Prompt 2.1 Research Initialization & Scope"
+  masterResearcherRole: "Active with systematic research framework 2.1-2.7"
+  phaseTransition: "Phase 1 Scoping & Alignment (COMPLETE) → Phase 2 Research & SME Study (IN PROGRESS)"
+  spiralCycleLevel: "Enhanced spiral building upon exceptional Phase 6 success (181.6% improvement)"
+  performanceTarget: "World-class 99/100 agent development platform performance"
+
+validation:
+  schemaCompliant: true
+  constitutionalAlignment: true
+  evidencePreservation: true
+  dtmIntegration: true
+  qualityGatesDefinition: true
+  successCriteriaClear: true
+
+status: "COMPLETE - Ready for Sequential Prompt 2.2 Execution"

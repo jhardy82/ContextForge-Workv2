@@ -1,0 +1,207 @@
+agent_id: GitHub-Copilot-PowerShell-Projects
+prompt_origin: PS-P005
+workspace: PowerShell Projects
+verified_at: "2025-08-07T13:36:47.705475"
+framework: ContextForge Universal Methodology (PowerShell Adaptation)
+environment:
+  powershell:
+    version: "5.1"
+    modules_discovered: 93
+    key_modules:
+      - name: Microsoft.PowerShell.Management
+        version: "3.1"
+        status: CORE
+        tier: core
+      - name: Microsoft.PowerShell.Utility
+        version: "3.1"
+        status: CORE
+        tier: core
+      - name: Microsoft.PowerShell.Security
+        version: "3.0"
+        status: CORE
+        tier: core
+  python:
+    version: 3.12.9
+    implementation: CPython
+    architecture: 64bit
+    executable: c:\Users\james.e.hardy\OneDrive - Avanade\PowerShell Projects\.venv\Scripts\python.exe
+    platform: Windows-11-10.0.26100-SP0
+    virtual_env: c:\Users\james.e.hardy\OneDrive - Avanade\PowerShell Projects\.venv
+  git:
+    version: 2.50.1.windows.1
+    repository:
+      url: https://github.com/jhardy82/SCCMScripts
+      branch: master
+      status: clean_working_tree
+      last_commit: 9dfae28 (PS-P004 completion)
+      tier: core
+vscode_extensions:
+  core_count: 5
+  total_count: 10
+  key_extensions:
+    - id: github.copilot
+      name: GitHub Copilot
+      status: INSTALLED
+      tier: core
+    - id: ms-vscode.powershell
+      name: PowerShell
+      status: INSTALLED
+      tier: core
+    - id: ms-python.python
+      name: Python
+      status: INSTALLED
+      tier: core
+github_copilot_tools:
+  total_tools: 119
+  passing_tools: 102
+  success_rate: 85.6%
+  validation_source: PS-P002_comprehensive_testing_Agent-Tool-Inventory_COMPLETE-Tool-Testing-119-Tools
+  categories:
+    file_operations:
+      count: 6
+      status: FULL
+      tier: core
+    search_discovery:
+      count: 5
+      status: FULL
+      tier: core
+    vscode_integration:
+      count: 7
+      status: FULL
+      tier: core
+    python_environment:
+      count: 4
+      status: FULL
+      tier: core
+    terminal_operations:
+      count: 4
+      status: FULL
+      tier: core
+    jupyter_notebooks:
+      count: 8
+      status: FULL
+      tier: core
+    workspace_project:
+      count: 2
+      status: FULL
+      tier: core
+    web_operations:
+      count: 3
+      status: FULL
+      tier: core
+    testing_validation:
+      count: 3
+      status: PARTIAL
+      tier: experimental
+    git_operations:
+      count: 1
+      status: EXPERIMENTAL
+      tier: experimental
+  known_limitations:
+    - tool: run_tests
+      issue: Known hanging behavior
+      workaround: Use manual test execution
+    - tool: get_changed_files
+      issue: Git operation hangs
+      workaround: Use manual git commands
+mcp_server_tools:
+  github_mcp:
+    count: 60
+    status: FULL
+    tier: core
+  pylance_mcp:
+    count: 12
+    status: FULL
+    tier: core
+  microsoft_docs_mcp:
+    count: 2
+    status: FULL
+    tier: core
+agent_capabilities:
+  agent_identity:
+    id: GitHub-Copilot-PowerShell-Projects
+    workspace: PowerShell Projects
+    framework: ContextForge Universal Methodology
+    primary_language: PowerShell 5.1
+    tier: core
+  completion_models:
+    github_copilot:
+      status: ACTIVE
+      tier: core
+    copilot_chat:
+      status: ACTIVE
+      tier: core
+    inline_suggestions:
+      status: ACTIVE
+      tier: core
+  automation_features:
+    structured_logging:
+      status: IMPLEMENTED
+      format: JSONL
+      tier: core
+    communication_handoff:
+      status: IMPLEMENTED
+      format: YAML
+      tier: core
+    progress_feedback:
+      status: IMPLEMENTED
+      tier: core
+    multi_format_output:
+      status: IMPLEMENTED
+      tier: core
+    error_handling:
+      status: IMPLEMENTED
+      tier: core
+  contextforge_compliance:
+    logs_first_principle:
+      status: ACTIVE
+      tier: core
+    trust_but_verify:
+      status: ACTIVE
+      tier: core
+    workspace_first_mandate:
+      status: ACTIVE
+      tier: core
+    shape_based_validation:
+      status: ACTIVE
+      tier: core
+  orchestration_support:
+    prompt_context_awareness:
+      status: VALIDATED
+      tier: core
+    workspace_realignment:
+      status: VALIDATED
+      tier: core
+    aar_generation:
+      status: IMPLEMENTED
+      tier: core
+    capability_self_assessment:
+      status: ACTIVE
+      tier: core
+orchestration_readiness:
+  prompt_generation:
+    status: READY
+    tier: core
+  capability_assessment:
+    status: READY
+    tier: core
+  workspace_management:
+    status: READY
+    tier: core
+  cross_language_integration:
+    status: READY
+    tier: core
+  structured_communication:
+    status: READY
+    tier: core
+notes:
+  - All core GitHub Copilot tools validated in PS-P002 with 100% success rate
+  - PowerShell 5.1 primary language with Python 3.12.9 development support
+  - ContextForge methodology fully implemented with JSONL logging
+  - Workspace realignment completed in PS-P004 with proper context
+  - Ready for advanced orchestration and automated prompt generation
+recommendations:
+  - Investigate hanging tools (run_tests, get_changed_files) for timeout handling
+  - Expand Python package ecosystem for advanced data analysis
+  - Consider PowerShell module optimization for SCCM operations
+  - Implement automated capability monitoring for continuous validation

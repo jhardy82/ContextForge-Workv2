@@ -1,0 +1,5 @@
+﻿"Component","Status","Details"
+"Git","Operational","{""Branch"":""master"",""WorkingTreeClean"":false,""Remote"":""https://github.com/jhardy82/SCCMScripts""}"
+"PowerShell",,""
+"VSCode","Operational","{""WorkspaceFile"":""PowerShell Projects.code-workspace"",""FoldersCount"":2}"
+"Python","Operational","{""PackageCount"":116,""Version"":""Python 3.12.9"",""VirtualEnv"":""C:\\Users\\james.e.hardy\\OneDrive - Avanade\\PowerShell Projects\\.venv\\Scripts\\python.exe""}"

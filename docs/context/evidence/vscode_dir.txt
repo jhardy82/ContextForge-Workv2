@@ -1,0 +1,57 @@
+﻿
+
+    Directory: C:\Users\james.e.hardy\OneDrive - Avanade\PowerShell Projects\.vscode
+
+
+
+Name           : launch.json
+Length         : 512
+CreationTime   : 7/11/2025 2:14:33 PM
+LastWriteTime  : 7/16/2025 2:17:55 PM
+LastAccessTime : 8/13/2025 9:33:37 AM
+Mode           : -a---l
+LinkType       : 
+Target         : {}
+VersionInfo    : File:             C:\Users\james.e.hardy\OneDrive - Avanade\PowerShell 
+                 Projects\.vscode\launch.json
+                 InternalName:     
+                 OriginalFilename: 
+                 FileVersion:      
+                 FileDescription:  
+                 Product:          
+                 ProductVersion:   
+                 Debug:            False
+                 Patched:          False
+                 PreRelease:       False
+                 PrivateBuild:     False
+                 SpecialBuild:     False
+                 Language:         
+                 
+
+Name           : tasks.json
+Length         : 11974
+CreationTime   : 8/7/2025 9:19:51 AM
+LastWriteTime  : 8/13/2025 9:33:39 AM
+LastAccessTime : 8/13/2025 9:34:36 AM
+Mode           : -a---l
+LinkType       : 
+Target         : {}
+VersionInfo    : File:             C:\Users\james.e.hardy\OneDrive - Avanade\PowerShell 
+                 Projects\.vscode\tasks.json
+                 InternalName:     
+                 OriginalFilename: 
+                 FileVersion:      
+                 FileDescription:  
+                 Product:          
+                 ProductVersion:   
+                 Debug:            False
+                 Patched:          False
+                 PreRelease:       False
+                 PrivateBuild:     False
+                 SpecialBuild:     False
+                 Language:         
+                 
+
+
+
+

@@ -1,0 +1,38 @@
+{
+  "baseline_id": "velocity-baseline-20251226",
+  "created_at": "2025-12-26T03:43:44.701148Z",
+  "database": "db/velocity.duckdb",
+  "table": "terminal_frame_metrics",
+  "metrics": {
+    "total_records": 16,
+    "records_with_duration": 0,
+    "records_pending_completion": 16,
+    "avg_duration_ms": null,
+    "min_duration_ms": null,
+    "max_duration_ms": null,
+    "success_rate_percent": null,
+    "completed_tasks": 0
+  },
+  "exit_code_distribution": {
+    "pending": 16
+  },
+  "task_type_distribution": {
+    "FrameLogFileTest": 3,
+    "VAL-002 Ruff check (fixture)": 2,
+    "Python: Pytest (cf-python)": 2,
+    "VAL-004 Pytest": 2,
+    "Python: Ruff (GitHub output)": 2,
+    "VAL-002 Ruff check": 2,
+    "VAL-004 Pytest (fixture+junit)": 2,
+    "Python: Ruff (cf-ruff)": 1
+  },
+  "observation_period": {
+    "first_record": "2025-12-25T20:30:30.600000",
+    "last_record": "2025-12-25T20:30:30.638000"
+  },
+  "notes": [
+    "Initial baseline - all 16 records are task start events without completion data",
+    "Duration and exit_code will populate as tasks complete",
+    "Success rate calculation requires completed tasks (exit_code IS NOT NULL)"
+  ]
+}

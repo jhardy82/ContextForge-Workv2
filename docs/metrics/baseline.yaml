@@ -1,0 +1,30 @@
+---
+captured_at: null  # to be populated after thresholds met
+window_hours: 24
+baseline_ready: false
+incomplete_baseline: true
+samples:
+  diagnostic_invocations: 0
+  actionable_commit_sequences: 0
+  total_events: 0
+  distinct_personas: 0
+latency_ms:
+  diagnostics_quickpick:
+    p50: null
+    p95: null
+mttr_test_failure_seconds:
+  baseline: null
+  target_phase1: 65
+adoption:
+  distinct_personas_target_phase1_day5: 2
+  distinct_personas_target_week4: 6
+telemetry:
+  error_events: 0
+  error_rate_pct: null
+  payload_hash_algo: sha256
+hash: null  # populated when baseline recorded
+notes:
+  - Baseline file is placeholder until sample thresholds reached.
+  - Do NOT compute improvement metrics while incomplete_baseline true.
+  - Update captured_at & hash atomically with baseline_recorded event emission.
+---

@@ -1,0 +1,66 @@
+---
+plan:
+  id: "QSE-PLAN-DTM-ITSM-20250930-0030"
+  goal: "Create DTM implementation plan for W-DTM-ITSM-001 with full task hierarchy and MCP integration"
+  assumptions:
+    - "DTM API is available and authenticated (verified)"
+    - "QSE research artifacts are complete and validated (confidence 0.97)"
+    - "Implementation authorization granted from Phase 4 validation"
+    - "MCP automation compatibility testing will be executed during implementation"
+  acceptance_criteria:
+    - "DTM Plan created with objectives, KPIs, and target environment"
+    - "DTM Tasks created for all ExecutionPlan checklist items with dependencies"
+    - "QSM events emitted with proper lifecycle tracking"
+    - "QSM.Handoff.yaml created and schema-validated"
+    - "Security redaction applied to all sensitive data"
+  metrics:
+    primary:
+      - "tasks_created_count >= 20 (based on ExecutionPlan analysis)"
+      - "dtm_plan_creation_success = true"
+      - "qsm_handoff_validation_success = true"
+    guardrails:
+      - "no_pii_leakage = true"
+      - "all_evidence_refs_linked = true"
+      - "repo_links_established = true"
+  steps:
+    - step_id: "STEP-001"
+      description: "Read and parse ExecutionPlan checklist items"
+      estimated_duration: "2min"
+    - step_id: "STEP-002"
+      description: "Create DTM Plan with metadata and objectives"
+      estimated_duration: "3min"
+    - step_id: "STEP-003"
+      description: "Create DTM Tasks for all checklist items with dependencies"
+      estimated_duration: "5min"
+    - step_id: "STEP-004"
+      description: "Emit QSM lifecycle events and create handoff"
+      estimated_duration: "3min"
+    - step_id: "STEP-005"
+      description: "Validate all outputs and generate response summary"
+      estimated_duration: "2min"
+  risks:
+    - risk_id: "RISK-001"
+      description: "DTM API communication failure"
+      likelihood: "low"
+      impact: "high"
+      mitigation: "DTM health check passed; fallback to manual task creation if needed"
+    - risk_id: "RISK-002"
+      description: "Checklist item parsing complexity"
+      likelihood: "medium"
+      impact: "medium"
+      mitigation: "Systematic parsing with validation per item"
+  rollback:
+    triggers:
+      - "DTM API authentication failure"
+      - "Critical schema validation failure"
+      - "Security redaction failure"
+    steps:
+      - "Document failure cause in response summary"
+      - "Preserve all research artifacts"
+      - "Return BLOCKED status with remediation steps"
+  evidence_refs:
+    - "ExecutionPlan.W-DTM-ITSM-001.20250930-0005.yaml"
+    - "TripleCheck.W-DTM-ITSM-001.20250930-0015.yaml"
+    - "SME.ConfidenceReport.W-DTM-ITSM-001.20250930-0017.yaml"
+  version: "1.0.0"
+---

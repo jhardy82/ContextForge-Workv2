@@ -1,0 +1,54 @@
+[
+  {
+    "cmdlet": "Get-CMClientSetting",
+    "url": "https://learn.microsoft.com/en-us/powershell/module/configurationmanager/get-cmclientsetting"
+  },
+  {
+    "cmdlet": "Get-CMClientSettingDeployment",
+    "url": "https://learn.microsoft.com/en-us/powershell/module/configurationmanager/get-cmclientsettingdeployment"
+  },
+  {
+    "cmdlet": "Get-CMCollection",
+    "url": "https://learn.microsoft.com/en-us/powershell/module/configurationmanager/get-cmcollection"
+  },
+  {
+    "cmdlet": "Get-CMBoundaryGroup",
+    "url": "https://learn.microsoft.com/en-us/powershell/module/configurationmanager/get-cmboundarygroup"
+  },
+  {
+    "cmdlet": "Get-CMBoundary",
+    "url": "https://learn.microsoft.com/en-us/powershell/module/configurationmanager/get-cmboundary"
+  },
+  {
+    "cmdlet": "Get-CMSite",
+    "url": "https://learn.microsoft.com/en-us/powershell/module/configurationmanager/get-cmsite"
+  },
+  {
+    "cmdlet": "Get-CMSiteRole",
+    "url": "https://learn.microsoft.com/en-us/powershell/module/configurationmanager/get-cmsiterole"
+  },
+  {
+    "cmdlet": "Get-CMSiteSystemServer",
+    "url": "https://learn.microsoft.com/en-us/powershell/module/configurationmanager/get-cmsitesystemserver"
+  },
+  {
+    "cmdlet": "Get-CMDevice",
+    "url": "https://learn.microsoft.com/en-us/powershell/module/configurationmanager/get-cmdevice"
+  },
+  {
+    "cmdlet": "Get-CMDeviceCollection",
+    "url": "https://learn.microsoft.com/en-us/powershell/module/configurationmanager/get-cmdevicecollection"
+  },
+  {
+    "cmdlet": "Get-CMBaseline",
+    "url": "https://learn.microsoft.com/en-us/powershell/module/configurationmanager/get-cmbaseline"
+  },
+  {
+    "cmdlet": "Get-CMManagementPoint",
+    "url": "https://learn.microsoft.com/en-us/powershell/module/configurationmanager/get-cmmanagementpoint"
+  },
+  {
+    "cmdlet": "Get-CMSoftwareUpdate",
+    "url": "https://learn.microsoft.com/en-us/powershell/module/configurationmanager/get-cmsoftwareupdate"
+  }
+]

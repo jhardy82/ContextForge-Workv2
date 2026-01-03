@@ -1,0 +1,49 @@
+{
+  "correlation_id": "cad40afe-8e53-454f-9d48-d9d7ce27a9bf",
+  "discovery": {
+    "overlap_pct": 0.0,
+    "runtime_count": 0,
+    "static_count": 0,
+    "union_count": 0
+  },
+  "evaluation": {
+    "composite_index": false,
+    "critical_ops_completeness": false,
+    "dimension_coverage_pct": false,
+    "field_coverage_pct": false,
+    "operation_overlap_pct": false,
+    "orphan_ops_pct": true
+  },
+  "gate_pass": false,
+  "generated_at": "2025-09-23T23:34:38.630752Z",
+  "hashes": {
+    "cf_cli_introspection_sha256": "0000000000000000000000000000000000000000000000000000000000000000",
+    "dbcli_introspection_sha256": "0000000000000000000000000000000000000000000000000000000000000000",
+    "universal_schema_sha256": "0000000000000000000000000000000000000000000000000000000000000000"
+  },
+  "metrics": {
+    "composite_index": 0.1,
+    "critical_ops_completeness": 0.0,
+    "dimension_coverage_pct": 0.0,
+    "field_coverage_pct": 0.0,
+    "operation_overlap_pct": 0.0,
+    "orphan_ops_pct": 0.0
+  },
+  "prior_snapshot_sha256": "0000000000000000000000000000000000000000000000000000000000000000",
+  "schema_version": "1.0.0",
+  "self_sha256": "0457FEFDBF5DF2323C8EFF05EB000DA624EEF7F6DD756E0C311ED8943F620B97",
+  "sets": {
+    "missing_dimensions": [],
+    "missing_fields": [],
+    "new_operations_candidate": [],
+    "orphan_operations": []
+  },
+  "thresholds": {
+    "composite_index": 0.88,
+    "critical_ops_completeness": 1.0,
+    "dimension_coverage_pct": 0.85,
+    "field_coverage_pct": 0.9,
+    "operation_overlap_pct": 0.8,
+    "orphan_ops_pct_max": 0.1
+  }
+}

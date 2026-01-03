@@ -1,0 +1,152 @@
+---
+schema_version: 1.0.0
+generated_at: 2025-11-16T00:00:00Z
+description: >-
+  Canonical telemetry event schema for Joyride Quantum Persona Terminal Augmentation.
+  All formulas and metric field names here are authoritative (see Joyride Enablement Plan §1.1).
+global_fields:
+  ts:
+    type: string
+    format: RFC3339
+    required: true
+    notes: Event timestamp in UTC.
+  event:
+    type: string
+    required: true
+    notes: Lower‑snake identifier (e.g. diagnostic_invocation).
+  correlation_id:
+    type: string
+    required: true
+    notes: >-
+      UUID v4 used to associate multi-step flows (invocation → selection → actionable_commit).
+  persona:
+    type: string
+    required: false
+    notes: Mapped to active professional persona; enables adoption counts.
+  payload_hash:
+    type: string
+    format: sha256
+    required: true
+    notes: SHA-256 of redacted payload object (redaction BEFORE hashing).
+  redacted_keys:
+    type: array
+    items: string
+    required: false
+    notes: Keys removed prior to hashing for transparency & audits.
+  version:
+    type: integer
+    required: true
+    default: 1
+    notes: Increment only on backward-incompatible change.
+  latency_ms:
+    type: integer
+    required: false
+    notes: Milliseconds elapsed since prior correlated event.
+  duration_ms:
+    type: integer
+    required: false
+    notes: Used for timed blocks (e.g. db_probe execution span).
+  is_error:
+    type: boolean
+    required: false
+    notes: True marks failed invocation; drives error_rate metric.
+  incomplete_baseline:
+    type: boolean
+    required: false
+    notes: Flag set when sample size below threshold for improvement claims.
+events:
+  diagnostic_invocation:
+    required_fields: [ts, event, correlation_id, payload_hash, version]
+    optional_fields: [persona, latency_ms]
+    payload:
+      script_id: diagnostics_quickpick
+      cache_hit: boolean
+      diagnostics_count: integer
+  diagnostics_empty:
+    required_fields: [ts, event, correlation_id, payload_hash, version]
+    optional_fields: [persona, latency_ms]
+    payload:
+      script_id: diagnostics_quickpick
+      cache_hit: boolean
+  diagnostic_jump:
+    required_fields: [ts, event, correlation_id, payload_hash, version]
+    optional_fields: [persona, latency_ms]
+    payload:
+      file: string
+      line: integer
+      severity: string
+  diagnostic_selection_latency:
+    required_fields: [ts, event, correlation_id, payload_hash, version]
+    optional_fields: [persona, latency_ms]
+    payload:
+      latency_ms: integer
+      diagnostics_count: integer
+  actionable_commit:
+    required_fields: [ts, event, correlation_id, payload_hash, version]
+    optional_fields: [persona, latency_ms]
+    payload:
+      action_type: string
+      file: string
+      line: integer
+  log_error_jumped:
+    required_fields: [ts, event, correlation_id, payload_hash, version]
+    optional_fields: [persona, latency_ms, severity]
+    payload:
+      file: string
+      line: integer
+      error_code: string
+  db_probe_executed:
+    required_fields: [ts, event, correlation_id, payload_hash, version]
+    optional_fields: [persona, latency_ms, duration_ms, is_error]
+    payload:
+      target: string
+      status: string
+  suggestion_presented:
+    required_fields: [ts, event, correlation_id, payload_hash, version]
+    optional_fields: [persona]
+    payload:
+      suggestion_id: string
+      rank: integer
+  risk_detection:
+    required_fields: [ts, event, correlation_id, payload_hash, version]
+    optional_fields: [persona, is_error]
+    payload:
+      metric: string
+      value: number
+      threshold: number
+      status: string
+metric_formulas:
+  diagnostic_time_reduction: '(baseline_mean - current_mean) / baseline_mean'
+  mtta_seconds: 'median(actionable_commit.ts - diagnostic_opened.ts)'
+  error_rate_pct: '(error_events / total_events) * 100'
+  adoption_distinct_personas: 'count(distinct persona over 24h)'
+  mttr_reduction: '(baseline_mttr - current_mttr) / baseline_mttr'
+percentile_derivations:
+  latency_p50: median(latency_ms)
+  latency_p95: percentile(latency_ms, 95)
+  latency_p99: percentile(latency_ms, 99)
+sample_size_thresholds:
+  diagnostic_time: 10
+  actionable_commit: 10
+  error_rate: 50
+  adoption: 2
+  mttr: 5
+redaction:
+  patterns:
+    - '(?i)password'
+    - '(?i)token'
+    - '(?i)secret'
+    - '(?i)api[_-]?key'
+    - '(?i)credential'
+    - '(?i)authorization'
+  strategy: remove_keys
+  audit_event: telemetry_redaction_audit
+integrity:
+  rotation: daily
+  hash_algorithm: sha256
+  daily_snapshot_event: telemetry_daily_snapshot
+  baseline_record_event: baseline_recorded
+retention:
+  days: 14
+  archive_condition: 'daily file > 50KB => compress+hash'
+---

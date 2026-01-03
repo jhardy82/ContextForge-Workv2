@@ -1,0 +1,107 @@
+{
+  "metadata": {
+    "project_id": "P-OUTPUTMANAGER",
+    "session_id": "session-20251120",
+    "generated_at": "2025-11-20T00:05:00Z",
+    "authoring_agent": "GitHub Copilot",
+    "version": "1.0.0"
+  },
+  "recommendations": [
+    {
+      "id": "REC-001",
+      "title": "Reconcile Artifact Catalog Discrepancy (49 vs 86)",
+      "description": "Perform controlled diff between earlier 49-file inventory and newer 86-file list; classify additions as real new artifacts vs duplicates or backup derivatives.",
+      "rice": {"reach": 100, "impact": 9, "confidence": 0.75, "effort": 2},
+      "moscow": "Must",
+      "risk_level": "medium",
+      "geometry_alignment": ["triangle", "circle"],
+      "cof_dimension_focus": ["relational", "validation"],
+      "strategic_alignment": ["migration_readiness"],
+      "dependencies": [],
+      "evidence_refs": ["docs/Loose-File-Index.md"],
+      "priority_rank": 1
+    },
+    {
+      "id": "REC-002",
+      "title": "Generate Archive Manifest with SHA-256 Hashes",
+      "description": "After reconciliation, produce authoritative manifest including file size, activity state, orphan risk, and compute SHA-256 for integrity.",
+      "rice": {"reach": 100, "impact": 8, "confidence": 0.70, "effort": 3},
+      "moscow": "Must",
+      "risk_level": "medium",
+      "geometry_alignment": ["circle", "spiral"],
+      "cof_dimension_focus": ["validation", "computational", "holistic"],
+      "strategic_alignment": ["evidence_integrity"],
+      "dependencies": ["REC-001"],
+      "evidence_refs": [],
+      "priority_rank": 2
+    },
+    {
+      "id": "REC-003",
+      "title": "Classify Artifacts by Activity & Confidence Scores",
+      "description": "Assign ACTIVE/RECENT/STALE/LEGACY state and HIGH/MEDIUM/LOW confidence to each artifact to drive migration batching decisions.",
+      "rice": {"reach": 100, "impact": 7, "confidence": 0.80, "effort": 2},
+      "moscow": "Should",
+      "risk_level": "low",
+      "geometry_alignment": ["fractal"],
+      "cof_dimension_focus": ["situational", "resource"],
+      "strategic_alignment": ["prioritized_migration"],
+      "dependencies": ["REC-001"],
+      "evidence_refs": [],
+      "priority_rank": 3
+    },
+    {
+      "id": "REC-004",
+      "title": "Establish Migration Batches & Dry-Run Plan",
+      "description": "Group artifacts into batches by confidence and activity; simulate relocation paths without modifying source directories.",
+      "rice": {"reach": 80, "impact": 7, "confidence": 0.65, "effort": 3},
+      "moscow": "Should",
+      "risk_level": "medium",
+      "geometry_alignment": ["spiral"],
+      "cof_dimension_focus": ["temporal", "integration"],
+      "strategic_alignment": ["controlled_execution"],
+      "dependencies": ["REC-003"],
+      "evidence_refs": [],
+      "priority_rank": 4
+    },
+    {
+      "id": "REC-005",
+      "title": "Automate Integrity Verification Script",
+      "description": "Create script to parse manifest JSON, recompute hashes, and flag mismatches prior to any real migration.",
+      "rice": {"reach": 90, "impact": 6, "confidence": 0.75, "effort": 2},
+      "moscow": "Could",
+      "risk_level": "low",
+      "geometry_alignment": ["triangle"],
+      "cof_dimension_focus": ["computational", "validation"],
+      "strategic_alignment": ["repeatable_quality_gate"],
+      "dependencies": ["REC-002"],
+      "evidence_refs": [],
+      "priority_rank": 5
+    },
+    {
+      "id": "REC-006",
+      "title": "Add Evidence Bundle Generation",
+      "description": "Produce JSONL evidence log summarizing manifest creation, hashing, and classification events for audit.",
+      "rice": {"reach": 70, "impact": 6, "confidence": 0.70, "effort": 2},
+      "moscow": "Could",
+      "risk_level": "low",
+      "geometry_alignment": ["circle"],
+      "cof_dimension_focus": ["narrative", "recursive"],
+      "strategic_alignment": ["auditability"],
+      "dependencies": ["REC-002", "REC-005"],
+      "evidence_refs": [],
+      "priority_rank": 6
+    }
+  ],
+  "classification_summary": {
+    "must": 2,
+    "should": 2,
+    "could": 2,
+    "wont": 0
+  },
+  "risk_overview": {
+    "low": 3,
+    "medium": 3,
+    "high": 0
+  },
+  "evidence_hash": "sha256:PLACEHOLDER"
+}

@@ -1,0 +1,373 @@
+# PLUGIN_META Schema v2.0
+# CF CORE Plugin Metadata Specification
+
+version: "2.0"
+schema_name: "PLUGIN_META"
+last_updated: "2025-11-16"
+
+# OVERVIEW
+# This document defines the PLUGIN_META dictionary structure used by CF CORE
+# plugin discovery system. All fields are optional for backward compatibility.
+
+# SCHEMA DEFINITION
+schema:
+  name:
+    type: string
+    required: true
+    description: "Unique identifier for the plugin (lowercase, alphanumeric, underscores)"
+    example: "tasks"
+    validation: "^[a-z0-9_]+$"
+
+  version:
+    type: string
+    required: false
+    description: "Plugin version using semantic versioning (MAJOR.MINOR.PATCH)"
+    example: "1.0.0"
+    validation: "^\\d+\\.\\d+\\.\\d+(-[a-zA-Z0-9.-]+)?(\\+[a-zA-Z0-9.-]+)?$"
+    default: "0.0.0"
+
+  summary:
+    type: string
+    required: false
+    description: "One-line human-friendly description of plugin functionality"
+    example: "Task management commands for CRUD operations"
+    max_length: 120
+
+  description:
+    type: string
+    required: false
+    description: "Detailed multi-line description (alias: summary if summary not provided)"
+    example: "Provides comprehensive task management functionality including create, read, update, delete, and query operations."
+
+  features:
+    type: array<string>
+    required: false
+    description: "List of capability identifiers provided by this plugin"
+    example: ["task_crud", "task_query", "task_export"]
+    default: []
+
+  # NEW IN V2.0: Dependency Management
+  depends:
+    type: array<string>
+    required: false
+    description: "List of plugin names that must be loaded before this plugin"
+    example: ["db", "logging"]
+    default: []
+    notes: |
+      - Circular dependencies will be detected and reported as errors
+      - Missing dependencies will prevent plugin from loading
+      - Dependency order enforced via topological sort
+
+  # NEW IN V2.0: Version Constraints
+  min_cli_version:
+    type: string
+    required: false
+    description: "Minimum CF CLI version required (semantic version)"
+    example: "2.0.0"
+    default: null
+    notes: |
+      - Plugin will be skipped if CLI version is lower
+      - Uses semantic version comparison
+      - Logged as warning if incompatible
+
+  max_cli_version:
+    type: string
+    required: false
+    description: "Maximum CF CLI version supported (semantic version)"
+    example: "2.9.999"
+    default: null
+    notes: |
+      - Optional upper bound for compatibility
+      - Useful for plugins that may break in future versions
+
+  # NEW IN V2.0: Enable/Disable Control
+  enabled_by_default:
+    type: boolean
+    required: false
+    description: "Whether plugin should be enabled by default (can be overridden by env vars)"
+    example: true
+    default: true
+    notes: |
+      - Can be overridden by CF_PLUGINS_DISABLED env var
+      - Useful for experimental or optional plugins
+
+  # OPTIONAL METADATA
+  author:
+    type: string
+    required: false
+    description: "Plugin author name or team"
+    example: "ContextForge Team"
+
+  license:
+    type: string
+    required: false
+    description: "Plugin license identifier (SPDX format preferred)"
+    example: "MIT"
+
+  homepage:
+    type: string
+    required: false
+    description: "URL to plugin documentation or repository"
+    example: "https://github.com/contextforge/cf-core"
+
+  tags:
+    type: array<string>
+    required: false
+    description: "Searchable tags for plugin categorization"
+    example: ["task-management", "productivity"]
+
+# BACKWARD COMPATIBILITY
+backward_compatibility:
+  v1_to_v2_migration:
+    description: "All v2.0 fields are optional with sensible defaults"
+    breaking_changes: none
+    migration_notes: |
+      - Existing plugins with only v1.0 fields will continue to work
+      - New fields will use default values if not specified
+      - No code changes required for existing plugins
+
+  v1_fields_still_supported:
+    - name
+    - version (or __version__)
+    - summary (or description)
+    - features
+
+# EXAMPLES
+
+example_minimal:
+  description: "Minimal valid PLUGIN_META (v1.0 compatible)"
+  code: |
+    PLUGIN_META = {
+        "name": "example",
+    }
+
+example_basic:
+  description: "Basic plugin with v1.0 fields"
+  code: |
+    PLUGIN_META = {
+        "name": "tasks",
+        "version": "1.0.0",
+        "summary": "Task management commands",
+        "features": ["task_crud", "task_query"],
+    }
+
+example_full_v2:
+  description: "Complete PLUGIN_META with all v2.0 fields"
+  code: |
+    PLUGIN_META = {
+        # Required
+        "name": "tasks",
+
+        # Basic metadata
+        "version": "1.0.0",
+        "summary": "Task management commands for CRUD operations",
+        "description": "Comprehensive task management functionality...",
+        "features": ["task_crud", "task_query", "task_export"],
+
+        # Dependencies (v2.0)
+        "depends": ["db", "logging"],
+
+        # Version constraints (v2.0)
+        "min_cli_version": "2.0.0",
+        "max_cli_version": "2.9.999",
+
+        # Enable/disable control (v2.0)
+        "enabled_by_default": True,
+
+        # Optional metadata
+        "author": "ContextForge Team",
+        "license": "MIT",
+        "homepage": "https://github.com/contextforge/cf-core",
+        "tags": ["task-management", "productivity"],
+    }
+
+example_with_dependencies:
+  description: "Plugin with dependency chain"
+  code: |
+    # In plugin_db.py
+    PLUGIN_META = {
+        "name": "db",
+        "version": "1.0.0",
+        "summary": "Database connection management",
+        "depends": [],  # No dependencies
+    }
+
+    # In plugin_tasks.py
+    PLUGIN_META = {
+        "name": "tasks",
+        "version": "1.0.0",
+        "summary": "Task management commands",
+        "depends": ["db"],  # Requires db plugin
+    }
+
+    # In plugin_velocity.py
+    PLUGIN_META = {
+        "name": "velocity",
+        "version": "1.0.0",
+        "summary": "Velocity tracking and metrics",
+        "depends": ["db", "tasks"],  # Requires both
+    }
+
+example_experimental:
+  description: "Experimental plugin disabled by default"
+  code: |
+    PLUGIN_META = {
+        "name": "experimental_ai",
+        "version": "0.1.0-alpha",
+        "summary": "Experimental AI-powered task suggestions",
+        "enabled_by_default": False,  # Requires opt-in
+        "min_cli_version": "2.5.0",   # Requires newer CLI
+    }
+
+# VALIDATION RULES
+validation_rules:
+  name:
+    - "Must be lowercase alphanumeric with underscores only"
+    - "Must be unique across all plugins"
+    - "Should match plugin filename (plugin_{name}.py)"
+
+  version:
+    - "Must follow semantic versioning (MAJOR.MINOR.PATCH)"
+    - "Pre-release and build metadata allowed (e.g., 1.0.0-alpha+001)"
+
+  depends:
+    - "Each dependency must be a valid plugin name"
+    - "No circular dependencies allowed"
+    - "Dependency plugins must exist in plugin paths"
+
+  min_cli_version:
+    - "Must be valid semantic version"
+    - "Checked against CF CLI __version__ at discovery time"
+    - "Plugin skipped if CLI version too old"
+
+# DISCOVERY BEHAVIOR
+discovery_behavior:
+  filtering:
+    description: "How plugins are filtered during discovery"
+    steps:
+      - "Discover all plugin_*.py files in configured paths"
+      - "Parse PLUGIN_META from each file"
+      - "Validate schema (log warnings for invalid fields)"
+      - "Check CF_PLUGINS_DISABLED env var (comma-separated names)"
+      - "Check CF_PLUGINS_ENABLED env var (allowlist mode)"
+      - "Check min_cli_version/max_cli_version constraints"
+      - "Check enabled_by_default flag"
+      - "Return filtered list of valid plugins"
+
+  env_vars:
+    CF_PLUGINS_DISABLED:
+      description: "Comma-separated list of plugin names to disable"
+      example: "CF_PLUGINS_DISABLED=experimental_ai,alpha_feature"
+      priority: "Overrides enabled_by_default=True"
+
+    CF_PLUGINS_ENABLED:
+      description: "Comma-separated allowlist (only these plugins enabled)"
+      example: "CF_PLUGINS_ENABLED=tasks,db,velocity"
+      priority: "Overrides all other settings (allowlist mode)"
+      note: "If set, ONLY listed plugins will be loaded"
+
+  version_check:
+    description: "Version compatibility check process"
+    algorithm: |
+      from packaging import version
+
+      cli_version = version.parse(CF_CLI_VERSION)
+      min_version = version.parse(plugin_meta.get("min_cli_version", "0.0.0"))
+      max_version = version.parse(plugin_meta.get("max_cli_version", "999.999.999"))
+
+      if cli_version < min_version:
+          log_warning(f"Plugin {name} requires CLI >= {min_version}")
+          skip_plugin()
+
+      if cli_version > max_version:
+          log_warning(f"Plugin {name} not compatible with CLI > {max_version}")
+          skip_plugin()
+
+# ERROR HANDLING
+error_handling:
+  malformed_meta:
+    behavior: "Log warning, use default values for missing fields"
+    example: "Plugin 'foo' has invalid PLUGIN_META.version: 'abc' (expected semver)"
+
+  missing_dependency:
+    behavior: "Log error, skip plugin"
+    example: "Plugin 'tasks' depends on 'db' which was not found"
+
+  circular_dependency:
+    behavior: "Log error, skip all plugins in cycle"
+    example: "Circular dependency detected: tasks -> velocity -> tasks"
+
+  version_mismatch:
+    behavior: "Log warning, skip plugin"
+    example: "Plugin 'tasks' requires CLI >= 2.0.0 (current: 1.5.0)"
+
+# MIGRATION GUIDE
+migration_guide:
+  from_v1_to_v2:
+    description: "Upgrading existing plugins to v2.0"
+    steps:
+      - step: "No changes required for basic functionality"
+        action: "Existing v1.0 plugins work unchanged"
+
+      - step: "Add dependency declarations (optional)"
+        action: |
+          PLUGIN_META = {
+              "name": "tasks",
+              "version": "1.0.0",
+              "depends": ["db"],  # NEW: Declare dependencies
+          }
+
+      - step: "Add version constraints (optional)"
+        action: |
+          PLUGIN_META = {
+              "name": "tasks",
+              "version": "1.0.0",
+              "min_cli_version": "2.0.0",  # NEW: Minimum CLI version
+          }
+
+      - step: "Control default enablement (optional)"
+        action: |
+          PLUGIN_META = {
+              "name": "experimental",
+              "version": "0.1.0",
+              "enabled_by_default": False,  # NEW: Disabled by default
+          }
+
+# TECHNICAL IMPLEMENTATION NOTES
+implementation_notes:
+  dataclass_representation:
+    description: "How PLUGIN_META maps to PluginRecord dataclass"
+    code: |
+      @dataclass
+      class PluginRecord:
+          name: str
+          module_name: str
+          version: str | None = None
+          summary: str | None = None
+          features: list[str] = field(default_factory=list)
+
+          # NEW IN V2.0
+          depends: list[str] = field(default_factory=list)
+          min_cli_version: str | None = None
+          max_cli_version: str | None = None
+          enabled_by_default: bool = True
+
+          # Runtime state
+          commands: list[str] = field(default_factory=list)
+          imported: bool = False
+          registered: bool = False
+          error: str | None = None
+
+  caching_considerations:
+    description: "Cache invalidation must account for PLUGIN_META changes"
+    notes: |
+      - Cache key includes file mtime
+      - Changing PLUGIN_META invalidates cache
+      - Dependency changes invalidate dependent plugins' cache
+
+# RELATED DOCUMENTATION
+related_docs:
+  - "docs/plugin-development-guide.md - Full plugin development guide"
+  - "docs/plugin-architecture.md - Architecture overview"
+  - "src/cli_plugins/__init__.py - Discovery implementation"
+  - "tests/test_plugin_discovery.py - Test examples"

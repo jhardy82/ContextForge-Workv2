@@ -1,0 +1,123 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "schema_version": "1.0.0",
+  "title": "OutputManager Reflection Retrospective",
+  "type": "object",
+  "required": ["metadata","successes","challenges","lessons","utmw_evaluation","cof_dimensions","sacred_geometry","ucl_compliance","codex_principles_applied","quality_metrics","logging_summary","definition_of_done"],
+  "properties": {
+    "metadata": {
+      "type": "object",
+      "required": ["project_id","session_id","generated_at","personas","version"],
+      "properties": {
+        "project_id": {"type": "string"},
+        "session_id": {"type": "string"},
+        "generated_at": {"type": "string", "format": "date-time"},
+        "personas": {"type": "array", "items": {"type": "string"}},
+        "version": {"type": "string"},
+        "authoring_agent": {"type": "string"},
+        "tool_hierarchy_enforced": {"type": "boolean"}
+      }
+    },
+    "cof_dimensions": {
+      "type": "object",
+      "required": ["motivational","relational","situational","resource","narrative","recursive","computational","emergent","temporal","spatial","holistic","validation","integration"],
+      "properties": {
+        "motivational": {"type": "string"},
+        "relational": {"type": "string"},
+        "situational": {"type": "string"},
+        "resource": {"type": "string"},
+        "narrative": {"type": "string"},
+        "recursive": {"type": "string"},
+        "computational": {"type": "string"},
+        "emergent": {"type": "string"},
+        "temporal": {"type": "string"},
+        "spatial": {"type": "string"},
+        "holistic": {"type": "string"},
+        "validation": {"type": "string"},
+        "integration": {"type": "string"}
+      }
+    },
+    "sacred_geometry": {
+      "type": "object",
+      "required": ["circle_completeness","triangle_stability","spiral_iterations","golden_ratio_balance","fractal_modularity"],
+      "properties": {
+        "circle_completeness": {"type": "number", "minimum": 0, "maximum": 100},
+        "triangle_stability": {"type": "number", "minimum": 0, "maximum": 10},
+        "spiral_iterations": {"type": "integer", "minimum": 0},
+        "golden_ratio_balance": {"type": "number"},
+        "fractal_modularity": {"type": "string"},
+        "pattern_notes": {"type": "string"}
+      }
+    },
+    "successes": {"type": "array", "items": {"type": "string"}},
+    "challenges": {"type": "array", "items": {"type": "string"}},
+    "lessons": {"type": "array", "items": {"type": "string"}},
+    "utmw_evaluation": {
+      "type": "object",
+      "required": ["understand","trust","measure","validate","work","efficiency_metrics","bottlenecks","improvements_realized"],
+      "properties": {
+        "understand": {"type": "string"},
+        "trust": {"type": "string"},
+        "measure": {"type": "string"},
+        "validate": {"type": "string"},
+        "work": {"type": "string"},
+        "efficiency_metrics": {"type": "object", "additionalProperties": {"type": "number"}},
+        "bottlenecks": {"type": "array", "items": {"type": "string"}},
+        "improvements_realized": {"type": "array", "items": {"type": "string"}}
+      }
+    },
+    "logging_summary": {
+      "type": "object",
+      "properties": {
+        "baseline_events_emitted": {"type": "integer"},
+        "coverage_pct": {"type": "number"},
+        "deficits_detected": {"type": "integer"},
+        "notes": {"type": "string"}
+      }
+    },
+    "quality_metrics": {
+      "type": "object",
+      "properties": {
+        "test_counts": {"type": "object", "additionalProperties": {"type": "integer"}},
+        "coverage": {"type": "object", "additionalProperties": {"type": "number"}},
+        "defects": {"type": "object", "additionalProperties": {"type": "integer"}},
+        "reliability_index": {"type": "number"},
+        "security_findings": {"type": "integer"}
+      }
+    },
+    "ucl_compliance": {
+      "type": "object",
+      "required": ["anchored","cycles_detected","evidence_complete"],
+      "properties": {
+        "anchored": {"type": "boolean"},
+        "cycles_detected": {"type": "boolean"},
+        "evidence_complete": {"type": "boolean"},
+        "orphan_contexts": {"type": "integer"}
+      }
+    },
+    "codex_principles_applied": {"type": "array", "items": {"type": "string"}},
+    "risk_register": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "required": ["risk","impact","likelihood","mitigation"],
+        "properties": {
+          "risk": {"type": "string"},
+          "impact": {"type": "string"},
+          "likelihood": {"type": "string"},
+          "mitigation": {"type": "string"},
+          "status": {"type": "string"}
+        }
+      }
+    },
+    "evidence_hash": {"type": "string"},
+    "definition_of_done": {
+      "type": "object",
+      "required": ["completed","notes"],
+      "properties": {
+        "completed": {"type": "boolean"},
+        "notes": {"type": "string"}
+      }
+    }
+  }
+}

@@ -1,0 +1,120 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "$id": "https://contextforge.example.com/schemas/parity_snapshot.schema.json",
+  "title": "Ontology Parity Snapshot",
+  "type": "object",
+  "required": [
+    "schema_version",
+    "generated_at",
+    "correlation_id",
+    "metrics",
+    "discovery",
+    "sets",
+    "hashes"
+  ],
+  "properties": {
+    "schema_version": {"type": "string", "const": "1.0.0"},
+    "generated_at": {"type": "string", "format": "date-time"},
+    "correlation_id": {"type": "string", "pattern": "^[0-9a-fA-F-]{36}$"},
+    "metrics": {
+      "type": "object",
+      "required": [
+        "field_coverage_pct",
+        "dimension_coverage_pct",
+        "critical_ops_completeness",
+        "operation_overlap_pct",
+        "orphan_ops_pct",
+        "composite_index"
+      ],
+      "properties": {
+        "field_coverage_pct": {"type": "number", "minimum": 0, "maximum": 1},
+        "dimension_coverage_pct": {"type": "number", "minimum": 0, "maximum": 1},
+        "critical_ops_completeness": {"type": "number", "minimum": 0, "maximum": 1},
+        "operation_overlap_pct": {"type": "number", "minimum": 0, "maximum": 1},
+        "orphan_ops_pct": {"type": "number", "minimum": 0, "maximum": 1},
+        "composite_index": {"type": "number", "minimum": 0, "maximum": 1}
+      },
+      "additionalProperties": false
+    },
+    "discovery": {
+      "type": "object",
+      "required": ["static_count", "runtime_count", "union_count", "overlap_pct"],
+      "properties": {
+        "static_count": {"type": "integer", "minimum": 0},
+        "runtime_count": {"type": "integer", "minimum": 0},
+        "union_count": {"type": "integer", "minimum": 0},
+        "overlap_pct": {"type": "number", "minimum": 0, "maximum": 1}
+      },
+      "additionalProperties": false
+    },
+    "sets": {
+      "type": "object",
+      "required": ["missing_fields", "missing_dimensions", "orphan_operations", "new_operations_candidate"],
+      "properties": {
+        "missing_fields": {"type": "array", "items": {"type": "string"}},
+        "missing_dimensions": {"type": "array", "items": {"type": "string"}},
+        "orphan_operations": {"type": "array", "items": {"type": "string"}},
+        "new_operations_candidate": {"type": "array", "items": {"type": "string"}}
+      },
+      "additionalProperties": false
+    },
+    "hashes": {
+      "type": "object",
+      "required": [
+        "universal_schema_sha256",
+        "cf_cli_introspection_sha256",
+        "dbcli_introspection_sha256"
+      ],
+      "properties": {
+        "universal_schema_sha256": {"type": "string", "pattern": "^[0-9A-Fa-f]{64}$"},
+        "cf_cli_introspection_sha256": {"type": "string", "pattern": "^[0-9A-Fa-f]{64}$"},
+        "dbcli_introspection_sha256": {"type": "string", "pattern": "^[0-9A-Fa-f]{64}$"}
+      },
+      "additionalProperties": false
+    },
+    "self_sha256": {"type": "string", "pattern": "^[0-9A-Fa-f]{64}$"},
+    "prior_snapshot_sha256": {"type": "string", "pattern": "^[0-9A-Fa-f]{64}$"},
+    "evaluation": {
+      "type": "object",
+      "required": [
+        "field_coverage_pct",
+        "dimension_coverage_pct",
+        "critical_ops_completeness",
+        "operation_overlap_pct",
+        "orphan_ops_pct",
+        "composite_index"
+      ],
+      "properties": {
+        "field_coverage_pct": {"type": "boolean"},
+        "dimension_coverage_pct": {"type": "boolean"},
+        "critical_ops_completeness": {"type": "boolean"},
+        "operation_overlap_pct": {"type": "boolean"},
+        "orphan_ops_pct": {"type": "boolean"},
+        "composite_index": {"type": "boolean"}
+      },
+      "additionalProperties": false
+    },
+    "gate_pass": {"type": "boolean"},
+    "thresholds": {
+      "type": "object",
+      "required": [
+        "field_coverage_pct",
+        "dimension_coverage_pct",
+        "critical_ops_completeness",
+        "operation_overlap_pct",
+        "orphan_ops_pct_max",
+        "composite_index"
+      ],
+      "properties": {
+        "field_coverage_pct": {"type": "number", "minimum": 0, "maximum": 1},
+        "dimension_coverage_pct": {"type": "number", "minimum": 0, "maximum": 1},
+        "critical_ops_completeness": {"type": "number", "minimum": 0, "maximum": 1},
+        "operation_overlap_pct": {"type": "number", "minimum": 0, "maximum": 1},
+        "orphan_ops_pct_max": {"type": "number", "minimum": 0, "maximum": 1},
+        "composite_index": {"type": "number", "minimum": 0, "maximum": 1}
+      },
+      "additionalProperties": false
+    }
+  },
+  "additionalProperties": false
+}

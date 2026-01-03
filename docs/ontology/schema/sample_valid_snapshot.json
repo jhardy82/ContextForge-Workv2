@@ -1,0 +1,58 @@
+{
+  "schema_version": "1.0.0",
+  "generated_at": "2025-09-23T00:00:00Z",
+  "correlation_id": "00000000-0000-0000-0000-000000000000",
+  "metrics": {
+    "field_coverage_pct": 0.91,
+    "dimension_coverage_pct": 0.85,
+    "critical_ops_completeness": 1.0,
+    "operation_overlap_pct": 0.82,
+    "orphan_ops_pct": 0.07,
+    "composite_index": 0.892
+  },
+  "discovery": {
+    "static_count": 42,
+    "runtime_count": 39,
+    "union_count": 45,
+    "overlap_pct": 0.86
+  },
+  "sets": {
+    "missing_fields": [
+      "<field>"
+    ],
+    "missing_dimensions": [
+      "Risk"
+    ],
+    "orphan_operations": [
+      "dbcli_prune_legacy"
+    ],
+    "new_operations_candidate": [
+      "cf_cli_context_export"
+    ]
+  },
+  "hashes": {
+    "universal_schema_sha256": "AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA",
+    "cf_cli_introspection_sha256": "BBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBB",
+    "dbcli_introspection_sha256": "CCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCC"
+  },
+  "prior_snapshot_sha256": "0000000000000000000000000000000000000000000000000000000000000000",
+  "self_sha256": "DDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDD",
+  "evaluation": {
+    "field_coverage_pct": true,
+    "dimension_coverage_pct": true,
+    "critical_ops_completeness": true,
+    "operation_overlap_pct": true,
+    "orphan_ops_pct": true,
+    "composite_index": true
+  },
+  "gate_pass": true,
+  "thresholds": {
+    "field_coverage_pct": 0.90,
+    "dimension_coverage_pct": 0.85,
+    "critical_ops_completeness": 1.0,
+    "operation_overlap_pct": 0.80,
+    "orphan_ops_pct_max": 0.10,
+    "composite_index": 0.88
+  },
+  "_note": "Sample snapshot includes supplemental fields (evaluation, gate_pass, thresholds, prior/self hashes). self_sha256 value here is illustrative only."
+}

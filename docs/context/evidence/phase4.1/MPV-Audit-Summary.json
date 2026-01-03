@@ -1,0 +1,18 @@
+﻿{
+    "run_id":  "MPV_AUDIT_20250813_191919",
+    "cache":  {
+                  "summaries":  "C:\\Users\\james.e.hardy\\OneDrive - Avanade\\PowerShell Projects\\docs\\context\\cache\\summaries.jsonl",
+                  "links":  "C:\\Users\\james.e.hardy\\OneDrive - Avanade\\PowerShell Projects\\docs\\context\\cache\\links.csv",
+                  "index":  "C:\\Users\\james.e.hardy\\OneDrive - Avanade\\PowerShell Projects\\docs\\context\\cache\\index.json"
+              },
+    "coverage_map":  "C:\\Users\\james.e.hardy\\OneDrive - Avanade\\PowerShell Projects\\docs\\context\\evidence\\phase4.1\\MPV-Coverage-Map.json",
+    "backlog":  "C:\\Users\\james.e.hardy\\OneDrive - Avanade\\PowerShell Projects\\docs\\context\\evidence\\phase4.1\\MPV-Backlog-Phase4.1.csv",
+    "edited":  [
+                   "C:\\Users\\james.e.hardy\\OneDrive - Avanade\\PowerShell Projects\\build\\Run-Pester-Incremental.ps1",
+                   "C:\\Users\\james.e.hardy\\OneDrive - Avanade\\PowerShell Projects\\build\\Invoke-PSSA-Incremental.ps1"
+               ],
+    "counts":  {
+                   "total":  9866,
+                   "covered":  4
+               }
+}

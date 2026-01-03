@@ -1,0 +1,97 @@
+openapi: 3.1.0
+info:
+  title: ContextForge Work API
+  version: 0.1.0-draft
+  description: >-
+    Draft API surface for ContextForge Work Nudge 5/6 scope. Read-only seed exposing
+    health and context aggregation. Promotion to complete gated on write endpoints and
+    contract tests.
+servers:
+  - url: http://localhost:8000
+paths:
+  /healthz:
+    get:
+      summary: Liveness probe
+      operationId: getHealthz
+      responses:
+        "200":
+          description: OK
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  status:
+                    type: string
+                    example: ok
+  /context:
+    get:
+      summary: Return merged context root
+      operationId: getContext
+      responses:
+        "200":
+          description: Context root
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/ContextRoot"
+components:
+  schemas:
+    DocumentRef:
+      type: object
+      properties:
+        path:
+          type: string
+        status:
+          type: string
+          enum: [placeholder, draft, complete]
+      required: [path, status]
+    Project:
+      type: object
+      properties:
+        id: { type: string }
+        title: { type: string }
+        status: { type: string }
+        created_at: { type: string, format: date-time, nullable: true }
+      required: [id, title, status]
+    Sprint:
+      type: object
+      properties:
+        id: { type: string }
+        project_id: { type: string }
+        title: { type: string }
+        status: { type: string }
+        created_at: { type: string, format: date-time, nullable: true }
+      required: [id, project_id, title, status]
+    Task:
+      type: object
+      properties:
+        id: { type: string }
+        project_id: { type: string }
+        sprint_id: { type: string, nullable: true }
+        title: { type: string }
+        status: { type: string }
+        priority: { type: string, nullable: true }
+        updated_at: { type: string, format: date-time, nullable: true }
+      required: [id, project_id, title, status]
+    ContextRoot:
+      type: object
+      properties:
+        artifacts: { type: object, additionalProperties: true }
+        implementation_docs:
+          { type: object, additionalProperties: { type: string } }
+        contracts: { type: object, additionalProperties: { type: string } }
+        toolchain: { type: object, additionalProperties: { type: string } }
+        projects:
+          type: array
+          items: { $ref: "#/components/schemas/Project" }
+        sprints:
+          type: array
+          items: { $ref: "#/components/schemas/Sprint" }
+        tasks:
+          type: array
+          items: { $ref: "#/components/schemas/Task" }
+        documents:
+          type: array
+          items: { $ref: "#/components/schemas/DocumentRef" }
+      description: Aggregated context view.

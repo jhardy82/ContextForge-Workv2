@@ -1,0 +1,172 @@
+---
+$schema: https://cf/qse/SME.DomainList.schema.json
+workId: "W-DTM-ITSM-001"
+createdAt: "2025-09-30T06:30:00Z"
+contextRef:
+  id: "CF-CLI-TERMINAL-OUTPUT-STANDARD-20250929"
+  version: "2.1.0"
+  hash: "sha256:8f4a9b2c1e3d5f6a8b9c0d1e2f3a4b5c6d7e8f9a0b1c2d3e4f5a6b7c8d9e0f1a"
+hash: "sha256:sme-domainlist-dtm-itsm-001-20250930-0630"
+
+# SME Domain Identification
+title: "Subject Matter Expert Domain Requirements for DTM ITSM Enhancement"
+analysis_timestamp: "2025-09-30T06:30:00Z"
+
+# Core Domains Required
+domains:
+  - domain_id: "UI_UX_DESIGN"
+    name: "User Interface & User Experience Design"
+    description: "Professional interface design patterns, navigation architecture, user context integration"
+    criticality: "HIGH"
+    confidence_required: 0.95
+    knowledge_areas:
+      - "Siemens IX design system patterns and implementation"
+      - "Ant Design Menu component architecture and customization"
+      - "Professional ITSM interface standards and visual coherence"
+      - "Navigation hierarchy design and user workflow optimization"
+      - "Responsive design principles and mobile-first approaches"
+    evidence_sources:
+      - "ResearchPlan.W-DTM-ITSM-001.20250929-1702.yaml#navigation-patterns"
+      - "Siemens IX documentation and component library"
+      - "Ant Design official documentation and design guidelines"
+    learning_requirements:
+      - "Component integration patterns for TypeScript/React"
+      - "Accessibility-first design principles (WCAG 2.1 AA)"
+      - "ITSM industry standards for professional appearance"
+
+  - domain_id: "REACT_TYPESCRIPT"
+    name: "React TypeScript Component Architecture"
+    description: "Advanced React component patterns, TypeScript integration, state management for complex UI"
+    criticality: "HIGH"
+    confidence_required: 0.95
+    knowledge_areas:
+      - "React functional components with hooks and state management"
+      - "TypeScript type safety for complex component hierarchies"
+      - "Component composition patterns for navigation and layout"
+      - "Performance optimization for large component trees"
+      - "Testing strategies for React TypeScript components"
+    evidence_sources:
+      - "vs-code-task-manager codebase analysis"
+      - "React TypeScript official documentation"
+      - "Component architecture best practices"
+    learning_requirements:
+      - "Advanced TypeScript patterns for component props and state"
+      - "React performance optimization techniques"
+      - "Component testing with Jest and React Testing Library"
+
+  - domain_id: "ACCESSIBILITY_COMPLIANCE"
+    name: "Web Accessibility Standards and Implementation"
+    description: "WCAG compliance, assistive technology support, inclusive design patterns"
+    criticality: "HIGH"
+    confidence_required: 0.90
+    knowledge_areas:
+      - "WCAG 2.1 AA compliance requirements and testing"
+      - "Screen reader compatibility and ARIA implementation"
+      - "Keyboard navigation patterns and focus management"
+      - "Color contrast standards and visual accessibility"
+      - "Responsive design for accessibility across devices"
+    evidence_sources:
+      - "WCAG 2.1 official guidelines"
+      - "Accessibility testing tools and methodologies"
+      - "Industry best practices for accessible navigation"
+    learning_requirements:
+      - "Automated accessibility testing integration"
+      - "Manual accessibility validation techniques"
+      - "Assistive technology testing procedures"
+
+  - domain_id: "MCP_AUTOMATION"
+    name: "Model Context Protocol Integration and Compatibility"
+    description: "MCP API compatibility, automation testing, integration validation"
+    criticality: "MEDIUM"
+    confidence_required: 0.85
+    knowledge_areas:
+      - "VS Code Task Manager MCP API structure and endpoints"
+      - "MCP automation compatibility requirements"
+      - "Integration testing patterns for UI/API compatibility"
+      - "Automation workflow validation and testing"
+      - "MCP task management operations and state handling"
+    evidence_sources:
+      - "DTM task manager MCP API documentation"
+      - "Existing MCP integration patterns in codebase"
+      - "Task manager automation test suites"
+    learning_requirements:
+      - "MCP API testing methodologies"
+      - "Integration validation patterns"
+      - "Automation compatibility verification"
+
+  - domain_id: "RESPONSIVE_DESIGN"
+    name: "Responsive Web Design and Mobile Optimization"
+    description: "Cross-device compatibility, viewport optimization, touch interface design"
+    criticality: "MEDIUM"
+    confidence_required: 0.85
+    knowledge_areas:
+      - "CSS Grid and Flexbox for responsive layouts"
+      - "Mobile-first design principles and breakpoint strategies"
+      - "Touch interface design patterns and gesture handling"
+      - "Viewport optimization and device-specific adaptations"
+      - "Performance considerations for mobile devices"
+    evidence_sources:
+      - "Responsive design best practices documentation"
+      - "Mobile interface design guidelines"
+      - "Cross-browser compatibility standards"
+    learning_requirements:
+      - "Modern CSS layout techniques"
+      - "Mobile device testing strategies"
+      - "Performance optimization for varied devices"
+
+  - domain_id: "COMPONENT_LIBRARIES"
+    name: "Component Library Integration and Customization"
+    description: "Third-party component integration, customization patterns, library optimization"
+    criticality: "MEDIUM"
+    confidence_required: 0.80
+    knowledge_areas:
+      - "Component library integration strategies"
+      - "Theme customization and branding approaches"
+      - "Performance optimization for external dependencies"
+      - "Version compatibility and upgrade strategies"
+      - "Bundle size optimization and tree shaking"
+    evidence_sources:
+      - "Component library documentation and examples"
+      - "Integration pattern repositories and guides"
+      - "Performance optimization case studies"
+    learning_requirements:
+      - "Library-specific customization techniques"
+      - "Performance monitoring and optimization"
+      - "Dependency management best practices"
+
+# Learning Strategy
+learning_strategy:
+  approach: "MCP-first research with practical implementation validation"
+  sequence:
+    1. "UI/UX Design foundations with Siemens IX and Ant Design research"
+    2. "React TypeScript architecture analysis and pattern identification"
+    3. "Accessibility compliance framework and testing methodology"
+    4. "MCP integration compatibility and validation requirements"
+    5. "Responsive design implementation and cross-device testing"
+    6. "Component library integration and performance optimization"
+
+  validation_methods:
+    - "Practical implementation exercises for each domain"
+    - "Cross-domain integration testing and validation"
+    - "Performance benchmarking and compliance verification"
+    - "Real-world scenario testing with task manager operations"
+
+# Confidence Tracking
+confidence_targets:
+  overall_minimum: 0.90
+  domain_weighted_average: 0.88
+  critical_domains_minimum: 0.95
+
+confidence_validation:
+  measurement_criteria:
+    - "Successful implementation of domain-specific patterns"
+    - "Performance benchmarks meeting or exceeding requirements"
+    - "Quality gate validation across all domains"
+    - "Integration testing success rates ≥95%"
+
+  evidence_requirements:
+    - "Documented research artifacts with source validation"
+    - "Practical implementation examples and test results"
+    - "Performance metrics and compliance validation"
+    - "Cross-domain integration demonstration"
+---

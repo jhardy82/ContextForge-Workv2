@@ -1,0 +1,465 @@
+tickets:
+  - id: REM-001
+    title: Parse DeprecationLog → structured deprecation index
+    priority: High
+    priority_justification: Blocks lifecycle and risk deliverables; migration planning depends on it.
+    description: |
+      Parse `.QSE/v2/artifacts/P-CF-SPECTRE-001/DeprecationLog.IntegrationGuide.P-CF-SPECTRE-001.20251110.yaml` into a normalized index:
+      component, deprecated_version/date, replacement/target, status, notes.
+    remediation_steps:
+      - Read YAML and extract deprecations to a structured dataset (YAML/CSV).
+      - Normalize component names to match CLI inventory (cf_cli.py, dbcli.py, tasks_cli.py, sprints_cli.py, projects_cli.py, TaskMan‑v2 CLI, bridges).
+      - Save authoritative index to `.QSE/v2/Indexes/Deprecations.index.yaml`.
+      - Link index in report §6–7 and lifecycle matrix (REM-002).
+    owner: Engineering (CLI)
+    due: 2025-11-17
+    dependencies: []
+    acceptance_criteria:
+      - Deprecations.index.yaml exists with component/target/status and citations
+      - Reviewed and approved by Governance
+    verification_steps:
+      - Cross-check 3 entries to source DeprecationLog
+      - Validate matrix alignment in REM-002
+    audit_citation:
+      - path: .QSE/v2/artifacts/P-CF-SPECTRE-001/DeprecationLog.IntegrationGuide.P-CF-SPECTRE-001.20251110.yaml
+      - report_section: CF_CORE_Audit_Report.md §6–7
+    status: Not Started
+    riskIds: ["R-002", "R-011"]
+
+  - id: REM-002
+    title: Define lifecycle taxonomy + tag all CLIs
+    priority: High
+    priority_justification: Unblocks risk register and planning; foundational for migration roadmap.
+    description: Create lifecycle taxonomy (Active, Migrating, Deprecated, Candidate, Adjunct) and tag each CLI/subsystem.
+    remediation_steps:
+      - Publish lifecycle definitions in audit appendix (1 page).
+      - Apply tags per component using Deprecations.index + IntegrationGuides.
+      - Produce lifecycle matrix with confidence + citations.
+    owner: Engineering (CLI)
+    due: 2025-11-17
+    dependencies: [REM-001]
+    acceptance_criteria:
+      - Lifecycle matrix published with confidence and citations
+      - Architecture + Governance approval
+    verification_steps:
+      - Sample 5 components and verify tags and citations
+    audit_citation:
+      - report_section: CF_CORE_Audit_Report.md §6–7
+      - inventory_sections: CF_CORE_Audit_Inventory.md §§1–5
+    status: Not Started
+    riskIds: ["R-003", "R-002"]
+
+  - id: REM-003
+    title: Build risk table with severity + owners
+    priority: High
+    priority_justification: Governance/compliance risk if High/Critical issues are unowned.
+    description: Produce a risk register with severity, likelihood, mitigation, and accountable owners.
+    remediation_steps:
+      - Draft risk register with severity (Critical/High/Moderate/Low) and mitigation.
+      - Assign owners across ENG/DB/DevOps/Docs/Governance.
+      - Link risks to tickets and target dates.
+    owner: Governance/PM + Engineering
+    due: 2025-11-17
+    dependencies: [REM-001, REM-002]
+    acceptance_criteria:
+      - Risk register published with owners
+      - No Critical/High risks without an owner
+    verification_steps:
+      - Confirm cross-links to tickets and owner acknowledgments
+    audit_citation:
+      - report_section: CF_CORE_Audit_Report.md §8–9
+  status: Completed
+    riskIds: []
+
+  - id: REM-004
+    title: Materialize all remediation tickets in tracker
+    priority: High
+    priority_justification: Plan is not actionable until tickets exist with ownership and dates.
+    description: Load all plan tickets into the tracker (DTM/CF_CLI), set dependencies, owners, and due dates.
+    remediation_steps:
+      - Create 16 tickets with IDs, priorities, due dates, owners, citations.
+      - Establish dependencies between tickets.
+      - Announce tracker readiness to stakeholders.
+    owner: Governance/PM
+    due: 2025-11-17
+    dependencies: [REM-001, REM-002, REM-003]
+    acceptance_criteria:
+      - 16 tickets present with owners, dates, dependencies, citations
+    verification_steps:
+      - Export tracker JSON/CSV and compare to this YAML
+    audit_citation:
+      - report_section: CF_CORE_Audit_Report.md §10
+      - plan_section: CF_CORE_Remediation_Plan.md
+    status: Not Started
+    riskIds: []
+
+  - id: REM-005
+    title: Reconcile DB actual_hours vs actual_minutes
+    priority: High
+    priority_justification: Accuracy and UX; downstream consumers affected.
+    description: Fix the discrepancy where actual_hours is always null; standardize or compute server-side.
+    remediation_steps:
+      - Decide standard (prefer authoritative actual_minutes; deprecate or derive hours).
+      - Update code/tests; add migration note.
+      - Update README and audit notes.
+    owner: Engineering (DB) + Docs
+    due: 2025-11-17
+    dependencies: []
+    acceptance_criteria:
+      - Consistent behavior documented and tested
+    verification_steps:
+      - Verify outputs match decision and docs updated
+    audit_citation:
+      - readme_section: README.md (CF_CLI integrity note)
+    status: Not Started
+    riskIds: []
+
+  - id: REM-006
+    title: Enforce WSL-only Docker constraint (docs/CI)
+    priority: High
+    priority_justification: Prevents mis-executed Docker in PowerShell, ensuring reliability.
+    description: Add documentation and CI/local guards to enforce WSL-only Docker usage.
+    remediation_steps:
+      - Update docs with `wsl -- docker` patterns.
+      - Add CI guard to detect non-WSL Docker contexts.
+      - Add local preflight warnings.
+    owner: DevOps + Docs
+    due: 2025-11-17
+    dependencies: []
+    acceptance_criteria:
+      - Docs updated; CI guard passing; local preflight emits guidance
+    verification_steps:
+      - Attempt to run Docker from PS and confirm guard; validate WSL path works
+    audit_citation:
+      - readme_section: README.md (Docker WSL-Only)
+    status: Not Started
+    riskIds: []
+
+  - id: REM-007
+    title: Compute .QSE v1/v2 subcounts + evolution narrative
+    priority: Medium
+    priority_justification: Improves migration maturity metric and historical clarity.
+    description: Count per top-level directory and write v1→v2 evolution narrative.
+    remediation_steps:
+      - Count artifacts/sessions/evidence/research/sync per v1 vs v2.
+      - Publish table and narrative.
+    owner: Engineering (Analytics) + Docs
+    due: 2025-11-24
+    dependencies: [REM-001]
+    acceptance_criteria:
+      - Counts table + narrative appended to report
+    verification_steps:
+      - Spot-check counts; Governance review
+    audit_citation:
+      - inventory_sections: "CF_CORE_Audit_Inventory.md §§1–5"
+      - report_sections: "CF_CORE_Audit_Report.md §§3–5"
+    status: Not Started
+    riskIds: []
+
+  - id: REM-008
+    title: Dependency matrix + parallelization plan
+    priority: Medium
+    priority_justification: Increases execution efficiency; highlights critical path.
+    description: Build dependency graph and propose sprint allocation.
+    remediation_steps:
+      - Create dependency matrix (tickets × dependencies).
+      - Highlight critical path and parallelizable groups.
+    owner: Engineering (Planning)
+    due: 2025-11-24
+    dependencies: [REM-002, REM-003]
+    acceptance_criteria:
+      - Matrix shared and approved by stakeholders
+    verification_steps:
+      - No circular dependencies; matched in tracker
+    audit_citation:
+      - report_sections: CF_CORE_Audit_Report.md §9–10
+    status: Not Started
+    riskIds: []
+
+  - id: REM-009
+    title: Owner workload distribution
+    priority: Medium
+    priority_justification: Ensures capacity alignment and accountability.
+    description: Roll up tickets by owner/team with load indicators.
+    remediation_steps:
+      - Build summary table by owner and priority.
+      - Note capacity risks and reassign as needed.
+    owner: Governance/PM
+    due: 2025-11-24
+    dependencies: [REM-004]
+    acceptance_criteria:
+      - Table published; owners confirm capacity
+    verification_steps:
+      - Tracker reflects agreed ownership
+    audit_citation:
+      - plan_section: CF_CORE_Remediation_Plan.md
+    status: Not Started
+    riskIds: []
+
+  - id: REM-010
+    title: Completion criteria + sign-off sequence
+    priority: Medium
+    priority_justification: Defines clear Done and approval gates.
+    description: Define quantitative/qualitative closure and approvals.
+    remediation_steps:
+      - Draft completion criteria and sign-off roles.
+      - Add gates to tracker checklists.
+    owner: Governance/PM
+    due: 2025-11-24
+    dependencies: [REM-003, REM-004]
+    acceptance_criteria:
+      - Criteria adopted; sign-off roles acknowledged
+    verification_steps:
+      - Tracker includes closure gates and approvals
+    audit_citation:
+      - report_section: CF_CORE_Audit_Report.md §10
+    status: Not Started
+    riskIds: []
+
+  - id: REM-011
+    title: Communication plan + escalation triggers
+    priority: Medium
+    priority_justification: Improves transparency and reduces surprise risk.
+    description: Define stakeholders, triggers, cadence, and escalation contacts.
+    remediation_steps:
+      - Define stakeholder list and triggers (High tickets, DB change, CI guards).
+      - Publish summary template and cadence.
+    owner: Governance/PM + Docs
+    due: 2025-11-24
+    dependencies: [REM-004]
+    acceptance_criteria:
+      - Plan published; first weekly update sent
+    verification_steps:
+      - Stakeholder confirmation of receipt/clarity
+    audit_citation:
+      - plan_section: CF_CORE_Remediation_Plan.md
+    status: Not Started
+    riskIds: []
+
+  - id: REM-012
+    title: Progress tracking framework (statuses, KPIs)
+    priority: Medium
+    priority_justification: Enables monitoring and governance.
+    description: Define statuses, milestones, and KPIs; wire into dashboard.
+    remediation_steps:
+      - Adopt statuses: Not Started, In Progress, Blocked, Under Review, Completed, Verified.
+      - "Define KPIs: % complete, avg cycle time, blocker count, SLA by priority."
+      - Wire into tracker dashboard.
+    owner: Governance/PM
+    due: 2025-11-24
+    dependencies: [REM-004]
+    acceptance_criteria:
+      - Dashboard operational; taxonomy in use
+    verification_steps:
+      - One weekly snapshot exported
+    audit_citation:
+      - plan_section: CF_CORE_Remediation_Plan.md
+    status: Not Started
+    riskIds: []
+
+  - id: REM-013
+    title: Confirm adjunct boundaries (TaskMan‑v2/shadow)
+    priority: Medium
+    priority_justification: Clarifies scope and reporting integrity.
+    description: Document rationale; decide on separate operational inventory.
+    remediation_steps:
+      - Author 1-pager with definitions and implications.
+      - If needed, create separate inventory ticket.
+    owner: Architecture + Governance
+    due: 2025-11-24
+    dependencies: [REM-002]
+    acceptance_criteria:
+      - Decision recorded; citations added in report §9
+    verification_steps:
+      - Inventory/ref tables updated accordingly
+    audit_citation:
+      - report_section: CF_CORE_Audit_Report.md §9
+    status: Not Started
+    riskIds: ["R-004"]
+
+  - id: REM-014
+    title: Wrapper invocation line citations (traceability)
+    priority: Low
+    priority_justification: Transparency and traceability; non-blocking.
+    description: Add precise line references for PS scripts invoking `cf_cli.py`.
+    remediation_steps:
+      - Gather line numbers; add appendix table.
+      - Cross-link tickets and scripts.
+    owner: Docs + Engineering
+    due: 2025-12-01
+    dependencies: []
+    acceptance_criteria:
+      - Appendix published with ≥8 citations
+    verification_steps:
+      - Spot-check 2–3 references
+    audit_citation:
+      - inventory_sections: CF_CORE_Audit_Inventory.md §§2,4; scripts/*
+    status: Not Started
+    riskIds: []
+
+  - id: REM-015
+    title: CF_CORE internal spec surrogate (Typer-based)
+    priority: Low
+    priority_justification: Improves developer onboarding/documentation.
+    description: Author internal CF_CORE CLI spec (surrogate) with disclaimers; cite Typer patterns.
+    remediation_steps:
+      - Draft spec (command surfaces, flags, lifecycle, examples).
+      - Reference Inventory/Report for evidence.
+    owner: Docs + Engineering
+    due: 2025-12-01
+    dependencies: []
+    acceptance_criteria:
+      - Spec published and linked
+    verification_steps:
+      - Peer review by Engineering Lead
+    audit_citation:
+      - report_section: CF_CORE_Audit_Report.md §2
+    status: Not Started
+    riskIds: ["R-001", "R-012"]
+
+  - id: REM-016
+    title: Validate/replace any simulated placeholders
+    priority: Low
+    priority_justification: Reduces confusion and improves evidence quality.
+    description: Confirm simulated or placeholder artifacts are clearly marked or replaced.
+    remediation_steps:
+      - Sweep audit artifacts for placeholders.
+      - Replace or mark accordingly; update citations.
+    owner: Docs + Engineering
+    due: 2025-12-01
+    dependencies: []
+    acceptance_criteria:
+      - No unmarked placeholders remain
+    verification_steps:
+      - Spot-check 3 areas; sign-off by Docs Lead
+    audit_citation:
+      - report_sections: CF_CORE_Audit_Report.md §6–7
+    status: Not Started
+    riskIds: ["R-013"]
+
+  - id: REM-017
+    title: TaskMan‑v2 ↔ cf_cli contract tests & schema pinning
+    priority: High
+    priority_justification: Addresses API divergence and integration drift; blocks reliable orchestration.
+    description: Define a versioned cf_cli contract and add TaskMan‑v2 compatibility tests; enforce schema/version pinning with shims.
+    remediation_steps:
+      - Define contract: inputs/outputs/exit codes for cf_cli operations
+      - Implement TaskMan‑v2 CI tests against the contract
+      - Introduce version pinning and shims for breaking changes
+    owner: Platform + Engineering
+    due: 2025-11-24
+    dependencies: [REM-002, REM-004]
+    acceptance_criteria:
+      - All TaskMan‑v2 CI runs validate cf_cli contract
+      - Breaking changes require shim or coordinated release
+    verification_steps:
+      - CI run includes contract test stage; failure blocks merge
+    audit_citation:
+      - report_section: CF_CORE_Audit_Report.md §9–10
+    status: Not Started
+    riskIds: ["R-004", "R-008"]
+
+  - id: REM-018
+    title: CLI deprecation policy & contract tests (cf_cli)
+    priority: High
+    priority_justification: Prevents breaking changes without migration path.
+    description: Adopt semantic versioning and formal deprecation policy; add Typer surface contract tests and deprecation warnings.
+    remediation_steps:
+      - Define deprecation policy and timelines
+      - Add tests ensuring help/flags/signatures stability
+      - Emit warnings with removal versions; update changelog
+    owner: Engineering (CLI)
+    due: 2025-11-24
+    dependencies: [REM-002]
+    acceptance_criteria:
+      - Contract tests present and passing
+      - Deprecation warnings visible for at-risk flags/commands
+    verification_steps:
+      - CI job shows tests and warnings in logs
+    audit_citation:
+      - report_section: CF_CORE_Audit_Report.md §5–6
+    status: Not Started
+    riskIds: ["R-005"]
+
+  - id: REM-019
+    title: Wrapper-to-CLI contract tests & env bootstrap
+    priority: High
+    priority_justification: Eliminates wrapper drift and environment activation failures.
+    description: Implement parameter/exit code mapping tests and enforce .venv bootstrap in wrapper headers.
+    remediation_steps:
+      - Add wrapper tests covering common commands
+      - Standardize UTF-8/venv bootstrap in wrappers
+      - Document usage and health check
+    owner: Platform + DevOps
+    due: 2025-11-24
+    dependencies: [REM-018]
+    acceptance_criteria:
+      - Wrappers pass mapping tests and fail-fast on missing .venv
+    verification_steps:
+      - Test run demonstrating pass/fail behavior
+    audit_citation:
+      - report_section: CF_CORE_Audit_Report.md §6–7
+    status: Not Started
+    riskIds: ["R-006", "R-007"]
+
+  - id: REM-020
+    title: Bridge schema versioning & integration tests (VS Code)
+    priority: Medium
+    priority_justification: Stabilizes adjunct bridge communications.
+    description: Introduce typed message schema with semantic versioning and CI integration tests.
+    remediation_steps:
+      - Define message schema and versioning policy
+      - Add CI integration tests
+      - Document upgrade guidance
+    owner: DevEx
+    due: 2025-11-24
+    dependencies: []
+    acceptance_criteria:
+      - Bridge CI validates schema compatibility
+    verification_steps:
+      - Breaking change requires coordinated upgrade note
+    audit_citation:
+      - report_section: CF_CORE_Audit_Report.md §9
+    status: Not Started
+    riskIds: ["R-009"]
+
+  - id: REM-021
+    title: Performance baselines & CI perf checks (TaskMan‑v2)
+    priority: Medium
+    priority_justification: Prevents regressions in critical workflows.
+    description: Establish performance baselines, telemetry, and CI thresholds with alerts.
+    remediation_steps:
+      - Measure baselines on key flows
+      - Add CI perf checks and telemetry
+      - Create dashboards and alerts
+    owner: SRE + Platform
+    due: 2025-11-24
+    dependencies: [REM-017]
+    acceptance_criteria:
+      - CI includes perf stage with thresholds
+    verification_steps:
+      - Alert triggers on regression; dashboard displays trend
+    audit_citation:
+      - report_section: CF_CORE_Audit_Report.md §9–10
+    status: Not Started
+    riskIds: ["R-010"]
+
+  - id: REM-022
+    title: 'Known Issues & Negative Findings doc section + CI doc validation'
+    priority: Medium
+    priority_justification: Improves documentation coherence and transparency.
+    description: Add a dedicated section sourced from audit negative findings; add doc validation checks in CI.
+    remediation_steps:
+      - Create section in docs with links to audit findings
+      - Add CI doc validation for links/citations
+    owner: Docs + Governance
+    due: 2025-11-24
+    dependencies: [REM-003]
+    acceptance_criteria:
+      - Section published; CI validation passing
+    verification_steps:
+      - Broken links detected in CI if introduced
+    audit_citation:
+      - report_section: CF_CORE_Audit_Report.md §6–7
+    status: Not Started
+    riskIds: ["R-013"]

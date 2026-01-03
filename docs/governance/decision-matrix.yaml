@@ -1,0 +1,107 @@
+## Decision Matrix (Authoritative) - Provenance Governance
+version: 1.0.0
+generated_at: 2025-11-24T00:00:00Z
+model: dual-export
+integrity:
+  algorithm: sha256
+  hash: 5E1382F61A4D1322AC97B79CE6FD02BE516D4EE8BB4443BB4E7BF18551BFC630
+
+artifact_classes:
+  aar_reports:
+    description: After Action Reports (post-work evidence & synthesis)
+    patterns:
+      - AAR-*.md
+      - AAR-*.yaml
+      - AAR.*.yaml
+      - AAR.*.md
+    retention:
+      active_days: 90
+      action_after: archive
+      archive_target: archive/aar/
+      critical: true
+  evidence_bundles:
+    description: Structured JSONL/YAML evidence bundles (logs, decisions, metrics)
+    patterns:
+      - EvidenceBundle.*.jsonl
+      - evidence/**
+      - _evidence/**
+      - artifact-manifest.jsonl
+    retention:
+      active_days: 365
+      action_after: keep
+      critical: true
+  canonical_databases:
+    description: Primary authoritative state stores
+    files:
+      - taskman.db
+      - velocity_tracker.db
+    migration:
+      target_dir: db/provenance
+      checksum: sha256
+      critical: true
+  transient_databases:
+    description: Ephemeral / test or analysis databases not retained long term
+    files:
+      - integration_testing.db
+      - performance_optimization.db
+      - security_demo.db
+      - documentation_aar.db
+    retention:
+      active_days: 30
+      action_after: delete
+      critical: false
+  logs_jsonl:
+    description: General runtime logs (non-evidence) matching *.jsonl
+    patterns:
+      - logs/*.jsonl
+      - *.jsonl
+    retention:
+      active_days: 14
+      action_after: purge
+      critical: false
+
+policy:
+  dry_run_default: true
+  require_checksum_verification: true
+  require_artifact_emit_logging: true
+  markdown_export: docs/governance/decision-matrix.md
+  decision_log: docs/governance/decision-log.md
+  manifest_file: db/provenance/manifest.yaml
+
+workflow:
+  steps:
+    - create_matrix_yaml
+    - migrate_canonical_dbs
+    - generate_manifest
+    - refine_gitignore
+    - generate_markdown_export
+    - implement_retention_script
+    - run_tests
+    - record_decision_log
+
+quality:
+  tests:
+    unit:
+      - matrix_load_parse
+      - retention_age_boundary
+      - checksum_consistency
+    integration:
+      - canonical_db_migration
+      - retention_dry_run_listing
+    e2e:
+      - full_governance_cycle
+
+risk_controls:
+  - name: dry_run_retention
+    description: Prevents accidental deletion before verification
+  - name: checksum_before_after
+    description: Validates integrity of migrated canonical DBs
+  - name: gitignore_protection
+    description: Ensures evidence bundles and AARs never ignored
+  - name: dual_export_hash
+    description: Detects unauthorized matrix changes
+
+change_management:
+  versioning: increment_on_matrix_change
+  hash_recalc_on_markdown_regen: true
+  log_decisions: true

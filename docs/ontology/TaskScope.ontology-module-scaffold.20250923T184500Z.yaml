@@ -1,0 +1,52 @@
+# Task Scope - Ontology Module Scaffold (Phase 1)
+version: 1.0
+correlation_id: 6b6d5f5e-4b3a-4c2a-9fb1-6d8f3e2c9c11
+created_at: 2025-09-23T18:45:00Z
+related_tasks:
+  - ontology-scaffold-phase1-scoping
+  - ontology-module-scaffold
+  - ontology-parity-snapshot-cli
+ontology_decision_record:
+  file: OntologyDecisionRecord.md
+  status: locked
+  sha256: B5C65153451F81EFB90F3B22EB7DA1C0B277D5969ECAD63848657BD13F13FA80
+objectives:
+  - Establish minimal ontology package layout (no business logic yet)
+  - Provide interfaces: load_sources(), compute_parity(), emit_snapshot() (stub signatures only)
+  - Enforce Gate A (presence of ontology_decision_locked event) before implementation commit
+  - Prepare for snapshot schema v1.0.0 alignment
+acceptance_criteria:
+  - ODR status == locked
+  - Correlation ID recorded & event present in logs
+  - Stubs include docstrings referencing ODR sections (3,4,5)
+  - No metric calculations performed yet (explicit NotImplemented paths)
+  - Logging baseline events for future implementation planned (documented)
+non_goals:
+  - Actual parity computation
+  - Discovery algorithms
+  - Snapshot retention mechanics
+  - CLI embedding output
+risks:
+  - name: premature_logic
+    description: Risk of accidental early implementation beyond stubs
+    mitigation: Code review + tests assert NotImplementedError
+  - name: drift_from_ODR
+    description: ODR modified post-lock without amendment protocol
+    mitigation: Pre-commit check compares ODR hash
+artifacts_planned:
+  - path: src/ontology/__init__.py
+    role: package_init
+  - path: src/ontology/core.py
+    role: scaffold_core_module
+  - path: tests/python/test_ontology_scaffold.py
+    role: scaffold_tests
+  - path: docs/ontology/OntologyDecisionRecord.md
+    role: ontology_decision_record
+    sha256: B5C65153451F81EFB90F3B22EB7DA1C0B277D5969ECAD63848657BD13F13FA80
+quality_gates:
+  constitutional: ODR locked, COF dimensions mapped
+  operational: logging baseline plan documented
+  cognitive: risk review captured
+  integration: future CLI embedding enumerated
+notes: |
+  Phase 1 produces planning + scaffold specification only. Execution of parity logic deferred to Phase 2/3.

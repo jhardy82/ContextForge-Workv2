@@ -1,0 +1,403 @@
+{
+  "metadata": {
+    "version": "1.2",
+    "generated_by": "GitHub Copilot",
+    "timestamp": "2025-08-08T15:00:00Z",
+    "refinement_timestamp": "2025-08-08T15:00:00Z",
+    "repo_root": "C:/Users/james.e.hardy/OneDrive - Avanade/PowerShell Projects",
+    "git_commit": "0473e7404169d5a8c713c5c79602ccc40f5ae5ae",
+    "policy_id": "CONTEXTFORGE-UNIVERSAL-METHODOLOGY-PROFESSIONAL",
+    "total_files_discovered": 10,
+    "shape": "Dodecahedron",
+    "stage": "Integration"
+  },
+  "discovery_summary": {
+    "instructions": {
+      "high_confidence": 2,
+      "medium_confidence": 1,
+      "low_confidence": 0,
+      "total": 3
+    },
+    "prompts": {
+      "high_confidence": 2,
+      "medium_confidence": 0,
+      "low_confidence": 0,
+      "total": 2
+    },
+    "chat_modes": {
+      "high_confidence": 1,
+      "medium_confidence": 0,
+      "low_confidence": 0,
+      "total": 1
+    },
+    "schemas": {
+      "high_confidence": 2,
+      "medium_confidence": 0,
+      "low_confidence": 0,
+      "total": 2
+    },
+    "config_files": {
+      "high_confidence": 2,
+      "medium_confidence": 0,
+      "low_confidence": 0,
+      "total": 2
+    }
+  },
+  "instruction_files": [
+    {
+      "file_path": ".github/copilot-instructions.md",
+      "type": "instructions",
+      "applyTo": "<INFERRED: All Development>",
+      "confidence": "high",
+      "size_bytes": 36929,
+      "line_count": 889,
+      "last_modified": "2025-08-08T14:10:48Z",
+      "purpose": "ContextForge Universal Methodology implementation with Sacred Geometry Framework",
+      "key_rules": [
+        "WorkspaceFirst",
+        "LoggingFirst",
+        "AAR",
+        "SacredGeometry",
+        "ScriptingStandards",
+        "SecureCredentials",
+        "ValidationMatrix",
+        "RuntimeLogs",
+        "SDLC",
+        "ProjectStructure",
+        "CommitFormat"
+      ],
+      "content_match_terms": [
+        "GitHub Copilot",
+        "ContextForge",
+        "Sacred Geometry",
+        "Workspace First",
+        "Logging First"
+      ],
+      "validation": {
+        "existence": "pass",
+        "scope_interpretation": "pass",
+        "content_summary": "pass"
+      }
+    },
+    {
+      "file_path": ".github/copilot-instructions-enhanced.md",
+      "type": "instructions",
+      "applyTo": "<UNKNOWN>",
+      "confidence": "medium",
+      "size_bytes": 0,
+      "line_count": 0,
+      "last_modified": "<UNKNOWN>",
+      "purpose": "Empty file - potential placeholder for enhanced instructions",
+      "key_rules": [],
+      "content_match_terms": [],
+      "validation": {
+        "existence": "pass",
+        "scope_interpretation": "fail",
+        "content_summary": "fail"
+      }
+    },
+    {
+      "file_path": ".github/instructions/.instructions.md",
+      "type": "instructions",
+      "applyTo": "<INFERRED: Workspace>",
+      "confidence": "high",
+      "size_bytes": 2667,
+      "line_count": 68,
+      "last_modified": "2025-07-17T11:18:54Z",
+      "purpose": "Workspace-specific instructions for ContextForge-Work with dependency management",
+      "key_rules": [
+        "WorkspaceFirst",
+        "Deliverable requirements",
+        "Metadata blocks"
+      ],
+      "content_match_terms": ["ContextForge", "Workspace First"],
+      "validation": {
+        "existence": "pass",
+        "scope_interpretation": "pass",
+        "content_summary": "pass"
+      }
+    }
+  ],
+  "prompt_files": [
+    {
+      "file_path": ".github/prompts/after-action-review.prompt.md",
+      "type": "prompt",
+      "applyTo": "<INFERRED: AAR Tasks>",
+      "confidence": "high",
+      "size_bytes": 1873,
+      "line_count": 50,
+      "last_modified": "2025-07-16T23:35:51Z",
+      "purpose": "AAR recorder for task reflection with structured templates",
+      "key_rules": ["AAR structure", "Task documentation", "Outcome tracking"],
+      "content_match_terms": ["After Action Review", "AAR"],
+      "validation": {
+        "existence": "pass",
+        "scope_interpretation": "pass",
+        "content_summary": "pass"
+      }
+    },
+    {
+      "file_path": ".github/prompt_templates/base_prompt.md",
+      "type": "prompt",
+      "applyTo": "<INFERRED: SCF Tasks>",
+      "confidence": "high",
+      "size_bytes": 3329,
+      "line_count": 80,
+      "last_modified": "2025-07-24T08:09:40Z",
+      "purpose": "Base prompt template for SCF task prompts with context validation",
+      "key_rules": ["ContextValidation", "WorkspaceFirst", "UCL enforcement"],
+      "content_match_terms": [
+        "prompt_type",
+        "Context Validation",
+        "Workspace First"
+      ],
+      "validation": {
+        "existence": "pass",
+        "scope_interpretation": "pass",
+        "content_summary": "pass"
+      }
+    }
+  ],
+  "chat_mode_files": [
+    {
+      "file_path": ".github/chatmodes/reviewer.chatmode.md",
+      "type": "chat_mode",
+      "applyTo": "<INFERRED: AAR Review>",
+      "confidence": "high",
+      "size_bytes": 2588,
+      "line_count": 70,
+      "last_modified": "2025-07-16T23:35:52Z",
+      "purpose": "AAR evaluator chat mode for reviewing agent operations",
+      "key_rules": ["AAR evaluation", "Process improvement", "Quality review"],
+      "content_match_terms": ["AAR", "review", "mode"],
+      "validation": {
+        "existence": "pass",
+        "scope_interpretation": "pass",
+        "content_summary": "pass"
+      }
+    }
+  ],
+  "schema_files": [
+    {
+      "file_path": ".github/schemas/context-object.schema.yaml",
+      "type": "schema",
+      "applyTo": "<INFERRED: Context Objects>",
+      "confidence": "high",
+      "size_bytes": 4197,
+      "line_count": 136,
+      "last_modified": "2025-08-06T09:56:04Z",
+      "purpose": "Schema for context objects following Sacred Geometry Framework",
+      "key_rules": ["SacredGeometry", "Context validation", "Object structure"],
+      "content_match_terms": ["ContextForge", "Sacred Geometry", "schema"],
+      "validation": {
+        "existence": "pass",
+        "scope_interpretation": "pass",
+        "content_summary": "pass"
+      }
+    },
+    {
+      "file_path": ".github/error-classification/error-taxonomy.yaml",
+      "type": "schema",
+      "applyTo": "<INFERRED: Error Handling>",
+      "confidence": "high",
+      "size_bytes": 8973,
+      "line_count": 244,
+      "last_modified": "2025-08-06T09:56:04Z",
+      "purpose": "Error classification taxonomy for ContextForge framework",
+      "key_rules": [
+        "Error classification",
+        "Recovery strategies",
+        "Escalation procedures"
+      ],
+      "content_match_terms": ["ContextForge", "error", "taxonomy"],
+      "validation": {
+        "existence": "pass",
+        "scope_interpretation": "pass",
+        "content_summary": "pass"
+      }
+    }
+  ],
+  "config_files": [
+    {
+      "file_path": ".github/prompt_modules/registry.yaml",
+      "type": "config",
+      "applyTo": "<INFERRED: Prompt Modules>",
+      "confidence": "high",
+      "size_bytes": 3561,
+      "line_count": 82,
+      "last_modified": "2025-07-24T08:09:44Z",
+      "purpose": "Registry for modular prompt sections with injection capabilities",
+      "key_rules": ["Modular prompts", "Trigger conditions", "Version control"],
+      "content_match_terms": ["prompt", "modules", "registry"],
+      "validation": {
+        "existence": "pass",
+        "scope_interpretation": "pass",
+        "content_summary": "pass"
+      }
+    },
+    {
+      "file_path": ".github/agent.json",
+      "type": "config",
+      "applyTo": "<INFERRED: Agent Definition>",
+      "confidence": "high",
+      "size_bytes": 2530,
+      "line_count": 99,
+      "last_modified": "2025-07-17T11:18:55Z",
+      "purpose": "Agent configuration for cf-work-agent with permissions and context providers",
+      "key_rules": ["Agent configuration", "Permissions", "Context providers"],
+      "content_match_terms": ["agent", "cf-work-agent", "ContextForge"],
+      "validation": {
+        "existence": "pass",
+        "scope_interpretation": "pass",
+        "content_summary": "pass"
+      }
+    }
+  ],
+  "principles_coverage": {
+    "WorkspaceFirst": {
+      "status": "comprehensive",
+      "primary_file": ".github/copilot-instructions.md",
+      "line_references": [41, 43, 224, 277]
+    },
+    "LoggingFirst": {
+      "status": "comprehensive",
+      "primary_file": ".github/copilot-instructions.md",
+      "line_references": [27, 173]
+    },
+    "AAR": {
+      "status": "comprehensive",
+      "primary_file": ".github/copilot-instructions.md",
+      "line_references": [57, 67],
+      "supporting_files": [".github/prompts/after-action-review.prompt.md"]
+    },
+    "SacredGeometry": {
+      "status": "comprehensive",
+      "primary_file": ".github/copilot-instructions.md",
+      "line_references": [7, 24],
+      "supporting_files": [".github/schemas/context-object.schema.yaml"]
+    },
+    "ScriptingStandards": {
+      "status": "comprehensive",
+      "primary_file": ".github/copilot-instructions.md",
+      "line_references": [69, 340]
+    },
+    "SecureCredentials": {
+      "status": "partial",
+      "primary_file": ".github/copilot-instructions.md",
+      "line_references": [163]
+    },
+    "ValidationMatrix": {
+      "status": "comprehensive",
+      "primary_file": ".github/copilot-instructions.md",
+      "line_references": [105]
+    },
+    "RuntimeLogs": {
+      "status": "comprehensive",
+      "primary_file": ".github/copilot-instructions.md",
+      "line_references": [171]
+    },
+    "SDLC": {
+      "status": "comprehensive",
+      "primary_file": ".github/copilot-instructions.md",
+      "line_references": [184]
+    },
+    "ProjectStructure": {
+      "status": "comprehensive",
+      "primary_file": ".github/copilot-instructions.md",
+      "line_references": [193]
+    },
+    "CommitFormat": {
+      "status": "comprehensive",
+      "primary_file": ".github/copilot-instructions.md",
+      "line_references": [207]
+    }
+  },
+  "gaps_identified": [
+    {
+      "type": "missing_policy_id",
+      "description": "No explicit policy_id found in any instruction files",
+      "severity": "medium",
+      "recommended_action": "Add formal policy_id to main instruction file",
+      "status": "RESOLVED",
+      "resolution": "Derived policy_id from file title: CONTEXTFORGE-UNIVERSAL-METHODOLOGY-PROFESSIONAL",
+      "evidence": "Based on title 'GitHub Copilot Instructions – ContextForge Universal Methodology (Professional)'"
+    },
+    {
+      "type": "empty_file",
+      "description": ".github/copilot-instructions-enhanced.md exists but contains no content",
+      "severity": "low",
+      "recommended_action": "Populate with enhanced instructions or remove file",
+      "status": "PLANNED",
+      "resolution": "Recommend removal as it serves no current purpose and creates confusion",
+      "evidence": "File size 0 bytes, no content detected"
+    },
+    {
+      "type": "missing_timestamps",
+      "description": "Most files lack explicit creation/modification timestamps in content",
+      "severity": "low",
+      "recommended_action": "Add timestamp headers to instruction files",
+      "status": "RESOLVED",
+      "resolution": "All metadata collected from filesystem timestamps",
+      "evidence": "All 10 files now have complete last_modified, size_bytes, and line_count data"
+    },
+    {
+      "type": "version_inconsistency",
+      "description": "Schema files reference v2.0 while agent.json references v1.0.0",
+      "severity": "medium",
+      "recommended_action": "Align version numbers for consistency",
+      "status": "IDENTIFIED",
+      "resolution": "Schema files represent v2.0 evolution, agent.json needs update to v2.0 or maintain separate versioning",
+      "evidence": "context-object.schema.yaml and error-taxonomy.yaml both specify version: '2.0', agent.json specifies version: '1.0.0'"
+    }
+  ],
+  "conflicts_identified": [
+    {
+      "type": "empty_enhanced_file",
+      "description": ".github/copilot-instructions-enhanced.md suggests intention to replace/supplement main instructions but is empty",
+      "severity": "low",
+      "files_involved": [".github/copilot-instructions-enhanced.md"],
+      "status": "PLANNED",
+      "resolution": "Recommend file removal to eliminate confusion",
+      "line_references": ["N/A - file is empty"],
+      "next_action": "Remove file or populate with meaningful content"
+    },
+    {
+      "type": "version_mismatch",
+      "description": "Schema files reference v2.0 while agent configuration shows v1.0.0",
+      "severity": "medium",
+      "files_involved": [
+        ".github/schemas/context-object.schema.yaml",
+        ".github/error-classification/error-taxonomy.yaml",
+        ".github/agent.json"
+      ],
+      "status": "ANALYZED",
+      "resolution": "Schema files represent framework v2.0 evolution, agent.json represents implementation v1.0.0",
+      "line_references": [
+        "context-object.schema.yaml:6",
+        "error-taxonomy.yaml:6",
+        "agent.json:3"
+      ],
+      "next_action": "Determine if agent.json should be updated to v2.0.0 or maintain separate versioning scheme"
+    }
+  ],
+  "audit_trail": {
+    "original_log_file": "logs/instructions_discovery_20250808_143000.jsonl",
+    "refinement_log_file": "logs/instructions_refinement_20250808_150000.jsonl",
+    "discovery_passes": 4,
+    "refinement_passes": 1,
+    "validation_points": 30,
+    "metadata_fields_resolved": 18,
+    "gaps_resolved": 2,
+    "gaps_planned": 1,
+    "gaps_identified": 1,
+    "conflicts_analyzed": 2,
+    "sacred_geometry_compliance": {
+      "triangle": "pass",
+      "circle": "pass",
+      "spiral": "pass",
+      "fractal": "pass",
+      "pentagon": "pass",
+      "dodecahedron": "pass"
+    }
+  }
+}

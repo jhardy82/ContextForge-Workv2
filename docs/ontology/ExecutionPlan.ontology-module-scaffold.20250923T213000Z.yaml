@@ -1,0 +1,82 @@
+# Execution Plan - Ontology Module Scaffold (Gate B Readiness)
+version: 1.0
+created_at: 2025-09-23T21:30:00Z
+correlation_id: 6b6d5f5e-4b3a-4c2a-9fb1-6d8f3e2c9c11
+related_artifacts:
+  odr_file: OntologyDecisionRecord.md
+  research_plan: ResearchPlan.ontology-module-scaffold.20250923T200000Z.yaml
+  task_scope: TaskScope.ontology-module-scaffold.20250923T184500Z.yaml
+hash_chain:
+  odr_sha256: B5C65153451F81EFB90F3B22EB7DA1C0B277D5969ECAD63848657BD13F13FA80
+  research_plan_sha256: 74FC74AD7CBD0627BE13540D52B0EA7D00227608A5EA48FDDF1F8B13204FA754
+  execution_plan_sha256: D4E35EE4FFC8795EBFE73AD0D63730F224F78E932D4830B8AD3A4849314BC208
+gate_alignment:
+  gate_a: "Locked (ODR-0001)"
+  gate_b_objective: "Introduce formal JSON Schema + sample + validating tests before implementing logic"
+objectives:
+  - Formalize parity snapshot schema (schema_version 1.0.0) consistent with ODR §5
+  - Provide sample snapshot instance passing schema & reflecting threshold field names
+  - Add pytest validating: (a) schema loads, (b) sample instance valid, (c) stubs raise NotImplementedError, (d) ODR hash unchanged
+  - Prepare placeholder performance sentinel test (skipped) referencing fast-path <50ms rule
+  - Extend hash chain for immutability evidence (execution_plan_sha256)
+deliverables:
+  - schema/parity_snapshot.schema.json
+  - schema/sample_valid_snapshot.json
+  - tests/python/test_ontology_scaffold.py
+  - updated todo ADR (ontology-module-scaffold) referencing new artifact hashes
+schema_contract:
+  schema_version: 1.0.0
+  required_top_level:
+    - schema_version
+    - generated_at
+    - correlation_id
+    - metrics
+    - discovery
+    - sets
+    - hashes
+  metrics_properties:
+    field_coverage_pct: float >=0 <=1
+    dimension_coverage_pct: float >=0 <=1
+    critical_ops_completeness: float >=0 <=1
+    operation_overlap_pct: float >=0 <=1
+    orphan_ops_pct: float >=0 <=1
+    composite_index: float >=0 <=1
+  discovery_properties:
+    static_count: int >=0
+    runtime_count: int >=0
+    union_count: int >=0
+    overlap_pct: float >=0 <=1
+validation_tests:
+  - name: test_stub_exports
+    asserts: "import src.ontology; calling each public function raises NotImplementedError"
+  - name: test_odr_hash_unchanged
+    asserts: "Recomputed sha256 of OntologyDecisionRecord.md matches recorded value"
+  - name: test_schema_load_and_validate_sample
+    asserts: "JSON Schema validates sample_valid_snapshot.json"
+  - name: test_schema_required_fields
+    asserts: "All required top-level properties present in sample"
+  - name: test_performance_sentinel_placeholder
+    status: skipped
+    rationale: "Performance logic not implemented yet; guard in place"
+logging_plan:
+  events:
+    - artifact_emit (schema, sample, execution plan)
+    - decision (hash_chain extension)
+    - task_progress (ontology-module-scaffold)
+success_criteria:
+  - All tests above pass (except intentional skip)
+  - execution_plan_sha256 computed & inserted
+  - No functional parity logic added yet
+risks:
+  - name: schema_drift_from_odr
+    mitigation: Cross-check sections & required fields list
+  - name: over_constrained_thresholds
+    mitigation: Schema does not encode threshold pass/fail logic directly (left to code)
+next_phase:
+  description: "Implement compute_parity & emit_snapshot (Gate C) after thresholds propagate to CLI status and retention logic scaffolded"
+ucl_compliance:
+  verifiability: "Hashes + tests ensure artifacts reproducible"
+  precedence: "ODR remains governing source; plan cannot override"
+  provenance: "hash_chain extended with execution_plan_sha256"
+  reproducibility: "Schema + sample deterministic"
+  integrity: "No mutation of ODR or Research Plan"

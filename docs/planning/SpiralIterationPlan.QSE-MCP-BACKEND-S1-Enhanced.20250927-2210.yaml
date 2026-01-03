@@ -1,0 +1,335 @@
+$schema: https://contextforge/schemas/spiral-iteration-plan-v2
+workId: W-MCP-BACKEND-SPIRAL-1-ENHANCED
+timestamp: 20250927-2210
+contextRef:
+  id: "cf_cli/context/Context.json"
+  version: "1.0"
+  hash: "e8f7a4b2c9d1"
+
+spiral_iteration_plan_enhanced:
+  iteration: 1
+  enhancement_type: "CF-Work Phase 1 Integration"
+  foundation_circle: "MCP Backend Core Implementation"
+  spiral_enhancement: "CF-Work Aligned Extended Endpoint Ecosystem"
+  decision_rationale: "User selected Option A: Full CF-Work Phase 1 Integration for maximum strategic value"
+
+  foundation_assessment:
+    established_capabilities:
+      - capability: "Core MCP Backend"
+        endpoints: 13
+        performance_baseline: "5.1ms average"
+        test_coverage: "100% - 40/40 tests passed"
+        quality_gates: ["functionality", "performance", "integration", "regression"]
+
+      - capability: "Comprehensive Testing Framework"
+        framework: "280-line PowerShell suite with 9-phase methodology"
+        evidence_generation: "Automated AAR and performance metrics"
+        expandability: "Modular design ready for diverse endpoint testing"
+
+      - capability: "Route Architecture Mastery"
+        learning: "Express.js route ordering principles mastered via Phase 7 resolution"
+        application: "Bulk endpoint conflict resolution demonstrates competency"
+        documentation: "Route hierarchy patterns documented in LessonsLearned"
+
+  cf_work_phase_1_integration:
+    strategic_alignment: "Complete CF-Work Phase 1 implementation in single spiral iteration"
+
+    original_priority_1_retained:
+      - endpoint: "/api/tasks/:id/dependencies"
+        purpose: "Task dependency management and visualization"
+        methods: ["GET", "POST", "DELETE"]
+        complexity: "MEDIUM - requires relationship modeling"
+        estimated_effort: "16 SP (12h development + 4h testing)"
+        cf_work_category: "Advanced Management (implicit dependency support)"
+
+      - endpoint: "/api/tasks/:id/history"
+        purpose: "Task audit trail and change history"
+        methods: ["GET"]
+        complexity: "LOW - extends existing task model"
+        estimated_effort: "8 SP (6h development + 2h testing)"
+        cf_work_category: "Advanced Management (audit trail)"
+
+    cf_work_phase_1_additions:
+      - endpoint: "DELETE /api/tasks/{id}"
+        purpose: "Complete CRUD cycle with task deletion"
+        methods: ["DELETE"]
+        complexity: "LOW - standard REST deletion with dependency cleanup"
+        estimated_effort: "6 SP (4h development + 2h testing)"
+        cf_work_priority: "Phase 1 - Essential Operations"
+        synergy: "Enables dependency cleanup when tasks are removed"
+
+      - endpoint: "GET /api/tasks/search"
+        purpose: "Advanced text and field-based task search"
+        methods: ["GET"]
+        parameters: ["q={query}", "filters={criteria}", "sort={field}", "limit={n}"]
+        complexity: "MEDIUM-HIGH - requires query parsing and search indexing"
+        estimated_effort: "16 SP (12h development + 4h testing)"
+        cf_work_priority: "Phase 1 - Search and Filtering"
+        synergy: "Enables discovery of tasks with specific dependencies"
+
+      - endpoint: "POST /api/tasks/{id}/comments"
+        purpose: "Add comments and collaboration notes to tasks"
+        methods: ["POST"]
+        complexity: "MEDIUM - new data model for comments with task relationships"
+        estimated_effort: "12 SP (9h development + 3h testing)"
+        cf_work_priority: "Phase 1 - Collaboration Features"
+        synergy: "Supports dependency discussion and history annotation"
+
+  enhanced_implementation_strategy:
+    total_endpoints: 5
+    total_effort: "58 SP (43h development + 15h testing)"
+    timeline_expansion: "75% increase from original 33h baseline"
+
+    phase_approach_revised:
+      - phase: "0-1: Enhanced Scoping & Research"
+        duration: "6h (was 4h)"
+        deliverables: ["TaskScope", "ResearchPlan", "OptionsMatrix", "CF-Work Integration Spec"]
+        focus: "5-endpoint analysis with CF-Work compliance requirements"
+
+      - phase: "2-3: Comprehensive Planning & Design"
+        duration: "8h (was 6h)"
+        deliverables: ["ExecutionPlan", "TestSpec", "Rationale", "Route Architecture Design"]
+        focus: "CRUD completion, search architecture, collaboration model, dependency system"
+
+      - phase: "4-5: Enhanced Validation & Integration"
+        duration: "4h (was 3h)"
+        deliverables: ["TripleCheck", "SyncReport", "ConfidenceReport", "Performance Impact Assessment"]
+        focus: "Route hierarchy validation for 5 diverse endpoints and testing framework scalability"
+
+      - phase: "6-7: Implementation & Comprehensive Testing"
+        duration: "40h (was 20h)"
+        deliverables: ["5 endpoint implementations", "Extended test validation", "Performance benchmarks", "CF-Work compliance verification"]
+        focus: "DELETE operations, search indexing, comment system, dependencies, history with full testing coverage"
+
+  route_architecture_design:
+    ordering_strategy: "Apply established Express.js principles with CF-Work endpoint integration"
+
+    route_hierarchy:
+      specific_routes_first:
+        - "GET /api/tasks/search (search before :id parameter)"
+        - "POST /api/tasks/bulk (existing - bulk operations)"
+        - "PATCH /api/tasks/bulk (existing - bulk updates)"
+        - "DELETE /api/tasks/bulk (future CF-Work Phase 4)"
+
+      parameterized_routes_second:
+        - "GET /api/tasks/:id (existing)"
+        - "PUT /api/tasks/:id (existing)"
+        - "DELETE /api/tasks/:id (NEW - CF-Work Phase 1)"
+        - "GET /api/tasks/:id/dependencies (NEW - Priority 1)"
+        - "POST /api/tasks/:id/dependencies (NEW - Priority 1)"
+        - "DELETE /api/tasks/:id/dependencies (NEW - Priority 1)"
+        - "GET /api/tasks/:id/history (NEW - Priority 1)"
+        - "POST /api/tasks/:id/comments (NEW - CF-Work Phase 1)"
+
+    conflict_prevention:
+      principle: "Specific routes precede parameterized patterns"
+      validation: "Search endpoint '/search' placed before '/:id' to prevent parameter capture"
+      testing: "Route ordering test cases added to comprehensive testing framework"
+
+  testing_framework_extension:
+    modular_design_implementation:
+      base_framework: "280-line PowerShell suite with 9-phase methodology"
+
+      endpoint_specific_modules:
+        - module: "Test-MCPEndpoint-Delete.ps1"
+          purpose: "CRUD completion validation with dependency cleanup testing"
+          complexity: "LOW - standard REST deletion patterns"
+
+        - module: "Test-MCPEndpoint-Search.ps1"
+          purpose: "Query parsing, search functionality, performance validation"
+          complexity: "HIGH - search indexing and query complexity testing"
+
+        - module: "Test-MCPEndpoint-Comments.ps1"
+          purpose: "Collaboration features, data model validation"
+          complexity: "MEDIUM - comment system and task relationship testing"
+
+        - module: "Test-MCPEndpoint-Dependencies.ps1"
+          purpose: "Relationship modeling, circular dependency prevention"
+          complexity: "MEDIUM-HIGH - dependency graph validation"
+
+        - module: "Test-MCPEndpoint-History.ps1"
+          purpose: "Audit trail accuracy, timeline validation"
+          complexity: "LOW-MEDIUM - history integrity and performance"
+
+      integration_testing:
+        cross_endpoint_scenarios:
+          - "Delete task with dependencies (cascade behavior)"
+          - "Search tasks with dependency filters"
+          - "Comment on dependency relationships"
+          - "History tracking for all CRUD operations"
+
+        performance_validation:
+          baseline_maintenance: "5.1ms average across all 18 endpoints (13 existing + 5 new)"
+          individual_thresholds:
+            - "DELETE /api/tasks/{id}: <3ms (simple operation)"
+            - "GET /api/tasks/search: <15ms (complex search operation)"
+            - "POST /api/tasks/{id}/comments: <5ms (medium complexity)"
+            - "GET /api/tasks/{id}/dependencies: <8ms (relationship queries)"
+            - "GET /api/tasks/{id}/history: <6ms (audit log retrieval)"
+
+  risk_assessment_enhanced:
+    technical_risks:
+      - risk: "Search endpoint performance impact on baseline"
+        probability: "MEDIUM"
+        impact: "HIGH"
+        mitigation: "Implement search indexing strategy, query optimization, caching layer"
+
+      - risk: "Route ordering complexity with 5 new endpoints"
+        probability: "LOW"
+        impact: "MEDIUM"
+        mitigation: "Apply proven Express.js ordering principles, comprehensive route testing"
+
+      - risk: "Comment system data model integration"
+        probability: "MEDIUM"
+        impact: "MEDIUM"
+        mitigation: "Design comments as separate collection with task references, maintain data integrity"
+
+      - risk: "Testing framework complexity explosion"
+        probability: "MEDIUM"
+        impact: "MEDIUM"
+        mitigation: "Modular design with 5 separate endpoint modules, shared test utilities"
+
+    scope_risks:
+      - risk: "58-hour timeline feasibility"
+        probability: "MEDIUM"
+        impact: "HIGH"
+        mitigation: "Phase-gate progression, early milestone validation, scope adjustment capability"
+
+      - risk: "CF-Work specification interpretation gaps"
+        probability: "LOW"
+        impact: "MEDIUM"
+        mitigation: "Reference CF-Work specification document, implement MCP best practices consistently"
+
+  success_criteria_comprehensive:
+    cf_work_phase_1_completion:
+      essential_operations:
+        - "DELETE /api/tasks/{id} implemented with dependency cleanup"
+
+      search_filtering:
+        - "GET /api/tasks/search implemented with query parsing and filtering"
+
+      collaboration_features:
+        - "POST /api/tasks/{id}/comments implemented with proper data model"
+
+    original_priorities_maintained:
+      dependency_management:
+        - "GET/POST/DELETE /api/tasks/{id}/dependencies fully functional"
+
+      audit_trail:
+        - "GET /api/tasks/{id}/history providing complete task change tracking"
+
+    technical_excellence:
+      performance: "5.1ms baseline maintained across 18 total endpoints"
+      testing: "100% test coverage with modular endpoint-specific testing"
+      architecture: "Route ordering principles applied consistently"
+      documentation: "CF-Work MCP best practices implemented throughout"
+
+    strategic_positioning:
+      cf_work_alignment: "Complete Phase 1 implementation enables progression to Phase 2"
+      spiral_methodology: "Enhanced iteration demonstrates scalability for complex scope"
+      foundation_quality: "Robust platform for CF-Work Phases 2-5 future implementation"
+
+  cf_work_progression_roadmap:
+    phase_1_current:
+      scope: "delete_task, search_tasks, add_comment + dependencies + history"
+      timeline: "Spiral Iteration 1 (58h)"
+      status: "IN PLANNING"
+
+    phase_2_next:
+      scope: "filter_tasks, add_attachment, create_reminder"
+      timeline: "Spiral Iteration 2 (estimated 45h)"
+      prerequisite: "Phase 1 foundation stable"
+
+    phase_3_future:
+      scope: "list_comments, mention_user, list_attachments"
+      timeline: "Spiral Iteration 3 (estimated 35h)"
+      prerequisite: "Collaboration foundation from Phase 2"
+
+    phase_4_advanced:
+      scope: "bulk_create_tasks, bulk_delete_tasks"
+      timeline: "Spiral Iteration 4 (estimated 30h)"
+      prerequisite: "Core functionality proven stable"
+
+    phase_5_complete:
+      scope: "duplicate_task, list_reminders, delete_attachment"
+      timeline: "Spiral Iteration 5 (estimated 25h)"
+      prerequisite: "Advanced management capabilities established"
+
+milestone_checkpoints_enhanced:
+  phase_3_complete:
+    criteria: "CF-Work integrated ExecutionPlan approved with >0.95 SME confidence"
+    validation: "5-endpoint design validated for route ordering and performance impact"
+    deliverables: "TestSpec includes all 5 modular endpoint testing strategies"
+
+  phase_6_midpoint:
+    criteria: "3 endpoints implemented (DELETE, dependencies GET/POST/DELETE, history GET)"
+    validation: "Route ordering functioning correctly, no conflicts detected"
+    performance: "Intermediate performance validation shows baseline maintenance"
+
+  phase_6_complete:
+    criteria: "All 5 endpoints implemented with CF-Work specification compliance"
+    validation: "Search and comment endpoints functioning with proper data models"
+    integration: "Cross-endpoint scenarios working (delete with dependencies, search with filters)"
+
+  phase_7_complete:
+    criteria: "Extended testing framework passing 100% with 5 modular endpoint modules"
+    validation: "Performance benchmarks established for all new endpoints within thresholds"
+    documentation: "CF-Work MCP best practices documented and applied consistently"
+
+estimated_timeline_enhanced:
+  total_duration: "58 hours (75% increase from original 33h)"
+
+  phase_breakdown:
+    - "Enhanced Planning (Phases 0-3): 14h"
+    - "Validation (Phases 4-5): 4h"
+    - "Implementation (Phase 6): 32h"
+    - "Testing (Phase 7): 8h"
+
+  sprint_organization:
+    week_1: "Planning and Design (Phases 0-3) - 14h"
+    week_2: "Core Implementation (Phase 6 Part 1) - 16h"
+    week_3: "Advanced Implementation (Phase 6 Part 2) - 16h"
+    week_4: "Testing and Validation (Phases 4-5,7) - 12h"
+
+  resource_allocation:
+    development_focus: "74% (43h of 58h)"
+    testing_focus: "26% (15h of 58h)"
+    cf_work_compliance: "Integrated throughout all phases"
+
+iteration_metrics_enhanced:
+  complexity_increase: "HIGH - 5 diverse endpoints vs original 2 focused endpoints"
+  learning_curve: "LOW-MEDIUM - building on established patterns with CF-Work integration"
+  risk_level: "MEDIUM - expanded scope with proven methodology foundation"
+  innovation_factor: "HIGH - search architecture, collaboration model, CF-Work alignment"
+  strategic_value: "MAXIMUM - complete CF-Work Phase 1 enables full roadmap progression"
+
+feed_forward_preparation_enhanced:
+  from_previous_circle:
+    - "Express.js route ordering mastery"
+    - "Comprehensive testing methodology"
+    - "Performance baseline establishment (5.1ms)"
+    - "QSE Phase 7-8 evidence generation patterns"
+    - "CF-Work specification integration analysis"
+
+  for_next_circle:
+    - "18-endpoint MCP backend (13 existing + 5 CF-Work Phase 1)"
+    - "Search and indexing architecture patterns"
+    - "Collaboration and comment system foundation"
+    - "CRUD completion with dependency management"
+    - "Modular testing framework for complex APIs"
+    - "CF-Work Phase 2 readiness with proven Phase 1 foundation"
+
+cf_work_compliance_validation:
+  mcp_best_practices:
+    tool_descriptions: "Clear, developer-friendly descriptions for all 5 new endpoints"
+    input_validation: "Comprehensive validation with proper HTTP status codes"
+    authentication: "Consistent security model across all endpoints"
+    rate_limiting: "Performance protection maintaining 5.1ms baseline"
+    documentation: "Markdown documentation following CF-Work formatting standards"
+
+  endpoint_quality_standards:
+    delete_task: "Proper cascade handling for dependency cleanup"
+    search_tasks: "Efficient query parsing with search indexing optimization"
+    add_comment: "Robust data model with task relationship integrity"
+    dependencies: "Circular dependency prevention and relationship validation"
+    history: "Accurate audit trail with timeline consistency"

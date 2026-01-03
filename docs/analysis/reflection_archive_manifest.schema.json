@@ -1,0 +1,63 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "schema_version": "1.0.0",
+  "title": "OutputManager Archive Manifest",
+  "type": "object",
+  "required": ["metadata","artifacts"],
+  "properties": {
+    "metadata": {
+      "type": "object",
+      "required": ["project_id","session_id","generated_at","source_session_root","version"],
+      "properties": {
+        "project_id": {"type": "string"},
+        "session_id": {"type": "string"},
+        "generated_at": {"type": "string", "format": "date-time"},
+        "source_session_root": {"type": "string"},
+        "version": {"type": "string"},
+        "artifact_count_expected": {"type": "integer"},
+        "authoring_agent": {"type": "string"}
+      }
+    },
+    "artifacts": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "required": ["filename","source_session_path","file_type","project_guess","activity_state","confidence_level","target_relative_path"],
+        "properties": {
+          "filename": {"type": "string"},
+          "source_session_path": {"type": "string"},
+          "file_type": {"type": "string"},
+          "size_bytes": {"type": "integer"},
+          "sha256": {"type": "string"},
+          "project_guess": {"type": "string"},
+          "activity_state": {"type": "string", "enum": ["ACTIVE","RECENT","STALE","LEGACY"]},
+          "confidence_level": {"type": "string", "enum": ["HIGH","MEDIUM","LOW"]},
+          "target_relative_path": {"type": "string"},
+          "cof_dimension_tags": {"type": "array", "items": {"type": "string"}},
+          "evidence_present": {"type": "boolean"},
+          "orphan_risk": {"type": "string", "enum": ["NONE","LOW","MEDIUM","HIGH"]},
+          "migration_batch": {"type": "integer"},
+          "notes": {"type": "string"}
+        }
+      }
+    },
+    "ucl_precheck": {
+      "type": "object",
+      "properties": {
+        "orphaned_artifacts": {"type": "integer"},
+        "cycles_detected": {"type": "integer"},
+        "evidence_missing": {"type": "integer"}
+      }
+    },
+    "summary": {
+      "type": "object",
+      "properties": {
+        "artifact_total": {"type": "integer"},
+        "high_confidence_pct": {"type": "number"},
+        "migration_batches": {"type": "integer"},
+        "hash_coverage_pct": {"type": "number"}
+      }
+    },
+    "evidence_hash": {"type": "string"}
+  }
+}

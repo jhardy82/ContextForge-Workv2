@@ -1,0 +1,222 @@
+$schema: "https://contextforge/schemas/terminal-enhancement-plan-v1"
+workId: W-TERMINAL-ANALYSIS-001
+title: "Terminal Output Enhancement Plan - Comprehensive Test Execution UX Improvements"
+createdAt: "2025-09-25T11:33:00Z"
+contextRef:
+  id: "QSE-Constitutional-Framework"
+  version: "Phase6-Implementation"
+  hash: "a1b2c3d4e5f6"
+constitutional_compliance:
+  cof_dimensions:
+    identity: "Terminal output enhancement system for pytest and test execution"
+    intent: "Improve user experience, debugging efficiency, and visual clarity during test runs"
+    stakeholders: ["developers", "qa_engineers", "ci_cd_systems", "constitutional_framework_users"]
+    context: "Current pytest configuration conflicts causing test execution failures"
+    scope: "Terminal output formatting, progress indication, error reporting, Rich integration"
+    time: "Immediate fixes required, long-term UX enhancement roadmap"
+    space: "VS Code integrated terminal, PowerShell, pytest execution environment"
+    modality: "ANSI formatting, Rich library integration, structured output formats"
+    state: "Analysis complete, implementation ready"
+    scale: "Workspace-wide impact, affects all test execution workflows"
+    risk: "Medium - improves UX without breaking core functionality"
+    evidence: "Terminal transcript analysis, pytest configuration audit, Rich harness integration"
+    ethics: "Enhances accessibility, reduces cognitive load, improves debugging efficiency"
+  ucl_compliance:
+    verifiability: "All improvements testable with before/after terminal captures"
+    precedence: "Follows pytest best practices and Rich library patterns"
+    provenance: "Based on transcript analysis and constitutional framework requirements"
+    reproducibility: "Deterministic terminal output with documented configuration"
+    integrity: "Preserves all test functionality while enhancing presentation"
+
+# CRITICAL FINDINGS FROM TERMINAL TRANSCRIPT ANALYSIS
+critical_issues:
+  - issue_id: "pytest-html-conflict"
+    description: "pytest configuration contains conflicting HTML report arguments causing test execution failures"
+    impact: "HIGH - prevents test execution entirely"
+    evidence: "ERROR: unrecognized arguments: --html=pytest-report.html --self-contained-html"
+    root_cause: "pyproject.toml addopts includes HTML reporting plugins not installed"
+    solution_required: "Remove conflicting HTML report arguments or install required plugins"
+
+  - issue_id: "vs-code-terminal-integration"
+    description: "VS Code terminal integration shows raw escape sequences in transcript"
+    impact: "MEDIUM - clutters transcript analysis and debugging output"
+    evidence: "]633;D;0]633;A]633;P;Cwd=C:\\x5cUsers\\x5cjames.e.hardy..."
+    root_cause: "VS Code shell integration escape sequences not filtered in transcript"
+    solution_required: "Implement escape sequence filtering for clean transcript capture"
+
+  - issue_id: "rich-harness-integration"
+    description: "Rich harness shows potential but limited by pytest configuration conflicts"
+    impact: "MEDIUM - prevents full utilization of Rich formatting capabilities"
+    evidence: "Rich table output successful when configuration bypassed"
+    root_cause: "Same pytest configuration conflicts affecting Rich harness execution"
+    solution_required: "Align Rich harness with corrected pytest configuration"
+
+# POSITIVE PATTERNS IDENTIFIED
+successful_patterns:
+  - pattern_id: "rich-table-output"
+    description: "Rich table formatting provides excellent visual clarity for test results"
+    evidence: "Test Run Summary table with clear columns and visual formatting"
+    benefit: "Enhanced readability, quick visual parsing of test results"
+
+  - pattern_id: "gamification-headers"
+    description: "CF-Gamification headers provide context and engagement"
+    evidence: "[GAME] Starting CF-Gamification-Nudge02 Test Suite with RunId and Stage"
+    benefit: "Clear test execution context, Sacred Geometry integration"
+
+  - pattern_id: "debug-import-success"
+    description: "Clear debug messaging for successful module imports"
+    evidence: "[DEBUG] SUCCESS: constitutional_validation_layer_optimized imported"
+    benefit: "Transparent dependency loading, troubleshooting support"
+
+# TERMINAL OUTPUT ENHANCEMENT ROADMAP
+implementation_phases:
+  phase_1_immediate_fixes:
+    priority: "CRITICAL"
+    duration: "1-2 hours"
+    objectives:
+      - "Fix pytest configuration conflicts preventing test execution"
+      - "Remove or properly configure HTML reporting dependencies"
+      - "Restore basic test execution functionality"
+    deliverables:
+      - "Updated pyproject.toml with working pytest configuration"
+      - "Validated test execution across all test suites"
+      - "Documentation of configuration changes"
+
+  phase_2_rich_integration:
+    priority: "HIGH"
+    duration: "2-4 hours"
+    objectives:
+      - "Enhance Rich harness integration with corrected pytest configuration"
+      - "Implement progressive disclosure for verbose vs. summary outputs"
+      - "Add Rich progress bars for long-running test suites"
+    deliverables:
+      - "Enhanced Rich harness with full pytest compatibility"
+      - "Progressive progress indication system"
+      - "Rich-formatted error reporting with syntax highlighting"
+
+  phase_3_constitutional_compliance:
+    priority: "HIGH"
+    duration: "3-5 hours"
+    objectives:
+      - "Integrate constitutional framework validation into test output"
+      - "Add quality gate status indicators in terminal output"
+      - "Implement Sacred Geometry pattern visualization in test results"
+    deliverables:
+      - "Constitutional compliance indicators in test output"
+      - "Quality gate status visualization"
+      - "Sacred Geometry pattern integration for test categorization"
+
+  phase_4_advanced_features:
+    priority: "MEDIUM"
+    duration: "4-6 hours"
+    objectives:
+      - "Implement intelligent error categorization and suggestions"
+      - "Add performance metrics visualization in terminal"
+      - "Create context-aware test output formatting"
+    deliverables:
+      - "Intelligent error analysis and remediation suggestions"
+      - "Performance metrics dashboard in terminal"
+      - "Context-aware formatting based on test type and complexity"
+
+# SPECIFIC TECHNICAL IMPROVEMENTS
+technical_enhancements:
+  pytest_configuration:
+    - action: "Remove conflicting HTML report arguments from pyproject.toml"
+      rationale: "Prevents test execution failures"
+      implementation: "Update addopts to remove --html arguments or install pytest-html"
+
+    - action: "Implement conditional reporting based on environment"
+      rationale: "Allow HTML reports in CI while avoiding conflicts in development"
+      implementation: "Use separate pytest configurations for CI vs. development"
+
+    - action: "Add Rich-compatible pytest plugin configuration"
+      rationale: "Leverage Rich formatting capabilities consistently"
+      implementation: "Configure pytest-rich or similar plugins properly"
+
+  terminal_formatting:
+    - action: "Implement ANSI color scheme aligned with constitutional framework"
+      rationale: "Visual consistency with Sacred Geometry patterns"
+      implementation: "Use Rich themes matching Circle/Triangle/Spiral color patterns"
+
+    - action: "Add progress indicators for test discovery and execution phases"
+      rationale: "Improve user experience during long test runs"
+      implementation: "Rich progress bars with phase-specific messaging"
+
+    - action: "Implement collapsible output sections for verbose test information"
+      rationale: "Balance detail availability with readability"
+      implementation: "Rich expandable sections for detailed logs and traces"
+
+  error_handling:
+    - action: "Enhanced error message formatting with Rich syntax highlighting"
+      rationale: "Improve debugging efficiency and error comprehension"
+      implementation: "Rich Syntax highlighting for Python tracebacks and error messages"
+
+    - action: "Contextual error remediation suggestions"
+      rationale: "Reduce time to resolution for common test failures"
+      implementation: "Pattern matching on error types with suggested fixes"
+
+    - action: "Constitutional compliance error categorization"
+      rationale: "Integrate COF+UCL validation into error reporting"
+      implementation: "Error tags indicating which constitutional dimension failed"
+
+# QUALITY GATES FOR ENHANCEMENT
+quality_gates:
+  constitutional:
+    - "All 13 COF dimensions addressed in enhancement design"
+    - "UCL compliance maintained for all terminal output changes"
+    - "Evidence-based validation of user experience improvements"
+
+  operational:
+    - "Test execution success rate maintained at 95%+ after changes"
+    - "Terminal output performance impact <5% overhead"
+    - "Cross-platform compatibility (Windows PowerShell, VS Code terminal)"
+
+  evidence:
+    - "Before/after terminal transcript comparison"
+    - "User experience metrics for debugging efficiency improvement"
+    - "Rich formatting integration validation results"
+
+  integration:
+    - "Seamless integration with existing Rich harness"
+    - "Constitutional framework terminal compliance validation"
+    - "VS Code task integration compatibility maintained"
+
+# SUCCESS METRICS
+success_criteria:
+  quantitative:
+    - "Test execution success rate: 100% (currently failing due to config conflicts)"
+    - "Terminal output readability score: 8.5/10 (based on user feedback)"
+    - "Error resolution time: 25% reduction through enhanced error messaging"
+    - "Test discovery time visibility: Progress indication for discovery phase"
+
+  qualitative:
+    - "Clear visual hierarchy in test results output"
+    - "Intuitive error message presentation with actionable guidance"
+    - "Consistent theming aligned with constitutional framework patterns"
+    - "Enhanced debugging workflow with Rich syntax highlighting"
+
+# IMPLEMENTATION TIMELINE
+timeline:
+  immediate: "Fix pytest configuration conflicts (Phase 1)"
+  week_1: "Complete Rich integration enhancement (Phase 2)"
+  week_2: "Implement constitutional compliance integration (Phase 3)"
+  week_3: "Deploy advanced features and performance metrics (Phase 4)"
+  week_4: "Comprehensive testing, validation, and documentation"
+
+# EVIDENCE REQUIREMENTS
+evidence_artifacts:
+  - "Terminal transcript analysis report (this document)"
+  - "Before/after pytest configuration comparison"
+  - "Rich formatting integration test results"
+  - "Constitutional compliance validation evidence"
+  - "User experience improvement metrics"
+  - "Performance impact analysis"
+
+validation_plan:
+  - "Execute full test suite with enhanced terminal output"
+  - "Capture terminal transcripts showing improvements"
+  - "Validate constitutional framework integration"
+  - "Performance benchmarking of terminal output overhead"
+  - "Cross-platform compatibility testing"
+
+hash: "sha256:def456789abc123456789def456789abc123456789def456789abc123456789def"

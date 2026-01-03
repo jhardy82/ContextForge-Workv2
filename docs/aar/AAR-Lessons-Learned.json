@@ -1,0 +1,329 @@
+{
+  "lessons": [
+    {
+      "section": "What Worked Well",
+      "source": "SCCM/AAR-SCCMHealthEvaluation.md",
+      "text": "Microsoft documentation research provided a strong foundation.",
+      "type": "what_worked"
+    },
+    {
+      "section": "What Worked Well",
+      "source": "SCCM/AAR-SCCMHealthEvaluation.md",
+      "text": "ContextForge methodology ensured comprehensive and maintainable code.",
+      "type": "what_worked"
+    },
+    {
+      "section": "What Worked Well",
+      "source": "SCCM/AAR-SCCMHealthEvaluation.md",
+      "text": "Trust-but-Verify validation caught issues pre-deployment.",
+      "type": "what_worked"
+    },
+    {
+      "section": "What Worked Well",
+      "source": "SCCM/AAR-SCCMHealthEvaluation.md",
+      "text": "Modular function design enables easy maintenance and extension.",
+      "type": "what_worked"
+    },
+    {
+      "section": "Areas for Future Enhancement",
+      "source": "SCCM/AAR-SCCMHealthEvaluation.md",
+      "text": "GUI interface for non-technical users.",
+      "type": "enhancement"
+    },
+    {
+      "section": "Areas for Future Enhancement",
+      "source": "SCCM/AAR-SCCMHealthEvaluation.md",
+      "text": "Automated remediation for common issues.",
+      "type": "enhancement"
+    },
+    {
+      "section": "Areas for Future Enhancement",
+      "source": "SCCM/AAR-SCCMHealthEvaluation.md",
+      "text": "Integration with SCCM console as a custom tool.",
+      "type": "enhancement"
+    },
+    {
+      "section": "Areas for Future Enhancement",
+      "source": "SCCM/AAR-SCCMHealthEvaluation.md",
+      "text": "Machine learning for predictive health analysis.",
+      "type": "enhancement"
+    },
+    {
+      "section": "Technical Insights",
+      "source": "SCCM/AAR-SCCMInfrastructureEvaluation.md",
+      "text": "PowerShell 5.1 compatibility requires careful syntax choices.",
+      "type": "technical"
+    },
+    {
+      "section": "Technical Insights",
+      "source": "SCCM/AAR-SCCMInfrastructureEvaluation.md",
+      "text": "Mock data is essential when SCCM isn’t available.",
+      "type": "technical"
+    },
+    {
+      "section": "Technical Insights",
+      "source": "SCCM/AAR-SCCMInfrastructureEvaluation.md",
+      "text": "Structured JSONL logging provides excellent auditability.",
+      "type": "technical"
+    },
+    {
+      "section": "Technical Insights",
+      "source": "SCCM/AAR-SCCMInfrastructureEvaluation.md",
+      "text": "Progress feedback significantly improves UX.",
+      "type": "technical"
+    },
+    {
+      "section": "Process Insights",
+      "source": "SCCM/AAR-SCCMInfrastructureEvaluation.md",
+      "text": "Documentation-first (cmdlet research) prevents rework.",
+      "type": "process"
+    },
+    {
+      "section": "Process Insights",
+      "source": "SCCM/AAR-SCCMInfrastructureEvaluation.md",
+      "text": "Test-driven scenarios early ensure coverage.",
+      "type": "process"
+    },
+    {
+      "section": "Process Insights",
+      "source": "SCCM/AAR-SCCMInfrastructureEvaluation.md",
+      "text": "Shape-based validation gives clear milestones.",
+      "type": "process"
+    },
+    {
+      "section": "Process Insights",
+      "source": "SCCM/AAR-SCCMInfrastructureEvaluation.md",
+      "text": "Communication handoff files improve multi-agent collaboration.",
+      "type": "process"
+    },
+    {
+      "section": "Development Process",
+      "source": "SCCM/PSE/AAR-Windows11DeploymentAnalysis-Final.md",
+      "text": "Microsoft documentation research is critical for compatibility patterns.",
+      "type": "process"
+    },
+    {
+      "section": "Development Process",
+      "source": "SCCM/PSE/AAR-Windows11DeploymentAnalysis-Final.md",
+      "text": "Mock environment enables comprehensive testing without live systems.",
+      "type": "process"
+    },
+    {
+      "section": "Development Process",
+      "source": "SCCM/PSE/AAR-Windows11DeploymentAnalysis-Final.md",
+      "text": "PSScriptAnalyzer integration prevents production issues.",
+      "type": "process"
+    },
+    {
+      "section": "Development Process",
+      "source": "SCCM/PSE/AAR-Windows11DeploymentAnalysis-Final.md",
+      "text": "ContextForge methodology ensures comprehensive validation.",
+      "type": "process"
+    },
+    {
+      "section": "Technical Insights",
+      "source": "SCCM/PSE/AAR-Windows11DeploymentAnalysis-Final.md",
+      "text": "Variable scope management is crucial in PowerShell functions.",
+      "type": "technical"
+    },
+    {
+      "section": "Technical Insights",
+      "source": "SCCM/PSE/AAR-Windows11DeploymentAnalysis-Final.md",
+      "text": "Production scripts must be cleanly separated from development artifacts.",
+      "type": "technical"
+    },
+    {
+      "section": "Technical Insights",
+      "source": "SCCM/PSE/AAR-Windows11DeploymentAnalysis-Final.md",
+      "text": "Comprehensive error handling is essential for enterprise deployments.",
+      "type": "technical"
+    },
+    {
+      "section": "Technical Insights",
+      "source": "SCCM/PSE/AAR-Windows11DeploymentAnalysis-Final.md",
+      "text": "Multi-format outputs provide flexibility across use cases.",
+      "type": "technical"
+    },
+    {
+      "section": "Continuous Learning",
+      "source": "out/phase-0-20250814_225631/AAR.md",
+      "text": "UCL: Minimal Viable Context — Shell split validated via direct detection (evidence: checks.json:shell).",
+      "type": "learning"
+    },
+    {
+      "section": "Continuous Learning",
+      "source": "out/phase-0-20250814_225631/AAR.md",
+      "text": "UCL: Evidence Before Prescription — Inventory gathered before changes (evidence: checks.json).",
+      "type": "learning"
+    },
+    {
+      "section": "Continuous Learning",
+      "source": "out/phase-0-20250814_225631/AAR.md",
+      "text": "UCL: Determinism — Outputs pinned to run id 20250814-225631 (evidence: manifest.json).",
+      "type": "learning"
+    },
+    {
+      "section": "Continuous Improvement",
+      "source": "out/phase-0-20250814_225631/AAR.md",
+      "text": "Triangle — Pin module versions (Pester/PSSA) across dev/prod.",
+      "type": "improvement"
+    },
+    {
+      "section": "Continuous Improvement",
+      "source": "out/phase-0-20250814_225631/AAR.md",
+      "text": "Circle — Add incremental checks to local tasks for faster feedback.",
+      "type": "improvement"
+    },
+    {
+      "section": "Continuous Improvement",
+      "source": "out/phase-0-20250814_225631/AAR.md",
+      "text": "Fractal — Isolate cloud SDK usage to PS 7 modules and scripts.",
+      "type": "improvement"
+    },
+    {
+      "section": "Security Notes",
+      "source": "out/phase-0-20250814_225631/AAR.md",
+      "text": "No secrets collected; if found, redact and migrate to SecretManagement.",
+      "type": "security"
+    },
+    {
+      "section": "What Worked Exceptionally Well",
+      "source": "AAR-Copilot-Instructions-Enhancement-Complete.md",
+      "text": "Systematic prioritization enabled comprehensive coverage.",
+      "type": "what_worked"
+    },
+    {
+      "section": "What Worked Exceptionally Well",
+      "source": "AAR-Copilot-Instructions-Enhancement-Complete.md",
+      "text": "Evidence-based tracking (line-level) improved accountability and reuse.",
+      "type": "what_worked"
+    },
+    {
+      "section": "What Worked Exceptionally Well",
+      "source": "AAR-Copilot-Instructions-Enhancement-Complete.md",
+      "text": "Sacred Geometry alignment improved structure and clarity.",
+      "type": "what_worked"
+    },
+    {
+      "section": "What Worked Exceptionally Well",
+      "source": "AAR-Copilot-Instructions-Enhancement-Complete.md",
+      "text": "Clear role separation (script vs agent) reduced scope creep.",
+      "type": "what_worked"
+    },
+    {
+      "section": "Process Improvements Identified",
+      "source": "AAR-Copilot-Instructions-Enhancement-Complete.md",
+      "text": "Create standard templates for lesson application.",
+      "type": "process_improvement"
+    },
+    {
+      "section": "Process Improvements Identified",
+      "source": "AAR-Copilot-Instructions-Enhancement-Complete.md",
+      "text": "Automate evidence validation and tracking where feasible.",
+      "type": "process_improvement"
+    },
+    {
+      "section": "Process Improvements Identified",
+      "source": "AAR-Copilot-Instructions-Enhancement-Complete.md",
+      "text": "Establish periodic reviews of lessons application.",
+      "type": "process_improvement"
+    },
+    {
+      "section": "Process Improvements Identified",
+      "source": "AAR-Copilot-Instructions-Enhancement-Complete.md",
+      "text": "Apply enhanced instructions across ContextForge projects.",
+      "type": "process_improvement"
+    },
+    {
+      "section": "Reusability Assessment",
+      "source": "AAR-Copilot-Instructions-Enhancement-Complete.md",
+      "text": "High reusability lessons can be directly applied elsewhere.",
+      "type": "reusability"
+    },
+    {
+      "section": "Reusability Assessment",
+      "source": "AAR-Copilot-Instructions-Enhancement-Complete.md",
+      "text": "Medium reusability items require context-specific adaptation.",
+      "type": "reusability"
+    },
+    {
+      "section": "Reusability Assessment",
+      "source": "AAR-Copilot-Instructions-Enhancement-Complete.md",
+      "text": "Documentation excellence: lessons include usage examples.",
+      "type": "reusability"
+    },
+    {
+      "section": "Tracking Highlights",
+      "source": "AAR/_system/tracking/Lessons-Learned-Application-Summary.md",
+      "text": "Total lessons identified across analyses: 47 unique.",
+      "type": "meta"
+    },
+    {
+      "section": "Tracking Highlights",
+      "source": "AAR/_system/tracking/Lessons-Learned-Application-Summary.md",
+      "text": "High-priority script lessons applied with evidence: research-first, progress feedback, direct function execution, advisory locking, comprehensive error handling, multi-format output.",
+      "type": "meta"
+    },
+    {
+      "section": "Tracking Highlights",
+      "source": "AAR/_system/tracking/Lessons-Learned-Application-Summary.md",
+      "text": "Role separation reinforced: scripts handle automation; agents handle analysis and synthesis.",
+      "type": "meta"
+    },
+    {
+      "section": "Tracking Highlights",
+      "source": "AAR/_system/tracking/Lessons-Learned-Application-Summary.md",
+      "text": "Next actions: batching/performance, lock timeout/backoff, schema validation; formalize agent framework and Sacred Geometry integration.",
+      "type": "meta"
+    },
+    {
+      "section": "Combined Takeaways",
+      "source": "docs/AAR-Lessons-Learned-Consolidated.md",
+      "text": "Research-first with official Microsoft sources reduces rework and risk.",
+      "type": "aggregate_takeaway"
+    },
+    {
+      "section": "Combined Takeaways",
+      "source": "docs/AAR-Lessons-Learned-Consolidated.md",
+      "text": "Maintain PS 5.1 compatibility for production; segregate PS 7 for dev tooling.",
+      "type": "aggregate_takeaway"
+    },
+    {
+      "section": "Combined Takeaways",
+      "source": "docs/AAR-Lessons-Learned-Consolidated.md",
+      "text": "Use mock data and tests early; add progress bars and structured JSONL logs.",
+      "type": "aggregate_takeaway"
+    },
+    {
+      "section": "Combined Takeaways",
+      "source": "docs/AAR-Lessons-Learned-Consolidated.md",
+      "text": "Favor modular design, multi-format outputs, and robust error handling.",
+      "type": "aggregate_takeaway"
+    },
+    {
+      "section": "Combined Takeaways",
+      "source": "docs/AAR-Lessons-Learned-Consolidated.md",
+      "text": "Enforce role separation and produce communication handoffs for collaboration.",
+      "type": "aggregate_takeaway"
+    },
+    {
+      "section": "Combined Takeaways",
+      "source": "docs/AAR-Lessons-Learned-Consolidated.md",
+      "text": "Track lessons and evidence; standardize templates and periodic reviews.",
+      "type": "aggregate_takeaway"
+    }
+  ],
+  "metadata": {
+    "generated_by": "GitHub Copilot",
+    "sources": [
+      "SCCM/AAR-SCCMHealthEvaluation.md",
+      "SCCM/AAR-SCCMInfrastructureEvaluation.md",
+      "SCCM/PSE/AAR-Windows11DeploymentAnalysis-Final.md",
+      "out/phase-0-20250814_225631/AAR.md",
+      "AAR-Copilot-Instructions-Enhancement-Complete.md",
+      "AAR/_system/tracking/Lessons-Learned-Application-Summary.md"
+    ],
+    "timestamp": "2025-08-14T23:59:00Z",
+    "version": "1.0.0"
+  }
+}

@@ -1,0 +1,6 @@
+﻿"Name","Version"
+"PSScriptAnalyzer","1.24.0"
+"Pester","5.7.1"
+"ThreadJob","2.1.0"
+"Microsoft.PowerShell.SecretManagement","1.1.2"
+"Microsoft.PowerShell.SecretStore","1.0.6"

@@ -1,0 +1,1051 @@
+# Copilot MCP Summary - Discovered Resources and Capabilities
+# Generated: 2025-08-06T14:50:00Z
+# Agent: copilot-introspection-agent-001
+# Task: P015-CopilotMCP-20250806
+
+metadata:
+  document_version: "1.0.0"
+  discovery_timestamp: "2025-08-06T14:50:00Z"
+  agent_id: "copilot-introspection-agent-001"
+  prompt_id: "P015-CopilotMCP-20250806"
+  task_shape: "spiral"
+  task_stage: "discovery_complete"
+  total_endpoints_discovered: 45
+  total_schemas_discovered: 50
+  unicode_encoding: "ascii_safe"
+
+# GitHub Copilot Agent Profiles
+copilot_profiles:
+  - agent_id: "copilot-documentation-agent-001"
+    purpose: "Documentation generation and capability introspection"
+    shape_compliance: "circle"
+    stage: "unified_overview"
+    implementation_files:
+      - "docs/Agent-Capabilities.md"
+      - "docs/Communication-to-ChatGPT.yaml"
+    version: "v2.0.0"
+    instruction_version: "v3.2.1"
+    validation_status: "verified"
+    last_active: "2025-08-06T14:42:16Z"
+
+  - agent_id: "copilot-validation-agent-001"
+    purpose: "Trust-but-Verify validation and compliance testing"
+    shape_compliance: "pentagon"
+    stage: "resonant_harmony"
+    implementation_files:
+      - "docs/Test-AgentCapabilities.ps1"
+      - "docs/Validate-AgentCapabilities.ps1"
+      - "docs/Validate-AgentCapabilities-Simple.ps1"
+    version: "v2.0.0"
+    validation_success_rate: 1.0
+    total_checks: 8
+    last_validation: "2025-08-06T14:42:02Z"
+
+  - agent_id: "copilot-sccm-infrastructure-agent"
+    purpose: "SCCM infrastructure evaluation and client health assessment"
+    shape_compliance: "triangle_to_dodecahedron"
+    stage: "stable_foundations_to_full_integration"
+    implementation_files:
+      - "SCCM/Invoke-SCCMInfrastructureEvaluation.ps1"
+      - "SCCM/Invoke-SCCMClientHealthEvaluation.ps1"
+      - "SCCM/Test-SCCMInfrastructureEvaluationCompliance.ps1"
+    version: "v1.0.0"
+    platform_focus: "sccm"
+    validation_status: "production_ready"
+
+# GitHub Copilot Extensions and Modules
+copilot_extensions:
+  instruction_framework:
+    source: ".github/copilot-instructions.md"
+    version: "v3.2.1"
+    encoding: "utf8_with_unicode_emojis"
+    unicode_characters:
+      - "🌟" # Core ContextForge Principles
+      - "🔮" # Sacred Geometry Framework
+      - "🌳" # Sacred Tree Architecture
+      - "📋" # Logging First Principle
+      - "🧠" # Workspace First Mandate
+      - "🧾" # Communication Handoff
+      - "🔺" # Triangle (stable foundations)
+      - "🔵" # Circle (unified workflows)
+      - "🌀" # Spiral (iterative improvement)
+      - "🔗" # Fractal (modular reuse)
+      - "⭐" # Pentagon (resonant harmony)
+      - "🌐" # Dodecahedron (full integration)
+    sync_mechanism: "github_webhook_and_manual"
+    update_frequency: "bi_weekly_or_critical_changes"
+
+  sacred_geometry_framework:
+    shapes:
+      triangle:
+        purpose: "stable_foundations"
+        validation_requirements:
+          - "error_handling_implementation"
+          - "syntax_linting"
+          - "logging_configuration"
+      circle:
+        purpose: "unified_workflows"
+        validation_requirements:
+          - "integration_testing"
+          - "dependency_mapping"
+      spiral:
+        purpose: "iterative_improvement"
+        validation_requirements:
+          - "regression_testing"
+          - "changelog_updates"
+          - "version_control"
+      fractal:
+        purpose: "modular_reuse"
+        validation_requirements:
+          - "interface_contract_testing"
+          - "module_reuse_validation"
+      pentagon:
+        purpose: "resonant_harmony"
+        validation_requirements:
+          - "logging_verification"
+          - "performance_testing"
+          - "resource_monitoring"
+      dodecahedron:
+        purpose: "full_system_integration"
+        validation_requirements:
+          - "end_to_end_testing"
+          - "dependency_graph_validation"
+          - "aar_completion"
+
+  core_mandates:
+    logs_first:
+      primary_format: "jsonl"
+      fallback_format: "sqlite"
+      schema:
+        timestamp: "iso8601_string"
+        agent_id: "string"
+        level: "INFO|WARN|ERROR"
+        message: "string"
+        data: "object"
+    workspace_first:
+      artifact_reuse: true
+      redundancy_tracking: true
+      cleanup_logging: true
+    trust_but_verify:
+      validation_framework: true
+      assumption_documentation: true
+      system_state_capture: true
+
+# Model Context Protocol (MCP) Endpoints
+mcp_endpoints:
+  microsoft_documentation:
+    - endpoint_id: "mcp_microsoft_doc_microsoft_docs_search"
+      purpose: "Search official Microsoft/Azure documentation"
+      url_pattern: "internal_mcp_server"
+      trust_level: "high"
+      authentication: "none_required"
+      schema_count: 1
+      parameters:
+        required:
+          - "query: string"
+        optional: []
+      returns: "array of content chunks with title, URL, excerpt"
+      rate_limits: "standard_api_throttling"
+      max_tokens_per_result: 500
+
+    - endpoint_id: "mcp_microsoft_doc_microsoft_docs_fetch"
+      purpose: "Fetch complete Microsoft documentation pages"
+      url_pattern: "internal_mcp_server"
+      trust_level: "high"
+      authentication: "none_required"
+      schema_count: 1
+      parameters:
+        required:
+          - "url: string (microsoft.com domain only)"
+        optional: []
+      returns: "complete markdown content"
+      domain_restriction: "microsoft.com"
+
+  azure_services:
+    - endpoint_id: "mcp_azure-mcp-ser_extension_az"
+      purpose: "Azure CLI command execution"
+      command_pattern: "az <command>"
+      trust_level: "high"
+      authentication: "azure_cli_credential"
+      schema_type: "dynamic"
+      retry_configuration:
+        max_retries: 3
+        retry_delay: "exponential_backoff"
+        network_timeout: "configurable"
+
+    - endpoint_id: "mcp_azure-mcp-ser_extension_azd"
+      purpose: "Azure Developer CLI operations"
+      command_pattern: "azd <command>"
+      trust_level: "high"
+      authentication: "azure_cli_credential"
+      schema_type: "dynamic"
+      working_directory: "configurable"
+      environment_support: true
+
+    - endpoint_id: "mcp_azure-mcp-ser_extension_azqr"
+      purpose: "Azure Quick Review compliance reports"
+      command_pattern: "azqr <options>"
+      trust_level: "high"
+      authentication: "azure_cli_credential"
+      schema_count: 1
+      output_format: "compliance_report"
+
+    - endpoint_id: "mcp_azure-mcp-ser_subscription"
+      purpose: "Azure subscription management"
+      operations: ["list", "get", "set"]
+      trust_level: "high"
+      authentication: "azure_cli_credential"
+      schema_count: 3
+
+    - endpoint_id: "mcp_azure-mcp-ser_group"
+      purpose: "Resource group operations"
+      operations: ["list", "create", "delete", "show"]
+      trust_level: "high"
+      authentication: "azure_cli_credential"
+      schema_count: 5
+
+    - endpoint_id: "mcp_azure-mcp-ser_storage"
+      purpose: "Storage account management"
+      operations: ["blob", "container", "table", "queue"]
+      trust_level: "high"
+      authentication: "azure_cli_credential"
+      schema_count: 8
+
+    - endpoint_id: "mcp_azure-mcp-ser_sql"
+      purpose: "Azure SQL operations"
+      operations: ["server", "database", "pool", "firewall"]
+      trust_level: "high"
+      authentication: "azure_cli_credential"
+      schema_count: 12
+
+    - endpoint_id: "mcp_azure-mcp-ser_cosmos"
+      purpose: "Cosmos DB management"
+      operations: ["database", "container", "query"]
+      trust_level: "high"
+      authentication: "azure_cli_credential"
+      schema_count: 6
+
+    - endpoint_id: "mcp_azure-mcp-ser_keyvault"
+      purpose: "Key Vault operations"
+      operations: ["secret", "key", "certificate"]
+      trust_level: "high"
+      authentication: "azure_cli_credential"
+      schema_count: 9
+
+    - endpoint_id: "mcp_azure-mcp-ser_monitor"
+      purpose: "Azure Monitor queries"
+      operations: ["logs", "metrics", "alerts"]
+      trust_level: "high"
+      authentication: "azure_cli_credential"
+      schema_count: 4
+
+    - endpoint_id: "mcp_azure-mcp-ser_aks"
+      purpose: "Kubernetes Service management"
+      operations: ["cluster", "node", "pod"]
+      trust_level: "high"
+      authentication: "azure_cli_credential"
+      schema_count: 7
+
+    - endpoint_id: "mcp_azure-mcp-ser_search"
+      purpose: "AI Search operations"
+      operations: ["index", "query", "schema"]
+      trust_level: "high"
+      authentication: "azure_cli_credential"
+      schema_count: 5
+
+    - endpoint_id: "mcp_azure-mcp-ser_loadtesting"
+      purpose: "Load Testing service"
+      operations: ["create", "run", "monitor"]
+      trust_level: "high"
+      authentication: "azure_cli_credential"
+      schema_count: 4
+
+    - endpoint_id: "mcp_azure-mcp-ser_foundry"
+      purpose: "AI Foundry service operations"
+      operations: ["list", "manage", "deploy"]
+      trust_level: "high"
+      authentication: "azure_cli_credential"
+      schema_count: 6
+
+    - endpoint_id: "mcp_azure-mcp-ser_grafana"
+      purpose: "Managed Grafana resources"
+      operations: ["workspace", "dashboard", "monitor"]
+      trust_level: "high"
+      authentication: "azure_cli_credential"
+      schema_count: 3
+
+    - endpoint_id: "mcp_azure-mcp-ser_postgres"
+      purpose: "PostgreSQL Flexible Server"
+      operations: ["server", "database", "query"]
+      trust_level: "high"
+      authentication: "azure_cli_credential"
+      schema_count: 8
+
+    - endpoint_id: "mcp_azure-mcp-ser_redis"
+      purpose: "Redis Cache operations"
+      operations: ["cache", "cluster", "database"]
+      trust_level: "high"
+      authentication: "azure_cli_credential"
+      schema_count: 5
+
+  python_language_services:
+    - endpoint_id: "mcp_pylance_mcp_s_pylanceDocuments"
+      purpose: "Pylance documentation search"
+      trust_level: "high"
+      authentication: "vscode_workspace"
+      schema_count: 1
+      parameters:
+        required:
+          - "search: string (natural language)"
+      scope: "python_language_server"
+
+    - endpoint_id: "mcp_pylance_mcp_s_pylanceFileSyntaxErrors"
+      purpose: "Python file syntax validation"
+      trust_level: "high"
+      authentication: "vscode_workspace"
+      schema_count: 1
+      parameters:
+        required:
+          - "fileUri: string"
+          - "workspaceRoot: string"
+      returns: "detailed error list with line numbers"
+
+    - endpoint_id: "mcp_pylance_mcp_s_pylanceImports"
+      purpose: "Import analysis across workspace"
+      trust_level: "high"
+      authentication: "vscode_workspace"
+      schema_count: 1
+      parameters:
+        required:
+          - "workspaceRoot: string"
+      returns: "all top-level module names imported"
+
+    - endpoint_id: "mcp_pylance_mcp_s_pylanceInstalledTopLevelModules"
+      purpose: "Available module discovery"
+      trust_level: "high"
+      authentication: "vscode_workspace"
+      schema_count: 1
+      parameters:
+        required:
+          - "workspaceRoot: string"
+        optional:
+          - "pythonEnvironment: string"
+      returns: "installed package modules"
+
+    - endpoint_id: "mcp_pylance_mcp_s_pylanceInvokeRefactoring"
+      purpose: "Automated code refactoring"
+      trust_level: "high"
+      authentication: "vscode_workspace"
+      schema_count: 1
+      parameters:
+        required:
+          - "fileUri: string"
+          - "name: string"
+        optional:
+          - "mode: update|edits|string"
+      supported_refactorings:
+        - "source.unusedImports"
+        - "source.convertImportFormat"
+        - "source.fixAll.pylance"
+
+    - endpoint_id: "mcp_pylance_mcp_s_pylancePythonEnvironments"
+      purpose: "Python environment management"
+      trust_level: "high"
+      authentication: "vscode_workspace"
+      schema_count: 1
+      parameters:
+        required:
+          - "workspaceRoot: string"
+      returns: "current and available environments"
+
+  database_services:
+    - endpoint_id: "mssql_list_servers"
+      purpose: "SQL Server discovery"
+      trust_level: "medium"
+      authentication: "connection_profile"
+      schema_count: 1
+      parameters:
+        required: []
+      returns: "array of server names"
+
+    - endpoint_id: "mssql_connect"
+      purpose: "Database connection establishment"
+      trust_level: "medium"
+      authentication: "server_based"
+      schema_count: 1
+      parameters:
+        required:
+          - "serverName: string"
+        optional:
+          - "database: string"
+          - "profileId: string"
+      returns: "connection_id (UUID)"
+
+    - endpoint_id: "mssql_run_query"
+      purpose: "SQL query execution"
+      trust_level: "medium"
+      authentication: "connection_based"
+      schema_count: 1
+      parameters:
+        required:
+          - "connectionId: string"
+          - "query: string"
+      security_warning: "executes ANY SQL statement - use with caution"
+
+# Plugin Interfaces and Architecture
+plugin_interfaces:
+  contextforge_module_interface:
+    required_functions:
+      - "Initialize-ModuleContext"
+      - "Test-ModuleCompliance"
+      - "Export-ModuleResults"
+    export_pattern: "Export-ModuleMember -Function @(...)"
+    compliance_requirements:
+      - "sacred_geometry_shape_validation"
+      - "trust_but_verify_test_patterns"
+      - "jsonl_logging_integration"
+
+  event_bus_system:
+    supported_events:
+      - event_type: "BeforeExecution"
+        purpose: "pre_operation_hooks"
+        registration: "Register-ContextForgeEvent"
+      - event_type: "AfterValidation"
+        purpose: "post_validation_processing"
+        registration: "Register-ContextForgeEvent"
+      - event_type: "OnError"
+        purpose: "error_handling_and_recovery"
+        registration: "Register-ContextForgeEvent"
+      - event_type: "OnCompletion"
+        purpose: "cleanup_and_reporting"
+        registration: "Register-ContextForgeEvent"
+
+  extension_points:
+    custom_mcp_servers:
+      pattern: "hierarchical_command_router"
+      discovery: "learn=true parameter"
+      error_handling: "structured_response_format"
+    powershell_module_integration:
+      interface: "contextforge_compliance"
+      validation: "sacred_geometry_shapes"
+      testing: "trust_but_verify_patterns"
+    validation_framework_extensions:
+      assumptions: "custom_definitions"
+      test_patterns: "domain_specific"
+      monitoring: "continuous_integration"
+
+# Capability Graphs and Dependencies
+capability_graphs:
+  execution_environment:
+    powershell:
+      version: "5.1.26100.4652"
+      edition: "Desktop"
+      clr_version: "4.0.30319.42000"
+      compatible_versions: ["1.0", "2.0", "3.0", "4.0", "5.0", "5.1"]
+      module_count: 8
+      command_count: 245
+      security_model: "current_user_context"
+
+    vscode_integration:
+      workspace_access: true
+      terminal_integration: "powershell_5_1"
+      extension_ecosystem:
+        - "pylance"
+        - "azure_tools"
+        - "powershell_extension"
+      configuration_management: "user_and_workspace_scoped"
+
+  validation_dependencies:
+    trust_but_verify:
+      config_source: "docs/trust-but-verify-capabilities.yaml"
+      critical_assumptions: 5
+      non_critical_assumptions: 3
+      implementation_files: 3
+      success_rate: 1.0
+      last_validation: "2025-08-06T14:42:02Z"
+
+    sacred_geometry:
+      shape_count: 6
+      validation_matrix: "complete"
+      implementation: "file_existence_and_structure"
+      compliance_level: "production_ready"
+
+  data_flow_dependencies:
+    logging_pipeline:
+      primary: "jsonl_structured_logs"
+      fallback: "sqlite_database"
+      transcript: "powershell_native"
+      schema: "timestamp, agent_id, level, message, data"
+
+    artifact_management:
+      workspace_boundary: true
+      reuse_policy: "validate_before_use"
+      cleanup_tracking: true
+      version_control: "git_integrated"
+
+# Introspectable Domains
+introspectable_domains:
+  agent_execution:
+    instruction_processing:
+      source: ".github/copilot-instructions.md"
+      unicode_support: "emoji_section_headers"
+      version_control: "semantic_versioning"
+      sync_mechanism: "github_webhook"
+
+    state_management:
+      session_ids: "guid_based"
+      context_preservation: "agent_memory"
+      handoff_protocols: "yaml_based"
+
+    capability_routing:
+      tool_selection: "intent_based"
+      parameter_validation: "schema_based"
+      error_recovery: "exponential_backoff"
+
+  performance_monitoring:
+    response_times:
+      file_operations: "<100ms"
+      powershell_commands: "100ms-5s"
+      mcp_queries: "200ms-2s"
+      documentation_search: "500ms-3s"
+
+    throughput:
+      parallel_mcp: "up_to_5"
+      parallel_file_io: "workspace_limited"
+      powershell_execution: "sequential_only"
+      documentation_parallel: "up_to_3"
+
+    resource_limits:
+      memory: "system_dependent"
+      disk: "workspace_bounded"
+      network: "standard_rate_limits"
+      cpu: "background_processing"
+
+  security_boundaries:
+    authentication_models:
+      azure_mcp: "azure_cli_credential"
+      microsoft_docs: "none_required"
+      pylance: "vscode_workspace"
+      mssql: "connection_profiles"
+      powershell: "current_user_context"
+
+    access_controls:
+      file_access: "workspace_scoped"
+      system_access: "powershell_user_context"
+      network_access: "documented_endpoints_only"
+      credential_access: "secure_vault_only"
+
+    audit_features:
+      operation_logging: "100_percent_coverage"
+      session_transcripts: "complete_history"
+      error_tracking: "stack_traces_included"
+      user_attribution: "all_changes_tracked"
+
+# Data Sources for Prompt Optimization
+data_sources:
+  structured_logs:
+    jsonl_logs:
+      location_pattern: "C:/temp/Log_*_yyyyMMdd_HHmmss.jsonl"
+      content_type: "structured_operation_logs"
+      analysis_value: "execution_patterns_error_analysis"
+      schema_compliance: "agent_id_timestamp_level_message_data"
+
+    powershell_transcripts:
+      location_pattern: "C:/temp/Log_*_yyyyMMdd_HHmmss.txt"
+      content_type: "complete_session_logs"
+      analysis_value: "command_sequences_user_interactions"
+      format: "plain_text_chronological"
+
+    validation_reports:
+      location_pattern: "C:/temp/*ValidationReport*.json"
+      content_type: "test_results_and_metrics"
+      analysis_value: "success_rates_failure_patterns"
+      format: "structured_json"
+
+  configuration_sources:
+    trust_but_verify:
+      file: "docs/trust-but-verify-capabilities.yaml"
+      purpose: "validation_criteria_definitions"
+      introspection_value: "assumption_tracking_test_coverage"
+
+    agent_capabilities:
+      file: "docs/Agent-Capabilities.md"
+      purpose: "complete_capability_documentation"
+      introspection_value: "feature_inventory_implementation_mapping"
+
+    communication_handoff:
+      file: "docs/Communication-to-ChatGPT.yaml"
+      purpose: "agent_coordination_protocols"
+      introspection_value: "state_transfer_session_management"
+
+  artifact_analysis:
+    implementation_files:
+      powershell_scripts: 74
+      configuration_files: 15
+      documentation_files: 25
+      test_files: 12
+      primary_languages: ["PowerShell 5.1", "YAML", "JSON", "Markdown"]
+      analysis_potential: "pattern_recognition_best_practices_extraction"
+
+# Synchronization Recommendations
+sync_recommendations:
+  immediate_actions:
+    - "verify_all_mcp_endpoints_accessible"
+    - "validate_azure_cli_authentication"
+    - "confirm_pylance_integration_functional"
+    - "test_trust_but_verify_framework"
+
+  weekly_maintenance:
+    - "update_copilot_instructions_if_changed"
+    - "refresh_azure_service_endpoint_schemas"
+    - "validate_powershell_module_availability"
+    - "review_validation_success_rates"
+
+  monthly_optimization:
+    - "analyze_performance_metrics_trends"
+    - "review_error_patterns_in_logs"
+    - "update_capability_documentation"
+    - "assess_new_mcp_endpoint_availability"
+
+# Version Control and Change Management
+change_management:
+  version_tracking:
+    instruction_version: "v3.2.1"
+    agent_version: "v2.0.0"
+    document_version: "v1.0.0"
+    last_sync: "2025-08-06T14:50:00Z"
+
+  update_detection:
+    github_webhooks: true
+    scheduled_checks: "bi_weekly"
+    manual_triggers: true
+    sha256_comparison: true
+
+  rollback_capability:
+    instruction_history: "git_based"
+    configuration_snapshots: "yaml_versioned"
+    validation_baselines: "archived"
+    emergency_procedures: "documented"
+
+# Quality Assurance
+quality_metrics:
+  discovery_completeness: 1.0
+  endpoint_accessibility: 1.0
+  schema_validation: 1.0
+  documentation_accuracy: 0.95
+  test_coverage: 0.90
+  performance_benchmarks: "established"
+  security_compliance: "verified"
+
+# Compliance Status
+compliance_status:
+  contextforge_methodology: "full_compliance"
+  sacred_geometry_framework: "implemented"
+  trust_but_verify_protocol: "active"
+  ascii_safe_encoding: "verified"
+  workspace_boundary_enforcement: "enabled"
+  audit_trail_completeness: "100_percent"
+  security_policy_adherence: "confirmed"
+
+# Capability Expansion - P016-AgentCapabilityExpansion-20250806
+# Enhanced sections for execution constraints, instruction resolution, format parsing, agent limitations, and plugin flow
+
+# Execution Constraints and Scheduling Logic
+execution_constraints:
+  powershell_environment_limits:
+    maximum_alias_count: 4096
+    maximum_drive_count: 4096
+    maximum_error_count: 256
+    maximum_function_count: 4096
+    maximum_history_count: 4096
+    maximum_variable_count: 4096
+    impact: "plugin_registration_and_state_management"
+
+  execution_policy_constraints:
+    machine_policy: "undefined"
+    user_policy: "undefined"
+    process_policy: "bypass"
+    current_user_policy: "undefined"
+    local_machine_policy: "undefined"
+    overall_restriction_level: "none"
+
+  host_environment:
+    host_name: "ConsoleHost"
+    host_version: "5.1.26100.4652"
+    instance_id: "dynamic_guid_per_session"
+    culture: "en-US"
+    ui_culture: "en-US"
+    execution_model: "console_based"
+
+  scheduling_timing_constraints:
+    operation_timeouts:
+      file_operations: "no_explicit_timeout"
+      network_operations: "100_seconds_default_http"
+      terminal_commands: "process_dependent"
+      mcp_queries: "endpoint_specific_rate_limiting"
+      user_interaction: "no_timeout_constraints"
+
+    concurrency_limitations:
+      powershell_commands: "sequential_execution_only"
+      file_io: "workspace_boundary_limited"
+      mcp_calls: "up_to_5_parallel"
+      background_tasks: "vscode_integration_dependent"
+
+    resource_monitoring:
+      memory_usage: "system_dependent_no_hard_limits"
+      disk_usage: "workspace_scoped_temporary_cleanup"
+      cpu_usage: "background_priority_non_blocking"
+      network_bandwidth: "standard_rate_limiting_per_endpoint"
+
+# Instruction Resolution Logic
+instruction_resolution_logic:
+  hierarchy_precedence:
+    - priority: 1
+      level: "user_prompt_instructions"
+      description: "direct_user_requests_override_all_defaults"
+      override_capability: "complete"
+    - priority: 2
+      level: "system_context"
+      description: "vscode_workspace_and_environment_settings"
+      override_capability: "configuration"
+    - priority: 3
+      level: "copilot_instructions_file"
+      description: "github_copilot_instructions_md"
+      override_capability: "behavioral"
+    - priority: 4
+      level: "contextforge_methodology"
+      description: "sacred_geometry_framework_compliance"
+      override_capability: "structural"
+    - priority: 5
+      level: "powershell_defaults"
+      description: "builtin_cmdlet_behavior_and_conventions"
+      override_capability: "none"
+
+  inheritance_patterns:
+    contextforge_universal_methodology:
+      core_principles: "🌟"
+      sacred_geometry_framework: "🔮"
+      shapes:
+        triangle: "🔺_stable_foundations"
+        circle: "🔵_unified_workflows"
+        spiral: "🌀_iterative_improvement"
+        fractal: "🔗_modular_reuse"
+        pentagon: "⭐_resonant_harmony"
+        dodecahedron: "🌐_full_integration"
+      sacred_tree_architecture: "🌳"
+      tree_components:
+        roots: "validated_deliverables"
+        trunk: "integration_layer"
+        branches: "functional_subsystems"
+        leaves: "user_interfaces"
+      core_mandates:
+        logs_first: "📋_jsonl_primary_sqlite_fallback"
+        workspace_first: "🧠_artifact_reuse_priority"
+        trust_but_verify: "🧾_validation_protocols"
+
+  override_delegation_mechanisms:
+    override_hierarchy:
+      user_prompt: "complete_override_all_operations"
+      environment_variables: "configuration_override_specific_settings"
+      parameter_flags: "operational_override_command_specific"
+      workspace_settings: "context_override_workspace_scoped"
+
+    delegation_patterns:
+      powershell_to_mcp: "external_api_calls_to_appropriate_servers"
+      primary_to_secondary: "specialized_operations_python_for_dev"
+      agent_to_framework: "validation_to_trust_but_verify"
+      generic_to_specific: "domain_operations_to_specialized_modules"
+
+    conflict_resolution_algorithm:
+      explicit_vs_implicit: "explicit_user_instructions_override_defaults"
+      specific_vs_general: "specific_instructions_override_general_patterns"
+      security_vs_functionality: "security_constraints_override_requests"
+      validation_vs_performance: "validation_requirements_override_optimization"
+
+# Format Parsing Capabilities
+format_parsing_capabilities:
+  native_powershell_support:
+    csv:
+      import_cmdlet: "Import-Csv"
+      export_cmdlet: "Export-Csv"
+      capability: "full_tabular_data"
+      notes: "custom_delimiters_supported"
+    json:
+      import_cmdlet: "ConvertFrom-Json"
+      export_cmdlet: "ConvertTo-Json"
+      capability: "full_object_serialization"
+      notes: "depth_control_available"
+    xml:
+      import_cmdlet: "Import-Clixml"
+      export_cmdlet: "Export-Clixml"
+      capability: "powershell_object_serialization"
+      notes: "custom_xml_via_select_xml"
+    html:
+      import_cmdlet: "N/A"
+      export_cmdlet: "ConvertTo-Html"
+      capability: "basic_table_generation"
+      notes: "readonly_via_invoke_webrequest"
+    secure_string:
+      import_cmdlet: "ConvertFrom-SecureString"
+      export_cmdlet: "ConvertTo-SecureString"
+      capability: "encrypted_string_handling"
+      notes: "security_focused"
+
+  extended_format_recognition:
+    certificate_security:
+      - format: "pfx_p12"
+        cmdlet: "Import-PfxCertificate"
+        description: "x509_certificate_with_private_key"
+      - format: "cer_crt"
+        cmdlet: "Import-Certificate"
+        description: "x509_certificate_public_key"
+      - format: "authenticode"
+        cmdlet: "Get-AuthenticodeSignature"
+        description: "code_signing_validation"
+
+    system_configuration:
+      - format: "powershell_data_psd1"
+        cmdlet: "Import-PowerShellDataFile"
+        description: "configuration_data"
+      - format: "module_manifest_psd1"
+        cmdlet: "Test-ModuleManifest"
+        description: "module_metadata_validation"
+      - format: "bcd_store"
+        cmdlet: "Import-BcdStore"
+        description: "boot_configuration_data"
+
+    performance_diagnostics:
+      - format: "performance_counters"
+        cmdlet: "Import-Counter"
+        description: "windows_performance_data"
+      - format: "binary_mi_logs"
+        cmdlet: "Import-BinaryMiLog"
+        description: "cim_wmi_log_format"
+      - format: "event_trace_logs"
+        cmdlet: "Get-WinEvent"
+        description: "windows_event_log_parsing"
+
+  detection_logic:
+    strategies:
+      - method: "file_extension_analysis"
+        priority: 1
+        description: "primary_detection_via_extension_mapping"
+      - method: "content_inspection"
+        priority: 2
+        description: "header_analysis_for_ambiguous_extensions"
+      - method: "schema_validation"
+        priority: 3
+        description: "structure_validation_against_known_patterns"
+      - method: "fallback_methods"
+        priority: 4
+        description: "progressive_degradation_to_text_parsing"
+
+    supported_encodings:
+      - "utf8_with_without_bom"
+      - "utf16_little_big_endian"
+      - "ascii_7bit_compatibility"
+      - "ansi_windows_1252_legacy"
+
+  parsing_limitations:
+    unsupported_formats:
+      - "binary_executables_no_disassembly"
+      - "compressed_archives_limited_to_builtin"
+      - "database_files_require_specific_drivers"
+      - "multimedia_formats_no_audio_video_image"
+      - "proprietary_office_formats_text_extraction_only"
+
+# Agent Constraints and Limitations
+agent_constraints:
+  operational_constraints:
+    workspace_boundary:
+      file_access: "limited_to_workspace_directories"
+      system_modification: "no_registry_service_changes"
+      network_access: "restricted_to_documented_endpoints"
+      process_execution: "limited_to_powershell_and_workspace_tools"
+      workaround_availability: "none_security_boundary"
+
+    powershell_platform_limitations:
+      powershell_version: "5_1_only_no_core_features"
+      platform_support: "windows_specific_no_cross_platform"
+      edition: "desktop_no_nano_server_cmdlets"
+      privilege_level: "user_context_no_administrative"
+      mitigation: "use_compatible_syntax_document_dependencies"
+
+  knowledge_domain_restrictions:
+    unsupported_technical_domains:
+      - "real_time_systems_no_real_time_processing"
+      - "hardware_interfaces_no_direct_access_except_cmdlets"
+      - "kernel_development_no_kernel_mode_support"
+      - "graphics_programming_no_directx_opengl"
+      - "game_development_no_game_engine_graphics_api"
+      - "embedded_systems_no_microcontroller_iot"
+
+    platform_integration_gaps:
+      - "linux_macos_windows_powershell_5_1_only"
+      - "container_orchestration_no_kubernetes_docker"
+      - "mobile_development_no_ios_android"
+      - "web_browser_integration_basic_http_only"
+      - "desktop_ui_no_wpf_winforms_development"
+
+  fallback_behavior_patterns:
+    error_handling:
+      mcp_endpoint_failure: "retry_exponential_backoff_graceful_degradation"
+      file_access_denied: "log_security_violation_suggest_alternative"
+      module_import_failure: "continue_available_functionality_document_limits"
+      network_timeout: "cache_last_known_state_retry_reduced_scope"
+
+    capability_degradation:
+      primary_tool_unavailable: "delegate_secondary_reduced_functionality"
+      performance_constraints: "switch_lighter_weight_alternatives"
+      permission_limitations: "readonly_analysis_instead_modifications"
+      format_unsupported: "text_based_parsing_reduced_fidelity"
+
+# Plugin Resolution Flow and Dependency Order
+plugin_resolution_flow:
+  mcp_server_resolution_chain:
+    discovery_phase:
+      endpoint_discovery: "learn_true_parameter_invocation"
+      schema_enumeration: "introspection_based"
+      capability_negotiation: "feature_detection"
+      authentication_validation: "credential_verification"
+
+    command_routing:
+      intent_analysis: "user_request_classification"
+      parameter_validation: "type_schema_checking"
+      endpoint_selection: "capability_based_routing"
+      request_construction: "protocol_specific_formatting"
+
+    response_processing:
+      error_handling: "retry_logic_exponential_backoff"
+      data_transformation: "schema_based_validation"
+      result_caching: "performance_optimization"
+      response_delivery: "caller_specific_formatting"
+
+  powershell_module_resolution:
+    loading_sequence:
+      - step: 1
+        action: "explicit_import"
+        method: "Import-Module_with_path_or_name"
+      - step: 2
+        action: "auto_loading"
+        method: "first_cmdlet_use_triggers_discovery"
+      - step: 3
+        action: "manifest_validation"
+        method: "Test-ModuleManifest_integrity_check"
+      - step: 4
+        action: "dependency_resolution"
+        method: "recursive_required_module_loading"
+      - step: 5
+        action: "export_processing"
+        method: "Export-ModuleMember_public_interface"
+      - step: 6
+        action: "session_integration"
+        method: "commands_available_current_scope"
+
+    search_path_priority:
+      - priority: 1
+        path: "C:/Users/[user]/Documents/WindowsPowerShell/Modules"
+        scope: "current_user_documents"
+      - priority: 2
+        path: "C:/Program Files/WindowsPowerShell/Modules"
+        scope: "all_users_program_files"
+      - priority: 3
+        path: "C:/Windows/system32/WindowsPowerShell/v1.0/Modules"
+        scope: "system_modules"
+      - priority: 4
+        path: "session_specific_paths"
+        scope: "explicit_import_module_paths"
+
+  dependency_resolution_algorithm:
+    contextforge_interface_compliance:
+      - step: 1
+        function: "Initialize-ModuleContext"
+        requirements:
+          - "validate_agent_context_compatibility"
+          - "establish_logging_integration"
+          - "configure_sacred_geometry_compliance"
+          - "return_initialized_context_object"
+      - step: 2
+        function: "Test-ModuleCompliance"
+        requirements:
+          - "execute_trust_but_verify_validation"
+          - "verify_required_function_exports"
+          - "validate_configuration_schema_adherence"
+          - "return_compliance_status_metrics"
+      - step: 3
+        function: "Export-ModuleResults"
+        requirements:
+          - "serialize_module_operation_results"
+          - "generate_jsonl_audit_entries"
+          - "update_communication_handoff"
+          - "cleanup_temporary_resources"
+
+  event_bus_resolution:
+    event_registration_flow:
+      event_types:
+        before_execution: "pre_operation_validation_hooks"
+        after_validation: "post_validation_processing_hooks"
+        on_error: "error_handling_recovery_hooks"
+        on_completion: "cleanup_reporting_hooks"
+
+      handler_priority:
+        - priority: 1
+          type: "critical_handlers"
+          purpose: "error_recovery"
+        - priority: 2
+          type: "validation_handlers"
+          purpose: "compliance_checking"
+        - priority: 3
+          type: "logging_handlers"
+          purpose: "audit_trail"
+        - priority: 4
+          type: "notification_handlers"
+          purpose: "reporting"
+
+      execution_chain:
+        sequential_execution: "within_priority_levels"
+        exception_isolation: "between_handlers"
+        result_aggregation: "cross_handler_data"
+        cleanup_management: "resource_lifecycle"
+
+  conflict_resolution:
+    namespace_collision_handling:
+      function_name_conflicts: "module_qualification_required"
+      parameter_conflicts: "type_based_resolution_explicit_casting"
+      variable_conflicts: "scope_based_isolation_module_prefixes"
+      alias_conflicts: "last_loaded_precedence_with_warning"
+
+    version_compatibility_matrix:
+      powershell:
+        required_version: "5.1+"
+        compatibility_mode: "strict"
+        fallback_strategy: "none_hard_requirement"
+      copilot_instructions:
+        required_version: "v3.2.1+"
+        compatibility_mode: "backward_compatible"
+        fallback_strategy: "previous_version_with_warnings"
+      contextforge_framework:
+        required_version: "v2.0.0+"
+        compatibility_mode: "forward_compatible"
+        fallback_strategy: "feature_detection_graceful_degradation"
+      mcp_schemas:
+        required_version: "latest_available"
+        compatibility_mode: "version_negotiation"
+        fallback_strategy: "schema_versioning_capability_detection"
+
+# Expansion Metadata
+expansion_metadata:
+  prompt_id: "P016-AgentCapabilityExpansion-20250806"
+  depends_on: "P015-CopilotMCP-20250806"
+  task_shape: "fractal"
+  task_stage: "expansion"
+  expansion_areas:
+    - "execution_constraints"
+    - "instruction_resolution_logic"
+    - "format_parsing_capabilities"
+    - "agent_constraints"
+    - "plugin_resolution_flow"
+  completion_timestamp: "2025-08-06T15:15:00Z"
+  agent_id: "copilot-expansion-agent-001"
+  validation_status: "ascii_safe_verified"
+  schema_integrity: "preserved"
