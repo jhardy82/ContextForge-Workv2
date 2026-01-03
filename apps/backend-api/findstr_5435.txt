@@ -1,0 +1,29 @@
+.venv\Lib\site-packages\faker\providers\person\en_US\__init__.py:            ("Brianna", 0.002543549),
+.venv\Lib\site-packages\faker\providers\person\en_US\__init__.py:            ("Roy", 0.000454351),
+.venv\Lib\site-packages\faker\providers\person\en_US\__init__.py:            ("Vang", 0.000295435),
+.venv\Lib\site-packages\faker\providers\person\es_AR\__init__.py:            ("Zoe", 0.0061737266688745435),
+.venv\Lib\site-packages\faker\providers\person\es_CL\__init__.py:            ("Erik", 0.00054358),
+.venv\Lib\site-packages\faker\providers\person\he_IL\__init__.py:            ("מדר", 0.0003455435),
+.venv\Lib\site-packages\passlib\tests\test_handlers.py:        ("abc123", "S:5FDAB69F543563582BA57894FE1C1361FB8ED57B903603F2C52ED1B4D642"),
+.venv\Lib\site-packages\sqlalchemy\sql\operators.py:    # deprecated 1.4; see #5435
+.venv\Lib\site-packages\sqlalchemy\sql\operators.py:    # deprecated 1.4; see #5435
+.venv\Lib\site-packages\sqlalchemy\sql\operators.py:    # deprecated 1.4; see #5435
+.venv\Lib\site-packages\sqlalchemy\sql\operators.py:    # deprecated 1.4; see #5435
+.venv\Lib\site-packages\sqlalchemy\sql\operators.py:# 1.4 deprecated; see #5435
+.venv\Lib\site-packages\sqlalchemy\sql\operators.py:# 1.4 deprecated; see #5435
+.venv\Lib\site-packages\sqlalchemy\sql\operators.py:# deprecated 1.4; see #5435
+.venv\Lib\site-packages\sqlalchemy\sql\operators.py:# 1.4 deprecated; see #5435
+.venv\Lib\site-packages\sqlalchemy\sql\operators.py:# 1.4 deprecated; see #5435
+.venv\Lib\site-packages\sqlalchemy\sql\operators.py:# 1.4 deprecated; see #5435
+.venv\Lib\site-packages\sqlalchemy\sql\operators.py:# 1.4 deprecated; see #5435
+.venv\Lib\site-packages\sqlalchemy\sql\operators.py:# 1.4 deprecated; see #5435
+.venv\Lib\site-packages\sqlalchemy\sql\operators.py:# 1.4 deprecated; see #5435
+.venv\Lib\site-packages\sqlalchemy\sql\operators.py:# 1.4 deprecated; see #5435
+.venv\Lib\site-packages\sqlalchemy\sql\operators.py:# 1.4 deprecated; see #5435
+audit_output.log:  DATABASE_URL: postgresql+asyncpg://taskman:taskman_dev_password@localhost:5435/taskman_dev
+audit_run_log.txt:  DATABASE_URL: postgresql+asyncpg://taskman:taskman_dev_password@localhost:5435/taskman_dev
+diagnosis_results.txt:{"method": "POST", "path": "/api/v1/sprints", "query": null, "correlation_id": "639225d2-a21b-442b-b3b7-2c6e0ebdc115", "client_ip": "127.0.0.1", "event": "http_request", "timestamp": "2025-12-29T00:01:03.665435Z", "level": "info"}
+final_audit_log.txt:  DATABASE_URL: postgresql+asyncpg://taskman:taskman_dev_password@localhost:5435/taskman_dev
+final_audit_log_absolute.txt:  DATABASE_URL: postgresql+asyncpg://taskman:taskman_dev_password@localhost:5435/taskman_dev
+final_audit_output.txt:  DATABASE_URL: postgresql+asyncpg://taskman:taskman_dev_password@localhost:5435/taskman_dev
+uv.lock:    { url = "https://files.pythonhosted.org/packages/f2/6a/b627b4e0c1dd03718543519ffb2f1deea4a1e6d42fbab8021936a4d22589/pyyaml-6.0.3-cp311-cp311-musllinux_1_2_x86_64.whl", hash = "sha256:37503bfbfc9d2c40b344d06b2199cf0e96e97957ab1c1b546fd4f87e53e5d3e4", size = 794986, upload-time = "2025-09-25T21:32:07.367Z" },

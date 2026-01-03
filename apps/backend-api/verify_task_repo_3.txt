@@ -1,0 +1,31 @@
+================================================= test session starts =================================================
+platform win32 -- Python 3.11.9, pytest-8.4.2, pluggy-1.6.0 -- C:\Users\James\Documents\Github\GHrepos\SCCMScripts\TaskMan-v2\backend-api\.venv\Scripts\python.exe
+cachedir: .pytest_cache
+rootdir: C:\Users\James\Documents\Github\GHrepos\SCCMScripts\TaskMan-v2\backend-api
+configfile: pytest_full.ini
+plugins: anyio-4.12.0, Faker-30.10.0, asyncio-0.26.0, cov-5.0.0, mock-3.15.1
+asyncio: mode=Mode.AUTO, asyncio_default_fixture_loop_scope=function, asyncio_default_test_loop_scope=function
+collecting ... collected 20 items
+
+tests/unit/db/repositories/test_base_repository.py::TestBaseRepository::test_create_success PASSED               [  5%]
+tests/unit/db/repositories/test_base_repository.py::TestBaseRepository::test_create_conflict PASSED              [ 10%]
+tests/unit/db/repositories/test_base_repository.py::TestBaseRepository::test_find_by_id_success PASSED           [ 15%]
+tests/unit/db/repositories/test_base_repository.py::TestBaseRepository::test_find_by_id_not_found PASSED         [ 20%]
+tests/unit/db/repositories/test_base_repository.py::TestBaseRepository::test_find_all_success PASSED             [ 25%]
+tests/unit/db/repositories/test_base_repository.py::TestBaseRepository::test_update_success PASSED               [ 30%]
+tests/unit/db/repositories/test_base_repository.py::TestBaseRepository::test_update_not_found PASSED             [ 35%]
+tests/unit/db/repositories/test_base_repository.py::TestBaseRepository::test_delete_success PASSED               [ 40%]
+tests/unit/db/repositories/test_base_repository.py::TestBaseRepository::test_exists_true PASSED                  [ 45%]
+tests/unit/db/repositories/test_base_repository.py::TestBaseRepository::test_exists_false PASSED                 [ 50%]
+tests/unit/db/repositories/test_base_repository.py::TestBaseRepository::test_count PASSED                        [ 55%]
+tests/unit/db/repositories/test_task_repository.py::TestTaskRepository::test_find_by_status PASSED               [ 60%]
+tests/unit/db/repositories/test_task_repository.py::TestTaskRepository::test_find_by_priority PASSED             [ 65%]
+tests/unit/db/repositories/test_task_repository.py::TestTaskRepository::test_find_by_owner PASSED                [ 70%]
+tests/unit/db/repositories/test_task_repository.py::TestTaskRepository::test_find_by_project PASSED              [ 75%]
+tests/unit/db/repositories/test_task_repository.py::TestTaskRepository::test_find_by_project_with_status_filter PASSED [ 80%]
+tests/unit/db/repositories/test_task_repository.py::TestTaskRepository::test_find_by_sprint PASSED               [ 85%]
+tests/unit/db/repositories/test_task_repository.py::TestTaskRepository::test_find_by_status_and_priority PASSED  [ 90%]
+tests/unit/db/repositories/test_task_repository.py::TestTaskRepository::test_find_blocked_tasks PASSED           [ 95%]
+tests/unit/db/repositories/test_task_repository.py::TestTaskRepository::test_find_high_priority_tasks PASSED     [100%]
+
+================================================= 20 passed in 0.59s ==================================================

@@ -1,0 +1,97 @@
+================================================= test session starts =================================================
+platform win32 -- Python 3.11.9, pytest-8.3.3, pluggy-1.6.0 -- C:\Users\James\AppData\Local\Programs\Python\Python311\python.exe
+cachedir: .pytest_cache
+hypothesis profile 'default' -> database=DirectoryBasedExampleDatabase(WindowsPath('C:/Users/James/Documents/Github/GHrepos/SCCMScripts/TaskMan-v2/backend-api/.hypothesis/examples'))
+benchmark: 5.1.0 (defaults: timer=time.perf_counter disable_gc=False min_rounds=5 min_time=0.000005 max_time=1.0 calibration_precision=10 warmup=False warmup_iterations=100000)
+metadata: {'Python': '3.11.9', 'Platform': 'Windows-10-10.0.19045-SP0', 'Packages': {'pytest': '8.3.3', 'pluggy': '1.6.0'}, 'Plugins': {'anyio': '4.10.0', 'dash': '3.1.1', 'Faker': '30.8.2', 'hypothesis': '6.115.2', 'asyncio': '0.26.0', 'benchmark': '5.1.0', 'console-scripts': '1.4.1', 'cov': '5.0.0', 'html': '4.1.1', 'json-report': '1.5.0', 'metadata': '3.1.1', 'mock': '3.15.1', 'postgresql': '6.1.1', 'randomly': '3.15.0', 'rich': '0.2.0', 'timeout': '2.3.1', 'xdist': '3.6.1'}, 'CI': 'true'}
+Using --randomly-seed=314658529
+rootdir: C:\Users\James\Documents\Github\GHrepos\SCCMScripts\TaskMan-v2\backend-api
+configfile: pytest_override.ini
+plugins: anyio-4.10.0, dash-3.1.1, Faker-30.8.2, hypothesis-6.115.2, asyncio-0.26.0, benchmark-5.1.0, console-scripts-1.4.1, cov-5.0.0, html-4.1.1, json-report-1.5.0, metadata-3.1.1, mock-3.15.1, postgresql-6.1.1, randomly-3.15.0, rich-0.2.0, timeout-2.3.1, xdist-3.6.1
+asyncio: mode=Mode.AUTO, asyncio_default_fixture_loop_scope=function, asyncio_default_test_loop_scope=function
+collecting ... collected 3 items
+
+tests/integration/api/test_sprints_api.py::TestSprintIntegration::test_sprint_velocity_calculation FAILED        [ 33%]
+tests/integration/api/test_sprints_api.py::TestSprintIntegration::test_sprint_validation_errors PASSED           [ 66%]
+tests/integration/api/test_sprints_api.py::TestSprintIntegration::test_sprint_management PASSED                  [100%]
+
+====================================================== FAILURES =======================================================
+_______________________________ TestSprintIntegration.test_sprint_velocity_calculation ________________________________
+
+self = <test_sprints_api.TestSprintIntegration object at 0x000001217DBC8F50>
+client = <httpx.AsyncClient object at 0x000001217DBBE710>
+
+    async def test_sprint_velocity_calculation(self, client: AsyncClient):
+        """Test sprint progress/velocity metrics."""
+        # Setup sprint
+        sprint_id = f"{SPRINT_PREFIX}-VELOCITY"
+        await client.post(
+            "/api/v1/sprints",
+            json={
+                "id": sprint_id,
+                "name": "Velocity Sprint",
+                "primary_project": self.project_id,
+                "start_date": "2025-02-01",
+                "end_date": "2025-02-14",
+                "goal": "Test Velocity",
+                "owner": "scrum.master",
+            },
+        )
+    
+        # Add tasks (Simulated by creating tasks assigned to this sprint)
+        # Using task API client
+        await client.post(
+            "/api/v1/tasks",
+            json={
+                "id": f"{SPRINT_PREFIX}-T1",
+                "title": "Task 1",
+                "primary_sprint": sprint_id,
+                "estimate_points": 5,
+                "status": "done",
+            },
+        )
+        await client.post(
+            "/api/v1/tasks",
+            json={
+                "id": f"{SPRINT_PREFIX}-T2",
+                "title": "Task 2",
+                "primary_sprint": sprint_id,
+                "estimate_points": 3,
+                "status": "in_progress",
+            },
+        )
+    
+        # Fetch Progress
+        res = await client.get(f"/api/v1/sprints/{sprint_id}/progress")
+>       assert res.status_code == status.HTTP_200_OK
+E       assert 400 == 200
+E        +  where 400 = <Response [400 Bad Request]>.status_code
+E        +  and   200 = status.HTTP_200_OK
+
+tests\integration\api\test_sprints_api.py:143: AssertionError
+------------------------------------------------ Captured stdout setup ------------------------------------------------
+{"method": "POST", "path": "/api/v1/projects", "query": null, "correlation_id": "71681e94-8338-4fa5-9347-db0a3f888b13", "client_ip": "127.0.0.1", "event": "http_request", "timestamp": "2025-12-28T23:11:34.945974Z", "level": "info"}
+{"project_id": "P-SPRINT-TEST-001", "name": "Sprint Test Project", "event": "project_created", "timestamp": "2025-12-28T23:11:34.965035Z", "level": "info"}
+{"method": "POST", "path": "/api/v1/projects", "status_code": 201, "duration_ms": 20.27, "correlation_id": "71681e94-8338-4fa5-9347-db0a3f888b13", "event": "http_response", "timestamp": "2025-12-28T23:11:34.966035Z", "level": "info"}
+------------------------------------------------ Captured stdout call -------------------------------------------------
+{"method": "POST", "path": "/api/v1/sprints", "query": null, "correlation_id": "2502cb2c-1351-4a07-ac51-5dee525ed294", "client_ip": "127.0.0.1", "event": "http_request", "timestamp": "2025-12-28T23:11:34.968035Z", "level": "info"}
+{"sprint_id": "S-INT-VELOCITY", "name": "Velocity Sprint", "event": "sprint_created", "timestamp": "2025-12-28T23:11:34.981630Z", "level": "info"}
+{"method": "POST", "path": "/api/v1/sprints", "status_code": 201, "duration_ms": 14.6, "correlation_id": "2502cb2c-1351-4a07-ac51-5dee525ed294", "event": "http_response", "timestamp": "2025-12-28T23:11:34.982631Z", "level": "info"}
+{"method": "POST", "path": "/api/v1/tasks", "query": null, "correlation_id": "810935bc-3465-4f43-bd0d-b21da2750d16", "client_ip": "127.0.0.1", "event": "http_request", "timestamp": "2025-12-28T23:11:34.983191Z", "level": "info"}
+{"method": "POST", "path": "/api/v1/tasks", "status_code": 422, "duration_ms": 10.75, "correlation_id": "810935bc-3465-4f43-bd0d-b21da2750d16", "event": "http_response", "timestamp": "2025-12-28T23:11:34.994149Z", "level": "warning"}
+{"method": "POST", "path": "/api/v1/tasks", "query": null, "correlation_id": "3e283df5-fa31-4af2-8d5c-27159bd48493", "client_ip": "127.0.0.1", "event": "http_request", "timestamp": "2025-12-28T23:11:34.994149Z", "level": "info"}
+{"method": "POST", "path": "/api/v1/tasks", "status_code": 422, "duration_ms": 1.43, "correlation_id": "3e283df5-fa31-4af2-8d5c-27159bd48493", "event": "http_response", "timestamp": "2025-12-28T23:11:34.996147Z", "level": "warning"}
+{"method": "GET", "path": "/api/v1/sprints/S-INT-VELOCITY/progress", "query": null, "correlation_id": "c1646b45-216b-4c38-a880-bed5939d995c", "client_ip": "127.0.0.1", "event": "http_request", "timestamp": "2025-12-28T23:11:34.996147Z", "level": "info"}
+{"method": "GET", "path": "/api/v1/sprints/S-INT-VELOCITY/progress", "status_code": 400, "duration_ms": 6.57, "correlation_id": "c1646b45-216b-4c38-a880-bed5939d995c", "event": "http_response", "timestamp": "2025-12-28T23:11:35.003151Z", "level": "warning"}
+================================================== warnings summary ===================================================
+..\..\..\..\..\..\AppData\Local\Programs\Python\Python311\Lib\site-packages\_pytest\config\__init__.py:1441
+  C:\Users\James\AppData\Local\Programs\Python\Python311\Lib\site-packages\_pytest\config\__init__.py:1441: PytestConfigWarning: Unknown config option: python_paths
+  
+    self._warn_or_fail_if_strict(f"Unknown config option: {key}\n")
+
+-- Docs: https://docs.pytest.org/en/stable/how-to/capture-warnings.html
+=============================================== short test summary info ===============================================
+FAILED tests/integration/api/test_sprints_api.py::TestSprintIntegration::test_sprint_velocity_calculation - assert 400 == 200
+ +  where 400 = <Response [400 Bad Request]>.status_code
+ +  and   200 = status.HTTP_200_OK
+======================================= 1 failed, 2 passed, 1 warning in 0.79s ========================================

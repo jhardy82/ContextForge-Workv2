@@ -1,0 +1,11 @@
+============================================================
+MOCK Verification of ConnectionManager Logic
+============================================================
+[1] Initializing Manager...
+    ✅ Manager initialized
+
+[2] Testing Failover Logic (Primary Fails)...
+2025-12-27 17:13:24 [warning  ] primary_db_connection_failed   action=switching_to_fallback error=Primary Down
+    ✅ Session yielded successfully
+    ✅ Correctly switched to Fallback Session
+    ✅ Manager state updated to _using_fallback=True

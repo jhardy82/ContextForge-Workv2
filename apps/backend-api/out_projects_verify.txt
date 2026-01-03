@@ -1,0 +1,26 @@
+================================================= test session starts =================================================
+platform win32 -- Python 3.11.9, pytest-8.3.3, pluggy-1.6.0 -- C:\Users\James\AppData\Local\Programs\Python\Python311\python.exe
+cachedir: .pytest_cache
+hypothesis profile 'default' -> database=DirectoryBasedExampleDatabase(WindowsPath('C:/Users/James/Documents/Github/GHrepos/SCCMScripts/TaskMan-v2/backend-api/.hypothesis/examples'))
+benchmark: 5.1.0 (defaults: timer=time.perf_counter disable_gc=False min_rounds=5 min_time=0.000005 max_time=1.0 calibration_precision=10 warmup=False warmup_iterations=100000)
+metadata: {'Python': '3.11.9', 'Platform': 'Windows-10-10.0.19045-SP0', 'Packages': {'pytest': '8.3.3', 'pluggy': '1.6.0'}, 'Plugins': {'anyio': '4.10.0', 'dash': '3.1.1', 'Faker': '30.8.2', 'hypothesis': '6.115.2', 'asyncio': '0.26.0', 'benchmark': '5.1.0', 'console-scripts': '1.4.1', 'cov': '5.0.0', 'html': '4.1.1', 'json-report': '1.5.0', 'metadata': '3.1.1', 'mock': '3.15.1', 'postgresql': '6.1.1', 'randomly': '3.15.0', 'rich': '0.2.0', 'timeout': '2.3.1', 'xdist': '3.6.1'}, 'CI': 'true'}
+Using --randomly-seed=2987848513
+rootdir: C:\Users\James\Documents\Github\GHrepos\SCCMScripts\TaskMan-v2\backend-api
+configfile: pytest_override.ini
+plugins: anyio-4.10.0, dash-3.1.1, Faker-30.8.2, hypothesis-6.115.2, asyncio-0.26.0, benchmark-5.1.0, console-scripts-1.4.1, cov-5.0.0, html-4.1.1, json-report-1.5.0, metadata-3.1.1, mock-3.15.1, postgresql-6.1.1, randomly-3.15.0, rich-0.2.0, timeout-2.3.1, xdist-3.6.1
+asyncio: mode=Mode.AUTO, asyncio_default_fixture_loop_scope=function, asyncio_default_test_loop_scope=function
+collecting ... collected 4 items
+
+tests/integration/api/test_projects_api.py::TestProjectIntegration::test_project_validation_errors PASSED        [ 25%]
+tests/integration/api/test_projects_api.py::TestProjectIntegration::test_duplicate_project_id PASSED             [ 50%]
+tests/integration/api/test_projects_api.py::TestProjectIntegration::test_project_metrics_endpoint PASSED         [ 75%]
+tests/integration/api/test_projects_api.py::TestProjectIntegration::test_project_crud_lifecycle PASSED           [100%]
+
+================================================== warnings summary ===================================================
+..\..\..\..\..\..\AppData\Local\Programs\Python\Python311\Lib\site-packages\_pytest\config\__init__.py:1441
+  C:\Users\James\AppData\Local\Programs\Python\Python311\Lib\site-packages\_pytest\config\__init__.py:1441: PytestConfigWarning: Unknown config option: python_paths
+  
+    self._warn_or_fail_if_strict(f"Unknown config option: {key}\n")
+
+-- Docs: https://docs.pytest.org/en/stable/how-to/capture-warnings.html
+============================================ 4 passed, 1 warning in 0.48s =============================================

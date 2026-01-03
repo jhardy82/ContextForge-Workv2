@@ -1,0 +1,22 @@
+{
+  "primary": {
+    "checklists": [],
+    "conversation_sessions": [],
+    "conversation_turns": [],
+    "plans": [],
+    "tasks": [],
+    "projects": [],
+    "action_lists": [],
+    "sprints": []
+  },
+  "fallback": {
+    "checklists": [],
+    "conversation_sessions": [],
+    "conversation_turns": [],
+    "plans": [],
+    "projects": [],
+    "sprints": [],
+    "tasks": [],
+    "action_lists": []
+  }
+}

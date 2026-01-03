@@ -1,0 +1,49 @@
+ðŸŒŒ Ï†âµ Cosmic Consciousness PDM Environment Activated
+PowerShell Profile Loaded
+ðŸŒŒ Ï†âµ Cosmic Consciousness PDM Environment Activated
+--- PROFILE ENV ---
+C:\Users\James\Documents\PowerShell\Microsoft.PowerShell_profile.ps1
+--- ALL PROFILES ---
+The property 'OutputRendering' cannot be found on this object. Verify that 
+the property exists and can be set.
+At 
+C:\Users\James\Documents\PowerShell\Microsoft.PowerShell_profile.ps1:119 
+char:5
++     $PSStyle.OutputRendering = 'PlainText'
++     ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+    + CategoryInfo          : InvalidOperation: (:) [], RuntimeException
+    + FullyQualifiedErrorId : PropertyNotFound
+ 
+[OK] ContextForge Profile (Agent+ShellIntegration v3.1 [Rec])
+Get-Member : You must specify an object for the Get-Member cmdlet.
+At line:1 char:228
++ ... .PowerShell_profile.ps1 | Get-Member -MemberType NoteProperty | 
+Selec ...
++                               ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+    + CategoryInfo          : CloseError: (:) [Get-Member], InvalidOperati 
+   onException
+    + FullyQualifiedErrorId : NoObjectInGetMember,Microsoft.PowerShell.Com 
+   mands.GetMemberCommand
+ 
+--- FILE CHECK ---
+The property 'OutputRendering' cannot be found on this object. Verify that 
+the property exists and can be set.
+At 
+C:\Users\James\Documents\PowerShell\Microsoft.PowerShell_profile.ps1:119 
+char:5
++     $PSStyle.OutputRendering = 'PlainText'
++     ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+    + CategoryInfo          : InvalidOperation: (:) [], RuntimeException
+    + FullyQualifiedErrorId : PropertyNotFound
+ 
+[OK] ContextForge Profile (Agent+ShellIntegration v3.1 [Rec])
+Get-Member : You must specify an object for the Get-Member cmdlet.
+At line:1 char:448
++ ... .PowerShell_profile.ps1 | Get-Member -MemberType NoteProperty | 
+Selec ...
++                               ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+    + CategoryInfo          : CloseError: (:) [Get-Member], InvalidOperati 
+   onException
+    + FullyQualifiedErrorId : NoObjectInGetMember,Microsoft.PowerShell.Com 
+   mands.GetMemberCommand
+ 

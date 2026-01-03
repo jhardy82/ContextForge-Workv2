@@ -1,0 +1,29 @@
+warning: `VIRTUAL_ENV=C:\Users\James\Documents\Github\GHrepos\SCCMScripts\.venv` does not match the project environment path `.venv` and will be ignored; use `--active` to target the active environment instead
+================================================= test session starts =================================================
+platform win32 -- Python 3.11.9, pytest-8.4.2, pluggy-1.6.0 -- C:\Users\James\Documents\Github\GHrepos\SCCMScripts\TaskMan-v2\backend-api\.venv\Scripts\python.exe
+cachedir: .pytest_cache
+rootdir: C:\dev
+configfile: null
+plugins: anyio-4.12.0, Faker-30.10.0, asyncio-0.26.0, cov-5.0.0, mock-3.15.1
+asyncio: mode=Mode.STRICT, asyncio_default_fixture_loop_scope=None, asyncio_default_test_loop_scope=function
+collecting ... collected 16 items / 1 error
+
+======================================================= ERRORS ========================================================
+____________________________________________ ERROR collecting test session ____________________________________________
+.venv\Lib\site-packages\_pytest\runner.py:344: in from_call
+    result: TResult | None = func()
+                             ^^^^^^
+.venv\Lib\site-packages\_pytest\runner.py:389: in collect
+    return list(collector.collect())
+           ^^^^^^^^^^^^^^^^^^^^^^^^^
+.venv\Lib\site-packages\_pytest\main.py:528: in collect
+    for direntry in scandir(self.path):
+                    ^^^^^^^^^^^^^^^^^^
+.venv\Lib\site-packages\_pytest\pathlib.py:963: in scandir
+    scandir_iter = os.scandir(path)
+                   ^^^^^^^^^^^^^^^^
+E   PermissionError: [WinError 5] Access is denied: 'C:\\Users\\James\\My Documents'
+=============================================== short test summary info ===============================================
+ERROR ..\..\..\..\..\..\..\..\dev::Users::James::My Documents - PermissionError: [WinError 5] Access is denied: 'C:\\Users\\James\\My Documents'
+!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!! Interrupted: 1 error during collection !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
+================================================== 1 error in 3.58s ===================================================

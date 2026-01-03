@@ -1,0 +1,572 @@
+================================================= test session starts =================================================
+platform win32 -- Python 3.12.11, pytest-8.4.1, pluggy-1.6.0 -- C:\Users\James\Documents\Github\GHrepos\SCCMScripts\.venv\Scripts\python.exe
+cachedir: .pytest_cache
+hypothesis profile 'ci' -> database=None, deadline=None, print_blob=True, derandomize=True, suppress_health_check=(HealthCheck.too_slow,)
+benchmark: 5.2.3 (defaults: timer=time.perf_counter disable_gc=False min_rounds=5 min_time=0.000005 max_time=1.0 calibration_precision=10 warmup=False warmup_iterations=100000)
+Using --randomly-seed=2262398068
+rootdir: C:\Users\James\Documents\Github\GHrepos\SCCMScripts\TaskMan-v2\backend-api
+configfile: pytest_repo.ini
+plugins: anyio-4.10.0, Faker-39.0.0, hypothesis-6.138.3, asyncio-0.26.0, benchmark-5.2.3, console-scripts-1.4.1, cov-5.0.0, mock-3.15.1, randomly-3.16.0, timeout-2.4.0, xdist-3.8.0
+asyncio: mode=Mode.AUTO, asyncio_default_fixture_loop_scope=function, asyncio_default_test_loop_scope=function
+collecting ... collected 10 items
+
+tests/unit/db/repositories/test_project_repository.py::TestProjectRepositoryEdgeCases::test_get_by_owner ERROR   [ 10%]
+tests/unit/db/repositories/test_project_repository.py::TestProjectRepositoryEdgeCases::test_search_filters_and_pagination FAILED [ 20%]
+tests/unit/db/repositories/test_project_repository.py::TestProjectRepositoryEdgeCases::test_create_project_method PASSED [ 30%]
+tests/unit/db/repositories/test_project_repository.py::TestProjectRepositoryEdgeCases::test_exists ERROR         [ 40%]
+tests/unit/db/repositories/test_project_repository.py::TestProjectRepositoryEdgeCases::test_update_project_method ERROR [ 50%]
+tests/unit/db/repositories/test_sprint_repository.py::TestSprintRepositoryEdgeCases::test_get_active_sprints ERROR [ 60%]
+tests/unit/db/repositories/test_sprint_repository.py::TestSprintRepositoryEdgeCases::test_create_and_update_sprint_helpers PASSED [ 70%]
+tests/unit/db/repositories/test_sprint_repository.py::TestSprintRepositoryEdgeCases::test_search_sprints ERROR   [ 80%]
+tests/unit/db/repositories/test_sprint_repository.py::TestSprintRepositoryEdgeCases::test_get_by_project ERROR   [ 90%]
+tests/unit/db/repositories/test_sprint_repository.py::TestSprintRepositoryEdgeCases::test_exists ERROR           [100%]
+
+======================================================= ERRORS ========================================================
+_________________________ ERROR at setup of TestProjectRepositoryEdgeCases.test_get_by_owner __________________________
+
+    @pytest.fixture
+    def sample_project() -> Project:
+        """Create sample project for testing."""
+>       return Project(
+            id="P-TEST-001",
+            name="Test Project",
+            mission="Test project mission",
+            status=ProjectStatus.ACTIVE,
+            start_date="2025-01-01",  # Production uses strings for dates
+            owner="test.owner",
+            sponsors="[]",
+            stakeholders="[]",
+            repositories="[]",
+            comms_channels='["#test-channel"]',
+            okrs="[]",
+            kpis="[]",
+            roadmap="[]",
+            risks="[]",
+            assumptions="[]",
+            constraints="[]",
+            dependencies_external="[]",
+            # sprints removed (not in model)
+            related_projects="[]",
+            shared_components="[]",
+            compliance_requirements="[]",
+            governance="{}",
+            success_metrics="[]",
+            mpv_policy="{}",
+            observability="{}",
+        )
+
+tests\unit\db\repositories\conftest.py:73: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _
+..\..\.venv\Lib\site-packages\sqlalchemy\orm\state.py:596: in _initialize_instance
+    with util.safe_reraise():
+         ^^^^^^^^^^^^^^^^^^^
+..\..\.venv\Lib\site-packages\sqlalchemy\util\langhelpers.py:224: in __exit__
+    raise exc_value.with_traceback(exc_tb)
+..\..\.venv\Lib\site-packages\sqlalchemy\orm\state.py:594: in _initialize_instance
+    manager.original_init(*mixed[1:], **kwargs)
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _
+
+self = <Project(id='P-TEST-001', name='Test Project', status='ProjectStatus.ACTIVE')>
+kwargs = {'assumptions': '[]', 'comms_channels': '["#test-channel"]', 'compliance_requirements': '[]', 'constraints': '[]', ...}
+cls_ = <class 'taskman_api.models.project.Project'>, k = 'observability'
+
+    def _declarative_constructor(self: Any, **kwargs: Any) -> None:
+        """A simple constructor that allows initialization from kwargs.
+    
+        Sets attributes on the constructed instance using the names and
+        values in ``kwargs``.
+    
+        Only keys that are present as
+        attributes of the instance's class are allowed. These could be,
+        for example, any mapped columns or relationships.
+        """
+        cls_ = type(self)
+        for k in kwargs:
+            if not hasattr(cls_, k):
+>               raise TypeError(
+                    "%r is an invalid keyword argument for %s" % (k, cls_.__name__)
+                )
+E               TypeError: 'observability' is an invalid keyword argument for Project
+
+..\..\.venv\Lib\site-packages\sqlalchemy\orm\decl_base.py:2179: TypeError
+------------------------------------------------ Captured stdout setup ------------------------------------------------
+DEBUG: Creating engine...
+DEBUG: Creating tables...
+DEBUG: Yielding session...
+____________________________ ERROR at setup of TestProjectRepositoryEdgeCases.test_exists _____________________________
+
+    @pytest.fixture
+    def sample_project() -> Project:
+        """Create sample project for testing."""
+>       return Project(
+            id="P-TEST-001",
+            name="Test Project",
+            mission="Test project mission",
+            status=ProjectStatus.ACTIVE,
+            start_date="2025-01-01",  # Production uses strings for dates
+            owner="test.owner",
+            sponsors="[]",
+            stakeholders="[]",
+            repositories="[]",
+            comms_channels='["#test-channel"]',
+            okrs="[]",
+            kpis="[]",
+            roadmap="[]",
+            risks="[]",
+            assumptions="[]",
+            constraints="[]",
+            dependencies_external="[]",
+            # sprints removed (not in model)
+            related_projects="[]",
+            shared_components="[]",
+            compliance_requirements="[]",
+            governance="{}",
+            success_metrics="[]",
+            mpv_policy="{}",
+            observability="{}",
+        )
+
+tests\unit\db\repositories\conftest.py:73: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _
+..\..\.venv\Lib\site-packages\sqlalchemy\orm\state.py:596: in _initialize_instance
+    with util.safe_reraise():
+         ^^^^^^^^^^^^^^^^^^^
+..\..\.venv\Lib\site-packages\sqlalchemy\util\langhelpers.py:224: in __exit__
+    raise exc_value.with_traceback(exc_tb)
+..\..\.venv\Lib\site-packages\sqlalchemy\orm\state.py:594: in _initialize_instance
+    manager.original_init(*mixed[1:], **kwargs)
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _
+
+self = <Project(id='P-TEST-001', name='Test Project', status='ProjectStatus.ACTIVE')>
+kwargs = {'assumptions': '[]', 'comms_channels': '["#test-channel"]', 'compliance_requirements': '[]', 'constraints': '[]', ...}
+cls_ = <class 'taskman_api.models.project.Project'>, k = 'observability'
+
+    def _declarative_constructor(self: Any, **kwargs: Any) -> None:
+        """A simple constructor that allows initialization from kwargs.
+    
+        Sets attributes on the constructed instance using the names and
+        values in ``kwargs``.
+    
+        Only keys that are present as
+        attributes of the instance's class are allowed. These could be,
+        for example, any mapped columns or relationships.
+        """
+        cls_ = type(self)
+        for k in kwargs:
+            if not hasattr(cls_, k):
+>               raise TypeError(
+                    "%r is an invalid keyword argument for %s" % (k, cls_.__name__)
+                )
+E               TypeError: 'observability' is an invalid keyword argument for Project
+
+..\..\.venv\Lib\site-packages\sqlalchemy\orm\decl_base.py:2179: TypeError
+------------------------------------------------ Captured stdout setup ------------------------------------------------
+DEBUG: Creating engine...
+DEBUG: Creating tables...
+DEBUG: Yielding session...
+_____________________ ERROR at setup of TestProjectRepositoryEdgeCases.test_update_project_method _____________________
+
+    @pytest.fixture
+    def sample_project() -> Project:
+        """Create sample project for testing."""
+>       return Project(
+            id="P-TEST-001",
+            name="Test Project",
+            mission="Test project mission",
+            status=ProjectStatus.ACTIVE,
+            start_date="2025-01-01",  # Production uses strings for dates
+            owner="test.owner",
+            sponsors="[]",
+            stakeholders="[]",
+            repositories="[]",
+            comms_channels='["#test-channel"]',
+            okrs="[]",
+            kpis="[]",
+            roadmap="[]",
+            risks="[]",
+            assumptions="[]",
+            constraints="[]",
+            dependencies_external="[]",
+            # sprints removed (not in model)
+            related_projects="[]",
+            shared_components="[]",
+            compliance_requirements="[]",
+            governance="{}",
+            success_metrics="[]",
+            mpv_policy="{}",
+            observability="{}",
+        )
+
+tests\unit\db\repositories\conftest.py:73: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _
+..\..\.venv\Lib\site-packages\sqlalchemy\orm\state.py:596: in _initialize_instance
+    with util.safe_reraise():
+         ^^^^^^^^^^^^^^^^^^^
+..\..\.venv\Lib\site-packages\sqlalchemy\util\langhelpers.py:224: in __exit__
+    raise exc_value.with_traceback(exc_tb)
+..\..\.venv\Lib\site-packages\sqlalchemy\orm\state.py:594: in _initialize_instance
+    manager.original_init(*mixed[1:], **kwargs)
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _
+
+self = <Project(id='P-TEST-001', name='Test Project', status='ProjectStatus.ACTIVE')>
+kwargs = {'assumptions': '[]', 'comms_channels': '["#test-channel"]', 'compliance_requirements': '[]', 'constraints': '[]', ...}
+cls_ = <class 'taskman_api.models.project.Project'>, k = 'observability'
+
+    def _declarative_constructor(self: Any, **kwargs: Any) -> None:
+        """A simple constructor that allows initialization from kwargs.
+    
+        Sets attributes on the constructed instance using the names and
+        values in ``kwargs``.
+    
+        Only keys that are present as
+        attributes of the instance's class are allowed. These could be,
+        for example, any mapped columns or relationships.
+        """
+        cls_ = type(self)
+        for k in kwargs:
+            if not hasattr(cls_, k):
+>               raise TypeError(
+                    "%r is an invalid keyword argument for %s" % (k, cls_.__name__)
+                )
+E               TypeError: 'observability' is an invalid keyword argument for Project
+
+..\..\.venv\Lib\site-packages\sqlalchemy\orm\decl_base.py:2179: TypeError
+------------------------------------------------ Captured stdout setup ------------------------------------------------
+DEBUG: Creating engine...
+DEBUG: Creating tables...
+DEBUG: Yielding session...
+_______________________ ERROR at setup of TestSprintRepositoryEdgeCases.test_get_active_sprints _______________________
+
+    @pytest.fixture
+    def sample_project() -> Project:
+        """Create sample project for testing."""
+>       return Project(
+            id="P-TEST-001",
+            name="Test Project",
+            mission="Test project mission",
+            status=ProjectStatus.ACTIVE,
+            start_date="2025-01-01",  # Production uses strings for dates
+            owner="test.owner",
+            sponsors="[]",
+            stakeholders="[]",
+            repositories="[]",
+            comms_channels='["#test-channel"]',
+            okrs="[]",
+            kpis="[]",
+            roadmap="[]",
+            risks="[]",
+            assumptions="[]",
+            constraints="[]",
+            dependencies_external="[]",
+            # sprints removed (not in model)
+            related_projects="[]",
+            shared_components="[]",
+            compliance_requirements="[]",
+            governance="{}",
+            success_metrics="[]",
+            mpv_policy="{}",
+            observability="{}",
+        )
+
+tests\unit\db\repositories\conftest.py:73: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _
+..\..\.venv\Lib\site-packages\sqlalchemy\orm\state.py:596: in _initialize_instance
+    with util.safe_reraise():
+         ^^^^^^^^^^^^^^^^^^^
+..\..\.venv\Lib\site-packages\sqlalchemy\util\langhelpers.py:224: in __exit__
+    raise exc_value.with_traceback(exc_tb)
+..\..\.venv\Lib\site-packages\sqlalchemy\orm\state.py:594: in _initialize_instance
+    manager.original_init(*mixed[1:], **kwargs)
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _
+
+self = <Project(id='P-TEST-001', name='Test Project', status='ProjectStatus.ACTIVE')>
+kwargs = {'assumptions': '[]', 'comms_channels': '["#test-channel"]', 'compliance_requirements': '[]', 'constraints': '[]', ...}
+cls_ = <class 'taskman_api.models.project.Project'>, k = 'observability'
+
+    def _declarative_constructor(self: Any, **kwargs: Any) -> None:
+        """A simple constructor that allows initialization from kwargs.
+    
+        Sets attributes on the constructed instance using the names and
+        values in ``kwargs``.
+    
+        Only keys that are present as
+        attributes of the instance's class are allowed. These could be,
+        for example, any mapped columns or relationships.
+        """
+        cls_ = type(self)
+        for k in kwargs:
+            if not hasattr(cls_, k):
+>               raise TypeError(
+                    "%r is an invalid keyword argument for %s" % (k, cls_.__name__)
+                )
+E               TypeError: 'observability' is an invalid keyword argument for Project
+
+..\..\.venv\Lib\site-packages\sqlalchemy\orm\decl_base.py:2179: TypeError
+------------------------------------------------ Captured stdout setup ------------------------------------------------
+DEBUG: Creating engine...
+DEBUG: Creating tables...
+DEBUG: Yielding session...
+_________________________ ERROR at setup of TestSprintRepositoryEdgeCases.test_search_sprints _________________________
+
+    @pytest.fixture
+    def sample_project() -> Project:
+        """Create sample project for testing."""
+>       return Project(
+            id="P-TEST-001",
+            name="Test Project",
+            mission="Test project mission",
+            status=ProjectStatus.ACTIVE,
+            start_date="2025-01-01",  # Production uses strings for dates
+            owner="test.owner",
+            sponsors="[]",
+            stakeholders="[]",
+            repositories="[]",
+            comms_channels='["#test-channel"]',
+            okrs="[]",
+            kpis="[]",
+            roadmap="[]",
+            risks="[]",
+            assumptions="[]",
+            constraints="[]",
+            dependencies_external="[]",
+            # sprints removed (not in model)
+            related_projects="[]",
+            shared_components="[]",
+            compliance_requirements="[]",
+            governance="{}",
+            success_metrics="[]",
+            mpv_policy="{}",
+            observability="{}",
+        )
+
+tests\unit\db\repositories\conftest.py:73: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _
+..\..\.venv\Lib\site-packages\sqlalchemy\orm\state.py:596: in _initialize_instance
+    with util.safe_reraise():
+         ^^^^^^^^^^^^^^^^^^^
+..\..\.venv\Lib\site-packages\sqlalchemy\util\langhelpers.py:224: in __exit__
+    raise exc_value.with_traceback(exc_tb)
+..\..\.venv\Lib\site-packages\sqlalchemy\orm\state.py:594: in _initialize_instance
+    manager.original_init(*mixed[1:], **kwargs)
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _
+
+self = <Project(id='P-TEST-001', name='Test Project', status='ProjectStatus.ACTIVE')>
+kwargs = {'assumptions': '[]', 'comms_channels': '["#test-channel"]', 'compliance_requirements': '[]', 'constraints': '[]', ...}
+cls_ = <class 'taskman_api.models.project.Project'>, k = 'observability'
+
+    def _declarative_constructor(self: Any, **kwargs: Any) -> None:
+        """A simple constructor that allows initialization from kwargs.
+    
+        Sets attributes on the constructed instance using the names and
+        values in ``kwargs``.
+    
+        Only keys that are present as
+        attributes of the instance's class are allowed. These could be,
+        for example, any mapped columns or relationships.
+        """
+        cls_ = type(self)
+        for k in kwargs:
+            if not hasattr(cls_, k):
+>               raise TypeError(
+                    "%r is an invalid keyword argument for %s" % (k, cls_.__name__)
+                )
+E               TypeError: 'observability' is an invalid keyword argument for Project
+
+..\..\.venv\Lib\site-packages\sqlalchemy\orm\decl_base.py:2179: TypeError
+------------------------------------------------ Captured stdout setup ------------------------------------------------
+DEBUG: Creating engine...
+DEBUG: Creating tables...
+DEBUG: Yielding session...
+_________________________ ERROR at setup of TestSprintRepositoryEdgeCases.test_get_by_project _________________________
+
+    @pytest.fixture
+    def sample_project() -> Project:
+        """Create sample project for testing."""
+>       return Project(
+            id="P-TEST-001",
+            name="Test Project",
+            mission="Test project mission",
+            status=ProjectStatus.ACTIVE,
+            start_date="2025-01-01",  # Production uses strings for dates
+            owner="test.owner",
+            sponsors="[]",
+            stakeholders="[]",
+            repositories="[]",
+            comms_channels='["#test-channel"]',
+            okrs="[]",
+            kpis="[]",
+            roadmap="[]",
+            risks="[]",
+            assumptions="[]",
+            constraints="[]",
+            dependencies_external="[]",
+            # sprints removed (not in model)
+            related_projects="[]",
+            shared_components="[]",
+            compliance_requirements="[]",
+            governance="{}",
+            success_metrics="[]",
+            mpv_policy="{}",
+            observability="{}",
+        )
+
+tests\unit\db\repositories\conftest.py:73: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _
+..\..\.venv\Lib\site-packages\sqlalchemy\orm\state.py:596: in _initialize_instance
+    with util.safe_reraise():
+         ^^^^^^^^^^^^^^^^^^^
+..\..\.venv\Lib\site-packages\sqlalchemy\util\langhelpers.py:224: in __exit__
+    raise exc_value.with_traceback(exc_tb)
+..\..\.venv\Lib\site-packages\sqlalchemy\orm\state.py:594: in _initialize_instance
+    manager.original_init(*mixed[1:], **kwargs)
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _
+
+self = <Project(id='P-TEST-001', name='Test Project', status='ProjectStatus.ACTIVE')>
+kwargs = {'assumptions': '[]', 'comms_channels': '["#test-channel"]', 'compliance_requirements': '[]', 'constraints': '[]', ...}
+cls_ = <class 'taskman_api.models.project.Project'>, k = 'observability'
+
+    def _declarative_constructor(self: Any, **kwargs: Any) -> None:
+        """A simple constructor that allows initialization from kwargs.
+    
+        Sets attributes on the constructed instance using the names and
+        values in ``kwargs``.
+    
+        Only keys that are present as
+        attributes of the instance's class are allowed. These could be,
+        for example, any mapped columns or relationships.
+        """
+        cls_ = type(self)
+        for k in kwargs:
+            if not hasattr(cls_, k):
+>               raise TypeError(
+                    "%r is an invalid keyword argument for %s" % (k, cls_.__name__)
+                )
+E               TypeError: 'observability' is an invalid keyword argument for Project
+
+..\..\.venv\Lib\site-packages\sqlalchemy\orm\decl_base.py:2179: TypeError
+------------------------------------------------ Captured stdout setup ------------------------------------------------
+DEBUG: Creating engine...
+DEBUG: Creating tables...
+DEBUG: Yielding session...
+_____________________________ ERROR at setup of TestSprintRepositoryEdgeCases.test_exists _____________________________
+
+    @pytest.fixture
+    def sample_project() -> Project:
+        """Create sample project for testing."""
+>       return Project(
+            id="P-TEST-001",
+            name="Test Project",
+            mission="Test project mission",
+            status=ProjectStatus.ACTIVE,
+            start_date="2025-01-01",  # Production uses strings for dates
+            owner="test.owner",
+            sponsors="[]",
+            stakeholders="[]",
+            repositories="[]",
+            comms_channels='["#test-channel"]',
+            okrs="[]",
+            kpis="[]",
+            roadmap="[]",
+            risks="[]",
+            assumptions="[]",
+            constraints="[]",
+            dependencies_external="[]",
+            # sprints removed (not in model)
+            related_projects="[]",
+            shared_components="[]",
+            compliance_requirements="[]",
+            governance="{}",
+            success_metrics="[]",
+            mpv_policy="{}",
+            observability="{}",
+        )
+
+tests\unit\db\repositories\conftest.py:73: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _
+..\..\.venv\Lib\site-packages\sqlalchemy\orm\state.py:596: in _initialize_instance
+    with util.safe_reraise():
+         ^^^^^^^^^^^^^^^^^^^
+..\..\.venv\Lib\site-packages\sqlalchemy\util\langhelpers.py:224: in __exit__
+    raise exc_value.with_traceback(exc_tb)
+..\..\.venv\Lib\site-packages\sqlalchemy\orm\state.py:594: in _initialize_instance
+    manager.original_init(*mixed[1:], **kwargs)
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _
+
+self = <Project(id='P-TEST-001', name='Test Project', status='ProjectStatus.ACTIVE')>
+kwargs = {'assumptions': '[]', 'comms_channels': '["#test-channel"]', 'compliance_requirements': '[]', 'constraints': '[]', ...}
+cls_ = <class 'taskman_api.models.project.Project'>, k = 'observability'
+
+    def _declarative_constructor(self: Any, **kwargs: Any) -> None:
+        """A simple constructor that allows initialization from kwargs.
+    
+        Sets attributes on the constructed instance using the names and
+        values in ``kwargs``.
+    
+        Only keys that are present as
+        attributes of the instance's class are allowed. These could be,
+        for example, any mapped columns or relationships.
+        """
+        cls_ = type(self)
+        for k in kwargs:
+            if not hasattr(cls_, k):
+>               raise TypeError(
+                    "%r is an invalid keyword argument for %s" % (k, cls_.__name__)
+                )
+E               TypeError: 'observability' is an invalid keyword argument for Project
+
+..\..\.venv\Lib\site-packages\sqlalchemy\orm\decl_base.py:2179: TypeError
+------------------------------------------------ Captured stdout setup ------------------------------------------------
+DEBUG: Creating engine...
+DEBUG: Creating tables...
+DEBUG: Yielding session...
+====================================================== FAILURES =======================================================
+__________________________ TestProjectRepositoryEdgeCases.test_search_filters_and_pagination __________________________
+
+self = <test_project_repository.TestProjectRepositoryEdgeCases object at 0x00000275FF44C440>
+async_session = <sqlalchemy.ext.asyncio.session.AsyncSession object at 0x00000275FF5268A0>
+
+    async def test_search_filters_and_pagination(self, async_session: AsyncSession):
+        """Test search with combined filters and pagination."""
+        repo = ProjectRepository(async_session)
+    
+        # Create 3 active projects owned by alice
+        for i in range(3):
+            p = Project(
+                id=f"P-SEARCH-{i}",
+                name=f"Project {i}",
+                status=ProjectStatus.ACTIVE,
+                owner="alice",
+                mission="mission",
+                start_date="2025-01-01",
+            )
+            await repo.create(p)
+    
+        # Create 1 draft project
+        p_draft = Project(
+            id="P-SEARCH-DRAFT",
+            name="Draft Project",
+>           status=ProjectStatus.DRAFT,
+                   ^^^^^^^^^^^^^^^^^^^
+            owner="alice",
+            mission="mission",
+            start_date="2025-01-01",
+        )
+E       AttributeError: type object 'ProjectStatus' has no attribute 'DRAFT'
+
+tests\unit\db\repositories\test_project_repository.py:91: AttributeError
+------------------------------------------------ Captured stdout setup ------------------------------------------------
+DEBUG: Creating engine...
+DEBUG: Creating tables...
+DEBUG: Yielding session...
+---------------------------------------------- Captured stdout teardown -----------------------------------------------
+DEBUG: Cleaning up...
+=============================================== short test summary info ===============================================
+FAILED tests/unit/db/repositories/test_project_repository.py::TestProjectRepositoryEdgeCases::test_search_filters_and_pagination - AttributeError: type object 'ProjectStatus' has no attribute 'DRAFT'
+ERROR tests/unit/db/repositories/test_project_repository.py::TestProjectRepositoryEdgeCases::test_get_by_owner - TypeError: 'observability' is an invalid keyword argument for Project
+ERROR tests/unit/db/repositories/test_project_repository.py::TestProjectRepositoryEdgeCases::test_exists - TypeError: 'observability' is an invalid keyword argument for Project
+ERROR tests/unit/db/repositories/test_project_repository.py::TestProjectRepositoryEdgeCases::test_update_project_method - TypeError: 'observability' is an invalid keyword argument for Project
+ERROR tests/unit/db/repositories/test_sprint_repository.py::TestSprintRepositoryEdgeCases::test_get_active_sprints - TypeError: 'observability' is an invalid keyword argument for Project
+ERROR tests/unit/db/repositories/test_sprint_repository.py::TestSprintRepositoryEdgeCases::test_search_sprints - TypeError: 'observability' is an invalid keyword argument for Project
+ERROR tests/unit/db/repositories/test_sprint_repository.py::TestSprintRepositoryEdgeCases::test_get_by_project - TypeError: 'observability' is an invalid keyword argument for Project
+ERROR tests/unit/db/repositories/test_sprint_repository.py::TestSprintRepositoryEdgeCases::test_exists - TypeError: 'observability' is an invalid keyword argument for Project
+======================================== 1 failed, 2 passed, 7 errors in 1.57s ========================================

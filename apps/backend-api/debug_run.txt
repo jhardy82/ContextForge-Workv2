@@ -1,0 +1,201 @@
+PLUGIN registered: <_pytest.config.PytestPluginManager object at 0x0000024D1F95C190>
+PLUGIN registered: <_pytest.config.Config object at 0x0000024D20B6D250>
+PLUGIN registered: <module '_pytest.mark' from 'C:\\Users\\James\\Documents\\Github\\GHrepos\\SCCMScripts\\TaskMan-v2\\backend-api\\.venv\\Lib\\site-packages\\_pytest\\mark\\__init__.py'>
+PLUGIN registered: <module '_pytest.main' from 'C:\\Users\\James\\Documents\\Github\\GHrepos\\SCCMScripts\\TaskMan-v2\\backend-api\\.venv\\Lib\\site-packages\\_pytest\\main.py'>
+PLUGIN registered: <module '_pytest.runner' from 'C:\\Users\\James\\Documents\\Github\\GHrepos\\SCCMScripts\\TaskMan-v2\\backend-api\\.venv\\Lib\\site-packages\\_pytest\\runner.py'>
+PLUGIN registered: <module '_pytest.fixtures' from 'C:\\Users\\James\\Documents\\Github\\GHrepos\\SCCMScripts\\TaskMan-v2\\backend-api\\.venv\\Lib\\site-packages\\_pytest\\fixtures.py'>
+PLUGIN registered: <module '_pytest.helpconfig' from 'C:\\Users\\James\\Documents\\Github\\GHrepos\\SCCMScripts\\TaskMan-v2\\backend-api\\.venv\\Lib\\site-packages\\_pytest\\helpconfig.py'>
+PLUGIN registered: <module '_pytest.python' from 'C:\\Users\\James\\Documents\\Github\\GHrepos\\SCCMScripts\\TaskMan-v2\\backend-api\\.venv\\Lib\\site-packages\\_pytest\\python.py'>
+PLUGIN registered: <module '_pytest.terminal' from 'C:\\Users\\James\\Documents\\Github\\GHrepos\\SCCMScripts\\TaskMan-v2\\backend-api\\.venv\\Lib\\site-packages\\_pytest\\terminal.py'>
+PLUGIN registered: <module '_pytest.debugging' from 'C:\\Users\\James\\Documents\\Github\\GHrepos\\SCCMScripts\\TaskMan-v2\\backend-api\\.venv\\Lib\\site-packages\\_pytest\\debugging.py'>
+PLUGIN registered: <module '_pytest.unittest' from 'C:\\Users\\James\\Documents\\Github\\GHrepos\\SCCMScripts\\TaskMan-v2\\backend-api\\.venv\\Lib\\site-packages\\_pytest\\unittest.py'>
+PLUGIN registered: <module '_pytest.capture' from 'C:\\Users\\James\\Documents\\Github\\GHrepos\\SCCMScripts\\TaskMan-v2\\backend-api\\.venv\\Lib\\site-packages\\_pytest\\capture.py'>
+PLUGIN registered: <module '_pytest.skipping' from 'C:\\Users\\James\\Documents\\Github\\GHrepos\\SCCMScripts\\TaskMan-v2\\backend-api\\.venv\\Lib\\site-packages\\_pytest\\skipping.py'>
+PLUGIN registered: <module '_pytest.legacypath' from 'C:\\Users\\James\\Documents\\Github\\GHrepos\\SCCMScripts\\TaskMan-v2\\backend-api\\.venv\\Lib\\site-packages\\_pytest\\legacypath.py'>
+PLUGIN registered: <module '_pytest.tmpdir' from 'C:\\Users\\James\\Documents\\Github\\GHrepos\\SCCMScripts\\TaskMan-v2\\backend-api\\.venv\\Lib\\site-packages\\_pytest\\tmpdir.py'>
+PLUGIN registered: <module '_pytest.monkeypatch' from 'C:\\Users\\James\\Documents\\Github\\GHrepos\\SCCMScripts\\TaskMan-v2\\backend-api\\.venv\\Lib\\site-packages\\_pytest\\monkeypatch.py'>
+PLUGIN registered: <module '_pytest.recwarn' from 'C:\\Users\\James\\Documents\\Github\\GHrepos\\SCCMScripts\\TaskMan-v2\\backend-api\\.venv\\Lib\\site-packages\\_pytest\\recwarn.py'>
+PLUGIN registered: <module '_pytest.pastebin' from 'C:\\Users\\James\\Documents\\Github\\GHrepos\\SCCMScripts\\TaskMan-v2\\backend-api\\.venv\\Lib\\site-packages\\_pytest\\pastebin.py'>
+PLUGIN registered: <module '_pytest.assertion' from 'C:\\Users\\James\\Documents\\Github\\GHrepos\\SCCMScripts\\TaskMan-v2\\backend-api\\.venv\\Lib\\site-packages\\_pytest\\assertion\\__init__.py'>
+PLUGIN registered: <module '_pytest.junitxml' from 'C:\\Users\\James\\Documents\\Github\\GHrepos\\SCCMScripts\\TaskMan-v2\\backend-api\\.venv\\Lib\\site-packages\\_pytest\\junitxml.py'>
+PLUGIN registered: <module '_pytest.doctest' from 'C:\\Users\\James\\Documents\\Github\\GHrepos\\SCCMScripts\\TaskMan-v2\\backend-api\\.venv\\Lib\\site-packages\\_pytest\\doctest.py'>
+PLUGIN registered: <module '_pytest.cacheprovider' from 'C:\\Users\\James\\Documents\\Github\\GHrepos\\SCCMScripts\\TaskMan-v2\\backend-api\\.venv\\Lib\\site-packages\\_pytest\\cacheprovider.py'>
+PLUGIN registered: <module '_pytest.freeze_support' from 'C:\\Users\\James\\Documents\\Github\\GHrepos\\SCCMScripts\\TaskMan-v2\\backend-api\\.venv\\Lib\\site-packages\\_pytest\\freeze_support.py'>
+PLUGIN registered: <module '_pytest.setuponly' from 'C:\\Users\\James\\Documents\\Github\\GHrepos\\SCCMScripts\\TaskMan-v2\\backend-api\\.venv\\Lib\\site-packages\\_pytest\\setuponly.py'>
+PLUGIN registered: <module '_pytest.setupplan' from 'C:\\Users\\James\\Documents\\Github\\GHrepos\\SCCMScripts\\TaskMan-v2\\backend-api\\.venv\\Lib\\site-packages\\_pytest\\setupplan.py'>
+PLUGIN registered: <module '_pytest.stepwise' from 'C:\\Users\\James\\Documents\\Github\\GHrepos\\SCCMScripts\\TaskMan-v2\\backend-api\\.venv\\Lib\\site-packages\\_pytest\\stepwise.py'>
+PLUGIN registered: <module '_pytest.unraisableexception' from 'C:\\Users\\James\\Documents\\Github\\GHrepos\\SCCMScripts\\TaskMan-v2\\backend-api\\.venv\\Lib\\site-packages\\_pytest\\unraisableexception.py'>
+PLUGIN registered: <module '_pytest.threadexception' from 'C:\\Users\\James\\Documents\\Github\\GHrepos\\SCCMScripts\\TaskMan-v2\\backend-api\\.venv\\Lib\\site-packages\\_pytest\\threadexception.py'>
+PLUGIN registered: <module '_pytest.warnings' from 'C:\\Users\\James\\Documents\\Github\\GHrepos\\SCCMScripts\\TaskMan-v2\\backend-api\\.venv\\Lib\\site-packages\\_pytest\\warnings.py'>
+PLUGIN registered: <module '_pytest.logging' from 'C:\\Users\\James\\Documents\\Github\\GHrepos\\SCCMScripts\\TaskMan-v2\\backend-api\\.venv\\Lib\\site-packages\\_pytest\\logging.py'>
+PLUGIN registered: <module '_pytest.reports' from 'C:\\Users\\James\\Documents\\Github\\GHrepos\\SCCMScripts\\TaskMan-v2\\backend-api\\.venv\\Lib\\site-packages\\_pytest\\reports.py'>
+PLUGIN registered: <module '_pytest.faulthandler' from 'C:\\Users\\James\\Documents\\Github\\GHrepos\\SCCMScripts\\TaskMan-v2\\backend-api\\.venv\\Lib\\site-packages\\_pytest\\faulthandler.py'>
+PLUGIN registered: <module 'anyio.pytest_plugin' from 'C:\\Users\\James\\Documents\\Github\\GHrepos\\SCCMScripts\\TaskMan-v2\\backend-api\\.venv\\Lib\\site-packages\\anyio\\pytest_plugin.py'>
+PLUGIN registered: <module 'faker.contrib.pytest.plugin' from 'C:\\Users\\James\\Documents\\Github\\GHrepos\\SCCMScripts\\TaskMan-v2\\backend-api\\.venv\\Lib\\site-packages\\faker\\contrib\\pytest\\plugin.py'>
+PLUGIN registered: <module 'pytest_asyncio.plugin' from 'C:\\Users\\James\\Documents\\Github\\GHrepos\\SCCMScripts\\TaskMan-v2\\backend-api\\.venv\\Lib\\site-packages\\pytest_asyncio\\plugin.py'>
+PLUGIN registered: <module 'pytest_cov.plugin' from 'C:\\Users\\James\\Documents\\Github\\GHrepos\\SCCMScripts\\TaskMan-v2\\backend-api\\.venv\\Lib\\site-packages\\pytest_cov\\plugin.py'>
+PLUGIN registered: <module 'pytest_mock' from 'C:\\Users\\James\\Documents\\Github\\GHrepos\\SCCMScripts\\TaskMan-v2\\backend-api\\.venv\\Lib\\site-packages\\pytest_mock\\__init__.py'>
+PLUGIN registered: <CaptureManager _method='no' _global_capturing=<MultiCapture out=None err=None in_=None _state='suspended' _in_suspended=False> _capture_fixture=None>
+PLUGIN registered: <pytest_cov.plugin.CovPlugin object at 0x0000024D235CD090>
+PLUGIN registered: <module 'conftest' from 'C:\\Users\\James\\Documents\\Github\\GHrepos\\SCCMScripts\\TaskMan-v2\\backend-api\\tests\\conftest.py'>
+PLUGIN registered: <Session  exitstatus=<ExitCode.OK: 0> testsfailed=0 testscollected=0>
+PLUGIN registered: <_pytest.cacheprovider.LFPlugin object at 0x0000024D23D04150>
+PLUGIN registered: <_pytest.cacheprovider.NFPlugin object at 0x0000024D23D04A90>
+PLUGIN registered: <class '_pytest.legacypath.LegacyTmpdirPlugin'>
+PLUGIN registered: <_pytest.terminal.TerminalReporter object at 0x0000024D23D05B50>
+PLUGIN registered: <_pytest.logging.LoggingPlugin object at 0x0000024D23D6D290>
+PLUGIN registered: <_pytest.fixtures.FixtureManager object at 0x0000024D23D6E510>
+================================================= test session starts =================================================
+platform win32 -- Python 3.11.9, pytest-8.4.2, pluggy-1.6.0 -- C:\Users\James\Documents\Github\GHrepos\SCCMScripts\TaskMan-v2\backend-api\.venv\Scripts\python.exe
+using: pytest-8.4.2
+registered third-party plugins:
+  anyio-4.12.0 at C:\Users\James\Documents\Github\GHrepos\SCCMScripts\TaskMan-v2\backend-api\.venv\Lib\site-packages\anyio\pytest_plugin.py
+  Faker-30.10.0 at C:\Users\James\Documents\Github\GHrepos\SCCMScripts\TaskMan-v2\backend-api\.venv\Lib\site-packages\faker\contrib\pytest\plugin.py
+  pytest-asyncio-0.26.0 at C:\Users\James\Documents\Github\GHrepos\SCCMScripts\TaskMan-v2\backend-api\.venv\Lib\site-packages\pytest_asyncio\plugin.py
+  pytest-cov-5.0.0 at C:\Users\James\Documents\Github\GHrepos\SCCMScripts\TaskMan-v2\backend-api\.venv\Lib\site-packages\pytest_cov\plugin.py
+  pytest-mock-3.15.1 at C:\Users\James\Documents\Github\GHrepos\SCCMScripts\TaskMan-v2\backend-api\.venv\Lib\site-packages\pytest_mock\__init__.py
+active plugins:
+    2530265645456       : <_pytest.config.PytestPluginManager object at 0x0000024D1F95C190>
+    pytestconfig        : <_pytest.config.Config object at 0x0000024D20B6D250>
+    mark                : C:\Users\James\Documents\Github\GHrepos\SCCMScripts\TaskMan-v2\backend-api\.venv\Lib\site-packages\_pytest\mark\__init__.py
+    main                : C:\Users\James\Documents\Github\GHrepos\SCCMScripts\TaskMan-v2\backend-api\.venv\Lib\site-packages\_pytest\main.py
+    runner              : C:\Users\James\Documents\Github\GHrepos\SCCMScripts\TaskMan-v2\backend-api\.venv\Lib\site-packages\_pytest\runner.py
+    fixtures            : C:\Users\James\Documents\Github\GHrepos\SCCMScripts\TaskMan-v2\backend-api\.venv\Lib\site-packages\_pytest\fixtures.py
+    helpconfig          : C:\Users\James\Documents\Github\GHrepos\SCCMScripts\TaskMan-v2\backend-api\.venv\Lib\site-packages\_pytest\helpconfig.py
+    python              : C:\Users\James\Documents\Github\GHrepos\SCCMScripts\TaskMan-v2\backend-api\.venv\Lib\site-packages\_pytest\python.py
+    terminal            : C:\Users\James\Documents\Github\GHrepos\SCCMScripts\TaskMan-v2\backend-api\.venv\Lib\site-packages\_pytest\terminal.py
+    debugging           : C:\Users\James\Documents\Github\GHrepos\SCCMScripts\TaskMan-v2\backend-api\.venv\Lib\site-packages\_pytest\debugging.py
+    unittest            : C:\Users\James\Documents\Github\GHrepos\SCCMScripts\TaskMan-v2\backend-api\.venv\Lib\site-packages\_pytest\unittest.py
+    capture             : C:\Users\James\Documents\Github\GHrepos\SCCMScripts\TaskMan-v2\backend-api\.venv\Lib\site-packages\_pytest\capture.py
+    skipping            : C:\Users\James\Documents\Github\GHrepos\SCCMScripts\TaskMan-v2\backend-api\.venv\Lib\site-packages\_pytest\skipping.py
+    legacypath          : C:\Users\James\Documents\Github\GHrepos\SCCMScripts\TaskMan-v2\backend-api\.venv\Lib\site-packages\_pytest\legacypath.py
+    tmpdir              : C:\Users\James\Documents\Github\GHrepos\SCCMScripts\TaskMan-v2\backend-api\.venv\Lib\site-packages\_pytest\tmpdir.py
+    monkeypatch         : C:\Users\James\Documents\Github\GHrepos\SCCMScripts\TaskMan-v2\backend-api\.venv\Lib\site-packages\_pytest\monkeypatch.py
+    recwarn             : C:\Users\James\Documents\Github\GHrepos\SCCMScripts\TaskMan-v2\backend-api\.venv\Lib\site-packages\_pytest\recwarn.py
+    pastebin            : C:\Users\James\Documents\Github\GHrepos\SCCMScripts\TaskMan-v2\backend-api\.venv\Lib\site-packages\_pytest\pastebin.py
+    assertion           : C:\Users\James\Documents\Github\GHrepos\SCCMScripts\TaskMan-v2\backend-api\.venv\Lib\site-packages\_pytest\assertion\__init__.py
+    junitxml            : C:\Users\James\Documents\Github\GHrepos\SCCMScripts\TaskMan-v2\backend-api\.venv\Lib\site-packages\_pytest\junitxml.py
+    doctest             : C:\Users\James\Documents\Github\GHrepos\SCCMScripts\TaskMan-v2\backend-api\.venv\Lib\site-packages\_pytest\doctest.py
+    cacheprovider       : C:\Users\James\Documents\Github\GHrepos\SCCMScripts\TaskMan-v2\backend-api\.venv\Lib\site-packages\_pytest\cacheprovider.py
+    freeze_support      : C:\Users\James\Documents\Github\GHrepos\SCCMScripts\TaskMan-v2\backend-api\.venv\Lib\site-packages\_pytest\freeze_support.py
+    setuponly           : C:\Users\James\Documents\Github\GHrepos\SCCMScripts\TaskMan-v2\backend-api\.venv\Lib\site-packages\_pytest\setuponly.py
+    setupplan           : C:\Users\James\Documents\Github\GHrepos\SCCMScripts\TaskMan-v2\backend-api\.venv\Lib\site-packages\_pytest\setupplan.py
+    stepwise            : C:\Users\James\Documents\Github\GHrepos\SCCMScripts\TaskMan-v2\backend-api\.venv\Lib\site-packages\_pytest\stepwise.py
+    unraisableexception : C:\Users\James\Documents\Github\GHrepos\SCCMScripts\TaskMan-v2\backend-api\.venv\Lib\site-packages\_pytest\unraisableexception.py
+    threadexception     : C:\Users\James\Documents\Github\GHrepos\SCCMScripts\TaskMan-v2\backend-api\.venv\Lib\site-packages\_pytest\threadexception.py
+    warnings            : C:\Users\James\Documents\Github\GHrepos\SCCMScripts\TaskMan-v2\backend-api\.venv\Lib\site-packages\_pytest\warnings.py
+    logging             : C:\Users\James\Documents\Github\GHrepos\SCCMScripts\TaskMan-v2\backend-api\.venv\Lib\site-packages\_pytest\logging.py
+    reports             : C:\Users\James\Documents\Github\GHrepos\SCCMScripts\TaskMan-v2\backend-api\.venv\Lib\site-packages\_pytest\reports.py
+    faulthandler        : C:\Users\James\Documents\Github\GHrepos\SCCMScripts\TaskMan-v2\backend-api\.venv\Lib\site-packages\_pytest\faulthandler.py
+    anyio               : C:\Users\James\Documents\Github\GHrepos\SCCMScripts\TaskMan-v2\backend-api\.venv\Lib\site-packages\anyio\pytest_plugin.py
+    faker               : C:\Users\James\Documents\Github\GHrepos\SCCMScripts\TaskMan-v2\backend-api\.venv\Lib\site-packages\faker\contrib\pytest\plugin.py
+    asyncio             : C:\Users\James\Documents\Github\GHrepos\SCCMScripts\TaskMan-v2\backend-api\.venv\Lib\site-packages\pytest_asyncio\plugin.py
+    pytest_cov          : C:\Users\James\Documents\Github\GHrepos\SCCMScripts\TaskMan-v2\backend-api\.venv\Lib\site-packages\pytest_cov\plugin.py
+    pytest_mock         : C:\Users\James\Documents\Github\GHrepos\SCCMScripts\TaskMan-v2\backend-api\.venv\Lib\site-packages\pytest_mock\__init__.py
+    capturemanager      : <CaptureManager _method='no' _global_capturing=<MultiCapture out=None err=None in_=None _state='suspended' _in_suspended=False> _capture_fixture=None>
+    _cov                : <pytest_cov.plugin.CovPlugin object at 0x0000024D235CD090>
+    C:\Users\James\Documents\Github\GHrepos\SCCMScripts\TaskMan-v2\backend-api\tests\conftest.py: C:\Users\James\Documents\Github\GHrepos\SCCMScripts\TaskMan-v2\backend-api\tests\conftest.py
+    session             : <Session  exitstatus=<ExitCode.OK: 0> testsfailed=0 testscollected=0>
+    lfplugin            : <_pytest.cacheprovider.LFPlugin object at 0x0000024D23D04150>
+    nfplugin            : <_pytest.cacheprovider.NFPlugin object at 0x0000024D23D04A90>
+    legacypath-tmpdir   : <class '_pytest.legacypath.LegacyTmpdirPlugin'>
+    terminalreporter    : <_pytest.terminal.TerminalReporter object at 0x0000024D23D05B50>
+    logging-plugin      : <_pytest.logging.LoggingPlugin object at 0x0000024D23D6D290>
+    funcmanage          : <_pytest.fixtures.FixtureManager object at 0x0000024D23D6E510>
+cachedir: .pytest_cache
+rootdir: C:\Users\James\Documents\Github\GHrepos\SCCMScripts\TaskMan-v2\backend-api
+configfile: pyproject.toml
+plugins: anyio-4.12.0, Faker-30.10.0, asyncio-0.26.0, cov-5.0.0, mock-3.15.1
+asyncio: mode=Mode.AUTO, asyncio_default_fixture_loop_scope=function, asyncio_default_test_loop_scope=function
+collecting ... collected 16 items
+
+tests/unit/core/test_result.py::TestOk::test_ok_is_ok_returns_true PASSED
+tests/unit/core/test_result.py::TestOk::test_ok_is_err_returns_false PASSED
+tests/unit/core/test_result.py::TestOk::test_ok_unwrap_returns_value PASSED
+tests/unit/core/test_result.py::TestOk::test_ok_ok_returns_value PASSED
+tests/unit/core/test_result.py::TestOk::test_ok_unwrap_err_raises PASSED
+tests/unit/core/test_result.py::TestOk::test_ok_err_raises PASSED
+tests/unit/core/test_result.py::TestOk::test_ok_match_args PASSED
+tests/unit/core/test_result.py::TestErr::test_err_is_ok_returns_false PASSED
+tests/unit/core/test_result.py::TestErr::test_err_is_err_returns_true PASSED
+tests/unit/core/test_result.py::TestErr::test_err_unwrap_raises PASSED
+tests/unit/core/test_result.py::TestErr::test_err_ok_raises PASSED
+tests/unit/core/test_result.py::TestErr::test_err_unwrap_err_returns_error PASSED
+tests/unit/core/test_result.py::TestErr::test_err_err_returns_error PASSED
+tests/unit/core/test_result.py::TestErr::test_err_match_args PASSED
+tests/unit/core/test_result.py::TestResultPatternMatching::test_pattern_match_ok PASSED
+tests/unit/core/test_result.py::TestResultPatternMatching::test_pattern_match_err PASSED
+
+---------- coverage: platform win32, python 3.11.9-final-0 -----------
+Name                                                      Stmts   Miss Branch BrPart  Cover   Missing
+-----------------------------------------------------------------------------------------------------
+src\taskman_api\auth.py                                      61     61      8      0  0.00%   7-246
+src\taskman_api\config.py                                    62     16      6      0 67.65%   102-103, 114-115, 224-243, 249, 255, 261, 290
+src\taskman_api\core\errors.py                               78     60     36      0 15.79%   31-37, 48-57, 72-78, 101-109, 134-146, 169-177, 199-205, 226-230, 253-259
+src\taskman_api\core\result.py                               49      4      0      0 91.84%   44, 48, 81, 85
+src\taskman_api\db\__init__.py                                3      3      0      0  0.00%   6-9
+src\taskman_api\db\base.py                                    6      6      0      0  0.00%   10-32
+src\taskman_api\db\connection_manager.py                     91     91     10      0  0.00%   8-183
+src\taskman_api\db\session.py                                27     27      4      0  0.00%   6-85
+src\taskman_api\dependencies.py                              45     45      0      0  0.00%   7-100
+src\taskman_api\main.py                                     105    105     18      0  0.00%   6-342
+src\taskman_api\middleware\__init__.py                        2      2      0      0  0.00%   7-9
+src\taskman_api\middleware\logging_middleware.py             85     85     32      0  0.00%   19-272
+src\taskman_api\models\__init__.py                            8      8      0      0  0.00%   6-14
+src\taskman_api\models\action_list.py                        54     54      6      0  0.00%   8-133
+src\taskman_api\models\checklist.py                          49     49      8      0  0.00%   6-159
+src\taskman_api\models\conversation.py                       44     44      0      0  0.00%   6-243
+src\taskman_api\models\plan.py                               49     49     10      0  0.00%   6-151
+src\taskman_api\models\project.py                            48     48      0      0  0.00%   9-100
+src\taskman_api\models\sprint.py                             51     51      0      0  0.00%   9-101
+src\taskman_api\models\task.py                               56     56      0      0  0.00%   7-331
+src\taskman_api\repositories\__init__.py                      9      9      0      0  0.00%   7-16
+src\taskman_api\repositories\action_list_repository.py       51     51     18      0  0.00%   8-145
+src\taskman_api\repositories\base.py                         33     33      0      0  0.00%   7-71
+src\taskman_api\repositories\checklist_repository.py        129    129      8      0  0.00%   6-490
+src\taskman_api\repositories\conversation_repository.py     150    150      4      0  0.00%   6-601
+src\taskman_api\repositories\plan_repository.py             107    107      4      0  0.00%   6-414
+src\taskman_api\repositories\project_repository.py           65     65     14      0  0.00%   7-153
+src\taskman_api\repositories\sprint_repository.py            70     70     16      0  0.00%   7-167
+src\taskman_api\repositories\task_repository.py             112    112     44      0  0.00%   7-300
+src\taskman_api\routers\__init__.py                          11     11      0      0  0.00%   6-17
+src\taskman_api\routers\action_lists.py                     109    109     26      0  0.00%   7-661
+src\taskman_api\routers\agent.py                             30     30      6      0  0.00%   1-72
+src\taskman_api\routers\checklists.py                       167    167     80      0  0.00%   6-613
+src\taskman_api\routers\conversations.py                    143    143     68      0  0.00%   6-545
+src\taskman_api\routers\diagnostic.py                        20     20      0      0  0.00%   5-40
+src\taskman_api\routers\phases.py                           144    144     72      0  0.00%   7-538
+src\taskman_api\routers\plans.py                            135    135     64      0  0.00%   6-492
+src\taskman_api\routers\projects.py                          73     73     32      0  0.00%   7-143
+src\taskman_api\routers\sprints.py                          108    108     52      0  0.00%   7-202
+src\taskman_api\routers\tasks.py                             94     94     42      0  0.00%   7-183
+src\taskman_api\schemas\__init__.py                           7      7      0      0  0.00%   8-71
+src\taskman_api\schemas\action_list.py                       82     82      2      0  0.00%   5-295
+src\taskman_api\schemas\base.py                              53     53      6      0  0.00%   5-122
+src\taskman_api\schemas\checklist.py                        110    110      2      0  0.00%   7-369
+src\taskman_api\schemas\conversation.py                      93     93      0      0  0.00%   7-299
+src\taskman_api\schemas\enums.py                             62     62      0      0  0.00%   5-99
+src\taskman_api\schemas\phase.py                             48     48      0      0  0.00%   6-232
+src\taskman_api\schemas\plan.py                              91     91      6      0  0.00%   7-280
+src\taskman_api\schemas\project.py                          163    163     26      0  0.00%   5-268
+src\taskman_api\schemas\sprint.py                           154    154     22      0  0.00%   5-245
+src\taskman_api\schemas\task.py                             193    193     28      0  0.00%   5-313
+src\taskman_api\services\__init__.py                         10     10      0      0  0.00%   6-16
+src\taskman_api\services\action_list_service.py             159    159     42      0  0.00%   5-328
+src\taskman_api\services\base.py                            118    118     24      0  0.00%   6-332
+src\taskman_api\services\checklist_service.py               323    323    172      0  0.00%   6-780
+src\taskman_api\services\conversation_service.py            205    205    100      0  0.00%   6-514
+src\taskman_api\services\phase_service.py                   180    180     84      0  0.00%   10-635
+src\taskman_api\services\plan_service.py                    257    257    136      0  0.00%   6-582
+src\taskman_api\services\project_service.py                 121    121     48      0  0.00%   6-439
+src\taskman_api\services\sprint_service.py                  165    165     60      0  0.00%   6-577
+src\taskman_api\services\task_service.py                     92     92     28      0  0.00%   6-458
+-----------------------------------------------------------------------------------------------------
+TOTAL                                                      5510   5310   1474      0  2.86%
+
+3 files skipped due to complete coverage.
+Coverage HTML written to dir htmlcov
+Coverage JSON written to file coverage.json
+
+
+================================================= 16 passed in 9.62s ==================================================

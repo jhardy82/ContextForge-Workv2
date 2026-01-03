@@ -1,0 +1,220 @@
+# TaskMan-v2 Backend API Configuration
+# FastAPI-based REST API server
+
+[build-system]
+requires = ["hatchling"]
+build-backend = "hatchling.build"
+
+[project]
+name = "taskman-api"
+version = "0.1.0"
+description = "TaskMan-v2 FastAPI Backend API"
+readme = "README.md"
+requires-python = ">=3.11"
+authors = [
+    {name = "ContextForge Team", email = "team@contextforge.dev"}
+]
+license = {text = "MIT"}
+
+# Core runtime dependencies (production)
+dependencies = [
+    # Web framework & ASGI server
+    "fastapi>=0.115,<0.116",
+    "uvicorn[standard]>=0.32,<0.33",
+
+    # Data validation & settings
+    "pydantic>=2.9,<3.0",
+    "pydantic-settings>=2.5,<3.0",
+
+    # HTTP client
+    "httpx>=0.27,<0.28",
+    "email-validator>=2.2,<3.0",
+
+    # Database & ORM
+    "sqlalchemy[asyncio]>=2.0,<3.0",
+    "asyncpg>=0.30,<1.0",
+    "alembic>=1.13,<2.0",
+
+    # Structured logging
+    "structlog>=24.4,<25.0",
+    "python-json-logger>=2.0,<3.0",
+
+    # OpenTelemetry observability
+    "opentelemetry-api>=1.27,<2.0",
+    "opentelemetry-sdk>=1.27,<2.0",
+    "opentelemetry-instrumentation-fastapi>=0.48,<1.0",
+
+    # Security & authentication
+    "python-jose[cryptography]>=3.3,<4.0",
+    "passlib[bcrypt]>=1.7,<2.0",
+    "python-multipart>=0.0.9,<1.0",
+
+    # Configuration
+    "python-dotenv>=1.0,<2.0",
+
+    # Utilities
+    "python-dateutil>=2.9,<3.0",
+    "rich>=13.8,<14.0",
+]
+
+# Optional dependency groups
+[project.optional-dependencies]
+# Development tools
+dev = [
+    "pytest>=8.3,<9.0",
+    "pytest-asyncio>=0.24,<1.0",
+    "pytest-cov>=5.0,<6.0",
+    "pytest-mock>=3.14,<4.0",
+    "httpx>=0.27,<0.28",  # For FastAPI TestClient
+    "faker>=30.0,<31.0",  # Test data generation
+]
+
+# Code quality & linting
+lint = [
+    "ruff>=0.6,<0.7",
+    "mypy>=1.11,<1.12",
+    "types-python-dateutil>=2.9",
+    "types-passlib>=1.7",
+]
+
+# Security scanning tools
+security = [
+    "pip-audit>=2.7,<3.0",
+    "bandit>=1.7,<2.0",
+    "safety>=3.2,<4.0",
+]
+
+# Performance profiling
+perf = [
+    "py-spy>=0.3,<1.0",
+    "memray>=1.14,<2.0",
+]
+
+# Install all dev tools
+all = [
+    "taskman-api[dev,lint,security,perf]",
+]
+
+# CLI entry points
+[project.scripts]
+taskman-api = "taskman_api.main:main"
+
+# Build configuration
+[tool.hatchling.build.targets.wheel]
+packages = ["src/taskman_api"]
+
+# ============================================================================
+# TOOL CONFIGURATIONS
+# ============================================================================
+
+# Ruff - Fast Python linter & formatter
+[tool.ruff]
+line-length = 100
+target-version = "py311"
+src = ["src", "tests"]
+
+[tool.ruff.lint]
+select = [
+    "E",   # pycodestyle errors
+    "W",   # pycodestyle warnings
+    "F",   # pyflakes
+    "I",   # isort
+    "B",   # flake8-bugbear
+    "C4",  # flake8-comprehensions
+    "UP",  # pyupgrade
+    "ARG", # flake8-unused-arguments
+    "SIM", # flake8-simplify
+]
+ignore = [
+    "E501",  # Line too long (handled by formatter)
+    "B008",  # Function call in argument defaults (FastAPI pattern)
+]
+
+[tool.ruff.lint.per-file-ignores]
+"tests/**/*.py" = ["ARG", "S101"]  # Allow unused args and asserts in tests
+"__init__.py" = ["F401"]  # Allow unused imports in __init__
+
+[tool.ruff.format]
+quote-style = "double"
+indent-style = "space"
+
+# MyPy - Static type checking
+[tool.mypy]
+python_version = "3.11"
+strict = true
+warn_return_any = true
+warn_unused_configs = true
+disallow_untyped_defs = true
+plugins = ["pydantic.mypy"]
+
+[[tool.mypy.overrides]]
+module = "tests.*"
+disallow_untyped_defs = false
+
+[[tool.mypy.overrides]]
+module = [
+    "sqlalchemy.*",
+    "alembic.*",
+]
+ignore_missing_imports = true
+
+# Pytest - Testing framework
+[tool.pytest.ini_options]
+minversion = "8.0"
+testpaths = ["tests"]
+pythonpath = ["src"]
+asyncio_mode = "auto"
+addopts = [
+    "-ra",
+    "--strict-markers",
+    "--strict-config",
+    "--cov=taskman_api",
+    "--cov-report=term-missing:skip-covered",
+    "--cov-report=html",
+    "--cov-report=json",
+]
+markers = [
+    "unit: Unit tests",
+    "integration: Integration tests requiring external services",
+    "e2e: End-to-end tests",
+    "slow: Slow running tests",
+]
+filterwarnings = [
+    "error",
+    "ignore::DeprecationWarning",
+]
+
+# Coverage - Code coverage reporting
+[tool.coverage.run]
+source = ["src"]
+branch = true
+omit = [
+    "tests/*",
+    "**/__pycache__/*",
+    "**/site-packages/*",
+]
+
+[tool.coverage.report]
+precision = 2
+show_missing = true
+skip_covered = false
+fail_under = 70
+exclude_lines = [
+    "pragma: no cover",
+    "def __repr__",
+    "def __str__",
+    "raise AssertionError",
+    "raise NotImplementedError",
+    "if __name__ == .__main__.:",
+    "if TYPE_CHECKING:",
+    "@abstractmethod",
+    "@overload",
+]
+
+[tool.coverage.json]
+output = "coverage.json"
+
+# Bandit - Security linter
+[tool.bandit]
+exclude_dirs = ["tests", "venv", ".venv"]
+skips = ["B101", "B601"]  # Skip assert_used and shell_injection in tests

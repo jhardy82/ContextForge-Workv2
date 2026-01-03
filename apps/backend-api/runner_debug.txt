@@ -1,0 +1,3 @@
+Running command: C:\Users\James\Documents\Github\GHrepos\SCCMScripts\TaskMan-v2\backend-api\.venv\Scripts\python.exe -m pytest -v tests/unit/routers/test_projects.py tests/unit/routers/test_sprints.py
+Execution complete. Exit code: 1
+Output written to test_run_results.txt

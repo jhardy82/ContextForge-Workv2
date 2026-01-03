@@ -1,0 +1,278 @@
+================================================= test session starts =================================================
+platform win32 -- Python 3.11.9, pytest-8.4.2, pluggy-1.6.0 -- C:\Users\James\Documents\Github\GHrepos\SCCMScripts\TaskMan-v2\backend-api\.venv\Scripts\python.exe
+cachedir: .pytest_cache
+rootdir: C:\Users\James\Documents\Github\GHrepos\SCCMScripts\TaskMan-v2\backend-api
+configfile: pytest_full.ini
+plugins: anyio-4.12.0, Faker-30.10.0, asyncio-0.26.0, cov-5.0.0, mock-3.15.1
+asyncio: mode=Mode.AUTO, asyncio_default_fixture_loop_scope=function, asyncio_default_test_loop_scope=function
+collecting ... collected 13 items
+
+tests/unit/services/test_base_service.py::TestBaseServiceCreate::test_create_success FAILED                      [  7%]
+tests/unit/services/test_base_service.py::TestBaseServiceCreate::test_create_conflict_error PASSED               [ 15%]
+tests/unit/services/test_base_service.py::TestBaseServiceGet::test_get_success FAILED                            [ 23%]
+tests/unit/services/test_base_service.py::TestBaseServiceGet::test_get_not_found FAILED                          [ 30%]
+tests/unit/services/test_base_service.py::TestBaseServiceUpdate::test_update_success FAILED                      [ 38%]
+tests/unit/services/test_base_service.py::TestBaseServiceUpdate::test_update_not_found FAILED                    [ 46%]
+tests/unit/services/test_base_service.py::TestBaseServiceDelete::test_delete_success FAILED                      [ 53%]
+tests/unit/services/test_base_service.py::TestBaseServiceDelete::test_delete_not_found FAILED                    [ 61%]
+tests/unit/services/test_base_service.py::TestBaseServiceList::test_list_success FAILED                          [ 69%]
+tests/unit/services/test_base_service.py::TestBaseServiceList::test_list_empty_result FAILED                     [ 76%]
+tests/unit/services/test_base_service.py::TestBaseServiceUtility::test_exists_true PASSED                        [ 84%]
+tests/unit/services/test_base_service.py::TestBaseServiceUtility::test_exists_false PASSED                       [ 92%]
+tests/unit/services/test_base_service.py::TestBaseServiceUtility::test_count_success PASSED                      [100%]
+
+====================================================== FAILURES =======================================================
+______________________________________ TestBaseServiceCreate.test_create_success ______________________________________
+
+self = <test_base_service.TestBaseServiceCreate object at 0x000001AB0A264350>
+mock_task_repository = <Mock id='1834121253584'>
+sample_task = <Task(id=T-TEST-001, title='Test Task...', status='TaskStatus.NEW')>
+
+    @pytest.mark.asyncio
+    async def test_create_success(self, mock_task_repository, sample_task):
+        """Test successful entity creation."""
+        # Arrange
+        service = BaseService(mock_task_repository, Task, TaskResponse)
+        request = TaskCreateRequest(
+            id="T-TEST-001",
+            title="Test Task",
+            summary="Summary",
+            description="Description",
+            owner="test.owner",
+            priority=Priority.P1,
+            primary_project="P-TEST-001",
+            primary_sprint="S-TEST-001",
+        )
+    
+        # Mock repository to return entity directly
+        mock_task_repository.create.return_value = sample_task
+    
+        # Act
+        result = await service.create(request)
+    
+        # Assert
+>       assert isinstance(result, Ok)
+E       assert False
+E        +  where False = isinstance(<taskman_api.core.result.Err object at 0x000001AB0A3D27D0>, Ok)
+
+tests\unit\services\test_base_service.py:43: AssertionError
+_________________________________________ TestBaseServiceGet.test_get_success _________________________________________
+
+self = <test_base_service.TestBaseServiceGet object at 0x000001AB0A2B9B10>
+mock_task_repository = <Mock id='1834123420176'>
+sample_task = <Task(id=T-TEST-001, title='Test Task...', status='TaskStatus.NEW')>
+
+    @pytest.mark.asyncio
+    async def test_get_success(self, mock_task_repository, sample_task):
+        """Test successful entity retrieval."""
+        # Arrange
+        service = BaseService(mock_task_repository, Task, TaskResponse)
+    
+        # Mock repository to return entity directly
+        mock_task_repository.get_by_id.return_value = sample_task
+    
+        # Act
+        result = await service.get("T-TEST-001")
+    
+        # Assert
+>       assert isinstance(result, Ok)
+E       assert False
+E        +  where False = isinstance(<taskman_api.core.result.Err object at 0x000001AB0A165C50>, Ok)
+
+tests\unit\services\test_base_service.py:99: AssertionError
+________________________________________ TestBaseServiceGet.test_get_not_found ________________________________________
+
+self = <test_base_service.TestBaseServiceGet object at 0x000001AB0A2BA310>
+mock_task_repository = <Mock id='1834123686224'>
+
+    @pytest.mark.asyncio
+    async def test_get_not_found(self, mock_task_repository):
+        """Test get with non-existent ID returns NotFoundError."""
+        # Arrange
+        service = BaseService(mock_task_repository, Task, TaskResponse)
+    
+        # Mock repository to return None (BaseRepository.get_by_id returns T | None)
+        mock_task_repository.get_by_id.return_value = None
+    
+        # Act
+        result = await service.get("T-NONEXISTENT")
+    
+        # Assert
+        assert isinstance(result, Err)
+        error = result.err()
+>       assert isinstance(error, NotFoundError)
+E       assert False
+E        +  where False = isinstance(AppError("object NoneType can't be used in 'await' expression"), NotFoundError)
+
+tests\unit\services\test_base_service.py:120: AssertionError
+______________________________________ TestBaseServiceUpdate.test_update_success ______________________________________
+
+self = <test_base_service.TestBaseServiceUpdate object at 0x000001AB0A2BAF10>
+mock_task_repository = <Mock id='1834123722064'>
+sample_task = <Task(id=T-TEST-001, title='Test Task...', status='TaskStatus.NEW')>
+
+    @pytest.mark.asyncio
+    async def test_update_success(self, mock_task_repository, sample_task):
+        """Test successful entity update."""
+        # Arrange
+        service = BaseService(mock_task_repository, Task, TaskResponse)
+        update_request = TaskUpdateRequest(title="Updated Title")
+    
+        # Mock get_by_id to return entity for retrieval
+        mock_task_repository.get_by_id.return_value = sample_task
+        # Mock update to return updated entity
+        mock_task_repository.update.return_value = sample_task
+    
+        # Act
+        result = await service.update("T-TEST-001", update_request)
+    
+        # Assert
+>       assert isinstance(result, Ok)
+E       assert False
+E        +  where False = isinstance(<taskman_api.core.result.Err object at 0x000001AB0A45E350>, Ok)
+
+tests\unit\services\test_base_service.py:143: AssertionError
+_____________________________________ TestBaseServiceUpdate.test_update_not_found _____________________________________
+
+self = <test_base_service.TestBaseServiceUpdate object at 0x000001AB0A2BB710>
+mock_task_repository = <Mock id='1834122814480'>
+
+    @pytest.mark.asyncio
+    async def test_update_not_found(self, mock_task_repository):
+        """Test update with non-existent ID returns NotFoundError."""
+        # Arrange
+        service = BaseService(mock_task_repository, Task, TaskResponse)
+        update_request = TaskUpdateRequest(title="Updated")
+    
+        # Mock repository to return None for get_by_id
+        mock_task_repository.get_by_id.return_value = None
+    
+        # Act
+        result = await service.update("T-NONEXISTENT", update_request)
+    
+        # Assert
+        assert isinstance(result, Err)
+        error = result.err()
+>       assert isinstance(error, NotFoundError)
+E       assert False
+E        +  where False = isinstance(AppError("object NoneType can't be used in 'await' expression"), NotFoundError)
+
+tests\unit\services\test_base_service.py:165: AssertionError
+______________________________________ TestBaseServiceDelete.test_delete_success ______________________________________
+
+self = <test_base_service.TestBaseServiceDelete object at 0x000001AB0A2C8290>
+mock_task_repository = <Mock id='1834124247952'>
+sample_task = <Task(id=T-TEST-001, title='Test Task...', status='TaskStatus.NEW')>
+
+    @pytest.mark.asyncio
+    async def test_delete_success(self, mock_task_repository, sample_task):
+        """Test successful entity deletion."""
+        # Arrange
+        service = BaseService(mock_task_repository, Task, TaskResponse)
+    
+        # Mock get_by_id to find it first
+        mock_task_repository.get_by_id.return_value = sample_task
+        # Mock delete to return None (void)
+        mock_task_repository.delete.return_value = None
+    
+        # Act
+        result = await service.delete("T-TEST-001")
+    
+        # Assert
+>       assert isinstance(result, Ok)
+E       assert False
+E        +  where False = isinstance(<taskman_api.core.result.Err object at 0x000001AB0A4FDD10>, Ok)
+
+tests\unit\services\test_base_service.py:187: AssertionError
+_____________________________________ TestBaseServiceDelete.test_delete_not_found _____________________________________
+
+self = <test_base_service.TestBaseServiceDelete object at 0x000001AB0A2C8A90>
+mock_task_repository = <Mock id='1834123389648'>
+
+    @pytest.mark.asyncio
+    async def test_delete_not_found(self, mock_task_repository):
+        """Test delete with non-existent ID returns NotFoundError."""
+        # Arrange
+        service = BaseService(mock_task_repository, Task, TaskResponse)
+    
+        # Mock repository to return None for get_by_id
+        mock_task_repository.get_by_id.return_value = None
+    
+        # Act
+        result = await service.delete("T-NONEXISTENT")
+    
+        # Assert
+        assert isinstance(result, Err)
+        error = result.err()
+>       assert isinstance(error, NotFoundError)
+E       assert False
+E        +  where False = isinstance(AppError("object NoneType can't be used in 'await' expression"), NotFoundError)
+
+tests\unit\services\test_base_service.py:206: AssertionError
+________________________________________ TestBaseServiceList.test_list_success ________________________________________
+
+self = <test_base_service.TestBaseServiceList object at 0x000001AB0A2C9750>
+mock_task_repository = <Mock id='1834123513552'>
+sample_task = <Task(id=T-TEST-001, title='Test Task...', status='TaskStatus.NEW')>
+
+    @pytest.mark.asyncio
+    async def test_list_success(self, mock_task_repository, sample_task):
+        """Test successful entity listing with pagination."""
+        # Arrange
+        service = BaseService(mock_task_repository, Task, TaskResponse)
+    
+        # Mock repository to return list of entities
+        mock_task_repository.get_all.return_value = [sample_task]
+    
+        # Act
+        result = await service.list(limit=50, offset=0)
+    
+        # Assert
+>       assert isinstance(result, Ok)
+E       assert False
+E        +  where False = isinstance(<taskman_api.core.result.Err object at 0x000001AB0A51D690>, Ok)
+
+tests\unit\services\test_base_service.py:225: AssertionError
+_____________________________________ TestBaseServiceList.test_list_empty_result ______________________________________
+
+self = <test_base_service.TestBaseServiceList object at 0x000001AB0A2BB790>
+mock_task_repository = <Mock id='1834123833680'>
+
+    @pytest.mark.asyncio
+    async def test_list_empty_result(self, mock_task_repository):
+        """Test list with no results returns empty list."""
+        # Arrange
+        service = BaseService(mock_task_repository, Task, TaskResponse)
+    
+        # Mock repository to return empty list
+        mock_task_repository.get_all.return_value = []
+    
+        # Act
+        result = await service.list()
+    
+        # Assert
+>       assert isinstance(result, Ok)
+E       assert False
+E        +  where False = isinstance(<taskman_api.core.result.Err object at 0x000001AB0A4FD450>, Ok)
+
+tests\unit\services\test_base_service.py:245: AssertionError
+=============================================== short test summary info ===============================================
+FAILED tests/unit/services/test_base_service.py::TestBaseServiceCreate::test_create_success - assert False
+ +  where False = isinstance(<taskman_api.core.result.Err object at 0x000001AB0A3D27D0>, Ok)
+FAILED tests/unit/services/test_base_service.py::TestBaseServiceGet::test_get_success - assert False
+ +  where False = isinstance(<taskman_api.core.result.Err object at 0x000001AB0A165C50>, Ok)
+FAILED tests/unit/services/test_base_service.py::TestBaseServiceGet::test_get_not_found - assert False
+ +  where False = isinstance(AppError("object NoneType can't be used in 'await' expression"), NotFoundError)
+FAILED tests/unit/services/test_base_service.py::TestBaseServiceUpdate::test_update_success - assert False
+ +  where False = isinstance(<taskman_api.core.result.Err object at 0x000001AB0A45E350>, Ok)
+FAILED tests/unit/services/test_base_service.py::TestBaseServiceUpdate::test_update_not_found - assert False
+ +  where False = isinstance(AppError("object NoneType can't be used in 'await' expression"), NotFoundError)
+FAILED tests/unit/services/test_base_service.py::TestBaseServiceDelete::test_delete_success - assert False
+ +  where False = isinstance(<taskman_api.core.result.Err object at 0x000001AB0A4FDD10>, Ok)
+FAILED tests/unit/services/test_base_service.py::TestBaseServiceDelete::test_delete_not_found - assert False
+ +  where False = isinstance(AppError("object NoneType can't be used in 'await' expression"), NotFoundError)
+FAILED tests/unit/services/test_base_service.py::TestBaseServiceList::test_list_success - assert False
+ +  where False = isinstance(<taskman_api.core.result.Err object at 0x000001AB0A51D690>, Ok)
+FAILED tests/unit/services/test_base_service.py::TestBaseServiceList::test_list_empty_result - assert False
+ +  where False = isinstance(<taskman_api.core.result.Err object at 0x000001AB0A4FD450>, Ok)
+============================================= 9 failed, 4 passed in 1.11s =============================================

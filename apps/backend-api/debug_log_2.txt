@@ -1,0 +1,4 @@
+ImportError while loading conftest 'C:\Users\James\Documents\Github\GHrepos\SCCMScripts\TaskMan-v2\backend-api\tests\conftest.py'.
+tests\conftest.py:13: in <module>
+    from taskman_api.config import DatabaseConfig, RedisConfig, Settings, get_settings
+E   ModuleNotFoundError: No module named 'taskman_api'

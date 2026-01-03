@@ -1,0 +1,109 @@
+================================================= test session starts =================================================
+platform win32 -- Python 3.11.9, pytest-8.4.2, pluggy-1.6.0 -- C:\Users\James\Documents\Github\GHrepos\SCCMScripts\TaskMan-v2\backend-api\.venv\Scripts\python.exe
+cachedir: .pytest_cache
+rootdir: C:\Users\James\Documents\Github\GHrepos\SCCMScripts\TaskMan-v2\backend-api
+configfile: pyproject.toml
+plugins: anyio-4.12.0, Faker-30.10.0, asyncio-0.26.0, cov-5.0.0, mock-3.15.1
+asyncio: mode=Mode.AUTO, asyncio_default_fixture_loop_scope=function, asyncio_default_test_loop_scope=function
+collecting ... collected 14 items
+
+tests/unit/schemas/test_task_schemas.py::TestTaskCreateRequest::test_valid_task_create_request PASSED            [  7%]
+tests/unit/schemas/test_task_schemas.py::TestTaskCreateRequest::test_task_id_pattern_validation_success PASSED   [ 14%]
+tests/unit/schemas/test_task_schemas.py::TestTaskCreateRequest::test_task_id_pattern_validation_failure FAILED   [ 21%]
+tests/unit/schemas/test_task_schemas.py::TestTaskCreateRequest::test_required_fields_validation FAILED           [ 28%]
+tests/unit/schemas/test_task_schemas.py::TestTaskCreateRequest::test_title_max_length_validation PASSED          [ 35%]
+tests/unit/schemas/test_task_schemas.py::TestTaskCreateRequest::test_estimate_points_non_negative PASSED         [ 42%]
+tests/unit/schemas/test_task_schemas.py::TestTaskCreateRequest::test_business_value_score_range FAILED           [ 50%]
+tests/unit/schemas/test_task_schemas.py::TestTaskCreateRequest::test_enum_field_validation FAILED                [ 57%]
+tests/unit/schemas/test_task_schemas.py::TestTaskCreateRequest::test_default_values PASSED                       [ 64%]
+tests/unit/schemas/test_task_schemas.py::TestTaskUpdateRequest::test_partial_update_all_fields_optional PASSED   [ 71%]
+tests/unit/schemas/test_task_schemas.py::TestTaskUpdateRequest::test_update_with_multiple_fields PASSED          [ 78%]
+tests/unit/schemas/test_task_schemas.py::TestTaskUpdateRequest::test_update_validation_rules_still_apply PASSED  [ 85%]
+tests/unit/schemas/test_task_schemas.py::TestTaskResponse::test_response_from_orm_model PASSED                   [ 92%]
+tests/unit/schemas/test_task_schemas.py::TestTaskResponse::test_response_serialization PASSED                    [100%]
+
+====================================================== FAILURES =======================================================
+____________________________ TestTaskCreateRequest.test_task_id_pattern_validation_failure ____________________________
+tests\unit\schemas\test_task_schemas.py:104: in test_task_id_pattern_validation_failure
+    assert any("at least 1 character" in str(err).lower() for err in errors)
+E   assert False
+E    +  where False = any(<generator object TestTaskCreateRequest.test_task_id_pattern_validation_failure.<locals>.<genexpr> at 0x000002395ECAFCA0>)
+________________________________ TestTaskCreateRequest.test_required_fields_validation ________________________________
+tests\unit\schemas\test_task_schemas.py:120: in test_required_fields_validation
+    assert required_fields.issubset(error_fields)
+E   AssertionError: assert False
+E    +  where False = <built-in method issubset of set object at 0x000002395ED7CF20>({'description', 'owner', 'primary_project', 'primary_sprint', 'summary', 'title'})
+E    +    where <built-in method issubset of set object at 0x000002395ED7CF20> = {'description', 'owner', 'primary_project', 'primary_sprint', 'priority', 'summary', ...}.issubset
+________________________________ TestTaskCreateRequest.test_business_value_score_range ________________________________
+tests\unit\schemas\test_task_schemas.py:182: in test_business_value_score_range
+    with pytest.raises(ValidationError):
+E   Failed: DID NOT RAISE <class 'pydantic_core._pydantic_core.ValidationError'>
+__________________________________ TestTaskCreateRequest.test_enum_field_validation ___________________________________
+tests\unit\schemas\test_task_schemas.py:206: in test_enum_field_validation
+    request = TaskCreateRequest(**data)
+              ^^^^^^^^^^^^^^^^^^^^^^^^^
+E   pydantic_core._pydantic_core.ValidationError: 1 validation error for TaskCreate
+E   severity
+E     Input should be 'critical', 'high', 'medium' or 'low' [type=enum, input_value=<Severity.SEV2: 'sev2'>, input_type=Severity]
+E       For further information visit https://errors.pydantic.dev/2.12/v/enum
+
+---------- coverage: platform win32, python 3.11.9-final-0 -----------
+Name                                                     Stmts   Miss Branch BrPart   Cover   Missing
+-----------------------------------------------------------------------------------------------------
+src\taskman_api\config.py                                   62     16      6      0  67.65%   102-103, 114-115, 224-243, 249, 255, 261, 290
+src\taskman_api\core\errors.py                              78     60     36      0  15.79%   31-37, 48-57, 72-78, 101-109, 134-146, 169-177, 199-205, 226-230, 253-259
+src\taskman_api\core\result.py                              37     14      0      0  62.16%   34, 37, 40, 43, 47, 50, 54, 63, 66, 69, 72, 76, 79, 83
+src\taskman_api\db\base.py                                   6      1      0      0  83.33%   32
+src\taskman_api\db\connection_manager.py                    91     68     10      1  23.76%   66-68, 75-124, 135-165, 170-183
+src\taskman_api\db\session.py                               27      8      4      0  61.29%   48-50, 63-64, 73-75, 85
+src\taskman_api\dependencies.py                             43     43      0      0   0.00%   7-96
+src\taskman_api\main.py                                    104    104     18      0   0.00%   6-341
+src\taskman_api\middleware\__init__.py                       2      2      0      0   0.00%   7-9
+src\taskman_api\middleware\logging_middleware.py            85     85     32      0   0.00%   19-272
+src\taskman_api\models\action_list.py                       39     12      6      0  60.00%   32-35, 39-41, 45-47, 83, 88
+src\taskman_api\models\project.py                           45      1      0      0  97.78%   91
+src\taskman_api\models\sprint.py                            51      3      0      0  94.12%   44, 48, 101
+src\taskman_api\repositories\__init__.py                     6      6      0      0   0.00%   7-13
+src\taskman_api\repositories\action_list_repository.py      43     43     10      0   0.00%   8-112
+src\taskman_api\repositories\base.py                        33     33      0      0   0.00%   7-71
+src\taskman_api\repositories\project_repository.py          46     46     12      0   0.00%   7-117
+src\taskman_api\repositories\sprint_repository.py           51     51     14      0   0.00%   7-131
+src\taskman_api\repositories\task_repository.py             78     78     42      0   0.00%   7-233
+src\taskman_api\routers\__init__.py                          7      7      0      0   0.00%   6-13
+src\taskman_api\routers\action_lists.py                    114    114     56      0   0.00%   9-276
+src\taskman_api\routers\agent.py                            30     30      6      0   0.00%   1-72
+src\taskman_api\routers\diagnostic.py                       20     20      0      0   0.00%   5-40
+src\taskman_api\routers\projects.py                         73     73     32      0   0.00%   7-143
+src\taskman_api\routers\sprints.py                         108    108     52      0   0.00%   7-202
+src\taskman_api\routers\tasks.py                            94     94     42      0   0.00%   7-183
+src\taskman_api\schemas\action_list.py                      82      3      2      0  94.05%   101-103
+src\taskman_api\schemas\base.py                             53      4      6      2  86.44%   22, 25-28
+src\taskman_api\schemas\project.py                         163     46     26      0  61.90%   164-166, 182-194, 210-222, 228-240, 246-252
+src\taskman_api\schemas\sprint.py                          154     42     22      0  63.64%   147-149, 154-156, 164-176, 182-194, 200-212
+src\taskman_api\schemas\task.py                            193     31     28      9  77.38%   218, 226, 238, 241-247, 258, 261-267, 276, 279-285, 293-297
+src\taskman_api\services\__init__.py                         6      6      0      0   0.00%   6-12
+src\taskman_api\services\action_list_service.py            112    112     32      0   0.00%   5-211
+src\taskman_api\services\base.py                           110    110     24      0   0.00%   6-310
+src\taskman_api\services\project_service.py                 97     97     36      0   0.00%   6-331
+src\taskman_api\services\sprint_service.py                 141    141     48      0   0.00%   6-470
+src\taskman_api\services\task_service.py                    92     92     32      0   0.00%   6-453
+-----------------------------------------------------------------------------------------------------
+TOTAL                                                     2784   1804    634     12  29.02%
+
+8 files skipped due to complete coverage.
+Coverage HTML written to dir htmlcov
+Coverage JSON written to file coverage.json
+
+FAIL Required test coverage of 70.0% not reached. Total coverage: 29.02%
+=============================================== short test summary info ===============================================
+FAILED tests/unit/schemas/test_task_schemas.py::TestTaskCreateRequest::test_task_id_pattern_validation_failure - assert False
+ +  where False = any(<generator object TestTaskCreateRequest.test_task_id_pattern_validation_failure.<locals>.<genexpr> at 0x000002395ECAFCA0>)
+FAILED tests/unit/schemas/test_task_schemas.py::TestTaskCreateRequest::test_required_fields_validation - AssertionError: assert False
+ +  where False = <built-in method issubset of set object at 0x000002395ED7CF20>({'description', 'owner', 'primary_project', 'primary_sprint', 'summary', 'title'})
+ +    where <built-in method issubset of set object at 0x000002395ED7CF20> = {'description', 'owner', 'primary_project', 'primary_sprint', 'priority', 'summary', ...}.issubset
+FAILED tests/unit/schemas/test_task_schemas.py::TestTaskCreateRequest::test_business_value_score_range - Failed: DID NOT RAISE <class 'pydantic_core._pydantic_core.ValidationError'>
+FAILED tests/unit/schemas/test_task_schemas.py::TestTaskCreateRequest::test_enum_field_validation - pydantic_core._pydantic_core.ValidationError: 1 validation error for TaskCreate
+severity
+  Input should be 'critical', 'high', 'medium' or 'low' [type=enum, input_value=<Severity.SEV2: 'sev2'>, input_type=Severity]
+    For further information visit https://errors.pydantic.dev/2.12/v/enum
+============================================ 4 failed, 10 passed in 3.13s =============================================

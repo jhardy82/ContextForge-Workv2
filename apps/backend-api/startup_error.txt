@@ -1,0 +1,13 @@
+INFO:     Will watch for changes in these directories: ['C:\\Users\\James\\Documents\\Github\\GHrepos\\SCCMScripts\\TaskMan-v2\\backend-api']
+INFO:     Uvicorn running on http://0.0.0.0:3001 (Press CTRL+C to quit)
+INFO:     Started reloader process [48688] using WatchFiles
+INFO:     Started server process [47436]
+INFO:     Waiting for application startup.
+{"error": "Multiple exceptions: [Errno 10061] Connect call failed ('::1', 5434, 0, 0), [Errno 10061] Connect call failed ('127.0.0.1', 5434)", "event": "primary_db_init_failed", "timestamp": "2025-12-28T00:17:45.026694Z", "level": "warning"}
+{"error": "(in table 'action_lists', column 'task_ids'): Compiler <sqlalchemy.dialects.sqlite.base.SQLiteTypeCompiler object at 0x000001AE93B419D0> can't render element of type ARRAY", "event": "fallback_db_init_failed", "timestamp": "2025-12-28T00:17:45.040695Z", "level": "error"}
+{"error": "Multiple exceptions: [Errno 10061] Connect call failed ('::1', 5434, 0, 0), [Errno 10061] Connect call failed ('127.0.0.1', 5434)", "event": "primary_db_health_check_failed", "timestamp": "2025-12-28T00:17:49.104454Z", "level": "error"}
+{"event": "switched_to_fallback_db", "timestamp": "2025-12-28T00:17:49.106497Z", "level": "warning"}
+{"connected": false, "latency_ms": null, "event": "database_connected", "timestamp": "2025-12-28T00:17:49.106497Z", "level": "info"}
+{"environment": "development", "port": 3001, "database_configured": true, "validation_warnings": 0, "event": "api_startup", "timestamp": "2025-12-28T00:17:49.106497Z", "level": "info"}
+INFO:     Application startup complete.
+WARNING:  WatchFiles detected changes in 'src\taskman_api\config.py', 'db\session.py', 'main.py'. Reloading...

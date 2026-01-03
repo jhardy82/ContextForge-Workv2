@@ -1,0 +1,96 @@
+# =============================================================================
+# Agent-Optimized CLI Container for ContextForge TaskMan-v2
+# =============================================================================
+# PURPOSE: Maximum observability for AI coding agents
+# FEATURES:
+#   - Structured JSON logging to stdout/stderr
+#   - Machine-readable health/status output
+#   - Database CLI tools (psql, pg_dump)
+#   - Python 3.11 with cf_core CLI
+#   - Non-root security model
+# =============================================================================
+
+FROM python:3.11-slim AS base
+
+# Labels for agent discovery
+LABEL org.contextforge.container-type="agent-cli"
+LABEL org.contextforge.observability="structured-json"
+LABEL org.contextforge.version="1.0.0"
+LABEL org.contextforge.purpose="ai-agent-interaction"
+
+# Environment for structured output
+ENV PYTHONUNBUFFERED=1
+ENV PYTHONDONTWRITEBYTECODE=1
+ENV CF_OUTPUT_FORMAT=json
+ENV CF_LOG_FORMAT=jsonl
+ENV CF_AGENT_MODE=1
+ENV TERM=xterm-256color
+
+# Install system dependencies
+RUN apt-get update && apt-get install -y --no-install-recommends \
+    postgresql-client \
+    curl \
+    jq \
+    && rm -rf /var/lib/apt/lists/*
+
+# Create non-root user
+RUN useradd --create-home --shell /bin/bash agent
+
+# =============================================================================
+# Builder stage - install Python dependencies
+# =============================================================================
+FROM base AS builder
+
+WORKDIR /app
+
+# Install build dependencies
+RUN apt-get update && apt-get install -y --no-install-recommends \
+    gcc \
+    libpq-dev \
+    && rm -rf /var/lib/apt/lists/*
+
+# Copy dependency files
+COPY pyproject.toml ./
+
+# Install Python packages
+RUN pip install --no-cache-dir --upgrade pip && \
+    pip install --no-cache-dir ".[dev]" || \
+    pip install --no-cache-dir \
+        sqlalchemy[asyncio] \
+        asyncpg \
+        psycopg2-binary \
+        pydantic \
+        pydantic-settings \
+        alembic \
+        structlog \
+        rich
+
+# =============================================================================
+# Runtime stage - minimal footprint
+# =============================================================================
+FROM base AS runtime
+
+WORKDIR /app
+
+# Copy installed packages from builder
+COPY --from=builder /usr/local/lib/python3.11/site-packages /usr/local/lib/python3.11/site-packages
+COPY --from=builder /usr/local/bin /usr/local/bin
+
+# Copy application code
+COPY --chown=agent:agent . .
+
+# Copy entrypoint
+COPY --chmod=755 entrypoint.agent.sh /entrypoint.sh
+
+# Switch to non-root user
+USER agent
+
+# Health check with JSON output
+HEALTHCHECK --interval=15s --timeout=5s --start-period=5s --retries=3 \
+    CMD python -c "import json; print(json.dumps({'status': 'healthy', 'container': 'agent-cli'}))" || exit 1
+
+# Default command - interactive shell with agent-friendly prompt
+CMD ["/bin/bash"]
+
+# Entrypoint for structured initialization
+ENTRYPOINT ["/entrypoint.sh"]

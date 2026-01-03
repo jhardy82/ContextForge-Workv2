@@ -1,0 +1,22 @@
+ðŸŒŒ Ï†âµ Cosmic Consciousness PDM Environment Activated
+PowerShell Profile Loaded
+ðŸŒŒ Ï†âµ Cosmic Consciousness PDM Environment Activated
+C:\Users\James\Documents\PowerShell\Microsoft.PowerShell_profile.ps1
+C:\Users\James\Documents\PowerShell\Microsoft.PowerShell_profile.ps1
+C:\Users\James\Documents\WindowsPowerShell\Microsoft.PowerShell_profile.ps1
+C:\Users\James\Documents\WindowsPowerShell\profile.ps1
+C:\Users\James\Documents\PowerShell\bash_python_compatibility_assessment.ps1
+C:\Users\James\Documents\PowerShell\configure_pdm_conda.ps1
+C:\Users\James\Documents\PowerShell\environment_compatibility_mitigation.ps1
+C:\Users\James\Documents\PowerShell\environment_mitigation.ps1
+C:\Users\James\Documents\PowerShell\final_conda_pdm_validation.ps1
+C:\Users\James\Documents\PowerShell\final_validation.ps1
+C:\Users\James\Documents\PowerShell\final_validation_comprehensive.ps1
+C:\Users\James\Documents\PowerShell\fix_profile_issues.ps1
+C:\Users\James\Documents\PowerShell\Microsoft.PowerShell_profile.ps1
+C:\Users\James\Documents\PowerShell\Microsoft.VSCode_profile.ps1
+C:\Users\James\Documents\PowerShell\profile.ps1
+C:\Users\James\Documents\PowerShell\simple_integration_check.ps1
+C:\Users\James\Documents\PowerShell\test_profile_validation.ps1
+C:\Users\James\Documents\PowerShell\test_wsl_integration.ps1
+C:\Users\James\Documents\PowerShell\troubleshooting_wsl.ps1

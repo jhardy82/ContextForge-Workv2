@@ -1,0 +1,51 @@
+Traceback (most recent call last):
+  File "<frozen runpy>", line 198, in _run_module_as_main
+  File "<frozen runpy>", line 88, in _run_code
+  File "C:\Users\James\AppData\Local\Programs\Python\Python311\Scripts\pytest.exe\__main__.py", line 6, in <module>
+  File "C:\Users\James\AppData\Local\Programs\Python\Python311\Lib\site-packages\_pytest\config\__init__.py", line 201, in console_main
+    code = main()
+           ^^^^^^
+  File "C:\Users\James\AppData\Local\Programs\Python\Python311\Lib\site-packages\_pytest\config\__init__.py", line 156, in main
+    config = _prepareconfig(args, plugins)
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\James\AppData\Local\Programs\Python\Python311\Lib\site-packages\_pytest\config\__init__.py", line 341, in _prepareconfig
+    config = pluginmanager.hook.pytest_cmdline_parse(
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\James\AppData\Roaming\Python\Python311\site-packages\pluggy\_hooks.py", line 512, in __call__
+    return self._hookexec(self.name, self._hookimpls.copy(), kwargs, firstresult)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\James\AppData\Roaming\Python\Python311\site-packages\pluggy\_manager.py", line 120, in _hookexec
+    return self._inner_hookexec(hook_name, methods, kwargs, firstresult)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\James\AppData\Roaming\Python\Python311\site-packages\pluggy\_callers.py", line 167, in _multicall
+    raise exception
+  File "C:\Users\James\AppData\Roaming\Python\Python311\site-packages\pluggy\_callers.py", line 139, in _multicall
+    teardown.throw(exception)
+  File "C:\Users\James\AppData\Local\Programs\Python\Python311\Lib\site-packages\_pytest\helpconfig.py", line 105, in pytest_cmdline_parse
+    config = yield
+             ^^^^^
+  File "C:\Users\James\AppData\Roaming\Python\Python311\site-packages\pluggy\_callers.py", line 121, in _multicall
+    res = hook_impl.function(*args)
+          ^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\James\AppData\Local\Programs\Python\Python311\Lib\site-packages\_pytest\config\__init__.py", line 1140, in pytest_cmdline_parse
+    self.parse(args)
+  File "C:\Users\James\AppData\Local\Programs\Python\Python311\Lib\site-packages\_pytest\config\__init__.py", line 1494, in parse
+    self._preparse(args, addopts=addopts)
+  File "C:\Users\James\AppData\Local\Programs\Python\Python311\Lib\site-packages\_pytest\config\__init__.py", line 1366, in _preparse
+    self._initini(args)
+  File "C:\Users\James\AppData\Local\Programs\Python\Python311\Lib\site-packages\_pytest\config\__init__.py", line 1239, in _initini
+    rootpath, inipath, inicfg = determine_setup(
+                                ^^^^^^^^^^^^^^^^
+  File "C:\Users\James\AppData\Local\Programs\Python\Python311\Lib\site-packages\_pytest\config\findpaths.py", line 193, in determine_setup
+    inicfg = load_config_dict_from_file(inipath_) or {}
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\James\AppData\Local\Programs\Python\Python311\Lib\site-packages\_pytest\config\findpaths.py", line 39, in load_config_dict_from_file
+    iniconfig = _parse_ini_config(filepath)
+                ^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\James\AppData\Local\Programs\Python\Python311\Lib\site-packages\_pytest\config\findpaths.py", line 25, in _parse_ini_config
+    return iniconfig.IniConfig(str(path))
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\James\AppData\Roaming\Python\Python311\site-packages\iniconfig\__init__.py", line 117, in __init__
+    with open(self.path, encoding=encoding) as fp:
+         ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+FileNotFoundError: [Errno 2] No such file or directory: 'C:\\Users\\James\\Documents\\Github\\GHrepos\\SCCMScripts\\TaskMan-v2\\backend-api\\pytest_override.ini'

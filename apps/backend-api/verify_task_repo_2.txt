@@ -1,0 +1,325 @@
+================================================= test session starts =================================================
+platform win32 -- Python 3.11.9, pytest-8.4.2, pluggy-1.6.0 -- C:\Users\James\Documents\Github\GHrepos\SCCMScripts\TaskMan-v2\backend-api\.venv\Scripts\python.exe
+cachedir: .pytest_cache
+rootdir: C:\Users\James\Documents\Github\GHrepos\SCCMScripts\TaskMan-v2\backend-api
+configfile: pytest_full.ini
+plugins: anyio-4.12.0, Faker-30.10.0, asyncio-0.26.0, cov-5.0.0, mock-3.15.1
+asyncio: mode=Mode.AUTO, asyncio_default_fixture_loop_scope=function, asyncio_default_test_loop_scope=function
+collecting ... collected 20 items
+
+tests/unit/db/repositories/test_base_repository.py::TestBaseRepository::test_create_success PASSED               [  5%]
+tests/unit/db/repositories/test_base_repository.py::TestBaseRepository::test_create_conflict PASSED              [ 10%]
+tests/unit/db/repositories/test_base_repository.py::TestBaseRepository::test_find_by_id_success PASSED           [ 15%]
+tests/unit/db/repositories/test_base_repository.py::TestBaseRepository::test_find_by_id_not_found PASSED         [ 20%]
+tests/unit/db/repositories/test_base_repository.py::TestBaseRepository::test_find_all_success PASSED             [ 25%]
+tests/unit/db/repositories/test_base_repository.py::TestBaseRepository::test_update_success PASSED               [ 30%]
+tests/unit/db/repositories/test_base_repository.py::TestBaseRepository::test_update_not_found PASSED             [ 35%]
+tests/unit/db/repositories/test_base_repository.py::TestBaseRepository::test_delete_success PASSED               [ 40%]
+tests/unit/db/repositories/test_base_repository.py::TestBaseRepository::test_exists_true FAILED                  [ 45%]
+tests/unit/db/repositories/test_base_repository.py::TestBaseRepository::test_exists_false FAILED                 [ 50%]
+tests/unit/db/repositories/test_base_repository.py::TestBaseRepository::test_count PASSED                        [ 55%]
+tests/unit/db/repositories/test_task_repository.py::TestTaskRepository::test_find_by_status PASSED               [ 60%]
+tests/unit/db/repositories/test_task_repository.py::TestTaskRepository::test_find_by_priority PASSED             [ 65%]
+tests/unit/db/repositories/test_task_repository.py::TestTaskRepository::test_find_by_owner PASSED                [ 70%]
+tests/unit/db/repositories/test_task_repository.py::TestTaskRepository::test_find_by_project FAILED              [ 75%]
+tests/unit/db/repositories/test_task_repository.py::TestTaskRepository::test_find_by_project_with_status_filter FAILED [ 80%]
+tests/unit/db/repositories/test_task_repository.py::TestTaskRepository::test_find_by_sprint FAILED               [ 85%]
+tests/unit/db/repositories/test_task_repository.py::TestTaskRepository::test_find_by_status_and_priority PASSED  [ 90%]
+tests/unit/db/repositories/test_task_repository.py::TestTaskRepository::test_find_blocked_tasks PASSED           [ 95%]
+tests/unit/db/repositories/test_task_repository.py::TestTaskRepository::test_find_high_priority_tasks PASSED     [100%]
+
+====================================================== FAILURES =======================================================
+_________________________________________ TestBaseRepository.test_exists_true _________________________________________
+
+self = <test_base_repository.TestBaseRepository object at 0x0000022E4AFEF2D0>
+async_session = <sqlalchemy.ext.asyncio.session.AsyncSession object at 0x0000022E4B1C5BD0>
+sample_task = <Task(id=T-TEST-001, title='Test Task...', status='TaskStatus.NEW')>
+sample_project = <Project(id='P-TEST-001', name='Test Project', status='ProjectStatus.ACTIVE')>
+sample_sprint = <Sprint(id='S-TEST-001', name='Test Sprint 1', status='SprintStatus.ACTIVE')>
+
+    async def test_exists_true(
+        self,
+        async_session: AsyncSession,
+        sample_task: Task,
+        sample_project,
+        sample_sprint,
+    ):
+        """Test exists returns True when entity exists."""
+        # Arrange
+        repo = self.ConcreteRepository(async_session)
+        async_session.add(sample_project)
+        async_session.add(sample_sprint)
+        async_session.add(sample_task)
+        await async_session.commit()
+    
+        # Act
+>       result = await repo.exists("T-TEST-001")
+                 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+tests\unit\db\repositories\test_base_repository.py:337: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _
+
+self = <test_base_repository.TestBaseRepository.ConcreteRepository object at 0x0000022E4B1BF050>
+entity_id = 'T-TEST-001'
+
+    async def exists(self, entity_id):
+        # Simple implementation for testing
+>       result = await self.session.execute(select(Task).where(Task.id == entity_id))
+                                            ^^^^^^
+E       NameError: name 'select' is not defined
+
+tests\unit\db\repositories\test_base_repository.py:22: NameError
+________________________________________ TestBaseRepository.test_exists_false _________________________________________
+
+self = <test_base_repository.TestBaseRepository object at 0x0000022E4AFEC590>
+async_session = <sqlalchemy.ext.asyncio.session.AsyncSession object at 0x0000022E4B11C110>
+
+    async def test_exists_false(self, async_session: AsyncSession):
+        """Test exists returns False when entity doesn't exist."""
+        # Arrange
+        repo = self.ConcreteRepository(async_session)
+    
+        # Act
+>       result = await repo.exists("T-NONEXISTENT")
+                 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+tests\unit\db\repositories\test_base_repository.py:348: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _
+
+self = <test_base_repository.TestBaseRepository.ConcreteRepository object at 0x0000022E4B11DA10>
+entity_id = 'T-NONEXISTENT'
+
+    async def exists(self, entity_id):
+        # Simple implementation for testing
+>       result = await self.session.execute(select(Task).where(Task.id == entity_id))
+                                            ^^^^^^
+E       NameError: name 'select' is not defined
+
+tests\unit\db\repositories\test_base_repository.py:22: NameError
+_______________________________________ TestTaskRepository.test_find_by_project _______________________________________
+
+self = <test_task_repository.TestTaskRepository object at 0x0000022E4B08EDD0>
+async_session = <sqlalchemy.ext.asyncio.session.AsyncSession object at 0x0000022E4B404210>
+sample_project = <Project(id='P-TEST-001', name='Test Project', status='ProjectStatus.ACTIVE')>
+sample_sprint = <Sprint(id='S-TEST-001', name='Test Sprint 1', status='SprintStatus.ACTIVE')>
+
+    async def test_find_by_project(
+        self,
+        async_session: AsyncSession,
+        sample_project,
+        sample_sprint,
+    ):
+        """Test finding tasks by project."""
+        # Arrange
+        repo = TaskRepository(async_session)
+    
+        # Create second project
+    
+        from taskman_api.core.enums import ProjectStatus
+        from taskman_api.models.project import Project
+    
+        project2 = Project(
+            id="P-TEST-002",
+            name="Project 2",
+            mission="Mission 2",
+            status=ProjectStatus.ACTIVE,
+            start_date="2025-01-01",
+            owner="owner",
+            sponsors="[]",
+            stakeholders="[]",
+            repositories="[]",
+            comms_channels="[]",
+            okrs="[]",
+            kpis="[]",
+            roadmap="[]",
+            risks="[]",
+            assumptions="[]",
+            constraints="[]",
+            dependencies_external="[]",
+            # sprints removed
+            related_projects="[]",
+            shared_components="[]",
+            compliance_requirements="[]",
+            governance="{}",
+            success_metrics="[]",
+            mpv_policy="{}",
+            # observability removed
+        )
+    
+        async_session.add(sample_project)
+        async_session.add(project2)
+        async_session.add(sample_sprint)
+    
+        # Create tasks for different projects
+        for i, project_id in enumerate([sample_project.id, project2.id, sample_project.id]):
+            task = Task(
+                id=f"T-TEST-{i:03d}",
+                title=f"Task {i}",
+                summary=f"Summary {i}",
+                description=f"Description {i}",
+                status=TaskStatus.NEW,
+                owner="owner",
+                assignees="[]",
+                priority=Priority.P2,
+                primary_project=project_id,
+                primary_sprint=sample_sprint.id,
+                related_projects="[]",
+                related_sprints="[]",
+                parents="[]",
+                depends_on="[]",
+                blocks="[]",
+                blockers="[]",
+                acceptance_criteria="[]",
+                definition_of_done="[]",
+                quality_gates="{}",
+                verification="{}",
+                actions_taken="[]",
+                labels="[]",
+                related_links="[]",
+                risks="[]",
+                # observability removed
+            )
+            async_session.add(task)
+    
+        await async_session.commit()
+    
+        # Act
+        tasks = await repo.get_by_project(sample_project.id)
+    
+        # Assert
+>       assert len(tasks) == 2
+E       assert 0 == 2
+E        +  where 0 = len([])
+
+tests\unit\db\repositories\test_task_repository.py:262: AssertionError
+_____________________________ TestTaskRepository.test_find_by_project_with_status_filter ______________________________
+
+self = <test_task_repository.TestTaskRepository object at 0x0000022E4B08F050>
+async_session = <sqlalchemy.ext.asyncio.session.AsyncSession object at 0x0000022E4B34E790>
+sample_project = <Project(id='P-TEST-001', name='Test Project', status='ProjectStatus.ACTIVE')>
+sample_sprint = <Sprint(id='S-TEST-001', name='Test Sprint 1', status='SprintStatus.ACTIVE')>
+
+    async def test_find_by_project_with_status_filter(
+        self,
+        async_session: AsyncSession,
+        sample_project,
+        sample_sprint,
+    ):
+        """Test finding tasks by project with status filter."""
+        # Arrange
+        repo = TaskRepository(async_session)
+        async_session.add(sample_project)
+        async_session.add(sample_sprint)
+    
+        # Create tasks with different statuses
+        for i, status in enumerate([TaskStatus.NEW, TaskStatus.IN_PROGRESS, TaskStatus.NEW]):
+            task = Task(
+                id=f"T-TEST-{i:03d}",
+                title=f"Task {i}",
+                summary=f"Summary {i}",
+                description=f"Description {i}",
+                status=status,
+                owner="owner",
+                assignees="[]",
+                priority=Priority.P2,
+                primary_project=sample_project.id,
+                primary_sprint=sample_sprint.id,
+                related_projects="[]",
+                related_sprints="[]",
+                parents="[]",
+                depends_on="[]",
+                blocks="[]",
+                blockers="[]",
+                acceptance_criteria="[]",
+                definition_of_done="[]",
+                quality_gates="{}",
+                verification="{}",
+                actions_taken="[]",
+                labels="[]",
+                related_links="[]",
+                risks="[]",
+                # observability removed
+            )
+            async_session.add(task)
+    
+        await async_session.commit()
+    
+        # Act
+        # search supports project_id AND status
+        tasks, count = await repo.search(project_id=sample_project.id, status=TaskStatus.NEW)
+    
+        # Assert
+>       assert count == 2
+E       assert 0 == 2
+
+tests\unit\db\repositories\test_task_repository.py:315: AssertionError
+_______________________________________ TestTaskRepository.test_find_by_sprint ________________________________________
+
+self = <test_task_repository.TestTaskRepository object at 0x0000022E4B08FFD0>
+async_session = <sqlalchemy.ext.asyncio.session.AsyncSession object at 0x0000022E4B495C10>
+sample_project = <Project(id='P-TEST-001', name='Test Project', status='ProjectStatus.ACTIVE')>
+sample_sprint = <Sprint(id='S-TEST-001', name='Test Sprint 1', status='SprintStatus.ACTIVE')>
+
+    async def test_find_by_sprint(
+        self,
+        async_session: AsyncSession,
+        sample_project,
+        sample_sprint,
+    ):
+        """Test finding tasks by sprint."""
+        # Arrange
+        repo = TaskRepository(async_session)
+        async_session.add(sample_project)
+        async_session.add(sample_sprint)
+    
+        # Create tasks
+        for i in range(3):
+            task = Task(
+                id=f"T-TEST-{i:03d}",
+                title=f"Task {i}",
+                summary=f"Summary {i}",
+                description=f"Description {i}",
+                status=TaskStatus.NEW,
+                owner="owner",
+                assignees="[]",
+                priority=Priority.P2,
+                primary_project=sample_project.id,
+                primary_sprint=sample_sprint.id,
+                related_projects="[]",
+                related_sprints="[]",
+                parents="[]",
+                depends_on="[]",
+                blocks="[]",
+                blockers="[]",
+                acceptance_criteria="[]",
+                definition_of_done="[]",
+                quality_gates="{}",
+                verification="{}",
+                actions_taken="[]",
+                labels="[]",
+                related_links="[]",
+                risks="[]",
+                # observability removed
+            )
+            async_session.add(task)
+    
+        await async_session.commit()
+    
+        # Act
+        tasks = await repo.get_by_sprint(sample_sprint.id)
+    
+        # Assert
+>       assert len(tasks) == 3
+E       assert 0 == 3
+E        +  where 0 = len([])
+
+tests\unit\db\repositories\test_task_repository.py:368: AssertionError
+=============================================== short test summary info ===============================================
+FAILED tests/unit/db/repositories/test_base_repository.py::TestBaseRepository::test_exists_true - NameError: name 'select' is not defined
+FAILED tests/unit/db/repositories/test_base_repository.py::TestBaseRepository::test_exists_false - NameError: name 'select' is not defined
+FAILED tests/unit/db/repositories/test_task_repository.py::TestTaskRepository::test_find_by_project - assert 0 == 2
+ +  where 0 = len([])
+FAILED tests/unit/db/repositories/test_task_repository.py::TestTaskRepository::test_find_by_project_with_status_filter - assert 0 == 2
+FAILED tests/unit/db/repositories/test_task_repository.py::TestTaskRepository::test_find_by_sprint - assert 0 == 3
+ +  where 0 = len([])
+============================================ 5 failed, 15 passed in 0.67s =============================================

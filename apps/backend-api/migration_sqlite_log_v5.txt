@@ -1,0 +1,19 @@
+Starting Legacy Data Migration (Dry Run: True, Use SQLite: True)
+Trackers Directory: C:\Users\James\Documents\Github\GHrepos\SCCMScripts\trackers
+Using SQLite (Fallback) Database
+2025-12-29 12:15:00 [warning  ] primary_db_init_failed         error=[WinError 1225] The remote computer refused the network connection
+2025-12-29 12:15:00 [info     ] fallback_db_initialized
+Error importing project.P-TPR.json: 'observability' is an invalid keyword argument for Project
+[DRY RUN] Staged Sprint: S-TPR-PHASE01
+Dry run - Rolling back all changes
+       Migration Summary       
+┌──────────┬───────┬──────────┐
+│ Type     │ Found │ Imported │
+├──────────┼───────┼──────────┤
+│ Projects │ 5     │ 0        │
+│ Sprints  │ 12    │ 0        │
+│ Tasks    │ 83    │ 0        │
+└──────────┴───────┴──────────┘
+
+Encoutered 7 errors. See log for details.
+Errors logged to migration_errors.log

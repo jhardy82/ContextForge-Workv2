@@ -1,0 +1,52 @@
+================================================= test session starts =================================================
+platform win32 -- Python 3.11.9, pytest-8.4.2, pluggy-1.6.0 -- C:\Users\James\Documents\Github\GHrepos\SCCMScripts\TaskMan-v2\backend-api\.venv\Scripts\python.exe
+cachedir: .pytest_cache
+rootdir: C:\Users\James\Documents\Github\GHrepos\SCCMScripts\TaskMan-v2\backend-api
+configfile: pytest_full.ini
+plugins: anyio-4.12.0, Faker-30.10.0, asyncio-0.26.0, cov-5.0.0, mock-3.15.1
+asyncio: mode=Mode.AUTO, asyncio_default_fixture_loop_scope=function, asyncio_default_test_loop_scope=function
+collecting ... collected 6 items
+
+tests/unit/services/test_services.py::TestProjectService::test_get_metrics_success PASSED                        [ 16%]
+tests/unit/services/test_services.py::TestProjectService::test_add_sprint PASSED                                 [ 33%]
+tests/unit/services/test_services.py::TestProjectService::test_remove_sprint PASSED                              [ 50%]
+tests/unit/services/test_services.py::TestProjectService::test_change_status FAILED                              [ 66%]
+tests/unit/services/test_services.py::TestProjectService::test_get_by_status FAILED                              [ 83%]
+tests/unit/services/test_services.py::TestProjectService::test_get_by_owner FAILED                               [100%]
+
+====================================================== FAILURES =======================================================
+________________________________________ TestProjectService.test_change_status ________________________________________
+tests\unit\services\test_services.py:150: in test_change_status
+    result = await service.change_status("P-TEST-001", ProjectStatus.PAUSED)
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+src\taskman_api\services\project_service.py:265: in change_status
+    update_request = ProjectUpdateRequest(status=new_status)
+                     ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+E   pydantic_core._pydantic_core.ValidationError: 1 validation error for ProjectUpdate
+E   status
+E     Input should be 'planning', 'active', 'on_hold', 'completed' or 'archived' [type=enum, input_value=<ProjectStatus.PAUSED: 'paused'>, input_type=ProjectStatus]
+E       For further information visit https://errors.pydantic.dev/2.12/v/enum
+________________________________________ TestProjectService.test_get_by_status ________________________________________
+tests\unit\services\test_services.py:172: in test_get_by_status
+    result = await service.get_by_status(ProjectStatus.ACTIVE)
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+src\taskman_api\services\project_service.py:290: in get_by_status
+    result = await self.project_repo.find_by_status(status, limit, offset)
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+E   TypeError: object Mock can't be used in 'await' expression
+________________________________________ TestProjectService.test_get_by_owner _________________________________________
+tests\unit\services\test_services.py:195: in test_get_by_owner
+    result = await service.get_by_owner("project.owner")
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+src\taskman_api\services\project_service.py:321: in get_by_owner
+    result = await self.project_repo.find_by_owner(owner, limit, offset)
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+E   TypeError: object Mock can't be used in 'await' expression
+=============================================== short test summary info ===============================================
+FAILED tests/unit/services/test_services.py::TestProjectService::test_change_status - pydantic_core._pydantic_core.ValidationError: 1 validation error for ProjectUpdate
+status
+  Input should be 'planning', 'active', 'on_hold', 'completed' or 'archived' [type=enum, input_value=<ProjectStatus.PAUSED: 'paused'>, input_type=ProjectStatus]
+    For further information visit https://errors.pydantic.dev/2.12/v/enum
+FAILED tests/unit/services/test_services.py::TestProjectService::test_get_by_status - TypeError: object Mock can't be used in 'await' expression
+FAILED tests/unit/services/test_services.py::TestProjectService::test_get_by_owner - TypeError: object Mock can't be used in 'await' expression
+============================================= 3 failed, 3 passed in 0.41s =============================================

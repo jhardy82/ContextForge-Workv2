@@ -1,0 +1,98 @@
+﻿[
+    {
+        "Path":  "C:\\Users\\James\\Documents\\PowerShell\\profile.ps1",
+        "Exists":  true,
+        "Header":  "# ContextForge AI Agent-Optimized PowerShell Profile\r | # Version: 2.0-Agent-First\r | # Created: 2025-12-29\r | # Purpose: Maximize AI agent observability and automation compatibility\r | #\r",
+        "SizeKB":  23.45,
+        "HasWriteHost":  true,
+        "HasCosmic":  false,
+        "Name":  "Core_CurrentUserAllHosts",
+        "Lines":  759,
+        "Status":  "BLOATED+NOISY",
+        "HasPromptOverride":  false
+    },
+    {
+        "Path":  "C:\\Users\\James\\Documents\\PowerShell\\Microsoft.PowerShell_profile.ps1",
+        "Exists":  true,
+        "Header":  "# ContextForge Agent - Silent Profile (User Preferred)\r | # Purpose: Ensure clean shell startup for VS Code Shell Integration while keeping features enabled.\r | \r | # 1. ENCODING: Critical for data parsing\r | try {\r",
+        "SizeKB":  0.65,
+        "HasWriteHost":  false,
+        "HasCosmic":  false,
+        "Name":  "Core_CurrentUserCurrentHost",
+        "Lines":  18,
+        "Status":  "Clean",
+        "HasPromptOverride":  false
+    },
+    {
+        "Path":  "C:\\Program Files\\PowerShell\\7\\profile.ps1",
+        "Exists":  false,
+        "Header":  "",
+        "SizeKB":  0,
+        "HasWriteHost":  false,
+        "HasCosmic":  false,
+        "Name":  "Core_AllUsersAllHosts",
+        "Lines":  0,
+        "Status":  "MISSING",
+        "HasPromptOverride":  false
+    },
+    {
+        "Path":  "C:\\Program Files\\PowerShell\\7\\Microsoft.PowerShell_profile.ps1",
+        "Exists":  false,
+        "Header":  "",
+        "SizeKB":  0,
+        "HasWriteHost":  false,
+        "HasCosmic":  false,
+        "Name":  "Core_AllUsersCurrentHost",
+        "Lines":  0,
+        "Status":  "MISSING",
+        "HasPromptOverride":  false
+    },
+    {
+        "Path":  "C:\\Users\\James\\Documents\\WindowsPowerShell\\profile.ps1",
+        "Exists":  true,
+        "Header":  "# ContextForge Agent - Silent Profile (User Preferred)\r | # Purpose: Ensure clean shell startup for VS Code Shell Integration while keeping features enabled.\r | \r | # 1. ENCODING: Critical for data parsing\r | try {\r",
+        "SizeKB":  0.65,
+        "HasWriteHost":  false,
+        "HasCosmic":  false,
+        "Name":  "Desktop_CurrentUserAllHosts",
+        "Lines":  18,
+        "Status":  "Clean",
+        "HasPromptOverride":  false
+    },
+    {
+        "Path":  "C:\\Users\\James\\Documents\\WindowsPowerShell\\Microsoft.PowerShell_profile.ps1",
+        "Exists":  true,
+        "Header":  "# ContextForge Agent - Silent Profile (User Preferred)\r | # Purpose: Ensure clean shell startup for VS Code Shell Integration while keeping features enabled.\r | \r | # 1. ENCODING: Critical for data parsing\r | try {\r",
+        "SizeKB":  0.65,
+        "HasWriteHost":  false,
+        "HasCosmic":  false,
+        "Name":  "Desktop_CurrentUserCurrentHost",
+        "Lines":  18,
+        "Status":  "Clean",
+        "HasPromptOverride":  false
+    },
+    {
+        "Path":  "C:\\WINDOWS\\System32\\WindowsPowerShell\\v1.0\\profile.ps1",
+        "Exists":  false,
+        "Header":  "",
+        "SizeKB":  0,
+        "HasWriteHost":  false,
+        "HasCosmic":  false,
+        "Name":  "Desktop_AllUsersAllHosts",
+        "Lines":  0,
+        "Status":  "MISSING",
+        "HasPromptOverride":  false
+    },
+    {
+        "Path":  "C:\\WINDOWS\\System32\\WindowsPowerShell\\v1.0\\Microsoft.PowerShell_profile.ps1",
+        "Exists":  false,
+        "Header":  "",
+        "SizeKB":  0,
+        "HasWriteHost":  false,
+        "HasCosmic":  false,
+        "Name":  "Desktop_AllUsersCurrentHost",
+        "Lines":  0,
+        "Status":  "MISSING",
+        "HasPromptOverride":  false
+    }
+]

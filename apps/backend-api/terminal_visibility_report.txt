@@ -1,0 +1,9 @@
+--- Mon Dec 29 19:03:07 2025 ---
+CWD: C:\Users\James\Documents\Github\GHrepos\SCCMScripts\TaskMan-v2\backend-api
+Python Executable: C:\Users\James\Documents\Github\GHrepos\SCCMScripts\.venv\Scripts\python.exe
+Python Version: 3.12.11 (main, Aug  6 2025, 22:55:49) [MSC v.1944 64 bit (AMD64)]
+Whoami Output: desktop-94qbm57\james (local)
+Whoami Error: 
+TERM: N/A
+PAGER: cat
+PROMPT: N/A

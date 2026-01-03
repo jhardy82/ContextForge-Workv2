@@ -1,0 +1,151 @@
+# ============================================================================
+# Evidence Bundle: Backend Checklist Remediation Sprint
+# ============================================================================
+# Session: remediation-20251225
+# Generated: 2025-12-29
+# Framework: ContextForge COF 13D Compliance
+# ============================================================================
+
+metadata:
+  bundle_id: EB-TASKMAN-REMEDIATION-20251225
+  session_id: remediation-20251225
+  created_at: "2025-12-29T00:00:00Z"
+  branch: remediation-20251225
+  repository: jhardy82/SCCMScripts
+  component: TaskMan-v2/backend-api
+  status: COMPLETE
+
+# ============================================================================
+# Work Items Completed
+# ============================================================================
+work_items:
+  - id: P1-3
+    title: "Router test coverage"
+    priority: HIGH
+    status: COMPLETE
+    tests_added: 37
+    commit:
+      hash: a8a5a436
+      message: "test(routers): add comprehensive action_lists router tests - 100% coverage"
+    evidence:
+      - "tests/unit/routers/test_action_lists_router.py"
+      - "100% endpoint coverage achieved"
+
+  - id: P2-5
+    title: "E2E tests for critical paths"
+    priority: MEDIUM
+    status: COMPLETE
+    tests_added: 11
+    commit:
+      hash: dde4b943
+      message: "test(e2e): add 11 critical workflow E2E tests"
+    evidence:
+      - "tests/e2e/test_critical_workflows.py"
+      - "Critical user journeys validated"
+
+  - id: P2-6
+    title: "Performance/load tests"
+    priority: MEDIUM
+    status: COMPLETE
+    tests_added: 10
+    commit:
+      hash: e865b872
+      message: "feat(tests): add P2-6 API performance/load test infrastructure"
+    evidence:
+      - "tests/performance/test_api_performance.py"
+      - "Response time baselines established"
+      - "Concurrent request handling validated"
+
+  - id: P2-7
+    title: "Regression tests for fixes"
+    priority: MEDIUM
+    status: COMPLETE
+    tests_added: 12
+    commit:
+      hash: e2b6504a
+      message: "test(regression): add 12 API contract regression tests"
+    evidence:
+      - "tests/regression/test_api_contract_bugs.py"
+      - "API contract bug prevention"
+
+  - id: P3-5
+    title: "GitHub Actions CI workflow"
+    priority: LOW
+    status: COMPLETE
+    tests_added: 0
+    commit:
+      hash: 85736fb7
+      message: "ci(taskman): add dedicated backend test workflow"
+    evidence:
+      - ".github/workflows/taskman-backend-tests.yml"
+      - "Pytest, Ruff, MyPy, Bandit integration"
+
+# ============================================================================
+# Pre-Existing Items (Already Implemented)
+# ============================================================================
+pre_existing:
+  - id: P1-4
+    title: "Environment config templates"
+    evidence: ".env.example (134 lines), .env.production.example"
+
+  - id: P1-5
+    title: "pyproject.toml dev extras"
+    evidence: "dev, lint, security, perf, all extras defined"
+
+  - id: P3-1
+    title: "/health endpoint"
+    evidence: "main.py lines 224-260, /api/health compatibility"
+
+  - id: P3-2
+    title: "Request logging middleware"
+    evidence: "LoggingMiddleware with X-Request-ID, timing, structured logs"
+
+  - id: P3-3
+    title: "OpenAPI tags"
+    evidence: "Tags configured on all routers"
+
+  - id: P3-4
+    title: "Dockerfile improvements"
+    evidence: "Multi-stage build, HEALTHCHECK, non-root user"
+
+# ============================================================================
+# Test Metrics
+# ============================================================================
+test_metrics:
+  total_tests_collected: 291
+  tests_added_this_sprint: 70
+  breakdown:
+    router_tests: 37
+    e2e_tests: 11
+    regression_tests: 12
+    performance_tests: 10
+  pass_rate: "100%"
+  coverage_target: "70%"
+
+# ============================================================================
+# COF 13D Compliance
+# ============================================================================
+cof_compliance:
+  motivational: "Improve backend test coverage and CI/CD pipeline"
+  relational: "Blocks production deployment until quality gates pass"
+  situational: "Remediation sprint for backend checklist items"
+  resource: "Single developer, 4 sessions"
+  narrative: "As a developer, I need comprehensive tests to deploy with confidence"
+  recursive: "Iterative test-fix-verify cycles"
+  computational: "pytest framework with async support"
+  emergent: "Performance tests revealed SQLite concurrent write limitations"
+  temporal: "Sprint 2025-12-25 to 2025-12-29"
+  spatial: "TaskMan-v2/backend-api component"
+  holistic: "Full test pyramid coverage established"
+  validation: "All tests pass, CI workflow operational"
+  integration: "GitHub Actions integration complete"
+
+# ============================================================================
+# Verification Commands
+# ============================================================================
+verification:
+  run_all_tests: "pytest tests/ -v --tb=short"
+  run_coverage: "pytest tests/ --cov=src/taskman_api --cov-report=html"
+  run_e2e: "pytest tests/e2e/ -v"
+  run_regression: "pytest tests/regression/ -v"
+  run_performance: "pytest tests/performance/ -v"

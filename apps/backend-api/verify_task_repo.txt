@@ -1,0 +1,859 @@
+================================================= test session starts =================================================
+platform win32 -- Python 3.11.9, pytest-8.4.2, pluggy-1.6.0 -- C:\Users\James\Documents\Github\GHrepos\SCCMScripts\TaskMan-v2\backend-api\.venv\Scripts\python.exe
+cachedir: .pytest_cache
+rootdir: C:\Users\James\Documents\Github\GHrepos\SCCMScripts\TaskMan-v2\backend-api
+configfile: pytest_full.ini
+plugins: anyio-4.12.0, Faker-30.10.0, asyncio-0.26.0, cov-5.0.0, mock-3.15.1
+asyncio: mode=Mode.AUTO, asyncio_default_fixture_loop_scope=function, asyncio_default_test_loop_scope=function
+collecting ... collected 22 items
+
+tests/unit/db/repositories/test_base_repository.py::TestBaseRepository::test_create_success FAILED               [  4%]
+tests/unit/db/repositories/test_base_repository.py::TestBaseRepository::test_create_conflict FAILED              [  9%]
+tests/unit/db/repositories/test_base_repository.py::TestBaseRepository::test_find_by_id_success FAILED           [ 13%]
+tests/unit/db/repositories/test_base_repository.py::TestBaseRepository::test_find_by_id_not_found FAILED         [ 18%]
+tests/unit/db/repositories/test_base_repository.py::TestBaseRepository::test_find_all_success FAILED             [ 22%]
+tests/unit/db/repositories/test_base_repository.py::TestBaseRepository::test_find_all_validation_limit_exceeded FAILED [ 27%]
+tests/unit/db/repositories/test_base_repository.py::TestBaseRepository::test_update_success FAILED               [ 31%]
+tests/unit/db/repositories/test_base_repository.py::TestBaseRepository::test_update_not_found FAILED             [ 36%]
+tests/unit/db/repositories/test_base_repository.py::TestBaseRepository::test_delete_success FAILED               [ 40%]
+tests/unit/db/repositories/test_base_repository.py::TestBaseRepository::test_delete_not_found FAILED             [ 45%]
+tests/unit/db/repositories/test_base_repository.py::TestBaseRepository::test_exists_true FAILED                  [ 50%]
+tests/unit/db/repositories/test_base_repository.py::TestBaseRepository::test_exists_false FAILED                 [ 54%]
+tests/unit/db/repositories/test_base_repository.py::TestBaseRepository::test_count FAILED                        [ 59%]
+tests/unit/db/repositories/test_task_repository.py::TestTaskRepository::test_find_by_status FAILED               [ 63%]
+tests/unit/db/repositories/test_task_repository.py::TestTaskRepository::test_find_by_priority FAILED             [ 68%]
+tests/unit/db/repositories/test_task_repository.py::TestTaskRepository::test_find_by_owner FAILED                [ 72%]
+tests/unit/db/repositories/test_task_repository.py::TestTaskRepository::test_find_by_project FAILED              [ 77%]
+tests/unit/db/repositories/test_task_repository.py::TestTaskRepository::test_find_by_project_with_status_filter FAILED [ 81%]
+tests/unit/db/repositories/test_task_repository.py::TestTaskRepository::test_find_by_sprint FAILED               [ 86%]
+tests/unit/db/repositories/test_task_repository.py::TestTaskRepository::test_find_by_status_and_priority FAILED  [ 90%]
+tests/unit/db/repositories/test_task_repository.py::TestTaskRepository::test_find_blocked_tasks FAILED           [ 95%]
+tests/unit/db/repositories/test_task_repository.py::TestTaskRepository::test_find_high_priority_tasks FAILED     [100%]
+
+====================================================== FAILURES =======================================================
+_______________________________________ TestBaseRepository.test_create_success ________________________________________
+
+self = <test_base_repository.TestBaseRepository object at 0x0000026562969C10>
+async_session = <sqlalchemy.ext.asyncio.session.AsyncSession object at 0x0000026562932210>
+sample_task = <Task(id=T-TEST-001, title='Test Task...', status='TaskStatus.NEW')>
+sample_project = <Project(id='P-TEST-001', name='Test Project', status='ProjectStatus.ACTIVE')>
+sample_sprint = <Sprint(id='S-TEST-001', name='Test Sprint 1', status='SprintStatus.ACTIVE')>
+
+    async def test_create_success(
+        self,
+        async_session: AsyncSession,
+        sample_task: Task,
+        sample_project,
+        sample_sprint,
+    ):
+        """Test successful entity creation."""
+        # Arrange
+        await async_session.commit()  # Ensure clean state
+>       repo = BaseRepository(Task, async_session)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+E       TypeError: Can't instantiate abstract class BaseRepository with abstract method exists
+
+tests\unit\db\repositories\test_base_repository.py:29: TypeError
+_______________________________________ TestBaseRepository.test_create_conflict _______________________________________
+
+self = <test_base_repository.TestBaseRepository object at 0x000002656296AED0>
+async_session = <sqlalchemy.ext.asyncio.session.AsyncSession object at 0x0000026562981490>
+sample_task = <Task(id=T-TEST-001, title='Test Task...', status='TaskStatus.NEW')>
+sample_project = <Project(id='P-TEST-001', name='Test Project', status='ProjectStatus.ACTIVE')>
+sample_sprint = <Sprint(id='S-TEST-001', name='Test Sprint 1', status='SprintStatus.ACTIVE')>
+
+    async def test_create_conflict(
+        self,
+        async_session: AsyncSession,
+        sample_task: Task,
+        sample_project,
+        sample_sprint,
+    ):
+        """Test create with duplicate ID returns ConflictError."""
+        # Arrange
+>       repo = BaseRepository(Task, async_session)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+E       TypeError: Can't instantiate abstract class BaseRepository with abstract method exists
+
+tests\unit\db\repositories\test_base_repository.py:54: TypeError
+_____________________________________ TestBaseRepository.test_find_by_id_success ______________________________________
+
+self = <test_base_repository.TestBaseRepository object at 0x000002656296B510>
+async_session = <sqlalchemy.ext.asyncio.session.AsyncSession object at 0x0000026562A59AD0>
+sample_task = <Task(id=T-TEST-001, title='Test Task...', status='TaskStatus.NEW')>
+sample_project = <Project(id='P-TEST-001', name='Test Project', status='ProjectStatus.ACTIVE')>
+sample_sprint = <Sprint(id='S-TEST-001', name='Test Sprint 1', status='SprintStatus.ACTIVE')>
+
+    async def test_find_by_id_success(
+        self,
+        async_session: AsyncSession,
+        sample_task: Task,
+        sample_project,
+        sample_sprint,
+    ):
+        """Test successful find by ID."""
+        # Arrange
+>       repo = BaseRepository(Task, async_session)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+E       TypeError: Can't instantiate abstract class BaseRepository with abstract method exists
+
+tests\unit\db\repositories\test_base_repository.py:110: TypeError
+____________________________________ TestBaseRepository.test_find_by_id_not_found _____________________________________
+
+self = <test_base_repository.TestBaseRepository object at 0x000002656295F3D0>
+async_session = <sqlalchemy.ext.asyncio.session.AsyncSession object at 0x0000026562AA4D10>
+
+    async def test_find_by_id_not_found(self, async_session: AsyncSession):
+        """Test find by ID returns NotFoundError when entity doesn't exist."""
+        # Arrange
+>       repo = BaseRepository(Task, async_session)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+E       TypeError: Can't instantiate abstract class BaseRepository with abstract method exists
+
+tests\unit\db\repositories\test_base_repository.py:128: TypeError
+______________________________________ TestBaseRepository.test_find_all_success _______________________________________
+
+self = <test_base_repository.TestBaseRepository object at 0x000002656295E190>
+async_session = <sqlalchemy.ext.asyncio.session.AsyncSession object at 0x0000026562A8E2D0>
+sample_project = <Project(id='P-TEST-001', name='Test Project', status='ProjectStatus.ACTIVE')>
+sample_sprint = <Sprint(id='S-TEST-001', name='Test Sprint 1', status='SprintStatus.ACTIVE')>
+
+    async def test_find_all_success(
+        self,
+        async_session: AsyncSession,
+        sample_project,
+        sample_sprint,
+    ):
+        """Test find all with pagination."""
+        # Arrange
+>       repo = BaseRepository(Task, async_session)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+E       TypeError: Can't instantiate abstract class BaseRepository with abstract method exists
+
+tests\unit\db\repositories\test_base_repository.py:149: TypeError
+_____________________________ TestBaseRepository.test_find_all_validation_limit_exceeded ______________________________
+
+self = <test_base_repository.TestBaseRepository object at 0x000002656295E450>
+async_session = <sqlalchemy.ext.asyncio.session.AsyncSession object at 0x000002656295B190>
+
+    async def test_find_all_validation_limit_exceeded(self, async_session: AsyncSession):
+        """Test find all with limit > 1000 returns ValidationError."""
+        # Arrange
+>       repo = BaseRepository(Task, async_session)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+E       TypeError: Can't instantiate abstract class BaseRepository with abstract method exists
+
+tests\unit\db\repositories\test_base_repository.py:199: TypeError
+_______________________________________ TestBaseRepository.test_update_success ________________________________________
+
+self = <test_base_repository.TestBaseRepository object at 0x000002656295E350>
+async_session = <sqlalchemy.ext.asyncio.session.AsyncSession object at 0x0000026562A3DAD0>
+sample_task = <Task(id=T-TEST-001, title='Test Task...', status='TaskStatus.NEW')>
+sample_project = <Project(id='P-TEST-001', name='Test Project', status='ProjectStatus.ACTIVE')>
+sample_sprint = <Sprint(id='S-TEST-001', name='Test Sprint 1', status='SprintStatus.ACTIVE')>
+
+    async def test_update_success(
+        self,
+        async_session: AsyncSession,
+        sample_task: Task,
+        sample_project,
+        sample_sprint,
+    ):
+        """Test successful entity update."""
+        # Arrange
+>       repo = BaseRepository(Task, async_session)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+E       TypeError: Can't instantiate abstract class BaseRepository with abstract method exists
+
+tests\unit\db\repositories\test_base_repository.py:218: TypeError
+______________________________________ TestBaseRepository.test_update_not_found _______________________________________
+
+self = <test_base_repository.TestBaseRepository object at 0x000002656295F6D0>
+async_session = <sqlalchemy.ext.asyncio.session.AsyncSession object at 0x0000026562A8E350>
+sample_project = <Project(id='P-TEST-001', name='Test Project', status='ProjectStatus.ACTIVE')>
+sample_sprint = <Sprint(id='S-TEST-001', name='Test Sprint 1', status='SprintStatus.ACTIVE')>
+
+    async def test_update_not_found(
+        self,
+        async_session: AsyncSession,
+        sample_project,
+        sample_sprint,
+    ):
+        """Test update returns NotFoundError when entity doesn't exist."""
+        # Arrange
+>       repo = BaseRepository(Task, async_session)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+E       TypeError: Can't instantiate abstract class BaseRepository with abstract method exists
+
+tests\unit\db\repositories\test_base_repository.py:243: TypeError
+_______________________________________ TestBaseRepository.test_delete_success ________________________________________
+
+self = <test_base_repository.TestBaseRepository object at 0x000002656295FCD0>
+async_session = <sqlalchemy.ext.asyncio.session.AsyncSession object at 0x0000026562A8DA90>
+sample_task = <Task(id=T-TEST-001, title='Test Task...', status='TaskStatus.NEW')>
+sample_project = <Project(id='P-TEST-001', name='Test Project', status='ProjectStatus.ACTIVE')>
+sample_sprint = <Sprint(id='S-TEST-001', name='Test Sprint 1', status='SprintStatus.ACTIVE')>
+
+    async def test_delete_success(
+        self,
+        async_session: AsyncSession,
+        sample_task: Task,
+        sample_project,
+        sample_sprint,
+    ):
+        """Test successful entity deletion."""
+        # Arrange
+>       repo = BaseRepository(Task, async_session)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+E       TypeError: Can't instantiate abstract class BaseRepository with abstract method exists
+
+tests\unit\db\repositories\test_base_repository.py:295: TypeError
+______________________________________ TestBaseRepository.test_delete_not_found _______________________________________
+
+self = <test_base_repository.TestBaseRepository object at 0x000002656295C510>
+async_session = <sqlalchemy.ext.asyncio.session.AsyncSession object at 0x0000026562A8E850>
+
+    async def test_delete_not_found(self, async_session: AsyncSession):
+        """Test delete returns NotFoundError when entity doesn't exist."""
+        # Arrange
+>       repo = BaseRepository(Task, async_session)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+E       TypeError: Can't instantiate abstract class BaseRepository with abstract method exists
+
+tests\unit\db\repositories\test_base_repository.py:315: TypeError
+_________________________________________ TestBaseRepository.test_exists_true _________________________________________
+
+self = <test_base_repository.TestBaseRepository object at 0x000002656295D490>
+async_session = <sqlalchemy.ext.asyncio.session.AsyncSession object at 0x0000026562AA4110>
+sample_task = <Task(id=T-TEST-001, title='Test Task...', status='TaskStatus.NEW')>
+sample_project = <Project(id='P-TEST-001', name='Test Project', status='ProjectStatus.ACTIVE')>
+sample_sprint = <Sprint(id='S-TEST-001', name='Test Sprint 1', status='SprintStatus.ACTIVE')>
+
+    async def test_exists_true(
+        self,
+        async_session: AsyncSession,
+        sample_task: Task,
+        sample_project,
+        sample_sprint,
+    ):
+        """Test exists returns True when entity exists."""
+        # Arrange
+>       repo = BaseRepository(Task, async_session)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+E       TypeError: Can't instantiate abstract class BaseRepository with abstract method exists
+
+tests\unit\db\repositories\test_base_repository.py:334: TypeError
+________________________________________ TestBaseRepository.test_exists_false _________________________________________
+
+self = <test_base_repository.TestBaseRepository object at 0x000002656295CFD0>
+async_session = <sqlalchemy.ext.asyncio.session.AsyncSession object at 0x0000026562996310>
+
+    async def test_exists_false(self, async_session: AsyncSession):
+        """Test exists returns False when entity doesn't exist."""
+        # Arrange
+>       repo = BaseRepository(Task, async_session)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+E       TypeError: Can't instantiate abstract class BaseRepository with abstract method exists
+
+tests\unit\db\repositories\test_base_repository.py:350: TypeError
+____________________________________________ TestBaseRepository.test_count ____________________________________________
+
+self = <test_base_repository.TestBaseRepository object at 0x000002656293C750>
+async_session = <sqlalchemy.ext.asyncio.session.AsyncSession object at 0x0000026562AA5590>
+sample_project = <Project(id='P-TEST-001', name='Test Project', status='ProjectStatus.ACTIVE')>
+sample_sprint = <Sprint(id='S-TEST-001', name='Test Sprint 1', status='SprintStatus.ACTIVE')>
+
+    async def test_count(
+        self,
+        async_session: AsyncSession,
+        sample_project,
+        sample_sprint,
+    ):
+        """Test count returns correct number of entities."""
+        # Arrange
+>       repo = BaseRepository(Task, async_session)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+E       TypeError: Can't instantiate abstract class BaseRepository with abstract method exists
+
+tests\unit\db\repositories\test_base_repository.py:367: TypeError
+_______________________________________ TestTaskRepository.test_find_by_status ________________________________________
+
+self = <test_task_repository.TestTaskRepository object at 0x0000026562994990>
+async_session = <sqlalchemy.ext.asyncio.session.AsyncSession object at 0x0000026562AC1490>
+sample_project = <Project(id='P-TEST-001', name='Test Project', status='ProjectStatus.ACTIVE')>
+sample_sprint = <Sprint(id='S-TEST-001', name='Test Sprint 1', status='SprintStatus.ACTIVE')>
+
+    async def test_find_by_status(
+        self,
+        async_session: AsyncSession,
+        sample_project,
+        sample_sprint,
+    ):
+        """Test finding tasks by status."""
+        # Arrange
+        repo = TaskRepository(async_session)
+        async_session.add(sample_project)
+        async_session.add(sample_sprint)
+    
+        # Create tasks with different statuses
+        for i, status in enumerate([TaskStatus.NEW, TaskStatus.IN_PROGRESS, TaskStatus.NEW]):
+            task = Task(
+                id=f"T-TEST-{i:03d}",
+                title=f"Task {i}",
+                summary=f"Summary {i}",
+                description=f"Description {i}",
+                status=status,
+                owner="owner",
+                assignees="[]",
+                priority=Priority.P2,
+                primary_project=sample_project.id,
+                primary_sprint=sample_sprint.id,
+                related_projects="[]",
+                related_sprints="[]",
+                parents="[]",
+                depends_on="[]",
+                blocks="[]",
+                blockers="[]",
+                acceptance_criteria="[]",
+                definition_of_done="[]",
+                quality_gates="{}",
+                verification="{}",
+                actions_taken="[]",
+                labels="[]",
+                related_links="[]",
+                risks="[]",
+                # observability removed
+            )
+            async_session.add(task)
+    
+        await async_session.commit()
+    
+        # Act
+>       result = await repo.find_by_status(TaskStatus.NEW)
+                       ^^^^^^^^^^^^^^^^^^^
+E       AttributeError: 'TaskRepository' object has no attribute 'find_by_status'
+
+tests\unit\db\repositories\test_task_repository.py:65: AttributeError
+______________________________________ TestTaskRepository.test_find_by_priority _______________________________________
+
+self = <test_task_repository.TestTaskRepository object at 0x0000026562995310>
+async_session = <sqlalchemy.ext.asyncio.session.AsyncSession object at 0x0000026562AC3FD0>
+sample_project = <Project(id='P-TEST-001', name='Test Project', status='ProjectStatus.ACTIVE')>
+sample_sprint = <Sprint(id='S-TEST-001', name='Test Sprint 1', status='SprintStatus.ACTIVE')>
+
+    async def test_find_by_priority(
+        self,
+        async_session: AsyncSession,
+        sample_project,
+        sample_sprint,
+    ):
+        """Test finding tasks by priority."""
+        # Arrange
+        repo = TaskRepository(async_session)
+        async_session.add(sample_project)
+        async_session.add(sample_sprint)
+    
+        # Create tasks with different priorities
+        for i, priority in enumerate([Priority.P0, Priority.P1, Priority.P0]):
+            task = Task(
+                id=f"T-TEST-{i:03d}",
+                title=f"Task {i}",
+                summary=f"Summary {i}",
+                description=f"Description {i}",
+                status=TaskStatus.NEW,
+                owner="owner",
+                assignees="[]",
+                priority=priority,
+                primary_project=sample_project.id,
+                primary_sprint=sample_sprint.id,
+                related_projects="[]",
+                related_sprints="[]",
+                parents="[]",
+                depends_on="[]",
+                blocks="[]",
+                blockers="[]",
+                acceptance_criteria="[]",
+                definition_of_done="[]",
+                quality_gates="{}",
+                verification="{}",
+                actions_taken="[]",
+                labels="[]",
+                related_links="[]",
+                risks="[]",
+                # observability removed
+            )
+            async_session.add(task)
+    
+        await async_session.commit()
+    
+        # Act
+>       result = await repo.find_by_priority(Priority.P0)
+                       ^^^^^^^^^^^^^^^^^^^^^
+E       AttributeError: 'TaskRepository' object has no attribute 'find_by_priority'
+
+tests\unit\db\repositories\test_task_repository.py:119: AttributeError
+________________________________________ TestTaskRepository.test_find_by_owner ________________________________________
+
+self = <test_task_repository.TestTaskRepository object at 0x0000026562995750>
+async_session = <sqlalchemy.ext.asyncio.session.AsyncSession object at 0x0000026562A58D50>
+sample_project = <Project(id='P-TEST-001', name='Test Project', status='ProjectStatus.ACTIVE')>
+sample_sprint = <Sprint(id='S-TEST-001', name='Test Sprint 1', status='SprintStatus.ACTIVE')>
+
+    async def test_find_by_owner(
+        self,
+        async_session: AsyncSession,
+        sample_project,
+        sample_sprint,
+    ):
+        """Test finding tasks by owner."""
+        # Arrange
+        repo = TaskRepository(async_session)
+        async_session.add(sample_project)
+        async_session.add(sample_sprint)
+    
+        # Create tasks with different owners
+        for i, owner in enumerate(["alice", "bob", "alice"]):
+            task = Task(
+                id=f"T-TEST-{i:03d}",
+                title=f"Task {i}",
+                summary=f"Summary {i}",
+                description=f"Description {i}",
+                status=TaskStatus.NEW,
+                owner=owner,
+                assignees="[]",
+                priority=Priority.P2,
+                primary_project=sample_project.id,
+                primary_sprint=sample_sprint.id,
+                related_projects="[]",
+                related_sprints="[]",
+                parents="[]",
+                depends_on="[]",
+                blocks="[]",
+                blockers="[]",
+                acceptance_criteria="[]",
+                definition_of_done="[]",
+                quality_gates="{}",
+                verification="{}",
+                actions_taken="[]",
+                labels="[]",
+                related_links="[]",
+                risks="[]",
+                # observability removed
+            )
+            async_session.add(task)
+    
+        await async_session.commit()
+    
+        # Act
+>       result = await repo.find_by_owner("alice")
+                       ^^^^^^^^^^^^^^^^^^
+E       AttributeError: 'TaskRepository' object has no attribute 'find_by_owner'
+
+tests\unit\db\repositories\test_task_repository.py:173: AttributeError
+_______________________________________ TestTaskRepository.test_find_by_project _______________________________________
+
+self = <test_task_repository.TestTaskRepository object at 0x0000026562995A90>
+async_session = <sqlalchemy.ext.asyncio.session.AsyncSession object at 0x000002656270AE90>
+sample_project = <Project(id='P-TEST-001', name='Test Project', status='ProjectStatus.ACTIVE')>
+sample_sprint = <Sprint(id='S-TEST-001', name='Test Sprint 1', status='SprintStatus.ACTIVE')>
+
+    async def test_find_by_project(
+        self,
+        async_session: AsyncSession,
+        sample_project,
+        sample_sprint,
+    ):
+        """Test finding tasks by project."""
+        # Arrange
+        repo = TaskRepository(async_session)
+    
+        # Create second project
+        from datetime import date
+    
+        from taskman_api.core.enums import ProjectStatus
+        from taskman_api.models.project import Project
+    
+>       project2 = Project(
+            id="P-TEST-002",
+            name="Project 2",
+            mission="Mission 2",
+            status=ProjectStatus.ACTIVE,
+            start_date=date(2025, 1, 1),
+            owner="owner",
+            sponsors=[],
+            stakeholders=[],
+            repositories=[],
+            comms_channels=[],
+            okrs=[],
+            kpis=[],
+            roadmap=[],
+            risks=[],
+            assumptions=[],
+            constraints=[],
+            dependencies_external=[],
+            sprints=[],
+            related_projects=[],
+            shared_components=[],
+            compliance_requirements=[],
+            governance={},
+            success_metrics=[],
+            mpv_policy={},
+            observability={},
+        )
+
+tests\unit\db\repositories\test_task_repository.py:197: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _
+<string>:4: in __init__
+    ???
+.venv\Lib\site-packages\sqlalchemy\orm\state.py:596: in _initialize_instance
+    with util.safe_reraise():
+.venv\Lib\site-packages\sqlalchemy\util\langhelpers.py:224: in __exit__
+    raise exc_value.with_traceback(exc_tb)
+.venv\Lib\site-packages\sqlalchemy\orm\state.py:594: in _initialize_instance
+    manager.original_init(*mixed[1:], **kwargs)
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _
+
+self = <Project(id='P-TEST-002', name='Project 2', status='ProjectStatus.ACTIVE')>
+kwargs = {'assumptions': [], 'comms_channels': [], 'compliance_requirements': [], 'constraints': [], ...}
+cls_ = <class 'taskman_api.models.project.Project'>, k = 'sprints'
+
+    def _declarative_constructor(self: Any, **kwargs: Any) -> None:
+        """A simple constructor that allows initialization from kwargs.
+    
+        Sets attributes on the constructed instance using the names and
+        values in ``kwargs``.
+    
+        Only keys that are present as
+        attributes of the instance's class are allowed. These could be,
+        for example, any mapped columns or relationships.
+        """
+        cls_ = type(self)
+        for k in kwargs:
+            if not hasattr(cls_, k):
+>               raise TypeError(
+                    "%r is an invalid keyword argument for %s" % (k, cls_.__name__)
+                )
+E               TypeError: 'sprints' is an invalid keyword argument for Project
+
+.venv\Lib\site-packages\sqlalchemy\orm\decl_base.py:2179: TypeError
+_____________________________ TestTaskRepository.test_find_by_project_with_status_filter ______________________________
+
+self = <test_task_repository.TestTaskRepository object at 0x00000265629966D0>
+async_session = <sqlalchemy.ext.asyncio.session.AsyncSession object at 0x000002656290B510>
+sample_project = <Project(id='P-TEST-001', name='Test Project', status='ProjectStatus.ACTIVE')>
+sample_sprint = <Sprint(id='S-TEST-001', name='Test Sprint 1', status='SprintStatus.ACTIVE')>
+
+    async def test_find_by_project_with_status_filter(
+        self,
+        async_session: AsyncSession,
+        sample_project,
+        sample_sprint,
+    ):
+        """Test finding tasks by project with status filter."""
+        # Arrange
+        repo = TaskRepository(async_session)
+        async_session.add(sample_project)
+        async_session.add(sample_sprint)
+    
+        # Create tasks with different statuses
+        for i, status in enumerate([TaskStatus.NEW, TaskStatus.IN_PROGRESS, TaskStatus.NEW]):
+            task = Task(
+                id=f"T-TEST-{i:03d}",
+                title=f"Task {i}",
+                summary=f"Summary {i}",
+                description=f"Description {i}",
+                status=status,
+                owner="owner",
+                assignees="[]",
+                priority=Priority.P2,
+                primary_project=sample_project.id,
+                primary_sprint=sample_sprint.id,
+                related_projects="[]",
+                related_sprints="[]",
+                parents="[]",
+                depends_on="[]",
+                blocks="[]",
+                blockers="[]",
+                acceptance_criteria="[]",
+                definition_of_done="[]",
+                quality_gates="{}",
+                verification="{}",
+                actions_taken="[]",
+                labels="[]",
+                related_links="[]",
+                risks="[]",
+                # observability removed
+            )
+            async_session.add(task)
+    
+        await async_session.commit()
+    
+        # Act
+>       result = await repo.find_by_project(sample_project.id, status=TaskStatus.NEW)
+                       ^^^^^^^^^^^^^^^^^^^^
+E       AttributeError: 'TaskRepository' object has no attribute 'find_by_project'
+
+tests\unit\db\repositories\test_task_repository.py:317: AttributeError
+_______________________________________ TestTaskRepository.test_find_by_sprint ________________________________________
+
+self = <test_task_repository.TestTaskRepository object at 0x00000265629963D0>
+async_session = <sqlalchemy.ext.asyncio.session.AsyncSession object at 0x00000265628CEE50>
+sample_project = <Project(id='P-TEST-001', name='Test Project', status='ProjectStatus.ACTIVE')>
+sample_sprint = <Sprint(id='S-TEST-001', name='Test Sprint 1', status='SprintStatus.ACTIVE')>
+
+    async def test_find_by_sprint(
+        self,
+        async_session: AsyncSession,
+        sample_project,
+        sample_sprint,
+    ):
+        """Test finding tasks by sprint."""
+        # Arrange
+        repo = TaskRepository(async_session)
+        async_session.add(sample_project)
+        async_session.add(sample_sprint)
+    
+        # Create tasks
+        for i in range(3):
+            task = Task(
+                id=f"T-TEST-{i:03d}",
+                title=f"Task {i}",
+                summary=f"Summary {i}",
+                description=f"Description {i}",
+                status=TaskStatus.NEW,
+                owner="owner",
+                assignees="[]",
+                priority=Priority.P2,
+                primary_project=sample_project.id,
+                primary_sprint=sample_sprint.id,
+                related_projects="[]",
+                related_sprints="[]",
+                parents="[]",
+                depends_on="[]",
+                blocks="[]",
+                blockers="[]",
+                acceptance_criteria="[]",
+                definition_of_done="[]",
+                quality_gates="{}",
+                verification="{}",
+                actions_taken="[]",
+                labels="[]",
+                related_links="[]",
+                risks="[]",
+                # observability removed
+            )
+            async_session.add(task)
+    
+        await async_session.commit()
+    
+        # Act
+>       result = await repo.find_by_sprint(sample_sprint.id)
+                       ^^^^^^^^^^^^^^^^^^^
+E       AttributeError: 'TaskRepository' object has no attribute 'find_by_sprint'
+
+tests\unit\db\repositories\test_task_repository.py:371: AttributeError
+_________________________________ TestTaskRepository.test_find_by_status_and_priority _________________________________
+
+self = <test_task_repository.TestTaskRepository object at 0x00000265629968D0>
+async_session = <sqlalchemy.ext.asyncio.session.AsyncSession object at 0x0000026562AB31D0>
+sample_project = <Project(id='P-TEST-001', name='Test Project', status='ProjectStatus.ACTIVE')>
+sample_sprint = <Sprint(id='S-TEST-001', name='Test Sprint 1', status='SprintStatus.ACTIVE')>
+
+    async def test_find_by_status_and_priority(
+        self,
+        async_session: AsyncSession,
+        sample_project,
+        sample_sprint,
+    ):
+        """Test finding tasks by status and priority (composite index)."""
+        # Arrange
+        repo = TaskRepository(async_session)
+        async_session.add(sample_project)
+        async_session.add(sample_sprint)
+    
+        # Create tasks with various combinations
+        combos = [
+            (TaskStatus.NEW, Priority.P0),
+            (TaskStatus.NEW, Priority.P1),
+            (TaskStatus.IN_PROGRESS, Priority.P0),
+            (TaskStatus.NEW, Priority.P0),
+        ]
+    
+        for i, (status, priority) in enumerate(combos):
+            task = Task(
+                id=f"T-TEST-{i:03d}",
+                title=f"Task {i}",
+                summary=f"Summary {i}",
+                description=f"Description {i}",
+                status=status,
+                owner="owner",
+                assignees="[]",
+                priority=priority,
+                primary_project=sample_project.id,
+                primary_sprint=sample_sprint.id,
+                related_projects="[]",
+                related_sprints="[]",
+                parents="[]",
+                depends_on="[]",
+                blocks="[]",
+                blockers="[]",
+                acceptance_criteria="[]",
+                definition_of_done="[]",
+                quality_gates="{}",
+                verification="{}",
+                actions_taken="[]",
+                labels="[]",
+                related_links="[]",
+                risks="[]",
+                # observability removed
+            )
+            async_session.add(task)
+    
+        await async_session.commit()
+    
+        # Act
+>       result = await repo.find_by_status_and_priority(TaskStatus.NEW, Priority.P0)
+                       ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+E       AttributeError: 'TaskRepository' object has no attribute 'find_by_status_and_priority'
+
+tests\unit\db\repositories\test_task_repository.py:431: AttributeError
+_____________________________________ TestTaskRepository.test_find_blocked_tasks ______________________________________
+
+self = <test_task_repository.TestTaskRepository object at 0x0000026562996DD0>
+async_session = <sqlalchemy.ext.asyncio.session.AsyncSession object at 0x000002656295C290>
+sample_project = <Project(id='P-TEST-001', name='Test Project', status='ProjectStatus.ACTIVE')>
+sample_sprint = <Sprint(id='S-TEST-001', name='Test Sprint 1', status='SprintStatus.ACTIVE')>
+
+    async def test_find_blocked_tasks(
+        self,
+        async_session: AsyncSession,
+        sample_project,
+        sample_sprint,
+    ):
+        """Test finding all blocked tasks."""
+        # Arrange
+        repo = TaskRepository(async_session)
+        async_session.add(sample_project)
+        async_session.add(sample_sprint)
+    
+        # Create tasks with different statuses
+        for i, status in enumerate([TaskStatus.BLOCKED, TaskStatus.NEW, TaskStatus.BLOCKED]):
+            task = Task(
+                id=f"T-TEST-{i:03d}",
+                title=f"Task {i}",
+                summary=f"Summary {i}",
+                description=f"Description {i}",
+                status=status,
+                owner="owner",
+                assignees="[]",
+                priority=Priority.P2,
+                primary_project=sample_project.id,
+                primary_sprint=sample_sprint.id,
+                related_projects="[]",
+                related_sprints="[]",
+                parents="[]",
+                depends_on="[]",
+                blocks="[]",
+                blockers="[]",
+                acceptance_criteria="[]",
+                definition_of_done="[]",
+                quality_gates="{}",
+                verification="{}",
+                actions_taken="[]",
+                labels="[]",
+                related_links="[]",
+                risks="[]",
+                # observability removed
+            )
+            async_session.add(task)
+    
+        await async_session.commit()
+    
+        # Act
+>       result = await repo.find_blocked_tasks()
+                       ^^^^^^^^^^^^^^^^^^^^^^^
+E       AttributeError: 'TaskRepository' object has no attribute 'find_blocked_tasks'
+
+tests\unit\db\repositories\test_task_repository.py:485: AttributeError
+__________________________________ TestTaskRepository.test_find_high_priority_tasks ___________________________________
+
+self = <test_task_repository.TestTaskRepository object at 0x00000265629940D0>
+async_session = <sqlalchemy.ext.asyncio.session.AsyncSession object at 0x00000265629A0F90>
+sample_project = <Project(id='P-TEST-001', name='Test Project', status='ProjectStatus.ACTIVE')>
+sample_sprint = <Sprint(id='S-TEST-001', name='Test Sprint 1', status='SprintStatus.ACTIVE')>
+
+    async def test_find_high_priority_tasks(
+        self,
+        async_session: AsyncSession,
+        sample_project,
+        sample_sprint,
+    ):
+        """Test finding P0 and P1 (critical/high priority) tasks."""
+        # Arrange
+        repo = TaskRepository(async_session)
+        async_session.add(sample_project)
+        async_session.add(sample_sprint)
+    
+        # Create tasks with different priorities
+        for i, priority in enumerate([Priority.P0, Priority.P1, Priority.P2, Priority.P0]):
+            task = Task(
+                id=f"T-TEST-{i:03d}",
+                title=f"Task {i}",
+                summary=f"Summary {i}",
+                description=f"Description {i}",
+                status=TaskStatus.NEW,
+                owner="owner",
+                assignees="[]",
+                priority=priority,
+                primary_project=sample_project.id,
+                primary_sprint=sample_sprint.id,
+                related_projects="[]",
+                related_sprints="[]",
+                parents="[]",
+                depends_on="[]",
+                blocks="[]",
+                blockers="[]",
+                acceptance_criteria="[]",
+                definition_of_done="[]",
+                quality_gates="{}",
+                verification="{}",
+                actions_taken="[]",
+                labels="[]",
+                related_links="[]",
+                risks="[]",
+                # observability removed
+            )
+            async_session.add(task)
+    
+        await async_session.commit()
+    
+        # Act
+>       result = await repo.find_high_priority_tasks()
+                       ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+E       AttributeError: 'TaskRepository' object has no attribute 'find_high_priority_tasks'
+
+tests\unit\db\repositories\test_task_repository.py:539: AttributeError
+=============================================== short test summary info ===============================================
+FAILED tests/unit/db/repositories/test_base_repository.py::TestBaseRepository::test_create_success - TypeError: Can't instantiate abstract class BaseRepository with abstract method exists
+FAILED tests/unit/db/repositories/test_base_repository.py::TestBaseRepository::test_create_conflict - TypeError: Can't instantiate abstract class BaseRepository with abstract method exists
+FAILED tests/unit/db/repositories/test_base_repository.py::TestBaseRepository::test_find_by_id_success - TypeError: Can't instantiate abstract class BaseRepository with abstract method exists
+FAILED tests/unit/db/repositories/test_base_repository.py::TestBaseRepository::test_find_by_id_not_found - TypeError: Can't instantiate abstract class BaseRepository with abstract method exists
+FAILED tests/unit/db/repositories/test_base_repository.py::TestBaseRepository::test_find_all_success - TypeError: Can't instantiate abstract class BaseRepository with abstract method exists
+FAILED tests/unit/db/repositories/test_base_repository.py::TestBaseRepository::test_find_all_validation_limit_exceeded - TypeError: Can't instantiate abstract class BaseRepository with abstract method exists
+FAILED tests/unit/db/repositories/test_base_repository.py::TestBaseRepository::test_update_success - TypeError: Can't instantiate abstract class BaseRepository with abstract method exists
+FAILED tests/unit/db/repositories/test_base_repository.py::TestBaseRepository::test_update_not_found - TypeError: Can't instantiate abstract class BaseRepository with abstract method exists
+FAILED tests/unit/db/repositories/test_base_repository.py::TestBaseRepository::test_delete_success - TypeError: Can't instantiate abstract class BaseRepository with abstract method exists
+FAILED tests/unit/db/repositories/test_base_repository.py::TestBaseRepository::test_delete_not_found - TypeError: Can't instantiate abstract class BaseRepository with abstract method exists
+FAILED tests/unit/db/repositories/test_base_repository.py::TestBaseRepository::test_exists_true - TypeError: Can't instantiate abstract class BaseRepository with abstract method exists
+FAILED tests/unit/db/repositories/test_base_repository.py::TestBaseRepository::test_exists_false - TypeError: Can't instantiate abstract class BaseRepository with abstract method exists
+FAILED tests/unit/db/repositories/test_base_repository.py::TestBaseRepository::test_count - TypeError: Can't instantiate abstract class BaseRepository with abstract method exists
+FAILED tests/unit/db/repositories/test_task_repository.py::TestTaskRepository::test_find_by_status - AttributeError: 'TaskRepository' object has no attribute 'find_by_status'
+FAILED tests/unit/db/repositories/test_task_repository.py::TestTaskRepository::test_find_by_priority - AttributeError: 'TaskRepository' object has no attribute 'find_by_priority'
+FAILED tests/unit/db/repositories/test_task_repository.py::TestTaskRepository::test_find_by_owner - AttributeError: 'TaskRepository' object has no attribute 'find_by_owner'
+FAILED tests/unit/db/repositories/test_task_repository.py::TestTaskRepository::test_find_by_project - TypeError: 'sprints' is an invalid keyword argument for Project
+FAILED tests/unit/db/repositories/test_task_repository.py::TestTaskRepository::test_find_by_project_with_status_filter - AttributeError: 'TaskRepository' object has no attribute 'find_by_project'
+FAILED tests/unit/db/repositories/test_task_repository.py::TestTaskRepository::test_find_by_sprint - AttributeError: 'TaskRepository' object has no attribute 'find_by_sprint'
+FAILED tests/unit/db/repositories/test_task_repository.py::TestTaskRepository::test_find_by_status_and_priority - AttributeError: 'TaskRepository' object has no attribute 'find_by_status_and_priority'
+FAILED tests/unit/db/repositories/test_task_repository.py::TestTaskRepository::test_find_blocked_tasks - AttributeError: 'TaskRepository' object has no attribute 'find_blocked_tasks'
+FAILED tests/unit/db/repositories/test_task_repository.py::TestTaskRepository::test_find_high_priority_tasks - AttributeError: 'TaskRepository' object has no attribute 'find_high_priority_tasks'
+================================================= 22 failed in 1.05s ==================================================

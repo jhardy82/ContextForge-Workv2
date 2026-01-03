@@ -1,0 +1,31 @@
+Starting Legacy Data Migration (Dry Run: True, Use SQLite: True)
+Trackers Directory: C:\Users\James\Documents\Github\GHrepos\SCCMScripts\trackers
+Using SQLite (Fallback) Database
+2025-12-29 12:23:28 [warning  ] primary_db_init_failed         error=[WinError 1225] The remote computer refused the network connection
+2025-12-29 12:23:28 [info     ] fallback_db_initialized
+[DRY RUN] Staged Project: P-DISCOVERYMAX
+[DRY RUN] Staged Project: P-MOCKSTACK-RELIABILITY
+[DRY RUN] Staged Project: P-TPR
+[DRY RUN] Staged Project: P-UNIFIED-GOV
+[DRY RUN] Staged Project: P-UNIFIED-LOG
+[DRY RUN] Staged Sprint: sprint-BuildHarness-S1
+[DRY RUN] Staged Sprint: sprint-S-2025-08-18
+[DRY RUN] Staged Sprint: sprint-S-2025-08-21-CS-N1
+[DRY RUN] Staged Sprint: S-2025-08-21A
+[DRY RUN] Staged Sprint: S-2025-08-22-GOVP1
+[DRY RUN] Staged Sprint: S-2025-08-25-ULOG-FND
+[DRY RUN] Staged Sprint: S-2025-09-01-PY-REFAC
+[DRY RUN] Staged Sprint: S-2025-09-01-ULOG-MIG1
+[DRY RUN] Staged Sprint: S-2025-09-08-ULOG-MIG2
+[DRY RUN] Staged Sprint: S-2025-09-15-ULOG-FINAL
+[DRY RUN] Staged Sprint: S-2025-09-22-ULOG-POST
+[DRY RUN] Staged Sprint: S-TPR-PHASE01
+Dry run - Rolling back all changes
+       Migration Summary       
+┌──────────┬───────┬──────────┐
+│ Type     │ Found │ Imported │
+├──────────┼───────┼──────────┤
+│ Projects │ 5     │ 0        │
+│ Sprints  │ 12    │ 0        │
+│ Tasks    │ 83    │ 0        │
+└──────────┴───────┴──────────┘

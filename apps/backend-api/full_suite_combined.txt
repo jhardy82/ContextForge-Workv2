@@ -1,0 +1,765 @@
+================================================= test session starts =================================================
+platform win32 -- Python 3.11.9, pytest-8.4.2, pluggy-1.6.0 -- C:\Users\James\Documents\Github\GHrepos\SCCMScripts\TaskMan-v2\backend-api\.venv\Scripts\python.exe
+cachedir: .pytest_cache
+rootdir: C:\Users\James\Documents\Github\GHrepos\SCCMScripts\TaskMan-v2\backend-api
+configfile: pytest_full.ini
+plugins: anyio-4.12.0, Faker-30.10.0, asyncio-0.26.0, cov-5.0.0, mock-3.15.1
+asyncio: mode=Mode.AUTO, asyncio_default_fixture_loop_scope=function, asyncio_default_test_loop_scope=function
+collecting ... collected 206 items
+
+test_sqlite_integration.py::test_add_item_endpoint PASSED                                                        [  0%]
+tests/integration/api/test_action_lists_api.py::TestActionListIntegration::test_action_list_lifecycle PASSED     [  0%]
+tests/integration/api/test_action_lists_api.py::TestActionListIntegration::test_validation_errors PASSED         [  1%]
+tests/integration/api/test_projects_api.py::TestProjectIntegration::test_project_crud_lifecycle PASSED           [  1%]
+tests/integration/api/test_projects_api.py::TestProjectIntegration::test_project_validation_errors PASSED        [  2%]
+tests/integration/api/test_projects_api.py::TestProjectIntegration::test_project_metrics_endpoint PASSED         [  2%]
+tests/integration/api/test_projects_api.py::TestProjectIntegration::test_duplicate_project_id PASSED             [  3%]
+tests/integration/api/test_sprints_api.py::TestSprintIntegration::test_sprint_management PASSED                  [  3%]
+tests/integration/api/test_sprints_api.py::TestSprintIntegration::test_sprint_validation_errors PASSED           [  4%]
+tests/integration/api/test_sprints_api.py::TestSprintIntegration::test_sprint_velocity_calculation PASSED        [  4%]
+tests/integration/api/test_tasks_api.py::TestTaskIntegration::test_create_task_full_lifecycle PASSED             [  5%]
+tests/integration/api/test_tasks_api.py::TestTaskIntegration::test_task_validation_errors PASSED                 [  5%]
+tests/integration/api/test_tasks_api.py::TestTaskIntegration::test_list_tasks_pagination_and_filtering PASSED    [  6%]
+tests/integration/api/test_tasks_api.py::TestTaskIntegration::test_duplicate_task_id PASSED                      [  6%]
+tests/integration/services/test_cross_service_ops.py::test_full_workflow_simulation PASSED                       [  7%]
+tests/integration/services/test_project_sprint_flow.py::test_project_sprint_task_hierarchy PASSED                [  7%]
+tests/integration/services/test_project_sprint_flow.py::test_orphan_prevention PASSED                            [  8%]
+tests/integration/services/test_task_sprint_flow.py::test_task_movement_between_sprints PASSED                   [  8%]
+tests/integration/services/test_task_sprint_flow.py::test_sprint_closure_logic PASSED                            [  9%]
+tests/integration/services/test_task_validation.py::test_create_task_with_invalid_project PASSED                 [  9%]
+tests/integration/services/test_task_validation.py::test_create_task_with_invalid_sprint PASSED                  [ 10%]
+tests/integration/services/test_task_validation.py::test_update_task_with_invalid_foreign_keys PASSED            [ 10%]
+tests/unit/db/repositories/test_base_repository.py::TestBaseRepository::test_create_success PASSED               [ 11%]
+tests/unit/db/repositories/test_base_repository.py::TestBaseRepository::test_create_conflict PASSED              [ 11%]
+tests/unit/db/repositories/test_base_repository.py::TestBaseRepository::test_find_by_id_success PASSED           [ 12%]
+tests/unit/db/repositories/test_base_repository.py::TestBaseRepository::test_find_by_id_not_found PASSED         [ 12%]
+tests/unit/db/repositories/test_base_repository.py::TestBaseRepository::test_find_all_success PASSED             [ 13%]
+tests/unit/db/repositories/test_base_repository.py::TestBaseRepository::test_update_success PASSED               [ 13%]
+tests/unit/db/repositories/test_base_repository.py::TestBaseRepository::test_update_not_found PASSED             [ 14%]
+tests/unit/db/repositories/test_base_repository.py::TestBaseRepository::test_delete_success PASSED               [ 14%]
+tests/unit/db/repositories/test_base_repository.py::TestBaseRepository::test_exists_true PASSED                  [ 15%]
+tests/unit/db/repositories/test_base_repository.py::TestBaseRepository::test_exists_false PASSED                 [ 15%]
+tests/unit/db/repositories/test_base_repository.py::TestBaseRepository::test_count PASSED                        [ 16%]
+tests/unit/db/repositories/test_project_repository.py::TestProjectRepositoryEdgeCases::test_exists PASSED        [ 16%]
+tests/unit/db/repositories/test_project_repository.py::TestProjectRepositoryEdgeCases::test_get_by_owner PASSED  [ 16%]
+tests/unit/db/repositories/test_project_repository.py::TestProjectRepositoryEdgeCases::test_search_filters_and_pagination PASSED [ 17%]
+tests/unit/db/repositories/test_project_repository.py::TestProjectRepositoryEdgeCases::test_create_project_method PASSED [ 17%]
+tests/unit/db/repositories/test_project_repository.py::TestProjectRepositoryEdgeCases::test_update_project_method PASSED [ 18%]
+tests/unit/db/repositories/test_repositories.py::TestProjectRepository::test_find_by_status FAILED               [ 18%]
+tests/unit/db/repositories/test_repositories.py::TestProjectRepository::test_find_active_projects FAILED         [ 19%]
+tests/unit/db/repositories/test_repositories.py::TestSprintRepository::test_find_by_status FAILED                [ 19%]
+tests/unit/db/repositories/test_repositories.py::TestSprintRepository::test_find_active_sprints FAILED           [ 20%]
+tests/unit/db/repositories/test_repositories.py::TestActionListRepository::test_find_by_owner FAILED             [ 20%]
+tests/unit/db/repositories/test_repositories.py::TestActionListRepository::test_find_orphaned FAILED             [ 21%]
+tests/unit/db/repositories/test_sprint_repository.py::TestSprintRepositoryEdgeCases::test_exists PASSED          [ 21%]
+tests/unit/db/repositories/test_sprint_repository.py::TestSprintRepositoryEdgeCases::test_get_by_project PASSED  [ 22%]
+tests/unit/db/repositories/test_sprint_repository.py::TestSprintRepositoryEdgeCases::test_get_active_sprints PASSED [ 22%]
+tests/unit/db/repositories/test_sprint_repository.py::TestSprintRepositoryEdgeCases::test_search_sprints PASSED  [ 23%]
+tests/unit/db/repositories/test_sprint_repository.py::TestSprintRepositoryEdgeCases::test_create_and_update_sprint_helpers PASSED [ 23%]
+tests/unit/db/repositories/test_task_repository.py::TestTaskRepository::test_find_by_status PASSED               [ 24%]
+tests/unit/db/repositories/test_task_repository.py::TestTaskRepository::test_find_by_priority PASSED             [ 24%]
+tests/unit/db/repositories/test_task_repository.py::TestTaskRepository::test_find_by_owner PASSED                [ 25%]
+tests/unit/db/repositories/test_task_repository.py::TestTaskRepository::test_find_by_project PASSED              [ 25%]
+tests/unit/db/repositories/test_task_repository.py::TestTaskRepository::test_find_by_project_with_status_filter PASSED [ 26%]
+tests/unit/db/repositories/test_task_repository.py::TestTaskRepository::test_find_by_sprint PASSED               [ 26%]
+tests/unit/db/repositories/test_task_repository.py::TestTaskRepository::test_find_by_status_and_priority PASSED  [ 27%]
+tests/unit/db/repositories/test_task_repository.py::TestTaskRepository::test_find_blocked_tasks PASSED           [ 27%]
+tests/unit/db/repositories/test_task_repository.py::TestTaskRepository::test_find_high_priority_tasks PASSED     [ 28%]
+tests/unit/db/test_connection_manager.py::test_init_creates_engines FAILED                                       [ 28%]
+tests/unit/db/test_connection_manager.py::test_get_session_primary_success FAILED                                [ 29%]
+tests/unit/db/test_connection_manager.py::test_get_session_failover PASSED                                       [ 29%]
+tests/unit/db/test_connection_manager.py::test_health_check_reporting PASSED                                     [ 30%]
+tests/unit/db/test_connection_manager.py::test_health_check_primary_down PASSED                                  [ 30%]
+tests/unit/schemas/test_schemas.py::TestProjectSchemas::test_project_create_request_valid FAILED                 [ 31%]
+tests/unit/schemas/test_schemas.py::TestProjectSchemas::test_project_id_pattern_validation PASSED                [ 31%]
+tests/unit/schemas/test_schemas.py::TestProjectSchemas::test_project_update_request_partial PASSED               [ 32%]
+tests/unit/schemas/test_schemas.py::TestProjectSchemas::test_project_response_serialization PASSED               [ 32%]
+tests/unit/schemas/test_schemas.py::TestSprintSchemas::test_sprint_create_request_valid FAILED                   [ 33%]
+tests/unit/schemas/test_schemas.py::TestSprintSchemas::test_sprint_id_pattern_validation PASSED                  [ 33%]
+tests/unit/schemas/test_schemas.py::TestSprintSchemas::test_sprint_velocity_points_non_negative PASSED           [ 33%]
+tests/unit/schemas/test_schemas.py::TestSprintSchemas::test_sprint_update_request_partial PASSED                 [ 34%]
+tests/unit/schemas/test_schemas.py::TestSprintSchemas::test_sprint_response_with_metrics FAILED                  [ 34%]
+tests/unit/schemas/test_schemas.py::TestActionListSchemas::test_action_list_create_request_valid PASSED          [ 35%]
+tests/unit/schemas/test_schemas.py::TestActionListSchemas::test_action_list_with_associations PASSED             [ 35%]
+tests/unit/schemas/test_schemas.py::TestActionListSchemas::test_action_list_soft_delete_fields FAILED            [ 36%]
+tests/unit/schemas/test_schemas.py::TestActionListSchemas::test_action_list_update_request_partial PASSED        [ 36%]
+tests/unit/schemas/test_schemas.py::TestActionListSchemas::test_action_list_response_with_metadata PASSED        [ 37%]
+tests/unit/schemas/test_schemas.py::TestBaseSchemaConfiguration::test_strict_type_validation FAILED              [ 37%]
+tests/unit/schemas/test_schemas.py::TestBaseSchemaConfiguration::test_from_attributes_orm_mode FAILED            [ 38%]
+tests/unit/schemas/test_task_schemas.py::TestTaskCreateRequest::test_valid_task_create_request PASSED            [ 38%]
+tests/unit/schemas/test_task_schemas.py::TestTaskCreateRequest::test_task_id_pattern_validation_success PASSED   [ 39%]
+tests/unit/schemas/test_task_schemas.py::TestTaskCreateRequest::test_task_id_pattern_validation_failure FAILED   [ 39%]
+tests/unit/schemas/test_task_schemas.py::TestTaskCreateRequest::test_required_fields_validation FAILED           [ 40%]
+tests/unit/schemas/test_task_schemas.py::TestTaskCreateRequest::test_title_max_length_validation PASSED          [ 40%]
+tests/unit/schemas/test_task_schemas.py::TestTaskCreateRequest::test_estimate_points_non_negative PASSED         [ 41%]
+tests/unit/schemas/test_task_schemas.py::TestTaskCreateRequest::test_business_value_score_range FAILED           [ 41%]
+tests/unit/schemas/test_task_schemas.py::TestTaskCreateRequest::test_enum_field_validation FAILED                [ 42%]
+tests/unit/schemas/test_task_schemas.py::TestTaskCreateRequest::test_default_values PASSED                       [ 42%]
+tests/unit/schemas/test_task_schemas.py::TestTaskUpdateRequest::test_partial_update_all_fields_optional PASSED   [ 43%]
+tests/unit/schemas/test_task_schemas.py::TestTaskUpdateRequest::test_update_with_multiple_fields PASSED          [ 43%]
+tests/unit/schemas/test_task_schemas.py::TestTaskUpdateRequest::test_update_validation_rules_still_apply PASSED  [ 44%]
+tests/unit/schemas/test_task_schemas.py::TestTaskResponse::test_response_from_orm_model FAILED                   [ 44%]
+tests/unit/schemas/test_task_schemas.py::TestTaskResponse::test_response_serialization FAILED                    [ 45%]
+tests/unit/services/test_base_service.py::TestBaseServiceCreate::test_create_success PASSED                      [ 45%]
+tests/unit/services/test_base_service.py::TestBaseServiceCreate::test_create_conflict_error PASSED               [ 46%]
+tests/unit/services/test_base_service.py::TestBaseServiceGet::test_get_success PASSED                            [ 46%]
+tests/unit/services/test_base_service.py::TestBaseServiceGet::test_get_not_found PASSED                          [ 47%]
+tests/unit/services/test_base_service.py::TestBaseServiceUpdate::test_update_success PASSED                      [ 47%]
+tests/unit/services/test_base_service.py::TestBaseServiceUpdate::test_update_not_found PASSED                    [ 48%]
+tests/unit/services/test_base_service.py::TestBaseServiceDelete::test_delete_success PASSED                      [ 48%]
+tests/unit/services/test_base_service.py::TestBaseServiceDelete::test_delete_not_found PASSED                    [ 49%]
+tests/unit/services/test_base_service.py::TestBaseServiceList::test_list_success PASSED                          [ 49%]
+tests/unit/services/test_base_service.py::TestBaseServiceList::test_list_empty_result PASSED                     [ 50%]
+tests/unit/services/test_base_service.py::TestBaseServiceUtility::test_exists_true PASSED                        [ 50%]
+tests/unit/services/test_base_service.py::TestBaseServiceUtility::test_exists_false PASSED                       [ 50%]
+tests/unit/services/test_base_service.py::TestBaseServiceUtility::test_count_success PASSED                      [ 51%]
+tests/unit/services/test_project_service_edge_cases.py::TestProjectServiceBoundaryConditions::test_create_project_with_minimum_fields ERROR [ 51%]
+tests/unit/services/test_project_service_edge_cases.py::TestProjectServiceBoundaryConditions::test_create_project_with_all_fields ERROR [ 52%]
+tests/unit/services/test_project_service_edge_cases.py::TestProjectServiceBoundaryConditions::test_update_project_partial_single_field ERROR [ 52%]
+tests/unit/services/test_project_service_edge_cases.py::TestProjectServiceBoundaryConditions::test_update_project_empty_mission ERROR [ 53%]
+tests/unit/services/test_project_service_edge_cases.py::TestProjectServiceStatusTransitions::test_change_status_success ERROR [ 53%]
+tests/unit/services/test_project_service_edge_cases.py::TestProjectServiceStatusTransitions::test_change_status_project_not_found ERROR [ 54%]
+tests/unit/services/test_project_service_edge_cases.py::TestProjectServiceSprintManagement::test_add_sprint_to_project ERROR [ 54%]
+tests/unit/services/test_project_service_edge_cases.py::TestProjectServiceSprintManagement::test_add_duplicate_sprint_idempotent ERROR [ 55%]
+tests/unit/services/test_project_service_edge_cases.py::TestProjectServiceSprintManagement::test_remove_sprint_from_project ERROR [ 55%]
+tests/unit/services/test_project_service_edge_cases.py::TestProjectServiceMetrics::test_get_metrics_no_tasks ERROR [ 56%]
+tests/unit/services/test_project_service_edge_cases.py::TestProjectServiceMetrics::test_get_metrics_project_not_found ERROR [ 56%]
+tests/unit/services/test_project_service_edge_cases.py::TestProjectServiceSearchAndFiltering::test_get_by_status_no_results ERROR [ 57%]
+tests/unit/services/test_project_service_edge_cases.py::TestProjectServiceSearchAndFiltering::test_get_by_owner_no_results ERROR [ 57%]
+tests/unit/services/test_services.py::TestProjectService::test_get_metrics_success ERROR                         [ 58%]
+tests/unit/services/test_services.py::TestProjectService::test_add_sprint ERROR                                  [ 58%]
+tests/unit/services/test_services.py::TestProjectService::test_remove_sprint ERROR                               [ 59%]
+tests/unit/services/test_services.py::TestProjectService::test_change_status ERROR                               [ 59%]
+tests/unit/services/test_services.py::TestProjectService::test_get_by_status ERROR                               [ 60%]
+tests/unit/services/test_services.py::TestProjectService::test_get_by_owner ERROR                                [ 60%]
+tests/unit/services/test_services.py::TestSprintService::test_calculate_velocity ERROR                           [ 61%]
+tests/unit/services/test_services.py::TestSprintService::test_get_burndown ERROR                                 [ 61%]
+tests/unit/services/test_services.py::TestSprintService::test_change_status ERROR                                [ 62%]
+tests/unit/services/test_services.py::TestSprintService::test_get_current_sprints ERROR                          [ 62%]
+tests/unit/services/test_services.py::TestSprintService::test_get_by_project ERROR                               [ 63%]
+tests/unit/services/test_services.py::TestSprintService::test_update_metrics ERROR                               [ 63%]
+tests/unit/services/test_services.py::TestActionListService::test_reorder_items_success ERROR                    [ 64%]
+tests/unit/services/test_services.py::TestActionListService::test_reorder_items_invalid_length ERROR             [ 64%]
+tests/unit/services/test_services.py::TestActionListService::test_mark_complete ERROR                            [ 65%]
+tests/unit/services/test_services.py::TestActionListService::test_add_item ERROR                                 [ 65%]
+tests/unit/services/test_services.py::TestActionListService::test_remove_item ERROR                              [ 66%]
+tests/unit/services/test_services.py::TestActionListService::test_get_orphaned ERROR                             [ 66%]
+tests/unit/services/test_services.py::TestActionListService::test_get_soft_deleted ERROR                         [ 66%]
+tests/unit/services/test_sprint_service_edge_cases.py::TestSprintServiceMetrics::test_calculate_velocity_mixed_tasks ERROR [ 67%]
+tests/unit/services/test_sprint_service_edge_cases.py::TestSprintServiceMetrics::test_get_burndown_calculations ERROR [ 67%]
+tests/unit/services/test_sprint_service_edge_cases.py::TestSprintServiceSerialization::test_deserialize_maps_primary_project PASSED [ 68%]
+tests/unit/services/test_task_service.py::TestTaskServiceStatusTransitions::test_change_status_valid_transition FAILED [ 68%]
+tests/unit/services/test_task_service.py::TestTaskServiceStatusTransitions::test_change_status_invalid_transition PASSED [ 69%]
+tests/unit/services/test_task_service.py::TestTaskServiceStatusTransitions::test_change_status_not_found FAILED  [ 69%]
+tests/unit/services/test_task_service.py::TestTaskServiceStatusValidation::test_is_valid_transition_new_to_ready PASSED [ 70%]
+tests/unit/services/test_task_service.py::TestTaskServiceStatusValidation::test_is_valid_transition_ready_to_in_progress PASSED [ 70%]
+tests/unit/services/test_task_service.py::TestTaskServiceStatusValidation::test_is_valid_transition_done_to_any_is_invalid PASSED [ 71%]
+tests/unit/services/test_task_service.py::TestTaskServiceAssignment::test_assign_to_sprint FAILED                [ 71%]
+tests/unit/services/test_task_service.py::TestTaskServiceAssignment::test_assign_to_project FAILED               [ 72%]
+tests/unit/services/test_task_service.py::TestTaskServiceBulkOperations::test_bulk_update_success FAILED         [ 72%]
+tests/unit/services/test_task_service.py::TestTaskServiceBulkOperations::test_bulk_update_fails_fast FAILED      [ 73%]
+tests/unit/services/test_task_service.py::TestTaskServiceSearch::test_search_by_status FAILED                    [ 73%]
+tests/unit/services/test_task_service.py::TestTaskServiceSearch::test_search_by_status_and_priority FAILED       [ 74%]
+tests/unit/services/test_task_service.py::TestTaskServiceSearch::test_get_high_priority_tasks FAILED             [ 74%]
+tests/unit/services/test_task_service.py::TestTaskServiceSearch::test_get_blocked_tasks FAILED                   [ 75%]
+tests/unit/services/test_task_service_edge_cases.py::TestTaskServiceStatusTransitionEdgeCases::test_valid_transition_new_to_ready FAILED [ 75%]
+tests/unit/services/test_task_service_edge_cases.py::TestTaskServiceStatusTransitionEdgeCases::test_valid_transition_in_progress_to_blocked FAILED [ 76%]
+tests/unit/services/test_task_service_edge_cases.py::TestTaskServiceStatusTransitionEdgeCases::test_valid_transition_in_progress_to_done FAILED [ 76%]
+tests/unit/services/test_task_service_edge_cases.py::TestTaskServiceStatusTransitionEdgeCases::test_invalid_transition_done_to_new FAILED [ 77%]
+tests/unit/services/test_task_service_edge_cases.py::TestTaskServiceStatusTransitionEdgeCases::test_invalid_transition_done_to_in_progress PASSED [ 77%]
+tests/unit/services/test_task_service_edge_cases.py::TestTaskServiceStatusTransitionEdgeCases::test_invalid_transition_dropped_to_ready FAILED [ 78%]
+tests/unit/services/test_task_service_edge_cases.py::TestTaskServiceStatusTransitionEdgeCases::test_invalid_transition_new_to_done PASSED [ 78%]
+tests/unit/services/test_task_service_edge_cases.py::TestTaskServiceStatusTransitionEdgeCases::test_invalid_transition_ready_to_blocked PASSED [ 79%]
+tests/unit/services/test_task_service_edge_cases.py::TestTaskServiceBulkOperationEdgeCases::test_bulk_update_partial_failure_fails_fast FAILED [ 79%]
+tests/unit/services/test_task_service_edge_cases.py::TestTaskServiceBulkOperationEdgeCases::test_bulk_update_empty_list PASSED [ 80%]
+tests/unit/services/test_task_service_edge_cases.py::TestTaskServiceAssignmentEdgeCases::test_assign_to_nonexistent_sprint FAILED [ 80%]
+tests/unit/services/test_task_service_edge_cases.py::TestTaskServiceAssignmentEdgeCases::test_assign_to_nonexistent_project FAILED [ 81%]
+tests/unit/test_config.py::TestDatabaseConfig::test_valid_database_config PASSED                                 [ 81%]
+tests/unit/test_config.py::TestDatabaseConfig::test_connection_string_generation PASSED                          [ 82%]
+tests/unit/test_config.py::TestDatabaseConfig::test_async_connection_string_generation PASSED                    [ 82%]
+tests/unit/test_config.py::TestDatabaseConfig::test_invalid_port_too_low PASSED                                  [ 83%]
+tests/unit/test_config.py::TestDatabaseConfig::test_invalid_port_too_high PASSED                                 [ 83%]
+tests/unit/test_config.py::TestDatabaseConfig::test_empty_user_rejected PASSED                                   [ 83%]
+tests/unit/test_config.py::TestDatabaseConfig::test_default_values PASSED                                        [ 84%]
+tests/unit/test_config.py::TestRedisConfig::test_valid_redis_config PASSED                                       [ 84%]
+tests/unit/test_config.py::TestRedisConfig::test_default_values PASSED                                           [ 85%]
+tests/unit/test_config.py::TestRedisConfig::test_invalid_url_pattern PASSED                                      [ 85%]
+tests/unit/test_config.py::TestRedisConfig::test_timeout_validation PASSED                                       [ 86%]
+tests/unit/test_config.py::TestRedisConfig::test_db_number_validation PASSED                                     [ 86%]
+tests/unit/test_config.py::TestSettings::test_valid_settings_development FAILED                                  [ 87%]
+tests/unit/test_config.py::TestSettings::test_valid_settings_production FAILED                                   [ 87%]
+tests/unit/test_config.py::TestSettings::test_production_rejects_insecure_secret_key PASSED                      [ 88%]
+tests/unit/test_config.py::TestSettings::test_production_rejects_insecure_jwt_secret PASSED                      [ 88%]
+tests/unit/test_config.py::TestSettings::test_development_allows_insecure_secrets FAILED                         [ 89%]
+tests/unit/test_config.py::TestSettings::test_secret_key_min_length_32 PASSED                                    [ 89%]
+tests/unit/test_config.py::TestSettings::test_optional_redis_config FAILED                                       [ 90%]
+tests/unit/test_config.py::TestSettings::test_with_redis_config FAILED                                           [ 90%]
+tests/unit/test_config.py::TestSettings::test_invalid_environment PASSED                                         [ 91%]
+tests/unit/test_config.py::TestSettings::test_extra_fields_rejected PASSED                                       [ 91%]
+tests/unit/test_config.py::TestSettings::test_environment_helpers FAILED                                         [ 92%]
+tests/unit/test_config.py::TestGetSettings::test_settings_cached FAILED                                          [ 92%]
+tests/unit/test_config.py::TestGetSettings::test_cache_clear FAILED                                              [ 93%]
+tests/unit/test_fixtures.py::TestDatabaseConfigFixture::test_fixture_provides_isolated_config PASSED             [ 93%]
+tests/unit/test_fixtures.py::TestDatabaseConfigFixture::test_fixture_connection_string PASSED                    [ 94%]
+tests/unit/test_fixtures.py::TestRedisConfigFixture::test_fixture_provides_isolated_config PASSED                [ 94%]
+tests/unit/test_fixtures.py::TestSettingsFixture::test_fixture_provides_complete_settings ERROR                  [ 95%]
+tests/unit/test_fixtures.py::TestSettingsFixture::test_fixture_includes_database ERROR                           [ 95%]
+tests/unit/test_fixtures.py::TestSettingsFixture::test_fixture_includes_redis ERROR                              [ 96%]
+tests/unit/test_fixtures.py::TestMinimalSettingsFixture::test_fixture_provides_minimal_config ERROR              [ 96%]
+tests/unit/test_fixtures.py::TestProductionLikeFixture::test_fixture_simulates_production ERROR                  [ 97%]
+tests/unit/test_fixtures.py::TestProductionLikeFixture::test_fixture_has_production_database ERROR               [ 97%]
+tests/unit/test_fixtures.py::TestProductionLikeFixture::test_fixture_has_production_redis ERROR                  [ 98%]
+tests/unit/test_fixtures.py::TestCacheClearFixture::test_cache_cleared_between_tests_1 PASSED                    [ 98%]
+tests/unit/test_fixtures.py::TestCacheClearFixture::test_cache_cleared_between_tests_2 PASSED                    [ 99%]
+tests/unit/test_fixtures.py::TestEnvironmentIsolation::test_environment_set_to_testing PASSED                    [ 99%]
+tests/unit/test_fixtures.py::TestEnvironmentIsolation::test_settings_default_to_testing ERROR                    [100%]
+
+======================================================= ERRORS ========================================================
+___________ ERROR at setup of TestProjectServiceBoundaryConditions.test_create_project_with_minimum_fields ____________
+E   TypeError: 'sprints' is an invalid keyword argument for Project
+_____________ ERROR at setup of TestProjectServiceBoundaryConditions.test_create_project_with_all_fields ______________
+E   TypeError: 'sprints' is an invalid keyword argument for Project
+___________ ERROR at setup of TestProjectServiceBoundaryConditions.test_update_project_partial_single_field ___________
+E   TypeError: 'sprints' is an invalid keyword argument for Project
+______________ ERROR at setup of TestProjectServiceBoundaryConditions.test_update_project_empty_mission _______________
+E   TypeError: 'sprints' is an invalid keyword argument for Project
+__________________ ERROR at setup of TestProjectServiceStatusTransitions.test_change_status_success ___________________
+E   TypeError: 'sprints' is an invalid keyword argument for Project
+_____________ ERROR at setup of TestProjectServiceStatusTransitions.test_change_status_project_not_found ______________
+E   TypeError: 'sprints' is an invalid keyword argument for Project
+___________________ ERROR at setup of TestProjectServiceSprintManagement.test_add_sprint_to_project ___________________
+E   TypeError: 'sprints' is an invalid keyword argument for Project
+______________ ERROR at setup of TestProjectServiceSprintManagement.test_add_duplicate_sprint_idempotent ______________
+E   TypeError: 'sprints' is an invalid keyword argument for Project
+________________ ERROR at setup of TestProjectServiceSprintManagement.test_remove_sprint_from_project _________________
+E   TypeError: 'sprints' is an invalid keyword argument for Project
+________________________ ERROR at setup of TestProjectServiceMetrics.test_get_metrics_no_tasks ________________________
+E   TypeError: 'sprints' is an invalid keyword argument for Project
+___________________ ERROR at setup of TestProjectServiceMetrics.test_get_metrics_project_not_found ____________________
+E   TypeError: 'sprints' is an invalid keyword argument for Project
+________________ ERROR at setup of TestProjectServiceSearchAndFiltering.test_get_by_status_no_results _________________
+E   TypeError: 'sprints' is an invalid keyword argument for Project
+_________________ ERROR at setup of TestProjectServiceSearchAndFiltering.test_get_by_owner_no_results _________________
+E   TypeError: 'sprints' is an invalid keyword argument for Project
+____________________________ ERROR at setup of TestProjectService.test_get_metrics_success ____________________________
+E   TypeError: 'sprints' is an invalid keyword argument for Project
+________________________________ ERROR at setup of TestProjectService.test_add_sprint _________________________________
+E   TypeError: 'sprints' is an invalid keyword argument for Project
+_______________________________ ERROR at setup of TestProjectService.test_remove_sprint _______________________________
+E   TypeError: 'sprints' is an invalid keyword argument for Project
+_______________________________ ERROR at setup of TestProjectService.test_change_status _______________________________
+E   TypeError: 'sprints' is an invalid keyword argument for Project
+_______________________________ ERROR at setup of TestProjectService.test_get_by_status _______________________________
+E   TypeError: 'sprints' is an invalid keyword argument for Project
+_______________________________ ERROR at setup of TestProjectService.test_get_by_owner ________________________________
+E   TypeError: 'sprints' is an invalid keyword argument for Project
+_____________________________ ERROR at setup of TestSprintService.test_calculate_velocity _____________________________
+E   TypeError: 'tasks' is an invalid keyword argument for Sprint
+________________________________ ERROR at setup of TestSprintService.test_get_burndown ________________________________
+E   TypeError: 'tasks' is an invalid keyword argument for Sprint
+_______________________________ ERROR at setup of TestSprintService.test_change_status ________________________________
+E   TypeError: 'tasks' is an invalid keyword argument for Sprint
+____________________________ ERROR at setup of TestSprintService.test_get_current_sprints _____________________________
+E   TypeError: 'tasks' is an invalid keyword argument for Sprint
+_______________________________ ERROR at setup of TestSprintService.test_get_by_project _______________________________
+E   TypeError: 'tasks' is an invalid keyword argument for Sprint
+_______________________________ ERROR at setup of TestSprintService.test_update_metrics _______________________________
+E   TypeError: 'tasks' is an invalid keyword argument for Sprint
+_________________________ ERROR at setup of TestActionListService.test_reorder_items_success __________________________
+E   TypeError: 'title' is an invalid keyword argument for ActionList
+______________________ ERROR at setup of TestActionListService.test_reorder_items_invalid_length ______________________
+E   TypeError: 'title' is an invalid keyword argument for ActionList
+_____________________________ ERROR at setup of TestActionListService.test_mark_complete ______________________________
+E   TypeError: 'title' is an invalid keyword argument for ActionList
+________________________________ ERROR at setup of TestActionListService.test_add_item ________________________________
+E   TypeError: 'title' is an invalid keyword argument for ActionList
+______________________________ ERROR at setup of TestActionListService.test_remove_item _______________________________
+E   TypeError: 'title' is an invalid keyword argument for ActionList
+______________________________ ERROR at setup of TestActionListService.test_get_orphaned ______________________________
+E   TypeError: 'title' is an invalid keyword argument for ActionList
+____________________________ ERROR at setup of TestActionListService.test_get_soft_deleted ____________________________
+E   TypeError: 'title' is an invalid keyword argument for ActionList
+___________________ ERROR at setup of TestSprintServiceMetrics.test_calculate_velocity_mixed_tasks ____________________
+E   TypeError: 'tasks' is an invalid keyword argument for Sprint
+______________________ ERROR at setup of TestSprintServiceMetrics.test_get_burndown_calculations ______________________
+E   TypeError: 'tasks' is an invalid keyword argument for Sprint
+____________________ ERROR at setup of TestSettingsFixture.test_fixture_provides_complete_settings ____________________
+E   pydantic_core._pydantic_core.ValidationError: 4 validation errors for Settings
+    database_url
+      Extra inputs are not permitted [type=extra_forbidden, input_value='postgresql://contextforg...calhost:5434/taskman_v2', input_type=str]
+        For further information visit https://errors.pydantic.dev/2.12/v/extra_forbidden
+    api_host
+      Extra inputs are not permitted [type=extra_forbidden, input_value='0.0.0.0', input_type=str]
+        For further information visit https://errors.pydantic.dev/2.12/v/extra_forbidden
+    api_port
+      Extra inputs are not permitted [type=extra_forbidden, input_value='3001', input_type=str]
+        For further information visit https://errors.pydantic.dev/2.12/v/extra_forbidden
+    log_level
+      Extra inputs are not permitted [type=extra_forbidden, input_value='DEBUG', input_type=str]
+        For further information visit https://errors.pydantic.dev/2.12/v/extra_forbidden
+________________________ ERROR at setup of TestSettingsFixture.test_fixture_includes_database _________________________
+E   pydantic_core._pydantic_core.ValidationError: 4 validation errors for Settings
+    database_url
+      Extra inputs are not permitted [type=extra_forbidden, input_value='postgresql://contextforg...calhost:5434/taskman_v2', input_type=str]
+        For further information visit https://errors.pydantic.dev/2.12/v/extra_forbidden
+    api_host
+      Extra inputs are not permitted [type=extra_forbidden, input_value='0.0.0.0', input_type=str]
+        For further information visit https://errors.pydantic.dev/2.12/v/extra_forbidden
+    api_port
+      Extra inputs are not permitted [type=extra_forbidden, input_value='3001', input_type=str]
+        For further information visit https://errors.pydantic.dev/2.12/v/extra_forbidden
+    log_level
+      Extra inputs are not permitted [type=extra_forbidden, input_value='DEBUG', input_type=str]
+        For further information visit https://errors.pydantic.dev/2.12/v/extra_forbidden
+__________________________ ERROR at setup of TestSettingsFixture.test_fixture_includes_redis __________________________
+E   pydantic_core._pydantic_core.ValidationError: 4 validation errors for Settings
+    database_url
+      Extra inputs are not permitted [type=extra_forbidden, input_value='postgresql://contextforg...calhost:5434/taskman_v2', input_type=str]
+        For further information visit https://errors.pydantic.dev/2.12/v/extra_forbidden
+    api_host
+      Extra inputs are not permitted [type=extra_forbidden, input_value='0.0.0.0', input_type=str]
+        For further information visit https://errors.pydantic.dev/2.12/v/extra_forbidden
+    api_port
+      Extra inputs are not permitted [type=extra_forbidden, input_value='3001', input_type=str]
+        For further information visit https://errors.pydantic.dev/2.12/v/extra_forbidden
+    log_level
+      Extra inputs are not permitted [type=extra_forbidden, input_value='DEBUG', input_type=str]
+        For further information visit https://errors.pydantic.dev/2.12/v/extra_forbidden
+__________________ ERROR at setup of TestMinimalSettingsFixture.test_fixture_provides_minimal_config __________________
+E   pydantic_core._pydantic_core.ValidationError: 4 validation errors for Settings
+    database_url
+      Extra inputs are not permitted [type=extra_forbidden, input_value='postgresql://contextforg...calhost:5434/taskman_v2', input_type=str]
+        For further information visit https://errors.pydantic.dev/2.12/v/extra_forbidden
+    api_host
+      Extra inputs are not permitted [type=extra_forbidden, input_value='0.0.0.0', input_type=str]
+        For further information visit https://errors.pydantic.dev/2.12/v/extra_forbidden
+    api_port
+      Extra inputs are not permitted [type=extra_forbidden, input_value='3001', input_type=str]
+        For further information visit https://errors.pydantic.dev/2.12/v/extra_forbidden
+    log_level
+      Extra inputs are not permitted [type=extra_forbidden, input_value='DEBUG', input_type=str]
+        For further information visit https://errors.pydantic.dev/2.12/v/extra_forbidden
+____________________ ERROR at setup of TestProductionLikeFixture.test_fixture_simulates_production ____________________
+E   pydantic_core._pydantic_core.ValidationError: 4 validation errors for Settings
+    database_url
+      Extra inputs are not permitted [type=extra_forbidden, input_value='postgresql://contextforg...calhost:5434/taskman_v2', input_type=str]
+        For further information visit https://errors.pydantic.dev/2.12/v/extra_forbidden
+    api_host
+      Extra inputs are not permitted [type=extra_forbidden, input_value='0.0.0.0', input_type=str]
+        For further information visit https://errors.pydantic.dev/2.12/v/extra_forbidden
+    api_port
+      Extra inputs are not permitted [type=extra_forbidden, input_value='3001', input_type=str]
+        For further information visit https://errors.pydantic.dev/2.12/v/extra_forbidden
+    log_level
+      Extra inputs are not permitted [type=extra_forbidden, input_value='DEBUG', input_type=str]
+        For further information visit https://errors.pydantic.dev/2.12/v/extra_forbidden
+__________________ ERROR at setup of TestProductionLikeFixture.test_fixture_has_production_database ___________________
+E   pydantic_core._pydantic_core.ValidationError: 4 validation errors for Settings
+    database_url
+      Extra inputs are not permitted [type=extra_forbidden, input_value='postgresql://contextforg...calhost:5434/taskman_v2', input_type=str]
+        For further information visit https://errors.pydantic.dev/2.12/v/extra_forbidden
+    api_host
+      Extra inputs are not permitted [type=extra_forbidden, input_value='0.0.0.0', input_type=str]
+        For further information visit https://errors.pydantic.dev/2.12/v/extra_forbidden
+    api_port
+      Extra inputs are not permitted [type=extra_forbidden, input_value='3001', input_type=str]
+        For further information visit https://errors.pydantic.dev/2.12/v/extra_forbidden
+    log_level
+      Extra inputs are not permitted [type=extra_forbidden, input_value='DEBUG', input_type=str]
+        For further information visit https://errors.pydantic.dev/2.12/v/extra_forbidden
+____________________ ERROR at setup of TestProductionLikeFixture.test_fixture_has_production_redis ____________________
+E   pydantic_core._pydantic_core.ValidationError: 4 validation errors for Settings
+    database_url
+      Extra inputs are not permitted [type=extra_forbidden, input_value='postgresql://contextforg...calhost:5434/taskman_v2', input_type=str]
+        For further information visit https://errors.pydantic.dev/2.12/v/extra_forbidden
+    api_host
+      Extra inputs are not permitted [type=extra_forbidden, input_value='0.0.0.0', input_type=str]
+        For further information visit https://errors.pydantic.dev/2.12/v/extra_forbidden
+    api_port
+      Extra inputs are not permitted [type=extra_forbidden, input_value='3001', input_type=str]
+        For further information visit https://errors.pydantic.dev/2.12/v/extra_forbidden
+    log_level
+      Extra inputs are not permitted [type=extra_forbidden, input_value='DEBUG', input_type=str]
+        For further information visit https://errors.pydantic.dev/2.12/v/extra_forbidden
+_____________________ ERROR at setup of TestEnvironmentIsolation.test_settings_default_to_testing _____________________
+E   pydantic_core._pydantic_core.ValidationError: 4 validation errors for Settings
+    database_url
+      Extra inputs are not permitted [type=extra_forbidden, input_value='postgresql://contextforg...calhost:5434/taskman_v2', input_type=str]
+        For further information visit https://errors.pydantic.dev/2.12/v/extra_forbidden
+    api_host
+      Extra inputs are not permitted [type=extra_forbidden, input_value='0.0.0.0', input_type=str]
+        For further information visit https://errors.pydantic.dev/2.12/v/extra_forbidden
+    api_port
+      Extra inputs are not permitted [type=extra_forbidden, input_value='3001', input_type=str]
+        For further information visit https://errors.pydantic.dev/2.12/v/extra_forbidden
+    log_level
+      Extra inputs are not permitted [type=extra_forbidden, input_value='DEBUG', input_type=str]
+        For further information visit https://errors.pydantic.dev/2.12/v/extra_forbidden
+====================================================== FAILURES =======================================================
+C:\Users\James\Documents\Github\GHrepos\SCCMScripts\TaskMan-v2\backend-api\.venv\Lib\site-packages\sqlalchemy\orm\decl_base.py:2179: TypeError: 'sprints' is an invalid keyword argument for Project
+C:\Users\James\Documents\Github\GHrepos\SCCMScripts\TaskMan-v2\backend-api\.venv\Lib\site-packages\sqlalchemy\orm\decl_base.py:2179: TypeError: 'sprints' is an invalid keyword argument for Project
+C:\Users\James\Documents\Github\GHrepos\SCCMScripts\TaskMan-v2\backend-api\.venv\Lib\site-packages\sqlalchemy\orm\decl_base.py:2179: TypeError: 'tasks' is an invalid keyword argument for Sprint
+C:\Users\James\Documents\Github\GHrepos\SCCMScripts\TaskMan-v2\backend-api\.venv\Lib\site-packages\sqlalchemy\orm\decl_base.py:2179: TypeError: 'tasks' is an invalid keyword argument for Sprint
+C:\Users\James\Documents\Github\GHrepos\SCCMScripts\TaskMan-v2\backend-api\.venv\Lib\site-packages\sqlalchemy\orm\decl_base.py:2179: TypeError: 'title' is an invalid keyword argument for ActionList
+C:\Users\James\Documents\Github\GHrepos\SCCMScripts\TaskMan-v2\backend-api\.venv\Lib\site-packages\sqlalchemy\orm\decl_base.py:2179: TypeError: 'title' is an invalid keyword argument for ActionList
+C:\Users\James\Documents\Github\GHrepos\SCCMScripts\TaskMan-v2\backend-api\tests\unit\db\test_connection_manager.py:31: AssertionError: assert 0 == 2
+C:\Users\James\Documents\Github\GHrepos\SCCMScripts\TaskMan-v2\backend-api\tests\unit\db\test_connection_manager.py:45: AssertionError: assert <AsyncMock name='mock.__aenter__()' id='2794013687056'> is <AsyncMock spec='AsyncSession' id='2794019455760'>
+C:\Users\James\Documents\Github\GHrepos\SCCMScripts\TaskMan-v2\backend-api\tests\unit\schemas\test_schemas.py:36: AssertionError: assert <ProjectStatu...G: 'planning'> == <ProjectStatu...: 'discovery'>
+C:\Users\James\Documents\Github\GHrepos\SCCMScripts\TaskMan-v2\backend-api\tests\unit\schemas\test_schemas.py:134: AssertionError: assert <SprintStatus...G: 'planning'> == <SprintStatus...ED: 'planned'>
+C:\Users\James\Documents\Github\GHrepos\SCCMScripts\TaskMan-v2\backend-api\tests\unit\schemas\test_schemas.py:236: pydantic_core._pydantic_core.ValidationError: 1 validation error for SprintResponse
+C:\Users\James\Documents\Github\GHrepos\SCCMScripts\TaskMan-v2\backend-api\tests\unit\schemas\test_schemas.py:284: pydantic_core._pydantic_core.ValidationError: 1 validation error for ActionListCreate
+C:\Users\James\Documents\Github\GHrepos\SCCMScripts\TaskMan-v2\backend-api\tests\unit\schemas\test_schemas.py:336: ImportError: cannot import name 'BaseSchema' from 'taskman_api.schemas.base' (C:\Users\James\Documents\Github\GHrepos\SCCMScripts\TaskMan-v2\backend-api\src\taskman_api\schemas\base.py)
+C:\Users\James\Documents\Github\GHrepos\SCCMScripts\TaskMan-v2\backend-api\tests\unit\schemas\test_schemas.py:348: ImportError: cannot import name 'BaseSchema' from 'taskman_api.schemas.base' (C:\Users\James\Documents\Github\GHrepos\SCCMScripts\TaskMan-v2\backend-api\src\taskman_api\schemas\base.py)
+C:\Users\James\Documents\Github\GHrepos\SCCMScripts\TaskMan-v2\backend-api\tests\unit\schemas\test_task_schemas.py:104: assert False
+C:\Users\James\Documents\Github\GHrepos\SCCMScripts\TaskMan-v2\backend-api\tests\unit\schemas\test_task_schemas.py:120: AssertionError: assert False
+C:\Users\James\Documents\Github\GHrepos\SCCMScripts\TaskMan-v2\backend-api\tests\unit\schemas\test_task_schemas.py:182: Failed: DID NOT RAISE <class 'pydantic_core._pydantic_core.ValidationError'>
+C:\Users\James\Documents\Github\GHrepos\SCCMScripts\TaskMan-v2\backend-api\tests\unit\schemas\test_task_schemas.py:206: pydantic_core._pydantic_core.ValidationError: 1 validation error for TaskCreate
+C:\Users\James\Documents\Github\GHrepos\SCCMScripts\TaskMan-v2\backend-api\tests\unit\schemas\test_task_schemas.py:313: pydantic_core._pydantic_core.ValidationError: 1 validation error for TaskResponse
+C:\Users\James\Documents\Github\GHrepos\SCCMScripts\TaskMan-v2\backend-api\tests\unit\schemas\test_task_schemas.py:364: pydantic_core._pydantic_core.ValidationError: 1 validation error for TaskResponse
+C:\Users\James\Documents\Github\GHrepos\SCCMScripts\TaskMan-v2\backend-api\tests\unit\services\test_task_service.py:48: assert False
+C:\Users\James\Documents\Github\GHrepos\SCCMScripts\TaskMan-v2\backend-api\tests\unit\services\test_task_service.py:104: assert False
+C:\Users\James\Documents\Github\GHrepos\SCCMScripts\TaskMan-v2\backend-api\src\taskman_api\repositories\base.py:34: TypeError: object Mock can't be used in 'await' expression
+C:\Users\James\Documents\Github\GHrepos\SCCMScripts\TaskMan-v2\backend-api\src\taskman_api\repositories\base.py:34: TypeError: object Mock can't be used in 'await' expression
+C:\Users\James\Documents\Github\GHrepos\SCCMScripts\TaskMan-v2\backend-api\tests\unit\services\test_task_service.py:245: assert False
+C:\Users\James\Documents\Github\GHrepos\SCCMScripts\TaskMan-v2\backend-api\tests\unit\services\test_task_service.py:289: assert False
+C:\Users\James\Documents\Github\GHrepos\SCCMScripts\TaskMan-v2\backend-api\tests\unit\services\test_task_service.py:310: assert False
+C:\Users\James\Documents\Github\GHrepos\SCCMScripts\TaskMan-v2\backend-api\tests\unit\services\test_task_service.py:336: assert False
+C:\Users\James\Documents\Github\GHrepos\SCCMScripts\TaskMan-v2\backend-api\src\taskman_api\services\task_service.py:409: TypeError: object Mock can't be used in 'await' expression
+C:\Users\James\Documents\Github\GHrepos\SCCMScripts\TaskMan-v2\backend-api\src\taskman_api\services\task_service.py:442: TypeError: object Mock can't be used in 'await' expression
+C:\Users\James\Documents\Github\GHrepos\SCCMScripts\TaskMan-v2\backend-api\tests\unit\services\test_task_service_edge_cases.py:47: assert False
+C:\Users\James\Documents\Github\GHrepos\SCCMScripts\TaskMan-v2\backend-api\tests\unit\services\test_task_service_edge_cases.py:80: assert False
+C:\Users\James\Documents\Github\GHrepos\SCCMScripts\TaskMan-v2\backend-api\tests\unit\services\test_task_service_edge_cases.py:113: assert False
+C:\Users\James\Documents\Github\GHrepos\SCCMScripts\TaskMan-v2\backend-api\tests\unit\services\test_task_service_edge_cases.py:146: AssertionError: assert 'done -> new' in 'invalid status transition: new -> new'
+C:\Users\James\Documents\Github\GHrepos\SCCMScripts\TaskMan-v2\backend-api\tests\unit\services\test_task_service_edge_cases.py:197: assert False
+C:\Users\James\Documents\Github\GHrepos\SCCMScripts\TaskMan-v2\backend-api\tests\unit\services\test_task_service_edge_cases.py:303: assert False
+C:\Users\James\Documents\Github\GHrepos\SCCMScripts\TaskMan-v2\backend-api\src\taskman_api\repositories\base.py:34: TypeError: object Mock can't be used in 'await' expression
+C:\Users\James\Documents\Github\GHrepos\SCCMScripts\TaskMan-v2\backend-api\src\taskman_api\repositories\base.py:34: TypeError: object Mock can't be used in 'await' expression
+C:\Users\James\Documents\Github\GHrepos\SCCMScripts\TaskMan-v2\backend-api\.venv\Lib\site-packages\pydantic_settings\main.py:194: pydantic_core._pydantic_core.ValidationError: 4 validation errors for Settings
+C:\Users\James\Documents\Github\GHrepos\SCCMScripts\TaskMan-v2\backend-api\.venv\Lib\site-packages\pydantic_settings\main.py:194: pydantic_core._pydantic_core.ValidationError: 4 validation errors for Settings
+C:\Users\James\Documents\Github\GHrepos\SCCMScripts\TaskMan-v2\backend-api\.venv\Lib\site-packages\pydantic_settings\main.py:194: pydantic_core._pydantic_core.ValidationError: 4 validation errors for Settings
+C:\Users\James\Documents\Github\GHrepos\SCCMScripts\TaskMan-v2\backend-api\.venv\Lib\site-packages\pydantic_settings\main.py:194: pydantic_core._pydantic_core.ValidationError: 4 validation errors for Settings
+C:\Users\James\Documents\Github\GHrepos\SCCMScripts\TaskMan-v2\backend-api\.venv\Lib\site-packages\pydantic_settings\main.py:194: pydantic_core._pydantic_core.ValidationError: 4 validation errors for Settings
+C:\Users\James\Documents\Github\GHrepos\SCCMScripts\TaskMan-v2\backend-api\.venv\Lib\site-packages\pydantic_settings\main.py:194: pydantic_core._pydantic_core.ValidationError: 4 validation errors for Settings
+C:\Users\James\Documents\Github\GHrepos\SCCMScripts\TaskMan-v2\backend-api\.venv\Lib\site-packages\pydantic_settings\main.py:194: pydantic_core._pydantic_core.ValidationError: 4 validation errors for Settings
+C:\Users\James\Documents\Github\GHrepos\SCCMScripts\TaskMan-v2\backend-api\.venv\Lib\site-packages\pydantic_settings\main.py:194: pydantic_core._pydantic_core.ValidationError: 4 validation errors for Settings
+=============================================== short test summary info ===============================================
+FAILED tests/unit/db/repositories/test_repositories.py::TestProjectRepository::test_find_by_status - TypeError: 'sprints' is an invalid keyword argument for Project
+FAILED tests/unit/db/repositories/test_repositories.py::TestProjectRepository::test_find_active_projects - TypeError: 'sprints' is an invalid keyword argument for Project
+FAILED tests/unit/db/repositories/test_repositories.py::TestSprintRepository::test_find_by_status - TypeError: 'tasks' is an invalid keyword argument for Sprint
+FAILED tests/unit/db/repositories/test_repositories.py::TestSprintRepository::test_find_active_sprints - TypeError: 'tasks' is an invalid keyword argument for Sprint
+FAILED tests/unit/db/repositories/test_repositories.py::TestActionListRepository::test_find_by_owner - TypeError: 'title' is an invalid keyword argument for ActionList
+FAILED tests/unit/db/repositories/test_repositories.py::TestActionListRepository::test_find_orphaned - TypeError: 'title' is an invalid keyword argument for ActionList
+FAILED tests/unit/db/test_connection_manager.py::test_init_creates_engines - AssertionError: assert 0 == 2
+ +  where 0 = <MagicMock name='create_async_engine' id='2794017612112'>.call_count
+FAILED tests/unit/db/test_connection_manager.py::test_get_session_primary_success - AssertionError: assert <AsyncMock name='mock.__aenter__()' id='2794013687056'> is <AsyncMock spec='AsyncSession' id='2794019455760'>
+FAILED tests/unit/schemas/test_schemas.py::TestProjectSchemas::test_project_create_request_valid - AssertionError: assert <ProjectStatu...G: 'planning'> == <ProjectStatu...: 'discovery'>
+  
+  - discovery
+  + planning
+FAILED tests/unit/schemas/test_schemas.py::TestSprintSchemas::test_sprint_create_request_valid - AssertionError: assert <SprintStatus...G: 'planning'> == <SprintStatus...ED: 'planned'>
+  
+  - planned
+  + planning
+FAILED tests/unit/schemas/test_schemas.py::TestSprintSchemas::test_sprint_response_with_metrics - pydantic_core._pydantic_core.ValidationError: 1 validation error for SprintResponse
+dependencies
+  Input should be a valid list [type=list_type, input_value={}, input_type=dict]
+    For further information visit https://errors.pydantic.dev/2.12/v/list_type
+FAILED tests/unit/schemas/test_schemas.py::TestActionListSchemas::test_action_list_soft_delete_fields - pydantic_core._pydantic_core.ValidationError: 1 validation error for ActionListCreate
+status
+  Input should be 'active' or 'archived' [type=enum, input_value='deleted', input_type=str]
+    For further information visit https://errors.pydantic.dev/2.12/v/enum
+FAILED tests/unit/schemas/test_schemas.py::TestBaseSchemaConfiguration::test_strict_type_validation - ImportError: cannot import name 'BaseSchema' from 'taskman_api.schemas.base' (C:\Users\James\Documents\Github\GHrepos\SCCMScripts\TaskMan-v2\backend-api\src\taskman_api\schemas\base.py)
+FAILED tests/unit/schemas/test_schemas.py::TestBaseSchemaConfiguration::test_from_attributes_orm_mode - ImportError: cannot import name 'BaseSchema' from 'taskman_api.schemas.base' (C:\Users\James\Documents\Github\GHrepos\SCCMScripts\TaskMan-v2\backend-api\src\taskman_api\schemas\base.py)
+FAILED tests/unit/schemas/test_task_schemas.py::TestTaskCreateRequest::test_task_id_pattern_validation_failure - assert False
+ +  where False = any(<generator object TestTaskCreateRequest.test_task_id_pattern_validation_failure.<locals>.<genexpr> at 0x0000028A88851D20>)
+FAILED tests/unit/schemas/test_task_schemas.py::TestTaskCreateRequest::test_required_fields_validation - AssertionError: assert False
+ +  where False = <built-in method issubset of set object at 0x0000028A887FD700>({'description', 'owner', 'primary_project', 'primary_sprint', 'summary', 'title'})
+ +    where <built-in method issubset of set object at 0x0000028A887FD700> = {'description', 'owner', 'primary_project', 'primary_sprint', 'priority', 'summary', ...}.issubset
+FAILED tests/unit/schemas/test_task_schemas.py::TestTaskCreateRequest::test_business_value_score_range - Failed: DID NOT RAISE <class 'pydantic_core._pydantic_core.ValidationError'>
+FAILED tests/unit/schemas/test_task_schemas.py::TestTaskCreateRequest::test_enum_field_validation - pydantic_core._pydantic_core.ValidationError: 1 validation error for TaskCreate
+severity
+  Input should be 'critical', 'high', 'medium' or 'low' [type=enum, input_value=<Severity.SEV2: 'sev2'>, input_type=Severity]
+    For further information visit https://errors.pydantic.dev/2.12/v/enum
+FAILED tests/unit/schemas/test_task_schemas.py::TestTaskResponse::test_response_from_orm_model - pydantic_core._pydantic_core.ValidationError: 1 validation error for TaskResponse
+automation_candidate
+  Input should be a valid boolean [type=bool_type, input_value=None, input_type=NoneType]
+    For further information visit https://errors.pydantic.dev/2.12/v/bool_type
+FAILED tests/unit/schemas/test_task_schemas.py::TestTaskResponse::test_response_serialization - pydantic_core._pydantic_core.ValidationError: 1 validation error for TaskResponse
+automation_candidate
+  Input should be a valid boolean [type=bool_type, input_value=None, input_type=NoneType]
+    For further information visit https://errors.pydantic.dev/2.12/v/bool_type
+FAILED tests/unit/services/test_task_service.py::TestTaskServiceStatusTransitions::test_change_status_valid_transition - assert False
+ +  where False = isinstance(<taskman_api.core.result.Err object at 0x0000028A881641D0>, Ok)
+FAILED tests/unit/services/test_task_service.py::TestTaskServiceStatusTransitions::test_change_status_not_found - assert False
+ +  where False = isinstance(<taskman_api.core.result.Ok object at 0x0000028A88796950>, Err)
+FAILED tests/unit/services/test_task_service.py::TestTaskServiceAssignment::test_assign_to_sprint - TypeError: object Mock can't be used in 'await' expression
+FAILED tests/unit/services/test_task_service.py::TestTaskServiceAssignment::test_assign_to_project - TypeError: object Mock can't be used in 'await' expression
+FAILED tests/unit/services/test_task_service.py::TestTaskServiceBulkOperations::test_bulk_update_success - assert False
+ +  where False = isinstance(<taskman_api.core.result.Err object at 0x0000028A889A1590>, Ok)
+FAILED tests/unit/services/test_task_service.py::TestTaskServiceBulkOperations::test_bulk_update_fails_fast - assert False
+ +  where False = isinstance(AppError("9 validation errors for TaskResponse\nid\n  Field required [type=missing, input_value={'value': <Task(id=T-TEST... status='in_progress')>}, input_type=dict]\n    For further information visit https://errors.pydantic.dev/2.12/v/missing\ntitle\n  Field required [type=missing, input_value={'value': <Task(id=T-TEST... status='in_progress')>}, input_type=dict]\n    For further information visit https://errors.pydantic.dev/2.12/v/missing\nsummary\n  Field required [type=missing, input_value={'value': <Task(id=T-TEST... status='in_progress')>}, input_type=dict]\n    For further information visit https://errors.pydantic.dev/2.12/v/missing\ndescription\n  Field required [type=missing, input_value={'value': <Task(id=T-TEST... status='in_progress')>}, input_type=dict]\n    For further information visit https://errors.pydantic.dev/2.12/v/missing\nstatus\n  Field required [type=missing, input_value={'value': <Task(id=T-TEST... status='in_progress')>}, input_type=dict]\n    For further information visit https://errors.pydantic.dev/2.12/v/missing\nowner\n  Field required [type=missing, input_value={'value': <Task(id=T-TEST... status='in_progress')>}, input_type=dict]\n    For further information visit https://errors.pydantic.dev/2.12/v/missing\npriority\n  Field required [type=missing, input_value={'value': <Task(id=T-TEST... status='in_progress')>}, input_type=dict]\n    For further information visit https://errors.pydantic.dev/2.12/v/missing\nprimary_project\n  Field required [type=missing, input_value={'value': <Task(id=T-TEST... status='in_progress')>}, input_type=dict]\n    For further information visit https://errors.pydantic.dev/2.12/v/missing\nprimary_sprint\n  Field required [type=missing, input_value={'value': <Task(id=T-TEST... status='in_progress')>}, input_type=dict]\n    For further information visit https://errors.pydantic.dev/2.12/v/missing"), NotFoundError)
+FAILED tests/unit/services/test_task_service.py::TestTaskServiceSearch::test_search_by_status - assert False
+ +  where False = isinstance(<taskman_api.core.result.Err object at 0x0000028A888BC890>, Ok)
+FAILED tests/unit/services/test_task_service.py::TestTaskServiceSearch::test_search_by_status_and_priority - assert False
+ +  where False = isinstance(<taskman_api.core.result.Err object at 0x0000028A87EAC3D0>, Ok)
+FAILED tests/unit/services/test_task_service.py::TestTaskServiceSearch::test_get_high_priority_tasks - TypeError: object Mock can't be used in 'await' expression
+FAILED tests/unit/services/test_task_service.py::TestTaskServiceSearch::test_get_blocked_tasks - TypeError: object Mock can't be used in 'await' expression
+FAILED tests/unit/services/test_task_service_edge_cases.py::TestTaskServiceStatusTransitionEdgeCases::test_valid_transition_new_to_ready - assert False
+ +  where False = isinstance(<taskman_api.core.result.Err object at 0x0000028A888B0890>, Ok)
+FAILED tests/unit/services/test_task_service_edge_cases.py::TestTaskServiceStatusTransitionEdgeCases::test_valid_transition_in_progress_to_blocked - assert False
+ +  where False = isinstance(<taskman_api.core.result.Err object at 0x0000028A889FEC50>, Ok)
+FAILED tests/unit/services/test_task_service_edge_cases.py::TestTaskServiceStatusTransitionEdgeCases::test_valid_transition_in_progress_to_done - assert False
+ +  where False = isinstance(<taskman_api.core.result.Err object at 0x0000028A88A34C90>, Ok)
+FAILED tests/unit/services/test_task_service_edge_cases.py::TestTaskServiceStatusTransitionEdgeCases::test_invalid_transition_done_to_new - AssertionError: assert 'done -> new' in 'invalid status transition: new -> new'
+ +  where 'invalid status transition: new -> new' = <built-in method lower of str object at 0x0000028A8820A790>()
+ +    where <built-in method lower of str object at 0x0000028A8820A790> = 'Invalid status transition: new -> new'.lower
+ +      where 'Invalid status transition: new -> new' = ValidationError('Invalid status transition: new -> new').message
+FAILED tests/unit/services/test_task_service_edge_cases.py::TestTaskServiceStatusTransitionEdgeCases::test_invalid_transition_dropped_to_ready - assert False
+ +  where False = isinstance(<taskman_api.core.result.Ok object at 0x0000028A88A4E990>, Err)
+FAILED tests/unit/services/test_task_service_edge_cases.py::TestTaskServiceBulkOperationEdgeCases::test_bulk_update_partial_failure_fails_fast - assert False
+ +  where False = isinstance(AppError("9 validation errors for TaskResponse\nid\n  Field required [type=missing, input_value={'value': <Task(id=T-TEST... status='in_progress')>}, input_type=dict]\n    For further information visit https://errors.pydantic.dev/2.12/v/missing\ntitle\n  Field required [type=missing, input_value={'value': <Task(id=T-TEST... status='in_progress')>}, input_type=dict]\n    For further information visit https://errors.pydantic.dev/2.12/v/missing\nsummary\n  Field required [type=missing, input_value={'value': <Task(id=T-TEST... status='in_progress')>}, input_type=dict]\n    For further information visit https://errors.pydantic.dev/2.12/v/missing\ndescription\n  Field required [type=missing, input_value={'value': <Task(id=T-TEST... status='in_progress')>}, input_type=dict]\n    For further information visit https://errors.pydantic.dev/2.12/v/missing\nstatus\n  Field required [type=missing, input_value={'value': <Task(id=T-TEST... status='in_progress')>}, input_type=dict]\n    For further information visit https://errors.pydantic.dev/2.12/v/missing\nowner\n  Field required [type=missing, input_value={'value': <Task(id=T-TEST... status='in_progress')>}, input_type=dict]\n    For further information visit https://errors.pydantic.dev/2.12/v/missing\npriority\n  Field required [type=missing, input_value={'value': <Task(id=T-TEST... status='in_progress')>}, input_type=dict]\n    For further information visit https://errors.pydantic.dev/2.12/v/missing\nprimary_project\n  Field required [type=missing, input_value={'value': <Task(id=T-TEST... status='in_progress')>}, input_type=dict]\n    For further information visit https://errors.pydantic.dev/2.12/v/missing\nprimary_sprint\n  Field required [type=missing, input_value={'value': <Task(id=T-TEST... status='in_progress')>}, input_type=dict]\n    For further information visit https://errors.pydantic.dev/2.12/v/missing"), NotFoundError)
+FAILED tests/unit/services/test_task_service_edge_cases.py::TestTaskServiceAssignmentEdgeCases::test_assign_to_nonexistent_sprint - TypeError: object Mock can't be used in 'await' expression
+FAILED tests/unit/services/test_task_service_edge_cases.py::TestTaskServiceAssignmentEdgeCases::test_assign_to_nonexistent_project - TypeError: object Mock can't be used in 'await' expression
+FAILED tests/unit/test_config.py::TestSettings::test_valid_settings_development - pydantic_core._pydantic_core.ValidationError: 4 validation errors for Settings
+database_url
+  Extra inputs are not permitted [type=extra_forbidden, input_value='postgresql://contextforg...calhost:5434/taskman_v2', input_type=str]
+    For further information visit https://errors.pydantic.dev/2.12/v/extra_forbidden
+api_host
+  Extra inputs are not permitted [type=extra_forbidden, input_value='0.0.0.0', input_type=str]
+    For further information visit https://errors.pydantic.dev/2.12/v/extra_forbidden
+api_port
+  Extra inputs are not permitted [type=extra_forbidden, input_value='3001', input_type=str]
+    For further information visit https://errors.pydantic.dev/2.12/v/extra_forbidden
+log_level
+  Extra inputs are not permitted [type=extra_forbidden, input_value='DEBUG', input_type=str]
+    For further information visit https://errors.pydantic.dev/2.12/v/extra_forbidden
+FAILED tests/unit/test_config.py::TestSettings::test_valid_settings_production - pydantic_core._pydantic_core.ValidationError: 4 validation errors for Settings
+database_url
+  Extra inputs are not permitted [type=extra_forbidden, input_value='postgresql://contextforg...calhost:5434/taskman_v2', input_type=str]
+    For further information visit https://errors.pydantic.dev/2.12/v/extra_forbidden
+api_host
+  Extra inputs are not permitted [type=extra_forbidden, input_value='0.0.0.0', input_type=str]
+    For further information visit https://errors.pydantic.dev/2.12/v/extra_forbidden
+api_port
+  Extra inputs are not permitted [type=extra_forbidden, input_value='3001', input_type=str]
+    For further information visit https://errors.pydantic.dev/2.12/v/extra_forbidden
+log_level
+  Extra inputs are not permitted [type=extra_forbidden, input_value='DEBUG', input_type=str]
+    For further information visit https://errors.pydantic.dev/2.12/v/extra_forbidden
+FAILED tests/unit/test_config.py::TestSettings::test_development_allows_insecure_secrets - pydantic_core._pydantic_core.ValidationError: 4 validation errors for Settings
+database_url
+  Extra inputs are not permitted [type=extra_forbidden, input_value='postgresql://contextforg...calhost:5434/taskman_v2', input_type=str]
+    For further information visit https://errors.pydantic.dev/2.12/v/extra_forbidden
+api_host
+  Extra inputs are not permitted [type=extra_forbidden, input_value='0.0.0.0', input_type=str]
+    For further information visit https://errors.pydantic.dev/2.12/v/extra_forbidden
+api_port
+  Extra inputs are not permitted [type=extra_forbidden, input_value='3001', input_type=str]
+    For further information visit https://errors.pydantic.dev/2.12/v/extra_forbidden
+log_level
+  Extra inputs are not permitted [type=extra_forbidden, input_value='DEBUG', input_type=str]
+    For further information visit https://errors.pydantic.dev/2.12/v/extra_forbidden
+FAILED tests/unit/test_config.py::TestSettings::test_optional_redis_config - pydantic_core._pydantic_core.ValidationError: 4 validation errors for Settings
+database_url
+  Extra inputs are not permitted [type=extra_forbidden, input_value='postgresql://contextforg...calhost:5434/taskman_v2', input_type=str]
+    For further information visit https://errors.pydantic.dev/2.12/v/extra_forbidden
+api_host
+  Extra inputs are not permitted [type=extra_forbidden, input_value='0.0.0.0', input_type=str]
+    For further information visit https://errors.pydantic.dev/2.12/v/extra_forbidden
+api_port
+  Extra inputs are not permitted [type=extra_forbidden, input_value='3001', input_type=str]
+    For further information visit https://errors.pydantic.dev/2.12/v/extra_forbidden
+log_level
+  Extra inputs are not permitted [type=extra_forbidden, input_value='DEBUG', input_type=str]
+    For further information visit https://errors.pydantic.dev/2.12/v/extra_forbidden
+FAILED tests/unit/test_config.py::TestSettings::test_with_redis_config - pydantic_core._pydantic_core.ValidationError: 4 validation errors for Settings
+database_url
+  Extra inputs are not permitted [type=extra_forbidden, input_value='postgresql://contextforg...calhost:5434/taskman_v2', input_type=str]
+    For further information visit https://errors.pydantic.dev/2.12/v/extra_forbidden
+api_host
+  Extra inputs are not permitted [type=extra_forbidden, input_value='0.0.0.0', input_type=str]
+    For further information visit https://errors.pydantic.dev/2.12/v/extra_forbidden
+api_port
+  Extra inputs are not permitted [type=extra_forbidden, input_value='3001', input_type=str]
+    For further information visit https://errors.pydantic.dev/2.12/v/extra_forbidden
+log_level
+  Extra inputs are not permitted [type=extra_forbidden, input_value='DEBUG', input_type=str]
+    For further information visit https://errors.pydantic.dev/2.12/v/extra_forbidden
+FAILED tests/unit/test_config.py::TestSettings::test_environment_helpers - pydantic_core._pydantic_core.ValidationError: 4 validation errors for Settings
+database_url
+  Extra inputs are not permitted [type=extra_forbidden, input_value='postgresql://contextforg...calhost:5434/taskman_v2', input_type=str]
+    For further information visit https://errors.pydantic.dev/2.12/v/extra_forbidden
+api_host
+  Extra inputs are not permitted [type=extra_forbidden, input_value='0.0.0.0', input_type=str]
+    For further information visit https://errors.pydantic.dev/2.12/v/extra_forbidden
+api_port
+  Extra inputs are not permitted [type=extra_forbidden, input_value='3001', input_type=str]
+    For further information visit https://errors.pydantic.dev/2.12/v/extra_forbidden
+log_level
+  Extra inputs are not permitted [type=extra_forbidden, input_value='DEBUG', input_type=str]
+    For further information visit https://errors.pydantic.dev/2.12/v/extra_forbidden
+FAILED tests/unit/test_config.py::TestGetSettings::test_settings_cached - pydantic_core._pydantic_core.ValidationError: 4 validation errors for Settings
+database_url
+  Extra inputs are not permitted [type=extra_forbidden, input_value='postgresql://contextforg...calhost:5434/taskman_v2', input_type=str]
+    For further information visit https://errors.pydantic.dev/2.12/v/extra_forbidden
+api_host
+  Extra inputs are not permitted [type=extra_forbidden, input_value='0.0.0.0', input_type=str]
+    For further information visit https://errors.pydantic.dev/2.12/v/extra_forbidden
+api_port
+  Extra inputs are not permitted [type=extra_forbidden, input_value='3001', input_type=str]
+    For further information visit https://errors.pydantic.dev/2.12/v/extra_forbidden
+log_level
+  Extra inputs are not permitted [type=extra_forbidden, input_value='DEBUG', input_type=str]
+    For further information visit https://errors.pydantic.dev/2.12/v/extra_forbidden
+FAILED tests/unit/test_config.py::TestGetSettings::test_cache_clear - pydantic_core._pydantic_core.ValidationError: 4 validation errors for Settings
+database_url
+  Extra inputs are not permitted [type=extra_forbidden, input_value='postgresql://contextforg...calhost:5434/taskman_v2', input_type=str]
+    For further information visit https://errors.pydantic.dev/2.12/v/extra_forbidden
+api_host
+  Extra inputs are not permitted [type=extra_forbidden, input_value='0.0.0.0', input_type=str]
+    For further information visit https://errors.pydantic.dev/2.12/v/extra_forbidden
+api_port
+  Extra inputs are not permitted [type=extra_forbidden, input_value='3001', input_type=str]
+    For further information visit https://errors.pydantic.dev/2.12/v/extra_forbidden
+log_level
+  Extra inputs are not permitted [type=extra_forbidden, input_value='DEBUG', input_type=str]
+    For further information visit https://errors.pydantic.dev/2.12/v/extra_forbidden
+ERROR tests/unit/services/test_project_service_edge_cases.py::TestProjectServiceBoundaryConditions::test_create_project_with_minimum_fields - TypeError: 'sprints' is an invalid keyword argument for Project
+ERROR tests/unit/services/test_project_service_edge_cases.py::TestProjectServiceBoundaryConditions::test_create_project_with_all_fields - TypeError: 'sprints' is an invalid keyword argument for Project
+ERROR tests/unit/services/test_project_service_edge_cases.py::TestProjectServiceBoundaryConditions::test_update_project_partial_single_field - TypeError: 'sprints' is an invalid keyword argument for Project
+ERROR tests/unit/services/test_project_service_edge_cases.py::TestProjectServiceBoundaryConditions::test_update_project_empty_mission - TypeError: 'sprints' is an invalid keyword argument for Project
+ERROR tests/unit/services/test_project_service_edge_cases.py::TestProjectServiceStatusTransitions::test_change_status_success - TypeError: 'sprints' is an invalid keyword argument for Project
+ERROR tests/unit/services/test_project_service_edge_cases.py::TestProjectServiceStatusTransitions::test_change_status_project_not_found - TypeError: 'sprints' is an invalid keyword argument for Project
+ERROR tests/unit/services/test_project_service_edge_cases.py::TestProjectServiceSprintManagement::test_add_sprint_to_project - TypeError: 'sprints' is an invalid keyword argument for Project
+ERROR tests/unit/services/test_project_service_edge_cases.py::TestProjectServiceSprintManagement::test_add_duplicate_sprint_idempotent - TypeError: 'sprints' is an invalid keyword argument for Project
+ERROR tests/unit/services/test_project_service_edge_cases.py::TestProjectServiceSprintManagement::test_remove_sprint_from_project - TypeError: 'sprints' is an invalid keyword argument for Project
+ERROR tests/unit/services/test_project_service_edge_cases.py::TestProjectServiceMetrics::test_get_metrics_no_tasks - TypeError: 'sprints' is an invalid keyword argument for Project
+ERROR tests/unit/services/test_project_service_edge_cases.py::TestProjectServiceMetrics::test_get_metrics_project_not_found - TypeError: 'sprints' is an invalid keyword argument for Project
+ERROR tests/unit/services/test_project_service_edge_cases.py::TestProjectServiceSearchAndFiltering::test_get_by_status_no_results - TypeError: 'sprints' is an invalid keyword argument for Project
+ERROR tests/unit/services/test_project_service_edge_cases.py::TestProjectServiceSearchAndFiltering::test_get_by_owner_no_results - TypeError: 'sprints' is an invalid keyword argument for Project
+ERROR tests/unit/services/test_services.py::TestProjectService::test_get_metrics_success - TypeError: 'sprints' is an invalid keyword argument for Project
+ERROR tests/unit/services/test_services.py::TestProjectService::test_add_sprint - TypeError: 'sprints' is an invalid keyword argument for Project
+ERROR tests/unit/services/test_services.py::TestProjectService::test_remove_sprint - TypeError: 'sprints' is an invalid keyword argument for Project
+ERROR tests/unit/services/test_services.py::TestProjectService::test_change_status - TypeError: 'sprints' is an invalid keyword argument for Project
+ERROR tests/unit/services/test_services.py::TestProjectService::test_get_by_status - TypeError: 'sprints' is an invalid keyword argument for Project
+ERROR tests/unit/services/test_services.py::TestProjectService::test_get_by_owner - TypeError: 'sprints' is an invalid keyword argument for Project
+ERROR tests/unit/services/test_services.py::TestSprintService::test_calculate_velocity - TypeError: 'tasks' is an invalid keyword argument for Sprint
+ERROR tests/unit/services/test_services.py::TestSprintService::test_get_burndown - TypeError: 'tasks' is an invalid keyword argument for Sprint
+ERROR tests/unit/services/test_services.py::TestSprintService::test_change_status - TypeError: 'tasks' is an invalid keyword argument for Sprint
+ERROR tests/unit/services/test_services.py::TestSprintService::test_get_current_sprints - TypeError: 'tasks' is an invalid keyword argument for Sprint
+ERROR tests/unit/services/test_services.py::TestSprintService::test_get_by_project - TypeError: 'tasks' is an invalid keyword argument for Sprint
+ERROR tests/unit/services/test_services.py::TestSprintService::test_update_metrics - TypeError: 'tasks' is an invalid keyword argument for Sprint
+ERROR tests/unit/services/test_services.py::TestActionListService::test_reorder_items_success - TypeError: 'title' is an invalid keyword argument for ActionList
+ERROR tests/unit/services/test_services.py::TestActionListService::test_reorder_items_invalid_length - TypeError: 'title' is an invalid keyword argument for ActionList
+ERROR tests/unit/services/test_services.py::TestActionListService::test_mark_complete - TypeError: 'title' is an invalid keyword argument for ActionList
+ERROR tests/unit/services/test_services.py::TestActionListService::test_add_item - TypeError: 'title' is an invalid keyword argument for ActionList
+ERROR tests/unit/services/test_services.py::TestActionListService::test_remove_item - TypeError: 'title' is an invalid keyword argument for ActionList
+ERROR tests/unit/services/test_services.py::TestActionListService::test_get_orphaned - TypeError: 'title' is an invalid keyword argument for ActionList
+ERROR tests/unit/services/test_services.py::TestActionListService::test_get_soft_deleted - TypeError: 'title' is an invalid keyword argument for ActionList
+ERROR tests/unit/services/test_sprint_service_edge_cases.py::TestSprintServiceMetrics::test_calculate_velocity_mixed_tasks - TypeError: 'tasks' is an invalid keyword argument for Sprint
+ERROR tests/unit/services/test_sprint_service_edge_cases.py::TestSprintServiceMetrics::test_get_burndown_calculations - TypeError: 'tasks' is an invalid keyword argument for Sprint
+ERROR tests/unit/test_fixtures.py::TestSettingsFixture::test_fixture_provides_complete_settings - pydantic_core._pydantic_core.ValidationError: 4 validation errors for Settings
+database_url
+  Extra inputs are not permitted [type=extra_forbidden, input_value='postgresql://contextforg...calhost:5434/taskman_v2', input_type=str]
+    For further information visit https://errors.pydantic.dev/2.12/v/extra_forbidden
+api_host
+  Extra inputs are not permitted [type=extra_forbidden, input_value='0.0.0.0', input_type=str]
+    For further information visit https://errors.pydantic.dev/2.12/v/extra_forbidden
+api_port
+  Extra inputs are not permitted [type=extra_forbidden, input_value='3001', input_type=str]
+    For further information visit https://errors.pydantic.dev/2.12/v/extra_forbidden
+log_level
+  Extra inputs are not permitted [type=extra_forbidden, input_value='DEBUG', input_type=str]
+    For further information visit https://errors.pydantic.dev/2.12/v/extra_forbidden
+ERROR tests/unit/test_fixtures.py::TestSettingsFixture::test_fixture_includes_database - pydantic_core._pydantic_core.ValidationError: 4 validation errors for Settings
+database_url
+  Extra inputs are not permitted [type=extra_forbidden, input_value='postgresql://contextforg...calhost:5434/taskman_v2', input_type=str]
+    For further information visit https://errors.pydantic.dev/2.12/v/extra_forbidden
+api_host
+  Extra inputs are not permitted [type=extra_forbidden, input_value='0.0.0.0', input_type=str]
+    For further information visit https://errors.pydantic.dev/2.12/v/extra_forbidden
+api_port
+  Extra inputs are not permitted [type=extra_forbidden, input_value='3001', input_type=str]
+    For further information visit https://errors.pydantic.dev/2.12/v/extra_forbidden
+log_level
+  Extra inputs are not permitted [type=extra_forbidden, input_value='DEBUG', input_type=str]
+    For further information visit https://errors.pydantic.dev/2.12/v/extra_forbidden
+ERROR tests/unit/test_fixtures.py::TestSettingsFixture::test_fixture_includes_redis - pydantic_core._pydantic_core.ValidationError: 4 validation errors for Settings
+database_url
+  Extra inputs are not permitted [type=extra_forbidden, input_value='postgresql://contextforg...calhost:5434/taskman_v2', input_type=str]
+    For further information visit https://errors.pydantic.dev/2.12/v/extra_forbidden
+api_host
+  Extra inputs are not permitted [type=extra_forbidden, input_value='0.0.0.0', input_type=str]
+    For further information visit https://errors.pydantic.dev/2.12/v/extra_forbidden
+api_port
+  Extra inputs are not permitted [type=extra_forbidden, input_value='3001', input_type=str]
+    For further information visit https://errors.pydantic.dev/2.12/v/extra_forbidden
+log_level
+  Extra inputs are not permitted [type=extra_forbidden, input_value='DEBUG', input_type=str]
+    For further information visit https://errors.pydantic.dev/2.12/v/extra_forbidden
+ERROR tests/unit/test_fixtures.py::TestMinimalSettingsFixture::test_fixture_provides_minimal_config - pydantic_core._pydantic_core.ValidationError: 4 validation errors for Settings
+database_url
+  Extra inputs are not permitted [type=extra_forbidden, input_value='postgresql://contextforg...calhost:5434/taskman_v2', input_type=str]
+    For further information visit https://errors.pydantic.dev/2.12/v/extra_forbidden
+api_host
+  Extra inputs are not permitted [type=extra_forbidden, input_value='0.0.0.0', input_type=str]
+    For further information visit https://errors.pydantic.dev/2.12/v/extra_forbidden
+api_port
+  Extra inputs are not permitted [type=extra_forbidden, input_value='3001', input_type=str]
+    For further information visit https://errors.pydantic.dev/2.12/v/extra_forbidden
+log_level
+  Extra inputs are not permitted [type=extra_forbidden, input_value='DEBUG', input_type=str]
+    For further information visit https://errors.pydantic.dev/2.12/v/extra_forbidden
+ERROR tests/unit/test_fixtures.py::TestProductionLikeFixture::test_fixture_simulates_production - pydantic_core._pydantic_core.ValidationError: 4 validation errors for Settings
+database_url
+  Extra inputs are not permitted [type=extra_forbidden, input_value='postgresql://contextforg...calhost:5434/taskman_v2', input_type=str]
+    For further information visit https://errors.pydantic.dev/2.12/v/extra_forbidden
+api_host
+  Extra inputs are not permitted [type=extra_forbidden, input_value='0.0.0.0', input_type=str]
+    For further information visit https://errors.pydantic.dev/2.12/v/extra_forbidden
+api_port
+  Extra inputs are not permitted [type=extra_forbidden, input_value='3001', input_type=str]
+    For further information visit https://errors.pydantic.dev/2.12/v/extra_forbidden
+log_level
+  Extra inputs are not permitted [type=extra_forbidden, input_value='DEBUG', input_type=str]
+    For further information visit https://errors.pydantic.dev/2.12/v/extra_forbidden
+ERROR tests/unit/test_fixtures.py::TestProductionLikeFixture::test_fixture_has_production_database - pydantic_core._pydantic_core.ValidationError: 4 validation errors for Settings
+database_url
+  Extra inputs are not permitted [type=extra_forbidden, input_value='postgresql://contextforg...calhost:5434/taskman_v2', input_type=str]
+    For further information visit https://errors.pydantic.dev/2.12/v/extra_forbidden
+api_host
+  Extra inputs are not permitted [type=extra_forbidden, input_value='0.0.0.0', input_type=str]
+    For further information visit https://errors.pydantic.dev/2.12/v/extra_forbidden
+api_port
+  Extra inputs are not permitted [type=extra_forbidden, input_value='3001', input_type=str]
+    For further information visit https://errors.pydantic.dev/2.12/v/extra_forbidden
+log_level
+  Extra inputs are not permitted [type=extra_forbidden, input_value='DEBUG', input_type=str]
+    For further information visit https://errors.pydantic.dev/2.12/v/extra_forbidden
+ERROR tests/unit/test_fixtures.py::TestProductionLikeFixture::test_fixture_has_production_redis - pydantic_core._pydantic_core.ValidationError: 4 validation errors for Settings
+database_url
+  Extra inputs are not permitted [type=extra_forbidden, input_value='postgresql://contextforg...calhost:5434/taskman_v2', input_type=str]
+    For further information visit https://errors.pydantic.dev/2.12/v/extra_forbidden
+api_host
+  Extra inputs are not permitted [type=extra_forbidden, input_value='0.0.0.0', input_type=str]
+    For further information visit https://errors.pydantic.dev/2.12/v/extra_forbidden
+api_port
+  Extra inputs are not permitted [type=extra_forbidden, input_value='3001', input_type=str]
+    For further information visit https://errors.pydantic.dev/2.12/v/extra_forbidden
+log_level
+  Extra inputs are not permitted [type=extra_forbidden, input_value='DEBUG', input_type=str]
+    For further information visit https://errors.pydantic.dev/2.12/v/extra_forbidden
+ERROR tests/unit/test_fixtures.py::TestEnvironmentIsolation::test_settings_default_to_testing - pydantic_core._pydantic_core.ValidationError: 4 validation errors for Settings
+database_url
+  Extra inputs are not permitted [type=extra_forbidden, input_value='postgresql://contextforg...calhost:5434/taskman_v2', input_type=str]
+    For further information visit https://errors.pydantic.dev/2.12/v/extra_forbidden
+api_host
+  Extra inputs are not permitted [type=extra_forbidden, input_value='0.0.0.0', input_type=str]
+    For further information visit https://errors.pydantic.dev/2.12/v/extra_forbidden
+api_port
+  Extra inputs are not permitted [type=extra_forbidden, input_value='3001', input_type=str]
+    For further information visit https://errors.pydantic.dev/2.12/v/extra_forbidden
+log_level
+  Extra inputs are not permitted [type=extra_forbidden, input_value='DEBUG', input_type=str]
+    For further information visit https://errors.pydantic.dev/2.12/v/extra_forbidden
+====================================== 46 failed, 118 passed, 42 errors in 4.00s ======================================

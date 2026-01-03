@@ -1,0 +1,25 @@
+Traceback (most recent call last):
+  File "C:\Users\James\Documents\Github\GHrepos\SCCMScripts\TaskMan-v2\backend-api\scripts\verify_db_manager.py", line 12, in <module>
+    from db.session import check_db_health, init_db, manager
+  File "C:\Users\James\Documents\Github\GHrepos\SCCMScripts\TaskMan-v2\backend-api\db\__init__.py", line 7, in <module>
+    from db.session import AsyncSessionLocal, check_db_health, engine, get_async_session, init_db
+  File "C:\Users\James\Documents\Github\GHrepos\SCCMScripts\TaskMan-v2\backend-api\db\session.py", line 36, in <module>
+    manager = ConnectionManager(DATABASE_URL, SQLITE_PATH)
+              ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\James\Documents\Github\GHrepos\SCCMScripts\TaskMan-v2\backend-api\db\connection_manager.py", line 41, in __init__
+    self.fallback_engine = create_async_engine(
+                           ^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\James\Documents\Github\GHrepos\SCCMScripts\TaskMan-v2\backend-api\.venv\Lib\site-packages\sqlalchemy\ext\asyncio\engine.py", line 120, in create_async_engine
+    sync_engine = _create_engine(url, **kw)
+                  ^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "<string>", line 2, in create_engine
+  File "C:\Users\James\Documents\Github\GHrepos\SCCMScripts\TaskMan-v2\backend-api\.venv\Lib\site-packages\sqlalchemy\util\deprecations.py", line 281, in warned
+    return fn(*args, **kwargs)  # type: ignore[no-any-return]
+           ^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\James\Documents\Github\GHrepos\SCCMScripts\TaskMan-v2\backend-api\.venv\Lib\site-packages\sqlalchemy\engine\create.py", line 617, in create_engine
+    dbapi = dbapi_meth(**dbapi_args)
+            ^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\James\Documents\Github\GHrepos\SCCMScripts\TaskMan-v2\backend-api\.venv\Lib\site-packages\sqlalchemy\dialects\sqlite\aiosqlite.py", line 416, in import_dbapi
+    __import__("aiosqlite"), __import__("sqlite3")
+    ^^^^^^^^^^^^^^^^^^^^^^^
+ModuleNotFoundError: No module named 'aiosqlite'

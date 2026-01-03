@@ -1,0 +1,506 @@
+================================================= test session starts =================================================
+platform win32 -- Python 3.11.9, pytest-8.4.2, pluggy-1.6.0
+rootdir: C:\Users\James\Documents\Github\GHrepos\SCCMScripts\TaskMan-v2\backend-api
+configfile: pytest_full.ini
+plugins: anyio-4.12.0, Faker-30.10.0, asyncio-0.26.0, cov-5.0.0, mock-3.15.1
+asyncio: mode=Mode.AUTO, asyncio_default_fixture_loop_scope=function, asyncio_default_test_loop_scope=function
+collected 206 items
+
+test_sqlite_integration.py .                                                                                     [  0%]
+tests\integration\api\test_action_lists_api.py ..                                                                [  1%]
+tests\integration\api\test_projects_api.py ....                                                                  [  3%]
+tests\integration\api\test_sprints_api.py ...                                                                    [  4%]
+tests\integration\api\test_tasks_api.py ....                                                                     [  6%]
+tests\integration\services\test_cross_service_ops.py .                                                           [  7%]
+tests\integration\services\test_project_sprint_flow.py ..                                                        [  8%]
+tests\integration\services\test_task_sprint_flow.py ..                                                           [  9%]
+tests\integration\services\test_task_validation.py ...                                                           [ 10%]
+tests\unit\db\repositories\test_base_repository.py ...........                                                   [ 16%]
+tests\unit\db\repositories\test_project_repository.py .....                                                      [ 18%]
+tests\unit\db\repositories\test_repositories.py ......                                                           [ 21%]
+tests\unit\db\repositories\test_sprint_repository.py .....                                                       [ 23%]
+tests\unit\db\repositories\test_task_repository.py .........                                                     [ 28%]
+tests\unit\db\test_connection_manager.py .....                                                                   [ 30%]
+tests\unit\schemas\test_schemas.py F...F...F..F..FF                                                              [ 38%]
+tests\unit\schemas\test_task_schemas.py ..FF..FF....FF                                                           [ 45%]
+tests\unit\services\test_base_service.py .............                                                           [ 51%]
+tests\unit\services\test_project_service_edge_cases.py FFFFFFFF..F..                                             [ 57%]
+tests\unit\services\test_services.py ...FFFFFFFFFFFsFFss                                                         [ 66%]
+tests\unit\services\test_sprint_service_edge_cases.py FF.                                                        [ 68%]
+tests\unit\services\test_task_service.py F.F...FFFFFFF.                                                          [ 75%]
+tests\unit\services\test_task_service_edge_cases.py FFFF.F..F.FF                                                 [ 81%]
+tests\unit\test_config.py ............FF..F.FF..FFF                                                              [ 93%]
+tests\unit\test_fixtures.py ...EEEEEEE...E                                                                       [100%]
+
+================================================== warnings summary ===================================================
+tests/unit/db/test_connection_manager.py::test_health_check_reporting
+  C:\Users\James\AppData\Local\Programs\Python\Python311\Lib\asyncio\events.py:84: RuntimeWarning: coroutine 'AsyncMockMixin._execute_mock_call' was never awaited
+    self._context.run(self._callback, *self._args)
+  Enable tracemalloc to get traceback where the object was allocated.
+  See https://docs.pytest.org/en/stable/how-to/capture-warnings.html#resource-warnings for more info.
+
+tests/unit/services/test_base_service.py::TestBaseServiceCreate::test_create_success
+  C:\Users\James\AppData\Local\Programs\Python\Python311\Lib\unittest\mock.py:2133: RuntimeWarning: coroutine 'AsyncMockMixin._execute_mock_call' was never awaited
+    setattr(_type, entry, MagicProxy(entry, self))
+  Enable tracemalloc to get traceback where the object was allocated.
+  See https://docs.pytest.org/en/stable/how-to/capture-warnings.html#resource-warnings for more info.
+
+-- Docs: https://docs.pytest.org/en/stable/how-to/capture-warnings.html
+=============================================== short test summary info ===============================================
+FAILED tests/unit/schemas/test_schemas.py::TestProjectSchemas::test_project_create_request_valid - AssertionError: assert <ProjectStatu...G: 'planning'> == <ProjectStatu...: 'discovery'>
+  
+  - discovery
+  + planning
+FAILED tests/unit/schemas/test_schemas.py::TestSprintSchemas::test_sprint_create_request_valid - AssertionError: assert <SprintStatus...G: 'planning'> == <SprintStatus...ED: 'planned'>
+  
+  - planned
+  + planning
+FAILED tests/unit/schemas/test_schemas.py::TestSprintSchemas::test_sprint_response_with_metrics - pydantic_core._pydantic_core.ValidationError: 1 validation error for SprintResponse
+dependencies
+  Input should be a valid list [type=list_type, input_value={}, input_type=dict]
+    For further information visit https://errors.pydantic.dev/2.12/v/list_type
+FAILED tests/unit/schemas/test_schemas.py::TestActionListSchemas::test_action_list_soft_delete_fields - pydantic_core._pydantic_core.ValidationError: 1 validation error for ActionListCreate
+status
+  Input should be 'active' or 'archived' [type=enum, input_value='deleted', input_type=str]
+    For further information visit https://errors.pydantic.dev/2.12/v/enum
+FAILED tests/unit/schemas/test_schemas.py::TestBaseSchemaConfiguration::test_strict_type_validation - ImportError: cannot import name 'BaseSchema' from 'taskman_api.schemas.base' (C:\Users\James\Documents\Github\GHrepos\SCCMScripts\TaskMan-v2\backend-api\src\taskman_api\schemas\base.py)
+FAILED tests/unit/schemas/test_schemas.py::TestBaseSchemaConfiguration::test_from_attributes_orm_mode - ImportError: cannot import name 'BaseSchema' from 'taskman_api.schemas.base' (C:\Users\James\Documents\Github\GHrepos\SCCMScripts\TaskMan-v2\backend-api\src\taskman_api\schemas\base.py)
+FAILED tests/unit/schemas/test_task_schemas.py::TestTaskCreateRequest::test_task_id_pattern_validation_failure - assert False
+ +  where False = any(<generator object TestTaskCreateRequest.test_task_id_pattern_validation_failure.<locals>.<genexpr> at 0x000001EBFEE12340>)
+FAILED tests/unit/schemas/test_task_schemas.py::TestTaskCreateRequest::test_required_fields_validation - AssertionError: assert False
+ +  where False = <built-in method issubset of set object at 0x000001EBFEE07BC0>({'description', 'owner', 'primary_project', 'primary_sprint', 'summary', 'title'})
+ +    where <built-in method issubset of set object at 0x000001EBFEE07BC0> = {'description', 'owner', 'primary_project', 'primary_sprint', 'priority', 'summary', ...}.issubset
+FAILED tests/unit/schemas/test_task_schemas.py::TestTaskCreateRequest::test_business_value_score_range - Failed: DID NOT RAISE <class 'pydantic_core._pydantic_core.ValidationError'>
+FAILED tests/unit/schemas/test_task_schemas.py::TestTaskCreateRequest::test_enum_field_validation - pydantic_core._pydantic_core.ValidationError: 1 validation error for TaskCreate
+severity
+  Input should be 'critical', 'high', 'medium' or 'low' [type=enum, input_value=<Severity.SEV2: 'sev2'>, input_type=Severity]
+    For further information visit https://errors.pydantic.dev/2.12/v/enum
+FAILED tests/unit/schemas/test_task_schemas.py::TestTaskResponse::test_response_from_orm_model - pydantic_core._pydantic_core.ValidationError: 1 validation error for TaskResponse
+automation_candidate
+  Input should be a valid boolean [type=bool_type, input_value=None, input_type=NoneType]
+    For further information visit https://errors.pydantic.dev/2.12/v/bool_type
+FAILED tests/unit/schemas/test_task_schemas.py::TestTaskResponse::test_response_serialization - pydantic_core._pydantic_core.ValidationError: 1 validation error for TaskResponse
+automation_candidate
+  Input should be a valid boolean [type=bool_type, input_value=None, input_type=NoneType]
+    For further information visit https://errors.pydantic.dev/2.12/v/bool_type
+FAILED tests/unit/services/test_project_service_edge_cases.py::TestProjectServiceBoundaryConditions::test_create_project_with_minimum_fields - assert False
+ +  where False = isinstance(<taskman_api.core.result.Err object at 0x000001EBFED74D10>, Ok)
+FAILED tests/unit/services/test_project_service_edge_cases.py::TestProjectServiceBoundaryConditions::test_create_project_with_all_fields - assert False
+ +  where False = isinstance(<taskman_api.core.result.Err object at 0x000001EBFE7D8B90>, Ok)
+FAILED tests/unit/services/test_project_service_edge_cases.py::TestProjectServiceBoundaryConditions::test_update_project_partial_single_field - assert False
+ +  where False = isinstance(<taskman_api.core.result.Err object at 0x000001EBFE990090>, Ok)
+FAILED tests/unit/services/test_project_service_edge_cases.py::TestProjectServiceBoundaryConditions::test_update_project_empty_mission - assert False
+ +  where False = isinstance(<taskman_api.core.result.Err object at 0x000001EBFEB60710>, Ok)
+FAILED tests/unit/services/test_project_service_edge_cases.py::TestProjectServiceStatusTransitions::test_change_status_success - assert False
+ +  where False = isinstance(<taskman_api.core.result.Err object at 0x000001EBFED24E10>, Ok)
+FAILED tests/unit/services/test_project_service_edge_cases.py::TestProjectServiceStatusTransitions::test_change_status_project_not_found - assert False
+ +  where False = isinstance(<taskman_api.core.result.Ok object at 0x000001EBFEF58390>, Err)
+FAILED tests/unit/services/test_project_service_edge_cases.py::TestProjectServiceSprintManagement::test_add_sprint_to_project - assert False
+ +  where False = isinstance(<taskman_api.core.result.Err object at 0x000001EBFEEC8510>, Ok)
+FAILED tests/unit/services/test_project_service_edge_cases.py::TestProjectServiceSprintManagement::test_add_duplicate_sprint_idempotent - AssertionError: assert 0 == 1
+ +  where 0 = <built-in method count of list object at 0x000001EBFEEFFA00>('S-2025-01')
+ +    where <built-in method count of list object at 0x000001EBFEEFFA00> = [].count
+ +      where [] = ProjectResponse(created_at=datetime.datetime(2025, 1, 1, 12, 0), updated_at=datetime.datetime(2025, 1, 1, 12, 0), id='...rements=[], governance={}, success_metrics=[], mpv_policy={}, tnve_mandate=False, evidence_root=None, observability={}).sprints
+FAILED tests/unit/services/test_project_service_edge_cases.py::TestProjectServiceMetrics::test_get_metrics_project_not_found - AttributeError: 'TaskRepository' object has no attribute 'find_by_project'
+FAILED tests/unit/services/test_services.py::TestProjectService::test_change_status - assert False
+ +  where False = isinstance(<taskman_api.core.result.Err object at 0x000001EBFE965A50>, Ok)
+FAILED tests/unit/services/test_services.py::TestProjectService::test_get_by_status - pydantic_core._pydantic_core.ValidationError: 18 validation errors for ProjectResponse
+sponsors
+  Input should be a valid list [type=list_type, input_value='[]', input_type=str]
+    For further information visit https://errors.pydantic.dev/2.12/v/list_type
+stakeholders
+  Input should be a valid list [type=list_type, input_value='[]', input_type=str]
+    For further information visit https://errors.pydantic.dev/2.12/v/list_type
+repositories
+  Input should be a valid list [type=list_type, input_value='[]', input_type=str]
+    For further information visit https://errors.pydantic.dev/2.12/v/list_type
+comms_channels
+  Input should be a valid list [type=list_type, input_value='[]', input_type=str]
+    For further information visit https://errors.pydantic.dev/2.12/v/list_type
+okrs
+  Input should be a valid list [type=list_type, input_value='[]', input_type=str]
+    For further information visit https://errors.pydantic.dev/2.12/v/list_type
+kpis
+  Input should be a valid list [type=list_type, input_value='[]', input_type=str]
+    For further information visit https://errors.pydantic.dev/2.12/v/list_type
+roadmap
+  Input should be a valid list [type=list_type, input_value='[]', input_type=str]
+    For further information visit https://errors.pydantic.dev/2.12/v/list_type
+risks
+  Input should be a valid list [type=list_type, input_value='[]', input_type=str]
+    For further information visit https://errors.pydantic.dev/2.12/v/list_type
+assumptions
+  Input should be a valid list [type=list_type, input_value='[]', input_type=str]
+    For further information visit https://errors.pydantic.dev/2.12/v/list_type
+constraints
+  Input should be a valid list [type=list_type, input_value='[]', input_type=str]
+    For further information visit https://errors.pydantic.dev/2.12/v/list_type
+dependencies_external
+  Input should be a valid list [type=list_type, input_value='[]', input_type=str]
+    For further information visit https://errors.pydantic.dev/2.12/v/list_type
+related_projects
+  Input should be a valid list [type=list_type, input_value='[]', input_type=str]
+    For further information visit https://errors.pydantic.dev/2.12/v/list_type
+shared_components
+  Input should be a valid list [type=list_type, input_value='[]', input_type=str]
+    For further information visit https://errors.pydantic.dev/2.12/v/list_type
+compliance_requirements
+  Input should be a valid list [type=list_type, input_value='[]', input_type=str]
+    For further information visit https://errors.pydantic.dev/2.12/v/list_type
+governance
+  Input should be a valid dictionary [type=dict_type, input_value='{}', input_type=str]
+    For further information visit https://errors.pydantic.dev/2.12/v/dict_type
+success_metrics
+  Input should be a valid list [type=list_type, input_value='[]', input_type=str]
+    For further information visit https://errors.pydantic.dev/2.12/v/list_type
+mpv_policy
+  Input should be a valid dictionary [type=dict_type, input_value='{}', input_type=str]
+    For further information visit https://errors.pydantic.dev/2.12/v/dict_type
+tnve_mandate
+  Input should be a valid boolean [type=bool_type, input_value=None, input_type=NoneType]
+    For further information visit https://errors.pydantic.dev/2.12/v/bool_type
+FAILED tests/unit/services/test_services.py::TestProjectService::test_get_by_owner - pydantic_core._pydantic_core.ValidationError: 18 validation errors for ProjectResponse
+sponsors
+  Input should be a valid list [type=list_type, input_value='[]', input_type=str]
+    For further information visit https://errors.pydantic.dev/2.12/v/list_type
+stakeholders
+  Input should be a valid list [type=list_type, input_value='[]', input_type=str]
+    For further information visit https://errors.pydantic.dev/2.12/v/list_type
+repositories
+  Input should be a valid list [type=list_type, input_value='[]', input_type=str]
+    For further information visit https://errors.pydantic.dev/2.12/v/list_type
+comms_channels
+  Input should be a valid list [type=list_type, input_value='[]', input_type=str]
+    For further information visit https://errors.pydantic.dev/2.12/v/list_type
+okrs
+  Input should be a valid list [type=list_type, input_value='[]', input_type=str]
+    For further information visit https://errors.pydantic.dev/2.12/v/list_type
+kpis
+  Input should be a valid list [type=list_type, input_value='[]', input_type=str]
+    For further information visit https://errors.pydantic.dev/2.12/v/list_type
+roadmap
+  Input should be a valid list [type=list_type, input_value='[]', input_type=str]
+    For further information visit https://errors.pydantic.dev/2.12/v/list_type
+risks
+  Input should be a valid list [type=list_type, input_value='[]', input_type=str]
+    For further information visit https://errors.pydantic.dev/2.12/v/list_type
+assumptions
+  Input should be a valid list [type=list_type, input_value='[]', input_type=str]
+    For further information visit https://errors.pydantic.dev/2.12/v/list_type
+constraints
+  Input should be a valid list [type=list_type, input_value='[]', input_type=str]
+    For further information visit https://errors.pydantic.dev/2.12/v/list_type
+dependencies_external
+  Input should be a valid list [type=list_type, input_value='[]', input_type=str]
+    For further information visit https://errors.pydantic.dev/2.12/v/list_type
+related_projects
+  Input should be a valid list [type=list_type, input_value='[]', input_type=str]
+    For further information visit https://errors.pydantic.dev/2.12/v/list_type
+shared_components
+  Input should be a valid list [type=list_type, input_value='[]', input_type=str]
+    For further information visit https://errors.pydantic.dev/2.12/v/list_type
+compliance_requirements
+  Input should be a valid list [type=list_type, input_value='[]', input_type=str]
+    For further information visit https://errors.pydantic.dev/2.12/v/list_type
+governance
+  Input should be a valid dictionary [type=dict_type, input_value='{}', input_type=str]
+    For further information visit https://errors.pydantic.dev/2.12/v/dict_type
+success_metrics
+  Input should be a valid list [type=list_type, input_value='[]', input_type=str]
+    For further information visit https://errors.pydantic.dev/2.12/v/list_type
+mpv_policy
+  Input should be a valid dictionary [type=dict_type, input_value='{}', input_type=str]
+    For further information visit https://errors.pydantic.dev/2.12/v/dict_type
+tnve_mandate
+  Input should be a valid boolean [type=bool_type, input_value=None, input_type=NoneType]
+    For further information visit https://errors.pydantic.dev/2.12/v/bool_type
+FAILED tests/unit/services/test_services.py::TestSprintService::test_calculate_velocity - assert False
+ +  where False = isinstance(<taskman_api.core.result.Err object at 0x000001EBFF0636D0>, Ok)
+FAILED tests/unit/services/test_services.py::TestSprintService::test_get_burndown - assert False
+ +  where False = isinstance(<taskman_api.core.result.Err object at 0x000001EBFF16CD90>, Ok)
+FAILED tests/unit/services/test_services.py::TestSprintService::test_change_status - assert False
+ +  where False = isinstance(<taskman_api.core.result.Err object at 0x000001EBFF1A9310>, Ok)
+FAILED tests/unit/services/test_services.py::TestSprintService::test_get_current_sprints - pydantic_core._pydantic_core.ValidationError: 5 validation errors for SprintResponse
+related_projects
+  Input should be a valid list [type=list_type, input_value='[]', input_type=str]
+    For further information visit https://errors.pydantic.dev/2.12/v/list_type
+dependencies
+  Input should be a valid list [type=list_type, input_value='{}', input_type=str]
+    For further information visit https://errors.pydantic.dev/2.12/v/list_type
+risks
+  Input should be a valid list [type=list_type, input_value='[]', input_type=str]
+    For further information visit https://errors.pydantic.dev/2.12/v/list_type
+ceremonies
+  Input should be a valid dictionary [type=dict_type, input_value='{}', input_type=str]
+    For further information visit https://errors.pydantic.dev/2.12/v/dict_type
+observability
+  Input should be a valid dictionary [type=dict_type, input_value=None, input_type=NoneType]
+    For further information visit https://errors.pydantic.dev/2.12/v/dict_type
+FAILED tests/unit/services/test_services.py::TestSprintService::test_get_by_project - pydantic_core._pydantic_core.ValidationError: 5 validation errors for SprintResponse
+related_projects
+  Input should be a valid list [type=list_type, input_value='[]', input_type=str]
+    For further information visit https://errors.pydantic.dev/2.12/v/list_type
+dependencies
+  Input should be a valid list [type=list_type, input_value='{}', input_type=str]
+    For further information visit https://errors.pydantic.dev/2.12/v/list_type
+risks
+  Input should be a valid list [type=list_type, input_value='[]', input_type=str]
+    For further information visit https://errors.pydantic.dev/2.12/v/list_type
+ceremonies
+  Input should be a valid dictionary [type=dict_type, input_value='{}', input_type=str]
+    For further information visit https://errors.pydantic.dev/2.12/v/dict_type
+observability
+  Input should be a valid dictionary [type=dict_type, input_value=None, input_type=NoneType]
+    For further information visit https://errors.pydantic.dev/2.12/v/dict_type
+FAILED tests/unit/services/test_services.py::TestSprintService::test_update_metrics - assert False
+ +  where False = isinstance(<taskman_api.core.result.Err object at 0x000001EBFEFF54D0>, Ok)
+FAILED tests/unit/services/test_services.py::TestActionListService::test_reorder_items_success - assert False
+ +  where False = isinstance(<taskman_api.core.result.Err object at 0x000001EBFF087350>, Ok)
+FAILED tests/unit/services/test_services.py::TestActionListService::test_reorder_items_invalid_length - assert False
+ +  where False = isinstance(AppError("'list' object has no attribute 'item_ids'"), ValidationError)
+FAILED tests/unit/services/test_services.py::TestActionListService::test_add_item - assert False
+ +  where False = isinstance(<taskman_api.core.result.Err object at 0x000001EBFEEA3D90>, Ok)
+FAILED tests/unit/services/test_services.py::TestActionListService::test_remove_item - assert False
+ +  where False = isinstance(<taskman_api.core.result.Err object at 0x000001EBFEC96310>, Ok)
+FAILED tests/unit/services/test_sprint_service_edge_cases.py::TestSprintServiceMetrics::test_calculate_velocity_mixed_tasks - AttributeError: 'Task' object has no attribute 'model_copy'
+FAILED tests/unit/services/test_sprint_service_edge_cases.py::TestSprintServiceMetrics::test_get_burndown_calculations - AttributeError: 'Task' object has no attribute 'model_copy'
+FAILED tests/unit/services/test_task_service.py::TestTaskServiceStatusTransitions::test_change_status_valid_transition - assert False
+ +  where False = isinstance(<taskman_api.core.result.Err object at 0x000001EBFEC09B90>, Ok)
+FAILED tests/unit/services/test_task_service.py::TestTaskServiceStatusTransitions::test_change_status_not_found - assert False
+ +  where False = isinstance(<taskman_api.core.result.Ok object at 0x000001EBFE9C0910>, Err)
+FAILED tests/unit/services/test_task_service.py::TestTaskServiceAssignment::test_assign_to_sprint - TypeError: object Mock can't be used in 'await' expression
+FAILED tests/unit/services/test_task_service.py::TestTaskServiceAssignment::test_assign_to_project - TypeError: object Mock can't be used in 'await' expression
+FAILED tests/unit/services/test_task_service.py::TestTaskServiceBulkOperations::test_bulk_update_success - assert False
+ +  where False = isinstance(<taskman_api.core.result.Err object at 0x000001EBFE89BB10>, Ok)
+FAILED tests/unit/services/test_task_service.py::TestTaskServiceBulkOperations::test_bulk_update_fails_fast - assert False
+ +  where False = isinstance(AppError("9 validation errors for TaskResponse\nid\n  Field required [type=missing, input_value={'value': <Task(id=T-T...atus='in_progress')>}, input_type=dict]\n    For further information visit https://errors.pydantic.dev/2.12/v/missing"), NotFoundError)
+FAILED tests/unit/services/test_task_service.py::TestTaskServiceSearch::test_search_by_status - assert False
+ +  where False = isinstance(<taskman_api.core.result.Err object at 0x000001EBFF08FD50>, Ok)
+FAILED tests/unit/services/test_task_service.py::TestTaskServiceSearch::test_search_by_status_and_priority - assert False
+ +  where False = isinstance(<taskman_api.core.result.Err object at 0x000001EBFE59EB50>, Ok)
+FAILED tests/unit/services/test_task_service.py::TestTaskServiceSearch::test_get_high_priority_tasks - TypeError: object Mock can't be used in 'await' expression
+FAILED tests/unit/services/test_task_service_edge_cases.py::TestTaskServiceStatusTransitionEdgeCases::test_valid_transition_new_to_ready - assert False
+ +  where False = isinstance(<taskman_api.core.result.Err object at 0x000001EBFF0B0D90>, Ok)
+FAILED tests/unit/services/test_task_service_edge_cases.py::TestTaskServiceStatusTransitionEdgeCases::test_valid_transition_in_progress_to_blocked - assert False
+ +  where False = isinstance(<taskman_api.core.result.Err object at 0x000001EBFF0B8D10>, Ok)
+FAILED tests/unit/services/test_task_service_edge_cases.py::TestTaskServiceStatusTransitionEdgeCases::test_valid_transition_in_progress_to_done - assert False
+ +  where False = isinstance(<taskman_api.core.result.Err object at 0x000001EBFF0B0B50>, Ok)
+FAILED tests/unit/services/test_task_service_edge_cases.py::TestTaskServiceStatusTransitionEdgeCases::test_invalid_transition_done_to_new - AssertionError: assert 'done -> new' in 'invalid status transition: new -> new'
+ +  where 'invalid status transition: new -> new' = <built-in method lower of str object at 0x000001EBFE43DDD0>()
+ +    where <built-in method lower of str object at 0x000001EBFE43DDD0> = 'Invalid status transition: new -> new'.lower
+ +      where 'Invalid status transition: new -> new' = ValidationError('Invalid status transition: new -> new').message
+FAILED tests/unit/services/test_task_service_edge_cases.py::TestTaskServiceStatusTransitionEdgeCases::test_invalid_transition_dropped_to_ready - assert False
+ +  where False = isinstance(<taskman_api.core.result.Ok object at 0x000001EBFF060DD0>, Err)
+FAILED tests/unit/services/test_task_service_edge_cases.py::TestTaskServiceBulkOperationEdgeCases::test_bulk_update_partial_failure_fails_fast - assert False
+ +  where False = isinstance(AppError("9 validation errors for TaskResponse\nid\n  Field required [type=missing, input_value={'value': <Task(id=T-T...atus='in_progress')>}, input_type=dict]\n    For further information visit https://errors.pydantic.dev/2.12/v/missing"), NotFoundError)
+FAILED tests/unit/services/test_task_service_edge_cases.py::TestTaskServiceAssignmentEdgeCases::test_assign_to_nonexistent_sprint - TypeError: object Mock can't be used in 'await' expression
+FAILED tests/unit/services/test_task_service_edge_cases.py::TestTaskServiceAssignmentEdgeCases::test_assign_to_nonexistent_project - TypeError: object Mock can't be used in 'await' expression
+FAILED tests/unit/test_config.py::TestSettings::test_valid_settings_development - pydantic_core._pydantic_core.ValidationError: 4 validation errors for Settings
+database_url
+  Extra inputs are not permitted [type=extra_forbidden, input_value='postgresql://contextforg...calhost:5434/taskman_v2', input_type=str]
+    For further information visit https://errors.pydantic.dev/2.12/v/extra_forbidden
+api_host
+  Extra inputs are not permitted [type=extra_forbidden, input_value='0.0.0.0', input_type=str]
+    For further information visit https://errors.pydantic.dev/2.12/v/extra_forbidden
+api_port
+  Extra inputs are not permitted [type=extra_forbidden, input_value='3001', input_type=str]
+    For further information visit https://errors.pydantic.dev/2.12/v/extra_forbidden
+log_level
+  Extra inputs are not permitted [type=extra_forbidden, input_value='DEBUG', input_type=str]
+    For further information visit https://errors.pydantic.dev/2.12/v/extra_forbidden
+FAILED tests/unit/test_config.py::TestSettings::test_valid_settings_production - pydantic_core._pydantic_core.ValidationError: 4 validation errors for Settings
+database_url
+  Extra inputs are not permitted [type=extra_forbidden, input_value='postgresql://contextforg...calhost:5434/taskman_v2', input_type=str]
+    For further information visit https://errors.pydantic.dev/2.12/v/extra_forbidden
+api_host
+  Extra inputs are not permitted [type=extra_forbidden, input_value='0.0.0.0', input_type=str]
+    For further information visit https://errors.pydantic.dev/2.12/v/extra_forbidden
+api_port
+  Extra inputs are not permitted [type=extra_forbidden, input_value='3001', input_type=str]
+    For further information visit https://errors.pydantic.dev/2.12/v/extra_forbidden
+log_level
+  Extra inputs are not permitted [type=extra_forbidden, input_value='DEBUG', input_type=str]
+    For further information visit https://errors.pydantic.dev/2.12/v/extra_forbidden
+FAILED tests/unit/test_config.py::TestSettings::test_development_allows_insecure_secrets - pydantic_core._pydantic_core.ValidationError: 4 validation errors for Settings
+database_url
+  Extra inputs are not permitted [type=extra_forbidden, input_value='postgresql://contextforg...calhost:5434/taskman_v2', input_type=str]
+    For further information visit https://errors.pydantic.dev/2.12/v/extra_forbidden
+api_host
+  Extra inputs are not permitted [type=extra_forbidden, input_value='0.0.0.0', input_type=str]
+    For further information visit https://errors.pydantic.dev/2.12/v/extra_forbidden
+api_port
+  Extra inputs are not permitted [type=extra_forbidden, input_value='3001', input_type=str]
+    For further information visit https://errors.pydantic.dev/2.12/v/extra_forbidden
+log_level
+  Extra inputs are not permitted [type=extra_forbidden, input_value='DEBUG', input_type=str]
+    For further information visit https://errors.pydantic.dev/2.12/v/extra_forbidden
+FAILED tests/unit/test_config.py::TestSettings::test_optional_redis_config - pydantic_core._pydantic_core.ValidationError: 4 validation errors for Settings
+database_url
+  Extra inputs are not permitted [type=extra_forbidden, input_value='postgresql://contextforg...calhost:5434/taskman_v2', input_type=str]
+    For further information visit https://errors.pydantic.dev/2.12/v/extra_forbidden
+api_host
+  Extra inputs are not permitted [type=extra_forbidden, input_value='0.0.0.0', input_type=str]
+    For further information visit https://errors.pydantic.dev/2.12/v/extra_forbidden
+api_port
+  Extra inputs are not permitted [type=extra_forbidden, input_value='3001', input_type=str]
+    For further information visit https://errors.pydantic.dev/2.12/v/extra_forbidden
+log_level
+  Extra inputs are not permitted [type=extra_forbidden, input_value='DEBUG', input_type=str]
+    For further information visit https://errors.pydantic.dev/2.12/v/extra_forbidden
+FAILED tests/unit/test_config.py::TestSettings::test_with_redis_config - pydantic_core._pydantic_core.ValidationError: 4 validation errors for Settings
+database_url
+  Extra inputs are not permitted [type=extra_forbidden, input_value='postgresql://contextforg...calhost:5434/taskman_v2', input_type=str]
+    For further information visit https://errors.pydantic.dev/2.12/v/extra_forbidden
+api_host
+  Extra inputs are not permitted [type=extra_forbidden, input_value='0.0.0.0', input_type=str]
+    For further information visit https://errors.pydantic.dev/2.12/v/extra_forbidden
+api_port
+  Extra inputs are not permitted [type=extra_forbidden, input_value='3001', input_type=str]
+    For further information visit https://errors.pydantic.dev/2.12/v/extra_forbidden
+log_level
+  Extra inputs are not permitted [type=extra_forbidden, input_value='DEBUG', input_type=str]
+    For further information visit https://errors.pydantic.dev/2.12/v/extra_forbidden
+FAILED tests/unit/test_config.py::TestSettings::test_environment_helpers - pydantic_core._pydantic_core.ValidationError: 4 validation errors for Settings
+database_url
+  Extra inputs are not permitted [type=extra_forbidden, input_value='postgresql://contextforg...calhost:5434/taskman_v2', input_type=str]
+    For further information visit https://errors.pydantic.dev/2.12/v/extra_forbidden
+api_host
+  Extra inputs are not permitted [type=extra_forbidden, input_value='0.0.0.0', input_type=str]
+    For further information visit https://errors.pydantic.dev/2.12/v/extra_forbidden
+api_port
+  Extra inputs are not permitted [type=extra_forbidden, input_value='3001', input_type=str]
+    For further information visit https://errors.pydantic.dev/2.12/v/extra_forbidden
+log_level
+  Extra inputs are not permitted [type=extra_forbidden, input_value='DEBUG', input_type=str]
+    For further information visit https://errors.pydantic.dev/2.12/v/extra_forbidden
+FAILED tests/unit/test_config.py::TestGetSettings::test_settings_cached - pydantic_core._pydantic_core.ValidationError: 4 validation errors for Settings
+database_url
+  Extra inputs are not permitted [type=extra_forbidden, input_value='postgresql://contextforg...calhost:5434/taskman_v2', input_type=str]
+    For further information visit https://errors.pydantic.dev/2.12/v/extra_forbidden
+api_host
+  Extra inputs are not permitted [type=extra_forbidden, input_value='0.0.0.0', input_type=str]
+    For further information visit https://errors.pydantic.dev/2.12/v/extra_forbidden
+api_port
+  Extra inputs are not permitted [type=extra_forbidden, input_value='3001', input_type=str]
+    For further information visit https://errors.pydantic.dev/2.12/v/extra_forbidden
+log_level
+  Extra inputs are not permitted [type=extra_forbidden, input_value='DEBUG', input_type=str]
+    For further information visit https://errors.pydantic.dev/2.12/v/extra_forbidden
+FAILED tests/unit/test_config.py::TestGetSettings::test_cache_clear - pydantic_core._pydantic_core.ValidationError: 4 validation errors for Settings
+database_url
+  Extra inputs are not permitted [type=extra_forbidden, input_value='postgresql://contextforg...calhost:5434/taskman_v2', input_type=str]
+    For further information visit https://errors.pydantic.dev/2.12/v/extra_forbidden
+api_host
+  Extra inputs are not permitted [type=extra_forbidden, input_value='0.0.0.0', input_type=str]
+    For further information visit https://errors.pydantic.dev/2.12/v/extra_forbidden
+api_port
+  Extra inputs are not permitted [type=extra_forbidden, input_value='3001', input_type=str]
+    For further information visit https://errors.pydantic.dev/2.12/v/extra_forbidden
+log_level
+  Extra inputs are not permitted [type=extra_forbidden, input_value='DEBUG', input_type=str]
+    For further information visit https://errors.pydantic.dev/2.12/v/extra_forbidden
+ERROR tests/unit/test_fixtures.py::TestSettingsFixture::test_fixture_provides_complete_settings - pydantic_core._pydantic_core.ValidationError: 4 validation errors for Settings
+database_url
+  Extra inputs are not permitted [type=extra_forbidden, input_value='postgresql://contextforg...calhost:5434/taskman_v2', input_type=str]
+    For further information visit https://errors.pydantic.dev/2.12/v/extra_forbidden
+api_host
+  Extra inputs are not permitted [type=extra_forbidden, input_value='0.0.0.0', input_type=str]
+    For further information visit https://errors.pydantic.dev/2.12/v/extra_forbidden
+api_port
+  Extra inputs are not permitted [type=extra_forbidden, input_value='3001', input_type=str]
+    For further information visit https://errors.pydantic.dev/2.12/v/extra_forbidden
+log_level
+  Extra inputs are not permitted [type=extra_forbidden, input_value='DEBUG', input_type=str]
+    For further information visit https://errors.pydantic.dev/2.12/v/extra_forbidden
+ERROR tests/unit/test_fixtures.py::TestSettingsFixture::test_fixture_includes_database - pydantic_core._pydantic_core.ValidationError: 4 validation errors for Settings
+database_url
+  Extra inputs are not permitted [type=extra_forbidden, input_value='postgresql://contextforg...calhost:5434/taskman_v2', input_type=str]
+    For further information visit https://errors.pydantic.dev/2.12/v/extra_forbidden
+api_host
+  Extra inputs are not permitted [type=extra_forbidden, input_value='0.0.0.0', input_type=str]
+    For further information visit https://errors.pydantic.dev/2.12/v/extra_forbidden
+api_port
+  Extra inputs are not permitted [type=extra_forbidden, input_value='3001', input_type=str]
+    For further information visit https://errors.pydantic.dev/2.12/v/extra_forbidden
+log_level
+  Extra inputs are not permitted [type=extra_forbidden, input_value='DEBUG', input_type=str]
+    For further information visit https://errors.pydantic.dev/2.12/v/extra_forbidden
+ERROR tests/unit/test_fixtures.py::TestSettingsFixture::test_fixture_includes_redis - pydantic_core._pydantic_core.ValidationError: 4 validation errors for Settings
+database_url
+  Extra inputs are not permitted [type=extra_forbidden, input_value='postgresql://contextforg...calhost:5434/taskman_v2', input_type=str]
+    For further information visit https://errors.pydantic.dev/2.12/v/extra_forbidden
+api_host
+  Extra inputs are not permitted [type=extra_forbidden, input_value='0.0.0.0', input_type=str]
+    For further information visit https://errors.pydantic.dev/2.12/v/extra_forbidden
+api_port
+  Extra inputs are not permitted [type=extra_forbidden, input_value='3001', input_type=str]
+    For further information visit https://errors.pydantic.dev/2.12/v/extra_forbidden
+log_level
+  Extra inputs are not permitted [type=extra_forbidden, input_value='DEBUG', input_type=str]
+    For further information visit https://errors.pydantic.dev/2.12/v/extra_forbidden
+ERROR tests/unit/test_fixtures.py::TestMinimalSettingsFixture::test_fixture_provides_minimal_config - pydantic_core._pydantic_core.ValidationError: 4 validation errors for Settings
+database_url
+  Extra inputs are not permitted [type=extra_forbidden, input_value='postgresql://contextforg...calhost:5434/taskman_v2', input_type=str]
+    For further information visit https://errors.pydantic.dev/2.12/v/extra_forbidden
+api_host
+  Extra inputs are not permitted [type=extra_forbidden, input_value='0.0.0.0', input_type=str]
+    For further information visit https://errors.pydantic.dev/2.12/v/extra_forbidden
+api_port
+  Extra inputs are not permitted [type=extra_forbidden, input_value='3001', input_type=str]
+    For further information visit https://errors.pydantic.dev/2.12/v/extra_forbidden
+log_level
+  Extra inputs are not permitted [type=extra_forbidden, input_value='DEBUG', input_type=str]
+    For further information visit https://errors.pydantic.dev/2.12/v/extra_forbidden
+ERROR tests/unit/test_fixtures.py::TestProductionLikeFixture::test_fixture_simulates_production - pydantic_core._pydantic_core.ValidationError: 4 validation errors for Settings
+database_url
+  Extra inputs are not permitted [type=extra_forbidden, input_value='postgresql://contextforg...calhost:5434/taskman_v2', input_type=str]
+    For further information visit https://errors.pydantic.dev/2.12/v/extra_forbidden
+api_host
+  Extra inputs are not permitted [type=extra_forbidden, input_value='0.0.0.0', input_type=str]
+    For further information visit https://errors.pydantic.dev/2.12/v/extra_forbidden
+api_port
+  Extra inputs are not permitted [type=extra_forbidden, input_value='3001', input_type=str]
+    For further information visit https://errors.pydantic.dev/2.12/v/extra_forbidden
+log_level
+  Extra inputs are not permitted [type=extra_forbidden, input_value='DEBUG', input_type=str]
+    For further information visit https://errors.pydantic.dev/2.12/v/extra_forbidden
+ERROR tests/unit/test_fixtures.py::TestProductionLikeFixture::test_fixture_has_production_database - pydantic_core._pydantic_core.ValidationError: 4 validation errors for Settings
+database_url
+  Extra inputs are not permitted [type=extra_forbidden, input_value='postgresql://contextforg...calhost:5434/taskman_v2', input_type=str]
+    For further information visit https://errors.pydantic.dev/2.12/v/extra_forbidden
+api_host
+  Extra inputs are not permitted [type=extra_forbidden, input_value='0.0.0.0', input_type=str]
+    For further information visit https://errors.pydantic.dev/2.12/v/extra_forbidden
+api_port
+  Extra inputs are not permitted [type=extra_forbidden, input_value='3001', input_type=str]
+    For further information visit https://errors.pydantic.dev/2.12/v/extra_forbidden
+log_level
+  Extra inputs are not permitted [type=extra_forbidden, input_value='DEBUG', input_type=str]
+    For further information visit https://errors.pydantic.dev/2.12/v/extra_forbidden
+ERROR tests/unit/test_fixtures.py::TestProductionLikeFixture::test_fixture_has_production_redis - pydantic_core._pydantic_core.ValidationError: 4 validation errors for Settings
+database_url
+  Extra inputs are not permitted [type=extra_forbidden, input_value='postgresql://contextforg...calhost:5434/taskman_v2', input_type=str]
+    For further information visit https://errors.pydantic.dev/2.12/v/extra_forbidden
+api_host
+  Extra inputs are not permitted [type=extra_forbidden, input_value='0.0.0.0', input_type=str]
+    For further information visit https://errors.pydantic.dev/2.12/v/extra_forbidden
+api_port
+  Extra inputs are not permitted [type=extra_forbidden, input_value='3001', input_type=str]
+    For further information visit https://errors.pydantic.dev/2.12/v/extra_forbidden
+log_level
+  Extra inputs are not permitted [type=extra_forbidden, input_value='DEBUG', input_type=str]
+    For further information visit https://errors.pydantic.dev/2.12/v/extra_forbidden
+ERROR tests/unit/test_fixtures.py::TestEnvironmentIsolation::test_settings_default_to_testing - pydantic_core._pydantic_core.ValidationError: 4 validation errors for Settings
+database_url
+  Extra inputs are not permitted [type=extra_forbidden, input_value='postgresql://contextforg...calhost:5434/taskman_v2', input_type=str]
+    For further information visit https://errors.pydantic.dev/2.12/v/extra_forbidden
+api_host
+  Extra inputs are not permitted [type=extra_forbidden, input_value='0.0.0.0', input_type=str]
+    For further information visit https://errors.pydantic.dev/2.12/v/extra_forbidden
+api_port
+  Extra inputs are not permitted [type=extra_forbidden, input_value='3001', input_type=str]
+    For further information visit https://errors.pydantic.dev/2.12/v/extra_forbidden
+log_level
+  Extra inputs are not permitted [type=extra_forbidden, input_value='DEBUG', input_type=str]
+    For further information visit https://errors.pydantic.dev/2.12/v/extra_forbidden
+=========================== 61 failed, 134 passed, 3 skipped, 2 warnings, 8 errors in 4.93s ===========================

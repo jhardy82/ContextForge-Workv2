@@ -1,0 +1,10 @@
+ImportError while loading conftest 'C:\Users\James\Documents\Github\GHrepos\SCCMScripts\TaskMan-v2\backend-api\tests\integration\api\conftest.py'.
+tests\integration\api\conftest.py:14: in <module>
+    from taskman_api.dependencies import get_db_session
+src\taskman_api\dependencies.py:18: in <module>
+    from taskman_api.services.action_list_service import ActionListService
+src\taskman_api\services\__init__.py:6: in <module>
+    from .action_list_service import ActionListService
+E     File "C:\Users\James\Documents\Github\GHrepos\SCCMScripts\TaskMan-v2\backend-api\src\taskman_api\services\action_list_service.py", line 66
+E       async def update(
+E   SyntaxError: expected 'except' or 'finally' block

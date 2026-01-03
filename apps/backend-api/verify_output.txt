@@ -1,0 +1,15 @@
+Connecting to check schema...
+
+--- Tables in 'public' schema ---
+- archon_code_examples
+- archon_crawled_pages
+- archon_document_versions
+- archon_project_sources
+- archon_projects
+- archon_prompts
+- archon_settings
+- archon_sources
+- archon_tasks
+
+❌ FAILURE: Missing tables: ['projects', 'sprints', 'tasks', 'action_lists', 'state_store']
+Migration might have failed silently.

@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="utf-8"?><testsuites><testsuite name="pytest" errors="0" failures="1" skipped="0" tests="2" time="1.034" timestamp="2025-12-28T16:36:25.991832-07:00" hostname="DESKTOP-94QBM57"><testcase classname="tests.integration.api.test_action_lists_api.TestActionListIntegration" name="test_action_list_lifecycle" time="0.260"><failure message="assert 0 == 2&#10; +  where 0 = len([])">self = &lt;test_action_lists_api.TestActionListIntegration object at 0x000001CE391D9D50&gt;
+client = &lt;httpx.AsyncClient object at 0x000001CE39215390&gt;
+
+    async def test_action_list_lifecycle(self, client: AsyncClient):
+        """Test complete action list lifecycle: Create -&gt; Get -&gt; Update -&gt; Delete."""
+        # 1. Create
+        create_payload = {
+            "id": "AL-INT-001",
+            "title": "Integration Test List",
+            "description": "Test Description",
+            "status": "active",
+            "items": [{"id": "Task-1", "text": "Task 1"}, {"id": "Task-2", "text": "Task 2"}],
+        }
+        create_res = await client.post("/api/v1/action-lists", json=create_payload)
+        # If schema mismatch, we get 422.
+        if create_res.status_code != status.HTTP_201_CREATED:
+            pytest.fail(f"Create failed: {create_res.text}")
+    
+        assert create_res.status_code == status.HTTP_201_CREATED
+        created_data = create_res.json()
+        list_id = created_data["id"]
+        # Service overwrites ID with AL-xxxx format, so it won't be AL-INT-001
+        assert list_id.startswith("AL-")
+        assert created_data["title"] == "Integration Test List"
+        # task_ids in response might be just IDs or full items depending on response schema mapping from entity
+        # Entity has task_ids=[dict, dict]. Response has items=[dict, dict].
+&gt;       assert len(created_data["items"]) == 2
+E       assert 0 == 2
+E        +  where 0 = len([])
+
+tests\integration\api\test_action_lists_api.py:35: AssertionError</failure></testcase><testcase classname="tests.integration.api.test_action_lists_api.TestActionListIntegration" name="test_validation_errors" time="0.052" /></testsuite></testsuites>

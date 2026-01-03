@@ -1,0 +1,4 @@
+Traceback (most recent call last):
+  File "C:\Users\James\Documents\Github\GHrepos\SCCMScripts\TaskMan-v2\backend-api\scripts\verify_db_manager.py", line 12, in <module>
+    from db.session import check_db_health, init_db, manager
+ImportError: cannot import name 'manager' from 'db.session' (C:\Users\James\Documents\Github\GHrepos\SCCMScripts\TaskMan-v2\backend-api\db\session.py)

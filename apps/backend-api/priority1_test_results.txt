@@ -1,0 +1,477 @@
+================================================= test session starts =================================================
+platform win32 -- Python 3.11.9, pytest-8.4.2, pluggy-1.6.0 -- C:\Users\James\Documents\Github\GHrepos\SCCMScripts\TaskMan-v2\backend-api\.venv\Scripts\python.exe
+cachedir: .pytest_cache
+rootdir: C:\Users\James\Documents\Github\GHrepos\SCCMScripts\TaskMan-v2\backend-api
+configfile: pytest_full.ini
+plugins: anyio-4.12.0, Faker-30.10.0, asyncio-0.26.0, cov-5.0.0, mock-3.15.1
+asyncio: mode=Mode.AUTO, asyncio_default_fixture_loop_scope=function, asyncio_default_test_loop_scope=function
+collecting ... collected 11 items
+
+tests/unit/db/test_connection_manager.py::test_init_creates_engines PASSED                                       [  9%]
+tests/unit/db/test_connection_manager.py::test_get_session_primary_success FAILED                                [ 18%]
+tests/unit/db/test_connection_manager.py::test_get_session_failover PASSED                                       [ 27%]
+tests/unit/db/test_connection_manager.py::test_health_check_reporting PASSED                                     [ 36%]
+tests/unit/db/test_connection_manager.py::test_health_check_primary_down PASSED                                  [ 45%]
+tests/unit/db/repositories/test_repositories.py::TestProjectRepository::test_get_by_status FAILED                [ 54%]
+tests/unit/db/repositories/test_repositories.py::TestProjectRepository::test_get_active_projects FAILED          [ 63%]
+tests/unit/db/repositories/test_repositories.py::TestSprintRepository::test_get_by_status FAILED                 [ 72%]
+tests/unit/db/repositories/test_repositories.py::TestSprintRepository::test_get_active_sprints FAILED            [ 81%]
+tests/unit/db/repositories/test_repositories.py::TestActionListRepository::test_get_active FAILED                [ 90%]
+tests/unit/db/repositories/test_repositories.py::TestActionListRepository::test_search_action_lists FAILED       [100%]
+
+====================================================== FAILURES =======================================================
+__________________________________________ test_get_session_primary_success ___________________________________________
+
+manager = <taskman_api.db.connection_manager.ConnectionManager object at 0x000001CB2AFDAAD0>
+
+    @pytest.mark.asyncio
+    async def test_get_session_primary_success(manager):
+        # Setup mock session
+        mock_session = AsyncMock(spec=AsyncSession)
+        manager.PrimarySession = MagicMock(return_value=mock_session)
+    
+        # Run
+        async for session in manager.get_session():
+>           assert session is mock_session
+E           AssertionError: assert <AsyncMock name='mock.__aenter__()' id='1972110954640'> is <AsyncMock spec='AsyncSession' id='1972111257936'>
+
+tests\unit\db\test_connection_manager.py:45: AssertionError
+______________________________________ TestProjectRepository.test_get_by_status _______________________________________
+
+self = <test_repositories.TestProjectRepository object at 0x000001CB2AF913D0>
+async_session = <sqlalchemy.ext.asyncio.session.AsyncSession object at 0x000001CB2B117B90>
+
+    async def test_get_by_status(self, async_session: AsyncSession):
+        """Test finding projects by status."""
+        from taskman_api.models.project import Project
+    
+        repo = ProjectRepository(async_session)
+    
+        # Create projects with different statuses
+        for i, status in enumerate([ProjectStatus.ACTIVE, ProjectStatus.PAUSED, ProjectStatus.ACTIVE]):
+>           project = Project(
+                id=f"P-TEST-{i:03d}",
+                name=f"Project {i}",
+                mission=f"Mission {i}",
+                status=status,
+                start_date=str(date(2025, 1, 1)),
+                owner="owner",
+                sponsors="[]",
+                stakeholders="[]",
+                repositories="[]",
+                comms_channels="[]",
+                okrs="[]",
+                kpis="[]",
+                roadmap="[]",
+                risks="[]",
+                assumptions="[]",
+                constraints="[]",
+                dependencies_external="[]",
+                sprints="[]",
+                related_projects="[]",
+                shared_components="[]",
+                compliance_requirements="[]",
+                governance="{}",
+                success_metrics="[]",
+                mpv_policy="{}",
+                observability="{}",
+            )
+
+tests\unit\db\repositories\test_repositories.py:30: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _
+<string>:4: in __init__
+    ???
+.venv\Lib\site-packages\sqlalchemy\orm\state.py:596: in _initialize_instance
+    with util.safe_reraise():
+.venv\Lib\site-packages\sqlalchemy\util\langhelpers.py:224: in __exit__
+    raise exc_value.with_traceback(exc_tb)
+.venv\Lib\site-packages\sqlalchemy\orm\state.py:594: in _initialize_instance
+    manager.original_init(*mixed[1:], **kwargs)
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _
+
+self = <Project(id='P-TEST-000', name='Project 0', status='ProjectStatus.ACTIVE')>
+kwargs = {'assumptions': '[]', 'comms_channels': '[]', 'compliance_requirements': '[]', 'constraints': '[]', ...}
+cls_ = <class 'taskman_api.models.project.Project'>, k = 'sprints'
+
+    def _declarative_constructor(self: Any, **kwargs: Any) -> None:
+        """A simple constructor that allows initialization from kwargs.
+    
+        Sets attributes on the constructed instance using the names and
+        values in ``kwargs``.
+    
+        Only keys that are present as
+        attributes of the instance's class are allowed. These could be,
+        for example, any mapped columns or relationships.
+        """
+        cls_ = type(self)
+        for k in kwargs:
+            if not hasattr(cls_, k):
+>               raise TypeError(
+                    "%r is an invalid keyword argument for %s" % (k, cls_.__name__)
+                )
+E               TypeError: 'sprints' is an invalid keyword argument for Project
+
+.venv\Lib\site-packages\sqlalchemy\orm\decl_base.py:2179: TypeError
+___________________________________ TestProjectRepository.test_get_active_projects ____________________________________
+
+self = <test_repositories.TestProjectRepository object at 0x000001CB2AF91690>
+async_session = <sqlalchemy.ext.asyncio.session.AsyncSession object at 0x000001CB2AFCD010>
+
+    async def test_get_active_projects(self, async_session: AsyncSession):
+        """Test finding all active projects via get_by_status."""
+        from taskman_api.models.project import Project
+    
+        repo = ProjectRepository(async_session)
+    
+>       project = Project(
+            id="P-ACTIVE-001",
+            name="Active Project",
+            mission="Mission",
+            status=ProjectStatus.ACTIVE,
+            start_date=str(date(2025, 1, 1)),
+            owner="owner",
+            sponsors="[]",
+            stakeholders="[]",
+            repositories="[]",
+            comms_channels="[]",
+            okrs="[]",
+            kpis="[]",
+            roadmap="[]",
+            risks="[]",
+            assumptions="[]",
+            constraints="[]",
+            dependencies_external="[]",
+            sprints="[]",
+            related_projects="[]",
+            shared_components="[]",
+            compliance_requirements="[]",
+            governance="{}",
+            success_metrics="[]",
+            mpv_policy="{}",
+            observability="{}",
+        )
+
+tests\unit\db\repositories\test_repositories.py:72: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _
+<string>:4: in __init__
+    ???
+.venv\Lib\site-packages\sqlalchemy\orm\state.py:596: in _initialize_instance
+    with util.safe_reraise():
+.venv\Lib\site-packages\sqlalchemy\util\langhelpers.py:224: in __exit__
+    raise exc_value.with_traceback(exc_tb)
+.venv\Lib\site-packages\sqlalchemy\orm\state.py:594: in _initialize_instance
+    manager.original_init(*mixed[1:], **kwargs)
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _
+
+self = <Project(id='P-ACTIVE-001', name='Active Project', status='ProjectStatus.ACTIVE')>
+kwargs = {'assumptions': '[]', 'comms_channels': '[]', 'compliance_requirements': '[]', 'constraints': '[]', ...}
+cls_ = <class 'taskman_api.models.project.Project'>, k = 'sprints'
+
+    def _declarative_constructor(self: Any, **kwargs: Any) -> None:
+        """A simple constructor that allows initialization from kwargs.
+    
+        Sets attributes on the constructed instance using the names and
+        values in ``kwargs``.
+    
+        Only keys that are present as
+        attributes of the instance's class are allowed. These could be,
+        for example, any mapped columns or relationships.
+        """
+        cls_ = type(self)
+        for k in kwargs:
+            if not hasattr(cls_, k):
+>               raise TypeError(
+                    "%r is an invalid keyword argument for %s" % (k, cls_.__name__)
+                )
+E               TypeError: 'sprints' is an invalid keyword argument for Project
+
+.venv\Lib\site-packages\sqlalchemy\orm\decl_base.py:2179: TypeError
+_______________________________________ TestSprintRepository.test_get_by_status _______________________________________
+
+self = <test_repositories.TestSprintRepository object at 0x000001CB2AF91ED0>
+async_session = <sqlalchemy.ext.asyncio.session.AsyncSession object at 0x000001CB2AF1C2D0>
+sample_project = <Project(id='P-TEST-001', name='Test Project', status='ProjectStatus.ACTIVE')>
+
+    async def test_get_by_status(self, async_session: AsyncSession, sample_project):
+        """Test finding sprints by status."""
+        from taskman_api.core.enums import SprintCadence
+        from taskman_api.models.sprint import Sprint
+    
+        async_session.add(sample_project)
+        await async_session.commit()
+    
+        repo = SprintRepository(async_session)
+    
+        # Create sprints with different statuses
+        for i, status in enumerate([SprintStatus.ACTIVE, SprintStatus.PLANNED, SprintStatus.ACTIVE]):
+>           sprint = Sprint(
+                id=f"S-TEST-{i:03d}",
+                name=f"Sprint {i}",
+                goal=f"Goal {i}",
+                cadence=SprintCadence.BIWEEKLY,
+                start_date=str(date(2025, 1, 1)),
+                end_date=str(date(2025, 1, 14)),
+                status=status,
+                owner="owner",
+                primary_project=sample_project.id,
+                tasks="[]",
+                imported_tasks="[]",
+                related_projects="[]",
+                definition_of_done="[]",
+                dependencies="{}",
+                scope_changes="[]",
+                risks="[]",
+                ceremonies="{}",
+                metrics="{}",
+                observability="{}",
+            )
+
+tests\unit\db\repositories\test_repositories.py:125: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _
+<string>:4: in __init__
+    ???
+.venv\Lib\site-packages\sqlalchemy\orm\state.py:596: in _initialize_instance
+    with util.safe_reraise():
+.venv\Lib\site-packages\sqlalchemy\util\langhelpers.py:224: in __exit__
+    raise exc_value.with_traceback(exc_tb)
+.venv\Lib\site-packages\sqlalchemy\orm\state.py:594: in _initialize_instance
+    manager.original_init(*mixed[1:], **kwargs)
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _
+
+self = <Sprint(id='S-TEST-000', name='Sprint 0', status='SprintStatus.ACTIVE')>
+kwargs = {'cadence': <SprintCadence.BIWEEKLY: 'biweekly'>, 'ceremonies': '{}', 'definition_of_done': '[]', 'dependencies': '{}', ...}
+cls_ = <class 'taskman_api.models.sprint.Sprint'>, k = 'tasks'
+
+    def _declarative_constructor(self: Any, **kwargs: Any) -> None:
+        """A simple constructor that allows initialization from kwargs.
+    
+        Sets attributes on the constructed instance using the names and
+        values in ``kwargs``.
+    
+        Only keys that are present as
+        attributes of the instance's class are allowed. These could be,
+        for example, any mapped columns or relationships.
+        """
+        cls_ = type(self)
+        for k in kwargs:
+            if not hasattr(cls_, k):
+>               raise TypeError(
+                    "%r is an invalid keyword argument for %s" % (k, cls_.__name__)
+                )
+E               TypeError: 'tasks' is an invalid keyword argument for Sprint
+
+.venv\Lib\site-packages\sqlalchemy\orm\decl_base.py:2179: TypeError
+____________________________________ TestSprintRepository.test_get_active_sprints _____________________________________
+
+self = <test_repositories.TestSprintRepository object at 0x000001CB2AF78290>
+async_session = <sqlalchemy.ext.asyncio.session.AsyncSession object at 0x000001CB2AEBF450>
+sample_project = <Project(id='P-TEST-001', name='Test Project', status='ProjectStatus.ACTIVE')>
+
+    async def test_get_active_sprints(self, async_session: AsyncSession, sample_project):
+        """Test finding all active sprints."""
+        from taskman_api.core.enums import SprintCadence
+        from taskman_api.models.sprint import Sprint
+    
+        async_session.add(sample_project)
+        await async_session.commit()
+    
+        repo = SprintRepository(async_session)
+    
+>       sprint = Sprint(
+            id="S-ACTIVE-001",
+            name="Active Sprint",
+            goal="Goal",
+            cadence=SprintCadence.BIWEEKLY,
+            start_date=str(date(2025, 1, 1)),
+            end_date=str(date(2025, 1, 14)),
+            status=SprintStatus.ACTIVE,
+            owner="owner",
+            primary_project=sample_project.id,
+            tasks="[]",
+            imported_tasks="[]",
+            related_projects="[]",
+            definition_of_done="[]",
+            dependencies="{}",
+            scope_changes="[]",
+            risks="[]",
+            ceremonies="{}",
+            metrics="{}",
+            observability="{}",
+        )
+
+tests\unit\db\repositories\test_repositories.py:165: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _
+<string>:4: in __init__
+    ???
+.venv\Lib\site-packages\sqlalchemy\orm\state.py:596: in _initialize_instance
+    with util.safe_reraise():
+.venv\Lib\site-packages\sqlalchemy\util\langhelpers.py:224: in __exit__
+    raise exc_value.with_traceback(exc_tb)
+.venv\Lib\site-packages\sqlalchemy\orm\state.py:594: in _initialize_instance
+    manager.original_init(*mixed[1:], **kwargs)
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _
+
+self = <Sprint(id='S-ACTIVE-001', name='Active Sprint', status='SprintStatus.ACTIVE')>
+kwargs = {'cadence': <SprintCadence.BIWEEKLY: 'biweekly'>, 'ceremonies': '{}', 'definition_of_done': '[]', 'dependencies': '{}', ...}
+cls_ = <class 'taskman_api.models.sprint.Sprint'>, k = 'tasks'
+
+    def _declarative_constructor(self: Any, **kwargs: Any) -> None:
+        """A simple constructor that allows initialization from kwargs.
+    
+        Sets attributes on the constructed instance using the names and
+        values in ``kwargs``.
+    
+        Only keys that are present as
+        attributes of the instance's class are allowed. These could be,
+        for example, any mapped columns or relationships.
+        """
+        cls_ = type(self)
+        for k in kwargs:
+            if not hasattr(cls_, k):
+>               raise TypeError(
+                    "%r is an invalid keyword argument for %s" % (k, cls_.__name__)
+                )
+E               TypeError: 'tasks' is an invalid keyword argument for Sprint
+
+.venv\Lib\site-packages\sqlalchemy\orm\decl_base.py:2179: TypeError
+______________________________________ TestActionListRepository.test_get_active _______________________________________
+
+self = <test_repositories.TestActionListRepository object at 0x000001CB2AF78E90>
+async_session = <sqlalchemy.ext.asyncio.session.AsyncSession object at 0x000001CB2AFDA490>
+
+    async def test_get_active(self, async_session: AsyncSession):
+        """Test finding active action lists."""
+        from taskman_api.models.action_list import ActionList
+    
+        repo = ActionListRepository(async_session)
+    
+        # Create action lists with different statuses
+        for i, status in enumerate(["active", "archived", "active"]):
+>           action_list = ActionList(
+                id=f"AL-TEST-{i:03d}",
+                title=f"List {i}",
+                status=status,
+                owner="testowner",
+                items="[]",
+                tags="[]",
+                evidence_refs="[]",
+                extra_metadata="{}",
+                parent_deletion_note="{}",
+            )
+
+tests\unit\db\repositories\test_repositories.py:207: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _
+<string>:4: in __init__
+    ???
+.venv\Lib\site-packages\sqlalchemy\orm\state.py:596: in _initialize_instance
+    with util.safe_reraise():
+.venv\Lib\site-packages\sqlalchemy\util\langhelpers.py:224: in __exit__
+    raise exc_value.with_traceback(exc_tb)
+.venv\Lib\site-packages\sqlalchemy\orm\state.py:594: in _initialize_instance
+    manager.original_init(*mixed[1:], **kwargs)
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _
+
+self = <ActionList(id='AL-TEST-000', name=None, status=None)>
+kwargs = {'evidence_refs': '[]', 'extra_metadata': '{}', 'id': 'AL-TEST-000', 'items': '[]', ...}
+cls_ = <class 'taskman_api.models.action_list.ActionList'>, k = 'title'
+
+    def _declarative_constructor(self: Any, **kwargs: Any) -> None:
+        """A simple constructor that allows initialization from kwargs.
+    
+        Sets attributes on the constructed instance using the names and
+        values in ``kwargs``.
+    
+        Only keys that are present as
+        attributes of the instance's class are allowed. These could be,
+        for example, any mapped columns or relationships.
+        """
+        cls_ = type(self)
+        for k in kwargs:
+            if not hasattr(cls_, k):
+>               raise TypeError(
+                    "%r is an invalid keyword argument for %s" % (k, cls_.__name__)
+                )
+E               TypeError: 'title' is an invalid keyword argument for ActionList
+
+.venv\Lib\site-packages\sqlalchemy\orm\decl_base.py:2179: TypeError
+__________________________________ TestActionListRepository.test_search_action_lists __________________________________
+
+self = <test_repositories.TestActionListRepository object at 0x000001CB2AF78350>
+async_session = <sqlalchemy.ext.asyncio.session.AsyncSession object at 0x000001CB2AF3A290>
+
+    async def test_search_action_lists(self, async_session: AsyncSession):
+        """Test searching action lists with filters."""
+        from taskman_api.models.action_list import ActionList
+    
+        repo = ActionListRepository(async_session)
+    
+        # Create action list
+>       action_list = ActionList(
+            id="AL-SEARCH-001",
+            title="Search Test List",
+            status="active",
+            items="[]",
+            tags="[]",
+            evidence_refs="[]",
+            extra_metadata="{}",
+            parent_deletion_note="{}",
+        )
+
+tests\unit\db\repositories\test_repositories.py:234: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _
+<string>:4: in __init__
+    ???
+.venv\Lib\site-packages\sqlalchemy\orm\state.py:596: in _initialize_instance
+    with util.safe_reraise():
+.venv\Lib\site-packages\sqlalchemy\util\langhelpers.py:224: in __exit__
+    raise exc_value.with_traceback(exc_tb)
+.venv\Lib\site-packages\sqlalchemy\orm\state.py:594: in _initialize_instance
+    manager.original_init(*mixed[1:], **kwargs)
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _
+
+self = <ActionList(id='AL-SEARCH-001', name=None, status=None)>
+kwargs = {'evidence_refs': '[]', 'extra_metadata': '{}', 'id': 'AL-SEARCH-001', 'items': '[]', ...}
+cls_ = <class 'taskman_api.models.action_list.ActionList'>, k = 'title'
+
+    def _declarative_constructor(self: Any, **kwargs: Any) -> None:
+        """A simple constructor that allows initialization from kwargs.
+    
+        Sets attributes on the constructed instance using the names and
+        values in ``kwargs``.
+    
+        Only keys that are present as
+        attributes of the instance's class are allowed. These could be,
+        for example, any mapped columns or relationships.
+        """
+        cls_ = type(self)
+        for k in kwargs:
+            if not hasattr(cls_, k):
+>               raise TypeError(
+                    "%r is an invalid keyword argument for %s" % (k, cls_.__name__)
+                )
+E               TypeError: 'title' is an invalid keyword argument for ActionList
+
+.venv\Lib\site-packages\sqlalchemy\orm\decl_base.py:2179: TypeError
+================================================== warnings summary ===================================================
+tests/unit/db/test_connection_manager.py::test_health_check_reporting
+  C:\Users\James\AppData\Local\Programs\Python\Python311\Lib\asyncio\events.py:84: RuntimeWarning: coroutine 'AsyncMockMixin._execute_mock_call' was never awaited
+    self._context.run(self._callback, *self._args)
+  Enable tracemalloc to get traceback where the object was allocated.
+  See https://docs.pytest.org/en/stable/how-to/capture-warnings.html#resource-warnings for more info.
+
+tests/unit/db/repositories/test_repositories.py::TestProjectRepository::test_get_by_status
+  C:\Users\James\Documents\Github\GHrepos\SCCMScripts\TaskMan-v2\backend-api\.venv\Lib\site-packages\sqlalchemy\sql\elements.py:1518: RuntimeWarning: coroutine 'AsyncMockMixin._execute_mock_call' was never awaited
+    return getattr(self.comparator, key)
+  Enable tracemalloc to get traceback where the object was allocated.
+  See https://docs.pytest.org/en/stable/how-to/capture-warnings.html#resource-warnings for more info.
+
+-- Docs: https://docs.pytest.org/en/stable/how-to/capture-warnings.html
+=============================================== short test summary info ===============================================
+FAILED tests/unit/db/test_connection_manager.py::test_get_session_primary_success - AssertionError: assert <AsyncMock name='mock.__aenter__()' id='1972110954640'> is <AsyncMock spec='AsyncSession' id='1972111257936'>
+FAILED tests/unit/db/repositories/test_repositories.py::TestProjectRepository::test_get_by_status - TypeError: 'sprints' is an invalid keyword argument for Project
+FAILED tests/unit/db/repositories/test_repositories.py::TestProjectRepository::test_get_active_projects - TypeError: 'sprints' is an invalid keyword argument for Project
+FAILED tests/unit/db/repositories/test_repositories.py::TestSprintRepository::test_get_by_status - TypeError: 'tasks' is an invalid keyword argument for Sprint
+FAILED tests/unit/db/repositories/test_repositories.py::TestSprintRepository::test_get_active_sprints - TypeError: 'tasks' is an invalid keyword argument for Sprint
+FAILED tests/unit/db/repositories/test_repositories.py::TestActionListRepository::test_get_active - TypeError: 'title' is an invalid keyword argument for ActionList
+FAILED tests/unit/db/repositories/test_repositories.py::TestActionListRepository::test_search_action_lists - TypeError: 'title' is an invalid keyword argument for ActionList
+======================================= 7 failed, 4 passed, 2 warnings in 0.89s =======================================

@@ -1,0 +1,2027 @@
+================================================= test session starts =================================================
+platform win32 -- Python 3.11.9, pytest-8.4.2, pluggy-1.6.0 -- C:\Users\James\Documents\Github\GHrepos\SCCMScripts\TaskMan-v2\backend-api\.venv\Scripts\python.exe
+cachedir: .pytest_cache
+rootdir: C:\Users\James\Documents\Github\GHrepos\SCCMScripts\TaskMan-v2\backend-api
+configfile: pytest_full.ini
+plugins: anyio-4.12.0, Faker-30.10.0, asyncio-0.26.0, cov-5.0.0, mock-3.15.1
+asyncio: mode=Mode.AUTO, asyncio_default_fixture_loop_scope=function, asyncio_default_test_loop_scope=function
+collecting ... collected 68 items
+
+tests/integration/api/test_action_lists_api.py::TestActionListIntegration::test_action_list_lifecycle FAILED     [  1%]
+tests/integration/api/test_action_lists_api.py::TestActionListIntegration::test_validation_errors PASSED         [  2%]
+tests/integration/api/test_endpoints.py::TestHealthEndpoint::test_health_check FAILED                            [  4%]
+tests/integration/api/test_endpoints.py::TestTaskEndpoints::test_create_task_success FAILED                      [  5%]
+tests/integration/api/test_endpoints.py::TestTaskEndpoints::test_get_task_success FAILED                         [  7%]
+tests/integration/api/test_endpoints.py::TestTaskEndpoints::test_get_task_not_found PASSED                       [  8%]
+tests/integration/api/test_endpoints.py::TestTaskEndpoints::test_update_task_success FAILED                      [ 10%]
+tests/integration/api/test_endpoints.py::TestTaskEndpoints::test_delete_task_success FAILED                      [ 11%]
+tests/integration/api/test_endpoints.py::TestTaskEndpoints::test_list_tasks FAILED                               [ 13%]
+tests/integration/api/test_endpoints.py::TestTaskEndpoints::test_create_task_validation_error PASSED             [ 14%]
+tests/integration/api/test_endpoints.py::TestTaskEndpoints::test_create_task_conflict FAILED                     [ 16%]
+tests/integration/api/test_endpoints.py::TestProjectEndpoints::test_create_project_success PASSED                [ 17%]
+tests/integration/api/test_endpoints.py::TestProjectEndpoints::test_get_project_success PASSED                   [ 19%]
+tests/integration/api/test_endpoints.py::TestProjectEndpoints::test_list_projects FAILED                         [ 20%]
+tests/integration/api/test_endpoints.py::TestProjectEndpoints::test_update_project_success FAILED                [ 22%]
+tests/integration/api/test_endpoints.py::TestProjectEndpoints::test_update_project_not_found FAILED              [ 23%]
+tests/integration/api/test_endpoints.py::TestProjectEndpoints::test_delete_project_success PASSED                [ 25%]
+tests/integration/api/test_endpoints.py::TestProjectEndpoints::test_delete_project_not_found PASSED              [ 26%]
+tests/integration/api/test_endpoints.py::TestProjectEndpoints::test_create_project_validation_error PASSED       [ 27%]
+tests/integration/api/test_endpoints.py::TestProjectEndpoints::test_create_project_conflict PASSED               [ 29%]
+tests/integration/api/test_endpoints.py::TestSprintEndpoints::test_create_sprint_success FAILED                  [ 30%]
+tests/integration/api/test_endpoints.py::TestSprintEndpoints::test_get_sprint_success FAILED                     [ 32%]
+tests/integration/api/test_endpoints.py::TestSprintEndpoints::test_list_sprints FAILED                           [ 33%]
+tests/integration/api/test_endpoints.py::TestSprintEndpoints::test_update_sprint_success FAILED                  [ 35%]
+tests/integration/api/test_endpoints.py::TestSprintEndpoints::test_update_sprint_not_found FAILED                [ 36%]
+tests/integration/api/test_endpoints.py::TestSprintEndpoints::test_delete_sprint_success FAILED                  [ 38%]
+tests/integration/api/test_endpoints.py::TestSprintEndpoints::test_delete_sprint_not_found PASSED                [ 39%]
+tests/integration/api/test_endpoints.py::TestSprintEndpoints::test_create_sprint_validation_error PASSED         [ 41%]
+tests/integration/api/test_endpoints.py::TestSprintEndpoints::test_create_sprint_conflict FAILED                 [ 42%]
+tests/integration/api/test_endpoints.py::TestActionListEndpoints::test_create_action_list_success FAILED         [ 44%]
+tests/integration/api/test_endpoints.py::TestActionListEndpoints::test_get_action_list_success FAILED            [ 45%]
+tests/integration/api/test_endpoints.py::TestActionListEndpoints::test_list_action_lists FAILED                  [ 47%]
+tests/integration/api/test_endpoints.py::TestActionListEndpoints::test_update_action_list_success FAILED         [ 48%]
+tests/integration/api/test_endpoints.py::TestActionListEndpoints::test_update_action_list_not_found FAILED       [ 50%]
+tests/integration/api/test_endpoints.py::TestActionListEndpoints::test_delete_action_list_success FAILED         [ 51%]
+tests/integration/api/test_endpoints.py::TestActionListEndpoints::test_delete_action_list_not_found PASSED       [ 52%]
+tests/integration/api/test_endpoints.py::TestActionListEndpoints::test_create_action_list_validation_error PASSED [ 54%]
+tests/integration/api/test_endpoints.py::TestActionListEndpoints::test_create_action_list_conflict FAILED        [ 55%]
+tests/integration/api/test_endpoints.py::TestPaginationEdgeCases::test_list_tasks_with_limit FAILED              [ 57%]
+tests/integration/api/test_endpoints.py::TestPaginationEdgeCases::test_list_tasks_with_offset FAILED             [ 58%]
+tests/integration/api/test_endpoints.py::TestPaginationEdgeCases::test_list_projects_empty_result FAILED         [ 60%]
+tests/integration/api/test_endpoints.py::TestPaginationEdgeCases::test_list_sprints_with_pagination FAILED       [ 61%]
+tests/integration/api/test_endpoints.py::TestPaginationEdgeCases::test_list_action_lists_limit_boundary FAILED   [ 63%]
+tests/integration/api/test_endpoints.py::TestPaginationEdgeCases::test_list_tasks_zero_offset FAILED             [ 64%]
+tests/integration/api/test_endpoints.py::TestPaginationEdgeCases::test_list_projects_large_limit FAILED          [ 66%]
+tests/integration/api/test_endpoints.py::TestPaginationEdgeCases::test_list_sprints_default_pagination FAILED    [ 67%]
+tests/integration/api/test_endpoints.py::TestFilteringEdgeCases::test_list_tasks_filter_by_status FAILED         [ 69%]
+tests/integration/api/test_endpoints.py::TestFilteringEdgeCases::test_list_tasks_filter_by_priority FAILED       [ 70%]
+tests/integration/api/test_endpoints.py::TestFilteringEdgeCases::test_list_tasks_filter_by_owner FAILED          [ 72%]
+tests/integration/api/test_endpoints.py::TestFilteringEdgeCases::test_list_projects_filter_by_status FAILED      [ 73%]
+tests/integration/api/test_endpoints.py::TestFilteringEdgeCases::test_list_projects_filter_by_owner FAILED       [ 75%]
+tests/integration/api/test_endpoints.py::TestFilteringEdgeCases::test_list_sprints_filter_by_status FAILED       [ 76%]
+tests/integration/api/test_endpoints.py::TestFilteringEdgeCases::test_list_sprints_filter_by_project FAILED      [ 77%]
+tests/integration/api/test_endpoints.py::TestFilteringEdgeCases::test_list_action_lists_filter_by_status FAILED  [ 79%]
+tests/integration/api/test_endpoints.py::TestFilteringEdgeCases::test_list_tasks_multiple_filters FAILED         [ 80%]
+tests/integration/api/test_endpoints.py::TestFilteringEdgeCases::test_list_projects_no_filters FAILED            [ 82%]
+tests/integration/api/test_endpoints.py::TestFilteringEdgeCases::test_list_sprints_invalid_filter_ignored FAILED [ 83%]
+tests/integration/api/test_endpoints.py::TestFilteringEdgeCases::test_list_action_lists_empty_filter_value FAILED [ 85%]
+tests/integration/api/test_endpoints.py::TestValidationEdgeCases::test_create_task_max_title_length FAILED       [ 86%]
+tests/integration/api/test_endpoints.py::TestValidationEdgeCases::test_create_task_title_exceeds_max_length PASSED [ 88%]
+tests/integration/api/test_endpoints.py::TestValidationEdgeCases::test_update_task_invalid_status PASSED         [ 89%]
+tests/integration/api/test_endpoints.py::TestValidationEdgeCases::test_update_task_invalid_priority PASSED       [ 91%]
+tests/integration/api/test_endpoints.py::TestValidationEdgeCases::test_create_project_max_name_length PASSED     [ 92%]
+tests/integration/api/test_endpoints.py::TestValidationEdgeCases::test_create_project_invalid_status PASSED      [ 94%]
+tests/integration/api/test_endpoints.py::TestValidationEdgeCases::test_create_sprint_invalid_date_format PASSED  [ 95%]
+tests/integration/api/test_endpoints.py::TestValidationEdgeCases::test_create_sprint_invalid_cadence PASSED      [ 97%]
+tests/integration/api/test_endpoints.py::TestValidationEdgeCases::test_create_action_list_missing_required_field PASSED [ 98%]
+tests/integration/api/test_endpoints.py::TestValidationEdgeCases::test_update_action_list_invalid_status FAILED  [100%]
+
+====================================================== FAILURES =======================================================
+________________________________ TestActionListIntegration.test_action_list_lifecycle _________________________________
+
+self = <test_action_lists_api.TestActionListIntegration object at 0x00000224CEACB790>
+client = <httpx.AsyncClient object at 0x00000224CFDC3ED0>
+
+    async def test_action_list_lifecycle(self, client: AsyncClient):
+        """Test complete action list lifecycle: Create -> Get -> Update -> Delete."""
+        # 1. Create
+        create_payload = {
+            "id": "AL-INT-001",
+            "title": "Integration Test List",
+            "description": "Test Description",
+            "status": "active",
+            "items": [{"id": "Task-1", "text": "Task 1"}, {"id": "Task-2", "text": "Task 2"}],
+        }
+        create_res = await client.post("/api/v1/action-lists", json=create_payload)
+        # If schema mismatch, we get 422.
+        if create_res.status_code != status.HTTP_201_CREATED:
+            pytest.fail(f"Create failed: {create_res.text}")
+    
+        assert create_res.status_code == status.HTTP_201_CREATED
+        created_data = create_res.json()
+        list_id = created_data["id"]
+        # Service overwrites ID with AL-xxxx format, so it won't be AL-INT-001
+        assert list_id.startswith("AL-")
+        assert created_data["title"] == "Integration Test List"
+        # task_ids in response might be just IDs or full items depending on response schema mapping from entity
+        # Entity has task_ids=[dict, dict]. Response has items=[dict, dict].
+>       assert len(created_data["items"]) == 2
+E       assert 0 == 2
+E        +  where 0 = len([])
+
+tests\integration\api\test_action_lists_api.py:35: AssertionError
+------------------------------------------------ Captured stdout call -------------------------------------------------
+{"method": "POST", "path": "/api/v1/action-lists", "query": null, "correlation_id": "2b5e6ff2-88eb-4965-b94d-f2caa182fbee", "client_ip": "127.0.0.1", "event": "http_request", "timestamp": "2025-12-29T00:01:02.250934Z", "level": "info"}
+{"list_id": "AL-0001", "event": "action_list_created", "timestamp": "2025-12-29T00:01:02.268100Z", "level": "info"}
+{"method": "POST", "path": "/api/v1/action-lists", "status_code": 201, "duration_ms": 17.38, "correlation_id": "2b5e6ff2-88eb-4965-b94d-f2caa182fbee", "event": "http_response", "timestamp": "2025-12-29T00:01:02.268100Z", "level": "info"}
+________________________________________ TestHealthEndpoint.test_health_check _________________________________________
+  + Exception Group Traceback (most recent call last):
+  |   File "C:\Users\James\Documents\Github\GHrepos\SCCMScripts\TaskMan-v2\backend-api\.venv\Lib\site-packages\starlette\_utils.py", line 76, in collapse_excgroups
+  |     yield
+  |   File "C:\Users\James\Documents\Github\GHrepos\SCCMScripts\TaskMan-v2\backend-api\.venv\Lib\site-packages\starlette\middleware\base.py", line 177, in __call__
+  |     async with anyio.create_task_group() as task_group:
+  |   File "c:\Users\James\Documents\Github\GHrepos\SCCMScripts\TaskMan-v2\backend-api\.venv\Lib\site-packages\anyio\_backends\_asyncio.py", line 783, in __aexit__
+  |     raise BaseExceptionGroup(
+  | ExceptionGroup: unhandled errors in a TaskGroup (1 sub-exception)
+  +-+---------------- 1 ----------------
+    | Traceback (most recent call last):
+    |   File "C:\Users\James\Documents\Github\GHrepos\SCCMScripts\TaskMan-v2\backend-api\.venv\Lib\site-packages\_pytest\runner.py", line 344, in from_call
+    |     result: TResult | None = func()
+    |                              ^^^^^^
+    |   File "C:\Users\James\Documents\Github\GHrepos\SCCMScripts\TaskMan-v2\backend-api\.venv\Lib\site-packages\_pytest\runner.py", line 246, in <lambda>
+    |     lambda: runtest_hook(item=item, **kwds), when=when, reraise=reraise
+    |             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+    |   File "C:\Users\James\Documents\Github\GHrepos\SCCMScripts\TaskMan-v2\backend-api\.venv\Lib\site-packages\pluggy\_hooks.py", line 512, in __call__
+    |     return self._hookexec(self.name, self._hookimpls.copy(), kwargs, firstresult)
+    |            ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+    |   File "C:\Users\James\Documents\Github\GHrepos\SCCMScripts\TaskMan-v2\backend-api\.venv\Lib\site-packages\pluggy\_manager.py", line 120, in _hookexec
+    |     return self._inner_hookexec(hook_name, methods, kwargs, firstresult)
+    |            ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+    |   File "C:\Users\James\Documents\Github\GHrepos\SCCMScripts\TaskMan-v2\backend-api\.venv\Lib\site-packages\pluggy\_callers.py", line 167, in _multicall
+    |     raise exception
+    |   File "C:\Users\James\Documents\Github\GHrepos\SCCMScripts\TaskMan-v2\backend-api\.venv\Lib\site-packages\pluggy\_callers.py", line 139, in _multicall
+    |     teardown.throw(exception)
+    |   File "C:\Users\James\Documents\Github\GHrepos\SCCMScripts\TaskMan-v2\backend-api\.venv\Lib\site-packages\_pytest\logging.py", line 850, in pytest_runtest_call
+    |     yield
+    |   File "C:\Users\James\Documents\Github\GHrepos\SCCMScripts\TaskMan-v2\backend-api\.venv\Lib\site-packages\pluggy\_callers.py", line 139, in _multicall
+    |     teardown.throw(exception)
+    |   File "C:\Users\James\Documents\Github\GHrepos\SCCMScripts\TaskMan-v2\backend-api\.venv\Lib\site-packages\_pytest\capture.py", line 900, in pytest_runtest_call
+    |     return (yield)
+    |             ^^^^^
+    |   File "C:\Users\James\Documents\Github\GHrepos\SCCMScripts\TaskMan-v2\backend-api\.venv\Lib\site-packages\pluggy\_callers.py", line 139, in _multicall
+    |     teardown.throw(exception)
+    |   File "C:\Users\James\Documents\Github\GHrepos\SCCMScripts\TaskMan-v2\backend-api\.venv\Lib\site-packages\_pytest\skipping.py", line 263, in pytest_runtest_call
+    |     return (yield)
+    |             ^^^^^
+    |   File "C:\Users\James\Documents\Github\GHrepos\SCCMScripts\TaskMan-v2\backend-api\.venv\Lib\site-packages\pluggy\_callers.py", line 121, in _multicall
+    |     res = hook_impl.function(*args)
+    |           ^^^^^^^^^^^^^^^^^^^^^^^^^
+    |   File "C:\Users\James\Documents\Github\GHrepos\SCCMScripts\TaskMan-v2\backend-api\.venv\Lib\site-packages\_pytest\runner.py", line 178, in pytest_runtest_call
+    |     item.runtest()
+    |   File "c:\Users\James\Documents\Github\GHrepos\SCCMScripts\TaskMan-v2\backend-api\.venv\Lib\site-packages\pytest_asyncio\plugin.py", line 549, in runtest
+    |     super().runtest()
+    |   File "C:\Users\James\Documents\Github\GHrepos\SCCMScripts\TaskMan-v2\backend-api\.venv\Lib\site-packages\_pytest\python.py", line 1671, in runtest
+    |     self.ihook.pytest_pyfunc_call(pyfuncitem=self)
+    |   File "C:\Users\James\Documents\Github\GHrepos\SCCMScripts\TaskMan-v2\backend-api\.venv\Lib\site-packages\pluggy\_hooks.py", line 512, in __call__
+    |     return self._hookexec(self.name, self._hookimpls.copy(), kwargs, firstresult)
+    |            ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+    |   File "C:\Users\James\Documents\Github\GHrepos\SCCMScripts\TaskMan-v2\backend-api\.venv\Lib\site-packages\pluggy\_manager.py", line 120, in _hookexec
+    |     return self._inner_hookexec(hook_name, methods, kwargs, firstresult)
+    |            ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+    |   File "C:\Users\James\Documents\Github\GHrepos\SCCMScripts\TaskMan-v2\backend-api\.venv\Lib\site-packages\pluggy\_callers.py", line 167, in _multicall
+    |     raise exception
+    |   File "C:\Users\James\Documents\Github\GHrepos\SCCMScripts\TaskMan-v2\backend-api\.venv\Lib\site-packages\pluggy\_callers.py", line 139, in _multicall
+    |     teardown.throw(exception)
+    |   File "C:\Users\James\Documents\Github\GHrepos\SCCMScripts\TaskMan-v2\backend-api\.venv\Lib\site-packages\pluggy\_callers.py", line 53, in run_old_style_hookwrapper
+    |     return result.get_result()
+    |            ^^^^^^^^^^^^^^^^^^^
+    |   File "C:\Users\James\Documents\Github\GHrepos\SCCMScripts\TaskMan-v2\backend-api\.venv\Lib\site-packages\pluggy\_result.py", line 103, in get_result
+    |     raise exc.with_traceback(tb)
+    |   File "C:\Users\James\Documents\Github\GHrepos\SCCMScripts\TaskMan-v2\backend-api\.venv\Lib\site-packages\pluggy\_callers.py", line 38, in run_old_style_hookwrapper
+    |     res = yield
+    |           ^^^^^
+    |   File "C:\Users\James\Documents\Github\GHrepos\SCCMScripts\TaskMan-v2\backend-api\.venv\Lib\site-packages\pluggy\_callers.py", line 121, in _multicall
+    |     res = hook_impl.function(*args)
+    |           ^^^^^^^^^^^^^^^^^^^^^^^^^
+    |   File "C:\Users\James\Documents\Github\GHrepos\SCCMScripts\TaskMan-v2\backend-api\.venv\Lib\site-packages\_pytest\python.py", line 157, in pytest_pyfunc_call
+    |     result = testfunction(**testargs)
+    |              ^^^^^^^^^^^^^^^^^^^^^^^^
+    |   File "c:\Users\James\Documents\Github\GHrepos\SCCMScripts\TaskMan-v2\backend-api\.venv\Lib\site-packages\pytest_asyncio\plugin.py", line 1069, in inner
+    |     _loop.run_until_complete(task)
+    |   File "C:\Users\James\AppData\Local\Programs\Python\Python311\Lib\asyncio\base_events.py", line 654, in run_until_complete
+    |     return future.result()
+    |            ^^^^^^^^^^^^^^^
+    |   File "C:\Users\James\Documents\Github\GHrepos\SCCMScripts\TaskMan-v2\backend-api\tests\integration\api\test_endpoints.py", line 14, in test_health_check
+    |     response = await client.get("/health")
+    |                ^^^^^^^^^^^^^^^^^^^^^^^^^^^
+    |   File "C:\Users\James\Documents\Github\GHrepos\SCCMScripts\TaskMan-v2\backend-api\.venv\Lib\site-packages\httpx\_client.py", line 1814, in get
+    |     return await self.request(
+    |            ^^^^^^^^^^^^^^^^^^^
+    |   File "C:\Users\James\Documents\Github\GHrepos\SCCMScripts\TaskMan-v2\backend-api\.venv\Lib\site-packages\httpx\_client.py", line 1585, in request
+    |     return await self.send(request, auth=auth, follow_redirects=follow_redirects)
+    |            ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+    |   File "C:\Users\James\Documents\Github\GHrepos\SCCMScripts\TaskMan-v2\backend-api\.venv\Lib\site-packages\httpx\_client.py", line 1674, in send
+    |     response = await self._send_handling_auth(
+    |                ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+    |   File "C:\Users\James\Documents\Github\GHrepos\SCCMScripts\TaskMan-v2\backend-api\.venv\Lib\site-packages\httpx\_client.py", line 1702, in _send_handling_auth
+    |     response = await self._send_handling_redirects(
+    |                ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+    |   File "C:\Users\James\Documents\Github\GHrepos\SCCMScripts\TaskMan-v2\backend-api\.venv\Lib\site-packages\httpx\_client.py", line 1739, in _send_handling_redirects
+    |     response = await self._send_single_request(request)
+    |                ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+    |   File "C:\Users\James\Documents\Github\GHrepos\SCCMScripts\TaskMan-v2\backend-api\.venv\Lib\site-packages\httpx\_client.py", line 1776, in _send_single_request
+    |     response = await transport.handle_async_request(request)
+    |                ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+    |   File "C:\Users\James\Documents\Github\GHrepos\SCCMScripts\TaskMan-v2\backend-api\.venv\Lib\site-packages\httpx\_transports\asgi.py", line 157, in handle_async_request
+    |     await self.app(scope, receive, send)
+    |   File "C:\Users\James\Documents\Github\GHrepos\SCCMScripts\TaskMan-v2\backend-api\.venv\Lib\site-packages\fastapi\applications.py", line 1054, in __call__
+    |     await super().__call__(scope, receive, send)
+    |   File "C:\Users\James\Documents\Github\GHrepos\SCCMScripts\TaskMan-v2\backend-api\.venv\Lib\site-packages\starlette\applications.py", line 112, in __call__
+    |     await self.middleware_stack(scope, receive, send)
+    |   File "C:\Users\James\Documents\Github\GHrepos\SCCMScripts\TaskMan-v2\backend-api\.venv\Lib\site-packages\starlette\middleware\errors.py", line 187, in __call__
+    |     raise exc
+    |   File "C:\Users\James\Documents\Github\GHrepos\SCCMScripts\TaskMan-v2\backend-api\.venv\Lib\site-packages\starlette\middleware\errors.py", line 165, in __call__
+    |     await self.app(scope, receive, _send)
+    |   File "C:\Users\James\Documents\Github\GHrepos\SCCMScripts\TaskMan-v2\backend-api\.venv\Lib\site-packages\starlette\middleware\base.py", line 176, in __call__
+    |     with recv_stream, send_stream, collapse_excgroups():
+    |   File "C:\Users\James\AppData\Local\Programs\Python\Python311\Lib\contextlib.py", line 158, in __exit__
+    |     self.gen.throw(typ, value, traceback)
+    |   File "C:\Users\James\Documents\Github\GHrepos\SCCMScripts\TaskMan-v2\backend-api\.venv\Lib\site-packages\starlette\_utils.py", line 82, in collapse_excgroups
+    |     raise exc
+    |   File "C:\Users\James\Documents\Github\GHrepos\SCCMScripts\TaskMan-v2\backend-api\.venv\Lib\site-packages\starlette\middleware\base.py", line 178, in __call__
+    |     response = await self.dispatch_func(request, call_next)
+    |                ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+    |   File "C:\Users\James\Documents\Github\GHrepos\SCCMScripts\TaskMan-v2\backend-api\src\taskman_api\middleware\logging_middleware.py", line 223, in dispatch
+    |     response = await call_next(request)
+    |                ^^^^^^^^^^^^^^^^^^^^^^^^
+    |   File "C:\Users\James\Documents\Github\GHrepos\SCCMScripts\TaskMan-v2\backend-api\.venv\Lib\site-packages\starlette\middleware\base.py", line 156, in call_next
+    |     raise app_exc
+    |   File "C:\Users\James\Documents\Github\GHrepos\SCCMScripts\TaskMan-v2\backend-api\.venv\Lib\site-packages\starlette\middleware\base.py", line 141, in coro
+    |     await self.app(scope, receive_or_disconnect, send_no_error)
+    |   File "C:\Users\James\Documents\Github\GHrepos\SCCMScripts\TaskMan-v2\backend-api\.venv\Lib\site-packages\starlette\middleware\cors.py", line 85, in __call__
+    |     await self.app(scope, receive, send)
+    |   File "C:\Users\James\Documents\Github\GHrepos\SCCMScripts\TaskMan-v2\backend-api\.venv\Lib\site-packages\starlette\middleware\exceptions.py", line 62, in __call__
+    |     await wrap_app_handling_exceptions(self.app, conn)(scope, receive, send)
+    |   File "C:\Users\James\Documents\Github\GHrepos\SCCMScripts\TaskMan-v2\backend-api\.venv\Lib\site-packages\starlette\_exception_handler.py", line 53, in wrapped_app
+    |     raise exc
+    |   File "C:\Users\James\Documents\Github\GHrepos\SCCMScripts\TaskMan-v2\backend-api\.venv\Lib\site-packages\starlette\_exception_handler.py", line 42, in wrapped_app
+    |     await app(scope, receive, sender)
+    |   File "C:\Users\James\Documents\Github\GHrepos\SCCMScripts\TaskMan-v2\backend-api\.venv\Lib\site-packages\starlette\routing.py", line 714, in __call__
+    |     await self.middleware_stack(scope, receive, send)
+    |   File "C:\Users\James\Documents\Github\GHrepos\SCCMScripts\TaskMan-v2\backend-api\.venv\Lib\site-packages\starlette\routing.py", line 734, in app
+    |     await route.handle(scope, receive, send)
+    |   File "C:\Users\James\Documents\Github\GHrepos\SCCMScripts\TaskMan-v2\backend-api\.venv\Lib\site-packages\starlette\routing.py", line 288, in handle
+    |     await self.app(scope, receive, send)
+    |   File "C:\Users\James\Documents\Github\GHrepos\SCCMScripts\TaskMan-v2\backend-api\.venv\Lib\site-packages\starlette\routing.py", line 76, in app
+    |     await wrap_app_handling_exceptions(app, request)(scope, receive, send)
+    |   File "C:\Users\James\Documents\Github\GHrepos\SCCMScripts\TaskMan-v2\backend-api\.venv\Lib\site-packages\starlette\_exception_handler.py", line 53, in wrapped_app
+    |     raise exc
+    |   File "C:\Users\James\Documents\Github\GHrepos\SCCMScripts\TaskMan-v2\backend-api\.venv\Lib\site-packages\starlette\_exception_handler.py", line 42, in wrapped_app
+    |     await app(scope, receive, sender)
+    |   File "C:\Users\James\Documents\Github\GHrepos\SCCMScripts\TaskMan-v2\backend-api\.venv\Lib\site-packages\starlette\routing.py", line 73, in app
+    |     response = await f(request)
+    |                ^^^^^^^^^^^^^^^^
+    |   File "C:\Users\James\Documents\Github\GHrepos\SCCMScripts\TaskMan-v2\backend-api\.venv\Lib\site-packages\fastapi\routing.py", line 301, in app
+    |     raw_response = await run_endpoint_function(
+    |                    ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+    |   File "C:\Users\James\Documents\Github\GHrepos\SCCMScripts\TaskMan-v2\backend-api\.venv\Lib\site-packages\fastapi\routing.py", line 212, in run_endpoint_function
+    |     return await dependant.call(**values)
+    |            ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+    |   File "C:\Users\James\Documents\Github\GHrepos\SCCMScripts\TaskMan-v2\backend-api\src\taskman_api\main.py", line 258, in health_check
+    |     if "@" in settings.database.connection_string
+    |               ^^^^^^^^^^^^^^^^^
+    |   File "C:\Users\James\Documents\Github\GHrepos\SCCMScripts\TaskMan-v2\backend-api\.venv\Lib\site-packages\pydantic\main.py", line 1026, in __getattr__
+    |     raise AttributeError(f'{type(self).__name__!r} object has no attribute {item!r}')
+    | AttributeError: 'Settings' object has no attribute 'database'
+    +------------------------------------
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "C:\Users\James\Documents\Github\GHrepos\SCCMScripts\TaskMan-v2\backend-api\tests\integration\api\test_endpoints.py", line 14, in test_health_check
+    response = await client.get("/health")
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\James\Documents\Github\GHrepos\SCCMScripts\TaskMan-v2\backend-api\.venv\Lib\site-packages\httpx\_client.py", line 1814, in get
+    return await self.request(
+           ^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\James\Documents\Github\GHrepos\SCCMScripts\TaskMan-v2\backend-api\.venv\Lib\site-packages\httpx\_client.py", line 1585, in request
+    return await self.send(request, auth=auth, follow_redirects=follow_redirects)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\James\Documents\Github\GHrepos\SCCMScripts\TaskMan-v2\backend-api\.venv\Lib\site-packages\httpx\_client.py", line 1674, in send
+    response = await self._send_handling_auth(
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\James\Documents\Github\GHrepos\SCCMScripts\TaskMan-v2\backend-api\.venv\Lib\site-packages\httpx\_client.py", line 1702, in _send_handling_auth
+    response = await self._send_handling_redirects(
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\James\Documents\Github\GHrepos\SCCMScripts\TaskMan-v2\backend-api\.venv\Lib\site-packages\httpx\_client.py", line 1739, in _send_handling_redirects
+    response = await self._send_single_request(request)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\James\Documents\Github\GHrepos\SCCMScripts\TaskMan-v2\backend-api\.venv\Lib\site-packages\httpx\_client.py", line 1776, in _send_single_request
+    response = await transport.handle_async_request(request)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\James\Documents\Github\GHrepos\SCCMScripts\TaskMan-v2\backend-api\.venv\Lib\site-packages\httpx\_transports\asgi.py", line 157, in handle_async_request
+    await self.app(scope, receive, send)
+  File "C:\Users\James\Documents\Github\GHrepos\SCCMScripts\TaskMan-v2\backend-api\.venv\Lib\site-packages\fastapi\applications.py", line 1054, in __call__
+    await super().__call__(scope, receive, send)
+  File "C:\Users\James\Documents\Github\GHrepos\SCCMScripts\TaskMan-v2\backend-api\.venv\Lib\site-packages\starlette\applications.py", line 112, in __call__
+    await self.middleware_stack(scope, receive, send)
+  File "C:\Users\James\Documents\Github\GHrepos\SCCMScripts\TaskMan-v2\backend-api\.venv\Lib\site-packages\starlette\middleware\errors.py", line 187, in __call__
+    raise exc
+  File "C:\Users\James\Documents\Github\GHrepos\SCCMScripts\TaskMan-v2\backend-api\.venv\Lib\site-packages\starlette\middleware\errors.py", line 165, in __call__
+    await self.app(scope, receive, _send)
+  File "C:\Users\James\Documents\Github\GHrepos\SCCMScripts\TaskMan-v2\backend-api\.venv\Lib\site-packages\starlette\middleware\base.py", line 176, in __call__
+    with recv_stream, send_stream, collapse_excgroups():
+  File "C:\Users\James\AppData\Local\Programs\Python\Python311\Lib\contextlib.py", line 158, in __exit__
+    self.gen.throw(typ, value, traceback)
+  File "C:\Users\James\Documents\Github\GHrepos\SCCMScripts\TaskMan-v2\backend-api\.venv\Lib\site-packages\starlette\_utils.py", line 82, in collapse_excgroups
+    raise exc
+  File "C:\Users\James\Documents\Github\GHrepos\SCCMScripts\TaskMan-v2\backend-api\.venv\Lib\site-packages\starlette\middleware\base.py", line 178, in __call__
+    response = await self.dispatch_func(request, call_next)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\James\Documents\Github\GHrepos\SCCMScripts\TaskMan-v2\backend-api\src\taskman_api\middleware\logging_middleware.py", line 223, in dispatch
+    response = await call_next(request)
+               ^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\James\Documents\Github\GHrepos\SCCMScripts\TaskMan-v2\backend-api\.venv\Lib\site-packages\starlette\middleware\base.py", line 156, in call_next
+    raise app_exc
+  File "C:\Users\James\Documents\Github\GHrepos\SCCMScripts\TaskMan-v2\backend-api\.venv\Lib\site-packages\starlette\middleware\base.py", line 141, in coro
+    await self.app(scope, receive_or_disconnect, send_no_error)
+  File "C:\Users\James\Documents\Github\GHrepos\SCCMScripts\TaskMan-v2\backend-api\.venv\Lib\site-packages\starlette\middleware\cors.py", line 85, in __call__
+    await self.app(scope, receive, send)
+  File "C:\Users\James\Documents\Github\GHrepos\SCCMScripts\TaskMan-v2\backend-api\.venv\Lib\site-packages\starlette\middleware\exceptions.py", line 62, in __call__
+    await wrap_app_handling_exceptions(self.app, conn)(scope, receive, send)
+  File "C:\Users\James\Documents\Github\GHrepos\SCCMScripts\TaskMan-v2\backend-api\.venv\Lib\site-packages\starlette\_exception_handler.py", line 53, in wrapped_app
+    raise exc
+  File "C:\Users\James\Documents\Github\GHrepos\SCCMScripts\TaskMan-v2\backend-api\.venv\Lib\site-packages\starlette\_exception_handler.py", line 42, in wrapped_app
+    await app(scope, receive, sender)
+  File "C:\Users\James\Documents\Github\GHrepos\SCCMScripts\TaskMan-v2\backend-api\.venv\Lib\site-packages\starlette\routing.py", line 714, in __call__
+    await self.middleware_stack(scope, receive, send)
+  File "C:\Users\James\Documents\Github\GHrepos\SCCMScripts\TaskMan-v2\backend-api\.venv\Lib\site-packages\starlette\routing.py", line 734, in app
+    await route.handle(scope, receive, send)
+  File "C:\Users\James\Documents\Github\GHrepos\SCCMScripts\TaskMan-v2\backend-api\.venv\Lib\site-packages\starlette\routing.py", line 288, in handle
+    await self.app(scope, receive, send)
+  File "C:\Users\James\Documents\Github\GHrepos\SCCMScripts\TaskMan-v2\backend-api\.venv\Lib\site-packages\starlette\routing.py", line 76, in app
+    await wrap_app_handling_exceptions(app, request)(scope, receive, send)
+  File "C:\Users\James\Documents\Github\GHrepos\SCCMScripts\TaskMan-v2\backend-api\.venv\Lib\site-packages\starlette\_exception_handler.py", line 53, in wrapped_app
+    raise exc
+  File "C:\Users\James\Documents\Github\GHrepos\SCCMScripts\TaskMan-v2\backend-api\.venv\Lib\site-packages\starlette\_exception_handler.py", line 42, in wrapped_app
+    await app(scope, receive, sender)
+  File "C:\Users\James\Documents\Github\GHrepos\SCCMScripts\TaskMan-v2\backend-api\.venv\Lib\site-packages\starlette\routing.py", line 73, in app
+    response = await f(request)
+               ^^^^^^^^^^^^^^^^
+  File "C:\Users\James\Documents\Github\GHrepos\SCCMScripts\TaskMan-v2\backend-api\.venv\Lib\site-packages\fastapi\routing.py", line 301, in app
+    raw_response = await run_endpoint_function(
+                   ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\James\Documents\Github\GHrepos\SCCMScripts\TaskMan-v2\backend-api\.venv\Lib\site-packages\fastapi\routing.py", line 212, in run_endpoint_function
+    return await dependant.call(**values)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\James\Documents\Github\GHrepos\SCCMScripts\TaskMan-v2\backend-api\src\taskman_api\main.py", line 258, in health_check
+    if "@" in settings.database.connection_string
+              ^^^^^^^^^^^^^^^^^
+  File "C:\Users\James\Documents\Github\GHrepos\SCCMScripts\TaskMan-v2\backend-api\.venv\Lib\site-packages\pydantic\main.py", line 1026, in __getattr__
+    raise AttributeError(f'{type(self).__name__!r} object has no attribute {item!r}')
+AttributeError: 'Settings' object has no attribute 'database'
+
+During handling of the above exception, another exception occurred:
+
+self = <test_endpoints.TestHealthEndpoint object at 0x00000224CECFD310>
+client = <httpx.AsyncClient object at 0x00000224CFF1B210>
+
+    async def test_health_check(self, client):
+        """Test health check returns 200."""
+>       response = await client.get("/health")
+                   ^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+tests\integration\api\test_endpoints.py:14: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _
+.venv\Lib\site-packages\httpx\_client.py:1814: in get
+    return await self.request(
+.venv\Lib\site-packages\httpx\_client.py:1585: in request
+    return await self.send(request, auth=auth, follow_redirects=follow_redirects)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+.venv\Lib\site-packages\httpx\_client.py:1674: in send
+    response = await self._send_handling_auth(
+.venv\Lib\site-packages\httpx\_client.py:1702: in _send_handling_auth
+    response = await self._send_handling_redirects(
+.venv\Lib\site-packages\httpx\_client.py:1739: in _send_handling_redirects
+    response = await self._send_single_request(request)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+.venv\Lib\site-packages\httpx\_client.py:1776: in _send_single_request
+    response = await transport.handle_async_request(request)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+.venv\Lib\site-packages\httpx\_transports\asgi.py:157: in handle_async_request
+    await self.app(scope, receive, send)
+.venv\Lib\site-packages\fastapi\applications.py:1054: in __call__
+    await super().__call__(scope, receive, send)
+.venv\Lib\site-packages\starlette\applications.py:112: in __call__
+    await self.middleware_stack(scope, receive, send)
+.venv\Lib\site-packages\starlette\middleware\errors.py:187: in __call__
+    raise exc
+.venv\Lib\site-packages\starlette\middleware\errors.py:165: in __call__
+    await self.app(scope, receive, _send)
+.venv\Lib\site-packages\starlette\middleware\base.py:176: in __call__
+    with recv_stream, send_stream, collapse_excgroups():
+C:\Users\James\AppData\Local\Programs\Python\Python311\Lib\contextlib.py:158: in __exit__
+    self.gen.throw(typ, value, traceback)
+.venv\Lib\site-packages\starlette\_utils.py:82: in collapse_excgroups
+    raise exc
+.venv\Lib\site-packages\starlette\middleware\base.py:178: in __call__
+    response = await self.dispatch_func(request, call_next)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+src\taskman_api\middleware\logging_middleware.py:223: in dispatch
+    response = await call_next(request)
+               ^^^^^^^^^^^^^^^^^^^^^^^^
+.venv\Lib\site-packages\starlette\middleware\base.py:156: in call_next
+    raise app_exc
+.venv\Lib\site-packages\starlette\middleware\base.py:141: in coro
+    await self.app(scope, receive_or_disconnect, send_no_error)
+.venv\Lib\site-packages\starlette\middleware\cors.py:85: in __call__
+    await self.app(scope, receive, send)
+.venv\Lib\site-packages\starlette\middleware\exceptions.py:62: in __call__
+    await wrap_app_handling_exceptions(self.app, conn)(scope, receive, send)
+.venv\Lib\site-packages\starlette\_exception_handler.py:53: in wrapped_app
+    raise exc
+.venv\Lib\site-packages\starlette\_exception_handler.py:42: in wrapped_app
+    await app(scope, receive, sender)
+.venv\Lib\site-packages\starlette\routing.py:714: in __call__
+    await self.middleware_stack(scope, receive, send)
+.venv\Lib\site-packages\starlette\routing.py:734: in app
+    await route.handle(scope, receive, send)
+.venv\Lib\site-packages\starlette\routing.py:288: in handle
+    await self.app(scope, receive, send)
+.venv\Lib\site-packages\starlette\routing.py:76: in app
+    await wrap_app_handling_exceptions(app, request)(scope, receive, send)
+.venv\Lib\site-packages\starlette\_exception_handler.py:53: in wrapped_app
+    raise exc
+.venv\Lib\site-packages\starlette\_exception_handler.py:42: in wrapped_app
+    await app(scope, receive, sender)
+.venv\Lib\site-packages\starlette\routing.py:73: in app
+    response = await f(request)
+               ^^^^^^^^^^^^^^^^
+.venv\Lib\site-packages\fastapi\routing.py:301: in app
+    raw_response = await run_endpoint_function(
+.venv\Lib\site-packages\fastapi\routing.py:212: in run_endpoint_function
+    return await dependant.call(**values)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+src\taskman_api\main.py:258: in health_check
+    if "@" in settings.database.connection_string
+              ^^^^^^^^^^^^^^^^^
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _
+
+self = Settings(api_host='0.0.0.0', api_port=3001, environment='development', database_url='postgresql://contextforge:contextforge@localhost:5434/taskman_v2', log_level='DEBUG')
+item = 'database'
+
+    def __getattr__(self, item: str) -> Any:
+        private_attributes = object.__getattribute__(self, '__private_attributes__')
+        if item in private_attributes:
+            attribute = private_attributes[item]
+            if hasattr(attribute, '__get__'):
+                return attribute.__get__(self, type(self))  # type: ignore
+    
+            try:
+                # Note: self.__pydantic_private__ cannot be None if self.__private_attributes__ has items
+                return self.__pydantic_private__[item]  # type: ignore
+            except KeyError as exc:
+                raise AttributeError(f'{type(self).__name__!r} object has no attribute {item!r}') from exc
+        else:
+            # `__pydantic_extra__` can fail to be set if the model is not yet fully initialized.
+            # See `BaseModel.__repr_args__` for more details
+            try:
+                pydantic_extra = object.__getattribute__(self, '__pydantic_extra__')
+            except AttributeError:
+                pydantic_extra = None
+    
+            if pydantic_extra and item in pydantic_extra:
+                return pydantic_extra[item]
+            else:
+                if hasattr(self.__class__, item):
+                    return super().__getattribute__(item)  # Raises AttributeError if appropriate
+                else:
+                    # this is the current error
+>                   raise AttributeError(f'{type(self).__name__!r} object has no attribute {item!r}')
+E                   AttributeError: 'Settings' object has no attribute 'database'
+
+.venv\Lib\site-packages\pydantic\main.py:1026: AttributeError
+------------------------------------------------ Captured stdout call -------------------------------------------------
+{"method": "GET", "path": "/health", "correlation_id": "d358e7e9-2943-4d32-9ef5-29994a153f5e", "duration_ms": 38.87, "error": "'Settings' object has no attribute 'database'", "error_type": "AttributeError", "event": "http_request_error", "timestamp": "2025-12-29T00:01:02.507373Z", "level": "error"}
+{"error": "'Settings' object has no attribute 'database'", "path": "/health", "event": "unhandled_exception", "timestamp": "2025-12-29T00:01:02.507373Z", "level": "error"}
+_____________________________________ TestTaskEndpoints.test_create_task_success ______________________________________
+
+self = <test_endpoints.TestTaskEndpoints object at 0x00000224CECFDC90>
+client = <httpx.AsyncClient object at 0x00000224D111DF10>
+
+    async def test_create_task_success(self, client):
+        """Test successful task creation."""
+        task_data = {
+            "id": "T-TEST-001",
+            "title": "Test Task",
+            "summary": "Test summary",
+            "description": "Test description",
+            "owner": "test.owner",
+            "priority": "p1",  # Fixed: was "high", now uses proper enum value
+            "primary_project": "P-TEST-001",
+            "primary_sprint": "S-TEST-001",
+        }
+    
+        response = await client.post("/api/v1/tasks", json=task_data)
+    
+>       assert response.status_code == status.HTTP_201_CREATED
+E       assert 400 == 201
+E        +  where 400 = <Response [400 Bad Request]>.status_code
+E        +  and   201 = status.HTTP_201_CREATED
+
+tests\integration\api\test_endpoints.py:40: AssertionError
+------------------------------------------------ Captured stdout call -------------------------------------------------
+{"method": "POST", "path": "/api/v1/tasks", "query": null, "correlation_id": "86705c13-d090-413a-8418-ecaa8fdb2920", "client_ip": "127.0.0.1", "event": "http_request", "timestamp": "2025-12-29T00:01:02.738152Z", "level": "info"}
+{"method": "POST", "path": "/api/v1/tasks", "status_code": 400, "duration_ms": 12.2, "correlation_id": "86705c13-d090-413a-8418-ecaa8fdb2920", "event": "http_response", "timestamp": "2025-12-29T00:01:02.751149Z", "level": "warning"}
+_______________________________________ TestTaskEndpoints.test_get_task_success _______________________________________
+
+self = <test_endpoints.TestTaskEndpoints object at 0x00000224CECFE590>
+client = <httpx.AsyncClient object at 0x00000224D0925F10>
+
+    async def test_get_task_success(self, client):
+        """Test getting task by ID."""
+        # Create task first
+        task_data = {
+            "id": "T-GET-001",
+            "title": "Get Test",
+            "summary": "Summary",
+            "description": "Description",
+            "owner": "owner",
+            "priority": "p2",  # Fixed: was "medium", now uses proper enum value
+            "primary_project": "P-001",
+            "primary_sprint": "S-001",
+        }
+        await client.post("/api/v1/tasks", json=task_data)
+    
+        # Get task
+        response = await client.get("/api/v1/tasks/T-GET-001")
+    
+>       assert response.status_code == status.HTTP_200_OK
+E       assert 404 == 200
+E        +  where 404 = <Response [404 Not Found]>.status_code
+E        +  and   200 = status.HTTP_200_OK
+
+tests\integration\api\test_endpoints.py:63: AssertionError
+------------------------------------------------ Captured stdout call -------------------------------------------------
+{"method": "POST", "path": "/api/v1/tasks", "query": null, "correlation_id": "2f5e7897-4ecf-45b1-8313-b82f1b352393", "client_ip": "127.0.0.1", "event": "http_request", "timestamp": "2025-12-29T00:01:02.779765Z", "level": "info"}
+{"method": "POST", "path": "/api/v1/tasks", "status_code": 400, "duration_ms": 3.27, "correlation_id": "2f5e7897-4ecf-45b1-8313-b82f1b352393", "event": "http_response", "timestamp": "2025-12-29T00:01:02.782743Z", "level": "warning"}
+{"method": "GET", "path": "/api/v1/tasks/T-GET-001", "query": null, "correlation_id": "dbffb0b9-9af7-4047-9940-97094fa6bb95", "client_ip": "127.0.0.1", "event": "http_request", "timestamp": "2025-12-29T00:01:02.783744Z", "level": "info"}
+{"method": "GET", "path": "/api/v1/tasks/T-GET-001", "status_code": 404, "duration_ms": 3.28, "correlation_id": "dbffb0b9-9af7-4047-9940-97094fa6bb95", "event": "http_response", "timestamp": "2025-12-29T00:01:02.786743Z", "level": "warning"}
+_____________________________________ TestTaskEndpoints.test_update_task_success ______________________________________
+
+self = <test_endpoints.TestTaskEndpoints object at 0x00000224CECFF7D0>
+client = <httpx.AsyncClient object at 0x00000224CECC5B50>
+
+    async def test_update_task_success(self, client):
+        """Test updating task."""
+        # Create task
+        task_data = {
+            "id": "T-UPDATE-001",
+            "title": "Original Title",
+            "summary": "Summary",
+            "description": "Description",
+            "owner": "owner",
+            "priority": "p3",  # Fixed: was "low", now uses proper enum value
+            "primary_project": "P-001",
+            "primary_sprint": "S-001",
+        }
+        create_response = await client.post("/api/v1/tasks", json=task_data)
+>       assert create_response.status_code == status.HTTP_201_CREATED
+E       assert 400 == 201
+E        +  where 400 = <Response [400 Bad Request]>.status_code
+E        +  and   201 = status.HTTP_201_CREATED
+
+tests\integration\api\test_endpoints.py:87: AssertionError
+------------------------------------------------ Captured stdout call -------------------------------------------------
+{"method": "POST", "path": "/api/v1/tasks", "query": null, "correlation_id": "d0c5f51a-092a-498b-813d-dbc8da448109", "client_ip": "127.0.0.1", "event": "http_request", "timestamp": "2025-12-29T00:01:02.846631Z", "level": "info"}
+{"method": "POST", "path": "/api/v1/tasks", "status_code": 400, "duration_ms": 3.38, "correlation_id": "d0c5f51a-092a-498b-813d-dbc8da448109", "event": "http_response", "timestamp": "2025-12-29T00:01:02.849584Z", "level": "warning"}
+_____________________________________ TestTaskEndpoints.test_delete_task_success ______________________________________
+
+self = <test_endpoints.TestTaskEndpoints object at 0x00000224CED081D0>
+client = <httpx.AsyncClient object at 0x00000224D09E0FD0>
+
+    async def test_delete_task_success(self, client):
+        """Test deleting task."""
+        # Create task
+        task_data = {
+            "id": "T-DELETE-001",
+            "title": "Delete Test",
+            "summary": "Summary",
+            "description": "Description",
+            "owner": "owner",
+            "priority": "p3",  # Fixed: was "low", now uses proper enum value
+            "primary_project": "P-001",
+            "primary_sprint": "S-001",
+        }
+        await client.post("/api/v1/tasks", json=task_data)
+    
+        # Delete task
+        response = await client.delete("/api/v1/tasks/T-DELETE-001")
+    
+>       assert response.status_code == status.HTTP_204_NO_CONTENT
+E       assert 404 == 204
+E        +  where 404 = <Response [404 Not Found]>.status_code
+E        +  and   204 = status.HTTP_204_NO_CONTENT
+
+tests\integration\api\test_endpoints.py:115: AssertionError
+------------------------------------------------ Captured stdout call -------------------------------------------------
+{"method": "POST", "path": "/api/v1/tasks", "query": null, "correlation_id": "67407f30-c167-4d98-a2f1-312fd1e93760", "client_ip": "127.0.0.1", "event": "http_request", "timestamp": "2025-12-29T00:01:02.917727Z", "level": "info"}
+{"method": "POST", "path": "/api/v1/tasks", "status_code": 400, "duration_ms": 5.84, "correlation_id": "67407f30-c167-4d98-a2f1-312fd1e93760", "event": "http_response", "timestamp": "2025-12-29T00:01:02.923703Z", "level": "warning"}
+{"method": "DELETE", "path": "/api/v1/tasks/T-DELETE-001", "query": null, "correlation_id": "b1619faf-885c-4dcc-a23c-31c4a5c2ec49", "client_ip": "127.0.0.1", "event": "http_request", "timestamp": "2025-12-29T00:01:02.924702Z", "level": "info"}
+{"method": "DELETE", "path": "/api/v1/tasks/T-DELETE-001", "status_code": 404, "duration_ms": 5.64, "correlation_id": "b1619faf-885c-4dcc-a23c-31c4a5c2ec49", "event": "http_response", "timestamp": "2025-12-29T00:01:02.930701Z", "level": "warning"}
+__________________________________________ TestTaskEndpoints.test_list_tasks __________________________________________
+
+self = <test_endpoints.TestTaskEndpoints object at 0x00000224CED08C10>
+client = <httpx.AsyncClient object at 0x00000224CE97C550>
+
+    async def test_list_tasks(self, client):
+        """Test listing tasks with pagination."""
+        # Create multiple tasks
+        for i in range(5):
+            task_data = {
+                "id": f"T-LIST-{i:03d}",
+                "title": f"Task {i}",
+                "summary": "Summary",
+                "description": "Description",
+                "owner": "owner",
+                "priority": "p2",  # Fixed: was "medium", now uses proper enum value
+                "primary_project": "P-001",
+                "primary_sprint": "S-001",
+            }
+            await client.post("/api/v1/tasks", json=task_data)
+    
+        # List tasks
+        response = await client.get("/api/v1/tasks?limit=10&offset=0")
+    
+        assert response.status_code == status.HTTP_200_OK
+        data = response.json()
+>       assert isinstance(data, list)
+E       AssertionError: assert False
+E        +  where False = isinstance({'has_more': False, 'page': 1, 'per_page': 20, 'tasks': [], ...}, list)
+
+tests\integration\api\test_endpoints.py:142: AssertionError
+------------------------------------------------ Captured stdout call -------------------------------------------------
+{"method": "POST", "path": "/api/v1/tasks", "query": null, "correlation_id": "6d1554b8-b4ba-490e-9062-390b65fbdb40", "client_ip": "127.0.0.1", "event": "http_request", "timestamp": "2025-12-29T00:01:03.031525Z", "level": "info"}
+{"method": "POST", "path": "/api/v1/tasks", "status_code": 400, "duration_ms": 5.21, "correlation_id": "6d1554b8-b4ba-490e-9062-390b65fbdb40", "event": "http_response", "timestamp": "2025-12-29T00:01:03.036046Z", "level": "warning"}
+{"method": "POST", "path": "/api/v1/tasks", "query": null, "correlation_id": "3c86f3b4-7957-4231-afed-27e6558da8ad", "client_ip": "127.0.0.1", "event": "http_request", "timestamp": "2025-12-29T00:01:03.037045Z", "level": "info"}
+{"method": "POST", "path": "/api/v1/tasks", "status_code": 400, "duration_ms": 3.17, "correlation_id": "3c86f3b4-7957-4231-afed-27e6558da8ad", "event": "http_response", "timestamp": "2025-12-29T00:01:03.040047Z", "level": "warning"}
+{"method": "POST", "path": "/api/v1/tasks", "query": null, "correlation_id": "9b8203e8-89f0-4866-974a-1ac3bd80ec81", "client_ip": "127.0.0.1", "event": "http_request", "timestamp": "2025-12-29T00:01:03.041047Z", "level": "info"}
+{"method": "POST", "path": "/api/v1/tasks", "status_code": 400, "duration_ms": 2.52, "correlation_id": "9b8203e8-89f0-4866-974a-1ac3bd80ec81", "event": "http_response", "timestamp": "2025-12-29T00:01:03.043047Z", "level": "warning"}
+{"method": "POST", "path": "/api/v1/tasks", "query": null, "correlation_id": "514f99c1-62d9-4078-9755-c6b3146c72e8", "client_ip": "127.0.0.1", "event": "http_request", "timestamp": "2025-12-29T00:01:03.044046Z", "level": "info"}
+{"method": "POST", "path": "/api/v1/tasks", "status_code": 400, "duration_ms": 3.22, "correlation_id": "514f99c1-62d9-4078-9755-c6b3146c72e8", "event": "http_response", "timestamp": "2025-12-29T00:01:03.046771Z", "level": "warning"}
+{"method": "POST", "path": "/api/v1/tasks", "query": null, "correlation_id": "fbf6394e-3b37-43d4-9407-6f0379a2ded2", "client_ip": "127.0.0.1", "event": "http_request", "timestamp": "2025-12-29T00:01:03.047723Z", "level": "info"}
+{"method": "POST", "path": "/api/v1/tasks", "status_code": 400, "duration_ms": 1.96, "correlation_id": "fbf6394e-3b37-43d4-9407-6f0379a2ded2", "event": "http_response", "timestamp": "2025-12-29T00:01:03.049724Z", "level": "warning"}
+{"method": "GET", "path": "/api/v1/tasks", "query": "limit=10&offset=0", "correlation_id": "a65d54db-0d44-45f9-86fc-d6bd2629af55", "client_ip": "127.0.0.1", "event": "http_request", "timestamp": "2025-12-29T00:01:03.049724Z", "level": "info"}
+{"count": 0, "total": 0, "page": 1, "event": "tasks_listed", "timestamp": "2025-12-29T00:01:03.054724Z", "level": "info"}
+{"method": "GET", "path": "/api/v1/tasks", "status_code": 200, "duration_ms": 5.17, "correlation_id": "a65d54db-0d44-45f9-86fc-d6bd2629af55", "event": "http_response", "timestamp": "2025-12-29T00:01:03.055721Z", "level": "info"}
+_____________________________________ TestTaskEndpoints.test_create_task_conflict _____________________________________
+
+self = <test_endpoints.TestTaskEndpoints object at 0x00000224CED0A010>
+client = <httpx.AsyncClient object at 0x00000224D0A15F10>
+
+    async def test_create_task_conflict(self, client):
+        """Test duplicate task ID returns 409."""
+        task_data = {
+            "id": "T-CONFLICT-001",
+            "title": "Conflict Test",
+            "summary": "Summary",
+            "description": "Description",
+            "owner": "owner",
+            "priority": "p2",
+            "primary_project": "P-001",
+            "primary_sprint": "S-001",
+        }
+    
+        # Create first task
+        first_response = await client.post("/api/v1/tasks", json=task_data)
+>       assert first_response.status_code == status.HTTP_201_CREATED
+E       assert 400 == 201
+E        +  where 400 = <Response [400 Bad Request]>.status_code
+E        +  and   201 = status.HTTP_201_CREATED
+
+tests\integration\api\test_endpoints.py:177: AssertionError
+------------------------------------------------ Captured stdout call -------------------------------------------------
+{"method": "POST", "path": "/api/v1/tasks", "query": null, "correlation_id": "9d2c4f4e-5b51-4c3c-838f-48ce121101ad", "client_ip": "127.0.0.1", "event": "http_request", "timestamp": "2025-12-29T00:01:03.098381Z", "level": "info"}
+{"method": "POST", "path": "/api/v1/tasks", "status_code": 400, "duration_ms": 3.0, "correlation_id": "9d2c4f4e-5b51-4c3c-838f-48ce121101ad", "event": "http_response", "timestamp": "2025-12-29T00:01:03.101380Z", "level": "warning"}
+_______________________________________ TestProjectEndpoints.test_list_projects _______________________________________
+
+self = <test_endpoints.TestProjectEndpoints object at 0x00000224CECFEDD0>
+client = <httpx.AsyncClient object at 0x00000224D0A00690>
+
+    async def test_list_projects(self, client):
+        """Test listing projects."""
+        # Create projects
+        for i in range(3):
+            project_data = {
+                "id": f"P-LIST-{i:03d}",
+                "name": f"Project {i}",
+                "mission": "Mission",
+                "status": "active",
+                "start_date": "2025-01-01",
+                "owner": "owner",
+            }
+            await client.post("/api/v1/projects", json=project_data)
+    
+        # List projects
+        response = await client.get("/api/v1/projects")
+    
+        assert response.status_code == status.HTTP_200_OK
+        data = response.json()
+>       assert isinstance(data, list)
+E       AssertionError: assert False
+E        +  where False = isinstance({'has_more': False, 'page': 1, 'per_page': 20, 'projects': [{'assumptions': [], 'comms_channels': [], 'compliance_requirements': [], 'constraints': [], ...}, {'assumptions': [], 'comms_channels': [], 'compliance_requirements': [], 'constraints': [], ...}, {'assumptions': [], 'comms_channels': [], 'compliance_requirements': [], 'constraints': [], ...}], ...}, list)
+
+tests\integration\api\test_endpoints.py:245: AssertionError
+------------------------------------------------ Captured stdout call -------------------------------------------------
+{"method": "POST", "path": "/api/v1/projects", "query": null, "correlation_id": "bbfb6991-876f-4e14-85cd-d66ff054afb6", "client_ip": "127.0.0.1", "event": "http_request", "timestamp": "2025-12-29T00:01:03.178639Z", "level": "info"}
+{"project_id": "P-LIST-000", "name": "Project 0", "event": "project_created", "timestamp": "2025-12-29T00:01:03.182687Z", "level": "info"}
+{"method": "POST", "path": "/api/v1/projects", "status_code": 201, "duration_ms": 5.34, "correlation_id": "bbfb6991-876f-4e14-85cd-d66ff054afb6", "event": "http_response", "timestamp": "2025-12-29T00:01:03.183689Z", "level": "info"}
+{"method": "POST", "path": "/api/v1/projects", "query": null, "correlation_id": "d0c68117-226e-45a0-b269-5deb6fb770f8", "client_ip": "127.0.0.1", "event": "http_request", "timestamp": "2025-12-29T00:01:03.183689Z", "level": "info"}
+{"project_id": "P-LIST-001", "name": "Project 1", "event": "project_created", "timestamp": "2025-12-29T00:01:03.186225Z", "level": "info"}
+{"method": "POST", "path": "/api/v1/projects", "status_code": 201, "duration_ms": 3.18, "correlation_id": "d0c68117-226e-45a0-b269-5deb6fb770f8", "event": "http_response", "timestamp": "2025-12-29T00:01:03.187219Z", "level": "info"}
+{"method": "POST", "path": "/api/v1/projects", "query": null, "correlation_id": "f57c225b-274f-4160-805e-d6fe11d571f4", "client_ip": "127.0.0.1", "event": "http_request", "timestamp": "2025-12-29T00:01:03.188218Z", "level": "info"}
+{"project_id": "P-LIST-002", "name": "Project 2", "event": "project_created", "timestamp": "2025-12-29T00:01:03.192220Z", "level": "info"}
+{"method": "POST", "path": "/api/v1/projects", "status_code": 201, "duration_ms": 4.22, "correlation_id": "f57c225b-274f-4160-805e-d6fe11d571f4", "event": "http_response", "timestamp": "2025-12-29T00:01:03.192220Z", "level": "info"}
+{"method": "GET", "path": "/api/v1/projects", "query": null, "correlation_id": "1852ca5e-a8f9-4307-b358-ad8c992bcb02", "client_ip": "127.0.0.1", "event": "http_request", "timestamp": "2025-12-29T00:01:03.193218Z", "level": "info"}
+{"count": 3, "total": 3, "page": 1, "event": "projects_listed", "timestamp": "2025-12-29T00:01:03.196219Z", "level": "info"}
+{"method": "GET", "path": "/api/v1/projects", "status_code": 200, "duration_ms": 3.35, "correlation_id": "1852ca5e-a8f9-4307-b358-ad8c992bcb02", "event": "http_response", "timestamp": "2025-12-29T00:01:03.196219Z", "level": "info"}
+__________________________________ TestProjectEndpoints.test_update_project_success ___________________________________
+
+self = <test_endpoints.TestProjectEndpoints object at 0x00000224CED0B8D0>
+client = <httpx.AsyncClient object at 0x00000224D0C794D0>
+
+    async def test_update_project_success(self, client):
+        """Test updating project returns 200."""
+        # Create project
+        project_data = {
+            "id": "P-UPDATE-001",
+            "name": "Original Name",
+            "mission": "Mission",
+            "status": "active",
+            "start_date": "2025-01-01",
+            "owner": "owner",
+        }
+        create_response = await client.post("/api/v1/projects", json=project_data)
+        assert create_response.status_code == status.HTTP_201_CREATED
+    
+        # Update project
+        update_data = {"name": "Updated Name"}
+        response = await client.patch("/api/v1/projects/P-UPDATE-001", json=update_data)
+    
+>       assert response.status_code == status.HTTP_200_OK
+E       assert 405 == 200
+E        +  where 405 = <Response [405 Method Not Allowed]>.status_code
+E        +  and   200 = status.HTTP_200_OK
+
+tests\integration\api\test_endpoints.py:266: AssertionError
+------------------------------------------------ Captured stdout call -------------------------------------------------
+{"method": "POST", "path": "/api/v1/projects", "query": null, "correlation_id": "e8d93376-070d-4085-b638-fc1cb59c025b", "client_ip": "127.0.0.1", "event": "http_request", "timestamp": "2025-12-29T00:01:03.219726Z", "level": "info"}
+{"project_id": "P-UPDATE-001", "name": "Original Name", "event": "project_created", "timestamp": "2025-12-29T00:01:03.226726Z", "level": "info"}
+{"method": "POST", "path": "/api/v1/projects", "status_code": 201, "duration_ms": 7.15, "correlation_id": "e8d93376-070d-4085-b638-fc1cb59c025b", "event": "http_response", "timestamp": "2025-12-29T00:01:03.227726Z", "level": "info"}
+{"method": "PATCH", "path": "/api/v1/projects/P-UPDATE-001", "query": null, "correlation_id": "8f62aa64-27a4-44a4-96e2-57507482d605", "client_ip": "127.0.0.1", "event": "http_request", "timestamp": "2025-12-29T00:01:03.227726Z", "level": "info"}
+{"method": "PATCH", "path": "/api/v1/projects/P-UPDATE-001", "status_code": 405, "duration_ms": 0.23, "correlation_id": "8f62aa64-27a4-44a4-96e2-57507482d605", "event": "http_response", "timestamp": "2025-12-29T00:01:03.227726Z", "level": "warning"}
+_________________________________ TestProjectEndpoints.test_update_project_not_found __________________________________
+
+self = <test_endpoints.TestProjectEndpoints object at 0x00000224CED0ACD0>
+client = <httpx.AsyncClient object at 0x00000224D0429010>
+
+    async def test_update_project_not_found(self, client):
+        """Test updating non-existent project returns 404."""
+        update_data = {"name": "Updated Name"}
+        response = await client.patch("/api/v1/projects/P-NONEXISTENT", json=update_data)
+    
+>       assert response.status_code == status.HTTP_404_NOT_FOUND
+E       assert 405 == 404
+E        +  where 405 = <Response [405 Method Not Allowed]>.status_code
+E        +  and   404 = status.HTTP_404_NOT_FOUND
+
+tests\integration\api\test_endpoints.py:275: AssertionError
+------------------------------------------------ Captured stdout call -------------------------------------------------
+{"method": "PATCH", "path": "/api/v1/projects/P-NONEXISTENT", "query": null, "correlation_id": "8e4aeebe-1382-49cb-9475-a88b8934c408", "client_ip": "127.0.0.1", "event": "http_request", "timestamp": "2025-12-29T00:01:03.267824Z", "level": "info"}
+{"method": "PATCH", "path": "/api/v1/projects/P-NONEXISTENT", "status_code": 405, "duration_ms": 0.4, "correlation_id": "8e4aeebe-1382-49cb-9475-a88b8934c408", "event": "http_response", "timestamp": "2025-12-29T00:01:03.267824Z", "level": "warning"}
+___________________________________ TestSprintEndpoints.test_create_sprint_success ____________________________________
+
+self = <test_endpoints.TestSprintEndpoints object at 0x00000224CFCE1CD0>
+client = <httpx.AsyncClient object at 0x00000224D0B91390>
+
+    async def test_create_sprint_success(self, client):
+        """Test successful sprint creation."""
+        sprint_data = {
+            "id": "S-TEST-001",
+            "name": "Sprint 1",
+            "goal": "Sprint goal",
+            "cadence": "biweekly",
+            "start_date": "2025-01-01",
+            "end_date": "2025-01-14",
+            "status": "active",
+            "owner": "scrum.master",
+            "primary_project": "P-001",
+        }
+    
+        response = await client.post("/api/v1/sprints", json=sprint_data)
+    
+>       assert response.status_code == status.HTTP_201_CREATED
+E       assert 404 == 201
+E        +  where 404 = <Response [404 Not Found]>.status_code
+E        +  and   201 = status.HTTP_201_CREATED
+
+tests\integration\api\test_endpoints.py:360: AssertionError
+------------------------------------------------ Captured stdout call -------------------------------------------------
+{"method": "POST", "path": "/api/v1/sprints", "query": null, "correlation_id": "de2b338b-a0e3-443d-9683-0fc58ddcf553", "client_ip": "127.0.0.1", "event": "http_request", "timestamp": "2025-12-29T00:01:03.388547Z", "level": "info"}
+{"method": "POST", "path": "/api/v1/sprints", "status_code": 404, "duration_ms": 8.4, "correlation_id": "de2b338b-a0e3-443d-9683-0fc58ddcf553", "event": "http_response", "timestamp": "2025-12-29T00:01:03.396669Z", "level": "warning"}
+_____________________________________ TestSprintEndpoints.test_get_sprint_success _____________________________________
+
+self = <test_endpoints.TestSprintEndpoints object at 0x00000224CFCE25D0>
+client = <httpx.AsyncClient object at 0x00000224D0D40B90>
+
+    async def test_get_sprint_success(self, client):
+        """Test getting sprint by ID."""
+        # Create sprint
+        sprint_data = {
+            "id": "S-GET-001",
+            "name": "Get Test Sprint",
+            "goal": "Goal",
+            "cadence": "weekly",
+            "start_date": "2025-01-01",
+            "end_date": "2025-01-07",
+            "status": "active",
+            "owner": "owner",
+            "primary_project": "P-001",
+        }
+        await client.post("/api/v1/sprints", json=sprint_data)
+    
+        # Get sprint
+        response = await client.get("/api/v1/sprints/S-GET-001")
+    
+>       assert response.status_code == status.HTTP_200_OK
+E       assert 404 == 200
+E        +  where 404 = <Response [404 Not Found]>.status_code
+E        +  and   200 = status.HTTP_200_OK
+
+tests\integration\api\test_endpoints.py:384: AssertionError
+------------------------------------------------ Captured stdout call -------------------------------------------------
+{"method": "POST", "path": "/api/v1/sprints", "query": null, "correlation_id": "be0be3a3-00fc-41d2-8224-a05674c86971", "client_ip": "127.0.0.1", "event": "http_request", "timestamp": "2025-12-29T00:01:03.418668Z", "level": "info"}
+{"method": "POST", "path": "/api/v1/sprints", "status_code": 404, "duration_ms": 3.53, "correlation_id": "be0be3a3-00fc-41d2-8224-a05674c86971", "event": "http_response", "timestamp": "2025-12-29T00:01:03.422669Z", "level": "warning"}
+{"method": "GET", "path": "/api/v1/sprints/S-GET-001", "query": null, "correlation_id": "a8cfb5ec-2ada-49c8-b01c-daafde082d10", "client_ip": "127.0.0.1", "event": "http_request", "timestamp": "2025-12-29T00:01:03.422669Z", "level": "info"}
+{"method": "GET", "path": "/api/v1/sprints/S-GET-001", "status_code": 404, "duration_ms": 2.73, "correlation_id": "a8cfb5ec-2ada-49c8-b01c-daafde082d10", "event": "http_response", "timestamp": "2025-12-29T00:01:03.425669Z", "level": "warning"}
+________________________________________ TestSprintEndpoints.test_list_sprints ________________________________________
+
+self = <test_endpoints.TestSprintEndpoints object at 0x00000224CFCE2ED0>
+client = <httpx.AsyncClient object at 0x00000224D0715F10>
+
+    async def test_list_sprints(self, client):
+        """Test listing sprints."""
+        # Create sprints
+        for i in range(3):
+            sprint_data = {
+                "id": f"S-LIST-{i:03d}",
+                "name": f"Sprint {i}",
+                "goal": "Goal",
+                "cadence": "biweekly",
+                "start_date": "2025-01-01",
+                "end_date": "2025-01-14",
+                "status": "active",
+                "owner": "owner",
+                "primary_project": "P-001",
+            }
+            await client.post("/api/v1/sprints", json=sprint_data)
+    
+        # List sprints
+        response = await client.get("/api/v1/sprints")
+    
+        assert response.status_code == status.HTTP_200_OK
+        data = response.json()
+>       assert isinstance(data, list)
+E       AssertionError: assert False
+E        +  where False = isinstance({'has_more': False, 'page': 1, 'per_page': 20, 'sprints': [], ...}, list)
+
+tests\integration\api\test_endpoints.py:410: AssertionError
+------------------------------------------------ Captured stdout call -------------------------------------------------
+{"method": "POST", "path": "/api/v1/sprints", "query": null, "correlation_id": "87fd5bf9-aa79-4bc1-870b-7dc4704745d0", "client_ip": "127.0.0.1", "event": "http_request", "timestamp": "2025-12-29T00:01:03.449179Z", "level": "info"}
+{"method": "POST", "path": "/api/v1/sprints", "status_code": 404, "duration_ms": 2.9, "correlation_id": "87fd5bf9-aa79-4bc1-870b-7dc4704745d0", "event": "http_response", "timestamp": "2025-12-29T00:01:03.452177Z", "level": "warning"}
+{"method": "POST", "path": "/api/v1/sprints", "query": null, "correlation_id": "a923e9a7-ba8c-4253-9f75-5c81eba121b0", "client_ip": "127.0.0.1", "event": "http_request", "timestamp": "2025-12-29T00:01:03.452177Z", "level": "info"}
+{"method": "POST", "path": "/api/v1/sprints", "status_code": 404, "duration_ms": 1.59, "correlation_id": "a923e9a7-ba8c-4253-9f75-5c81eba121b0", "event": "http_response", "timestamp": "2025-12-29T00:01:03.454177Z", "level": "warning"}
+{"method": "POST", "path": "/api/v1/sprints", "query": null, "correlation_id": "f77e1307-2a3d-452c-85ff-00e432ba0431", "client_ip": "127.0.0.1", "event": "http_request", "timestamp": "2025-12-29T00:01:03.454177Z", "level": "info"}
+{"method": "POST", "path": "/api/v1/sprints", "status_code": 404, "duration_ms": 2.04, "correlation_id": "f77e1307-2a3d-452c-85ff-00e432ba0431", "event": "http_response", "timestamp": "2025-12-29T00:01:03.456179Z", "level": "warning"}
+{"method": "GET", "path": "/api/v1/sprints", "query": null, "correlation_id": "32dd0e57-e97f-47a1-9bd7-b5a6562e96b7", "client_ip": "127.0.0.1", "event": "http_request", "timestamp": "2025-12-29T00:01:03.457179Z", "level": "info"}
+{"count": 0, "total": 0, "page": 1, "event": "sprints_listed", "timestamp": "2025-12-29T00:01:03.462179Z", "level": "info"}
+{"method": "GET", "path": "/api/v1/sprints", "status_code": 200, "duration_ms": 5.37, "correlation_id": "32dd0e57-e97f-47a1-9bd7-b5a6562e96b7", "event": "http_response", "timestamp": "2025-12-29T00:01:03.462179Z", "level": "info"}
+___________________________________ TestSprintEndpoints.test_update_sprint_success ____________________________________
+
+self = <test_endpoints.TestSprintEndpoints object at 0x00000224CFCE3810>
+client = <httpx.AsyncClient object at 0x00000224D06DB7D0>
+
+    async def test_update_sprint_success(self, client):
+        """Test updating sprint returns 200."""
+        # Create sprint
+        sprint_data = {
+            "id": "S-UPDATE-001",
+            "name": "Original Sprint",
+            "goal": "Original Goal",
+            "cadence": "biweekly",
+            "start_date": "2025-01-01",
+            "end_date": "2025-01-14",
+            "status": "active",
+            "owner": "owner",
+            "primary_project": "P-001",
+        }
+        create_response = await client.post("/api/v1/sprints", json=sprint_data)
+>       assert create_response.status_code == status.HTTP_201_CREATED
+E       assert 404 == 201
+E        +  where 404 = <Response [404 Not Found]>.status_code
+E        +  and   201 = status.HTTP_201_CREATED
+
+tests\integration\api\test_endpoints.py:428: AssertionError
+------------------------------------------------ Captured stdout call -------------------------------------------------
+{"method": "POST", "path": "/api/v1/sprints", "query": null, "correlation_id": "5e11c7f0-d235-458d-810b-980262ce2bef", "client_ip": "127.0.0.1", "event": "http_request", "timestamp": "2025-12-29T00:01:03.491694Z", "level": "info"}
+{"method": "POST", "path": "/api/v1/sprints", "status_code": 404, "duration_ms": 46.53, "correlation_id": "5e11c7f0-d235-458d-810b-980262ce2bef", "event": "http_response", "timestamp": "2025-12-29T00:01:03.539048Z", "level": "warning"}
+__________________________________ TestSprintEndpoints.test_update_sprint_not_found ___________________________________
+
+self = <test_endpoints.TestSprintEndpoints object at 0x00000224CFCEC1D0>
+client = <httpx.AsyncClient object at 0x00000224D0B03390>
+
+    async def test_update_sprint_not_found(self, client):
+        """Test updating non-existent sprint returns 404."""
+        update_data = {"name": "Updated Sprint"}
+        response = await client.patch("/api/v1/sprints/S-NONEXISTENT", json=update_data)
+    
+>       assert response.status_code == status.HTTP_404_NOT_FOUND
+E       assert 405 == 404
+E        +  where 405 = <Response [405 Method Not Allowed]>.status_code
+E        +  and   404 = status.HTTP_404_NOT_FOUND
+
+tests\integration\api\test_endpoints.py:444: AssertionError
+------------------------------------------------ Captured stdout call -------------------------------------------------
+{"method": "PATCH", "path": "/api/v1/sprints/S-NONEXISTENT", "query": null, "correlation_id": "37d66cf2-3a57-469e-b7d8-50e72bee0b69", "client_ip": "127.0.0.1", "event": "http_request", "timestamp": "2025-12-29T00:01:03.563045Z", "level": "info"}
+{"method": "PATCH", "path": "/api/v1/sprints/S-NONEXISTENT", "status_code": 405, "duration_ms": 0.34, "correlation_id": "37d66cf2-3a57-469e-b7d8-50e72bee0b69", "event": "http_response", "timestamp": "2025-12-29T00:01:03.564047Z", "level": "warning"}
+___________________________________ TestSprintEndpoints.test_delete_sprint_success ____________________________________
+
+self = <test_endpoints.TestSprintEndpoints object at 0x00000224CFCECB10>
+client = <httpx.AsyncClient object at 0x00000224D0CB9910>
+
+    async def test_delete_sprint_success(self, client):
+        """Test deleting sprint returns 204."""
+        # Create sprint
+        sprint_data = {
+            "id": "S-DELETE-001",
+            "name": "Delete Test",
+            "goal": "Goal",
+            "cadence": "weekly",
+            "start_date": "2025-01-01",
+            "end_date": "2025-01-07",
+            "status": "active",
+            "owner": "owner",
+            "primary_project": "P-001",
+        }
+        await client.post("/api/v1/sprints", json=sprint_data)
+    
+        # Delete sprint
+        response = await client.delete("/api/v1/sprints/S-DELETE-001")
+    
+>       assert response.status_code == status.HTTP_204_NO_CONTENT
+E       assert 404 == 204
+E        +  where 404 = <Response [404 Not Found]>.status_code
+E        +  and   204 = status.HTTP_204_NO_CONTENT
+
+tests\integration\api\test_endpoints.py:465: AssertionError
+------------------------------------------------ Captured stdout call -------------------------------------------------
+{"method": "POST", "path": "/api/v1/sprints", "query": null, "correlation_id": "307dcdf2-fdd0-43ff-86d1-a9bc338960ff", "client_ip": "127.0.0.1", "event": "http_request", "timestamp": "2025-12-29T00:01:03.590868Z", "level": "info"}
+{"method": "POST", "path": "/api/v1/sprints", "status_code": 404, "duration_ms": 3.18, "correlation_id": "307dcdf2-fdd0-43ff-86d1-a9bc338960ff", "event": "http_response", "timestamp": "2025-12-29T00:01:03.593869Z", "level": "warning"}
+{"method": "DELETE", "path": "/api/v1/sprints/S-DELETE-001", "query": null, "correlation_id": "e587893d-cb0c-4430-9726-b3a424d327b7", "client_ip": "127.0.0.1", "event": "http_request", "timestamp": "2025-12-29T00:01:03.593869Z", "level": "info"}
+{"method": "DELETE", "path": "/api/v1/sprints/S-DELETE-001", "status_code": 404, "duration_ms": 2.37, "correlation_id": "e587893d-cb0c-4430-9726-b3a424d327b7", "event": "http_response", "timestamp": "2025-12-29T00:01:03.596871Z", "level": "warning"}
+___________________________________ TestSprintEndpoints.test_create_sprint_conflict ___________________________________
+
+self = <test_endpoints.TestSprintEndpoints object at 0x00000224CFCE2690>
+client = <httpx.AsyncClient object at 0x00000224D0CBA650>
+
+    async def test_create_sprint_conflict(self, client):
+        """Test duplicate sprint ID returns 409."""
+        sprint_data = {
+            "id": "S-CONFLICT-001",
+            "name": "Conflict Test",
+            "goal": "Goal",
+            "cadence": "biweekly",
+            "start_date": "2025-01-01",
+            "end_date": "2025-01-14",
+            "status": "active",
+            "owner": "owner",
+            "primary_project": "P-001",
+        }
+    
+        # Create first sprint
+        first_response = await client.post("/api/v1/sprints", json=sprint_data)
+>       assert first_response.status_code == status.HTTP_201_CREATED
+E       assert 404 == 201
+E        +  where 404 = <Response [404 Not Found]>.status_code
+E        +  and   201 = status.HTTP_201_CREATED
+
+tests\integration\api\test_endpoints.py:511: AssertionError
+------------------------------------------------ Captured stdout call -------------------------------------------------
+{"method": "POST", "path": "/api/v1/sprints", "query": null, "correlation_id": "639225d2-a21b-442b-b3b7-2c6e0ebdc115", "client_ip": "127.0.0.1", "event": "http_request", "timestamp": "2025-12-29T00:01:03.665435Z", "level": "info"}
+{"method": "POST", "path": "/api/v1/sprints", "status_code": 404, "duration_ms": 3.49, "correlation_id": "639225d2-a21b-442b-b3b7-2c6e0ebdc115", "event": "http_response", "timestamp": "2025-12-29T00:01:03.668433Z", "level": "warning"}
+_______________________________ TestActionListEndpoints.test_create_action_list_success _______________________________
+
+self = <test_endpoints.TestActionListEndpoints object at 0x00000224CFCE0550>
+client = <httpx.AsyncClient object at 0x00000224D0B30A50>
+
+    async def test_create_action_list_success(self, client):
+        """Test successful action list creation."""
+        action_list_data = {
+            "id": "AL-TEST-001",
+            "title": "Test Action List",
+            "description": "Test description",
+            "status": "active",
+            "owner": "list.owner",
+        }
+    
+        response = await client.post("/api/v1/action-lists", json=action_list_data)
+    
+        assert response.status_code == status.HTTP_201_CREATED
+        data = response.json()
+>       assert data["id"] == "AL-TEST-001"
+E       AssertionError: assert 'AL-0003' == 'AL-TEST-001'
+E         
+E         - AL-TEST-001
+E         + AL-0003
+
+tests\integration\api\test_endpoints.py:536: AssertionError
+------------------------------------------------ Captured stdout call -------------------------------------------------
+{"method": "POST", "path": "/api/v1/action-lists", "query": null, "correlation_id": "793e97d1-6937-4148-b426-ccfe2eae5317", "client_ip": "127.0.0.1", "event": "http_request", "timestamp": "2025-12-29T00:01:03.699085Z", "level": "info"}
+{"list_id": "AL-0003", "event": "action_list_created", "timestamp": "2025-12-29T00:01:03.702606Z", "level": "info"}
+{"method": "POST", "path": "/api/v1/action-lists", "status_code": 201, "duration_ms": 4.64, "correlation_id": "793e97d1-6937-4148-b426-ccfe2eae5317", "event": "http_response", "timestamp": "2025-12-29T00:01:03.703602Z", "level": "info"}
+________________________________ TestActionListEndpoints.test_get_action_list_success _________________________________
+
+self = <test_endpoints.TestActionListEndpoints object at 0x00000224CED0B290>
+client = <httpx.AsyncClient object at 0x00000224D0BC7190>
+
+    async def test_get_action_list_success(self, client):
+        """Test getting action list by ID."""
+        # Create action list
+        action_list_data = {
+            "id": "AL-GET-001",
+            "title": "Get Test List",
+            "description": "Description",
+            "status": "active",
+            "owner": "owner",
+        }
+        await client.post("/api/v1/action-lists", json=action_list_data)
+    
+        # Get action list
+        response = await client.get("/api/v1/action-lists/AL-GET-001")
+    
+>       assert response.status_code == status.HTTP_200_OK
+E       assert 404 == 200
+E        +  where 404 = <Response [404 Not Found]>.status_code
+E        +  and   200 = status.HTTP_200_OK
+
+tests\integration\api\test_endpoints.py:554: AssertionError
+------------------------------------------------ Captured stdout call -------------------------------------------------
+{"method": "POST", "path": "/api/v1/action-lists", "query": null, "correlation_id": "b96a8a05-7b09-4c75-912a-340b7690a22b", "client_ip": "127.0.0.1", "event": "http_request", "timestamp": "2025-12-29T00:01:03.731202Z", "level": "info"}
+{"list_id": "AL-0004", "event": "action_list_created", "timestamp": "2025-12-29T00:01:03.735202Z", "level": "info"}
+{"method": "POST", "path": "/api/v1/action-lists", "status_code": 201, "duration_ms": 3.99, "correlation_id": "b96a8a05-7b09-4c75-912a-340b7690a22b", "event": "http_response", "timestamp": "2025-12-29T00:01:03.735202Z", "level": "info"}
+{"method": "GET", "path": "/api/v1/action-lists/AL-GET-001", "query": null, "correlation_id": "fa197527-3ca3-499d-a40e-7f9805deee9f", "client_ip": "127.0.0.1", "event": "http_request", "timestamp": "2025-12-29T00:01:03.736203Z", "level": "info"}
+{"method": "GET", "path": "/api/v1/action-lists/AL-GET-001", "status_code": 404, "duration_ms": 2.82, "correlation_id": "fa197527-3ca3-499d-a40e-7f9805deee9f", "event": "http_response", "timestamp": "2025-12-29T00:01:03.739204Z", "level": "warning"}
+___________________________________ TestActionListEndpoints.test_list_action_lists ____________________________________
+
+self = <test_endpoints.TestActionListEndpoints object at 0x00000224CFCEC110>
+client = <httpx.AsyncClient object at 0x00000224D1086610>
+
+    async def test_list_action_lists(self, client):
+        """Test listing action lists."""
+        # Create action lists
+        for i in range(3):
+            action_list_data = {
+                "id": f"AL-LIST-{i:03d}",
+                "title": f"List {i}",
+                "description": "Description",
+                "status": "active",
+                "owner": "owner",
+            }
+            await client.post("/api/v1/action-lists", json=action_list_data)
+    
+        # List action lists
+        response = await client.get("/api/v1/action-lists")
+    
+        assert response.status_code == status.HTTP_200_OK
+        data = response.json()
+>       assert isinstance(data, list)
+E       AssertionError: assert False
+E        +  where False = isinstance({'action_lists': [{'completed_at': None, 'created_at': '2025-12-29T00:01:03', 'description': 'Description', 'due_date': None, ...}, {'completed_at': None, 'created_at': '2025-12-29T00:01:03', 'description': 'Description', 'due_date': None, ...}, {'completed_at': None, 'created_at': '2025-12-29T00:01:03', 'description': 'Description', 'due_date': None, ...}], 'has_more': False, 'page': 1, 'per_page': 20, ...}, list)
+
+tests\integration\api\test_endpoints.py:576: AssertionError
+------------------------------------------------ Captured stdout call -------------------------------------------------
+{"method": "POST", "path": "/api/v1/action-lists", "query": null, "correlation_id": "2098432b-1041-450c-953f-16c7b432fb13", "client_ip": "127.0.0.1", "event": "http_request", "timestamp": "2025-12-29T00:01:03.764203Z", "level": "info"}
+{"list_id": "AL-0005", "event": "action_list_created", "timestamp": "2025-12-29T00:01:03.768203Z", "level": "info"}
+{"method": "POST", "path": "/api/v1/action-lists", "status_code": 201, "duration_ms": 4.36, "correlation_id": "2098432b-1041-450c-953f-16c7b432fb13", "event": "http_response", "timestamp": "2025-12-29T00:01:03.768203Z", "level": "info"}
+{"method": "POST", "path": "/api/v1/action-lists", "query": null, "correlation_id": "88e38fb9-cefb-41a5-9c97-d978755642b8", "client_ip": "127.0.0.1", "event": "http_request", "timestamp": "2025-12-29T00:01:03.769202Z", "level": "info"}
+{"list_id": "AL-0006", "event": "action_list_created", "timestamp": "2025-12-29T00:01:03.771207Z", "level": "info"}
+{"method": "POST", "path": "/api/v1/action-lists", "status_code": 201, "duration_ms": 3.58, "correlation_id": "88e38fb9-cefb-41a5-9c97-d978755642b8", "event": "http_response", "timestamp": "2025-12-29T00:01:03.772722Z", "level": "info"}
+{"method": "POST", "path": "/api/v1/action-lists", "query": null, "correlation_id": "34383aa1-384b-404c-9f4c-b616ac5e794a", "client_ip": "127.0.0.1", "event": "http_request", "timestamp": "2025-12-29T00:01:03.772722Z", "level": "info"}
+{"list_id": "AL-0007", "event": "action_list_created", "timestamp": "2025-12-29T00:01:03.775250Z", "level": "info"}
+{"method": "POST", "path": "/api/v1/action-lists", "status_code": 201, "duration_ms": 2.87, "correlation_id": "34383aa1-384b-404c-9f4c-b616ac5e794a", "event": "http_response", "timestamp": "2025-12-29T00:01:03.776229Z", "level": "info"}
+{"method": "GET", "path": "/api/v1/action-lists", "query": null, "correlation_id": "85094a48-62da-4f30-8ab0-b482ff04df2c", "client_ip": "127.0.0.1", "event": "http_request", "timestamp": "2025-12-29T00:01:03.776229Z", "level": "info"}
+{"count": 3, "total": 3, "page": 1, "event": "action_lists_listed", "timestamp": "2025-12-29T00:01:03.778229Z", "level": "info"}
+{"method": "GET", "path": "/api/v1/action-lists", "status_code": 200, "duration_ms": 3.02, "correlation_id": "85094a48-62da-4f30-8ab0-b482ff04df2c", "event": "http_response", "timestamp": "2025-12-29T00:01:03.779228Z", "level": "info"}
+_______________________________ TestActionListEndpoints.test_update_action_list_success _______________________________
+
+self = <test_endpoints.TestActionListEndpoints object at 0x00000224CFCEDF90>
+client = <httpx.AsyncClient object at 0x00000224D0ADF910>
+
+    async def test_update_action_list_success(self, client):
+        """Test updating action list returns 200."""
+        # Create action list
+        action_list_data = {
+            "id": "AL-UPDATE-001",
+            "title": "Original Title",
+            "description": "Original Description",
+            "status": "active",
+            "owner": "owner",
+        }
+        create_response = await client.post("/api/v1/action-lists", json=action_list_data)
+        assert create_response.status_code == status.HTTP_201_CREATED
+    
+        # Update action list
+        update_data = {"title": "Updated Title", "description": "Updated Description"}
+        response = await client.patch("/api/v1/action-lists/AL-UPDATE-001", json=update_data)
+    
+>       assert response.status_code == status.HTTP_200_OK
+E       assert 405 == 200
+E        +  where 405 = <Response [405 Method Not Allowed]>.status_code
+E        +  and   200 = status.HTTP_200_OK
+
+tests\integration\api\test_endpoints.py:596: AssertionError
+------------------------------------------------ Captured stdout call -------------------------------------------------
+{"method": "POST", "path": "/api/v1/action-lists", "query": null, "correlation_id": "355bdd38-ac24-4cc0-a167-d4293d559de1", "client_ip": "127.0.0.1", "event": "http_request", "timestamp": "2025-12-29T00:01:03.811265Z", "level": "info"}
+{"list_id": "AL-0008", "event": "action_list_created", "timestamp": "2025-12-29T00:01:03.816820Z", "level": "info"}
+{"method": "POST", "path": "/api/v1/action-lists", "status_code": 201, "duration_ms": 6.32, "correlation_id": "355bdd38-ac24-4cc0-a167-d4293d559de1", "event": "http_response", "timestamp": "2025-12-29T00:01:03.817784Z", "level": "info"}
+{"method": "PATCH", "path": "/api/v1/action-lists/AL-UPDATE-001", "query": null, "correlation_id": "13150026-07df-4a7e-a845-e7814a7cd403", "client_ip": "127.0.0.1", "event": "http_request", "timestamp": "2025-12-29T00:01:03.817784Z", "level": "info"}
+{"method": "PATCH", "path": "/api/v1/action-lists/AL-UPDATE-001", "status_code": 405, "duration_ms": 0.27, "correlation_id": "13150026-07df-4a7e-a845-e7814a7cd403", "event": "http_response", "timestamp": "2025-12-29T00:01:03.818785Z", "level": "warning"}
+______________________________ TestActionListEndpoints.test_update_action_list_not_found ______________________________
+
+self = <test_endpoints.TestActionListEndpoints object at 0x00000224CFCEE8D0>
+client = <httpx.AsyncClient object at 0x00000224D0B075D0>
+
+    async def test_update_action_list_not_found(self, client):
+        """Test updating non-existent action list returns 404."""
+        update_data = {"title": "Updated Title"}
+        response = await client.patch("/api/v1/action-lists/AL-NONEXISTENT", json=update_data)
+    
+>       assert response.status_code == status.HTTP_404_NOT_FOUND
+E       assert 405 == 404
+E        +  where 405 = <Response [405 Method Not Allowed]>.status_code
+E        +  and   404 = status.HTTP_404_NOT_FOUND
+
+tests\integration\api\test_endpoints.py:606: AssertionError
+------------------------------------------------ Captured stdout call -------------------------------------------------
+{"method": "PATCH", "path": "/api/v1/action-lists/AL-NONEXISTENT", "query": null, "correlation_id": "c934d035-f8b4-4a14-a38c-fda1d499b74d", "client_ip": "127.0.0.1", "event": "http_request", "timestamp": "2025-12-29T00:01:03.847511Z", "level": "info"}
+{"method": "PATCH", "path": "/api/v1/action-lists/AL-NONEXISTENT", "status_code": 405, "duration_ms": 0.42, "correlation_id": "c934d035-f8b4-4a14-a38c-fda1d499b74d", "event": "http_response", "timestamp": "2025-12-29T00:01:03.847511Z", "level": "warning"}
+_______________________________ TestActionListEndpoints.test_delete_action_list_success _______________________________
+
+self = <test_endpoints.TestActionListEndpoints object at 0x00000224CFCEF210>
+client = <httpx.AsyncClient object at 0x00000224D1101090>
+
+    async def test_delete_action_list_success(self, client):
+        """Test deleting action list returns 204."""
+        # Create action list
+        action_list_data = {
+            "id": "AL-DELETE-001",
+            "title": "Delete Test",
+            "description": "Description",
+            "status": "active",
+            "owner": "owner",
+        }
+        await client.post("/api/v1/action-lists", json=action_list_data)
+    
+        # Delete action list
+        response = await client.delete("/api/v1/action-lists/AL-DELETE-001")
+    
+>       assert response.status_code == status.HTTP_204_NO_CONTENT
+E       assert 404 == 204
+E        +  where 404 = <Response [404 Not Found]>.status_code
+E        +  and   204 = status.HTTP_204_NO_CONTENT
+
+tests\integration\api\test_endpoints.py:623: AssertionError
+------------------------------------------------ Captured stdout call -------------------------------------------------
+{"method": "POST", "path": "/api/v1/action-lists", "query": null, "correlation_id": "e67aa40d-d8f9-4760-9574-4233fb97dac0", "client_ip": "127.0.0.1", "event": "http_request", "timestamp": "2025-12-29T00:01:03.876623Z", "level": "info"}
+{"list_id": "AL-0009", "event": "action_list_created", "timestamp": "2025-12-29T00:01:03.880622Z", "level": "info"}
+{"method": "POST", "path": "/api/v1/action-lists", "status_code": 201, "duration_ms": 4.52, "correlation_id": "e67aa40d-d8f9-4760-9574-4233fb97dac0", "event": "http_response", "timestamp": "2025-12-29T00:01:03.881173Z", "level": "info"}
+{"method": "DELETE", "path": "/api/v1/action-lists/AL-DELETE-001", "query": null, "correlation_id": "6d80124a-2f52-42e2-9b5e-1b905ed603f0", "client_ip": "127.0.0.1", "event": "http_request", "timestamp": "2025-12-29T00:01:03.881173Z", "level": "info"}
+{"method": "DELETE", "path": "/api/v1/action-lists/AL-DELETE-001", "status_code": 404, "duration_ms": 2.05, "correlation_id": "6d80124a-2f52-42e2-9b5e-1b905ed603f0", "event": "http_response", "timestamp": "2025-12-29T00:01:03.883136Z", "level": "warning"}
+______________________________ TestActionListEndpoints.test_create_action_list_conflict _______________________________
+
+self = <test_endpoints.TestActionListEndpoints object at 0x00000224CFCF8E10>
+client = <httpx.AsyncClient object at 0x00000224D10D7110>
+
+    async def test_create_action_list_conflict(self, client):
+        """Test duplicate action list ID returns 409."""
+        action_list_data = {
+            "id": "AL-CONFLICT-001",
+            "title": "Conflict Test",
+            "description": "Description",
+            "status": "active",
+            "owner": "owner",
+        }
+    
+        # Create first action list
+        first_response = await client.post("/api/v1/action-lists", json=action_list_data)
+        assert first_response.status_code == status.HTTP_201_CREATED
+    
+        # Attempt to create duplicate
+        duplicate_response = await client.post("/api/v1/action-lists", json=action_list_data)
+    
+>       assert duplicate_response.status_code == status.HTTP_409_CONFLICT
+E       assert 201 == 409
+E        +  where 201 = <Response [201 Created]>.status_code
+E        +  and   409 = status.HTTP_409_CONFLICT
+
+tests\integration\api\test_endpoints.py:666: AssertionError
+------------------------------------------------ Captured stdout call -------------------------------------------------
+{"method": "POST", "path": "/api/v1/action-lists", "query": null, "correlation_id": "950018c0-a039-4370-adbb-6683bf78d000", "client_ip": "127.0.0.1", "event": "http_request", "timestamp": "2025-12-29T00:01:03.957399Z", "level": "info"}
+{"list_id": "AL-0010", "event": "action_list_created", "timestamp": "2025-12-29T00:01:03.961938Z", "level": "info"}
+{"method": "POST", "path": "/api/v1/action-lists", "status_code": 201, "duration_ms": 5.28, "correlation_id": "950018c0-a039-4370-adbb-6683bf78d000", "event": "http_response", "timestamp": "2025-12-29T00:01:03.962938Z", "level": "info"}
+{"method": "POST", "path": "/api/v1/action-lists", "query": null, "correlation_id": "83cf533b-b1de-4a8f-b97d-45dd77741f95", "client_ip": "127.0.0.1", "event": "http_request", "timestamp": "2025-12-29T00:01:03.963938Z", "level": "info"}
+{"list_id": "AL-0011", "event": "action_list_created", "timestamp": "2025-12-29T00:01:03.966528Z", "level": "info"}
+{"method": "POST", "path": "/api/v1/action-lists", "status_code": 201, "duration_ms": 3.58, "correlation_id": "83cf533b-b1de-4a8f-b97d-45dd77741f95", "event": "http_response", "timestamp": "2025-12-29T00:01:03.967044Z", "level": "info"}
+_________________________________ TestPaginationEdgeCases.test_list_tasks_with_limit __________________________________
+
+self = <test_endpoints.TestPaginationEdgeCases object at 0x00000224CFCF9950>
+client = <httpx.AsyncClient object at 0x00000224D10FCE50>
+
+    async def test_list_tasks_with_limit(self, client):
+        """Test tasks list respects limit parameter."""
+        # Create multiple tasks
+        for i in range(5):
+            task_data = {
+                "id": f"T-LIMIT-{i:03d}",
+                "title": f"Task {i}",
+                "summary": "Summary",
+                "description": "Description",
+                "owner": "owner",
+                "priority": "p2",
+                "primary_project": "P-001",
+                "primary_sprint": "S-001",
+            }
+            await client.post("/api/v1/tasks", json=task_data)
+    
+        # Test limit parameter
+        response = await client.get("/api/v1/tasks?limit=3")
+    
+        assert response.status_code == status.HTTP_200_OK
+        data = response.json()
+>       assert isinstance(data, list)
+E       AssertionError: assert False
+E        +  where False = isinstance({'has_more': False, 'page': 1, 'per_page': 20, 'tasks': [], ...}, list)
+
+tests\integration\api\test_endpoints.py:693: AssertionError
+------------------------------------------------ Captured stdout call -------------------------------------------------
+{"method": "POST", "path": "/api/v1/tasks", "query": null, "correlation_id": "ee13afd3-cbcd-463d-a761-80c5e4e875f3", "client_ip": "127.0.0.1", "event": "http_request", "timestamp": "2025-12-29T00:01:04.042380Z", "level": "info"}
+{"method": "POST", "path": "/api/v1/tasks", "status_code": 400, "duration_ms": 4.24, "correlation_id": "ee13afd3-cbcd-463d-a761-80c5e4e875f3", "event": "http_response", "timestamp": "2025-12-29T00:01:04.047100Z", "level": "warning"}
+{"method": "POST", "path": "/api/v1/tasks", "query": null, "correlation_id": "267d1662-89a5-4e5c-a008-52103d03b207", "client_ip": "127.0.0.1", "event": "http_request", "timestamp": "2025-12-29T00:01:04.047616Z", "level": "info"}
+{"method": "POST", "path": "/api/v1/tasks", "status_code": 400, "duration_ms": 2.0, "correlation_id": "267d1662-89a5-4e5c-a008-52103d03b207", "event": "http_response", "timestamp": "2025-12-29T00:01:04.049614Z", "level": "warning"}
+{"method": "POST", "path": "/api/v1/tasks", "query": null, "correlation_id": "7a0d71a7-a19c-4375-9740-fe7eb261bd03", "client_ip": "127.0.0.1", "event": "http_request", "timestamp": "2025-12-29T00:01:04.049614Z", "level": "info"}
+{"method": "POST", "path": "/api/v1/tasks", "status_code": 400, "duration_ms": 1.79, "correlation_id": "7a0d71a7-a19c-4375-9740-fe7eb261bd03", "event": "http_response", "timestamp": "2025-12-29T00:01:04.051613Z", "level": "warning"}
+{"method": "POST", "path": "/api/v1/tasks", "query": null, "correlation_id": "512d2b92-bff2-41e1-90a3-4c6d4eb504c9", "client_ip": "127.0.0.1", "event": "http_request", "timestamp": "2025-12-29T00:01:04.051613Z", "level": "info"}
+{"method": "POST", "path": "/api/v1/tasks", "status_code": 400, "duration_ms": 1.71, "correlation_id": "512d2b92-bff2-41e1-90a3-4c6d4eb504c9", "event": "http_response", "timestamp": "2025-12-29T00:01:04.053614Z", "level": "warning"}
+{"method": "POST", "path": "/api/v1/tasks", "query": null, "correlation_id": "c7aa5a8c-738e-4ca8-b867-47305d013625", "client_ip": "127.0.0.1", "event": "http_request", "timestamp": "2025-12-29T00:01:04.053614Z", "level": "info"}
+{"method": "POST", "path": "/api/v1/tasks", "status_code": 400, "duration_ms": 3.7, "correlation_id": "c7aa5a8c-738e-4ca8-b867-47305d013625", "event": "http_response", "timestamp": "2025-12-29T00:01:04.058127Z", "level": "warning"}
+{"method": "GET", "path": "/api/v1/tasks", "query": "limit=3", "correlation_id": "248da970-b70d-42fa-a918-c5b6c68f9f4b", "client_ip": "127.0.0.1", "event": "http_request", "timestamp": "2025-12-29T00:01:04.058127Z", "level": "info"}
+{"count": 0, "total": 0, "page": 1, "event": "tasks_listed", "timestamp": "2025-12-29T00:01:04.063127Z", "level": "info"}
+{"method": "GET", "path": "/api/v1/tasks", "status_code": 200, "duration_ms": 5.35, "correlation_id": "248da970-b70d-42fa-a918-c5b6c68f9f4b", "event": "http_response", "timestamp": "2025-12-29T00:01:04.063647Z", "level": "info"}
+_________________________________ TestPaginationEdgeCases.test_list_tasks_with_offset _________________________________
+
+self = <test_endpoints.TestPaginationEdgeCases object at 0x00000224CFCFA290>
+client = <httpx.AsyncClient object at 0x00000224D10D0750>
+
+    async def test_list_tasks_with_offset(self, client):
+        """Test tasks list respects offset parameter."""
+        # Create tasks
+        for i in range(5):
+            task_data = {
+                "id": f"T-OFFSET-{i:03d}",
+                "title": f"Task {i}",
+                "summary": "Summary",
+                "description": "Description",
+                "owner": "owner",
+                "priority": "p2",
+                "primary_project": "P-001",
+                "primary_sprint": "S-001",
+            }
+            await client.post("/api/v1/tasks", json=task_data)
+    
+        # Test offset parameter
+        response = await client.get("/api/v1/tasks?offset=2&limit=10")
+    
+        assert response.status_code == status.HTTP_200_OK
+        data = response.json()
+>       assert isinstance(data, list)
+E       AssertionError: assert False
+E        +  where False = isinstance({'has_more': False, 'page': 1, 'per_page': 20, 'tasks': [], ...}, list)
+
+tests\integration\api\test_endpoints.py:717: AssertionError
+------------------------------------------------ Captured stdout call -------------------------------------------------
+{"method": "POST", "path": "/api/v1/tasks", "query": null, "correlation_id": "7e0d13c0-46ad-447d-9fea-bd158a9d2c58", "client_ip": "127.0.0.1", "event": "http_request", "timestamp": "2025-12-29T00:01:04.096479Z", "level": "info"}
+{"method": "POST", "path": "/api/v1/tasks", "status_code": 400, "duration_ms": 3.51, "correlation_id": "7e0d13c0-46ad-447d-9fea-bd158a9d2c58", "event": "http_response", "timestamp": "2025-12-29T00:01:04.100481Z", "level": "warning"}
+{"method": "POST", "path": "/api/v1/tasks", "query": null, "correlation_id": "dbe508cb-fa46-4533-8d82-4896a206e2a6", "client_ip": "127.0.0.1", "event": "http_request", "timestamp": "2025-12-29T00:01:04.100481Z", "level": "info"}
+{"method": "POST", "path": "/api/v1/tasks", "status_code": 400, "duration_ms": 1.81, "correlation_id": "dbe508cb-fa46-4533-8d82-4896a206e2a6", "event": "http_response", "timestamp": "2025-12-29T00:01:04.102481Z", "level": "warning"}
+{"method": "POST", "path": "/api/v1/tasks", "query": null, "correlation_id": "5d70dd0d-24e6-436a-8bc9-98d27a7c5d81", "client_ip": "127.0.0.1", "event": "http_request", "timestamp": "2025-12-29T00:01:04.102481Z", "level": "info"}
+{"method": "POST", "path": "/api/v1/tasks", "status_code": 400, "duration_ms": 3.17, "correlation_id": "5d70dd0d-24e6-436a-8bc9-98d27a7c5d81", "event": "http_response", "timestamp": "2025-12-29T00:01:04.106480Z", "level": "warning"}
+{"method": "POST", "path": "/api/v1/tasks", "query": null, "correlation_id": "539bf555-03f1-4616-9eb5-e61b12d617f3", "client_ip": "127.0.0.1", "event": "http_request", "timestamp": "2025-12-29T00:01:04.107480Z", "level": "info"}
+{"method": "POST", "path": "/api/v1/tasks", "status_code": 400, "duration_ms": 2.46, "correlation_id": "539bf555-03f1-4616-9eb5-e61b12d617f3", "event": "http_response", "timestamp": "2025-12-29T00:01:04.109480Z", "level": "warning"}
+{"method": "POST", "path": "/api/v1/tasks", "query": null, "correlation_id": "94cff6dd-9192-4ac3-bf0b-a47dee468768", "client_ip": "127.0.0.1", "event": "http_request", "timestamp": "2025-12-29T00:01:04.110483Z", "level": "info"}
+{"method": "POST", "path": "/api/v1/tasks", "status_code": 400, "duration_ms": 2.05, "correlation_id": "94cff6dd-9192-4ac3-bf0b-a47dee468768", "event": "http_response", "timestamp": "2025-12-29T00:01:04.112481Z", "level": "warning"}
+{"method": "GET", "path": "/api/v1/tasks", "query": "offset=2&limit=10", "correlation_id": "8a8f0b52-95b8-4abd-b81e-ea97b758cbc8", "client_ip": "127.0.0.1", "event": "http_request", "timestamp": "2025-12-29T00:01:04.112481Z", "level": "info"}
+{"count": 0, "total": 0, "page": 1, "event": "tasks_listed", "timestamp": "2025-12-29T00:01:04.117478Z", "level": "info"}
+{"method": "GET", "path": "/api/v1/tasks", "status_code": 200, "duration_ms": 5.83, "correlation_id": "8a8f0b52-95b8-4abd-b81e-ea97b758cbc8", "event": "http_response", "timestamp": "2025-12-29T00:01:04.118479Z", "level": "info"}
+_______________________________ TestPaginationEdgeCases.test_list_projects_empty_result _______________________________
+
+self = <test_endpoints.TestPaginationEdgeCases object at 0x00000224CFCEF910>
+client = <httpx.AsyncClient object at 0x00000224D0A29250>
+
+    async def test_list_projects_empty_result(self, client):
+        """Test projects list returns empty array when no projects exist."""
+        response = await client.get("/api/v1/projects?limit=10&offset=1000")
+    
+        assert response.status_code == status.HTTP_200_OK
+        data = response.json()
+>       assert isinstance(data, list)
+E       AssertionError: assert False
+E        +  where False = isinstance({'has_more': False, 'page': 1, 'per_page': 20, 'projects': [], ...}, list)
+
+tests\integration\api\test_endpoints.py:725: AssertionError
+------------------------------------------------ Captured stdout call -------------------------------------------------
+{"method": "GET", "path": "/api/v1/projects", "query": "limit=10&offset=1000", "correlation_id": "a37b62da-09bf-4ddb-8a29-397cd74a368d", "client_ip": "127.0.0.1", "event": "http_request", "timestamp": "2025-12-29T00:01:04.145000Z", "level": "info"}
+{"count": 0, "total": 0, "page": 1, "event": "projects_listed", "timestamp": "2025-12-29T00:01:04.149551Z", "level": "info"}
+{"method": "GET", "path": "/api/v1/projects", "status_code": 200, "duration_ms": 4.56, "correlation_id": "a37b62da-09bf-4ddb-8a29-397cd74a368d", "event": "http_response", "timestamp": "2025-12-29T00:01:04.150070Z", "level": "info"}
+______________________________ TestPaginationEdgeCases.test_list_sprints_with_pagination ______________________________
+
+self = <test_endpoints.TestPaginationEdgeCases object at 0x00000224CFCEC790>
+client = <httpx.AsyncClient object at 0x00000224D10DA2D0>
+
+    async def test_list_sprints_with_pagination(self, client):
+        """Test sprints list pagination works correctly."""
+        # Create multiple sprints
+        for i in range(5):
+            sprint_data = {
+                "id": f"S-PAGE-{i:03d}",
+                "name": f"Sprint {i}",
+                "goal": "Goal",
+                "cadence": "weekly",
+                "start_date": "2025-01-01",
+                "end_date": "2025-01-07",
+                "status": "active",
+                "owner": "owner",
+                "primary_project": "P-001",
+            }
+            await client.post("/api/v1/sprints", json=sprint_data)
+    
+        # Test pagination
+        page1 = await client.get("/api/v1/sprints?limit=2&offset=0")
+        page2 = await client.get("/api/v1/sprints?limit=2&offset=2")
+    
+        assert page1.status_code == status.HTTP_200_OK
+        assert page2.status_code == status.HTTP_200_OK
+    
+        data1 = page1.json()
+        data2 = page2.json()
+>       assert isinstance(data1, list)
+E       AssertionError: assert False
+E        +  where False = isinstance({'has_more': False, 'page': 1, 'per_page': 20, 'sprints': [], ...}, list)
+
+tests\integration\api\test_endpoints.py:754: AssertionError
+------------------------------------------------ Captured stdout call -------------------------------------------------
+{"method": "POST", "path": "/api/v1/sprints", "query": null, "correlation_id": "a969a237-3658-48d1-89b8-44dbe75259f6", "client_ip": "127.0.0.1", "event": "http_request", "timestamp": "2025-12-29T00:01:04.179356Z", "level": "info"}
+{"method": "POST", "path": "/api/v1/sprints", "status_code": 404, "duration_ms": 3.73, "correlation_id": "a969a237-3658-48d1-89b8-44dbe75259f6", "event": "http_response", "timestamp": "2025-12-29T00:01:04.183357Z", "level": "warning"}
+{"method": "POST", "path": "/api/v1/sprints", "query": null, "correlation_id": "e8839ed3-bf9f-4669-820a-f6f43ae966e8", "client_ip": "127.0.0.1", "event": "http_request", "timestamp": "2025-12-29T00:01:04.184356Z", "level": "info"}
+{"method": "POST", "path": "/api/v1/sprints", "status_code": 404, "duration_ms": 1.87, "correlation_id": "e8839ed3-bf9f-4669-820a-f6f43ae966e8", "event": "http_response", "timestamp": "2025-12-29T00:01:04.186357Z", "level": "warning"}
+{"method": "POST", "path": "/api/v1/sprints", "query": null, "correlation_id": "55eb2098-9190-4461-9aa0-69f9d760fc05", "client_ip": "127.0.0.1", "event": "http_request", "timestamp": "2025-12-29T00:01:04.186357Z", "level": "info"}
+{"method": "POST", "path": "/api/v1/sprints", "status_code": 404, "duration_ms": 1.6, "correlation_id": "55eb2098-9190-4461-9aa0-69f9d760fc05", "event": "http_response", "timestamp": "2025-12-29T00:01:04.188356Z", "level": "warning"}
+{"method": "POST", "path": "/api/v1/sprints", "query": null, "correlation_id": "56779f06-1f36-4159-bc51-d962d39a6c74", "client_ip": "127.0.0.1", "event": "http_request", "timestamp": "2025-12-29T00:01:04.188873Z", "level": "info"}
+{"method": "POST", "path": "/api/v1/sprints", "status_code": 404, "duration_ms": 3.01, "correlation_id": "56779f06-1f36-4159-bc51-d962d39a6c74", "event": "http_response", "timestamp": "2025-12-29T00:01:04.191872Z", "level": "warning"}
+{"method": "POST", "path": "/api/v1/sprints", "query": null, "correlation_id": "c0b22ec6-6755-42f7-bdd4-0d9eb30ca395", "client_ip": "127.0.0.1", "event": "http_request", "timestamp": "2025-12-29T00:01:04.191872Z", "level": "info"}
+{"method": "POST", "path": "/api/v1/sprints", "status_code": 404, "duration_ms": 1.88, "correlation_id": "c0b22ec6-6755-42f7-bdd4-0d9eb30ca395", "event": "http_response", "timestamp": "2025-12-29T00:01:04.193870Z", "level": "warning"}
+{"method": "GET", "path": "/api/v1/sprints", "query": "limit=2&offset=0", "correlation_id": "4d9ddf27-a552-4f9b-a367-d8c9e47048b4", "client_ip": "127.0.0.1", "event": "http_request", "timestamp": "2025-12-29T00:01:04.194870Z", "level": "info"}
+{"count": 0, "total": 0, "page": 1, "event": "sprints_listed", "timestamp": "2025-12-29T00:01:04.197872Z", "level": "info"}
+{"method": "GET", "path": "/api/v1/sprints", "status_code": 200, "duration_ms": 3.98, "correlation_id": "4d9ddf27-a552-4f9b-a367-d8c9e47048b4", "event": "http_response", "timestamp": "2025-12-29T00:01:04.198871Z", "level": "info"}
+{"method": "GET", "path": "/api/v1/sprints", "query": "limit=2&offset=2", "correlation_id": "38d2a226-5a14-4fe0-895d-009e85d1f4df", "client_ip": "127.0.0.1", "event": "http_request", "timestamp": "2025-12-29T00:01:04.198871Z", "level": "info"}
+{"count": 0, "total": 0, "page": 1, "event": "sprints_listed", "timestamp": "2025-12-29T00:01:04.200872Z", "level": "info"}
+{"method": "GET", "path": "/api/v1/sprints", "status_code": 200, "duration_ms": 3.02, "correlation_id": "38d2a226-5a14-4fe0-895d-009e85d1f4df", "event": "http_response", "timestamp": "2025-12-29T00:01:04.201872Z", "level": "info"}
+____________________________ TestPaginationEdgeCases.test_list_action_lists_limit_boundary ____________________________
+
+self = <test_endpoints.TestPaginationEdgeCases object at 0x00000224CFCE3490>
+client = <httpx.AsyncClient object at 0x00000224D09D1750>
+
+    async def test_list_action_lists_limit_boundary(self, client):
+        """Test action lists list with boundary limit value."""
+        response = await client.get("/api/v1/action-lists?limit=1")
+    
+        assert response.status_code == status.HTTP_200_OK
+        data = response.json()
+>       assert isinstance(data, list)
+E       AssertionError: assert False
+E        +  where False = isinstance({'action_lists': [], 'has_more': False, 'page': 1, 'per_page': 20, ...}, list)
+
+tests\integration\api\test_endpoints.py:763: AssertionError
+------------------------------------------------ Captured stdout call -------------------------------------------------
+{"method": "GET", "path": "/api/v1/action-lists", "query": "limit=1", "correlation_id": "6e20c3cb-c1bb-42cf-905c-a71f2cd46d33", "client_ip": "127.0.0.1", "event": "http_request", "timestamp": "2025-12-29T00:01:04.230621Z", "level": "info"}
+{"count": 0, "total": 0, "page": 1, "event": "action_lists_listed", "timestamp": "2025-12-29T00:01:04.234129Z", "level": "info"}
+{"method": "GET", "path": "/api/v1/action-lists", "status_code": 200, "duration_ms": 3.87, "correlation_id": "6e20c3cb-c1bb-42cf-905c-a71f2cd46d33", "event": "http_response", "timestamp": "2025-12-29T00:01:04.234129Z", "level": "info"}
+_________________________________ TestPaginationEdgeCases.test_list_tasks_zero_offset _________________________________
+
+self = <test_endpoints.TestPaginationEdgeCases object at 0x00000224CFCF9E10>
+client = <httpx.AsyncClient object at 0x00000224D09C7790>
+
+    async def test_list_tasks_zero_offset(self, client):
+        """Test tasks list with explicit zero offset."""
+        response = await client.get("/api/v1/tasks?offset=0&limit=10")
+    
+        assert response.status_code == status.HTTP_200_OK
+        data = response.json()
+>       assert isinstance(data, list)
+E       AssertionError: assert False
+E        +  where False = isinstance({'has_more': False, 'page': 1, 'per_page': 20, 'tasks': [], ...}, list)
+
+tests\integration\api\test_endpoints.py:772: AssertionError
+------------------------------------------------ Captured stdout call -------------------------------------------------
+{"method": "GET", "path": "/api/v1/tasks", "query": "offset=0&limit=10", "correlation_id": "ce0e103f-e98f-4225-9405-4d6f9d634f45", "client_ip": "127.0.0.1", "event": "http_request", "timestamp": "2025-12-29T00:01:04.263821Z", "level": "info"}
+{"count": 0, "total": 0, "page": 1, "event": "tasks_listed", "timestamp": "2025-12-29T00:01:04.267824Z", "level": "info"}
+{"method": "GET", "path": "/api/v1/tasks", "status_code": 200, "duration_ms": 4.94, "correlation_id": "ce0e103f-e98f-4225-9405-4d6f9d634f45", "event": "http_response", "timestamp": "2025-12-29T00:01:04.268821Z", "level": "info"}
+_______________________________ TestPaginationEdgeCases.test_list_projects_large_limit ________________________________
+
+self = <test_endpoints.TestPaginationEdgeCases object at 0x00000224CFCF8990>
+client = <httpx.AsyncClient object at 0x00000224D10DB9D0>
+
+    async def test_list_projects_large_limit(self, client):
+        """Test projects list with large limit value."""
+        response = await client.get("/api/v1/projects?limit=100")
+    
+        assert response.status_code == status.HTTP_200_OK
+        data = response.json()
+>       assert isinstance(data, list)
+E       AssertionError: assert False
+E        +  where False = isinstance({'has_more': False, 'page': 1, 'per_page': 20, 'projects': [], ...}, list)
+
+tests\integration\api\test_endpoints.py:780: AssertionError
+------------------------------------------------ Captured stdout call -------------------------------------------------
+{"method": "GET", "path": "/api/v1/projects", "query": "limit=100", "correlation_id": "d62c69ea-54b2-4b83-b095-9f8566dd3f16", "client_ip": "127.0.0.1", "event": "http_request", "timestamp": "2025-12-29T00:01:04.297493Z", "level": "info"}
+{"count": 0, "total": 0, "page": 1, "event": "projects_listed", "timestamp": "2025-12-29T00:01:04.302492Z", "level": "info"}
+{"method": "GET", "path": "/api/v1/projects", "status_code": 200, "duration_ms": 4.78, "correlation_id": "d62c69ea-54b2-4b83-b095-9f8566dd3f16", "event": "http_response", "timestamp": "2025-12-29T00:01:04.302492Z", "level": "info"}
+____________________________ TestPaginationEdgeCases.test_list_sprints_default_pagination _____________________________
+
+self = <test_endpoints.TestPaginationEdgeCases object at 0x00000224CFCFABD0>
+client = <httpx.AsyncClient object at 0x00000224D04654D0>
+
+    async def test_list_sprints_default_pagination(self, client):
+        """Test sprints list uses default pagination when not specified."""
+        response = await client.get("/api/v1/sprints")
+    
+        assert response.status_code == status.HTTP_200_OK
+        data = response.json()
+>       assert isinstance(data, list)
+E       AssertionError: assert False
+E        +  where False = isinstance({'has_more': False, 'page': 1, 'per_page': 20, 'sprints': [], ...}, list)
+
+tests\integration\api\test_endpoints.py:788: AssertionError
+------------------------------------------------ Captured stdout call -------------------------------------------------
+{"method": "GET", "path": "/api/v1/sprints", "query": null, "correlation_id": "42492e9e-7c62-481a-b907-3337651e9a6b", "client_ip": "127.0.0.1", "event": "http_request", "timestamp": "2025-12-29T00:01:04.336257Z", "level": "info"}
+{"count": 0, "total": 0, "page": 1, "event": "sprints_listed", "timestamp": "2025-12-29T00:01:04.343776Z", "level": "info"}
+{"method": "GET", "path": "/api/v1/sprints", "status_code": 200, "duration_ms": 7.55, "correlation_id": "42492e9e-7c62-481a-b907-3337651e9a6b", "event": "http_response", "timestamp": "2025-12-29T00:01:04.343776Z", "level": "info"}
+_______________________________ TestFilteringEdgeCases.test_list_tasks_filter_by_status _______________________________
+
+self = <test_endpoints.TestFilteringEdgeCases object at 0x00000224CFCFB910>
+client = <httpx.AsyncClient object at 0x00000224D051EF50>
+
+    async def test_list_tasks_filter_by_status(self, client):
+        """Test filtering tasks by status."""
+        # Create tasks with different statuses
+        task_new = {
+            "id": "T-FILTER-NEW",
+            "title": "New Task",
+            "summary": "Summary",
+            "description": "Description",
+            "owner": "owner",
+            "priority": "p2",
+            "primary_project": "P-001",
+            "primary_sprint": "S-001",
+        }
+        await client.post("/api/v1/tasks", json=task_new)
+    
+        # Note: API may not have status filter implemented yet
+        response = await client.get("/api/v1/tasks?status=new")
+    
+        assert response.status_code == status.HTTP_200_OK
+        data = response.json()
+>       assert isinstance(data, list)
+E       AssertionError: assert False
+E        +  where False = isinstance({'has_more': False, 'page': 1, 'per_page': 20, 'tasks': [], ...}, list)
+
+tests\integration\api\test_endpoints.py:814: AssertionError
+------------------------------------------------ Captured stdout call -------------------------------------------------
+{"method": "POST", "path": "/api/v1/tasks", "query": null, "correlation_id": "72c7a504-54b5-4bc8-9120-c886183b8fbd", "client_ip": "127.0.0.1", "event": "http_request", "timestamp": "2025-12-29T00:01:04.377950Z", "level": "info"}
+{"method": "POST", "path": "/api/v1/tasks", "status_code": 400, "duration_ms": 4.03, "correlation_id": "72c7a504-54b5-4bc8-9120-c886183b8fbd", "event": "http_response", "timestamp": "2025-12-29T00:01:04.381945Z", "level": "warning"}
+{"method": "GET", "path": "/api/v1/tasks", "query": "status=new", "correlation_id": "00d004d9-a454-4ef1-b235-264505e1b21a", "client_ip": "127.0.0.1", "event": "http_request", "timestamp": "2025-12-29T00:01:04.382947Z", "level": "info"}
+{"count": 0, "total": 0, "page": 1, "event": "tasks_listed", "timestamp": "2025-12-29T00:01:04.387944Z", "level": "info"}
+{"method": "GET", "path": "/api/v1/tasks", "status_code": 200, "duration_ms": 5.56, "correlation_id": "00d004d9-a454-4ef1-b235-264505e1b21a", "event": "http_response", "timestamp": "2025-12-29T00:01:04.387944Z", "level": "info"}
+______________________________ TestFilteringEdgeCases.test_list_tasks_filter_by_priority ______________________________
+
+self = <test_endpoints.TestFilteringEdgeCases object at 0x00000224CFD04290>
+client = <httpx.AsyncClient object at 0x00000224D0ACDF10>
+
+    async def test_list_tasks_filter_by_priority(self, client):
+        """Test filtering tasks by priority."""
+        # Create tasks with different priorities
+        task_p1 = {
+            "id": "T-FILTER-P1",
+            "title": "High Priority Task",
+            "summary": "Summary",
+            "description": "Description",
+            "owner": "owner",
+            "priority": "p1",
+            "primary_project": "P-001",
+            "primary_sprint": "S-001",
+        }
+        await client.post("/api/v1/tasks", json=task_p1)
+    
+        # Note: API may not have priority filter implemented yet
+        response = await client.get("/api/v1/tasks?priority=p1")
+    
+        assert response.status_code == status.HTTP_200_OK
+        data = response.json()
+>       assert isinstance(data, list)
+E       AssertionError: assert False
+E        +  where False = isinstance({'has_more': False, 'page': 1, 'per_page': 20, 'tasks': [], ...}, list)
+
+tests\integration\api\test_endpoints.py:836: AssertionError
+------------------------------------------------ Captured stdout call -------------------------------------------------
+{"method": "POST", "path": "/api/v1/tasks", "query": null, "correlation_id": "9e5e5df7-7bb0-4259-9557-0b42d17a999b", "client_ip": "127.0.0.1", "event": "http_request", "timestamp": "2025-12-29T00:01:04.466516Z", "level": "info"}
+{"method": "POST", "path": "/api/v1/tasks", "status_code": 400, "duration_ms": 3.0, "correlation_id": "9e5e5df7-7bb0-4259-9557-0b42d17a999b", "event": "http_response", "timestamp": "2025-12-29T00:01:04.469516Z", "level": "warning"}
+{"method": "GET", "path": "/api/v1/tasks", "query": "priority=p1", "correlation_id": "2c254eaa-704b-41e9-8851-e7b117072d68", "client_ip": "127.0.0.1", "event": "http_request", "timestamp": "2025-12-29T00:01:04.469516Z", "level": "info"}
+{"count": 0, "total": 0, "page": 1, "event": "tasks_listed", "timestamp": "2025-12-29T00:01:04.475513Z", "level": "info"}
+{"method": "GET", "path": "/api/v1/tasks", "status_code": 200, "duration_ms": 5.58, "correlation_id": "2c254eaa-704b-41e9-8851-e7b117072d68", "event": "http_response", "timestamp": "2025-12-29T00:01:04.475513Z", "level": "info"}
+_______________________________ TestFilteringEdgeCases.test_list_tasks_filter_by_owner ________________________________
+
+self = <test_endpoints.TestFilteringEdgeCases object at 0x00000224CFD04BD0>
+client = <httpx.AsyncClient object at 0x00000224D050E850>
+
+    async def test_list_tasks_filter_by_owner(self, client):
+        """Test filtering tasks by owner."""
+        task_data = {
+            "id": "T-FILTER-OWNER",
+            "title": "Owned Task",
+            "summary": "Summary",
+            "description": "Description",
+            "owner": "test.owner",
+            "priority": "p2",
+            "primary_project": "P-001",
+            "primary_sprint": "S-001",
+        }
+        await client.post("/api/v1/tasks", json=task_data)
+    
+        # Note: API may not have owner filter implemented yet
+        response = await client.get("/api/v1/tasks?owner=test.owner")
+    
+        assert response.status_code == status.HTTP_200_OK
+        data = response.json()
+>       assert isinstance(data, list)
+E       AssertionError: assert False
+E        +  where False = isinstance({'has_more': False, 'page': 1, 'per_page': 20, 'tasks': [], ...}, list)
+
+tests\integration\api\test_endpoints.py:857: AssertionError
+------------------------------------------------ Captured stdout call -------------------------------------------------
+{"method": "POST", "path": "/api/v1/tasks", "query": null, "correlation_id": "1c231f22-17f1-49c4-9cd4-9b0b2a5ace21", "client_ip": "127.0.0.1", "event": "http_request", "timestamp": "2025-12-29T00:01:04.498671Z", "level": "info"}
+{"method": "POST", "path": "/api/v1/tasks", "status_code": 400, "duration_ms": 3.12, "correlation_id": "1c231f22-17f1-49c4-9cd4-9b0b2a5ace21", "event": "http_response", "timestamp": "2025-12-29T00:01:04.501673Z", "level": "warning"}
+{"method": "GET", "path": "/api/v1/tasks", "query": "owner=test.owner", "correlation_id": "b1690411-6824-45bf-9e3a-bba2cd0d8fb5", "client_ip": "127.0.0.1", "event": "http_request", "timestamp": "2025-12-29T00:01:04.502674Z", "level": "info"}
+{"count": 0, "total": 0, "page": 1, "event": "tasks_listed", "timestamp": "2025-12-29T00:01:04.507189Z", "level": "info"}
+{"method": "GET", "path": "/api/v1/tasks", "status_code": 200, "duration_ms": 5.16, "correlation_id": "b1690411-6824-45bf-9e3a-bba2cd0d8fb5", "event": "http_response", "timestamp": "2025-12-29T00:01:04.508189Z", "level": "info"}
+_____________________________ TestFilteringEdgeCases.test_list_projects_filter_by_status ______________________________
+
+self = <test_endpoints.TestFilteringEdgeCases object at 0x00000224CFD05550>
+client = <httpx.AsyncClient object at 0x00000224D047F8D0>
+
+    async def test_list_projects_filter_by_status(self, client):
+        """Test filtering projects by status."""
+        project_data = {
+            "id": "P-FILTER-STATUS",
+            "name": "Active Project",
+            "mission": "Mission",
+            "status": "active",
+            "start_date": "2025-01-01",
+            "owner": "owner",
+        }
+        await client.post("/api/v1/projects", json=project_data)
+    
+        # Note: API may not have status filter implemented yet
+        response = await client.get("/api/v1/projects?status=active")
+    
+        assert response.status_code == status.HTTP_200_OK
+        data = response.json()
+>       assert isinstance(data, list)
+E       AssertionError: assert False
+E        +  where False = isinstance({'has_more': False, 'page': 1, 'per_page': 20, 'projects': [{'assumptions': [], 'comms_channels': [], 'compliance_requirements': [], 'constraints': [], ...}], ...}, list)
+
+tests\integration\api\test_endpoints.py:876: AssertionError
+------------------------------------------------ Captured stdout call -------------------------------------------------
+{"method": "POST", "path": "/api/v1/projects", "query": null, "correlation_id": "fd5cbaa1-9ae0-4cd1-be7b-ca32f9ea35b0", "client_ip": "127.0.0.1", "event": "http_request", "timestamp": "2025-12-29T00:01:04.530236Z", "level": "info"}
+{"project_id": "P-FILTER-STATUS", "name": "Active Project", "event": "project_created", "timestamp": "2025-12-29T00:01:04.534279Z", "level": "info"}
+{"method": "POST", "path": "/api/v1/projects", "status_code": 201, "duration_ms": 4.51, "correlation_id": "fd5cbaa1-9ae0-4cd1-be7b-ca32f9ea35b0", "event": "http_response", "timestamp": "2025-12-29T00:01:04.535278Z", "level": "info"}
+{"method": "GET", "path": "/api/v1/projects", "query": "status=active", "correlation_id": "f802fc9e-c8a2-43d6-9d7b-0706d36adcf3", "client_ip": "127.0.0.1", "event": "http_request", "timestamp": "2025-12-29T00:01:04.535278Z", "level": "info"}
+{"count": 1, "total": 1, "page": 1, "event": "projects_listed", "timestamp": "2025-12-29T00:01:04.538279Z", "level": "info"}
+{"method": "GET", "path": "/api/v1/projects", "status_code": 200, "duration_ms": 3.66, "correlation_id": "f802fc9e-c8a2-43d6-9d7b-0706d36adcf3", "event": "http_response", "timestamp": "2025-12-29T00:01:04.539281Z", "level": "info"}
+______________________________ TestFilteringEdgeCases.test_list_projects_filter_by_owner ______________________________
+
+self = <test_endpoints.TestFilteringEdgeCases object at 0x00000224CFD05E90>
+client = <httpx.AsyncClient object at 0x00000224D050BF10>
+
+    async def test_list_projects_filter_by_owner(self, client):
+        """Test filtering projects by owner."""
+        project_data = {
+            "id": "P-FILTER-OWNER",
+            "name": "My Project",
+            "mission": "Mission",
+            "status": "active",
+            "start_date": "2025-01-01",
+            "owner": "project.owner",
+        }
+        await client.post("/api/v1/projects", json=project_data)
+    
+        # Note: API may not have owner filter implemented yet
+        response = await client.get("/api/v1/projects?owner=project.owner")
+    
+        assert response.status_code == status.HTTP_200_OK
+        data = response.json()
+>       assert isinstance(data, list)
+E       AssertionError: assert False
+E        +  where False = isinstance({'has_more': False, 'page': 1, 'per_page': 20, 'projects': [{'assumptions': [], 'comms_channels': [], 'compliance_requirements': [], 'constraints': [], ...}], ...}, list)
+
+tests\integration\api\test_endpoints.py:895: AssertionError
+------------------------------------------------ Captured stdout call -------------------------------------------------
+{"method": "POST", "path": "/api/v1/projects", "query": null, "correlation_id": "b7651889-a060-4e92-a54d-85cf7d5c6478", "client_ip": "127.0.0.1", "event": "http_request", "timestamp": "2025-12-29T00:01:04.566395Z", "level": "info"}
+{"project_id": "P-FILTER-OWNER", "name": "My Project", "event": "project_created", "timestamp": "2025-12-29T00:01:04.571394Z", "level": "info"}
+{"method": "POST", "path": "/api/v1/projects", "status_code": 201, "duration_ms": 4.98, "correlation_id": "b7651889-a060-4e92-a54d-85cf7d5c6478", "event": "http_response", "timestamp": "2025-12-29T00:01:04.571394Z", "level": "info"}
+{"method": "GET", "path": "/api/v1/projects", "query": "owner=project.owner", "correlation_id": "e5508bfe-1b29-4340-b665-429959a79627", "client_ip": "127.0.0.1", "event": "http_request", "timestamp": "2025-12-29T00:01:04.572394Z", "level": "info"}
+{"count": 1, "total": 1, "page": 1, "event": "projects_listed", "timestamp": "2025-12-29T00:01:04.576393Z", "level": "info"}
+{"method": "GET", "path": "/api/v1/projects", "status_code": 200, "duration_ms": 4.15, "correlation_id": "e5508bfe-1b29-4340-b665-429959a79627", "event": "http_response", "timestamp": "2025-12-29T00:01:04.576393Z", "level": "info"}
+______________________________ TestFilteringEdgeCases.test_list_sprints_filter_by_status ______________________________
+
+self = <test_endpoints.TestFilteringEdgeCases object at 0x00000224CFD067D0>
+client = <httpx.AsyncClient object at 0x00000224D08C2650>
+
+    async def test_list_sprints_filter_by_status(self, client):
+        """Test filtering sprints by status."""
+        sprint_data = {
+            "id": "S-FILTER-STATUS",
+            "name": "Active Sprint",
+            "goal": "Goal",
+            "cadence": "weekly",
+            "start_date": "2025-01-01",
+            "end_date": "2025-01-07",
+            "status": "active",
+            "owner": "owner",
+            "primary_project": "P-001",
+        }
+        await client.post("/api/v1/sprints", json=sprint_data)
+    
+        # Note: API may not have status filter implemented yet
+        response = await client.get("/api/v1/sprints?status=active")
+    
+        assert response.status_code == status.HTTP_200_OK
+        data = response.json()
+>       assert isinstance(data, list)
+E       AssertionError: assert False
+E        +  where False = isinstance({'has_more': False, 'page': 1, 'per_page': 20, 'sprints': [], ...}, list)
+
+tests\integration\api\test_endpoints.py:917: AssertionError
+------------------------------------------------ Captured stdout call -------------------------------------------------
+{"method": "POST", "path": "/api/v1/sprints", "query": null, "correlation_id": "8cf82f6f-6c29-4f29-aee3-aaf2c3f42207", "client_ip": "127.0.0.1", "event": "http_request", "timestamp": "2025-12-29T00:01:04.600616Z", "level": "info"}
+{"method": "POST", "path": "/api/v1/sprints", "status_code": 404, "duration_ms": 3.35, "correlation_id": "8cf82f6f-6c29-4f29-aee3-aaf2c3f42207", "event": "http_response", "timestamp": "2025-12-29T00:01:04.604207Z", "level": "warning"}
+{"method": "GET", "path": "/api/v1/sprints", "query": "status=active", "correlation_id": "c0a5f9ce-6e58-4d73-9382-36ac9737e193", "client_ip": "127.0.0.1", "event": "http_request", "timestamp": "2025-12-29T00:01:04.604207Z", "level": "info"}
+{"count": 0, "total": 0, "page": 1, "event": "sprints_listed", "timestamp": "2025-12-29T00:01:04.610281Z", "level": "info"}
+{"method": "GET", "path": "/api/v1/sprints", "status_code": 200, "duration_ms": 6.16, "correlation_id": "c0a5f9ce-6e58-4d73-9382-36ac9737e193", "event": "http_response", "timestamp": "2025-12-29T00:01:04.610796Z", "level": "info"}
+_____________________________ TestFilteringEdgeCases.test_list_sprints_filter_by_project ______________________________
+
+self = <test_endpoints.TestFilteringEdgeCases object at 0x00000224CFD07110>
+client = <httpx.AsyncClient object at 0x00000224D08A65D0>
+
+    async def test_list_sprints_filter_by_project(self, client):
+        """Test filtering sprints by project."""
+        sprint_data = {
+            "id": "S-FILTER-PROJ",
+            "name": "Project Sprint",
+            "goal": "Goal",
+            "cadence": "weekly",
+            "start_date": "2025-01-01",
+            "end_date": "2025-01-07",
+            "status": "active",
+            "owner": "owner",
+            "primary_project": "P-001",
+        }
+        await client.post("/api/v1/sprints", json=sprint_data)
+    
+        # Note: API may not have project filter implemented yet
+        response = await client.get("/api/v1/sprints?project=P-001")
+    
+        assert response.status_code == status.HTTP_200_OK
+        data = response.json()
+>       assert isinstance(data, list)
+E       AssertionError: assert False
+E        +  where False = isinstance({'has_more': False, 'page': 1, 'per_page': 20, 'sprints': [], ...}, list)
+
+tests\integration\api\test_endpoints.py:939: AssertionError
+------------------------------------------------ Captured stdout call -------------------------------------------------
+{"method": "POST", "path": "/api/v1/sprints", "query": null, "correlation_id": "817a6baf-f38b-46f8-abbd-96183930be85", "client_ip": "127.0.0.1", "event": "http_request", "timestamp": "2025-12-29T00:01:04.633873Z", "level": "info"}
+{"method": "POST", "path": "/api/v1/sprints", "status_code": 404, "duration_ms": 2.97, "correlation_id": "817a6baf-f38b-46f8-abbd-96183930be85", "event": "http_response", "timestamp": "2025-12-29T00:01:04.636871Z", "level": "warning"}
+{"method": "GET", "path": "/api/v1/sprints", "query": "project=P-001", "correlation_id": "5cdc55c4-6daa-4581-9995-f33caf132e43", "client_ip": "127.0.0.1", "event": "http_request", "timestamp": "2025-12-29T00:01:04.636871Z", "level": "info"}
+{"count": 0, "total": 0, "page": 1, "event": "sprints_listed", "timestamp": "2025-12-29T00:01:04.640871Z", "level": "info"}
+{"method": "GET", "path": "/api/v1/sprints", "status_code": 200, "duration_ms": 4.41, "correlation_id": "5cdc55c4-6daa-4581-9995-f33caf132e43", "event": "http_response", "timestamp": "2025-12-29T00:01:04.640871Z", "level": "info"}
+___________________________ TestFilteringEdgeCases.test_list_action_lists_filter_by_status ____________________________
+
+self = <test_endpoints.TestFilteringEdgeCases object at 0x00000224CFCF9A90>
+client = <httpx.AsyncClient object at 0x00000224D08B1D50>
+
+    async def test_list_action_lists_filter_by_status(self, client):
+        """Test filtering action lists by status."""
+        action_list_data = {
+            "id": "AL-FILTER-STATUS",
+            "title": "Active List",
+            "description": "Description",
+            "status": "active",
+            "owner": "owner",
+        }
+        await client.post("/api/v1/action-lists", json=action_list_data)
+    
+        # Note: API may not have status filter implemented yet
+        response = await client.get("/api/v1/action-lists?status=active")
+    
+        assert response.status_code == status.HTTP_200_OK
+        data = response.json()
+>       assert isinstance(data, list)
+E       AssertionError: assert False
+E        +  where False = isinstance({'action_lists': [{'completed_at': None, 'created_at': '2025-12-29T00:01:04', 'description': 'Description', 'due_date': None, ...}], 'has_more': False, 'page': 1, 'per_page': 20, ...}, list)
+
+tests\integration\api\test_endpoints.py:957: AssertionError
+------------------------------------------------ Captured stdout call -------------------------------------------------
+{"method": "POST", "path": "/api/v1/action-lists", "query": null, "correlation_id": "4ac2ee94-cae1-4b79-a872-092a1d8b9b08", "client_ip": "127.0.0.1", "event": "http_request", "timestamp": "2025-12-29T00:01:04.662464Z", "level": "info"}
+{"list_id": "AL-0012", "event": "action_list_created", "timestamp": "2025-12-29T00:01:04.665464Z", "level": "info"}
+{"method": "POST", "path": "/api/v1/action-lists", "status_code": 201, "duration_ms": 3.57, "correlation_id": "4ac2ee94-cae1-4b79-a872-092a1d8b9b08", "event": "http_response", "timestamp": "2025-12-29T00:01:04.665464Z", "level": "info"}
+{"method": "GET", "path": "/api/v1/action-lists", "query": "status=active", "correlation_id": "e9fafa16-7a6c-45f0-abe1-721a8bdf482b", "client_ip": "127.0.0.1", "event": "http_request", "timestamp": "2025-12-29T00:01:04.666464Z", "level": "info"}
+{"count": 1, "total": 1, "page": 1, "event": "action_lists_listed", "timestamp": "2025-12-29T00:01:04.668464Z", "level": "info"}
+{"method": "GET", "path": "/api/v1/action-lists", "status_code": 200, "duration_ms": 2.68, "correlation_id": "e9fafa16-7a6c-45f0-abe1-721a8bdf482b", "event": "http_response", "timestamp": "2025-12-29T00:01:04.669464Z", "level": "info"}
+_______________________________ TestFilteringEdgeCases.test_list_tasks_multiple_filters _______________________________
+
+self = <test_endpoints.TestFilteringEdgeCases object at 0x00000224CFD060D0>
+client = <httpx.AsyncClient object at 0x00000224D03555D0>
+
+    async def test_list_tasks_multiple_filters(self, client):
+        """Test combining multiple filters."""
+        task_data = {
+            "id": "T-MULTI-FILTER",
+            "title": "Multi Filter Task",
+            "summary": "Summary",
+            "description": "Description",
+            "owner": "filter.owner",
+            "priority": "p1",
+            "primary_project": "P-001",
+            "primary_sprint": "S-001",
+        }
+        await client.post("/api/v1/tasks", json=task_data)
+    
+        # Note: API may not have multiple filter support yet
+        response = await client.get("/api/v1/tasks?priority=p1&owner=filter.owner")
+    
+        assert response.status_code == status.HTTP_200_OK
+        data = response.json()
+>       assert isinstance(data, list)
+E       AssertionError: assert False
+E        +  where False = isinstance({'has_more': False, 'page': 1, 'per_page': 20, 'tasks': [], ...}, list)
+
+tests\integration\api\test_endpoints.py:978: AssertionError
+------------------------------------------------ Captured stdout call -------------------------------------------------
+{"method": "POST", "path": "/api/v1/tasks", "query": null, "correlation_id": "8742f76a-59a1-4908-9a05-8411ef99003f", "client_ip": "127.0.0.1", "event": "http_request", "timestamp": "2025-12-29T00:01:04.694129Z", "level": "info"}
+{"method": "POST", "path": "/api/v1/tasks", "status_code": 400, "duration_ms": 3.12, "correlation_id": "8742f76a-59a1-4908-9a05-8411ef99003f", "event": "http_response", "timestamp": "2025-12-29T00:01:04.696643Z", "level": "warning"}
+{"method": "GET", "path": "/api/v1/tasks", "query": "priority=p1&owner=filter.owner", "correlation_id": "281128dd-440c-4d2b-8c11-963b4e91fb45", "client_ip": "127.0.0.1", "event": "http_request", "timestamp": "2025-12-29T00:01:04.697640Z", "level": "info"}
+{"count": 0, "total": 0, "page": 1, "event": "tasks_listed", "timestamp": "2025-12-29T00:01:04.700640Z", "level": "info"}
+{"method": "GET", "path": "/api/v1/tasks", "status_code": 200, "duration_ms": 3.95, "correlation_id": "281128dd-440c-4d2b-8c11-963b4e91fb45", "event": "http_response", "timestamp": "2025-12-29T00:01:04.701640Z", "level": "info"}
+________________________________ TestFilteringEdgeCases.test_list_projects_no_filters _________________________________
+
+self = <test_endpoints.TestFilteringEdgeCases object at 0x00000224CFD07590>
+client = <httpx.AsyncClient object at 0x00000224D03C6ED0>
+
+    async def test_list_projects_no_filters(self, client):
+        """Test projects list without any filters returns all projects."""
+        response = await client.get("/api/v1/projects")
+    
+        assert response.status_code == status.HTTP_200_OK
+        data = response.json()
+>       assert isinstance(data, list)
+E       AssertionError: assert False
+E        +  where False = isinstance({'has_more': False, 'page': 1, 'per_page': 20, 'projects': [], ...}, list)
+
+tests\integration\api\test_endpoints.py:986: AssertionError
+------------------------------------------------ Captured stdout call -------------------------------------------------
+{"method": "GET", "path": "/api/v1/projects", "query": null, "correlation_id": "d4441cc3-2485-4ed3-9877-5c6bea9c3862", "client_ip": "127.0.0.1", "event": "http_request", "timestamp": "2025-12-29T00:01:04.726288Z", "level": "info"}
+{"count": 0, "total": 0, "page": 1, "event": "projects_listed", "timestamp": "2025-12-29T00:01:04.729287Z", "level": "info"}
+{"method": "GET", "path": "/api/v1/projects", "status_code": 200, "duration_ms": 3.82, "correlation_id": "d4441cc3-2485-4ed3-9877-5c6bea9c3862", "event": "http_response", "timestamp": "2025-12-29T00:01:04.730287Z", "level": "info"}
+___________________________ TestFilteringEdgeCases.test_list_sprints_invalid_filter_ignored ___________________________
+
+self = <test_endpoints.TestFilteringEdgeCases object at 0x00000224CFD06450>
+client = <httpx.AsyncClient object at 0x00000224D0A30150>
+
+    async def test_list_sprints_invalid_filter_ignored(self, client):
+        """Test invalid filter parameter is ignored."""
+        response = await client.get("/api/v1/sprints?invalid_param=value")
+    
+        assert response.status_code == status.HTTP_200_OK
+        data = response.json()
+>       assert isinstance(data, list)
+E       AssertionError: assert False
+E        +  where False = isinstance({'has_more': False, 'page': 1, 'per_page': 20, 'sprints': [], ...}, list)
+
+tests\integration\api\test_endpoints.py:994: AssertionError
+------------------------------------------------ Captured stdout call -------------------------------------------------
+{"method": "GET", "path": "/api/v1/sprints", "query": "invalid_param=value", "correlation_id": "637446a7-0892-4ab4-b724-c7ab0fd4d769", "client_ip": "127.0.0.1", "event": "http_request", "timestamp": "2025-12-29T00:01:04.750443Z", "level": "info"}
+{"count": 0, "total": 0, "page": 1, "event": "sprints_listed", "timestamp": "2025-12-29T00:01:04.754442Z", "level": "info"}
+{"method": "GET", "path": "/api/v1/sprints", "status_code": 200, "duration_ms": 4.01, "correlation_id": "637446a7-0892-4ab4-b724-c7ab0fd4d769", "event": "http_response", "timestamp": "2025-12-29T00:01:04.754442Z", "level": "info"}
+__________________________ TestFilteringEdgeCases.test_list_action_lists_empty_filter_value ___________________________
+
+self = <test_endpoints.TestFilteringEdgeCases object at 0x00000224CFD05350>
+client = <httpx.AsyncClient object at 0x00000224D03EDF90>
+
+    async def test_list_action_lists_empty_filter_value(self, client):
+        """Test empty filter value."""
+        response = await client.get("/api/v1/action-lists?status=")
+    
+        assert response.status_code == status.HTTP_200_OK
+        data = response.json()
+>       assert isinstance(data, list)
+E       AssertionError: assert False
+E        +  where False = isinstance({'action_lists': [], 'has_more': False, 'page': 1, 'per_page': 20, ...}, list)
+
+tests\integration\api\test_endpoints.py:1002: AssertionError
+------------------------------------------------ Captured stdout call -------------------------------------------------
+{"method": "GET", "path": "/api/v1/action-lists", "query": "status=", "correlation_id": "0fa5d90a-b6b2-46bd-bb0c-41bc07260f3b", "client_ip": "127.0.0.1", "event": "http_request", "timestamp": "2025-12-29T00:01:04.834301Z", "level": "info"}
+{"count": 0, "total": 0, "page": 1, "event": "action_lists_listed", "timestamp": "2025-12-29T00:01:04.837302Z", "level": "info"}
+{"method": "GET", "path": "/api/v1/action-lists", "status_code": 200, "duration_ms": 3.55, "correlation_id": "0fa5d90a-b6b2-46bd-bb0c-41bc07260f3b", "event": "http_response", "timestamp": "2025-12-29T00:01:04.837302Z", "level": "info"}
+______________________________ TestValidationEdgeCases.test_create_task_max_title_length ______________________________
+
+self = <test_endpoints.TestValidationEdgeCases object at 0x00000224CFD07C90>
+client = <httpx.AsyncClient object at 0x00000224D0F80C10>
+
+    async def test_create_task_max_title_length(self, client):
+        """Test task creation with maximum title length (500 chars)."""
+        task_data = {
+            "id": "T-MAX-TITLE",
+            "title": "x" * 500,  # Max allowed length
+            "summary": "Summary",
+            "description": "Description",
+            "owner": "owner",
+            "priority": "p2",
+            "primary_project": "P-001",
+            "primary_sprint": "S-001",
+        }
+    
+        response = await client.post("/api/v1/tasks", json=task_data)
+    
+>       assert response.status_code == status.HTTP_201_CREATED
+E       assert 400 == 201
+E        +  where 400 = <Response [400 Bad Request]>.status_code
+E        +  and   201 = status.HTTP_201_CREATED
+
+tests\integration\api\test_endpoints.py:1023: AssertionError
+------------------------------------------------ Captured stdout call -------------------------------------------------
+{"method": "POST", "path": "/api/v1/tasks", "query": null, "correlation_id": "914b5486-d9bf-40a5-9b19-a20a152baf77", "client_ip": "127.0.0.1", "event": "http_request", "timestamp": "2025-12-29T00:01:04.863787Z", "level": "info"}
+{"method": "POST", "path": "/api/v1/tasks", "status_code": 400, "duration_ms": 3.09, "correlation_id": "914b5486-d9bf-40a5-9b19-a20a152baf77", "event": "http_response", "timestamp": "2025-12-29T00:01:04.866787Z", "level": "warning"}
+___________________________ TestValidationEdgeCases.test_update_action_list_invalid_status ____________________________
+
+self = <test_endpoints.TestValidationEdgeCases object at 0x00000224CFCFF050>
+client = <httpx.AsyncClient object at 0x00000224D0401150>
+
+    async def test_update_action_list_invalid_status(self, client):
+        """Test action list update with invalid status enum.
+    
+        Note: API currently accepts invalid status values in PATCH requests
+        due to lenient Pydantic validation. This test verifies endpoint accepts
+        the update gracefully (200 OK) rather than strictly validating (422).
+        """
+        # Create action list first
+        action_list_data = {
+            "id": "AL-INVALID-STATUS",
+            "title": "List",
+            "description": "Description",
+            "status": "active",
+            "owner": "owner",
+        }
+        await client.post("/api/v1/action-lists", json=action_list_data)
+    
+        # Update with invalid status (API accepts this currently)
+        update_data = {"status": "invalid_status"}
+        response = await client.patch("/api/v1/action-lists/AL-INVALID-STATUS", json=update_data)
+    
+        # API accepts the update (lenient validation in PATCH)
+>       assert response.status_code == status.HTTP_200_OK
+E       assert 405 == 200
+E        +  where 405 = <Response [405 Method Not Allowed]>.status_code
+E        +  and   200 = status.HTTP_200_OK
+
+tests\integration\api\test_endpoints.py:1190: AssertionError
+------------------------------------------------ Captured stdout call -------------------------------------------------
+{"method": "POST", "path": "/api/v1/action-lists", "query": null, "correlation_id": "af6b93bc-254c-46ed-b8dc-6496a2936a9f", "client_ip": "127.0.0.1", "event": "http_request", "timestamp": "2025-12-29T00:01:05.070695Z", "level": "info"}
+{"list_id": "AL-0013", "event": "action_list_created", "timestamp": "2025-12-29T00:01:05.077384Z", "level": "info"}
+{"method": "POST", "path": "/api/v1/action-lists", "status_code": 201, "duration_ms": 7.23, "correlation_id": "af6b93bc-254c-46ed-b8dc-6496a2936a9f", "event": "http_response", "timestamp": "2025-12-29T00:01:05.078385Z", "level": "info"}
+{"method": "PATCH", "path": "/api/v1/action-lists/AL-INVALID-STATUS", "query": null, "correlation_id": "43d0ad43-d31d-45c1-a495-ac3e63779926", "client_ip": "127.0.0.1", "event": "http_request", "timestamp": "2025-12-29T00:01:05.078385Z", "level": "info"}
+{"method": "PATCH", "path": "/api/v1/action-lists/AL-INVALID-STATUS", "status_code": 405, "duration_ms": 0.3, "correlation_id": "43d0ad43-d31d-45c1-a495-ac3e63779926", "event": "http_response", "timestamp": "2025-12-29T00:01:05.078385Z", "level": "warning"}
+=============================================== short test summary info ===============================================
+FAILED tests/integration/api/test_action_lists_api.py::TestActionListIntegration::test_action_list_lifecycle - assert 0 == 2
+ +  where 0 = len([])
+FAILED tests/integration/api/test_endpoints.py::TestHealthEndpoint::test_health_check - AttributeError: 'Settings' object has no attribute 'database'
+FAILED tests/integration/api/test_endpoints.py::TestTaskEndpoints::test_create_task_success - assert 400 == 201
+ +  where 400 = <Response [400 Bad Request]>.status_code
+ +  and   201 = status.HTTP_201_CREATED
+FAILED tests/integration/api/test_endpoints.py::TestTaskEndpoints::test_get_task_success - assert 404 == 200
+ +  where 404 = <Response [404 Not Found]>.status_code
+ +  and   200 = status.HTTP_200_OK
+FAILED tests/integration/api/test_endpoints.py::TestTaskEndpoints::test_update_task_success - assert 400 == 201
+ +  where 400 = <Response [400 Bad Request]>.status_code
+ +  and   201 = status.HTTP_201_CREATED
+FAILED tests/integration/api/test_endpoints.py::TestTaskEndpoints::test_delete_task_success - assert 404 == 204
+ +  where 404 = <Response [404 Not Found]>.status_code
+ +  and   204 = status.HTTP_204_NO_CONTENT
+FAILED tests/integration/api/test_endpoints.py::TestTaskEndpoints::test_list_tasks - AssertionError: assert False
+ +  where False = isinstance({'has_more': False, 'page': 1, 'per_page': 20, 'tasks': [], ...}, list)
+FAILED tests/integration/api/test_endpoints.py::TestTaskEndpoints::test_create_task_conflict - assert 400 == 201
+ +  where 400 = <Response [400 Bad Request]>.status_code
+ +  and   201 = status.HTTP_201_CREATED
+FAILED tests/integration/api/test_endpoints.py::TestProjectEndpoints::test_list_projects - AssertionError: assert False
+ +  where False = isinstance({'has_more': False, 'page': 1, 'per_page': 20, 'projects': [{'assumptions': [], 'comms_channels': [], 'compliance_requirements': [], 'constraints': [], ...}, {'assumptions': [], 'comms_channels': [], 'compliance_requirements': [], 'constraints': [], ...}, {'assumptions': [], 'comms_channels': [], 'compliance_requirements': [], 'constraints': [], ...}], ...}, list)
+FAILED tests/integration/api/test_endpoints.py::TestProjectEndpoints::test_update_project_success - assert 405 == 200
+ +  where 405 = <Response [405 Method Not Allowed]>.status_code
+ +  and   200 = status.HTTP_200_OK
+FAILED tests/integration/api/test_endpoints.py::TestProjectEndpoints::test_update_project_not_found - assert 405 == 404
+ +  where 405 = <Response [405 Method Not Allowed]>.status_code
+ +  and   404 = status.HTTP_404_NOT_FOUND
+FAILED tests/integration/api/test_endpoints.py::TestSprintEndpoints::test_create_sprint_success - assert 404 == 201
+ +  where 404 = <Response [404 Not Found]>.status_code
+ +  and   201 = status.HTTP_201_CREATED
+FAILED tests/integration/api/test_endpoints.py::TestSprintEndpoints::test_get_sprint_success - assert 404 == 200
+ +  where 404 = <Response [404 Not Found]>.status_code
+ +  and   200 = status.HTTP_200_OK
+FAILED tests/integration/api/test_endpoints.py::TestSprintEndpoints::test_list_sprints - AssertionError: assert False
+ +  where False = isinstance({'has_more': False, 'page': 1, 'per_page': 20, 'sprints': [], ...}, list)
+FAILED tests/integration/api/test_endpoints.py::TestSprintEndpoints::test_update_sprint_success - assert 404 == 201
+ +  where 404 = <Response [404 Not Found]>.status_code
+ +  and   201 = status.HTTP_201_CREATED
+FAILED tests/integration/api/test_endpoints.py::TestSprintEndpoints::test_update_sprint_not_found - assert 405 == 404
+ +  where 405 = <Response [405 Method Not Allowed]>.status_code
+ +  and   404 = status.HTTP_404_NOT_FOUND
+FAILED tests/integration/api/test_endpoints.py::TestSprintEndpoints::test_delete_sprint_success - assert 404 == 204
+ +  where 404 = <Response [404 Not Found]>.status_code
+ +  and   204 = status.HTTP_204_NO_CONTENT
+FAILED tests/integration/api/test_endpoints.py::TestSprintEndpoints::test_create_sprint_conflict - assert 404 == 201
+ +  where 404 = <Response [404 Not Found]>.status_code
+ +  and   201 = status.HTTP_201_CREATED
+FAILED tests/integration/api/test_endpoints.py::TestActionListEndpoints::test_create_action_list_success - AssertionError: assert 'AL-0003' == 'AL-TEST-001'
+  
+  - AL-TEST-001
+  + AL-0003
+FAILED tests/integration/api/test_endpoints.py::TestActionListEndpoints::test_get_action_list_success - assert 404 == 200
+ +  where 404 = <Response [404 Not Found]>.status_code
+ +  and   200 = status.HTTP_200_OK
+FAILED tests/integration/api/test_endpoints.py::TestActionListEndpoints::test_list_action_lists - AssertionError: assert False
+ +  where False = isinstance({'action_lists': [{'completed_at': None, 'created_at': '2025-12-29T00:01:03', 'description': 'Description', 'due_date': None, ...}, {'completed_at': None, 'created_at': '2025-12-29T00:01:03', 'description': 'Description', 'due_date': None, ...}, {'completed_at': None, 'created_at': '2025-12-29T00:01:03', 'description': 'Description', 'due_date': None, ...}], 'has_more': False, 'page': 1, 'per_page': 20, ...}, list)
+FAILED tests/integration/api/test_endpoints.py::TestActionListEndpoints::test_update_action_list_success - assert 405 == 200
+ +  where 405 = <Response [405 Method Not Allowed]>.status_code
+ +  and   200 = status.HTTP_200_OK
+FAILED tests/integration/api/test_endpoints.py::TestActionListEndpoints::test_update_action_list_not_found - assert 405 == 404
+ +  where 405 = <Response [405 Method Not Allowed]>.status_code
+ +  and   404 = status.HTTP_404_NOT_FOUND
+FAILED tests/integration/api/test_endpoints.py::TestActionListEndpoints::test_delete_action_list_success - assert 404 == 204
+ +  where 404 = <Response [404 Not Found]>.status_code
+ +  and   204 = status.HTTP_204_NO_CONTENT
+FAILED tests/integration/api/test_endpoints.py::TestActionListEndpoints::test_create_action_list_conflict - assert 201 == 409
+ +  where 201 = <Response [201 Created]>.status_code
+ +  and   409 = status.HTTP_409_CONFLICT
+FAILED tests/integration/api/test_endpoints.py::TestPaginationEdgeCases::test_list_tasks_with_limit - AssertionError: assert False
+ +  where False = isinstance({'has_more': False, 'page': 1, 'per_page': 20, 'tasks': [], ...}, list)
+FAILED tests/integration/api/test_endpoints.py::TestPaginationEdgeCases::test_list_tasks_with_offset - AssertionError: assert False
+ +  where False = isinstance({'has_more': False, 'page': 1, 'per_page': 20, 'tasks': [], ...}, list)
+FAILED tests/integration/api/test_endpoints.py::TestPaginationEdgeCases::test_list_projects_empty_result - AssertionError: assert False
+ +  where False = isinstance({'has_more': False, 'page': 1, 'per_page': 20, 'projects': [], ...}, list)
+FAILED tests/integration/api/test_endpoints.py::TestPaginationEdgeCases::test_list_sprints_with_pagination - AssertionError: assert False
+ +  where False = isinstance({'has_more': False, 'page': 1, 'per_page': 20, 'sprints': [], ...}, list)
+FAILED tests/integration/api/test_endpoints.py::TestPaginationEdgeCases::test_list_action_lists_limit_boundary - AssertionError: assert False
+ +  where False = isinstance({'action_lists': [], 'has_more': False, 'page': 1, 'per_page': 20, ...}, list)
+FAILED tests/integration/api/test_endpoints.py::TestPaginationEdgeCases::test_list_tasks_zero_offset - AssertionError: assert False
+ +  where False = isinstance({'has_more': False, 'page': 1, 'per_page': 20, 'tasks': [], ...}, list)
+FAILED tests/integration/api/test_endpoints.py::TestPaginationEdgeCases::test_list_projects_large_limit - AssertionError: assert False
+ +  where False = isinstance({'has_more': False, 'page': 1, 'per_page': 20, 'projects': [], ...}, list)
+FAILED tests/integration/api/test_endpoints.py::TestPaginationEdgeCases::test_list_sprints_default_pagination - AssertionError: assert False
+ +  where False = isinstance({'has_more': False, 'page': 1, 'per_page': 20, 'sprints': [], ...}, list)
+FAILED tests/integration/api/test_endpoints.py::TestFilteringEdgeCases::test_list_tasks_filter_by_status - AssertionError: assert False
+ +  where False = isinstance({'has_more': False, 'page': 1, 'per_page': 20, 'tasks': [], ...}, list)
+FAILED tests/integration/api/test_endpoints.py::TestFilteringEdgeCases::test_list_tasks_filter_by_priority - AssertionError: assert False
+ +  where False = isinstance({'has_more': False, 'page': 1, 'per_page': 20, 'tasks': [], ...}, list)
+FAILED tests/integration/api/test_endpoints.py::TestFilteringEdgeCases::test_list_tasks_filter_by_owner - AssertionError: assert False
+ +  where False = isinstance({'has_more': False, 'page': 1, 'per_page': 20, 'tasks': [], ...}, list)
+FAILED tests/integration/api/test_endpoints.py::TestFilteringEdgeCases::test_list_projects_filter_by_status - AssertionError: assert False
+ +  where False = isinstance({'has_more': False, 'page': 1, 'per_page': 20, 'projects': [{'assumptions': [], 'comms_channels': [], 'compliance_requirements': [], 'constraints': [], ...}], ...}, list)
+FAILED tests/integration/api/test_endpoints.py::TestFilteringEdgeCases::test_list_projects_filter_by_owner - AssertionError: assert False
+ +  where False = isinstance({'has_more': False, 'page': 1, 'per_page': 20, 'projects': [{'assumptions': [], 'comms_channels': [], 'compliance_requirements': [], 'constraints': [], ...}], ...}, list)
+FAILED tests/integration/api/test_endpoints.py::TestFilteringEdgeCases::test_list_sprints_filter_by_status - AssertionError: assert False
+ +  where False = isinstance({'has_more': False, 'page': 1, 'per_page': 20, 'sprints': [], ...}, list)
+FAILED tests/integration/api/test_endpoints.py::TestFilteringEdgeCases::test_list_sprints_filter_by_project - AssertionError: assert False
+ +  where False = isinstance({'has_more': False, 'page': 1, 'per_page': 20, 'sprints': [], ...}, list)
+FAILED tests/integration/api/test_endpoints.py::TestFilteringEdgeCases::test_list_action_lists_filter_by_status - AssertionError: assert False
+ +  where False = isinstance({'action_lists': [{'completed_at': None, 'created_at': '2025-12-29T00:01:04', 'description': 'Description', 'due_date': None, ...}], 'has_more': False, 'page': 1, 'per_page': 20, ...}, list)
+FAILED tests/integration/api/test_endpoints.py::TestFilteringEdgeCases::test_list_tasks_multiple_filters - AssertionError: assert False
+ +  where False = isinstance({'has_more': False, 'page': 1, 'per_page': 20, 'tasks': [], ...}, list)
+FAILED tests/integration/api/test_endpoints.py::TestFilteringEdgeCases::test_list_projects_no_filters - AssertionError: assert False
+ +  where False = isinstance({'has_more': False, 'page': 1, 'per_page': 20, 'projects': [], ...}, list)
+FAILED tests/integration/api/test_endpoints.py::TestFilteringEdgeCases::test_list_sprints_invalid_filter_ignored - AssertionError: assert False
+ +  where False = isinstance({'has_more': False, 'page': 1, 'per_page': 20, 'sprints': [], ...}, list)
+FAILED tests/integration/api/test_endpoints.py::TestFilteringEdgeCases::test_list_action_lists_empty_filter_value - AssertionError: assert False
+ +  where False = isinstance({'action_lists': [], 'has_more': False, 'page': 1, 'per_page': 20, ...}, list)
+FAILED tests/integration/api/test_endpoints.py::TestValidationEdgeCases::test_create_task_max_title_length - assert 400 == 201
+ +  where 400 = <Response [400 Bad Request]>.status_code
+ +  and   201 = status.HTTP_201_CREATED
+FAILED tests/integration/api/test_endpoints.py::TestValidationEdgeCases::test_update_action_list_invalid_status - assert 405 == 200
+ +  where 405 = <Response [405 Method Not Allowed]>.status_code
+ +  and   200 = status.HTTP_200_OK
+============================================ 47 failed, 21 passed in 3.01s ============================================

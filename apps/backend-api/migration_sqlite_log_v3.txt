@@ -1,0 +1,14 @@
+Starting Legacy Data Migration (Dry Run: True, Use SQLite: True)
+Trackers Directory: C:\Users\James\Documents\Github\GHrepos\SCCMScripts\trackers
+Using SQLite (Fallback) Database
+2025-12-29 12:10:21 [warning  ] primary_db_init_failed         error=[WinError 1225] The remote computer refused the network connection
+2025-12-29 12:10:21 [info     ] fallback_db_initialized
+Dry run - Rolling back all changes
+       Migration Summary       
+┌──────────┬───────┬──────────┐
+│ Type     │ Found │ Imported │
+├──────────┼───────┼──────────┤
+│ Projects │ 0     │ 0        │
+│ Sprints  │ 0     │ 0        │
+│ Tasks    │ 0     │ 0        │
+└──────────┴───────┴──────────┘

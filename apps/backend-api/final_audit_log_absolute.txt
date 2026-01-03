@@ -1,0 +1,36 @@
+--- INFRASTRUCTURE DIAGNOSTIC (CWD: C:\Users\James\Documents\Github\GHrepos\SCCMScripts\TaskMan-v2\backend-api) ---
+
+[1] Docker Mapping (Inspection):
+{
+  "5432/tcp": [
+    {
+      "HostIp": "0.0.0.0",
+      "HostPort": "5434"
+    },
+    {
+      "HostIp": "::",
+      "HostPort": "5434"
+    }
+  ]
+}
+
+[2] Host Port Binding (Netstat):
+  TCP    0.0.0.0:5434           0.0.0.0:0              LISTENING       17440
+  TCP    [::]:5434              [::]:0                 LISTENING       17440
+  TCP    [::1]:5434             [::1]:51585            ESTABLISHED     17440
+  TCP    [::1]:5434             [::1]:52512            ESTABLISHED     17440
+  TCP    [::1]:51585            [::1]:5434             ESTABLISHED     70700
+  TCP    [::1]:52512            [::1]:5434             ESTABLISHED     25628
+
+[3] Connectivity Tests:
+  127.0.0.1:5434 -> SUCCESS
+  localhost:5434 -> SUCCESS
+  127.0.0.1:5432 -> SUCCESS (Internal Default)
+  localhost:5432 -> SUCCESS (Internal Default)
+
+[4] Relevant Env Vars:
+  APP_DATABASE__HOST: localhost
+  APP_DATABASE__PORT: 5434
+  DATABASE_URL: postgresql+asyncpg://taskman:taskman_dev_password@localhost:5435/taskman_dev
+
+--- DIAGNOSTIC COMPLETE ---

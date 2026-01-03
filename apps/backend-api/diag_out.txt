@@ -1,0 +1,7 @@
+App Name: TaskMan API
+Environment: development
+Database Host: localhost
+Database Port: 5434
+Database Name: taskman_v2
+Attempting to connect to PostgreSQL...
+Successfully connected to PostgreSQL!

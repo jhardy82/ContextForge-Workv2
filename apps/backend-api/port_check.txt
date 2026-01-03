@@ -1,0 +1,4 @@
+  File "<string>", line 1
+    import socket; s = socket.socket(socket.socket(socket.AF_INET, socket.SOCK_STREAM)); try: s.connect(('localhost', 5434)); print('OPEN'); except Exception as e: print(f'CLOSED: {e}') finally: s.close()
+                                                                                         ^^^
+SyntaxError: invalid syntax

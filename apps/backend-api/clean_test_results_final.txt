@@ -1,0 +1,24 @@
+================================================= test session starts =================================================
+platform win32 -- Python 3.12.11, pytest-8.4.1, pluggy-1.6.0 -- C:\Users\James\Documents\Github\GHrepos\SCCMScripts\.venv\Scripts\python.exe
+cachedir: .pytest_cache
+hypothesis profile 'ci' -> database=None, deadline=None, print_blob=True, derandomize=True, suppress_health_check=(HealthCheck.too_slow,)
+benchmark: 5.2.3 (defaults: timer=time.perf_counter disable_gc=False min_rounds=5 min_time=0.000005 max_time=1.0 calibration_precision=10 warmup=False warmup_iterations=100000)
+Using --randomly-seed=1834473396
+rootdir: C:\Users\James\Documents\Github\GHrepos\SCCMScripts\TaskMan-v2\backend-api
+configfile: pytest_repo.ini
+plugins: anyio-4.10.0, Faker-39.0.0, hypothesis-6.138.3, asyncio-0.26.0, benchmark-5.2.3, console-scripts-1.4.1, cov-5.0.0, mock-3.15.1, randomly-3.16.0, timeout-2.4.0, xdist-3.8.0
+asyncio: mode=Mode.AUTO, asyncio_default_fixture_loop_scope=function, asyncio_default_test_loop_scope=function
+collecting ... collected 10 items
+
+tests/unit/db/repositories/test_sprint_repository.py::TestSprintRepositoryEdgeCases::test_exists PASSED          [ 10%]
+tests/unit/db/repositories/test_sprint_repository.py::TestSprintRepositoryEdgeCases::test_search_sprints PASSED  [ 20%]
+tests/unit/db/repositories/test_sprint_repository.py::TestSprintRepositoryEdgeCases::test_get_active_sprints PASSED [ 30%]
+tests/unit/db/repositories/test_sprint_repository.py::TestSprintRepositoryEdgeCases::test_create_and_update_sprint_helpers PASSED [ 40%]
+tests/unit/db/repositories/test_sprint_repository.py::TestSprintRepositoryEdgeCases::test_get_by_project PASSED  [ 50%]
+tests/unit/db/repositories/test_project_repository.py::TestProjectRepositoryEdgeCases::test_exists PASSED        [ 60%]
+tests/unit/db/repositories/test_project_repository.py::TestProjectRepositoryEdgeCases::test_get_by_owner PASSED  [ 70%]
+tests/unit/db/repositories/test_project_repository.py::TestProjectRepositoryEdgeCases::test_search_filters_and_pagination PASSED [ 80%]
+tests/unit/db/repositories/test_project_repository.py::TestProjectRepositoryEdgeCases::test_update_project_method PASSED [ 90%]
+tests/unit/db/repositories/test_project_repository.py::TestProjectRepositoryEdgeCases::test_create_project_method PASSED [100%]
+
+================================================= 10 passed in 0.67s ==================================================

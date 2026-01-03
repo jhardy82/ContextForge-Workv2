@@ -1,0 +1,8 @@
+
+ComputerName     : localhost
+RemoteAddress    : ::1
+RemotePort       : 5432
+InterfaceAlias   : Loopback Pseudo-Interface 1
+SourceAddress    : ::1
+TcpTestSucceeded : True
+

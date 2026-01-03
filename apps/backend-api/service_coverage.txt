@@ -1,0 +1,534 @@
+================================================= test session starts =================================================
+platform win32 -- Python 3.11.9, pytest-8.3.3, pluggy-1.6.0
+benchmark: 5.1.0 (defaults: timer=time.perf_counter disable_gc=False min_rounds=5 min_time=0.000005 max_time=1.0 calibration_precision=10 warmup=False warmup_iterations=100000)
+Using --randomly-seed=2511514905
+rootdir: C:\Users\James\Documents\Github\GHrepos\SCCMScripts\TaskMan-v2\backend-api
+configfile: pyproject.toml
+plugins: anyio-4.10.0, dash-3.1.1, Faker-30.8.2, hypothesis-6.115.2, asyncio-0.26.0, benchmark-5.1.0, console-scripts-1.4.1, cov-5.0.0, html-4.1.1, json-report-1.5.0, metadata-3.1.1, mock-3.15.1, postgresql-6.1.1, randomly-3.15.0, rich-0.2.0, timeout-2.3.1, xdist-3.6.1
+asyncio: mode=Mode.AUTO, asyncio_default_fixture_loop_scope=function, asyncio_default_test_loop_scope=function
+collected 64 items
+
+tests\unit\services\test_sprint_service.py ......                                                                [  9%]
+tests\unit\services\test_base_service.py .............                                                           [ 29%]
+tests\unit\services\test_action_list_service.py EEEEEEE                                                          [ 40%]
+tests\unit\services\test_project_service.py ...............                                                      [ 64%]
+tests\unit\services\test_task_service.py .......................                                                 [100%]
+
+======================================================= ERRORS ========================================================
+__________________________ ERROR at setup of TestActionListServiceStatus.test_mark_complete ___________________________
+
+    @pytest.fixture
+    def sample_action_list() -> ActionList:
+        """Create sample action list for testing."""
+>       return ActionList(
+            id="AL-TEST-001",
+            title="Test Action List",
+            description="Test description",
+            status="active",
+            owner="list.owner",
+            tags=["test"],
+            project_id="P-TEST-001",
+            sprint_id="S-TEST-001",
+            items=[
+                {"task": "Item 1", "done": False},
+                {"task": "Item 2", "done": True},
+            ],
+            geometry_shape="Circle",
+            priority="high",
+            due_date=None,
+            evidence_refs=[],
+            extra_metadata={},
+            notes=None,
+            parent_deleted_at=None,
+            parent_deletion_note={},
+            completed_at=None,
+            created_at=datetime(2025, 1, 1, 12, 0, 0),
+            updated_at=datetime(2025, 1, 1, 12, 0, 0),
+        )
+
+tests\unit\services\conftest.py:149: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _
+C:\Users\James\AppData\Local\Programs\Python\Python311\Lib\site-packages\sqlalchemy\orm\state.py:571: in _initialize_instance
+    with util.safe_reraise():
+C:\Users\James\AppData\Local\Programs\Python\Python311\Lib\site-packages\sqlalchemy\util\langhelpers.py:224: in __exit__
+    raise exc_value.with_traceback(exc_tb)
+C:\Users\James\AppData\Local\Programs\Python\Python311\Lib\site-packages\sqlalchemy\orm\state.py:569: in _initialize_instance
+    manager.original_init(*mixed[1:], **kwargs)
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _
+
+self = ActionList(id='AL-TEST-001', name=None, description=None, status=None, task_ids=None, created_at=None, updated_at=None)
+kwargs = {'completed_at': None, 'created_at': datetime.datetime(2025, 1, 1, 12, 0), 'description': 'Test description', 'due_date': None, ...}
+cls_ = <class 'taskman_api.db.models.action_list.ActionList'>, k = 'title'
+
+    def _declarative_constructor(self: Any, **kwargs: Any) -> None:
+        """A simple constructor that allows initialization from kwargs.
+    
+        Sets attributes on the constructed instance using the names and
+        values in ``kwargs``.
+    
+        Only keys that are present as
+        attributes of the instance's class are allowed. These could be,
+        for example, any mapped columns or relationships.
+        """
+        cls_ = type(self)
+        for k in kwargs:
+            if not hasattr(cls_, k):
+>               raise TypeError(
+                    "%r is an invalid keyword argument for %s" % (k, cls_.__name__)
+                )
+E               TypeError: 'title' is an invalid keyword argument for ActionList
+
+C:\Users\James\AppData\Local\Programs\Python\Python311\Lib\site-packages\sqlalchemy\orm\decl_base.py:2173: TypeError
+________________________ ERROR at setup of TestActionListServiceQueries.test_get_soft_deleted _________________________
+
+    @pytest.fixture
+    def sample_action_list() -> ActionList:
+        """Create sample action list for testing."""
+>       return ActionList(
+            id="AL-TEST-001",
+            title="Test Action List",
+            description="Test description",
+            status="active",
+            owner="list.owner",
+            tags=["test"],
+            project_id="P-TEST-001",
+            sprint_id="S-TEST-001",
+            items=[
+                {"task": "Item 1", "done": False},
+                {"task": "Item 2", "done": True},
+            ],
+            geometry_shape="Circle",
+            priority="high",
+            due_date=None,
+            evidence_refs=[],
+            extra_metadata={},
+            notes=None,
+            parent_deleted_at=None,
+            parent_deletion_note={},
+            completed_at=None,
+            created_at=datetime(2025, 1, 1, 12, 0, 0),
+            updated_at=datetime(2025, 1, 1, 12, 0, 0),
+        )
+
+tests\unit\services\conftest.py:149: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _
+C:\Users\James\AppData\Local\Programs\Python\Python311\Lib\site-packages\sqlalchemy\orm\state.py:571: in _initialize_instance
+    with util.safe_reraise():
+C:\Users\James\AppData\Local\Programs\Python\Python311\Lib\site-packages\sqlalchemy\util\langhelpers.py:224: in __exit__
+    raise exc_value.with_traceback(exc_tb)
+C:\Users\James\AppData\Local\Programs\Python\Python311\Lib\site-packages\sqlalchemy\orm\state.py:569: in _initialize_instance
+    manager.original_init(*mixed[1:], **kwargs)
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _
+
+self = ActionList(id='AL-TEST-001', name=None, description=None, status=None, task_ids=None, created_at=None, updated_at=None)
+kwargs = {'completed_at': None, 'created_at': datetime.datetime(2025, 1, 1, 12, 0), 'description': 'Test description', 'due_date': None, ...}
+cls_ = <class 'taskman_api.db.models.action_list.ActionList'>, k = 'title'
+
+    def _declarative_constructor(self: Any, **kwargs: Any) -> None:
+        """A simple constructor that allows initialization from kwargs.
+    
+        Sets attributes on the constructed instance using the names and
+        values in ``kwargs``.
+    
+        Only keys that are present as
+        attributes of the instance's class are allowed. These could be,
+        for example, any mapped columns or relationships.
+        """
+        cls_ = type(self)
+        for k in kwargs:
+            if not hasattr(cls_, k):
+>               raise TypeError(
+                    "%r is an invalid keyword argument for %s" % (k, cls_.__name__)
+                )
+E               TypeError: 'title' is an invalid keyword argument for ActionList
+
+C:\Users\James\AppData\Local\Programs\Python\Python311\Lib\site-packages\sqlalchemy\orm\decl_base.py:2173: TypeError
+__________________________ ERROR at setup of TestActionListServiceQueries.test_get_orphaned ___________________________
+
+    @pytest.fixture
+    def sample_action_list() -> ActionList:
+        """Create sample action list for testing."""
+>       return ActionList(
+            id="AL-TEST-001",
+            title="Test Action List",
+            description="Test description",
+            status="active",
+            owner="list.owner",
+            tags=["test"],
+            project_id="P-TEST-001",
+            sprint_id="S-TEST-001",
+            items=[
+                {"task": "Item 1", "done": False},
+                {"task": "Item 2", "done": True},
+            ],
+            geometry_shape="Circle",
+            priority="high",
+            due_date=None,
+            evidence_refs=[],
+            extra_metadata={},
+            notes=None,
+            parent_deleted_at=None,
+            parent_deletion_note={},
+            completed_at=None,
+            created_at=datetime(2025, 1, 1, 12, 0, 0),
+            updated_at=datetime(2025, 1, 1, 12, 0, 0),
+        )
+
+tests\unit\services\conftest.py:149: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _
+C:\Users\James\AppData\Local\Programs\Python\Python311\Lib\site-packages\sqlalchemy\orm\state.py:571: in _initialize_instance
+    with util.safe_reraise():
+C:\Users\James\AppData\Local\Programs\Python\Python311\Lib\site-packages\sqlalchemy\util\langhelpers.py:224: in __exit__
+    raise exc_value.with_traceback(exc_tb)
+C:\Users\James\AppData\Local\Programs\Python\Python311\Lib\site-packages\sqlalchemy\orm\state.py:569: in _initialize_instance
+    manager.original_init(*mixed[1:], **kwargs)
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _
+
+self = ActionList(id='AL-TEST-001', name=None, description=None, status=None, task_ids=None, created_at=None, updated_at=None)
+kwargs = {'completed_at': None, 'created_at': datetime.datetime(2025, 1, 1, 12, 0), 'description': 'Test description', 'due_date': None, ...}
+cls_ = <class 'taskman_api.db.models.action_list.ActionList'>, k = 'title'
+
+    def _declarative_constructor(self: Any, **kwargs: Any) -> None:
+        """A simple constructor that allows initialization from kwargs.
+    
+        Sets attributes on the constructed instance using the names and
+        values in ``kwargs``.
+    
+        Only keys that are present as
+        attributes of the instance's class are allowed. These could be,
+        for example, any mapped columns or relationships.
+        """
+        cls_ = type(self)
+        for k in kwargs:
+            if not hasattr(cls_, k):
+>               raise TypeError(
+                    "%r is an invalid keyword argument for %s" % (k, cls_.__name__)
+                )
+E               TypeError: 'title' is an invalid keyword argument for ActionList
+
+C:\Users\James\AppData\Local\Programs\Python\Python311\Lib\site-packages\sqlalchemy\orm\decl_base.py:2173: TypeError
+____________________________ ERROR at setup of TestActionListServiceItems.test_remove_item ____________________________
+
+    @pytest.fixture
+    def sample_action_list() -> ActionList:
+        """Create sample action list for testing."""
+>       return ActionList(
+            id="AL-TEST-001",
+            title="Test Action List",
+            description="Test description",
+            status="active",
+            owner="list.owner",
+            tags=["test"],
+            project_id="P-TEST-001",
+            sprint_id="S-TEST-001",
+            items=[
+                {"task": "Item 1", "done": False},
+                {"task": "Item 2", "done": True},
+            ],
+            geometry_shape="Circle",
+            priority="high",
+            due_date=None,
+            evidence_refs=[],
+            extra_metadata={},
+            notes=None,
+            parent_deleted_at=None,
+            parent_deletion_note={},
+            completed_at=None,
+            created_at=datetime(2025, 1, 1, 12, 0, 0),
+            updated_at=datetime(2025, 1, 1, 12, 0, 0),
+        )
+
+tests\unit\services\conftest.py:149: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _
+C:\Users\James\AppData\Local\Programs\Python\Python311\Lib\site-packages\sqlalchemy\orm\state.py:571: in _initialize_instance
+    with util.safe_reraise():
+C:\Users\James\AppData\Local\Programs\Python\Python311\Lib\site-packages\sqlalchemy\util\langhelpers.py:224: in __exit__
+    raise exc_value.with_traceback(exc_tb)
+C:\Users\James\AppData\Local\Programs\Python\Python311\Lib\site-packages\sqlalchemy\orm\state.py:569: in _initialize_instance
+    manager.original_init(*mixed[1:], **kwargs)
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _
+
+self = ActionList(id='AL-TEST-001', name=None, description=None, status=None, task_ids=None, created_at=None, updated_at=None)
+kwargs = {'completed_at': None, 'created_at': datetime.datetime(2025, 1, 1, 12, 0), 'description': 'Test description', 'due_date': None, ...}
+cls_ = <class 'taskman_api.db.models.action_list.ActionList'>, k = 'title'
+
+    def _declarative_constructor(self: Any, **kwargs: Any) -> None:
+        """A simple constructor that allows initialization from kwargs.
+    
+        Sets attributes on the constructed instance using the names and
+        values in ``kwargs``.
+    
+        Only keys that are present as
+        attributes of the instance's class are allowed. These could be,
+        for example, any mapped columns or relationships.
+        """
+        cls_ = type(self)
+        for k in kwargs:
+            if not hasattr(cls_, k):
+>               raise TypeError(
+                    "%r is an invalid keyword argument for %s" % (k, cls_.__name__)
+                )
+E               TypeError: 'title' is an invalid keyword argument for ActionList
+
+C:\Users\James\AppData\Local\Programs\Python\Python311\Lib\site-packages\sqlalchemy\orm\decl_base.py:2173: TypeError
+_____________________________ ERROR at setup of TestActionListServiceItems.test_add_item ______________________________
+
+    @pytest.fixture
+    def sample_action_list() -> ActionList:
+        """Create sample action list for testing."""
+>       return ActionList(
+            id="AL-TEST-001",
+            title="Test Action List",
+            description="Test description",
+            status="active",
+            owner="list.owner",
+            tags=["test"],
+            project_id="P-TEST-001",
+            sprint_id="S-TEST-001",
+            items=[
+                {"task": "Item 1", "done": False},
+                {"task": "Item 2", "done": True},
+            ],
+            geometry_shape="Circle",
+            priority="high",
+            due_date=None,
+            evidence_refs=[],
+            extra_metadata={},
+            notes=None,
+            parent_deleted_at=None,
+            parent_deletion_note={},
+            completed_at=None,
+            created_at=datetime(2025, 1, 1, 12, 0, 0),
+            updated_at=datetime(2025, 1, 1, 12, 0, 0),
+        )
+
+tests\unit\services\conftest.py:149: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _
+C:\Users\James\AppData\Local\Programs\Python\Python311\Lib\site-packages\sqlalchemy\orm\state.py:571: in _initialize_instance
+    with util.safe_reraise():
+C:\Users\James\AppData\Local\Programs\Python\Python311\Lib\site-packages\sqlalchemy\util\langhelpers.py:224: in __exit__
+    raise exc_value.with_traceback(exc_tb)
+C:\Users\James\AppData\Local\Programs\Python\Python311\Lib\site-packages\sqlalchemy\orm\state.py:569: in _initialize_instance
+    manager.original_init(*mixed[1:], **kwargs)
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _
+
+self = ActionList(id='AL-TEST-001', name=None, description=None, status=None, task_ids=None, created_at=None, updated_at=None)
+kwargs = {'completed_at': None, 'created_at': datetime.datetime(2025, 1, 1, 12, 0), 'description': 'Test description', 'due_date': None, ...}
+cls_ = <class 'taskman_api.db.models.action_list.ActionList'>, k = 'title'
+
+    def _declarative_constructor(self: Any, **kwargs: Any) -> None:
+        """A simple constructor that allows initialization from kwargs.
+    
+        Sets attributes on the constructed instance using the names and
+        values in ``kwargs``.
+    
+        Only keys that are present as
+        attributes of the instance's class are allowed. These could be,
+        for example, any mapped columns or relationships.
+        """
+        cls_ = type(self)
+        for k in kwargs:
+            if not hasattr(cls_, k):
+>               raise TypeError(
+                    "%r is an invalid keyword argument for %s" % (k, cls_.__name__)
+                )
+E               TypeError: 'title' is an invalid keyword argument for ActionList
+
+C:\Users\James\AppData\Local\Programs\Python\Python311\Lib\site-packages\sqlalchemy\orm\decl_base.py:2173: TypeError
+__________________ ERROR at setup of TestActionListServiceReorder.test_reorder_items_invalid_length ___________________
+
+    @pytest.fixture
+    def sample_action_list() -> ActionList:
+        """Create sample action list for testing."""
+>       return ActionList(
+            id="AL-TEST-001",
+            title="Test Action List",
+            description="Test description",
+            status="active",
+            owner="list.owner",
+            tags=["test"],
+            project_id="P-TEST-001",
+            sprint_id="S-TEST-001",
+            items=[
+                {"task": "Item 1", "done": False},
+                {"task": "Item 2", "done": True},
+            ],
+            geometry_shape="Circle",
+            priority="high",
+            due_date=None,
+            evidence_refs=[],
+            extra_metadata={},
+            notes=None,
+            parent_deleted_at=None,
+            parent_deletion_note={},
+            completed_at=None,
+            created_at=datetime(2025, 1, 1, 12, 0, 0),
+            updated_at=datetime(2025, 1, 1, 12, 0, 0),
+        )
+
+tests\unit\services\conftest.py:149: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _
+C:\Users\James\AppData\Local\Programs\Python\Python311\Lib\site-packages\sqlalchemy\orm\state.py:571: in _initialize_instance
+    with util.safe_reraise():
+C:\Users\James\AppData\Local\Programs\Python\Python311\Lib\site-packages\sqlalchemy\util\langhelpers.py:224: in __exit__
+    raise exc_value.with_traceback(exc_tb)
+C:\Users\James\AppData\Local\Programs\Python\Python311\Lib\site-packages\sqlalchemy\orm\state.py:569: in _initialize_instance
+    manager.original_init(*mixed[1:], **kwargs)
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _
+
+self = ActionList(id='AL-TEST-001', name=None, description=None, status=None, task_ids=None, created_at=None, updated_at=None)
+kwargs = {'completed_at': None, 'created_at': datetime.datetime(2025, 1, 1, 12, 0), 'description': 'Test description', 'due_date': None, ...}
+cls_ = <class 'taskman_api.db.models.action_list.ActionList'>, k = 'title'
+
+    def _declarative_constructor(self: Any, **kwargs: Any) -> None:
+        """A simple constructor that allows initialization from kwargs.
+    
+        Sets attributes on the constructed instance using the names and
+        values in ``kwargs``.
+    
+        Only keys that are present as
+        attributes of the instance's class are allowed. These could be,
+        for example, any mapped columns or relationships.
+        """
+        cls_ = type(self)
+        for k in kwargs:
+            if not hasattr(cls_, k):
+>               raise TypeError(
+                    "%r is an invalid keyword argument for %s" % (k, cls_.__name__)
+                )
+E               TypeError: 'title' is an invalid keyword argument for ActionList
+
+C:\Users\James\AppData\Local\Programs\Python\Python311\Lib\site-packages\sqlalchemy\orm\decl_base.py:2173: TypeError
+______________________ ERROR at setup of TestActionListServiceReorder.test_reorder_items_success ______________________
+
+    @pytest.fixture
+    def sample_action_list() -> ActionList:
+        """Create sample action list for testing."""
+>       return ActionList(
+            id="AL-TEST-001",
+            title="Test Action List",
+            description="Test description",
+            status="active",
+            owner="list.owner",
+            tags=["test"],
+            project_id="P-TEST-001",
+            sprint_id="S-TEST-001",
+            items=[
+                {"task": "Item 1", "done": False},
+                {"task": "Item 2", "done": True},
+            ],
+            geometry_shape="Circle",
+            priority="high",
+            due_date=None,
+            evidence_refs=[],
+            extra_metadata={},
+            notes=None,
+            parent_deleted_at=None,
+            parent_deletion_note={},
+            completed_at=None,
+            created_at=datetime(2025, 1, 1, 12, 0, 0),
+            updated_at=datetime(2025, 1, 1, 12, 0, 0),
+        )
+
+tests\unit\services\conftest.py:149: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _
+C:\Users\James\AppData\Local\Programs\Python\Python311\Lib\site-packages\sqlalchemy\orm\state.py:571: in _initialize_instance
+    with util.safe_reraise():
+C:\Users\James\AppData\Local\Programs\Python\Python311\Lib\site-packages\sqlalchemy\util\langhelpers.py:224: in __exit__
+    raise exc_value.with_traceback(exc_tb)
+C:\Users\James\AppData\Local\Programs\Python\Python311\Lib\site-packages\sqlalchemy\orm\state.py:569: in _initialize_instance
+    manager.original_init(*mixed[1:], **kwargs)
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _
+
+self = ActionList(id='AL-TEST-001', name=None, description=None, status=None, task_ids=None, created_at=None, updated_at=None)
+kwargs = {'completed_at': None, 'created_at': datetime.datetime(2025, 1, 1, 12, 0), 'description': 'Test description', 'due_date': None, ...}
+cls_ = <class 'taskman_api.db.models.action_list.ActionList'>, k = 'title'
+
+    def _declarative_constructor(self: Any, **kwargs: Any) -> None:
+        """A simple constructor that allows initialization from kwargs.
+    
+        Sets attributes on the constructed instance using the names and
+        values in ``kwargs``.
+    
+        Only keys that are present as
+        attributes of the instance's class are allowed. These could be,
+        for example, any mapped columns or relationships.
+        """
+        cls_ = type(self)
+        for k in kwargs:
+            if not hasattr(cls_, k):
+>               raise TypeError(
+                    "%r is an invalid keyword argument for %s" % (k, cls_.__name__)
+                )
+E               TypeError: 'title' is an invalid keyword argument for ActionList
+
+C:\Users\James\AppData\Local\Programs\Python\Python311\Lib\site-packages\sqlalchemy\orm\decl_base.py:2173: TypeError
+
+---------- coverage: platform win32, python 3.11.9-final-0 -----------
+Name                                                        Stmts   Miss Branch BrPart   Cover   Missing
+--------------------------------------------------------------------------------------------------------
+src\taskman_api\__init__.py                                     3      0      0      0 100.00%
+src\taskman_api\api\__init__.py                                 0      0      0      0 100.00%
+src\taskman_api\api\deps.py                                    26     26      0      0   0.00%   6-102
+src\taskman_api\api\middleware\__init__.py                      2      2      0      0   0.00%   3-5
+src\taskman_api\api\middleware\error_handler.py                23     23      0      0   0.00%   6-76
+src\taskman_api\api\middleware\request_logger.py               29     29      0      0   0.00%   15-127
+src\taskman_api\api\v1\__init__.py                              0      0      0      0 100.00%
+src\taskman_api\api\v1\action_lists.py                         47     47     20      0   0.00%   6-155
+src\taskman_api\api\v1\health.py                               41     41     10      0   0.00%   16-273
+src\taskman_api\api\v1\projects.py                             55     55     24      0   0.00%   6-186
+src\taskman_api\api\v1\sprints.py                              55     55     24      0   0.00%   6-185
+src\taskman_api\api\v1\tasks.py                                88     88     40      0   0.00%   7-302
+src\taskman_api\config.py                                      61     16      6      0  67.16%   98-99, 110-111, 220-239, 245, 251, 257, 286
+src\taskman_api\core\__init__.py                                4      0      0      0 100.00%
+src\taskman_api\core\enums.py                                  71      0      0      0 100.00%
+src\taskman_api\core\errors.py                                 78     31     36     10  50.00%   48-57, 73->75, 75->78, 102->104, 104->106, 107, 136, 138, 139->141, 141->143, 144, 169-177, 199-205, 226-230, 253-259
+src\taskman_api\core\result.py                                 37     10      0      0  72.97%   37, 40, 43, 50, 54, 66, 69, 72, 76, 79
+src\taskman_api\db\__init__.py                                  3      0      0      0 100.00%
+src\taskman_api\db\base.py                                     10      1      0      0  90.00%   65
+src\taskman_api\db\models\__init__.py                           5      0      0      0 100.00%
+src\taskman_api\db\models\action_list.py                       33     11      6      0  56.41%   25-27, 31-33, 37-39, 93, 98
+src\taskman_api\db\models\project.py                           41      0      0      0 100.00%
+src\taskman_api\db\models\sprint.py                            36      0      0      0 100.00%
+src\taskman_api\db\models\task.py                              49      0      0      0 100.00%
+src\taskman_api\db\repositories\__init__.py                     6      0      0      0 100.00%
+src\taskman_api\db\repositories\action_list_repository.py      67     50      0      0  25.37%   36, 54-66, 90-102, 126-138, 162-174, 196-208, 230-242, 266-279
+src\taskman_api\db\repositories\base.py                        91     70     10      0  20.79%   61-62, 79-96, 118-135, 162-186, 209-223, 245-257, 279-286, 305-311
+src\taskman_api\db\repositories\project_repository.py          57     39      4      0  29.51%   38, 56-68, 92-104, 126, 146-161, 185-199, 219-223
+src\taskman_api\db\repositories\sprint_repository.py           78     59     12      0  21.11%   38, 56-68, 94-106, 128, 152-173, 197-209, 233-245, 269-290
+src\taskman_api\db\repositories\task_repository.py             76     57      4      0  23.75%   37, 55-67, 91-103, 127-139, 165-177, 203-215, 241-253, 275, 291-303
+src\taskman_api\db\session.py                                  38     24      8      0  30.43%   39-63, 77-87, 112-117, 126-130, 140-143
+src\taskman_api\infrastructure\__init__.py                      2      2      0      0   0.00%   10-12
+src\taskman_api\infrastructure\health.py                       68     68     12      0   0.00%   34-264
+src\taskman_api\infrastructure\logging.py                      36     36      8      0   0.00%   32-234
+src\taskman_api\infrastructure\metrics.py                      48     48     10      0   0.00%   27-249
+src\taskman_api\main.py                                        54     54     10      0   0.00%   12-155
+src\taskman_api\middleware\__init__.py                          2      2      0      0   0.00%   7-9
+src\taskman_api\middleware\logging_middleware.py               85     85     32      0   0.00%   19-272
+src\taskman_api\schemas\__init__.py                             6      0      0      0 100.00%
+src\taskman_api\schemas\action_list.py                         59      0      0      0 100.00%
+src\taskman_api\schemas\base.py                                 7      0      0      0 100.00%
+src\taskman_api\schemas\project.py                            100      1      2      1  98.04%   178
+src\taskman_api\schemas\sprint.py                              85      3      2      0  94.25%   158-160
+src\taskman_api\schemas\task.py                               124      1      2      1  98.41%   235
+src\taskman_api\services\__init__.py                            6      0      0      0 100.00%
+src\taskman_api\services\action_list_service.py                84     66     34      0  15.25%   50-52, 76-110, 129-132, 153-164, 184-209, 230-241, 262-271, 293-302, 321-330
+src\taskman_api\services\base.py                               63      2     22      5  89.41%   90->exit, 119->exit, 154->exit, 167->exit, 224-225
+src\taskman_api\services\project_service.py                    89     11     36     11  77.60%   86->90, 96, 97->exit, 121-124, 169, 170->exit, 203, 204->exit, 213, 266-267, 297-298
+src\taskman_api\services\sprint_service.py                     94     17     36     14  70.00%   80, 81->85, 91, 92->exit, 133, 134->138, 144, 145->exit, 158, 159->exit, 247-248, 279-280, 301-310, 336, 337->exit
+src\taskman_api\services\task_service.py                       82     15     36      6  70.34%   92->exit, 246->233, 297-312, 321-322, 352-353, 386-387
+--------------------------------------------------------------------------------------------------------
+TOTAL                                                        2304   1145    446     48  44.91%
+Coverage HTML written to dir htmlcov
+Coverage JSON written to file coverage.json
+
+FAIL Required test coverage of 70.0% not reached. Total coverage: 44.91%
+=============================================== short test summary info ===============================================
+ERROR tests/unit/services/test_action_list_service.py::TestActionListServiceStatus::test_mark_complete - TypeError: 'title' is an invalid keyword argument for ActionList
+ERROR tests/unit/services/test_action_list_service.py::TestActionListServiceQueries::test_get_soft_deleted - TypeError: 'title' is an invalid keyword argument for ActionList
+ERROR tests/unit/services/test_action_list_service.py::TestActionListServiceQueries::test_get_orphaned - TypeError: 'title' is an invalid keyword argument for ActionList
+ERROR tests/unit/services/test_action_list_service.py::TestActionListServiceItems::test_remove_item - TypeError: 'title' is an invalid keyword argument for ActionList
+ERROR tests/unit/services/test_action_list_service.py::TestActionListServiceItems::test_add_item - TypeError: 'title' is an invalid keyword argument for ActionList
+ERROR tests/unit/services/test_action_list_service.py::TestActionListServiceReorder::test_reorder_items_invalid_length - TypeError: 'title' is an invalid keyword argument for ActionList
+ERROR tests/unit/services/test_action_list_service.py::TestActionListServiceReorder::test_reorder_items_success - TypeError: 'title' is an invalid keyword argument for ActionList
+============================================ 57 passed, 7 errors in 5.54s =============================================

@@ -1,0 +1,148 @@
+================================================= test session starts =================================================
+platform win32 -- Python 3.11.9, pytest-8.4.2, pluggy-1.6.0 -- C:\Users\James\Documents\Github\GHrepos\SCCMScripts\TaskMan-v2\backend-api\.venv\Scripts\python.exe
+cachedir: .pytest_cache
+rootdir: C:\Users\James\Documents\Github\GHrepos\SCCMScripts\TaskMan-v2\backend-api
+configfile: pyproject.toml
+plugins: anyio-4.12.0, Faker-30.10.0, asyncio-0.26.0, cov-5.0.0, mock-3.15.1
+asyncio: mode=Mode.AUTO, asyncio_default_fixture_loop_scope=function, asyncio_default_test_loop_scope=function
+collecting ... collected 30 items
+
+tests/unit/schemas/test_task_schemas.py::TestTaskCreateRequest::test_valid_task_create_request PASSED
+tests/unit/schemas/test_task_schemas.py::TestTaskCreateRequest::test_task_id_pattern_validation_success PASSED
+tests/unit/schemas/test_task_schemas.py::TestTaskCreateRequest::test_task_id_pattern_validation_failure FAILED
+tests/unit/schemas/test_task_schemas.py::TestTaskCreateRequest::test_required_fields_validation PASSED
+tests/unit/schemas/test_task_schemas.py::TestTaskCreateRequest::test_title_max_length_validation PASSED
+tests/unit/schemas/test_task_schemas.py::TestTaskCreateRequest::test_estimate_points_non_negative PASSED
+tests/unit/schemas/test_task_schemas.py::TestTaskCreateRequest::test_business_value_score_range PASSED
+tests/unit/schemas/test_task_schemas.py::TestTaskCreateRequest::test_enum_field_validation PASSED
+tests/unit/schemas/test_task_schemas.py::TestTaskCreateRequest::test_default_values PASSED
+tests/unit/schemas/test_task_schemas.py::TestTaskUpdateRequest::test_partial_update_all_fields_optional PASSED
+tests/unit/schemas/test_task_schemas.py::TestTaskUpdateRequest::test_update_with_multiple_fields PASSED
+tests/unit/schemas/test_task_schemas.py::TestTaskUpdateRequest::test_update_validation_rules_still_apply PASSED
+tests/unit/schemas/test_task_schemas.py::TestTaskResponse::test_response_from_orm_model PASSED
+tests/unit/schemas/test_task_schemas.py::TestTaskResponse::test_response_serialization PASSED
+tests/unit/schemas/test_schemas.py::TestProjectSchemas::test_project_create_request_valid PASSED
+tests/unit/schemas/test_schemas.py::TestProjectSchemas::test_project_id_pattern_validation PASSED
+tests/unit/schemas/test_schemas.py::TestProjectSchemas::test_project_update_request_partial PASSED
+tests/unit/schemas/test_schemas.py::TestProjectSchemas::test_project_response_serialization PASSED
+tests/unit/schemas/test_schemas.py::TestSprintSchemas::test_sprint_create_request_valid PASSED
+tests/unit/schemas/test_schemas.py::TestSprintSchemas::test_sprint_id_pattern_validation PASSED
+tests/unit/schemas/test_schemas.py::TestSprintSchemas::test_sprint_velocity_points_non_negative PASSED
+tests/unit/schemas/test_schemas.py::TestSprintSchemas::test_sprint_update_request_partial PASSED
+tests/unit/schemas/test_schemas.py::TestSprintSchemas::test_sprint_response_with_metrics PASSED
+tests/unit/schemas/test_schemas.py::TestActionListSchemas::test_action_list_create_request_valid PASSED
+tests/unit/schemas/test_schemas.py::TestActionListSchemas::test_action_list_with_associations PASSED
+tests/unit/schemas/test_schemas.py::TestActionListSchemas::test_action_list_soft_delete_fields PASSED
+tests/unit/schemas/test_schemas.py::TestActionListSchemas::test_action_list_update_request_partial PASSED
+tests/unit/schemas/test_schemas.py::TestActionListSchemas::test_action_list_response_with_metadata PASSED
+tests/unit/schemas/test_schemas.py::TestBaseSchemaConfiguration::test_strict_type_validation PASSED
+tests/unit/schemas/test_schemas.py::TestBaseSchemaConfiguration::test_from_attributes_orm_mode PASSED
+
+====================================================== FAILURES =======================================================
+____________________________ TestTaskCreateRequest.test_task_id_pattern_validation_failure ____________________________
+
+self = <test_task_schemas.TestTaskCreateRequest object at 0x0000025E10C5AD90>
+
+    def test_task_id_pattern_validation_failure(self):
+        """Test task ID pattern validation with invalid patterns."""
+        # Test pattern validation errors
+        pattern_invalid_ids = [
+            "TASK-001",  # Wrong prefix
+            "T001",  # Missing hyphen
+            "T-",  # No ID part
+            "T-@invalid",  # Invalid character
+        ]
+    
+        for task_id in pattern_invalid_ids:
+            data = {
+                "id": task_id,
+                "title": "Test",
+                "summary": "Summary",
+                "description": "Description",
+                "owner": "owner",
+                "priority": Priority.P2,
+                "primary_project": "P-TEST",
+                "primary_sprint": "S-TEST",
+            }
+    
+            with pytest.raises(ValidationError) as exc_info:
+                TaskCreateRequest(**data)
+    
+            errors = exc_info.value.errors()
+            assert any("pattern" in str(err).lower() for err in errors)
+    
+        # Test min_length validation (empty string)
+        data = {
+            "id": "",
+            "title": "Test",
+            "summary": "Summary",
+            "description": "Description",
+            "owner": "owner",
+            "priority": Priority.P2,
+            "primary_project": "P-TEST",
+            "primary_sprint": "S-TEST",
+        }
+        with pytest.raises(ValidationError) as exc_info:
+            TaskCreateRequest(**data)
+        errors = exc_info.value.errors()
+>       assert any(
+            "string_too_short" in str(err).lower() or "at least 1 character" in str(err).lower()
+            for err in errors
+        )
+E       assert False
+E        +  where False = any(<generator object TestTaskCreateRequest.test_task_id_pattern_validation_failure.<locals>.<genexpr> at 0x0000025E10C76CE0>)
+
+tests\unit\schemas\test_task_schemas.py:107: AssertionError
+
+---------- coverage: platform win32, python 3.11.9-final-0 -----------
+Name                                                     Stmts   Miss Branch BrPart   Cover   Missing
+-----------------------------------------------------------------------------------------------------
+src\taskman_api\auth.py                                     61     61      8      0   0.00%   7-246
+src\taskman_api\config.py                                   62     16      6      0  67.65%   102-103, 114-115, 224-243, 249, 255, 261, 290
+src\taskman_api\core\errors.py                              78     60     36      0  15.79%   31-37, 48-57, 72-78, 101-109, 134-146, 169-177, 199-205, 226-230, 253-259
+src\taskman_api\core\result.py                              49     18      0      0  63.27%   34, 37, 40, 44, 48, 51, 55, 58, 62, 71, 74, 77, 81, 85, 88, 92, 95, 99
+src\taskman_api\db\base.py                                   6      1      0      0  83.33%   32
+src\taskman_api\db\connection_manager.py                    91     68     10      1  23.76%   66-68, 75-124, 135-165, 170-183
+src\taskman_api\db\session.py                               27      8      4      0  61.29%   48-50, 63-64, 73-75, 85
+src\taskman_api\dependencies.py                             45     45      0      0   0.00%   7-100
+src\taskman_api\main.py                                    104    104     18      0   0.00%   6-341
+src\taskman_api\middleware\__init__.py                       2      2      0      0   0.00%   7-9
+src\taskman_api\middleware\logging_middleware.py            85     85     32      0   0.00%   19-272
+src\taskman_api\models\action_list.py                       54     12      6      0  70.00%   33-36, 40-42, 46-48, 128, 133
+src\taskman_api\models\project.py                           45      1      0      0  97.78%   91
+src\taskman_api\models\sprint.py                            51      3      0      0  94.12%   44, 48, 101
+src\taskman_api\repositories\__init__.py                     6      6      0      0   0.00%   7-13
+src\taskman_api\repositories\action_list_repository.py      43     43     10      0   0.00%   8-112
+src\taskman_api\repositories\base.py                        33     33      0      0   0.00%   7-71
+src\taskman_api\repositories\project_repository.py          46     46     12      0   0.00%   7-117
+src\taskman_api\repositories\sprint_repository.py           51     51     14      0   0.00%   7-131
+src\taskman_api\repositories\task_repository.py             81     81     42      0   0.00%   7-240
+src\taskman_api\routers\__init__.py                          7      7      0      0   0.00%   6-13
+src\taskman_api\routers\action_lists.py                    109    109     26      0   0.00%   7-661
+src\taskman_api\routers\agent.py                            30     30      6      0   0.00%   1-72
+src\taskman_api\routers\diagnostic.py                       20     20      0      0   0.00%   5-40
+src\taskman_api\routers\projects.py                         73     73     32      0   0.00%   7-143
+src\taskman_api\routers\sprints.py                         108    108     52      0   0.00%   7-202
+src\taskman_api\routers\tasks.py                            94     94     42      0   0.00%   7-183
+src\taskman_api\schemas\base.py                             53      4      6      2  86.44%   22, 25-28
+src\taskman_api\schemas\project.py                         163     29     26      9  75.66%   166, 185, 188-194, 213, 216-222, 231, 234-240, 247, 250-252
+src\taskman_api\schemas\sprint.py                          154     24     22      8  79.55%   149, 155, 167, 170-176, 185, 189-193, 203, 206-212
+src\taskman_api\schemas\task.py                            193     31     28      9  77.38%   219, 227, 238, 241-247, 258, 261-267, 276, 279-285, 293-297
+src\taskman_api\services\__init__.py                         6      6      0      0   0.00%   6-12
+src\taskman_api\services\action_list_service.py            159    159     42      0   0.00%   5-328
+src\taskman_api\services\base.py                           117    117     24      0   0.00%   6-330
+src\taskman_api\services\project_service.py                 97     97     36      0   0.00%   6-331
+src\taskman_api\services\sprint_service.py                 141    141     48      0   0.00%   6-470
+src\taskman_api\services\task_service.py                    91     91     28      0   0.00%   6-451
+-----------------------------------------------------------------------------------------------------
+TOTAL                                                     2925   1884    618     29  30.31%
+
+9 files skipped due to complete coverage.
+Coverage HTML written to dir htmlcov
+Coverage JSON written to file coverage.json
+
+FAIL Required test coverage of 70.0% not reached. Total coverage: 30.31%
+=============================================== short test summary info ===============================================
+FAILED tests/unit/schemas/test_task_schemas.py::TestTaskCreateRequest::test_task_id_pattern_validation_failure - assert False
+ +  where False = any(<generator object TestTaskCreateRequest.test_task_id_pattern_validation_failure.<locals>.<genexpr> at 0x0000025E10C76CE0>)
+============================================ 1 failed, 29 passed in 5.65s =============================================

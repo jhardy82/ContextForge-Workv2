@@ -1,0 +1,333 @@
+================================================= test session starts =================================================
+platform win32 -- Python 3.12.11, pytest-8.4.1, pluggy-1.6.0 -- C:\Users\James\Documents\Github\GHrepos\SCCMScripts\.venv\Scripts\python.exe
+cachedir: .pytest_cache
+hypothesis profile 'ci' -> database=None, deadline=None, print_blob=True, derandomize=True, suppress_health_check=(HealthCheck.too_slow,)
+benchmark: 5.2.3 (defaults: timer=time.perf_counter disable_gc=False min_rounds=5 min_time=0.000005 max_time=1.0 calibration_precision=10 warmup=False warmup_iterations=100000)
+Using --randomly-seed=2556903528
+rootdir: C:\Users\James\Documents\Github\GHrepos\SCCMScripts\TaskMan-v2\backend-api
+configfile: pytest_repo.ini
+plugins: anyio-4.10.0, Faker-39.0.0, hypothesis-6.138.3, asyncio-0.26.0, benchmark-5.2.3, console-scripts-1.4.1, cov-5.0.0, mock-3.15.1, randomly-3.16.0, timeout-2.4.0, xdist-3.8.0
+asyncio: mode=Mode.AUTO, asyncio_default_fixture_loop_scope=function, asyncio_default_test_loop_scope=function
+collecting ... collected 10 items
+
+tests/unit/db/repositories/test_project_repository.py::TestProjectRepositoryEdgeCases::test_get_by_owner FAILED  [ 10%]
+tests/unit/db/repositories/test_project_repository.py::TestProjectRepositoryEdgeCases::test_exists PASSED        [ 20%]
+tests/unit/db/repositories/test_project_repository.py::TestProjectRepositoryEdgeCases::test_update_project_method PASSED [ 30%]
+tests/unit/db/repositories/test_project_repository.py::TestProjectRepositoryEdgeCases::test_create_project_method PASSED [ 40%]
+tests/unit/db/repositories/test_project_repository.py::TestProjectRepositoryEdgeCases::test_search_filters_and_pagination PASSED [ 50%]
+tests/unit/db/repositories/test_sprint_repository.py::TestSprintRepositoryEdgeCases::test_get_active_sprints FAILED [ 60%]
+tests/unit/db/repositories/test_sprint_repository.py::TestSprintRepositoryEdgeCases::test_exists ERROR           [ 70%]
+tests/unit/db/repositories/test_sprint_repository.py::TestSprintRepositoryEdgeCases::test_search_sprints FAILED  [ 80%]
+tests/unit/db/repositories/test_sprint_repository.py::TestSprintRepositoryEdgeCases::test_get_by_project ERROR   [ 90%]
+tests/unit/db/repositories/test_sprint_repository.py::TestSprintRepositoryEdgeCases::test_create_and_update_sprint_helpers PASSED [100%]
+
+======================================================= ERRORS ========================================================
+_____________________________ ERROR at setup of TestSprintRepositoryEdgeCases.test_exists _____________________________
+
+sample_project = <Project(id='P-TEST-001', name='Test Project', status='ProjectStatus.ACTIVE')>
+
+    @pytest.fixture
+    def sample_sprint(sample_project: Project) -> Sprint:
+        """Create sample sprint for testing."""
+>       return Sprint(
+            id="S-TEST-001",
+            name="Test Sprint 1",
+            goal="Test sprint goal",
+            cadence=SprintCadence.BIWEEKLY,
+            start_date="2025-01-01",
+            end_date="2025-01-14",
+            status=SprintStatus.ACTIVE,
+            owner="scrum.master",
+            project_id=sample_project.id,
+            # tasks removed (not in model)
+            # imported_tasks removed
+            related_projects="[]",
+            # definition_of_done removed (not in model or checked)
+            dependencies="{}",
+            # scope_changes removed
+            risks="[]",
+            ceremonies="{}",
+            metrics="{}",
+            # observability removed
+        )
+
+tests\unit\db\repositories\conftest.py:105: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _
+..\..\.venv\Lib\site-packages\sqlalchemy\orm\state.py:596: in _initialize_instance
+    with util.safe_reraise():
+         ^^^^^^^^^^^^^^^^^^^
+..\..\.venv\Lib\site-packages\sqlalchemy\util\langhelpers.py:224: in __exit__
+    raise exc_value.with_traceback(exc_tb)
+..\..\.venv\Lib\site-packages\sqlalchemy\orm\state.py:594: in _initialize_instance
+    manager.original_init(*mixed[1:], **kwargs)
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _
+
+self = <Sprint(id='S-TEST-001', name='Test Sprint 1', status='SprintStatus.ACTIVE')>
+kwargs = {'cadence': <SprintCadence.BIWEEKLY: 'biweekly'>, 'ceremonies': '{}', 'dependencies': '{}', 'end_date': '2025-01-14', ...}
+cls_ = <class 'taskman_api.models.sprint.Sprint'>, k = 'metrics'
+
+    def _declarative_constructor(self: Any, **kwargs: Any) -> None:
+        """A simple constructor that allows initialization from kwargs.
+    
+        Sets attributes on the constructed instance using the names and
+        values in ``kwargs``.
+    
+        Only keys that are present as
+        attributes of the instance's class are allowed. These could be,
+        for example, any mapped columns or relationships.
+        """
+        cls_ = type(self)
+        for k in kwargs:
+            if not hasattr(cls_, k):
+>               raise TypeError(
+                    "%r is an invalid keyword argument for %s" % (k, cls_.__name__)
+                )
+E               TypeError: 'metrics' is an invalid keyword argument for Sprint
+
+..\..\.venv\Lib\site-packages\sqlalchemy\orm\decl_base.py:2179: TypeError
+------------------------------------------------ Captured stdout setup ------------------------------------------------
+DEBUG: Creating engine...
+DEBUG: Creating tables...
+DEBUG: Yielding session...
+_________________________ ERROR at setup of TestSprintRepositoryEdgeCases.test_get_by_project _________________________
+
+sample_project = <Project(id='P-TEST-001', name='Test Project', status='ProjectStatus.ACTIVE')>
+
+    @pytest.fixture
+    def sample_sprint(sample_project: Project) -> Sprint:
+        """Create sample sprint for testing."""
+>       return Sprint(
+            id="S-TEST-001",
+            name="Test Sprint 1",
+            goal="Test sprint goal",
+            cadence=SprintCadence.BIWEEKLY,
+            start_date="2025-01-01",
+            end_date="2025-01-14",
+            status=SprintStatus.ACTIVE,
+            owner="scrum.master",
+            project_id=sample_project.id,
+            # tasks removed (not in model)
+            # imported_tasks removed
+            related_projects="[]",
+            # definition_of_done removed (not in model or checked)
+            dependencies="{}",
+            # scope_changes removed
+            risks="[]",
+            ceremonies="{}",
+            metrics="{}",
+            # observability removed
+        )
+
+tests\unit\db\repositories\conftest.py:105: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _
+..\..\.venv\Lib\site-packages\sqlalchemy\orm\state.py:596: in _initialize_instance
+    with util.safe_reraise():
+         ^^^^^^^^^^^^^^^^^^^
+..\..\.venv\Lib\site-packages\sqlalchemy\util\langhelpers.py:224: in __exit__
+    raise exc_value.with_traceback(exc_tb)
+..\..\.venv\Lib\site-packages\sqlalchemy\orm\state.py:594: in _initialize_instance
+    manager.original_init(*mixed[1:], **kwargs)
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _
+
+self = <Sprint(id='S-TEST-001', name='Test Sprint 1', status='SprintStatus.ACTIVE')>
+kwargs = {'cadence': <SprintCadence.BIWEEKLY: 'biweekly'>, 'ceremonies': '{}', 'dependencies': '{}', 'end_date': '2025-01-14', ...}
+cls_ = <class 'taskman_api.models.sprint.Sprint'>, k = 'metrics'
+
+    def _declarative_constructor(self: Any, **kwargs: Any) -> None:
+        """A simple constructor that allows initialization from kwargs.
+    
+        Sets attributes on the constructed instance using the names and
+        values in ``kwargs``.
+    
+        Only keys that are present as
+        attributes of the instance's class are allowed. These could be,
+        for example, any mapped columns or relationships.
+        """
+        cls_ = type(self)
+        for k in kwargs:
+            if not hasattr(cls_, k):
+>               raise TypeError(
+                    "%r is an invalid keyword argument for %s" % (k, cls_.__name__)
+                )
+E               TypeError: 'metrics' is an invalid keyword argument for Sprint
+
+..\..\.venv\Lib\site-packages\sqlalchemy\orm\decl_base.py:2179: TypeError
+------------------------------------------------ Captured stdout setup ------------------------------------------------
+DEBUG: Creating engine...
+DEBUG: Creating tables...
+DEBUG: Yielding session...
+====================================================== FAILURES =======================================================
+__________________________________ TestProjectRepositoryEdgeCases.test_get_by_owner ___________________________________
+
+self = <test_project_repository.TestProjectRepositoryEdgeCases object at 0x0000020CAA4BBC20>
+async_session = <sqlalchemy.ext.asyncio.session.AsyncSession object at 0x0000020CAA4B9DC0>
+sample_project = <Project(id='P-TEST-001', name='Test Project', status='ProjectStatus.ACTIVE')>
+
+    async def test_get_by_owner(self, async_session: AsyncSession, sample_project):
+        """Test getting projects by owner."""
+        repo = ProjectRepository(async_session)
+        sample_project.owner = "unique.owner"
+        async_session.add(sample_project)
+    
+        # Add another project with different owner
+>       other_project = Project(
+            id="P-OTHER-001",
+            name="Other Project",
+            status=ProjectStatus.ACTIVE,
+            owner="other.owner",
+            # Min required fields
+            mission="mission",
+            start_date=date(2025, 1, 1),
+            sprints=[],
+            repositories=[],
+            comms_channels=[],
+            okrs=[],
+            kpis=[],
+            stakeholders=[],
+            sponsors=[],
+            roadmap=[],
+            risks=[],
+            assumptions=[],
+            constraints=[],
+            dependencies_external=[],
+            related_projects=[],
+            shared_components=[],
+            compliance_requirements=[],
+            governance={},
+            success_metrics=[],
+            mpv_policy={},
+            observability={},
+        )
+
+tests\unit\db\repositories\test_project_repository.py:33: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _
+<string>:4: in __init__
+    ???
+..\..\.venv\Lib\site-packages\sqlalchemy\orm\state.py:596: in _initialize_instance
+    with util.safe_reraise():
+         ^^^^^^^^^^^^^^^^^^^
+..\..\.venv\Lib\site-packages\sqlalchemy\util\langhelpers.py:224: in __exit__
+    raise exc_value.with_traceback(exc_tb)
+..\..\.venv\Lib\site-packages\sqlalchemy\orm\state.py:594: in _initialize_instance
+    manager.original_init(*mixed[1:], **kwargs)
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _
+
+self = <Project(id='P-OTHER-001', name='Other Project', status='ProjectStatus.ACTIVE')>
+kwargs = {'assumptions': [], 'comms_channels': [], 'compliance_requirements': [], 'constraints': [], ...}
+cls_ = <class 'taskman_api.models.project.Project'>, k = 'sprints'
+
+    def _declarative_constructor(self: Any, **kwargs: Any) -> None:
+        """A simple constructor that allows initialization from kwargs.
+    
+        Sets attributes on the constructed instance using the names and
+        values in ``kwargs``.
+    
+        Only keys that are present as
+        attributes of the instance's class are allowed. These could be,
+        for example, any mapped columns or relationships.
+        """
+        cls_ = type(self)
+        for k in kwargs:
+            if not hasattr(cls_, k):
+>               raise TypeError(
+                    "%r is an invalid keyword argument for %s" % (k, cls_.__name__)
+                )
+E               TypeError: 'sprints' is an invalid keyword argument for Project
+
+..\..\.venv\Lib\site-packages\sqlalchemy\orm\decl_base.py:2179: TypeError
+------------------------------------------------ Captured stdout setup ------------------------------------------------
+DEBUG: Creating engine...
+DEBUG: Creating tables...
+DEBUG: Yielding session...
+---------------------------------------------- Captured stdout teardown -----------------------------------------------
+DEBUG: Cleaning up...
+________________________________ TestSprintRepositoryEdgeCases.test_get_active_sprints ________________________________
+
+self = <test_sprint_repository.TestSprintRepositoryEdgeCases object at 0x0000020CAA4F54C0>
+async_session = <sqlalchemy.ext.asyncio.session.AsyncSession object at 0x0000020CAA7667B0>
+sample_project = <Project(id='P-TEST-001', name='Test Project', status='ProjectStatus.ACTIVE')>
+
+    async def test_get_active_sprints(self, async_session: AsyncSession, sample_project):
+        """Test active sprints getter."""
+        repo = SprintRepository(async_session)
+        async_session.add(sample_project)
+    
+        s1 = Sprint(
+            id="S-ACTIVE",
+            name="S1",
+            status=SprintStatus.ACTIVE,
+            project_id=sample_project.id,
+            cadence=SprintCadence.BIWEEKLY,
+            start_date="2025-01-01",
+            end_date="2025-01-14",
+        )
+        s2 = Sprint(
+            id="S-CLOSED",
+            name="S2",
+>           status=SprintStatus.COMPLETED,
+                   ^^^^^^^^^^^^^^^^^^^^^^
+            project_id=sample_project.id,
+            cadence=SprintCadence.BIWEEKLY,
+            start_date="2025-01-01",
+            end_date="2025-01-14",
+        )
+E       AttributeError: type object 'SprintStatus' has no attribute 'COMPLETED'
+
+tests\unit\db\repositories\test_sprint_repository.py:76: AttributeError
+------------------------------------------------ Captured stdout setup ------------------------------------------------
+DEBUG: Creating engine...
+DEBUG: Creating tables...
+DEBUG: Yielding session...
+---------------------------------------------- Captured stdout teardown -----------------------------------------------
+DEBUG: Cleaning up...
+__________________________________ TestSprintRepositoryEdgeCases.test_search_sprints __________________________________
+
+self = <test_sprint_repository.TestSprintRepositoryEdgeCases object at 0x0000020CAA4F5970>
+async_session = <sqlalchemy.ext.asyncio.session.AsyncSession object at 0x0000020CAA766210>
+sample_project = <Project(id='P-TEST-001', name='Test Project', status='ProjectStatus.ACTIVE')>
+
+    async def test_search_sprints(self, async_session: AsyncSession, sample_project):
+        """Test search with filters."""
+        repo = SprintRepository(async_session)
+        async_session.add(sample_project)
+    
+        # 2 active for p1
+        for i in range(2):
+            s = Sprint(
+                id=f"S-P1-A-{i}",
+                name=f"S {i}",
+                status=SprintStatus.ACTIVE,
+                project_id=sample_project.id,
+                cadence=SprintCadence.BIWEEKLY,
+                start_date="2025-01-01",
+                end_date="2025-01-14",
+            )
+            async_session.add(s)
+    
+        # 1 planning for p1
+        s_plan = Sprint(
+            id="S-P1-PLAN",
+            name="Plan",
+>           status=SprintStatus.PLANNING,
+                   ^^^^^^^^^^^^^^^^^^^^^
+            project_id=sample_project.id,
+            cadence=SprintCadence.BIWEEKLY,
+            start_date="2025-01-01",
+            end_date="2025-01-14",
+        )
+E       AttributeError: type object 'SprintStatus' has no attribute 'PLANNING'. Did you mean: 'PLANNED'?
+
+tests\unit\db\repositories\test_sprint_repository.py:112: AttributeError
+------------------------------------------------ Captured stdout setup ------------------------------------------------
+DEBUG: Creating engine...
+DEBUG: Creating tables...
+DEBUG: Yielding session...
+---------------------------------------------- Captured stdout teardown -----------------------------------------------
+DEBUG: Cleaning up...
+=============================================== short test summary info ===============================================
+FAILED tests/unit/db/repositories/test_project_repository.py::TestProjectRepositoryEdgeCases::test_get_by_owner - TypeError: 'sprints' is an invalid keyword argument for Project
+FAILED tests/unit/db/repositories/test_sprint_repository.py::TestSprintRepositoryEdgeCases::test_get_active_sprints - AttributeError: type object 'SprintStatus' has no attribute 'COMPLETED'
+FAILED tests/unit/db/repositories/test_sprint_repository.py::TestSprintRepositoryEdgeCases::test_search_sprints - AttributeError: type object 'SprintStatus' has no attribute 'PLANNING'. Did you mean: 'PLANNED'?
+ERROR tests/unit/db/repositories/test_sprint_repository.py::TestSprintRepositoryEdgeCases::test_exists - TypeError: 'metrics' is an invalid keyword argument for Sprint
+ERROR tests/unit/db/repositories/test_sprint_repository.py::TestSprintRepositoryEdgeCases::test_get_by_project - TypeError: 'metrics' is an invalid keyword argument for Sprint
+======================================== 3 failed, 5 passed, 2 errors in 0.86s ========================================

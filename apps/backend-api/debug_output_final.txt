@@ -1,0 +1,6 @@
+--- DEBUGGNG TASKS ENDPOINT LOGIC ---
+Session retrieved.
+Repository initialized.
+Attempting to fetch tasks...
+Successfully retrieved 0 tasks.
+--- END DEBUG ---

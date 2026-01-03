@@ -1,0 +1,6 @@
+--- ERROR ---
+Exit Code: 4294967295
+--- STDOUT ---
+FAILED: No 'script_location' key found in configuration.
+
+--- STDERR ---

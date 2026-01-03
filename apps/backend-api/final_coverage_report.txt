@@ -1,0 +1,599 @@
+================================================= test session starts =================================================
+platform win32 -- Python 3.11.9, pytest-8.4.2, pluggy-1.6.0 -- C:\Users\James\Documents\Github\GHrepos\SCCMScripts\TaskMan-v2\backend-api\.venv\Scripts\python.exe
+cachedir: .pytest_cache
+rootdir: C:\Users\James\Documents\Github\GHrepos\SCCMScripts\TaskMan-v2\backend-api
+configfile: pyproject.toml
+plugins: anyio-4.12.0, Faker-30.10.0, asyncio-0.26.0, cov-5.0.0, mock-3.15.1
+asyncio: mode=Mode.AUTO, asyncio_default_fixture_loop_scope=function, asyncio_default_test_loop_scope=function
+collecting ... collected 221 items
+
+tests/integration/api/test_action_lists_api.py::TestActionListIntegration::test_action_list_lifecycle {"method": "POST", "path": "/api/v1/action-lists", "query": null, "correlation_id": "3796b474-c9bb-42e6-a209-65c06be5873a", "client_ip": "127.0.0.1", "event": "http_request", "timestamp": "2025-12-29T05:44:31.146567Z", "level": "info"}
+{"list_id": "AL-0001", "name": "Integration Test List", "event": "action_list_created", "timestamp": "2025-12-29T05:44:31.172643Z", "level": "info"}
+{"method": "POST", "path": "/api/v1/action-lists", "status_code": 201, "duration_ms": 26.6, "correlation_id": "3796b474-c9bb-42e6-a209-65c06be5873a", "event": "http_response", "timestamp": "2025-12-29T05:44:31.173642Z", "level": "info"}
+{"method": "GET", "path": "/api/v1/action-lists/AL-0001", "query": null, "correlation_id": "1eb000eb-c787-46cf-9af1-f891cd0d8bdb", "client_ip": "127.0.0.1", "event": "http_request", "timestamp": "2025-12-29T05:44:31.175150Z", "level": "info"}
+{"list_id": "AL-0001", "event": "action_list_retrieved", "timestamp": "2025-12-29T05:44:31.177656Z", "level": "info"}
+{"method": "GET", "path": "/api/v1/action-lists/AL-0001", "status_code": 200, "duration_ms": 3.42, "correlation_id": "1eb000eb-c787-46cf-9af1-f891cd0d8bdb", "event": "http_response", "timestamp": "2025-12-29T05:44:31.178657Z", "level": "info"}
+{"method": "PUT", "path": "/api/v1/action-lists/AL-0001", "query": null, "correlation_id": "5ebc842b-3179-4aea-afdd-94efb7dcea48", "client_ip": "127.0.0.1", "event": "http_request", "timestamp": "2025-12-29T05:44:31.178657Z", "level": "info"}
+{"list_id": "AL-0001", "event": "action_list_updated", "timestamp": "2025-12-29T05:44:31.188703Z", "level": "info"}
+{"method": "PUT", "path": "/api/v1/action-lists/AL-0001", "status_code": 200, "duration_ms": 10.87, "correlation_id": "5ebc842b-3179-4aea-afdd-94efb7dcea48", "event": "http_response", "timestamp": "2025-12-29T05:44:31.189703Z", "level": "info"}
+{"method": "POST", "path": "/api/v1/action-lists/AL-0001/items", "query": null, "correlation_id": "352f0537-906a-4a22-bcc5-2acb7c614dbc", "client_ip": "127.0.0.1", "event": "http_request", "timestamp": "2025-12-29T05:44:31.190703Z", "level": "info"}
+{"list_id": "AL-0001", "event": "item_added_to_action_list", "timestamp": "2025-12-29T05:44:31.195703Z", "level": "info"}
+{"method": "POST", "path": "/api/v1/action-lists/AL-0001/items", "status_code": 200, "duration_ms": 6.04, "correlation_id": "352f0537-906a-4a22-bcc5-2acb7c614dbc", "event": "http_response", "timestamp": "2025-12-29T05:44:31.196703Z", "level": "info"}
+{"method": "DELETE", "path": "/api/v1/action-lists/AL-0001/items/New Task Item", "query": null, "correlation_id": "148304bc-ca1b-4089-a513-4360757f92f1", "client_ip": "127.0.0.1", "event": "http_request", "timestamp": "2025-12-29T05:44:31.197704Z", "level": "info"}
+{"list_id": "AL-0001", "item_id": "New Task Item", "event": "item_removed_from_action_list", "timestamp": "2025-12-29T05:44:31.201703Z", "level": "info"}
+{"method": "DELETE", "path": "/api/v1/action-lists/AL-0001/items/New Task Item", "status_code": 204, "duration_ms": 5.49, "correlation_id": "148304bc-ca1b-4089-a513-4360757f92f1", "event": "http_response", "timestamp": "2025-12-29T05:44:31.203703Z", "level": "info"}
+{"method": "DELETE", "path": "/api/v1/action-lists/AL-0001", "query": null, "correlation_id": "2d8d5d27-e3a3-4d71-9a65-2ffcd31c4f13", "client_ip": "127.0.0.1", "event": "http_request", "timestamp": "2025-12-29T05:44:31.203703Z", "level": "info"}
+{"model": "ActionList", "entity_id": "AL-0001", "event": "service.delete.success", "timestamp": "2025-12-29T05:44:31.206703Z", "level": "debug"}
+{"list_id": "AL-0001", "event": "action_list_deleted", "timestamp": "2025-12-29T05:44:31.206703Z", "level": "info"}
+{"method": "DELETE", "path": "/api/v1/action-lists/AL-0001", "status_code": 204, "duration_ms": 3.13, "correlation_id": "2d8d5d27-e3a3-4d71-9a65-2ffcd31c4f13", "event": "http_response", "timestamp": "2025-12-29T05:44:31.206703Z", "level": "info"}
+{"method": "GET", "path": "/api/v1/action-lists/AL-0001", "query": null, "correlation_id": "babf2e87-9038-45ca-84da-b4de543300e8", "client_ip": "127.0.0.1", "event": "http_request", "timestamp": "2025-12-29T05:44:31.207703Z", "level": "info"}
+{"list_id": "AL-0001", "error": "NotFoundError('ActionList not found: AL-0001')", "event": "action_list_get_failed", "timestamp": "2025-12-29T05:44:31.209703Z", "level": "error"}
+{"method": "GET", "path": "/api/v1/action-lists/AL-0001", "status_code": 404, "duration_ms": 2.2, "correlation_id": "babf2e87-9038-45ca-84da-b4de543300e8", "event": "http_response", "timestamp": "2025-12-29T05:44:31.210252Z", "level": "warning"}
+PASSED
+tests/integration/api/test_action_lists_api.py::TestActionListIntegration::test_validation_errors {"method": "POST", "path": "/api/v1/action-lists", "query": null, "correlation_id": "0b5aca7e-cfe2-4ef1-9a90-cb54b8241ca6", "client_ip": "127.0.0.1", "event": "http_request", "timestamp": "2025-12-29T05:44:31.232839Z", "level": "info"}
+{"list_id": "AL-0002", "name": "Validation Test", "event": "action_list_created", "timestamp": "2025-12-29T05:44:31.241344Z", "level": "info"}
+{"method": "POST", "path": "/api/v1/action-lists", "status_code": 201, "duration_ms": 9.14, "correlation_id": "0b5aca7e-cfe2-4ef1-9a90-cb54b8241ca6", "event": "http_response", "timestamp": "2025-12-29T05:44:31.241856Z", "level": "info"}
+{"method": "PATCH", "path": "/api/v1/action-lists/AL-0002/items/reorder", "query": null, "correlation_id": "78465336-23c4-4011-9cdf-1ec5db7587a1", "client_ip": "127.0.0.1", "event": "http_request", "timestamp": "2025-12-29T05:44:31.242855Z", "level": "info"}
+{"list_id": "AL-0002", "error": "ValidationError(\"Item mismatch - unknown: ['NonExistentItem']\")", "event": "action_list_reorder_failed", "timestamp": "2025-12-29T05:44:31.245854Z", "level": "error"}
+{"method": "PATCH", "path": "/api/v1/action-lists/AL-0002/items/reorder", "status_code": 400, "duration_ms": 3.68, "correlation_id": "78465336-23c4-4011-9cdf-1ec5db7587a1", "event": "http_response", "timestamp": "2025-12-29T05:44:31.245854Z", "level": "warning"}
+PASSED
+tests/integration/api/test_projects_api.py::TestProjectIntegration::test_project_crud_lifecycle {"method": "POST", "path": "/api/v1/projects", "query": null, "correlation_id": "a01d7e09-691e-46c9-8470-4712590ce690", "client_ip": "127.0.0.1", "event": "http_request", "timestamp": "2025-12-29T05:44:31.271918Z", "level": "info"}
+{"model": "Project", "request_data": {"id": "P-INT-LIFE-001", "name": "Lifecycle Project", "mission": "To test integration", "status": "active", "start_date": "2025-01-01", "target_end_date": null, "owner": "project.mgr", "sponsors": [], "stakeholders": [], "repositories": [], "comms_channels": [], "okrs": [], "kpis": [], "roadmap": [], "risks": [], "assumptions": [], "constraints": [], "dependencies_external": [], "sprints": [], "related_projects": [], "shared_components": [], "security_posture": null, "compliance_requirements": [], "governance": {}, "success_metrics": [], "mpv_policy": {}, "tnve_mandate": false, "evidence_root": null, "observability": {}}, "event": "service.create.start", "timestamp": "2025-12-29T05:44:31.326452Z", "level": "debug"}
+{"model": "Project", "response_id": "P-INT-LIFE-001", "event": "service.create.success", "timestamp": "2025-12-29T05:44:31.335637Z", "level": "debug"}
+{"project_id": "P-INT-LIFE-001", "name": "Lifecycle Project", "event": "project_created", "timestamp": "2025-12-29T05:44:31.335637Z", "level": "info"}
+{"method": "POST", "path": "/api/v1/projects", "status_code": 201, "duration_ms": 64.44, "correlation_id": "a01d7e09-691e-46c9-8470-4712590ce690", "event": "http_response", "timestamp": "2025-12-29T05:44:31.336146Z", "level": "info"}
+{"method": "GET", "path": "/api/v1/projects/P-INT-LIFE-001", "query": null, "correlation_id": "27dbcd94-cb42-49b2-8b50-4b05f690e781", "client_ip": "127.0.0.1", "event": "http_request", "timestamp": "2025-12-29T05:44:31.337146Z", "level": "info"}
+{"project_id": "P-INT-LIFE-001", "event": "project_retrieved", "timestamp": "2025-12-29T05:44:31.340145Z", "level": "info"}
+{"method": "GET", "path": "/api/v1/projects/P-INT-LIFE-001", "status_code": 200, "duration_ms": 3.59, "correlation_id": "27dbcd94-cb42-49b2-8b50-4b05f690e781", "event": "http_response", "timestamp": "2025-12-29T05:44:31.340145Z", "level": "info"}
+{"method": "PUT", "path": "/api/v1/projects/P-INT-LIFE-001", "query": null, "correlation_id": "67bd6a32-9935-4d96-93cb-2170b53f3cca", "client_ip": "127.0.0.1", "event": "http_request", "timestamp": "2025-12-29T05:44:31.341145Z", "level": "info"}
+{"model": "Project", "entity_id": "P-INT-LIFE-001", "event": "service.update.start", "timestamp": "2025-12-29T05:44:31.354146Z", "level": "debug"}
+{"project_id": "P-INT-LIFE-001", "event": "project_updated", "timestamp": "2025-12-29T05:44:31.358146Z", "level": "info"}
+{"method": "PUT", "path": "/api/v1/projects/P-INT-LIFE-001", "status_code": 200, "duration_ms": 17.44, "correlation_id": "67bd6a32-9935-4d96-93cb-2170b53f3cca", "event": "http_response", "timestamp": "2025-12-29T05:44:31.359147Z", "level": "info"}
+{"method": "GET", "path": "/api/v1/projects/P-INT-LIFE-001", "query": null, "correlation_id": "2154a9fe-3260-4c5c-8715-f609ba266525", "client_ip": "127.0.0.1", "event": "http_request", "timestamp": "2025-12-29T05:44:31.359147Z", "level": "info"}
+{"project_id": "P-INT-LIFE-001", "event": "project_retrieved", "timestamp": "2025-12-29T05:44:31.362145Z", "level": "info"}
+{"method": "GET", "path": "/api/v1/projects/P-INT-LIFE-001", "status_code": 200, "duration_ms": 3.24, "correlation_id": "2154a9fe-3260-4c5c-8715-f609ba266525", "event": "http_response", "timestamp": "2025-12-29T05:44:31.363146Z", "level": "info"}
+{"method": "DELETE", "path": "/api/v1/projects/P-INT-LIFE-001", "query": null, "correlation_id": "6c6c1815-b3b7-42c2-a11f-141579a48c64", "client_ip": "127.0.0.1", "event": "http_request", "timestamp": "2025-12-29T05:44:31.363146Z", "level": "info"}
+{"model": "Project", "entity_id": "P-INT-LIFE-001", "event": "service.delete.success", "timestamp": "2025-12-29T05:44:31.368147Z", "level": "debug"}
+{"project_id": "P-INT-LIFE-001", "event": "project_deleted", "timestamp": "2025-12-29T05:44:31.368147Z", "level": "info"}
+{"method": "DELETE", "path": "/api/v1/projects/P-INT-LIFE-001", "status_code": 204, "duration_ms": 4.94, "correlation_id": "6c6c1815-b3b7-42c2-a11f-141579a48c64", "event": "http_response", "timestamp": "2025-12-29T05:44:31.368147Z", "level": "info"}
+{"method": "GET", "path": "/api/v1/projects/P-INT-LIFE-001", "query": null, "correlation_id": "48738252-a21f-4881-8997-4e5d4e3d6029", "client_ip": "127.0.0.1", "event": "http_request", "timestamp": "2025-12-29T05:44:31.369146Z", "level": "info"}
+{"method": "GET", "path": "/api/v1/projects/P-INT-LIFE-001", "status_code": 404, "duration_ms": 2.61, "correlation_id": "48738252-a21f-4881-8997-4e5d4e3d6029", "event": "http_response", "timestamp": "2025-12-29T05:44:31.372228Z", "level": "warning"}
+PASSED
+tests/integration/api/test_projects_api.py::TestProjectIntegration::test_project_validation_errors {"method": "POST", "path": "/api/v1/projects", "query": null, "correlation_id": "a8a5acc6-f7d1-46f1-a3c9-1ea25b418e06", "client_ip": "127.0.0.1", "event": "http_request", "timestamp": "2025-12-29T05:44:31.395253Z", "level": "info"}
+{"method": "POST", "path": "/api/v1/projects", "status_code": 422, "duration_ms": 2.16, "correlation_id": "a8a5acc6-f7d1-46f1-a3c9-1ea25b418e06", "event": "http_response", "timestamp": "2025-12-29T05:44:31.397253Z", "level": "warning"}
+{"method": "POST", "path": "/api/v1/projects", "query": null, "correlation_id": "312b7984-a36d-405b-b2d8-eba38614a883", "client_ip": "127.0.0.1", "event": "http_request", "timestamp": "2025-12-29T05:44:31.398253Z", "level": "info"}
+{"method": "POST", "path": "/api/v1/projects", "status_code": 422, "duration_ms": 2.37, "correlation_id": "312b7984-a36d-405b-b2d8-eba38614a883", "event": "http_response", "timestamp": "2025-12-29T05:44:31.401255Z", "level": "warning"}
+PASSED
+tests/integration/api/test_projects_api.py::TestProjectIntegration::test_project_metrics_endpoint PASSED
+tests/integration/api/test_projects_api.py::TestProjectIntegration::test_duplicate_project_id {"method": "POST", "path": "/api/v1/projects", "query": null, "correlation_id": "3a4d4b0e-caea-406e-92dd-42944ee22d5a", "client_ip": "127.0.0.1", "event": "http_request", "timestamp": "2025-12-29T05:44:31.451327Z", "level": "info"}
+{"model": "Project", "request_data": {"id": "P-INT-DUP-001", "name": "Original", "mission": "Dup test", "status": "planning", "start_date": "2025-01-01", "target_end_date": null, "owner": "owner", "sponsors": [], "stakeholders": [], "repositories": [], "comms_channels": [], "okrs": [], "kpis": [], "roadmap": [], "risks": [], "assumptions": [], "constraints": [], "dependencies_external": [], "sprints": [], "related_projects": [], "shared_components": [], "security_posture": null, "compliance_requirements": [], "governance": {}, "success_metrics": [], "mpv_policy": {}, "tnve_mandate": false, "evidence_root": null, "observability": {}}, "event": "service.create.start", "timestamp": "2025-12-29T05:44:31.452934Z", "level": "debug"}
+{"model": "Project", "response_id": "P-INT-DUP-001", "event": "service.create.success", "timestamp": "2025-12-29T05:44:31.458443Z", "level": "debug"}
+{"project_id": "P-INT-DUP-001", "name": "Original", "event": "project_created", "timestamp": "2025-12-29T05:44:31.458443Z", "level": "info"}
+{"method": "POST", "path": "/api/v1/projects", "status_code": 201, "duration_ms": 8.45, "correlation_id": "3a4d4b0e-caea-406e-92dd-42944ee22d5a", "event": "http_response", "timestamp": "2025-12-29T05:44:31.459441Z", "level": "info"}
+{"method": "POST", "path": "/api/v1/projects", "query": null, "correlation_id": "66acf2d4-f8ca-45d5-855d-e77d51112b78", "client_ip": "127.0.0.1", "event": "http_request", "timestamp": "2025-12-29T05:44:31.460443Z", "level": "info"}
+{"model": "Project", "request_data": {"id": "P-INT-DUP-001", "name": "Original", "mission": "Dup test", "status": "planning", "start_date": "2025-01-01", "target_end_date": null, "owner": "owner", "sponsors": [], "stakeholders": [], "repositories": [], "comms_channels": [], "okrs": [], "kpis": [], "roadmap": [], "risks": [], "assumptions": [], "constraints": [], "dependencies_external": [], "sprints": [], "related_projects": [], "shared_components": [], "security_posture": null, "compliance_requirements": [], "governance": {}, "success_metrics": [], "mpv_policy": {}, "tnve_mandate": false, "evidence_root": null, "observability": {}}, "event": "service.create.start", "timestamp": "2025-12-29T05:44:31.461442Z", "level": "debug"}
+{"method": "POST", "path": "/api/v1/projects", "status_code": 409, "duration_ms": 2.68, "correlation_id": "66acf2d4-f8ca-45d5-855d-e77d51112b78", "event": "http_response", "timestamp": "2025-12-29T05:44:31.463442Z", "level": "warning"}
+PASSED
+tests/integration/api/test_sprints_api.py::TestSprintIntegration::test_sprint_management {"method": "POST", "path": "/api/v1/projects", "query": null, "correlation_id": "7f5da9a3-699a-4346-8d5d-4fac1cf5a45e", "client_ip": "127.0.0.1", "event": "http_request", "timestamp": "2025-12-29T05:44:31.499043Z", "level": "info"}
+{"model": "Project", "request_data": {"id": "P-SPRINT-TEST-001", "name": "Sprint Test Project", "mission": "Sprint Test Mission", "status": "active", "start_date": "2025-01-01", "target_end_date": null, "owner": "test.owner", "sponsors": [], "stakeholders": [], "repositories": [], "comms_channels": [], "okrs": [], "kpis": [], "roadmap": [], "risks": [], "assumptions": [], "constraints": [], "dependencies_external": [], "sprints": [], "related_projects": [], "shared_components": [], "security_posture": null, "compliance_requirements": [], "governance": {}, "success_metrics": [], "mpv_policy": {}, "tnve_mandate": false, "evidence_root": null, "observability": {}}, "event": "service.create.start", "timestamp": "2025-12-29T05:44:31.502042Z", "level": "debug"}
+{"model": "Project", "response_id": "P-SPRINT-TEST-001", "event": "service.create.success", "timestamp": "2025-12-29T05:44:31.509043Z", "level": "debug"}
+{"project_id": "P-SPRINT-TEST-001", "name": "Sprint Test Project", "event": "project_created", "timestamp": "2025-12-29T05:44:31.509043Z", "level": "info"}
+{"method": "POST", "path": "/api/v1/projects", "status_code": 201, "duration_ms": 10.23, "correlation_id": "7f5da9a3-699a-4346-8d5d-4fac1cf5a45e", "event": "http_response", "timestamp": "2025-12-29T05:44:31.509043Z", "level": "info"}
+{"method": "POST", "path": "/api/v1/sprints", "query": null, "correlation_id": "4bce972e-c777-4896-801c-5a47125fae6a", "client_ip": "127.0.0.1", "event": "http_request", "timestamp": "2025-12-29T05:44:31.511042Z", "level": "info"}
+{"model": "Sprint", "request_data": {"id": "S-INT-LIFE-001", "name": "Lifecycle Sprint", "goal": "Test Sprint Goal", "cadence": "biweekly", "start_date": "2025-02-01", "end_date": "2025-02-14", "status": "planning", "owner": "scrum.master", "primary_project": "P-SPRINT-TEST-001", "tasks": [], "imported_tasks": [], "related_projects": [], "velocity_target_points": null, "committed_points": null, "actual_points": null, "carried_over_points": null, "definition_of_done": [], "dependencies": [], "scope_changes": [], "risks": [], "ceremonies": {}, "metrics": {}, "timezone": null, "observability": {}}, "event": "service.create.start", "timestamp": "2025-12-29T05:44:31.525559Z", "level": "debug"}
+{"model": "Sprint", "response_id": "S-INT-LIFE-001", "event": "service.create.success", "timestamp": "2025-12-29T05:44:31.535160Z", "level": "debug"}
+{"sprint_id": "S-INT-LIFE-001", "name": "Lifecycle Sprint", "event": "sprint_created", "timestamp": "2025-12-29T05:44:31.535160Z", "level": "info"}
+{"method": "POST", "path": "/api/v1/sprints", "status_code": 201, "duration_ms": 26.6, "correlation_id": "4bce972e-c777-4896-801c-5a47125fae6a", "event": "http_response", "timestamp": "2025-12-29T05:44:31.537165Z", "level": "info"}
+{"method": "GET", "path": "/api/v1/sprints/S-INT-LIFE-001", "query": null, "correlation_id": "f9a9001f-244d-4924-bc47-8d97a13ea0d2", "client_ip": "127.0.0.1", "event": "http_request", "timestamp": "2025-12-29T05:44:31.538160Z", "level": "info"}
+{"sprint_id": "S-INT-LIFE-001", "event": "sprint_retrieved", "timestamp": "2025-12-29T05:44:31.543160Z", "level": "info"}
+{"method": "GET", "path": "/api/v1/sprints/S-INT-LIFE-001", "status_code": 200, "duration_ms": 5.14, "correlation_id": "f9a9001f-244d-4924-bc47-8d97a13ea0d2", "event": "http_response", "timestamp": "2025-12-29T05:44:31.543862Z", "level": "info"}
+{"method": "PUT", "path": "/api/v1/sprints/S-INT-LIFE-001", "query": null, "correlation_id": "ead04554-3d9e-48c8-a9ff-4d136e7a8b6b", "client_ip": "127.0.0.1", "event": "http_request", "timestamp": "2025-12-29T05:44:31.544860Z", "level": "info"}
+{"model": "Sprint", "entity_id": "S-INT-LIFE-001", "event": "service.update.start", "timestamp": "2025-12-29T05:44:31.553861Z", "level": "debug"}
+{"sprint_id": "S-INT-LIFE-001", "event": "sprint_updated", "timestamp": "2025-12-29T05:44:31.557860Z", "level": "info"}
+{"method": "PUT", "path": "/api/v1/sprints/S-INT-LIFE-001", "status_code": 200, "duration_ms": 14.26, "correlation_id": "ead04554-3d9e-48c8-a9ff-4d136e7a8b6b", "event": "http_response", "timestamp": "2025-12-29T05:44:31.558861Z", "level": "info"}
+{"method": "GET", "path": "/api/v1/sprints/S-INT-LIFE-001", "query": null, "correlation_id": "d44db77e-7147-47a2-b305-9461b5e7c675", "client_ip": "127.0.0.1", "event": "http_request", "timestamp": "2025-12-29T05:44:31.559861Z", "level": "info"}
+{"sprint_id": "S-INT-LIFE-001", "event": "sprint_retrieved", "timestamp": "2025-12-29T05:44:31.561860Z", "level": "info"}
+{"method": "GET", "path": "/api/v1/sprints/S-INT-LIFE-001", "status_code": 200, "duration_ms": 2.46, "correlation_id": "d44db77e-7147-47a2-b305-9461b5e7c675", "event": "http_response", "timestamp": "2025-12-29T05:44:31.561860Z", "level": "info"}
+{"method": "DELETE", "path": "/api/v1/sprints/S-INT-LIFE-001", "query": null, "correlation_id": "bfeed396-374c-4e77-80c3-f21e0497d8de", "client_ip": "127.0.0.1", "event": "http_request", "timestamp": "2025-12-29T05:44:31.562860Z", "level": "info"}
+{"model": "Sprint", "entity_id": "S-INT-LIFE-001", "event": "service.delete.success", "timestamp": "2025-12-29T05:44:31.565860Z", "level": "debug"}
+{"sprint_id": "S-INT-LIFE-001", "event": "sprint_deleted", "timestamp": "2025-12-29T05:44:31.565860Z", "level": "info"}
+{"method": "DELETE", "path": "/api/v1/sprints/S-INT-LIFE-001", "status_code": 204, "duration_ms": 3.2, "correlation_id": "bfeed396-374c-4e77-80c3-f21e0497d8de", "event": "http_response", "timestamp": "2025-12-29T05:44:31.565860Z", "level": "info"}
+{"method": "GET", "path": "/api/v1/sprints/S-INT-LIFE-001", "query": null, "correlation_id": "225b0053-20ce-4bcc-b53b-87ad3233e0e8", "client_ip": "127.0.0.1", "event": "http_request", "timestamp": "2025-12-29T05:44:31.566861Z", "level": "info"}
+{"method": "GET", "path": "/api/v1/sprints/S-INT-LIFE-001", "status_code": 404, "duration_ms": 3.66, "correlation_id": "225b0053-20ce-4bcc-b53b-87ad3233e0e8", "event": "http_response", "timestamp": "2025-12-29T05:44:31.570860Z", "level": "warning"}
+PASSED
+tests/integration/api/test_sprints_api.py::TestSprintIntegration::test_sprint_validation_errors {"method": "POST", "path": "/api/v1/projects", "query": null, "correlation_id": "27bdd477-356c-4e10-8632-84e29a7ffe7b", "client_ip": "127.0.0.1", "event": "http_request", "timestamp": "2025-12-29T05:44:31.608522Z", "level": "info"}
+{"model": "Project", "request_data": {"id": "P-SPRINT-TEST-001", "name": "Sprint Test Project", "mission": "Sprint Test Mission", "status": "active", "start_date": "2025-01-01", "target_end_date": null, "owner": "test.owner", "sponsors": [], "stakeholders": [], "repositories": [], "comms_channels": [], "okrs": [], "kpis": [], "roadmap": [], "risks": [], "assumptions": [], "constraints": [], "dependencies_external": [], "sprints": [], "related_projects": [], "shared_components": [], "security_posture": null, "compliance_requirements": [], "governance": {}, "success_metrics": [], "mpv_policy": {}, "tnve_mandate": false, "evidence_root": null, "observability": {}}, "event": "service.create.start", "timestamp": "2025-12-29T05:44:31.610522Z", "level": "debug"}
+{"model": "Project", "response_id": "P-SPRINT-TEST-001", "event": "service.create.success", "timestamp": "2025-12-29T05:44:31.615521Z", "level": "debug"}
+{"project_id": "P-SPRINT-TEST-001", "name": "Sprint Test Project", "event": "project_created", "timestamp": "2025-12-29T05:44:31.615521Z", "level": "info"}
+{"method": "POST", "path": "/api/v1/projects", "status_code": 201, "duration_ms": 8.02, "correlation_id": "27bdd477-356c-4e10-8632-84e29a7ffe7b", "event": "http_response", "timestamp": "2025-12-29T05:44:31.616522Z", "level": "info"}
+{"method": "POST", "path": "/api/v1/sprints", "query": null, "correlation_id": "40bec3e1-0716-4a24-9501-a997359df85d", "client_ip": "127.0.0.1", "event": "http_request", "timestamp": "2025-12-29T05:44:31.618523Z", "level": "info"}
+{"method": "POST", "path": "/api/v1/sprints", "status_code": 422, "duration_ms": 5.51, "correlation_id": "40bec3e1-0716-4a24-9501-a997359df85d", "event": "http_response", "timestamp": "2025-12-29T05:44:31.623522Z", "level": "warning"}
+{"method": "POST", "path": "/api/v1/sprints", "query": null, "correlation_id": "6428397b-f88a-40cd-9ba3-dc6b61c019e4", "client_ip": "127.0.0.1", "event": "http_request", "timestamp": "2025-12-29T05:44:31.624523Z", "level": "info"}
+{"method": "POST", "path": "/api/v1/sprints", "status_code": 422, "duration_ms": 2.1, "correlation_id": "6428397b-f88a-40cd-9ba3-dc6b61c019e4", "event": "http_response", "timestamp": "2025-12-29T05:44:31.626522Z", "level": "warning"}
+PASSED
+tests/integration/api/test_sprints_api.py::TestSprintIntegration::test_sprint_velocity_calculation {"method": "POST", "path": "/api/v1/projects", "query": null, "correlation_id": "b3b08ea8-74c7-4021-a086-26a5cac3c03d", "client_ip": "127.0.0.1", "event": "http_request", "timestamp": "2025-12-29T05:44:31.654580Z", "level": "info"}
+{"model": "Project", "request_data": {"id": "P-SPRINT-TEST-001", "name": "Sprint Test Project", "mission": "Sprint Test Mission", "status": "active", "start_date": "2025-01-01", "target_end_date": null, "owner": "test.owner", "sponsors": [], "stakeholders": [], "repositories": [], "comms_channels": [], "okrs": [], "kpis": [], "roadmap": [], "risks": [], "assumptions": [], "constraints": [], "dependencies_external": [], "sprints": [], "related_projects": [], "shared_components": [], "security_posture": null, "compliance_requirements": [], "governance": {}, "success_metrics": [], "mpv_policy": {}, "tnve_mandate": false, "evidence_root": null, "observability": {}}, "event": "service.create.start", "timestamp": "2025-12-29T05:44:31.655580Z", "level": "debug"}
+{"model": "Project", "response_id": "P-SPRINT-TEST-001", "event": "service.create.success", "timestamp": "2025-12-29T05:44:31.661089Z", "level": "debug"}
+{"project_id": "P-SPRINT-TEST-001", "name": "Sprint Test Project", "event": "project_created", "timestamp": "2025-12-29T05:44:31.661089Z", "level": "info"}
+{"method": "POST", "path": "/api/v1/projects", "status_code": 201, "duration_ms": 7.27, "correlation_id": "b3b08ea8-74c7-4021-a086-26a5cac3c03d", "event": "http_response", "timestamp": "2025-12-29T05:44:31.661089Z", "level": "info"}
+{"method": "POST", "path": "/api/v1/sprints", "query": null, "correlation_id": "4c926d68-1e68-43a5-9746-0e62b82b78c7", "client_ip": "127.0.0.1", "event": "http_request", "timestamp": "2025-12-29T05:44:31.663089Z", "level": "info"}
+{"model": "Sprint", "request_data": {"id": "S-INT-VELOCITY", "name": "Velocity Sprint", "goal": "Test Velocity", "cadence": "biweekly", "start_date": "2025-02-01", "end_date": "2025-02-14", "status": "planning", "owner": "scrum.master", "primary_project": "P-SPRINT-TEST-001", "tasks": [], "imported_tasks": [], "related_projects": [], "velocity_target_points": null, "committed_points": null, "actual_points": null, "carried_over_points": null, "definition_of_done": [], "dependencies": [], "scope_changes": [], "risks": [], "ceremonies": {}, "metrics": {}, "timezone": null, "observability": {}}, "event": "service.create.start", "timestamp": "2025-12-29T05:44:31.666088Z", "level": "debug"}
+{"model": "Sprint", "response_id": "S-INT-VELOCITY", "event": "service.create.success", "timestamp": "2025-12-29T05:44:31.672152Z", "level": "debug"}
+{"sprint_id": "S-INT-VELOCITY", "name": "Velocity Sprint", "event": "sprint_created", "timestamp": "2025-12-29T05:44:31.672152Z", "level": "info"}
+{"method": "POST", "path": "/api/v1/sprints", "status_code": 201, "duration_ms": 9.86, "correlation_id": "4c926d68-1e68-43a5-9746-0e62b82b78c7", "event": "http_response", "timestamp": "2025-12-29T05:44:31.673153Z", "level": "info"}
+{"method": "POST", "path": "/api/v1/tasks", "query": null, "correlation_id": "e9bd9252-8594-4ffe-b394-9c85abaf8cc5", "client_ip": "127.0.0.1", "event": "http_request", "timestamp": "2025-12-29T05:44:31.673153Z", "level": "info"}
+{"method": "POST", "path": "/api/v1/tasks", "status_code": 422, "duration_ms": 17.61, "correlation_id": "e9bd9252-8594-4ffe-b394-9c85abaf8cc5", "event": "http_response", "timestamp": "2025-12-29T05:44:31.691175Z", "level": "warning"}
+{"method": "POST", "path": "/api/v1/tasks", "query": null, "correlation_id": "c1b267fc-d2ad-4c25-9887-3bb3603db128", "client_ip": "127.0.0.1", "event": "http_request", "timestamp": "2025-12-29T05:44:31.692174Z", "level": "info"}
+{"method": "POST", "path": "/api/v1/tasks", "status_code": 422, "duration_ms": 1.79, "correlation_id": "c1b267fc-d2ad-4c25-9887-3bb3603db128", "event": "http_response", "timestamp": "2025-12-29T05:44:31.694174Z", "level": "warning"}
+{"method": "GET", "path": "/api/v1/sprints/S-INT-VELOCITY/progress", "query": null, "correlation_id": "ac7700ab-5f3b-4a73-a1da-b52856cd7276", "client_ip": "127.0.0.1", "event": "http_request", "timestamp": "2025-12-29T05:44:31.694174Z", "level": "info"}
+{"sprint_id": "S-INT-VELOCITY", "event": "sprint_progress_retrieved", "timestamp": "2025-12-29T05:44:31.702682Z", "level": "info"}
+{"method": "GET", "path": "/api/v1/sprints/S-INT-VELOCITY/progress", "status_code": 200, "duration_ms": 9.41, "correlation_id": "ac7700ab-5f3b-4a73-a1da-b52856cd7276", "event": "http_response", "timestamp": "2025-12-29T05:44:31.703683Z", "level": "info"}
+PASSED
+tests/integration/api/test_tasks_api.py::TestTaskIntegration::test_create_task_full_lifecycle {"method": "POST", "path": "/api/v1/projects", "query": null, "correlation_id": "516d5d35-977a-44ea-a81c-a90b577d2888", "client_ip": "127.0.0.1", "event": "http_request", "timestamp": "2025-12-29T05:44:31.734254Z", "level": "info"}
+{"model": "Project", "request_data": {"id": "P-INT-001", "name": "Integration Project", "mission": "Test Mission", "status": "active", "start_date": "2025-01-01", "target_end_date": null, "owner": "test.owner", "sponsors": [], "stakeholders": [], "repositories": [], "comms_channels": [], "okrs": [], "kpis": [], "roadmap": [], "risks": [], "assumptions": [], "constraints": [], "dependencies_external": [], "sprints": [], "related_projects": [], "shared_components": [], "security_posture": null, "compliance_requirements": [], "governance": {}, "success_metrics": [], "mpv_policy": {}, "tnve_mandate": false, "evidence_root": null, "observability": {}}, "event": "service.create.start", "timestamp": "2025-12-29T05:44:31.736253Z", "level": "debug"}
+{"model": "Project", "response_id": "P-INT-001", "event": "service.create.success", "timestamp": "2025-12-29T05:44:31.743252Z", "level": "debug"}
+{"project_id": "P-INT-001", "name": "Integration Project", "event": "project_created", "timestamp": "2025-12-29T05:44:31.744253Z", "level": "info"}
+{"method": "POST", "path": "/api/v1/projects", "status_code": 201, "duration_ms": 10.38, "correlation_id": "516d5d35-977a-44ea-a81c-a90b577d2888", "event": "http_response", "timestamp": "2025-12-29T05:44:31.744767Z", "level": "info"}
+{"method": "POST", "path": "/api/v1/sprints", "query": null, "correlation_id": "5d01867d-5141-4e2d-a0b7-aa2dd7ad62d3", "client_ip": "127.0.0.1", "event": "http_request", "timestamp": "2025-12-29T05:44:31.745761Z", "level": "info"}
+{"model": "Sprint", "request_data": {"id": "S-INT-001", "name": "Integration Sprint", "goal": "Test Goal", "cadence": "biweekly", "start_date": "2025-01-01", "end_date": "2025-01-14", "status": "active", "owner": "test.owner", "primary_project": "P-INT-001", "tasks": [], "imported_tasks": [], "related_projects": [], "velocity_target_points": null, "committed_points": null, "actual_points": null, "carried_over_points": null, "definition_of_done": [], "dependencies": [], "scope_changes": [], "risks": [], "ceremonies": {}, "metrics": {}, "timezone": null, "observability": {}}, "event": "service.create.start", "timestamp": "2025-12-29T05:44:31.749270Z", "level": "debug"}
+{"model": "Sprint", "response_id": "S-INT-001", "event": "service.create.success", "timestamp": "2025-12-29T05:44:31.756270Z", "level": "debug"}
+{"sprint_id": "S-INT-001", "name": "Integration Sprint", "event": "sprint_created", "timestamp": "2025-12-29T05:44:31.756270Z", "level": "info"}
+{"method": "POST", "path": "/api/v1/sprints", "status_code": 201, "duration_ms": 11.18, "correlation_id": "5d01867d-5141-4e2d-a0b7-aa2dd7ad62d3", "event": "http_response", "timestamp": "2025-12-29T05:44:31.756270Z", "level": "info"}
+{"method": "POST", "path": "/api/v1/tasks", "query": null, "correlation_id": "3cb3f614-5b0a-4f09-b607-a9acbe5b424e", "client_ip": "127.0.0.1", "event": "http_request", "timestamp": "2025-12-29T05:44:31.758270Z", "level": "info"}
+{"model": "Task", "request_data": {"id": "T-INT-LIFE-001", "title": "Lifecycle Task", "summary": "Testing full lifecycle", "description": "Detailed description", "status": "new", "owner": "test.user", "assignees": ["dev.one", "dev.two"], "priority": "p1", "severity": null, "primary_project": "P-INT-001", "primary_sprint": "S-INT-001", "related_projects": [], "related_sprints": [], "estimate_points": 5.0, "actual_time_hours": null, "due_at": null, "parents": [], "depends_on": [], "blocks": [], "blockers": [], "acceptance_criteria": [], "definition_of_done": [], "quality_gates": {}, "verification": {}, "actions_taken": [], "labels": ["integration", "test"], "related_links": [], "shape": null, "stage": null, "work_type": null, "work_stream": null, "business_value_score": null, "cost_of_delay_score": null, "automation_candidate": false, "cycle_time_days": null, "risks": [], "observability": {}}, "event": "service.create.start", "timestamp": "2025-12-29T05:44:31.762271Z", "level": "debug"}
+{"model": "Task", "response_id": "T-INT-LIFE-001", "event": "service.create.success", "timestamp": "2025-12-29T05:44:31.769271Z", "level": "debug"}
+{"task_id": "T-INT-LIFE-001", "title": "Lifecycle Task", "event": "task_created", "timestamp": "2025-12-29T05:44:31.769271Z", "level": "info"}
+{"method": "POST", "path": "/api/v1/tasks", "status_code": 201, "duration_ms": 11.71, "correlation_id": "3cb3f614-5b0a-4f09-b607-a9acbe5b424e", "event": "http_response", "timestamp": "2025-12-29T05:44:31.770271Z", "level": "info"}
+{"method": "GET", "path": "/api/v1/tasks/T-INT-LIFE-001", "query": null, "correlation_id": "b468ef0f-b43d-4c2d-8865-da70fa738b31", "client_ip": "127.0.0.1", "event": "http_request", "timestamp": "2025-12-29T05:44:31.770271Z", "level": "info"}
+{"task_id": "T-INT-LIFE-001", "event": "task_retrieved", "timestamp": "2025-12-29T05:44:31.773271Z", "level": "info"}
+{"method": "GET", "path": "/api/v1/tasks/T-INT-LIFE-001", "status_code": 200, "duration_ms": 3.48, "correlation_id": "b468ef0f-b43d-4c2d-8865-da70fa738b31", "event": "http_response", "timestamp": "2025-12-29T05:44:31.774271Z", "level": "info"}
+{"method": "PATCH", "path": "/api/v1/tasks/T-INT-LIFE-001", "query": null, "correlation_id": "7c1eed97-f0b6-4aef-84b6-bfc68be20203", "client_ip": "127.0.0.1", "event": "http_request", "timestamp": "2025-12-29T05:44:31.775272Z", "level": "info"}
+{"model": "Task", "entity_id": "T-INT-LIFE-001", "event": "service.update.start", "timestamp": "2025-12-29T05:44:31.786454Z", "level": "debug"}
+{"task_id": "T-INT-LIFE-001", "event": "task_updated", "timestamp": "2025-12-29T05:44:31.790449Z", "level": "info"}
+{"method": "PATCH", "path": "/api/v1/tasks/T-INT-LIFE-001", "status_code": 200, "duration_ms": 16.78, "correlation_id": "7c1eed97-f0b6-4aef-84b6-bfc68be20203", "event": "http_response", "timestamp": "2025-12-29T05:44:31.791449Z", "level": "info"}
+{"method": "GET", "path": "/api/v1/tasks/T-INT-LIFE-001", "query": null, "correlation_id": "ffb55036-16bb-47fd-877f-a2fbb7772f75", "client_ip": "127.0.0.1", "event": "http_request", "timestamp": "2025-12-29T05:44:31.792450Z", "level": "info"}
+{"task_id": "T-INT-LIFE-001", "event": "task_retrieved", "timestamp": "2025-12-29T05:44:31.794449Z", "level": "info"}
+{"method": "GET", "path": "/api/v1/tasks/T-INT-LIFE-001", "status_code": 200, "duration_ms": 2.35, "correlation_id": "ffb55036-16bb-47fd-877f-a2fbb7772f75", "event": "http_response", "timestamp": "2025-12-29T05:44:31.794449Z", "level": "info"}
+{"method": "DELETE", "path": "/api/v1/tasks/T-INT-LIFE-001", "query": null, "correlation_id": "5274c1d6-dee3-4e5d-87ae-229fa17f17b3", "client_ip": "127.0.0.1", "event": "http_request", "timestamp": "2025-12-29T05:44:31.795450Z", "level": "info"}
+{"model": "Task", "entity_id": "T-INT-LIFE-001", "event": "service.delete.success", "timestamp": "2025-12-29T05:44:31.798449Z", "level": "debug"}
+{"task_id": "T-INT-LIFE-001", "event": "task_deleted", "timestamp": "2025-12-29T05:44:31.798449Z", "level": "info"}
+{"method": "DELETE", "path": "/api/v1/tasks/T-INT-LIFE-001", "status_code": 204, "duration_ms": 3.04, "correlation_id": "5274c1d6-dee3-4e5d-87ae-229fa17f17b3", "event": "http_response", "timestamp": "2025-12-29T05:44:31.798449Z", "level": "info"}
+{"method": "GET", "path": "/api/v1/tasks/T-INT-LIFE-001", "query": null, "correlation_id": "1ea2b160-f1d7-4929-8b53-aed36f4afef4", "client_ip": "127.0.0.1", "event": "http_request", "timestamp": "2025-12-29T05:44:31.799449Z", "level": "info"}
+{"method": "GET", "path": "/api/v1/tasks/T-INT-LIFE-001", "status_code": 404, "duration_ms": 2.76, "correlation_id": "1ea2b160-f1d7-4929-8b53-aed36f4afef4", "event": "http_response", "timestamp": "2025-12-29T05:44:31.801451Z", "level": "warning"}
+PASSED
+tests/integration/api/test_tasks_api.py::TestTaskIntegration::test_task_validation_errors {"method": "POST", "path": "/api/v1/projects", "query": null, "correlation_id": "60adfd0f-0957-4be3-8985-b578a0d07508", "client_ip": "127.0.0.1", "event": "http_request", "timestamp": "2025-12-29T05:44:31.831596Z", "level": "info"}
+{"model": "Project", "request_data": {"id": "P-INT-001", "name": "Integration Project", "mission": "Test Mission", "status": "active", "start_date": "2025-01-01", "target_end_date": null, "owner": "test.owner", "sponsors": [], "stakeholders": [], "repositories": [], "comms_channels": [], "okrs": [], "kpis": [], "roadmap": [], "risks": [], "assumptions": [], "constraints": [], "dependencies_external": [], "sprints": [], "related_projects": [], "shared_components": [], "security_posture": null, "compliance_requirements": [], "governance": {}, "success_metrics": [], "mpv_policy": {}, "tnve_mandate": false, "evidence_root": null, "observability": {}}, "event": "service.create.start", "timestamp": "2025-12-29T05:44:31.835108Z", "level": "debug"}
+{"model": "Project", "response_id": "P-INT-001", "event": "service.create.success", "timestamp": "2025-12-29T05:44:31.841824Z", "level": "debug"}
+{"project_id": "P-INT-001", "name": "Integration Project", "event": "project_created", "timestamp": "2025-12-29T05:44:31.841824Z", "level": "info"}
+{"method": "POST", "path": "/api/v1/projects", "status_code": 201, "duration_ms": 11.01, "correlation_id": "60adfd0f-0957-4be3-8985-b578a0d07508", "event": "http_response", "timestamp": "2025-12-29T05:44:31.842823Z", "level": "info"}
+{"method": "POST", "path": "/api/v1/sprints", "query": null, "correlation_id": "1566577f-38aa-4456-8be9-0ab733d7ea41", "client_ip": "127.0.0.1", "event": "http_request", "timestamp": "2025-12-29T05:44:31.843333Z", "level": "info"}
+{"model": "Sprint", "request_data": {"id": "S-INT-001", "name": "Integration Sprint", "goal": "Test Goal", "cadence": "biweekly", "start_date": "2025-01-01", "end_date": "2025-01-14", "status": "active", "owner": "test.owner", "primary_project": "P-INT-001", "tasks": [], "imported_tasks": [], "related_projects": [], "velocity_target_points": null, "committed_points": null, "actual_points": null, "carried_over_points": null, "definition_of_done": [], "dependencies": [], "scope_changes": [], "risks": [], "ceremonies": {}, "metrics": {}, "timezone": null, "observability": {}}, "event": "service.create.start", "timestamp": "2025-12-29T05:44:31.846332Z", "level": "debug"}
+{"model": "Sprint", "response_id": "S-INT-001", "event": "service.create.success", "timestamp": "2025-12-29T05:44:31.853333Z", "level": "debug"}
+{"sprint_id": "S-INT-001", "name": "Integration Sprint", "event": "sprint_created", "timestamp": "2025-12-29T05:44:31.854333Z", "level": "info"}
+{"method": "POST", "path": "/api/v1/sprints", "status_code": 201, "duration_ms": 11.79, "correlation_id": "1566577f-38aa-4456-8be9-0ab733d7ea41", "event": "http_response", "timestamp": "2025-12-29T05:44:31.855333Z", "level": "info"}
+{"method": "POST", "path": "/api/v1/tasks", "query": null, "correlation_id": "571815ed-47c2-4674-831e-5fb688eb4093", "client_ip": "127.0.0.1", "event": "http_request", "timestamp": "2025-12-29T05:44:31.856333Z", "level": "info"}
+{"method": "POST", "path": "/api/v1/tasks", "status_code": 422, "duration_ms": 2.5, "correlation_id": "571815ed-47c2-4674-831e-5fb688eb4093", "event": "http_response", "timestamp": "2025-12-29T05:44:31.859333Z", "level": "warning"}
+{"method": "POST", "path": "/api/v1/tasks", "query": null, "correlation_id": "8467d560-394d-4c50-a835-da107490eb71", "client_ip": "127.0.0.1", "event": "http_request", "timestamp": "2025-12-29T05:44:31.860333Z", "level": "info"}
+{"method": "POST", "path": "/api/v1/tasks", "status_code": 422, "duration_ms": 1.54, "correlation_id": "8467d560-394d-4c50-a835-da107490eb71", "event": "http_response", "timestamp": "2025-12-29T05:44:31.861332Z", "level": "warning"}
+{"method": "POST", "path": "/api/v1/tasks", "query": null, "correlation_id": "9ee53dff-560f-47fd-9b5b-e7f74c17ff13", "client_ip": "127.0.0.1", "event": "http_request", "timestamp": "2025-12-29T05:44:31.862332Z", "level": "info"}
+{"method": "POST", "path": "/api/v1/tasks", "status_code": 422, "duration_ms": 1.56, "correlation_id": "9ee53dff-560f-47fd-9b5b-e7f74c17ff13", "event": "http_response", "timestamp": "2025-12-29T05:44:31.863333Z", "level": "warning"}
+PASSED
+tests/integration/api/test_tasks_api.py::TestTaskIntegration::test_list_tasks_pagination_and_filtering {"method": "POST", "path": "/api/v1/projects", "query": null, "correlation_id": "1938f9ea-5f73-428d-9683-a26d1887d291", "client_ip": "127.0.0.1", "event": "http_request", "timestamp": "2025-12-29T05:44:31.895170Z", "level": "info"}
+{"model": "Project", "request_data": {"id": "P-INT-001", "name": "Integration Project", "mission": "Test Mission", "status": "active", "start_date": "2025-01-01", "target_end_date": null, "owner": "test.owner", "sponsors": [], "stakeholders": [], "repositories": [], "comms_channels": [], "okrs": [], "kpis": [], "roadmap": [], "risks": [], "assumptions": [], "constraints": [], "dependencies_external": [], "sprints": [], "related_projects": [], "shared_components": [], "security_posture": null, "compliance_requirements": [], "governance": {}, "success_metrics": [], "mpv_policy": {}, "tnve_mandate": false, "evidence_root": null, "observability": {}}, "event": "service.create.start", "timestamp": "2025-12-29T05:44:31.897170Z", "level": "debug"}
+{"model": "Project", "response_id": "P-INT-001", "event": "service.create.success", "timestamp": "2025-12-29T05:44:31.911523Z", "level": "debug"}
+{"project_id": "P-INT-001", "name": "Integration Project", "event": "project_created", "timestamp": "2025-12-29T05:44:31.911523Z", "level": "info"}
+{"method": "POST", "path": "/api/v1/projects", "status_code": 201, "duration_ms": 17.57, "correlation_id": "1938f9ea-5f73-428d-9683-a26d1887d291", "event": "http_response", "timestamp": "2025-12-29T05:44:31.912523Z", "level": "info"}
+{"method": "POST", "path": "/api/v1/sprints", "query": null, "correlation_id": "de7922b6-6561-4c0c-90f8-074c8326795d", "client_ip": "127.0.0.1", "event": "http_request", "timestamp": "2025-12-29T05:44:31.914035Z", "level": "info"}
+{"model": "Sprint", "request_data": {"id": "S-INT-001", "name": "Integration Sprint", "goal": "Test Goal", "cadence": "biweekly", "start_date": "2025-01-01", "end_date": "2025-01-14", "status": "active", "owner": "test.owner", "primary_project": "P-INT-001", "tasks": [], "imported_tasks": [], "related_projects": [], "velocity_target_points": null, "committed_points": null, "actual_points": null, "carried_over_points": null, "definition_of_done": [], "dependencies": [], "scope_changes": [], "risks": [], "ceremonies": {}, "metrics": {}, "timezone": null, "observability": {}}, "event": "service.create.start", "timestamp": "2025-12-29T05:44:31.920036Z", "level": "debug"}
+{"model": "Sprint", "response_id": "S-INT-001", "event": "service.create.success", "timestamp": "2025-12-29T05:44:31.928618Z", "level": "debug"}
+{"sprint_id": "S-INT-001", "name": "Integration Sprint", "event": "sprint_created", "timestamp": "2025-12-29T05:44:31.928618Z", "level": "info"}
+{"method": "POST", "path": "/api/v1/sprints", "status_code": 201, "duration_ms": 15.96, "correlation_id": "de7922b6-6561-4c0c-90f8-074c8326795d", "event": "http_response", "timestamp": "2025-12-29T05:44:31.929584Z", "level": "info"}
+{"method": "POST", "path": "/api/v1/tasks", "query": null, "correlation_id": "af17d87b-c2f0-4cfb-9bf3-074a3beb1ca6", "client_ip": "127.0.0.1", "event": "http_request", "timestamp": "2025-12-29T05:44:31.931130Z", "level": "info"}
+{"model": "Task", "request_data": {"id": "T-INT-LIST-0", "title": "Task 0", "summary": "Summary 0", "description": "Desc", "status": "new", "owner": "owner.1", "assignees": [], "priority": "p1", "severity": null, "primary_project": "P-INT-001", "primary_sprint": "S-INT-001", "related_projects": [], "related_sprints": [], "estimate_points": null, "actual_time_hours": null, "due_at": null, "parents": [], "depends_on": [], "blocks": [], "blockers": [], "acceptance_criteria": [], "definition_of_done": [], "quality_gates": {}, "verification": {}, "actions_taken": [], "labels": [], "related_links": [], "shape": null, "stage": null, "work_type": null, "work_stream": null, "business_value_score": null, "cost_of_delay_score": null, "automation_candidate": false, "cycle_time_days": null, "risks": [], "observability": {}}, "event": "service.create.start", "timestamp": "2025-12-29T05:44:31.937095Z", "level": "debug"}
+{"model": "Task", "response_id": "T-INT-LIST-0", "event": "service.create.success", "timestamp": "2025-12-29T05:44:31.943094Z", "level": "debug"}
+{"task_id": "T-INT-LIST-0", "title": "Task 0", "event": "task_created", "timestamp": "2025-12-29T05:44:31.944094Z", "level": "info"}
+{"method": "POST", "path": "/api/v1/tasks", "status_code": 201, "duration_ms": 12.82, "correlation_id": "af17d87b-c2f0-4cfb-9bf3-074a3beb1ca6", "event": "http_response", "timestamp": "2025-12-29T05:44:31.944094Z", "level": "info"}
+{"method": "POST", "path": "/api/v1/tasks", "query": null, "correlation_id": "a6b41424-04f0-4643-aa2a-41983731a8aa", "client_ip": "127.0.0.1", "event": "http_request", "timestamp": "2025-12-29T05:44:31.945095Z", "level": "info"}
+{"model": "Task", "request_data": {"id": "T-INT-LIST-1", "title": "Task 1", "summary": "Summary 1", "description": "Desc", "status": "new", "owner": "owner.1", "assignees": [], "priority": "p2", "severity": null, "primary_project": "P-INT-001", "primary_sprint": "S-INT-001", "related_projects": [], "related_sprints": [], "estimate_points": null, "actual_time_hours": null, "due_at": null, "parents": [], "depends_on": [], "blocks": [], "blockers": [], "acceptance_criteria": [], "definition_of_done": [], "quality_gates": {}, "verification": {}, "actions_taken": [], "labels": [], "related_links": [], "shape": null, "stage": null, "work_type": null, "work_stream": null, "business_value_score": null, "cost_of_delay_score": null, "automation_candidate": false, "cycle_time_days": null, "risks": [], "observability": {}}, "event": "service.create.start", "timestamp": "2025-12-29T05:44:31.949094Z", "level": "debug"}
+{"model": "Task", "response_id": "T-INT-LIST-1", "event": "service.create.success", "timestamp": "2025-12-29T05:44:31.954095Z", "level": "debug"}
+{"task_id": "T-INT-LIST-1", "title": "Task 1", "event": "task_created", "timestamp": "2025-12-29T05:44:31.954095Z", "level": "info"}
+{"method": "POST", "path": "/api/v1/tasks", "status_code": 201, "duration_ms": 10.17, "correlation_id": "a6b41424-04f0-4643-aa2a-41983731a8aa", "event": "http_response", "timestamp": "2025-12-29T05:44:31.955096Z", "level": "info"}
+{"method": "POST", "path": "/api/v1/tasks", "query": null, "correlation_id": "bd629175-3317-4c28-99e2-85bf4701d67d", "client_ip": "127.0.0.1", "event": "http_request", "timestamp": "2025-12-29T05:44:31.956096Z", "level": "info"}
+{"model": "Task", "request_data": {"id": "T-INT-LIST-2", "title": "Task 2", "summary": "Summary 2", "description": "Desc", "status": "new", "owner": "owner.2", "assignees": [], "priority": "p1", "severity": null, "primary_project": "P-INT-001", "primary_sprint": "S-INT-001", "related_projects": [], "related_sprints": [], "estimate_points": null, "actual_time_hours": null, "due_at": null, "parents": [], "depends_on": [], "blocks": [], "blockers": [], "acceptance_criteria": [], "definition_of_done": [], "quality_gates": {}, "verification": {}, "actions_taken": [], "labels": [], "related_links": [], "shape": null, "stage": null, "work_type": null, "work_stream": null, "business_value_score": null, "cost_of_delay_score": null, "automation_candidate": false, "cycle_time_days": null, "risks": [], "observability": {}}, "event": "service.create.start", "timestamp": "2025-12-29T05:44:31.959095Z", "level": "debug"}
+{"model": "Task", "response_id": "T-INT-LIST-2", "event": "service.create.success", "timestamp": "2025-12-29T05:44:31.962096Z", "level": "debug"}
+{"task_id": "T-INT-LIST-2", "title": "Task 2", "event": "task_created", "timestamp": "2025-12-29T05:44:31.962096Z", "level": "info"}
+{"method": "POST", "path": "/api/v1/tasks", "status_code": 201, "duration_ms": 6.53, "correlation_id": "bd629175-3317-4c28-99e2-85bf4701d67d", "event": "http_response", "timestamp": "2025-12-29T05:44:31.963095Z", "level": "info"}
+{"method": "POST", "path": "/api/v1/tasks", "query": null, "correlation_id": "22662a23-2617-495a-b32e-b459188feaed", "client_ip": "127.0.0.1", "event": "http_request", "timestamp": "2025-12-29T05:44:31.963609Z", "level": "info"}
+{"model": "Task", "request_data": {"id": "T-INT-LIST-3", "title": "Task 3", "summary": "Summary 3", "description": "Desc", "status": "done", "owner": "owner.2", "assignees": [], "priority": "p2", "severity": null, "primary_project": "P-INT-001", "primary_sprint": "S-INT-001", "related_projects": [], "related_sprints": [], "estimate_points": null, "actual_time_hours": null, "due_at": null, "parents": [], "depends_on": [], "blocks": [], "blockers": [], "acceptance_criteria": [], "definition_of_done": [], "quality_gates": {}, "verification": {}, "actions_taken": [], "labels": [], "related_links": [], "shape": null, "stage": null, "work_type": null, "work_stream": null, "business_value_score": null, "cost_of_delay_score": null, "automation_candidate": false, "cycle_time_days": null, "risks": [], "observability": {}}, "event": "service.create.start", "timestamp": "2025-12-29T05:44:31.966607Z", "level": "debug"}
+{"model": "Task", "response_id": "T-INT-LIST-3", "event": "service.create.success", "timestamp": "2025-12-29T05:44:31.970608Z", "level": "debug"}
+{"task_id": "T-INT-LIST-3", "title": "Task 3", "event": "task_created", "timestamp": "2025-12-29T05:44:31.970608Z", "level": "info"}
+{"method": "POST", "path": "/api/v1/tasks", "status_code": 201, "duration_ms": 8.26, "correlation_id": "22662a23-2617-495a-b32e-b459188feaed", "event": "http_response", "timestamp": "2025-12-29T05:44:31.971608Z", "level": "info"}
+{"method": "POST", "path": "/api/v1/tasks", "query": null, "correlation_id": "a9f99899-05c6-4bb4-a463-704a2073031a", "client_ip": "127.0.0.1", "event": "http_request", "timestamp": "2025-12-29T05:44:31.972607Z", "level": "info"}
+{"model": "Task", "request_data": {"id": "T-INT-LIST-4", "title": "Task 4", "summary": "Summary 4", "description": "Desc", "status": "done", "owner": "owner.2", "assignees": [], "priority": "p1", "severity": null, "primary_project": "P-INT-001", "primary_sprint": "S-INT-001", "related_projects": [], "related_sprints": [], "estimate_points": null, "actual_time_hours": null, "due_at": null, "parents": [], "depends_on": [], "blocks": [], "blockers": [], "acceptance_criteria": [], "definition_of_done": [], "quality_gates": {}, "verification": {}, "actions_taken": [], "labels": [], "related_links": [], "shape": null, "stage": null, "work_type": null, "work_stream": null, "business_value_score": null, "cost_of_delay_score": null, "automation_candidate": false, "cycle_time_days": null, "risks": [], "observability": {}}, "event": "service.create.start", "timestamp": "2025-12-29T05:44:31.976609Z", "level": "debug"}
+{"model": "Task", "response_id": "T-INT-LIST-4", "event": "service.create.success", "timestamp": "2025-12-29T05:44:31.980607Z", "level": "debug"}
+{"task_id": "T-INT-LIST-4", "title": "Task 4", "event": "task_created", "timestamp": "2025-12-29T05:44:31.980607Z", "level": "info"}
+{"method": "POST", "path": "/api/v1/tasks", "status_code": 201, "duration_ms": 8.94, "correlation_id": "a9f99899-05c6-4bb4-a463-704a2073031a", "event": "http_response", "timestamp": "2025-12-29T05:44:31.981608Z", "level": "info"}
+{"method": "GET", "path": "/api/v1/tasks", "query": "per_page=2&page=1", "correlation_id": "db8d519b-5d34-4753-b136-01a8ddfc0890", "client_ip": "127.0.0.1", "event": "http_request", "timestamp": "2025-12-29T05:44:31.982607Z", "level": "info"}
+{"count": 2, "total": 5, "page": 1, "event": "tasks_listed", "timestamp": "2025-12-29T05:44:31.990607Z", "level": "info"}
+{"method": "GET", "path": "/api/v1/tasks", "status_code": 200, "duration_ms": 8.81, "correlation_id": "db8d519b-5d34-4753-b136-01a8ddfc0890", "event": "http_response", "timestamp": "2025-12-29T05:44:31.991608Z", "level": "info"}
+{"method": "GET", "path": "/api/v1/tasks", "query": "status=done", "correlation_id": "d7ffde97-2ce7-447a-a420-3a9fc8b2d9d2", "client_ip": "127.0.0.1", "event": "http_request", "timestamp": "2025-12-29T05:44:31.991608Z", "level": "info"}
+{"count": 2, "total": 2, "page": 1, "event": "tasks_listed", "timestamp": "2025-12-29T05:44:31.997607Z", "level": "info"}
+{"method": "GET", "path": "/api/v1/tasks", "status_code": 200, "duration_ms": 6.37, "correlation_id": "d7ffde97-2ce7-447a-a420-3a9fc8b2d9d2", "event": "http_response", "timestamp": "2025-12-29T05:44:31.998609Z", "level": "info"}
+{"method": "GET", "path": "/api/v1/tasks", "query": "priority=p2", "correlation_id": "c9a7641d-9a97-4093-a020-dd4dd8c5ea5a", "client_ip": "127.0.0.1", "event": "http_request", "timestamp": "2025-12-29T05:44:31.999607Z", "level": "info"}
+{"count": 2, "total": 2, "page": 1, "event": "tasks_listed", "timestamp": "2025-12-29T05:44:32.006662Z", "level": "info"}
+{"method": "GET", "path": "/api/v1/tasks", "status_code": 200, "duration_ms": 8.31, "correlation_id": "c9a7641d-9a97-4093-a020-dd4dd8c5ea5a", "event": "http_response", "timestamp": "2025-12-29T05:44:32.007174Z", "level": "info"}
+{"method": "GET", "path": "/api/v1/tasks", "query": "owner=owner.1", "correlation_id": "ad28d0fb-5588-49f9-b4c5-b44988401f35", "client_ip": "127.0.0.1", "event": "http_request", "timestamp": "2025-12-29T05:44:32.008173Z", "level": "info"}
+{"count": 2, "total": 2, "page": 1, "event": "tasks_listed", "timestamp": "2025-12-29T05:44:32.014172Z", "level": "info"}
+{"method": "GET", "path": "/api/v1/tasks", "status_code": 200, "duration_ms": 6.53, "correlation_id": "ad28d0fb-5588-49f9-b4c5-b44988401f35", "event": "http_response", "timestamp": "2025-12-29T05:44:32.015172Z", "level": "info"}
+PASSED
+tests/integration/api/test_tasks_api.py::TestTaskIntegration::test_duplicate_task_id {"method": "POST", "path": "/api/v1/projects", "query": null, "correlation_id": "9fe6d97f-eb59-4cd0-b020-de0a5d685f9b", "client_ip": "127.0.0.1", "event": "http_request", "timestamp": "2025-12-29T05:44:32.042853Z", "level": "info"}
+{"model": "Project", "request_data": {"id": "P-INT-001", "name": "Integration Project", "mission": "Test Mission", "status": "active", "start_date": "2025-01-01", "target_end_date": null, "owner": "test.owner", "sponsors": [], "stakeholders": [], "repositories": [], "comms_channels": [], "okrs": [], "kpis": [], "roadmap": [], "risks": [], "assumptions": [], "constraints": [], "dependencies_external": [], "sprints": [], "related_projects": [], "shared_components": [], "security_posture": null, "compliance_requirements": [], "governance": {}, "success_metrics": [], "mpv_policy": {}, "tnve_mandate": false, "evidence_root": null, "observability": {}}, "event": "service.create.start", "timestamp": "2025-12-29T05:44:32.043853Z", "level": "debug"}
+{"model": "Project", "response_id": "P-INT-001", "event": "service.create.success", "timestamp": "2025-12-29T05:44:32.049852Z", "level": "debug"}
+{"project_id": "P-INT-001", "name": "Integration Project", "event": "project_created", "timestamp": "2025-12-29T05:44:32.049852Z", "level": "info"}
+{"method": "POST", "path": "/api/v1/projects", "status_code": 201, "duration_ms": 7.67, "correlation_id": "9fe6d97f-eb59-4cd0-b020-de0a5d685f9b", "event": "http_response", "timestamp": "2025-12-29T05:44:32.049852Z", "level": "info"}
+{"method": "POST", "path": "/api/v1/sprints", "query": null, "correlation_id": "8332363f-c467-4199-8c9b-af069ceaee7d", "client_ip": "127.0.0.1", "event": "http_request", "timestamp": "2025-12-29T05:44:32.051856Z", "level": "info"}
+{"model": "Sprint", "request_data": {"id": "S-INT-001", "name": "Integration Sprint", "goal": "Test Goal", "cadence": "biweekly", "start_date": "2025-01-01", "end_date": "2025-01-14", "status": "active", "owner": "test.owner", "primary_project": "P-INT-001", "tasks": [], "imported_tasks": [], "related_projects": [], "velocity_target_points": null, "committed_points": null, "actual_points": null, "carried_over_points": null, "definition_of_done": [], "dependencies": [], "scope_changes": [], "risks": [], "ceremonies": {}, "metrics": {}, "timezone": null, "observability": {}}, "event": "service.create.start", "timestamp": "2025-12-29T05:44:32.056853Z", "level": "debug"}
+{"model": "Sprint", "response_id": "S-INT-001", "event": "service.create.success", "timestamp": "2025-12-29T05:44:32.061853Z", "level": "debug"}
+{"sprint_id": "S-INT-001", "name": "Integration Sprint", "event": "sprint_created", "timestamp": "2025-12-29T05:44:32.061853Z", "level": "info"}
+{"method": "POST", "path": "/api/v1/sprints", "status_code": 201, "duration_ms": 10.72, "correlation_id": "8332363f-c467-4199-8c9b-af069ceaee7d", "event": "http_response", "timestamp": "2025-12-29T05:44:32.061853Z", "level": "info"}
+{"method": "POST", "path": "/api/v1/tasks", "query": null, "correlation_id": "4e18de90-4c74-4e29-b528-17e60c90dc85", "client_ip": "127.0.0.1", "event": "http_request", "timestamp": "2025-12-29T05:44:32.063872Z", "level": "info"}
+{"model": "Task", "request_data": {"id": "T-INT-DUP-001", "title": "Original", "summary": "Summary", "description": "Desc", "status": "new", "owner": "owner", "assignees": [], "priority": "p1", "severity": null, "primary_project": "P-INT-001", "primary_sprint": "S-INT-001", "related_projects": [], "related_sprints": [], "estimate_points": null, "actual_time_hours": null, "due_at": null, "parents": [], "depends_on": [], "blocks": [], "blockers": [], "acceptance_criteria": [], "definition_of_done": [], "quality_gates": {}, "verification": {}, "actions_taken": [], "labels": [], "related_links": [], "shape": null, "stage": null, "work_type": null, "work_stream": null, "business_value_score": null, "cost_of_delay_score": null, "automation_candidate": false, "cycle_time_days": null, "risks": [], "observability": {}}, "event": "service.create.start", "timestamp": "2025-12-29T05:44:32.069999Z", "level": "debug"}
+{"model": "Task", "response_id": "T-INT-DUP-001", "event": "service.create.success", "timestamp": "2025-12-29T05:44:32.076998Z", "level": "debug"}
+{"task_id": "T-INT-DUP-001", "title": "Original", "event": "task_created", "timestamp": "2025-12-29T05:44:32.076998Z", "level": "info"}
+{"method": "POST", "path": "/api/v1/tasks", "status_code": 201, "duration_ms": 13.87, "correlation_id": "4e18de90-4c74-4e29-b528-17e60c90dc85", "event": "http_response", "timestamp": "2025-12-29T05:44:32.077999Z", "level": "info"}
+{"method": "POST", "path": "/api/v1/tasks", "query": null, "correlation_id": "22a20e5e-1035-4b70-871f-fd836809366d", "client_ip": "127.0.0.1", "event": "http_request", "timestamp": "2025-12-29T05:44:32.078514Z", "level": "info"}
+{"model": "Task", "request_data": {"id": "T-INT-DUP-001", "title": "Original", "summary": "Summary", "description": "Desc", "status": "new", "owner": "owner", "assignees": [], "priority": "p1", "severity": null, "primary_project": "P-INT-001", "primary_sprint": "S-INT-001", "related_projects": [], "related_sprints": [], "estimate_points": null, "actual_time_hours": null, "due_at": null, "parents": [], "depends_on": [], "blocks": [], "blockers": [], "acceptance_criteria": [], "definition_of_done": [], "quality_gates": {}, "verification": {}, "actions_taken": [], "labels": [], "related_links": [], "shape": null, "stage": null, "work_type": null, "work_stream": null, "business_value_score": null, "cost_of_delay_score": null, "automation_candidate": false, "cycle_time_days": null, "risks": [], "observability": {}}, "event": "service.create.start", "timestamp": "2025-12-29T05:44:32.082535Z", "level": "debug"}
+{"method": "POST", "path": "/api/v1/tasks", "status_code": 409, "duration_ms": 7.34, "correlation_id": "22a20e5e-1035-4b70-871f-fd836809366d", "event": "http_response", "timestamp": "2025-12-29T05:44:32.086189Z", "level": "warning"}
+PASSED
+tests/integration/services/test_cross_service_ops.py::test_full_workflow_simulation {"model": "Project", "request_data": {"id": "P-FULL-001", "name": "Full Workflow Project", "mission": "Testing full workflow", "status": "planning", "start_date": "2025-01-01", "target_end_date": null, "owner": "tester", "sponsors": [], "stakeholders": [], "repositories": [], "comms_channels": [], "okrs": [], "kpis": [], "roadmap": [], "risks": [], "assumptions": [], "constraints": [], "dependencies_external": [], "sprints": [], "related_projects": [], "shared_components": [], "security_posture": null, "compliance_requirements": [], "governance": {}, "success_metrics": [], "mpv_policy": {}, "tnve_mandate": false, "evidence_root": null, "observability": {}}, "event": "service.create.start", "timestamp": "2025-12-29T05:44:32.115676Z", "level": "debug"}
+{"model": "Project", "response_id": "P-FULL-001", "event": "service.create.success", "timestamp": "2025-12-29T05:44:32.123677Z", "level": "debug"}
+{"model": "Sprint", "request_data": {"id": "S-FULL-001", "name": "Sprint 1", "goal": "Initial Sprint", "cadence": "biweekly", "start_date": "2025-01-01", "end_date": "2025-01-14", "status": "planning", "owner": "tester", "primary_project": "P-FULL-001", "tasks": [], "imported_tasks": [], "related_projects": [], "velocity_target_points": null, "committed_points": null, "actual_points": null, "carried_over_points": null, "definition_of_done": [], "dependencies": [], "scope_changes": [], "risks": [], "ceremonies": {}, "metrics": {}, "timezone": null, "observability": {}}, "event": "service.create.start", "timestamp": "2025-12-29T05:44:32.125676Z", "level": "debug"}
+{"model": "Sprint", "response_id": "S-FULL-001", "event": "service.create.success", "timestamp": "2025-12-29T05:44:32.130677Z", "level": "debug"}
+{"model": "Task", "request_data": {"id": "T-FULL-001", "title": "Task 1", "summary": "Summary 1", "description": "Desc 1", "status": "new", "owner": "tester", "assignees": [], "priority": "p2", "severity": null, "primary_project": "P-FULL-001", "primary_sprint": "S-FULL-001", "related_projects": [], "related_sprints": [], "estimate_points": null, "actual_time_hours": null, "due_at": null, "parents": [], "depends_on": [], "blocks": [], "blockers": [], "acceptance_criteria": [], "definition_of_done": [], "quality_gates": {}, "verification": {}, "actions_taken": [], "labels": [], "related_links": [], "shape": null, "stage": null, "work_type": null, "work_stream": null, "business_value_score": null, "cost_of_delay_score": null, "automation_candidate": false, "cycle_time_days": null, "risks": [], "observability": {}}, "event": "service.create.start", "timestamp": "2025-12-29T05:44:32.133224Z", "level": "debug"}
+{"model": "Task", "response_id": "T-FULL-001", "event": "service.create.success", "timestamp": "2025-12-29T05:44:32.141701Z", "level": "debug"}
+{"model": "Task", "request_data": {"id": "T-FULL-002", "title": "Task 2", "summary": "Summary 2", "description": "Desc 2", "status": "new", "owner": "tester", "assignees": [], "priority": "p2", "severity": null, "primary_project": "P-FULL-001", "primary_sprint": "S-FULL-001", "related_projects": [], "related_sprints": [], "estimate_points": null, "actual_time_hours": null, "due_at": null, "parents": [], "depends_on": [], "blocks": [], "blockers": [], "acceptance_criteria": [], "definition_of_done": [], "quality_gates": {}, "verification": {}, "actions_taken": [], "labels": [], "related_links": [], "shape": null, "stage": null, "work_type": null, "work_stream": null, "business_value_score": null, "cost_of_delay_score": null, "automation_candidate": false, "cycle_time_days": null, "risks": [], "observability": {}}, "event": "service.create.start", "timestamp": "2025-12-29T05:44:32.143211Z", "level": "debug"}
+{"model": "Task", "response_id": "T-FULL-002", "event": "service.create.success", "timestamp": "2025-12-29T05:44:32.145910Z", "level": "debug"}
+{"model": "Task", "entity_id": "T-FULL-001", "event": "service.update.start", "timestamp": "2025-12-29T05:44:32.145910Z", "level": "debug"}
+{"model": "Sprint", "request_data": {"id": "S-FULL-002", "name": "Sprint 2", "goal": "Next Sprint", "cadence": "biweekly", "start_date": "2025-01-15", "end_date": "2025-01-28", "status": "planning", "owner": "tester", "primary_project": "P-FULL-001", "tasks": [], "imported_tasks": [], "related_projects": [], "velocity_target_points": null, "committed_points": null, "actual_points": null, "carried_over_points": null, "definition_of_done": [], "dependencies": [], "scope_changes": [], "risks": [], "ceremonies": {}, "metrics": {}, "timezone": null, "observability": {}}, "event": "service.create.start", "timestamp": "2025-12-29T05:44:32.153910Z", "level": "debug"}
+{"model": "Sprint", "response_id": "S-FULL-002", "event": "service.create.success", "timestamp": "2025-12-29T05:44:32.156909Z", "level": "debug"}
+{"model": "Task", "entity_id": "T-FULL-002", "event": "service.update.start", "timestamp": "2025-12-29T05:44:32.157909Z", "level": "debug"}
+PASSED
+tests/integration/services/test_project_sprint_flow.py::test_project_sprint_task_hierarchy {"model": "Project", "request_data": {"id": "P-INTEGRATION-001", "name": "Integration Project", "mission": "Testing hierarchy", "status": "planning", "start_date": "2025-01-01", "target_end_date": null, "owner": "tester", "sponsors": [], "stakeholders": [], "repositories": [], "comms_channels": [], "okrs": [], "kpis": [], "roadmap": [], "risks": [], "assumptions": [], "constraints": [], "dependencies_external": [], "sprints": [], "related_projects": [], "shared_components": [], "security_posture": null, "compliance_requirements": [], "governance": {}, "success_metrics": [], "mpv_policy": {}, "tnve_mandate": false, "evidence_root": null, "observability": {}}, "event": "service.create.start", "timestamp": "2025-12-29T05:44:32.194419Z", "level": "debug"}
+{"model": "Project", "response_id": "P-INTEGRATION-001", "event": "service.create.success", "timestamp": "2025-12-29T05:44:32.200419Z", "level": "debug"}
+{"model": "Sprint", "request_data": {"id": "S-INTEGRATION-001", "name": "Sprint 1", "goal": "First Sprint", "cadence": "biweekly", "start_date": "2025-01-01", "end_date": "2025-01-14", "status": "planning", "owner": "tester", "primary_project": "P-INTEGRATION-001", "tasks": [], "imported_tasks": [], "related_projects": [], "velocity_target_points": null, "committed_points": null, "actual_points": null, "carried_over_points": null, "definition_of_done": [], "dependencies": [], "scope_changes": [], "risks": [], "ceremonies": {}, "metrics": {}, "timezone": null, "observability": {}}, "event": "service.create.start", "timestamp": "2025-12-29T05:44:32.203419Z", "level": "debug"}
+{"model": "Sprint", "response_id": "S-INTEGRATION-001", "event": "service.create.success", "timestamp": "2025-12-29T05:44:32.209061Z", "level": "debug"}
+{"model": "Task", "request_data": {"id": "T-INTEGRATION-001", "title": "Integration Task", "summary": "Test Summary", "description": "Test Description", "status": "new", "owner": "tester", "assignees": [], "priority": "p2", "severity": null, "primary_project": "P-INTEGRATION-001", "primary_sprint": "S-INTEGRATION-001", "related_projects": [], "related_sprints": [], "estimate_points": null, "actual_time_hours": null, "due_at": null, "parents": [], "depends_on": [], "blocks": [], "blockers": [], "acceptance_criteria": [], "definition_of_done": [], "quality_gates": {}, "verification": {}, "actions_taken": [], "labels": [], "related_links": [], "shape": null, "stage": null, "work_type": null, "work_stream": null, "business_value_score": null, "cost_of_delay_score": null, "automation_candidate": false, "cycle_time_days": null, "risks": [], "observability": {}}, "event": "service.create.start", "timestamp": "2025-12-29T05:44:32.212061Z", "level": "debug"}
+{"model": "Task", "response_id": "T-INTEGRATION-001", "event": "service.create.success", "timestamp": "2025-12-29T05:44:32.218062Z", "level": "debug"}
+PASSED
+tests/integration/services/test_project_sprint_flow.py::test_orphan_prevention PASSED
+tests/integration/services/test_task_sprint_flow.py::test_task_movement_between_sprints {"model": "Project", "request_data": {"id": "P-MOVE-001", "name": "Move Project", "mission": "Testing movement", "status": "planning", "start_date": "2025-01-01", "target_end_date": null, "owner": "tester", "sponsors": [], "stakeholders": [], "repositories": [], "comms_channels": [], "okrs": [], "kpis": [], "roadmap": [], "risks": [], "assumptions": [], "constraints": [], "dependencies_external": [], "sprints": [], "related_projects": [], "shared_components": [], "security_posture": null, "compliance_requirements": [], "governance": {}, "success_metrics": [], "mpv_policy": {}, "tnve_mandate": false, "evidence_root": null, "observability": {}}, "event": "service.create.start", "timestamp": "2025-12-29T05:44:32.279487Z", "level": "debug"}
+{"model": "Project", "response_id": "P-MOVE-001", "event": "service.create.success", "timestamp": "2025-12-29T05:44:32.286037Z", "level": "debug"}
+{"model": "Sprint", "request_data": {"id": "S-MOVE-001", "name": "Sprint 1", "goal": "Source Sprint", "cadence": "biweekly", "start_date": "2025-01-01", "end_date": "2025-01-14", "status": "planning", "owner": "tester", "primary_project": "P-MOVE-001", "tasks": [], "imported_tasks": [], "related_projects": [], "velocity_target_points": null, "committed_points": null, "actual_points": null, "carried_over_points": null, "definition_of_done": [], "dependencies": [], "scope_changes": [], "risks": [], "ceremonies": {}, "metrics": {}, "timezone": null, "observability": {}}, "event": "service.create.start", "timestamp": "2025-12-29T05:44:32.289037Z", "level": "debug"}
+{"model": "Sprint", "response_id": "S-MOVE-001", "event": "service.create.success", "timestamp": "2025-12-29T05:44:32.296037Z", "level": "debug"}
+{"model": "Sprint", "request_data": {"id": "S-MOVE-002", "name": "Sprint 2", "goal": "Target Sprint", "cadence": "biweekly", "start_date": "2025-01-15", "end_date": "2025-01-28", "status": "planning", "owner": "tester", "primary_project": "P-MOVE-001", "tasks": [], "imported_tasks": [], "related_projects": [], "velocity_target_points": null, "committed_points": null, "actual_points": null, "carried_over_points": null, "definition_of_done": [], "dependencies": [], "scope_changes": [], "risks": [], "ceremonies": {}, "metrics": {}, "timezone": null, "observability": {}}, "event": "service.create.start", "timestamp": "2025-12-29T05:44:32.297550Z", "level": "debug"}
+{"model": "Sprint", "response_id": "S-MOVE-002", "event": "service.create.success", "timestamp": "2025-12-29T05:44:32.299547Z", "level": "debug"}
+{"model": "Task", "request_data": {"id": "T-MOVE-001", "title": "Moving Task", "summary": "Test Summary", "description": "Test Description", "status": "new", "owner": "tester", "assignees": [], "priority": "p2", "severity": null, "primary_project": "P-MOVE-001", "primary_sprint": "S-MOVE-001", "related_projects": [], "related_sprints": [], "estimate_points": null, "actual_time_hours": null, "due_at": null, "parents": [], "depends_on": [], "blocks": [], "blockers": [], "acceptance_criteria": [], "definition_of_done": [], "quality_gates": {}, "verification": {}, "actions_taken": [], "labels": [], "related_links": [], "shape": null, "stage": null, "work_type": null, "work_stream": null, "business_value_score": null, "cost_of_delay_score": null, "automation_candidate": false, "cycle_time_days": null, "risks": [], "observability": {}}, "event": "service.create.start", "timestamp": "2025-12-29T05:44:32.306547Z", "level": "debug"}
+{"model": "Task", "response_id": "T-MOVE-001", "event": "service.create.success", "timestamp": "2025-12-29T05:44:32.315548Z", "level": "debug"}
+{"model": "Task", "entity_id": "T-MOVE-001", "event": "service.update.start", "timestamp": "2025-12-29T05:44:32.317547Z", "level": "debug"}
+PASSED
+tests/integration/services/test_task_sprint_flow.py::test_sprint_closure_logic {"model": "Project", "request_data": {"id": "P-CLOSE-001", "name": "Closure Project", "mission": "Testing closure", "status": "planning", "start_date": "2025-01-01", "target_end_date": null, "owner": "tester", "sponsors": [], "stakeholders": [], "repositories": [], "comms_channels": [], "okrs": [], "kpis": [], "roadmap": [], "risks": [], "assumptions": [], "constraints": [], "dependencies_external": [], "sprints": [], "related_projects": [], "shared_components": [], "security_posture": null, "compliance_requirements": [], "governance": {}, "success_metrics": [], "mpv_policy": {}, "tnve_mandate": false, "evidence_root": null, "observability": {}}, "event": "service.create.start", "timestamp": "2025-12-29T05:44:32.369549Z", "level": "debug"}
+{"model": "Project", "response_id": "P-CLOSE-001", "event": "service.create.success", "timestamp": "2025-12-29T05:44:32.375547Z", "level": "debug"}
+{"model": "Sprint", "request_data": {"id": "S-CLOSE-001", "name": "Closing Sprint", "goal": "Closing Sprint", "cadence": "biweekly", "start_date": "2025-01-01", "end_date": "2025-01-14", "status": "planning", "owner": "tester", "primary_project": "P-CLOSE-001", "tasks": [], "imported_tasks": [], "related_projects": [], "velocity_target_points": null, "committed_points": null, "actual_points": null, "carried_over_points": null, "definition_of_done": [], "dependencies": [], "scope_changes": [], "risks": [], "ceremonies": {}, "metrics": {}, "timezone": null, "observability": {}}, "event": "service.create.start", "timestamp": "2025-12-29T05:44:32.377548Z", "level": "debug"}
+{"model": "Sprint", "response_id": "S-CLOSE-001", "event": "service.create.success", "timestamp": "2025-12-29T05:44:32.386650Z", "level": "debug"}
+{"model": "Task", "request_data": {"id": "T-DONE-001", "title": "Done Task", "summary": "Done Summary", "description": "Done Description", "status": "done", "owner": "tester", "assignees": [], "priority": "p2", "severity": null, "primary_project": "P-CLOSE-001", "primary_sprint": "S-CLOSE-001", "related_projects": [], "related_sprints": [], "estimate_points": null, "actual_time_hours": null, "due_at": null, "parents": [], "depends_on": [], "blocks": [], "blockers": [], "acceptance_criteria": [], "definition_of_done": [], "quality_gates": {}, "verification": {}, "actions_taken": [], "labels": [], "related_links": [], "shape": null, "stage": null, "work_type": null, "work_stream": null, "business_value_score": null, "cost_of_delay_score": null, "automation_candidate": false, "cycle_time_days": null, "risks": [], "observability": {}}, "event": "service.create.start", "timestamp": "2025-12-29T05:44:32.389649Z", "level": "debug"}
+{"model": "Task", "response_id": "T-DONE-001", "event": "service.create.success", "timestamp": "2025-12-29T05:44:32.396229Z", "level": "debug"}
+{"model": "Task", "request_data": {"id": "T-TODO-001", "title": "Todo Task", "summary": "Todo Summary", "description": "Todo Description", "status": "new", "owner": "tester", "assignees": [], "priority": "p2", "severity": null, "primary_project": "P-CLOSE-001", "primary_sprint": "S-CLOSE-001", "related_projects": [], "related_sprints": [], "estimate_points": null, "actual_time_hours": null, "due_at": null, "parents": [], "depends_on": [], "blocks": [], "blockers": [], "acceptance_criteria": [], "definition_of_done": [], "quality_gates": {}, "verification": {}, "actions_taken": [], "labels": [], "related_links": [], "shape": null, "stage": null, "work_type": null, "work_stream": null, "business_value_score": null, "cost_of_delay_score": null, "automation_candidate": false, "cycle_time_days": null, "risks": [], "observability": {}}, "event": "service.create.start", "timestamp": "2025-12-29T05:44:32.398229Z", "level": "debug"}
+{"model": "Task", "response_id": "T-TODO-001", "event": "service.create.success", "timestamp": "2025-12-29T05:44:32.402232Z", "level": "debug"}
+PASSED
+tests/integration/services/test_task_validation.py::test_create_task_with_invalid_project {"model": "Project", "request_data": {"id": "P-VALID-001", "name": "Valid Project", "mission": "Mission", "status": "planning", "start_date": "2025-01-01", "target_end_date": null, "owner": "tester", "sponsors": [], "stakeholders": [], "repositories": [], "comms_channels": [], "okrs": [], "kpis": [], "roadmap": [], "risks": [], "assumptions": [], "constraints": [], "dependencies_external": [], "sprints": [], "related_projects": [], "shared_components": [], "security_posture": null, "compliance_requirements": [], "governance": {}, "success_metrics": [], "mpv_policy": {}, "tnve_mandate": false, "evidence_root": null, "observability": {}}, "event": "service.create.start", "timestamp": "2025-12-29T05:44:32.433025Z", "level": "debug"}
+{"model": "Project", "response_id": "P-VALID-001", "event": "service.create.success", "timestamp": "2025-12-29T05:44:32.443028Z", "level": "debug"}
+{"model": "Sprint", "request_data": {"id": "S-VALID-001", "name": "Valid Sprint", "goal": "Goal", "cadence": "biweekly", "start_date": "2025-01-01", "end_date": "2025-01-14", "status": "planning", "owner": "tester", "primary_project": "P-VALID-001", "tasks": [], "imported_tasks": [], "related_projects": [], "velocity_target_points": null, "committed_points": null, "actual_points": null, "carried_over_points": null, "definition_of_done": [], "dependencies": [], "scope_changes": [], "risks": [], "ceremonies": {}, "metrics": {}, "timezone": null, "observability": {}}, "event": "service.create.start", "timestamp": "2025-12-29T05:44:32.446026Z", "level": "debug"}
+{"model": "Sprint", "response_id": "S-VALID-001", "event": "service.create.success", "timestamp": "2025-12-29T05:44:32.453029Z", "level": "debug"}
+PASSED
+tests/integration/services/test_task_validation.py::test_create_task_with_invalid_sprint {"model": "Project", "request_data": {"id": "P-VALID-002", "name": "Valid Project 2", "mission": "Mission", "status": "planning", "start_date": "2025-01-01", "target_end_date": null, "owner": "tester", "sponsors": [], "stakeholders": [], "repositories": [], "comms_channels": [], "okrs": [], "kpis": [], "roadmap": [], "risks": [], "assumptions": [], "constraints": [], "dependencies_external": [], "sprints": [], "related_projects": [], "shared_components": [], "security_posture": null, "compliance_requirements": [], "governance": {}, "success_metrics": [], "mpv_policy": {}, "tnve_mandate": false, "evidence_root": null, "observability": {}}, "event": "service.create.start", "timestamp": "2025-12-29T05:44:32.485181Z", "level": "debug"}
+{"model": "Project", "response_id": "P-VALID-002", "event": "service.create.success", "timestamp": "2025-12-29T05:44:32.491719Z", "level": "debug"}
+PASSED
+tests/integration/services/test_task_validation.py::test_update_task_with_invalid_foreign_keys {"model": "Project", "request_data": {"id": "P-VALID-003", "name": "Valid Project 3", "mission": "Mission", "status": "planning", "start_date": "2025-01-01", "target_end_date": null, "owner": "tester", "sponsors": [], "stakeholders": [], "repositories": [], "comms_channels": [], "okrs": [], "kpis": [], "roadmap": [], "risks": [], "assumptions": [], "constraints": [], "dependencies_external": [], "sprints": [], "related_projects": [], "shared_components": [], "security_posture": null, "compliance_requirements": [], "governance": {}, "success_metrics": [], "mpv_policy": {}, "tnve_mandate": false, "evidence_root": null, "observability": {}}, "event": "service.create.start", "timestamp": "2025-12-29T05:44:32.524053Z", "level": "debug"}
+{"model": "Project", "response_id": "P-VALID-003", "event": "service.create.success", "timestamp": "2025-12-29T05:44:32.529564Z", "level": "debug"}
+{"model": "Sprint", "request_data": {"id": "S-VALID-003", "name": "Valid Sprint 3", "goal": "Goal", "cadence": "biweekly", "start_date": "2025-01-01", "end_date": "2025-01-14", "status": "planning", "owner": "tester", "primary_project": "P-VALID-003", "tasks": [], "imported_tasks": [], "related_projects": [], "velocity_target_points": null, "committed_points": null, "actual_points": null, "carried_over_points": null, "definition_of_done": [], "dependencies": [], "scope_changes": [], "risks": [], "ceremonies": {}, "metrics": {}, "timezone": null, "observability": {}}, "event": "service.create.start", "timestamp": "2025-12-29T05:44:32.531627Z", "level": "debug"}
+{"model": "Sprint", "response_id": "S-VALID-003", "event": "service.create.success", "timestamp": "2025-12-29T05:44:32.537613Z", "level": "debug"}
+{"model": "Task", "request_data": {"id": "T-UPDATE-TEST", "title": "Task to Update", "summary": "Summary", "description": "This task will be updated", "status": "new", "owner": "tester", "assignees": [], "priority": "p3", "severity": null, "primary_project": "P-VALID-003", "primary_sprint": "S-VALID-003", "related_projects": [], "related_sprints": [], "estimate_points": null, "actual_time_hours": null, "due_at": null, "parents": [], "depends_on": [], "blocks": [], "blockers": [], "acceptance_criteria": [], "definition_of_done": [], "quality_gates": {}, "verification": {}, "actions_taken": [], "labels": [], "related_links": [], "shape": null, "stage": null, "work_type": null, "work_stream": null, "business_value_score": null, "cost_of_delay_score": null, "automation_candidate": false, "cycle_time_days": null, "risks": [], "observability": {}}, "event": "service.create.start", "timestamp": "2025-12-29T05:44:32.540612Z", "level": "debug"}
+{"model": "Task", "response_id": "T-UPDATE-TEST", "event": "service.create.success", "timestamp": "2025-12-29T05:44:32.547612Z", "level": "debug"}
+PASSED
+tests/integration/test_action_list_service.py::TestActionListServiceDirect::test_create_returns_ok_result PASSED
+tests/integration/test_action_list_service.py::TestActionListServiceDirect::test_get_existing_returns_ok PASSED
+tests/integration/test_action_list_service.py::TestActionListServiceDirect::test_get_nonexistent_returns_err PASSED
+tests/integration/test_action_list_service.py::TestActionListServiceDirect::test_update_returns_ok PASSED
+tests/integration/test_action_list_service.py::TestActionListServiceDirect::test_delete_returns_ok {"model": "ActionList", "entity_id": "AL-0006", "event": "service.delete.success", "timestamp": "2025-12-29T05:44:32.737746Z", "level": "debug"}
+PASSED
+tests/integration/test_action_list_service.py::TestActionListServiceDirect::test_list_returns_ok {"model": "ActionList", "count": 3, "event": "service.list.success", "timestamp": "2025-12-29T05:44:32.774853Z", "level": "debug"}
+PASSED
+tests/integration/test_action_list_service.py::TestActionListServiceDirect::test_search_with_status_filter PASSED
+tests/unit/db/repositories/test_base_repository.py::TestBaseRepository::test_create_success PASSED
+tests/unit/db/repositories/test_base_repository.py::TestBaseRepository::test_create_conflict PASSED
+tests/unit/db/repositories/test_base_repository.py::TestBaseRepository::test_find_by_id_success PASSED
+tests/unit/db/repositories/test_base_repository.py::TestBaseRepository::test_find_by_id_not_found PASSED
+tests/unit/db/repositories/test_base_repository.py::TestBaseRepository::test_find_all_success PASSED
+tests/unit/db/repositories/test_base_repository.py::TestBaseRepository::test_update_success PASSED
+tests/unit/db/repositories/test_base_repository.py::TestBaseRepository::test_update_not_found PASSED
+tests/unit/db/repositories/test_base_repository.py::TestBaseRepository::test_delete_success PASSED
+tests/unit/db/repositories/test_base_repository.py::TestBaseRepository::test_exists_true PASSED
+tests/unit/db/repositories/test_base_repository.py::TestBaseRepository::test_exists_false PASSED
+tests/unit/db/repositories/test_base_repository.py::TestBaseRepository::test_count PASSED
+tests/unit/db/repositories/test_project_repository.py::TestProjectRepositoryEdgeCases::test_exists PASSED
+tests/unit/db/repositories/test_project_repository.py::TestProjectRepositoryEdgeCases::test_get_by_owner PASSED
+tests/unit/db/repositories/test_project_repository.py::TestProjectRepositoryEdgeCases::test_search_filters_and_pagination PASSED
+tests/unit/db/repositories/test_project_repository.py::TestProjectRepositoryEdgeCases::test_create_project_method PASSED
+tests/unit/db/repositories/test_project_repository.py::TestProjectRepositoryEdgeCases::test_update_project_method PASSED
+tests/unit/db/repositories/test_repositories.py::TestProjectRepository::test_get_by_status PASSED
+tests/unit/db/repositories/test_repositories.py::TestProjectRepository::test_get_active_projects PASSED
+tests/unit/db/repositories/test_repositories.py::TestSprintRepository::test_get_by_status PASSED
+tests/unit/db/repositories/test_repositories.py::TestSprintRepository::test_get_active_sprints PASSED
+tests/unit/db/repositories/test_repositories.py::TestActionListRepository::test_get_active PASSED
+tests/unit/db/repositories/test_repositories.py::TestActionListRepository::test_search_action_lists PASSED
+tests/unit/db/repositories/test_sprint_repository.py::TestSprintRepositoryEdgeCases::test_exists PASSED
+tests/unit/db/repositories/test_sprint_repository.py::TestSprintRepositoryEdgeCases::test_get_by_project PASSED
+tests/unit/db/repositories/test_sprint_repository.py::TestSprintRepositoryEdgeCases::test_get_active_sprints PASSED
+tests/unit/db/repositories/test_sprint_repository.py::TestSprintRepositoryEdgeCases::test_search_sprints PASSED
+tests/unit/db/repositories/test_sprint_repository.py::TestSprintRepositoryEdgeCases::test_create_and_update_sprint_helpers PASSED
+tests/unit/db/repositories/test_task_repository.py::TestTaskRepository::test_find_by_status PASSED
+tests/unit/db/repositories/test_task_repository.py::TestTaskRepository::test_find_by_priority PASSED
+tests/unit/db/repositories/test_task_repository.py::TestTaskRepository::test_find_by_owner PASSED
+tests/unit/db/repositories/test_task_repository.py::TestTaskRepository::test_find_by_project PASSED
+tests/unit/db/repositories/test_task_repository.py::TestTaskRepository::test_find_by_project_with_status_filter PASSED
+tests/unit/db/repositories/test_task_repository.py::TestTaskRepository::test_find_by_sprint PASSED
+tests/unit/db/repositories/test_task_repository.py::TestTaskRepository::test_find_by_status_and_priority PASSED
+tests/unit/db/repositories/test_task_repository.py::TestTaskRepository::test_find_blocked_tasks PASSED
+tests/unit/db/repositories/test_task_repository.py::TestTaskRepository::test_find_high_priority_tasks PASSED
+tests/unit/db/repositories/test_task_repository.py::TestTaskRepository::test_create_task_method PASSED
+tests/unit/db/repositories/test_task_repository.py::TestTaskRepository::test_update_task_method PASSED
+tests/unit/db/repositories/test_task_repository.py::TestTaskRepository::test_find_by_id_result_wrapper PASSED
+tests/unit/db/repositories/test_task_repository.py::TestTaskRepository::test_exists PASSED
+tests/unit/db/test_connection_manager.py::test_init_creates_engines PASSED
+tests/unit/db/test_connection_manager.py::test_get_session_primary_success PASSED
+tests/unit/db/test_connection_manager.py::test_get_session_failover {"error": "Connection Failed", "action": "switching_to_fallback", "event": "primary_db_connection_failed", "timestamp": "2025-12-29T05:44:34.724028Z", "level": "warning"}
+PASSED
+tests/unit/db/test_connection_manager.py::test_health_check_reporting PASSED
+tests/unit/db/test_connection_manager.py::test_health_check_primary_down {"error": "Down", "event": "primary_db_health_check_failed", "timestamp": "2025-12-29T05:44:34.743569Z", "level": "error"}
+{"event": "switched_to_fallback_db", "timestamp": "2025-12-29T05:44:34.744567Z", "level": "warning"}
+PASSED
+tests/unit/db/test_connection_manager.py::test_fix_async_url_logic PASSED
+tests/unit/db/test_connection_manager.py::test_init_models {"event": "primary_db_initialized", "timestamp": "2025-12-29T05:44:34.758158Z", "level": "info"}
+{"event": "fallback_db_initialized", "timestamp": "2025-12-29T05:44:34.759157Z", "level": "info"}
+PASSED
+tests/unit/db/test_connection_manager.py::test_get_session_all_fail {"error": "Primary Down", "action": "switching_to_fallback", "event": "primary_db_connection_failed", "timestamp": "2025-12-29T05:44:34.764157Z", "level": "warning"}
+PASSED
+tests/unit/db/test_connection_manager.py::test_health_check_all_down {"error": "Primary Down", "event": "primary_db_health_check_failed", "timestamp": "2025-12-29T05:44:34.769156Z", "level": "error"}
+{"error": "Fallback Down", "event": "fallback_db_health_check_failed", "timestamp": "2025-12-29T05:44:34.769156Z", "level": "error"}
+{"event": "all_databases_down", "timestamp": "2025-12-29T05:44:34.769156Z", "level": "critical"}
+PASSED
+tests/unit/db/test_connection_manager.py::test_init_models_failures {"error": "Init Fail", "event": "primary_db_init_failed", "timestamp": "2025-12-29T05:44:34.775155Z", "level": "warning"}
+{"error": "Init Fail Fallback", "event": "fallback_db_init_failed", "timestamp": "2025-12-29T05:44:34.775155Z", "level": "error"}
+PASSED
+tests/unit/schemas/test_schemas.py::TestProjectSchemas::test_project_create_request_valid PASSED
+tests/unit/schemas/test_schemas.py::TestProjectSchemas::test_project_id_pattern_validation PASSED
+tests/unit/schemas/test_schemas.py::TestProjectSchemas::test_project_update_request_partial PASSED
+tests/unit/schemas/test_schemas.py::TestProjectSchemas::test_project_response_serialization PASSED
+tests/unit/schemas/test_schemas.py::TestSprintSchemas::test_sprint_create_request_valid PASSED
+tests/unit/schemas/test_schemas.py::TestSprintSchemas::test_sprint_id_pattern_validation PASSED
+tests/unit/schemas/test_schemas.py::TestSprintSchemas::test_sprint_velocity_points_non_negative PASSED
+tests/unit/schemas/test_schemas.py::TestSprintSchemas::test_sprint_update_request_partial PASSED
+tests/unit/schemas/test_schemas.py::TestSprintSchemas::test_sprint_response_with_metrics PASSED
+tests/unit/schemas/test_schemas.py::TestActionListSchemas::test_action_list_create_request_valid PASSED
+tests/unit/schemas/test_schemas.py::TestActionListSchemas::test_action_list_with_associations PASSED
+tests/unit/schemas/test_schemas.py::TestActionListSchemas::test_action_list_soft_delete_fields PASSED
+tests/unit/schemas/test_schemas.py::TestActionListSchemas::test_action_list_update_request_partial PASSED
+tests/unit/schemas/test_schemas.py::TestActionListSchemas::test_action_list_response_with_metadata PASSED
+tests/unit/schemas/test_schemas.py::TestBaseSchemaConfiguration::test_strict_type_validation PASSED
+tests/unit/schemas/test_schemas.py::TestBaseSchemaConfiguration::test_from_attributes_orm_mode PASSED
+tests/unit/schemas/test_task_schemas.py::TestTaskCreateRequest::test_valid_task_create_request PASSED
+tests/unit/schemas/test_task_schemas.py::TestTaskCreateRequest::test_task_id_pattern_validation_success PASSED
+tests/unit/schemas/test_task_schemas.py::TestTaskCreateRequest::test_task_id_pattern_validation_failure PASSED
+tests/unit/schemas/test_task_schemas.py::TestTaskCreateRequest::test_required_fields_validation PASSED
+tests/unit/schemas/test_task_schemas.py::TestTaskCreateRequest::test_title_max_length_validation PASSED
+tests/unit/schemas/test_task_schemas.py::TestTaskCreateRequest::test_estimate_points_non_negative PASSED
+tests/unit/schemas/test_task_schemas.py::TestTaskCreateRequest::test_business_value_score_range PASSED
+tests/unit/schemas/test_task_schemas.py::TestTaskCreateRequest::test_enum_field_validation PASSED
+tests/unit/schemas/test_task_schemas.py::TestTaskCreateRequest::test_default_values PASSED
+tests/unit/schemas/test_task_schemas.py::TestTaskUpdateRequest::test_partial_update_all_fields_optional PASSED
+tests/unit/schemas/test_task_schemas.py::TestTaskUpdateRequest::test_update_with_multiple_fields PASSED
+tests/unit/schemas/test_task_schemas.py::TestTaskUpdateRequest::test_update_validation_rules_still_apply PASSED
+tests/unit/schemas/test_task_schemas.py::TestTaskResponse::test_response_from_orm_model PASSED
+tests/unit/schemas/test_task_schemas.py::TestTaskResponse::test_response_serialization PASSED
+tests/unit/services/test_base_service.py::TestBaseServiceCreate::test_create_success {"model": "Task", "request_data": {"id": "T-TEST-001", "title": "Test Task", "summary": "Summary", "description": "Description", "status": "new", "owner": "test.owner", "assignees": [], "priority": "p1", "severity": null, "primary_project": "P-TEST-001", "primary_sprint": "S-TEST-001", "related_projects": [], "related_sprints": [], "estimate_points": null, "actual_time_hours": null, "due_at": null, "parents": [], "depends_on": [], "blocks": [], "blockers": [], "acceptance_criteria": [], "definition_of_done": [], "quality_gates": {}, "verification": {}, "actions_taken": [], "labels": [], "related_links": [], "shape": null, "stage": null, "work_type": null, "work_stream": null, "business_value_score": null, "cost_of_delay_score": null, "automation_candidate": false, "cycle_time_days": null, "risks": [], "observability": {}}, "event": "service.create.start", "timestamp": "2025-12-29T05:44:34.835283Z", "level": "debug"}
+{"model": "Task", "response_id": "T-TEST-001", "event": "service.create.success", "timestamp": "2025-12-29T05:44:34.836283Z", "level": "debug"}
+PASSED
+tests/unit/services/test_base_service.py::TestBaseServiceCreate::test_create_conflict_error {"model": "Task", "request_data": {"id": "T-DUPLICATE", "title": "Task", "summary": "Summary", "description": "Description", "status": "new", "owner": "owner", "assignees": [], "priority": "p1", "severity": null, "primary_project": "P-001", "primary_sprint": "S-001", "related_projects": [], "related_sprints": [], "estimate_points": null, "actual_time_hours": null, "due_at": null, "parents": [], "depends_on": [], "blocks": [], "blockers": [], "acceptance_criteria": [], "definition_of_done": [], "quality_gates": {}, "verification": {}, "actions_taken": [], "labels": [], "related_links": [], "shape": null, "stage": null, "work_type": null, "work_stream": null, "business_value_score": null, "cost_of_delay_score": null, "automation_candidate": false, "cycle_time_days": null, "risks": [], "observability": {}}, "event": "service.create.start", "timestamp": "2025-12-29T05:44:34.851834Z", "level": "debug"}
+PASSED
+tests/unit/services/test_base_service.py::TestBaseServiceGet::test_get_success PASSED
+tests/unit/services/test_base_service.py::TestBaseServiceGet::test_get_not_found PASSED
+tests/unit/services/test_base_service.py::TestBaseServiceUpdate::test_update_success {"model": "Task", "entity_id": "T-TEST-001", "event": "service.update.start", "timestamp": "2025-12-29T05:44:34.918729Z", "level": "debug"}
+PASSED
+tests/unit/services/test_base_service.py::TestBaseServiceUpdate::test_update_not_found {"model": "Task", "entity_id": "T-NONEXISTENT", "event": "service.update.start", "timestamp": "2025-12-29T05:44:34.935769Z", "level": "debug"}
+PASSED
+tests/unit/services/test_base_service.py::TestBaseServiceDelete::test_delete_success {"model": "Task", "entity_id": "T-TEST-001", "event": "service.delete.success", "timestamp": "2025-12-29T05:44:34.951284Z", "level": "debug"}
+PASSED
+tests/unit/services/test_base_service.py::TestBaseServiceDelete::test_delete_not_found PASSED
+tests/unit/services/test_base_service.py::TestBaseServiceList::test_list_success {"model": "Task", "count": 1, "event": "service.list.success", "timestamp": "2025-12-29T05:44:34.981002Z", "level": "debug"}
+PASSED
+tests/unit/services/test_base_service.py::TestBaseServiceList::test_list_empty_result {"model": "Task", "count": 0, "event": "service.list.success", "timestamp": "2025-12-29T05:44:34.996668Z", "level": "debug"}
+PASSED
+tests/unit/services/test_base_service.py::TestBaseServiceUtility::test_exists_true PASSED
+tests/unit/services/test_base_service.py::TestBaseServiceUtility::test_exists_false PASSED
+tests/unit/services/test_base_service.py::TestBaseServiceUtility::test_count_success PASSED
+tests/unit/services/test_project_service_edge_cases.py::TestProjectServiceBoundaryConditions::test_create_project_with_minimum_fields {"model": "Project", "request_data": {"id": "P-MIN-001", "name": "Minimal Project", "mission": "Mission statement", "status": "planning", "start_date": "2025-01-01", "target_end_date": null, "owner": "owner", "sponsors": [], "stakeholders": [], "repositories": [], "comms_channels": [], "okrs": [], "kpis": [], "roadmap": [], "risks": [], "assumptions": [], "constraints": [], "dependencies_external": [], "sprints": [], "related_projects": [], "shared_components": [], "security_posture": null, "compliance_requirements": [], "governance": {}, "success_metrics": [], "mpv_policy": {}, "tnve_mandate": false, "evidence_root": null, "observability": {}}, "event": "service.create.start", "timestamp": "2025-12-29T05:44:35.061018Z", "level": "debug"}
+{"model": "Project", "response_id": "P-MIN-001", "event": "service.create.success", "timestamp": "2025-12-29T05:44:35.062018Z", "level": "debug"}
+PASSED
+tests/unit/services/test_project_service_edge_cases.py::TestProjectServiceBoundaryConditions::test_create_project_with_all_fields {"model": "Project", "request_data": {"id": "P-FULL-001", "name": "Full Project", "mission": "Mission statement", "status": "active", "start_date": "2025-01-01", "target_end_date": "2025-12-31", "owner": "owner", "sponsors": [], "stakeholders": [], "repositories": [], "comms_channels": [], "okrs": [], "kpis": [], "roadmap": [], "risks": [], "assumptions": [], "constraints": [], "dependencies_external": [], "sprints": [], "related_projects": [], "shared_components": [], "security_posture": null, "compliance_requirements": [], "governance": {}, "success_metrics": [], "mpv_policy": {}, "tnve_mandate": false, "evidence_root": null, "observability": {}}, "event": "service.create.start", "timestamp": "2025-12-29T05:44:35.078414Z", "level": "debug"}
+{"model": "Project", "response_id": "P-FULL-001", "event": "service.create.success", "timestamp": "2025-12-29T05:44:35.078414Z", "level": "debug"}
+PASSED
+tests/unit/services/test_project_service_edge_cases.py::TestProjectServiceBoundaryConditions::test_update_project_partial_single_field {"model": "Project", "entity_id": "P-TEST-001", "event": "service.update.start", "timestamp": "2025-12-29T05:44:35.098025Z", "level": "debug"}
+PASSED
+tests/unit/services/test_project_service_edge_cases.py::TestProjectServiceBoundaryConditions::test_update_project_empty_mission {"model": "Project", "entity_id": "P-TEST-001", "event": "service.update.start", "timestamp": "2025-12-29T05:44:35.113563Z", "level": "debug"}
+PASSED
+tests/unit/services/test_project_service_edge_cases.py::TestProjectServiceStatusTransitions::test_change_status_success {"model": "Project", "entity_id": "P-TEST-001", "event": "service.update.start", "timestamp": "2025-12-29T05:44:35.131293Z", "level": "debug"}
+PASSED
+tests/unit/services/test_project_service_edge_cases.py::TestProjectServiceStatusTransitions::test_change_status_project_not_found {"model": "Project", "entity_id": "P-NONEXISTENT", "event": "service.update.start", "timestamp": "2025-12-29T05:44:35.144347Z", "level": "debug"}
+PASSED
+tests/unit/services/test_project_service_edge_cases.py::TestProjectServiceSprintManagement::test_add_sprint_to_project {"model": "Project", "entity_id": "P-TEST-001", "event": "service.update.start", "timestamp": "2025-12-29T05:44:35.159472Z", "level": "debug"}
+PASSED
+tests/unit/services/test_project_service_edge_cases.py::TestProjectServiceSprintManagement::test_add_duplicate_sprint_idempotent PASSED
+tests/unit/services/test_project_service_edge_cases.py::TestProjectServiceSprintManagement::test_remove_sprint_from_project {"model": "Project", "entity_id": "P-TEST-001", "event": "service.update.start", "timestamp": "2025-12-29T05:44:35.191203Z", "level": "debug"}
+PASSED
+tests/unit/services/test_project_service_edge_cases.py::TestProjectServiceMetrics::test_get_metrics_no_tasks PASSED
+tests/unit/services/test_project_service_edge_cases.py::TestProjectServiceMetrics::test_get_metrics_project_not_found PASSED
+tests/unit/services/test_project_service_edge_cases.py::TestProjectServiceSearchAndFiltering::test_get_by_status_no_results PASSED
+tests/unit/services/test_project_service_edge_cases.py::TestProjectServiceSearchAndFiltering::test_get_by_owner_no_results PASSED
+tests/unit/services/test_services.py::TestProjectService::test_get_metrics_success PASSED
+tests/unit/services/test_services.py::TestProjectService::test_add_sprint PASSED
+tests/unit/services/test_services.py::TestProjectService::test_remove_sprint PASSED
+tests/unit/services/test_services.py::TestProjectService::test_change_status {"model": "Project", "entity_id": "P-TEST-001", "event": "service.update.start", "timestamp": "2025-12-29T05:44:35.407004Z", "level": "debug"}
+PASSED
+tests/unit/services/test_services.py::TestProjectService::test_get_by_status PASSED
+tests/unit/services/test_services.py::TestProjectService::test_get_by_owner PASSED
+tests/unit/services/test_services.py::TestSprintService::test_calculate_velocity PASSED
+tests/unit/services/test_services.py::TestSprintService::test_get_burndown PASSED
+tests/unit/services/test_services.py::TestSprintService::test_change_status {"model": "Sprint", "entity_id": "S-TEST-001", "event": "service.update.start", "timestamp": "2025-12-29T05:44:35.509671Z", "level": "debug"}
+PASSED
+tests/unit/services/test_services.py::TestSprintService::test_get_current_sprints PASSED
+tests/unit/services/test_services.py::TestSprintService::test_get_by_project PASSED
+tests/unit/services/test_services.py::TestSprintService::test_update_metrics {"model": "Sprint", "entity_id": "S-TEST-001", "event": "service.update.start", "timestamp": "2025-12-29T05:44:35.563101Z", "level": "debug"}
+PASSED
+tests/unit/services/test_services.py::TestActionListService::test_reorder_items_success PASSED
+tests/unit/services/test_services.py::TestActionListService::test_reorder_items_invalid_length PASSED
+tests/unit/services/test_services.py::TestActionListService::test_mark_complete SKIPPED (Method mark_complete
+not implemented - ADR-001 backlog)
+tests/unit/services/test_services.py::TestActionListService::test_add_item PASSED
+tests/unit/services/test_services.py::TestActionListService::test_remove_item PASSED
+tests/unit/services/test_services.py::TestActionListService::test_get_orphaned SKIPPED (Method get_orphaned not
+implemented - ADR-001 backlog)
+tests/unit/services/test_services.py::TestActionListService::test_get_soft_deleted SKIPPED (Method
+get_soft_deleted not implemented - ADR-001 backlog)
+tests/unit/services/test_sprint_service_edge_cases.py::TestSprintServiceMetrics::test_calculate_velocity_mixed_tasks PASSED
+tests/unit/services/test_sprint_service_edge_cases.py::TestSprintServiceMetrics::test_get_burndown_calculations PASSED
+tests/unit/services/test_sprint_service_edge_cases.py::TestSprintServiceSerialization::test_deserialize_maps_primary_project PASSED
+tests/unit/services/test_task_service.py::TestTaskServiceStatusTransitions::test_change_status_valid_transition {"model": "Task", "entity_id": "T-TEST-001", "event": "service.update.start", "timestamp": "2025-12-29T05:44:35.694738Z", "level": "debug"}
+PASSED
+tests/unit/services/test_task_service.py::TestTaskServiceStatusTransitions::test_change_status_invalid_transition PASSED
+tests/unit/services/test_task_service.py::TestTaskServiceStatusTransitions::test_change_status_not_found PASSED
+tests/unit/services/test_task_service.py::TestTaskServiceStatusValidation::test_is_valid_transition_new_to_ready PASSED
+tests/unit/services/test_task_service.py::TestTaskServiceStatusValidation::test_is_valid_transition_ready_to_in_progress PASSED
+tests/unit/services/test_task_service.py::TestTaskServiceStatusValidation::test_is_valid_transition_done_to_any_is_invalid PASSED
+tests/unit/services/test_task_service.py::TestTaskServiceAssignment::test_assign_to_sprint {"model": "Task", "entity_id": "T-TEST-001", "event": "service.update.start", "timestamp": "2025-12-29T05:44:35.772854Z", "level": "debug"}
+PASSED
+tests/unit/services/test_task_service.py::TestTaskServiceAssignment::test_assign_to_project {"model": "Task", "entity_id": "T-TEST-001", "event": "service.update.start", "timestamp": "2025-12-29T05:44:35.791785Z", "level": "debug"}
+PASSED
+tests/unit/services/test_task_service.py::TestTaskServiceBulkOperations::test_bulk_update_success {"model": "Task", "entity_id": "T-001", "event": "service.update.start", "timestamp": "2025-12-29T05:44:35.810225Z", "level": "debug"}
+{"model": "Task", "entity_id": "T-002", "event": "service.update.start", "timestamp": "2025-12-29T05:44:35.811225Z", "level": "debug"}
+PASSED
+tests/unit/services/test_task_service.py::TestTaskServiceBulkOperations::test_bulk_update_fails_fast {"model": "Task", "entity_id": "T-001", "event": "service.update.start", "timestamp": "2025-12-29T05:44:35.832349Z", "level": "debug"}
+{"model": "Task", "entity_id": "T-002", "event": "service.update.start", "timestamp": "2025-12-29T05:44:35.832349Z", "level": "debug"}
+PASSED
+tests/unit/services/test_task_service.py::TestTaskServiceSearch::test_search_by_status PASSED
+tests/unit/services/test_task_service.py::TestTaskServiceSearch::test_search_by_status_and_priority PASSED
+tests/unit/services/test_task_service.py::TestTaskServiceSearch::test_get_high_priority_tasks PASSED
+tests/unit/services/test_task_service.py::TestTaskServiceSearch::test_get_blocked_tasks PASSED
+tests/unit/services/test_task_service_edge_cases.py::TestTaskServiceStatusTransitionEdgeCases::test_valid_transition_new_to_ready {"model": "Task", "entity_id": "T-TEST-001", "event": "service.update.start", "timestamp": "2025-12-29T05:44:35.928894Z", "level": "debug"}
+PASSED
+tests/unit/services/test_task_service_edge_cases.py::TestTaskServiceStatusTransitionEdgeCases::test_valid_transition_in_progress_to_blocked {"model": "Task", "entity_id": "T-TEST-001", "event": "service.update.start", "timestamp": "2025-12-29T05:44:35.948892Z", "level": "debug"}
+PASSED
+tests/unit/services/test_task_service_edge_cases.py::TestTaskServiceStatusTransitionEdgeCases::test_valid_transition_in_progress_to_done {"model": "Task", "entity_id": "T-TEST-001", "event": "service.update.start", "timestamp": "2025-12-29T05:44:35.967892Z", "level": "debug"}
+PASSED
+tests/unit/services/test_task_service_edge_cases.py::TestTaskServiceStatusTransitionEdgeCases::test_invalid_transition_done_to_new PASSED
+tests/unit/services/test_task_service_edge_cases.py::TestTaskServiceStatusTransitionEdgeCases::test_invalid_transition_done_to_in_progress PASSED
+tests/unit/services/test_task_service_edge_cases.py::TestTaskServiceStatusTransitionEdgeCases::test_invalid_transition_dropped_to_ready PASSED
+tests/unit/services/test_task_service_edge_cases.py::TestTaskServiceStatusTransitionEdgeCases::test_invalid_transition_new_to_done PASSED
+tests/unit/services/test_task_service_edge_cases.py::TestTaskServiceStatusTransitionEdgeCases::test_invalid_transition_ready_to_blocked PASSED
+tests/unit/services/test_task_service_edge_cases.py::TestTaskServiceBulkOperationEdgeCases::test_bulk_update_partial_failure_fails_fast {"model": "Task", "entity_id": "T-001", "event": "service.update.start", "timestamp": "2025-12-29T05:44:36.062794Z", "level": "debug"}
+{"model": "Task", "entity_id": "T-NONEXISTENT", "event": "service.update.start", "timestamp": "2025-12-29T05:44:36.063794Z", "level": "debug"}
+PASSED
+tests/unit/services/test_task_service_edge_cases.py::TestTaskServiceBulkOperationEdgeCases::test_bulk_update_empty_list PASSED
+tests/unit/services/test_task_service_edge_cases.py::TestTaskServiceAssignmentEdgeCases::test_assign_to_nonexistent_sprint PASSED
+tests/unit/services/test_task_service_edge_cases.py::TestTaskServiceAssignmentEdgeCases::test_assign_to_nonexistent_project PASSED
+tests/unit/test_config.py::TestDatabaseConfig::test_valid_database_config PASSED
+tests/unit/test_config.py::TestDatabaseConfig::test_connection_string_generation PASSED
+tests/unit/test_config.py::TestDatabaseConfig::test_async_connection_string_generation PASSED
+tests/unit/test_config.py::TestDatabaseConfig::test_invalid_port_too_low PASSED
+tests/unit/test_config.py::TestDatabaseConfig::test_invalid_port_too_high PASSED
+tests/unit/test_config.py::TestDatabaseConfig::test_empty_user_rejected PASSED
+tests/unit/test_config.py::TestDatabaseConfig::test_default_values PASSED
+tests/unit/test_config.py::TestRedisConfig::test_valid_redis_config PASSED
+tests/unit/test_config.py::TestRedisConfig::test_default_values PASSED
+tests/unit/test_config.py::TestRedisConfig::test_invalid_url_pattern PASSED
+tests/unit/test_config.py::TestRedisConfig::test_timeout_validation PASSED
+tests/unit/test_config.py::TestRedisConfig::test_db_number_validation PASSED
+tests/unit/test_config.py::TestSettings::test_valid_settings_development PASSED
+tests/unit/test_config.py::TestSettings::test_valid_settings_production PASSED
+tests/unit/test_config.py::TestSettings::test_production_rejects_insecure_secret_key PASSED
+tests/unit/test_config.py::TestSettings::test_production_rejects_insecure_jwt_secret PASSED
+tests/unit/test_config.py::TestSettings::test_development_allows_insecure_secrets PASSED
+tests/unit/test_config.py::TestSettings::test_secret_key_min_length_32 PASSED
+tests/unit/test_config.py::TestSettings::test_optional_redis_config PASSED
+tests/unit/test_config.py::TestSettings::test_with_redis_config PASSED
+tests/unit/test_config.py::TestSettings::test_invalid_environment PASSED
+tests/unit/test_config.py::TestSettings::test_extra_fields_rejected PASSED
+tests/unit/test_config.py::TestSettings::test_environment_helpers PASSED
+tests/unit/test_config.py::TestGetSettings::test_settings_cached PASSED
+tests/unit/test_config.py::TestGetSettings::test_cache_clear PASSED
+tests/unit/test_fixtures.py::TestDatabaseConfigFixture::test_fixture_provides_isolated_config PASSED
+tests/unit/test_fixtures.py::TestDatabaseConfigFixture::test_fixture_connection_string PASSED
+tests/unit/test_fixtures.py::TestRedisConfigFixture::test_fixture_provides_isolated_config PASSED
+tests/unit/test_fixtures.py::TestSettingsFixture::test_fixture_provides_complete_settings PASSED
+tests/unit/test_fixtures.py::TestSettingsFixture::test_fixture_includes_database PASSED
+tests/unit/test_fixtures.py::TestSettingsFixture::test_fixture_includes_redis PASSED
+tests/unit/test_fixtures.py::TestMinimalSettingsFixture::test_fixture_provides_minimal_config PASSED
+tests/unit/test_fixtures.py::TestProductionLikeFixture::test_fixture_simulates_production PASSED
+tests/unit/test_fixtures.py::TestProductionLikeFixture::test_fixture_has_production_database PASSED
+tests/unit/test_fixtures.py::TestProductionLikeFixture::test_fixture_has_production_redis PASSED
+tests/unit/test_fixtures.py::TestCacheClearFixture::test_cache_cleared_between_tests_1 PASSED
+tests/unit/test_fixtures.py::TestCacheClearFixture::test_cache_cleared_between_tests_2 PASSED
+tests/unit/test_fixtures.py::TestEnvironmentIsolation::test_environment_set_to_testing PASSED
+tests/unit/test_fixtures.py::TestEnvironmentIsolation::test_settings_default_to_testing PASSED
+
+---------- coverage: platform win32, python 3.11.9-final-0 -----------
+Name                                                     Stmts   Miss Branch BrPart   Cover   Missing
+-----------------------------------------------------------------------------------------------------
+src\taskman_api\auth.py                                     61     39      8      0  31.88%   41-44, 48, 52, 56, 85-99, 115-120, 156-179, 200-212, 232-246
+src\taskman_api\core\errors.py                              78     31     36      6  53.51%   48-57, 107, 136, 138, 139->141, 141->143, 144, 169-177, 199-205, 226-230, 253-259
+src\taskman_api\core\result.py                              49      8      0      0  83.67%   40, 44, 58, 62, 74, 81, 88, 92
+src\taskman_api\db\base.py                                   6      1      0      0  83.33%   32
+src\taskman_api\db\connection_manager.py                    91      8     10      1  91.09%   143-145, 158-164
+src\taskman_api\db\session.py                               27      8      4      0  61.29%   48-50, 63-64, 73-75, 85
+src\taskman_api\dependencies.py                             45      8      0      0  82.22%   34-38, 48, 53, 58, 63
+src\taskman_api\main.py                                    104     49     18      0  45.08%   55-78, 107-161, 234-249, 273, 296, 307, 320-322
+src\taskman_api\middleware\logging_middleware.py            85     19     32     11  69.23%   77, 98, 102, 123, 127, 133, 168, 193->197, 211->222, 224-238, 249-255, 258->272, 261
+src\taskman_api\models\action_list.py                       54      5      6      3  86.67%   35, 41, 47, 128, 133
+src\taskman_api\models\project.py                           48      1      0      0  97.92%   100
+src\taskman_api\models\sprint.py                            51      2      0      0  96.08%   48, 101
+src\taskman_api\repositories\action_list_repository.py      43     10     10      3  67.92%   27-32, 59-64, 88-95, 99->101, 105->107, 111-112
+src\taskman_api\repositories\project_repository.py          65     16     14      6  69.62%   59->61, 61->65, 109->111, 112, 113->115, 116, 124-133, 139-143, 149-153
+src\taskman_api\repositories\sprint_repository.py           70     17     16      6  70.93%   66->68, 121->123, 124, 125->127, 128, 130, 138-147, 153-157, 163-167
+src\taskman_api\repositories\task_repository.py            112     36     44     16  65.38%   54-57, 85, 87, 203->205, 206, 208, 210, 212, 214, 215->217, 218, 220, 222, 223->225, 226, 228, 232-233, 262-268, 274-280, 286-290, 296-300
+src\taskman_api\routers\action_lists.py                    109     69     26      1  30.37%   94-104, 169-190, 260-275, 349->352, 354-363, 396-403, 444-455, 503-519, 564-580, 598-607, 625-634, 652-661
+src\taskman_api\routers\agent.py                            30     15      6      0  41.67%   32-72
+src\taskman_api\routers\diagnostic.py                       20     14      0      0  30.00%   16-40
+src\taskman_api\routers\projects.py                         73     49     32      0  22.86%   36-64, 74-86, 96-103, 115-126, 136-143
+src\taskman_api\routers\sprints.py                         108     77     52      0  19.38%   42-70, 80-94, 104-111, 121-128, 140-151, 161-168, 176-185, 193-202
+src\taskman_api\routers\tasks.py                            94     56     42      0  30.88%   47-48, 57-58, 72-83, 93-105, 115-122, 133-144, 154-161, 170-183
+src\taskman_api\schemas\base.py                             53      1      6      1  96.61%   28
+src\taskman_api\schemas\project.py                         163     12     26      6  90.48%   192-194, 213, 220-222, 231, 238-240, 252
+src\taskman_api\schemas\sprint.py                          154     11     22      5  90.91%   155, 167, 174-176, 185, 192-193, 210-212
+src\taskman_api\schemas\task.py                            193     27     28      7  81.00%   238, 241-247, 258, 261-267, 276, 279-285, 295-297
+src\taskman_api\services\action_list_service.py            159     57     42     11  59.20%   67-68, 80-96, 105->112, 114, 117->116, 122-123, 148-149, 180-182, 199-208, 211-213, 224, 237-238, 244-252, 259, 263->272, 265-267, 273, 277-278, 287, 297, 298->300, 305-306, 310-316, 322, 328
+src\taskman_api\services\base.py                           117     16     24      1  87.94%   76-78, 105-107, 182-183, 226->225, 237-238, 269-270, 299-300, 317-318, 329-330
+src\taskman_api\services\project_service.py                 97     17     36     10  75.19%   68-85, 119->123, 129, 130->exit, 154-157, 202, 203->exit, 236, 237->exit, 299-300, 330-331
+src\taskman_api\services\sprint_service.py                 141     40     48     15  63.49%   79-96, 114-120, 127, 129, 134-157, 184->186, 212, 213->217, 223, 224->exit, 265, 266->270, 276, 277->exit, 290, 291->exit, 379-380, 409-410, 431-440, 466, 467->exit
+src\taskman_api\services\task_service.py                    91      6     28      3  90.76%   164->exit, 318->305, 386-387, 416-417, 450-451
+-----------------------------------------------------------------------------------------------------
+TOTAL                                                     2997    725    624    112  69.76%
+
+15 files skipped due to complete coverage.
+Coverage HTML written to dir htmlcov
+Coverage JSON written to file coverage.json
+
+
+=============================================== short test summary info ===============================================
+SKIPPED [1] tests\unit\services\test_services.py:472: Method mark_complete not implemented - ADR-001 backlog
+SKIPPED [1] tests\unit\services\test_services.py:575: Method get_orphaned not implemented - ADR-001 backlog
+SKIPPED [1] tests\unit\services\test_services.py:598: Method get_soft_deleted not implemented - ADR-001 backlog
+=========================================== 218 passed, 3 skipped in 8.51s ============================================

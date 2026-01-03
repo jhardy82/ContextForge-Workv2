@@ -1,0 +1,122 @@
+================================================= test session starts =================================================
+platform win32 -- Python 3.11.9, pytest-8.3.3, pluggy-1.6.0 -- C:\Users\James\AppData\Local\Programs\Python\Python311\python.exe
+cachedir: .pytest_cache
+hypothesis profile 'default' -> database=DirectoryBasedExampleDatabase(WindowsPath('C:/Users/James/Documents/Github/GHrepos/SCCMScripts/TaskMan-v2/backend-api/.hypothesis/examples'))
+benchmark: 5.1.0 (defaults: timer=time.perf_counter disable_gc=False min_rounds=5 min_time=0.000005 max_time=1.0 calibration_precision=10 warmup=False warmup_iterations=100000)
+metadata: {'Python': '3.11.9', 'Platform': 'Windows-10-10.0.19045-SP0', 'Packages': {'pytest': '8.3.3', 'pluggy': '1.6.0'}, 'Plugins': {'anyio': '4.10.0', 'dash': '3.1.1', 'Faker': '30.8.2', 'hypothesis': '6.115.2', 'asyncio': '0.26.0', 'benchmark': '5.1.0', 'console-scripts': '1.4.1', 'cov': '5.0.0', 'html': '4.1.1', 'json-report': '1.5.0', 'metadata': '3.1.1', 'mock': '3.15.1', 'postgresql': '6.1.1', 'randomly': '3.15.0', 'rich': '0.2.0', 'timeout': '2.3.1', 'xdist': '3.6.1'}, 'CI': 'true'}
+Using --randomly-seed=2647134470
+rootdir: C:\Users\James\Documents\Github\GHrepos\SCCMScripts\TaskMan-v2\backend-api
+configfile: pytest_override.ini
+plugins: anyio-4.10.0, dash-3.1.1, Faker-30.8.2, hypothesis-6.115.2, asyncio-0.26.0, benchmark-5.1.0, console-scripts-1.4.1, cov-5.0.0, html-4.1.1, json-report-1.5.0, metadata-3.1.1, mock-3.15.1, postgresql-6.1.1, randomly-3.15.0, rich-0.2.0, timeout-2.3.1, xdist-3.6.1
+asyncio: mode=Mode.AUTO, asyncio_default_fixture_loop_scope=function, asyncio_default_test_loop_scope=function
+collecting ... collected 4 items / 3 deselected / 1 selected
+
+tests/integration/api/test_tasks_api.py::TestTaskIntegration::test_list_tasks_pagination_and_filtering FAILED    [100%]
+
+====================================================== FAILURES =======================================================
+____________________________ TestTaskIntegration.test_list_tasks_pagination_and_filtering _____________________________
+
+self = <test_tasks_api.TestTaskIntegration object at 0x000001DB7311CE90>
+client = <httpx.AsyncClient object at 0x000001DB7321E510>
+
+    async def test_list_tasks_pagination_and_filtering(self, client: AsyncClient):
+        """Test listing tasks with various filters and pagination."""
+    
+        # Seed Data
+        base_id = f"{TASK_PREFIX}-LIST"
+        for i in range(5):
+            await client.post(
+                "/api/v1/tasks",
+                json={
+                    "id": f"{base_id}-{i}",
+                    "title": f"Task {i}",
+                    "summary": f"Summary {i}",
+                    "description": "Desc",
+                    "status": "new" if i < 3 else "done",
+                    "priority": "p1" if i % 2 == 0 else "p2",
+                    "owner": "owner.1" if i < 2 else "owner.2",
+                    "primary_project": self.project_id,
+                    "primary_sprint": self.sprint_id,
+                },
+            )
+    
+        # 1. Basic Pagination
+        res_page = await client.get(
+            "/api/v1/tasks?per_page=2&page=1"
+        )  # Using correct params per schema
+        assert res_page.status_code == status.HTTP_200_OK, f"List tasks failed: {res_page.text}"
+        data = res_page.json()
+        tasks = data["tasks"]
+        assert len(tasks) == 2
+        assert tasks[0]["id"] == f"{base_id}-0"
+        assert data["total"] == 5
+    
+        # 2. Filter by Status
+        res_status = await client.get("/api/v1/tasks?status=done")
+        data_status = res_status.json()
+        tasks_status = data_status["tasks"]
+        assert len(tasks_status) == 2  # Tasks 3 and 4
+        assert all(t["status"] == "done" for t in tasks_status)
+    
+        # 3. Filter by Priority
+        res_prio = await client.get("/api/v1/tasks?priority=p2")
+        data_prio = res_prio.json()
+        tasks_prio = data_prio["tasks"]
+        assert len(tasks_prio) == 2  # Tasks 1 and 3 (indices)
+        assert all(t["priority"] == "p2" for t in tasks_prio)
+    
+        # 4. Filter by Owner
+        res_owner = await client.get("/api/v1/tasks?owner=owner.1")
+        data_owner = res_owner.json()
+        tasks_owner = data_owner["tasks"]
+>       assert len(tasks_owner) == 2  # Tasks 0 and 1
+E       AssertionError: assert 5 == 2
+E        +  where 5 = len([{'acceptance_criteria': [], 'actions_taken': [], 'actual_time_hours': None, 'assignees': [], ...}, {'acceptance_criteria': [], 'actions_taken': [], 'actual_time_hours': None, 'assignees': [], ...}, {'acceptance_criteria': [], 'actions_taken': [], 'actual_time_hours': None, 'assignees': [], ...}, {'acceptance_criteria': [], 'actions_taken': [], 'actual_time_hours': None, 'assignees': [], ...}, {'acceptance_criteria': [], 'actions_taken': [], 'actual_time_hours': None, 'assignees': [], ...}])
+
+tests\integration\api\test_tasks_api.py:203: AssertionError
+------------------------------------------------ Captured stdout setup ------------------------------------------------
+{"method": "POST", "path": "/api/v1/projects", "query": null, "correlation_id": "d8a39083-9a52-4693-9135-83bdb14d68a2", "client_ip": "127.0.0.1", "event": "http_request", "timestamp": "2025-12-28T22:52:02.424684Z", "level": "info"}
+{"project_id": "P-0001", "name": "Integration Project", "event": "project_created", "timestamp": "2025-12-28T22:52:02.459450Z", "level": "info"}
+{"method": "POST", "path": "/api/v1/projects", "status_code": 201, "duration_ms": 35.48, "correlation_id": "d8a39083-9a52-4693-9135-83bdb14d68a2", "event": "http_response", "timestamp": "2025-12-28T22:52:02.461120Z", "level": "info"}
+{"method": "POST", "path": "/api/v1/sprints", "query": null, "correlation_id": "2c3aae8c-5b93-454c-8c5e-549919f28df2", "client_ip": "127.0.0.1", "event": "http_request", "timestamp": "2025-12-28T22:52:02.461662Z", "level": "info"}
+{"sprint_id": "S-0001", "name": "Integration Sprint", "event": "sprint_created", "timestamp": "2025-12-28T22:52:02.478633Z", "level": "info"}
+{"method": "POST", "path": "/api/v1/sprints", "status_code": 201, "duration_ms": 17.33, "correlation_id": "2c3aae8c-5b93-454c-8c5e-549919f28df2", "event": "http_response", "timestamp": "2025-12-28T22:52:02.479633Z", "level": "info"}
+------------------------------------------------ Captured stdout call -------------------------------------------------
+{"method": "POST", "path": "/api/v1/tasks", "query": null, "correlation_id": "44aa1584-4748-4cf5-ba9a-09c7e9930311", "client_ip": "127.0.0.1", "event": "http_request", "timestamp": "2025-12-28T22:52:02.481635Z", "level": "info"}
+{"task_id": "T-INT-LIST-0", "title": "Task 0", "event": "task_created", "timestamp": "2025-12-28T22:52:02.507680Z", "level": "info"}
+{"method": "POST", "path": "/api/v1/tasks", "status_code": 201, "duration_ms": 27.76, "correlation_id": "44aa1584-4748-4cf5-ba9a-09c7e9930311", "event": "http_response", "timestamp": "2025-12-28T22:52:02.508677Z", "level": "info"}
+{"method": "POST", "path": "/api/v1/tasks", "query": null, "correlation_id": "c65f28fc-3e91-45f9-ac36-8995422ab4cc", "client_ip": "127.0.0.1", "event": "http_request", "timestamp": "2025-12-28T22:52:02.509679Z", "level": "info"}
+{"task_id": "T-INT-LIST-1", "title": "Task 1", "event": "task_created", "timestamp": "2025-12-28T22:52:02.515676Z", "level": "info"}
+{"method": "POST", "path": "/api/v1/tasks", "status_code": 201, "duration_ms": 7.62, "correlation_id": "c65f28fc-3e91-45f9-ac36-8995422ab4cc", "event": "http_response", "timestamp": "2025-12-28T22:52:02.517306Z", "level": "info"}
+{"method": "POST", "path": "/api/v1/tasks", "query": null, "correlation_id": "03023c92-1ac5-4ca4-aafe-d8df3daf1998", "client_ip": "127.0.0.1", "event": "http_request", "timestamp": "2025-12-28T22:52:02.518208Z", "level": "info"}
+{"task_id": "T-INT-LIST-2", "title": "Task 2", "event": "task_created", "timestamp": "2025-12-28T22:52:02.525206Z", "level": "info"}
+{"method": "POST", "path": "/api/v1/tasks", "status_code": 201, "duration_ms": 7.79, "correlation_id": "03023c92-1ac5-4ca4-aafe-d8df3daf1998", "event": "http_response", "timestamp": "2025-12-28T22:52:02.526210Z", "level": "info"}
+{"method": "POST", "path": "/api/v1/tasks", "query": null, "correlation_id": "e2611b60-4698-4e41-b995-fc92d46a0ecf", "client_ip": "127.0.0.1", "event": "http_request", "timestamp": "2025-12-28T22:52:02.526771Z", "level": "info"}
+{"task_id": "T-INT-LIST-3", "title": "Task 3", "event": "task_created", "timestamp": "2025-12-28T22:52:02.531737Z", "level": "info"}
+{"method": "POST", "path": "/api/v1/tasks", "status_code": 201, "duration_ms": 5.81, "correlation_id": "e2611b60-4698-4e41-b995-fc92d46a0ecf", "event": "http_response", "timestamp": "2025-12-28T22:52:02.532739Z", "level": "info"}
+{"method": "POST", "path": "/api/v1/tasks", "query": null, "correlation_id": "508e071a-9be3-42b7-a601-fc2e25f6aff9", "client_ip": "127.0.0.1", "event": "http_request", "timestamp": "2025-12-28T22:52:02.533740Z", "level": "info"}
+{"task_id": "T-INT-LIST-4", "title": "Task 4", "event": "task_created", "timestamp": "2025-12-28T22:52:02.538834Z", "level": "info"}
+{"method": "POST", "path": "/api/v1/tasks", "status_code": 201, "duration_ms": 6.58, "correlation_id": "508e071a-9be3-42b7-a601-fc2e25f6aff9", "event": "http_response", "timestamp": "2025-12-28T22:52:02.539830Z", "level": "info"}
+{"method": "GET", "path": "/api/v1/tasks", "query": "per_page=2&page=1", "correlation_id": "dd12cfe4-d6b5-4add-ae63-5c9bc17fbae1", "client_ip": "127.0.0.1", "event": "http_request", "timestamp": "2025-12-28T22:52:02.540830Z", "level": "info"}
+{"count": 2, "total": 5, "page": 1, "event": "tasks_listed", "timestamp": "2025-12-28T22:52:02.549830Z", "level": "info"}
+{"method": "GET", "path": "/api/v1/tasks", "status_code": 200, "duration_ms": 9.14, "correlation_id": "dd12cfe4-d6b5-4add-ae63-5c9bc17fbae1", "event": "http_response", "timestamp": "2025-12-28T22:52:02.550830Z", "level": "info"}
+{"method": "GET", "path": "/api/v1/tasks", "query": "status=done", "correlation_id": "72839de0-feff-4505-97f3-d0358c40dfdb", "client_ip": "127.0.0.1", "event": "http_request", "timestamp": "2025-12-28T22:52:02.550830Z", "level": "info"}
+{"count": 2, "total": 2, "page": 1, "event": "tasks_listed", "timestamp": "2025-12-28T22:52:02.557438Z", "level": "info"}
+{"method": "GET", "path": "/api/v1/tasks", "status_code": 200, "duration_ms": 6.91, "correlation_id": "72839de0-feff-4505-97f3-d0358c40dfdb", "event": "http_response", "timestamp": "2025-12-28T22:52:02.558439Z", "level": "info"}
+{"method": "GET", "path": "/api/v1/tasks", "query": "priority=p2", "correlation_id": "3d35e648-431d-44bd-a52c-92ac55a5937e", "client_ip": "127.0.0.1", "event": "http_request", "timestamp": "2025-12-28T22:52:02.559439Z", "level": "info"}
+{"count": 2, "total": 2, "page": 1, "event": "tasks_listed", "timestamp": "2025-12-28T22:52:02.565556Z", "level": "info"}
+{"method": "GET", "path": "/api/v1/tasks", "status_code": 200, "duration_ms": 7.12, "correlation_id": "3d35e648-431d-44bd-a52c-92ac55a5937e", "event": "http_response", "timestamp": "2025-12-28T22:52:02.566555Z", "level": "info"}
+{"method": "GET", "path": "/api/v1/tasks", "query": "owner=owner.1", "correlation_id": "b0ac7f3d-75d0-4cfd-9f45-28a1d9cb9953", "client_ip": "127.0.0.1", "event": "http_request", "timestamp": "2025-12-28T22:52:02.566555Z", "level": "info"}
+{"count": 5, "total": 5, "page": 1, "event": "tasks_listed", "timestamp": "2025-12-28T22:52:02.573348Z", "level": "info"}
+{"method": "GET", "path": "/api/v1/tasks", "status_code": 200, "duration_ms": 7.58, "correlation_id": "b0ac7f3d-75d0-4cfd-9f45-28a1d9cb9953", "event": "http_response", "timestamp": "2025-12-28T22:52:02.574290Z", "level": "info"}
+================================================== warnings summary ===================================================
+..\..\..\..\..\..\AppData\Local\Programs\Python\Python311\Lib\site-packages\_pytest\config\__init__.py:1441
+  C:\Users\James\AppData\Local\Programs\Python\Python311\Lib\site-packages\_pytest\config\__init__.py:1441: PytestConfigWarning: Unknown config option: python_paths
+  
+    self._warn_or_fail_if_strict(f"Unknown config option: {key}\n")
+
+-- Docs: https://docs.pytest.org/en/stable/how-to/capture-warnings.html
+=============================================== short test summary info ===============================================
+FAILED tests/integration/api/test_tasks_api.py::TestTaskIntegration::test_list_tasks_pagination_and_filtering - AssertionError: assert 5 == 2
+ +  where 5 = len([{'acceptance_criteria': [], 'actions_taken': [], 'actual_time_hours': None, 'assignees': [], ...}, {'acceptance_criteria': [], 'actions_taken': [], 'actual_time_hours': None, 'assignees': [], ...}, {'acceptance_criteria': [], 'actions_taken': [], 'actual_time_hours': None, 'assignees': [], ...}, {'acceptance_criteria': [], 'actions_taken': [], 'actual_time_hours': None, 'assignees': [], ...}, {'acceptance_criteria': [], 'actions_taken': [], 'actual_time_hours': None, 'assignees': [], ...}])
+===================================== 1 failed, 3 deselected, 1 warning in 0.96s ======================================

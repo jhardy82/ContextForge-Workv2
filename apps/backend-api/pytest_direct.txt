@@ -1,0 +1,166 @@
+================================================= test session starts =================================================
+platform win32 -- Python 3.11.9, pytest-8.4.2, pluggy-1.6.0 -- C:\Users\James\Documents\Github\GHrepos\SCCMScripts\TaskMan-v2\backend-api\.venv\Scripts\python.exe
+cachedir: .pytest_cache
+rootdir: C:\Users\James\Documents\Github\GHrepos\SCCMScripts\TaskMan-v2\backend-api
+configfile: pyproject.toml
+plugins: anyio-4.12.0, Faker-30.10.0, asyncio-0.26.0, cov-5.0.0, mock-3.15.1
+asyncio: mode=Mode.AUTO, asyncio_default_fixture_loop_scope=function, asyncio_default_test_loop_scope=function
+collecting ... collected 12 items
+
+tests/unit/routers/test_projects.py::TestProjectsRouter::test_list_projects_success {"connected": true, "latency_ms": null, "event": "database_connected", "timestamp": "2025-12-29T18:23:50.449217Z", "level": "info"}
+{"environment": "development", "port": 3001, "database_configured": true, "validation_warnings": 0, "event": "api_startup", "timestamp": "2025-12-29T18:23:50.449217Z", "level": "info"}
+{"method": "GET", "path": "/api/v1/projects", "query": null, "correlation_id": "25b9366a-1f96-436f-9382-a53a19bc8cff", "client_ip": "testclient", "event": "http_request", "timestamp": "2025-12-29T18:23:50.452217Z", "level": "info"}
+{"count": 2, "total": 2, "page": 1, "event": "projects_listed", "timestamp": "2025-12-29T18:23:50.454217Z", "level": "info"}
+{"method": "GET", "path": "/api/v1/projects", "status_code": 200, "duration_ms": 2.48, "correlation_id": "25b9366a-1f96-436f-9382-a53a19bc8cff", "event": "http_response", "timestamp": "2025-12-29T18:23:50.455218Z", "level": "info"}
+PASSED{"requests_processed": 1, "errors_logged": 0, "uptime_seconds": 0.01, "evidence_hash": "9d97bc2af6ad64fa", "event": "session_summary", "timestamp": "2025-12-29T18:23:50.458219Z", "level": "info"}
+{"event": "api_shutdown", "timestamp": "2025-12-29T18:23:50.458219Z", "level": "info"}
+
+tests/unit/routers/test_projects.py::TestProjectsRouter::test_create_project_full_success {"connected": true, "latency_ms": null, "event": "database_connected", "timestamp": "2025-12-29T18:23:50.466218Z", "level": "info"}
+{"environment": "development", "port": 3001, "database_configured": true, "validation_warnings": 0, "event": "api_startup", "timestamp": "2025-12-29T18:23:50.466218Z", "level": "info"}
+{"method": "POST", "path": "/api/v1/projects", "query": null, "correlation_id": "c93b2b36-9810-4baa-89b6-bc04fa7c3aa8", "client_ip": "testclient", "event": "http_request", "timestamp": "2025-12-29T18:23:50.469217Z", "level": "info"}
+{"project_id": "P-NEW", "name": "New Project", "event": "project_created", "timestamp": "2025-12-29T18:23:50.487209Z", "level": "info"}
+{"method": "POST", "path": "/api/v1/projects", "status_code": 201, "duration_ms": 18.11, "correlation_id": "c93b2b36-9810-4baa-89b6-bc04fa7c3aa8", "event": "http_response", "timestamp": "2025-12-29T18:23:50.487727Z", "level": "info"}
+PASSED{"requests_processed": 2, "errors_logged": 0, "uptime_seconds": 0.02, "evidence_hash": "b6fe2c0561e9dd2b", "event": "session_summary", "timestamp": "2025-12-29T18:23:50.489463Z", "level": "info"}
+{"event": "api_shutdown", "timestamp": "2025-12-29T18:23:50.489463Z", "level": "info"}
+
+tests/unit/routers/test_projects.py::TestProjectsRouter::test_create_project_draft_success {"connected": true, "latency_ms": null, "event": "database_connected", "timestamp": "2025-12-29T18:23:50.499394Z", "level": "info"}
+{"environment": "development", "port": 3001, "database_configured": true, "validation_warnings": 0, "event": "api_startup", "timestamp": "2025-12-29T18:23:50.499394Z", "level": "info"}
+{"method": "POST", "path": "/api/v1/projects", "query": null, "correlation_id": "6648dc24-475a-45c2-acc1-28bfc84914fb", "client_ip": "testclient", "event": "http_request", "timestamp": "2025-12-29T18:23:50.501582Z", "level": "info"}
+{"project_id": "P-DRAFT", "name": "Draft Project", "event": "project_created", "timestamp": "2025-12-29T18:23:50.503234Z", "level": "info"}
+{"method": "POST", "path": "/api/v1/projects", "status_code": 201, "duration_ms": 1.95, "correlation_id": "6648dc24-475a-45c2-acc1-28bfc84914fb", "event": "http_response", "timestamp": "2025-12-29T18:23:50.503753Z", "level": "info"}
+PASSED{"requests_processed": 3, "errors_logged": 0, "uptime_seconds": 0.01, "evidence_hash": "1ef83950dd8bf2ab", "event": "session_summary", "timestamp": "2025-12-29T18:23:50.504873Z", "level": "info"}
+{"event": "api_shutdown", "timestamp": "2025-12-29T18:23:50.504902Z", "level": "info"}
+
+tests/unit/routers/test_projects.py::TestProjectsRouter::test_create_project_duplicate_error {"connected": true, "latency_ms": null, "event": "database_connected", "timestamp": "2025-12-29T18:23:50.513431Z", "level": "info"}
+{"environment": "development", "port": 3001, "database_configured": true, "validation_warnings": 0, "event": "api_startup", "timestamp": "2025-12-29T18:23:50.513480Z", "level": "info"}
+{"method": "POST", "path": "/api/v1/projects", "query": null, "correlation_id": "8fd4d5b1-cab5-402a-9cda-db52836fed9c", "client_ip": "testclient", "event": "http_request", "timestamp": "2025-12-29T18:23:50.515681Z", "level": "info"}
+{"method": "POST", "path": "/api/v1/projects", "status_code": 409, "duration_ms": 1.8, "correlation_id": "8fd4d5b1-cab5-402a-9cda-db52836fed9c", "event": "http_response", "timestamp": "2025-12-29T18:23:50.517788Z", "level": "warning"}
+PASSED{"requests_processed": 4, "errors_logged": 1, "uptime_seconds": 0.01, "evidence_hash": "ae1dbad015e8710c", "event": "session_summary", "timestamp": "2025-12-29T18:23:50.518988Z", "level": "info"}
+{"event": "api_shutdown", "timestamp": "2025-12-29T18:23:50.518988Z", "level": "info"}
+
+tests/unit/routers/test_projects.py::TestProjectsRouter::test_get_project_success {"connected": true, "latency_ms": null, "event": "database_connected", "timestamp": "2025-12-29T18:23:50.527086Z", "level": "info"}
+{"environment": "development", "port": 3001, "database_configured": true, "validation_warnings": 0, "event": "api_startup", "timestamp": "2025-12-29T18:23:50.527086Z", "level": "info"}
+{"method": "GET", "path": "/api/v1/projects/P-001", "query": null, "correlation_id": "d6df53fe-6611-43f7-a709-8eb079ec47d2", "client_ip": "testclient", "event": "http_request", "timestamp": "2025-12-29T18:23:50.529794Z", "level": "info"}
+{"project_id": "P-001", "event": "project_retrieved", "timestamp": "2025-12-29T18:23:50.530829Z", "level": "info"}
+{"method": "GET", "path": "/api/v1/projects/P-001", "status_code": 200, "duration_ms": 1.51, "correlation_id": "d6df53fe-6611-43f7-a709-8eb079ec47d2", "event": "http_response", "timestamp": "2025-12-29T18:23:50.530829Z", "level": "info"}
+PASSED{"requests_processed": 5, "errors_logged": 1, "uptime_seconds": 0.01, "evidence_hash": "1af63b6a1a9d7c0d", "event": "session_summary", "timestamp": "2025-12-29T18:23:50.532210Z", "level": "info"}
+{"event": "api_shutdown", "timestamp": "2025-12-29T18:23:50.532210Z", "level": "info"}
+
+tests/unit/routers/test_projects.py::TestProjectsRouter::test_get_project_not_found {"connected": true, "latency_ms": null, "event": "database_connected", "timestamp": "2025-12-29T18:23:50.539940Z", "level": "info"}
+{"environment": "development", "port": 3001, "database_configured": true, "validation_warnings": 0, "event": "api_startup", "timestamp": "2025-12-29T18:23:50.539995Z", "level": "info"}
+{"method": "GET", "path": "/api/v1/projects/P-999", "query": null, "correlation_id": "a0d46e24-e43e-447a-ae3c-4ca1aca356ce", "client_ip": "testclient", "event": "http_request", "timestamp": "2025-12-29T18:23:50.543342Z", "level": "info"}
+{"method": "GET", "path": "/api/v1/projects/P-999", "status_code": 404, "duration_ms": 2.26, "correlation_id": "a0d46e24-e43e-447a-ae3c-4ca1aca356ce", "event": "http_response", "timestamp": "2025-12-29T18:23:50.545556Z", "level": "warning"}
+PASSED{"requests_processed": 6, "errors_logged": 2, "uptime_seconds": 0.01, "evidence_hash": "f796ea661eac5f4d", "event": "session_summary", "timestamp": "2025-12-29T18:23:50.547212Z", "level": "info"}
+{"event": "api_shutdown", "timestamp": "2025-12-29T18:23:50.547212Z", "level": "info"}
+
+tests/unit/routers/test_projects.py::TestProjectsRouter::test_update_project_success {"connected": true, "latency_ms": null, "event": "database_connected", "timestamp": "2025-12-29T18:23:50.556452Z", "level": "info"}
+{"environment": "development", "port": 3001, "database_configured": true, "validation_warnings": 0, "event": "api_startup", "timestamp": "2025-12-29T18:23:50.556452Z", "level": "info"}
+{"method": "PUT", "path": "/api/v1/projects/P-001", "query": null, "correlation_id": "74ed8004-ea34-4e07-9c74-f2e57aa28311", "client_ip": "testclient", "event": "http_request", "timestamp": "2025-12-29T18:23:50.560229Z", "level": "info"}
+{"project_id": "P-001", "event": "project_updated", "timestamp": "2025-12-29T18:23:50.569122Z", "level": "info"}
+{"method": "PUT", "path": "/api/v1/projects/P-001", "status_code": 200, "duration_ms": 9.31, "correlation_id": "74ed8004-ea34-4e07-9c74-f2e57aa28311", "event": "http_response", "timestamp": "2025-12-29T18:23:50.569122Z", "level": "info"}
+PASSED{"requests_processed": 7, "errors_logged": 2, "uptime_seconds": 0.02, "evidence_hash": "ecb51dcf807ae485", "event": "session_summary", "timestamp": "2025-12-29T18:23:50.570816Z", "level": "info"}
+{"event": "api_shutdown", "timestamp": "2025-12-29T18:23:50.570816Z", "level": "info"}
+
+tests/unit/routers/test_projects.py::TestProjectsRouter::test_delete_project_success {"connected": true, "latency_ms": null, "event": "database_connected", "timestamp": "2025-12-29T18:23:50.579848Z", "level": "info"}
+{"environment": "development", "port": 3001, "database_configured": true, "validation_warnings": 0, "event": "api_startup", "timestamp": "2025-12-29T18:23:50.579848Z", "level": "info"}
+{"method": "DELETE", "path": "/api/v1/projects/P-001", "query": null, "correlation_id": "b904c27f-fed8-4478-8e5d-5322a5189159", "client_ip": "testclient", "event": "http_request", "timestamp": "2025-12-29T18:23:50.582657Z", "level": "info"}
+{"project_id": "P-001", "event": "project_deleted", "timestamp": "2025-12-29T18:23:50.584840Z", "level": "info"}
+{"method": "DELETE", "path": "/api/v1/projects/P-001", "status_code": 204, "duration_ms": 2.16, "correlation_id": "b904c27f-fed8-4478-8e5d-5322a5189159", "event": "http_response", "timestamp": "2025-12-29T18:23:50.584840Z", "level": "info"}
+PASSED{"requests_processed": 8, "errors_logged": 2, "uptime_seconds": 0.01, "evidence_hash": "5315b66979093ee2", "event": "session_summary", "timestamp": "2025-12-29T18:23:50.586476Z", "level": "info"}
+{"event": "api_shutdown", "timestamp": "2025-12-29T18:23:50.586476Z", "level": "info"}
+
+tests/unit/routers/test_sprints.py::TestSprintsRouter::test_list_sprints_success {"connected": true, "latency_ms": null, "event": "database_connected", "timestamp": "2025-12-29T18:23:50.594754Z", "level": "info"}
+{"environment": "development", "port": 3001, "database_configured": true, "validation_warnings": 0, "event": "api_startup", "timestamp": "2025-12-29T18:23:50.594754Z", "level": "info"}
+{"method": "GET", "path": "/api/v1/sprints", "query": null, "correlation_id": "2cf53b2f-ae0b-45c3-bcf2-3d510dec970e", "client_ip": "testclient", "event": "http_request", "timestamp": "2025-12-29T18:23:50.597368Z", "level": "info"}
+{"count": 1, "total": 1, "page": 1, "event": "sprints_listed", "timestamp": "2025-12-29T18:23:50.599031Z", "level": "info"}
+{"method": "GET", "path": "/api/v1/sprints", "status_code": 200, "duration_ms": 1.66, "correlation_id": "2cf53b2f-ae0b-45c3-bcf2-3d510dec970e", "event": "http_response", "timestamp": "2025-12-29T18:23:50.599031Z", "level": "info"}
+PASSED{"requests_processed": 9, "errors_logged": 2, "uptime_seconds": 0.01, "evidence_hash": "54d495089a2023d5", "event": "session_summary", "timestamp": "2025-12-29T18:23:50.600630Z", "level": "info"}
+{"event": "api_shutdown", "timestamp": "2025-12-29T18:23:50.600670Z", "level": "info"}
+
+tests/unit/routers/test_sprints.py::TestSprintsRouter::test_create_sprint_draft_success {"connected": true, "latency_ms": null, "event": "database_connected", "timestamp": "2025-12-29T18:23:50.608974Z", "level": "info"}
+{"environment": "development", "port": 3001, "database_configured": true, "validation_warnings": 0, "event": "api_startup", "timestamp": "2025-12-29T18:23:50.608974Z", "level": "info"}
+{"method": "POST", "path": "/api/v1/sprints", "query": null, "correlation_id": "705b91dc-5f72-4efc-abeb-6221c8df2e7d", "client_ip": "testclient", "event": "http_request", "timestamp": "2025-12-29T18:23:50.611673Z", "level": "info"}
+{"sprint_id": "S-DRAFT", "name": "Draft Sprint", "event": "sprint_created", "timestamp": "2025-12-29T18:23:50.623372Z", "level": "info"}
+{"method": "POST", "path": "/api/v1/sprints", "status_code": 201, "duration_ms": 12.22, "correlation_id": "705b91dc-5f72-4efc-abeb-6221c8df2e7d", "event": "http_response", "timestamp": "2025-12-29T18:23:50.623936Z", "level": "info"}
+PASSED{"requests_processed": 10, "errors_logged": 2, "uptime_seconds": 0.02, "evidence_hash": "2a5865df854569b1", "event": "session_summary", "timestamp": "2025-12-29T18:23:50.625011Z", "level": "info"}
+{"event": "api_shutdown", "timestamp": "2025-12-29T18:23:50.625532Z", "level": "info"}
+
+tests/unit/routers/test_sprints.py::TestSprintsRouter::test_get_sprint_progress_success {"connected": true, "latency_ms": null, "event": "database_connected", "timestamp": "2025-12-29T18:23:50.632206Z", "level": "info"}
+{"environment": "development", "port": 3001, "database_configured": true, "validation_warnings": 0, "event": "api_startup", "timestamp": "2025-12-29T18:23:50.632712Z", "level": "info"}
+{"method": "GET", "path": "/api/v1/sprints/S-1/progress", "query": null, "correlation_id": "773a440a-563e-44c4-87fb-4b84927bad51", "client_ip": "testclient", "event": "http_request", "timestamp": "2025-12-29T18:23:50.634950Z", "level": "info"}
+{"sprint_id": "S-1", "event": "sprint_progress_retrieved", "timestamp": "2025-12-29T18:23:50.636500Z", "level": "info"}
+{"method": "GET", "path": "/api/v1/sprints/S-1/progress", "status_code": 200, "duration_ms": 1.57, "correlation_id": "773a440a-563e-44c4-87fb-4b84927bad51", "event": "http_response", "timestamp": "2025-12-29T18:23:50.636538Z", "level": "info"}
+PASSED{"requests_processed": 11, "errors_logged": 2, "uptime_seconds": 0.01, "evidence_hash": "c2b117669c68bfc6", "event": "session_summary", "timestamp": "2025-12-29T18:23:50.637656Z", "level": "info"}
+{"event": "api_shutdown", "timestamp": "2025-12-29T18:23:50.637656Z", "level": "info"}
+
+tests/unit/routers/test_sprints.py::TestSprintsRouter::test_start_sprint_success {"connected": true, "latency_ms": null, "event": "database_connected", "timestamp": "2025-12-29T18:23:50.646160Z", "level": "info"}
+{"environment": "development", "port": 3001, "database_configured": true, "validation_warnings": 0, "event": "api_startup", "timestamp": "2025-12-29T18:23:50.646160Z", "level": "info"}
+{"method": "POST", "path": "/api/v1/sprints/S-1/start", "query": null, "correlation_id": "4f62f7ce-bc18-431b-904f-dafccd7e7cee", "client_ip": "testclient", "event": "http_request", "timestamp": "2025-12-29T18:23:50.648040Z", "level": "info"}
+{"sprint_id": "S-1", "event": "sprint_started", "timestamp": "2025-12-29T18:23:50.649136Z", "level": "info"}
+{"method": "POST", "path": "/api/v1/sprints/S-1/start", "status_code": 200, "duration_ms": 1.31, "correlation_id": "4f62f7ce-bc18-431b-904f-dafccd7e7cee", "event": "http_response", "timestamp": "2025-12-29T18:23:50.649680Z", "level": "info"}
+PASSED{"requests_processed": 12, "errors_logged": 2, "uptime_seconds": 0.01, "evidence_hash": "cd3bae8676c41779", "event": "session_summary", "timestamp": "2025-12-29T18:23:50.650225Z", "level": "info"}
+{"event": "api_shutdown", "timestamp": "2025-12-29T18:23:50.650738Z", "level": "info"}
+
+
+---------- coverage: platform win32, python 3.11.9-final-0 -----------
+Name                                                      Stmts   Miss Branch BrPart   Cover   Missing
+------------------------------------------------------------------------------------------------------
+src\taskman_api\auth.py                                      61     39      8      0  31.88%   41-44, 48, 52, 56, 85-99, 115-120, 156-179, 200-212, 232-246
+src\taskman_api\config.py                                    62     16      6      0  67.65%   102-103, 114-115, 224-243, 249, 255, 261, 290
+src\taskman_api\core\errors.py                               80     43     38      8  38.14%   48-57, 74, 76, 101-109, 137, 139, 141, 143, 145, 147, 172-180, 202-208, 229-233, 256-262
+src\taskman_api\core\result.py                               49     16      0      0  67.35%   37, 40, 44, 48, 51, 55, 58, 62, 74, 77, 81, 85, 88, 92, 95, 99
+src\taskman_api\db\base.py                                   11      1      0      0  90.91%   55
+src\taskman_api\db\connection_manager.py                     91     68     10      1  23.76%   66-68, 75-124, 135-165, 170-183
+src\taskman_api\db\session.py                                27      8      4      0  61.29%   48-50, 63-64, 73-75, 85
+src\taskman_api\dependencies.py                              57     16      0      0  71.93%   38-42, 52, 57, 62, 67, 73, 78, 83, 88, 93, 98, 103, 108
+src\taskman_api\main.py                                     127     33     18      5  68.28%   66, 73, 77, 83, 124-125, 136-137, 241-256, 280, 303, 314, 327-334, 343-348, 363-369, 378-385, 394-396
+src\taskman_api\middleware\logging_middleware.py             85     18     32     12  69.23%   77, 93-104, 123, 127, 133, 193->197, 211->222, 224-238, 248->258, 250->252, 254->258, 258->272, 261
+src\taskman_api\models\action_list.py                        54     12      6      0  70.00%   33-36, 40-42, 46-48, 128, 133
+src\taskman_api\models\checklist.py                          49     15      8      0  59.65%   121, 126, 131, 136-138, 143-145, 150-152, 157-159
+src\taskman_api\models\conversation.py                       44      2      0      0  95.45%   142, 147
+src\taskman_api\models\plan.py                               49     16     10      0  55.93%   112, 117, 122, 127, 132-134, 139-141, 146-151
+src\taskman_api\models\project.py                            48      1      0      0  97.92%   100
+src\taskman_api\models\sprint.py                             51      3      0      0  94.12%   44, 48, 101
+src\taskman_api\repositories\action_list_repository.py       51     36     18      0  21.74%   23, 27-32, 36-39, 67-104, 117-128, 132-134, 138-140, 144-145
+src\taskman_api\repositories\base.py                         46     28      4      0  36.00%   42-48, 52-55, 66-77, 81-82, 86-89, 93-95, 99-100, 104-107, 115-116
+src\taskman_api\repositories\checklist_repository.py        129    104      8      0  18.25%   40, 58-70, 92, 108-120, 144-156, 182-194, 220-232, 256-268, 290-316, 340-357, 379-399, 413-424, 438-446, 460-490
+src\taskman_api\repositories\conversation_repository.py     150    121      4      0  18.83%   37, 55-67, 89, 109-127, 151-163, 187-199, 223-242, 266-278, 292-303, 329, 347-359, 385-400, 424-439, 463-479, 499-507, 527-535, 555-563, 583-601
+src\taskman_api\repositories\plan_repository.py             107     84      4      0  20.72%   40, 58-70, 92, 108, 126-138, 164-176, 202-214, 238-252, 274-296, 320-334, 348-359, 379-414
+src\taskman_api\repositories\project_repository.py           65     47     14      0  22.78%   22, 26-29, 33-36, 40-43, 57-73, 84-96, 107-119, 124-133, 139-143, 149-153
+src\taskman_api\repositories\sprint_repository.py            70     51     16      0  22.09%   22, 26-29, 33-36, 40-43, 47-50, 64-80, 93-107, 119-133, 138-147, 153-157, 163-167
+src\taskman_api\repositories\task_repository.py             112     88     44      0  15.38%   24, 28-31, 35-36, 40-43, 47-50, 54-57, 75-100, 144-182, 203-235, 239-242, 247-256, 262-268, 274-280, 286-290, 296-300
+src\taskman_api\routers\action_lists.py                     109     79     26      0  22.22%   82-104, 169-190, 258-275, 346-363, 394-403, 444-455, 503-519, 564-580, 596-607, 623-634, 650-661
+src\taskman_api\routers\agent.py                             30     15      6      0  41.67%   32-72
+src\taskman_api\routers\checklists.py                       167    120     80      0  19.03%   53-67, 86-92, 111-117, 136-142, 157-163, 182-188, 221-233, 263-269, 289-295, 318-324, 344-350, 369-375, 400-406, 426-432, 462-468, 491-497, 522-528, 551-557, 579-585, 607-613
+src\taskman_api\routers\conversations.py                    143    102     68      0  19.43%   52-65, 84-90, 105-111, 141-147, 167-173, 196-202, 222-228, 247-253, 283-289, 312-318, 342-348, 371-377, 408-414, 441-447, 477-483, 508-514, 539-545
+src\taskman_api\routers\diagnostic.py                        20     14      0      0  30.00%   16-40
+src\taskman_api\routers\phases.py                           144    111     72      0  15.28%   59-69, 94-100, 131-151, 185-195, 225-232, 262-268, 298-305, 333-341, 369-377, 413-421, 445-451, 478-538
+src\taskman_api\routers\plans.py                            135     96     64      0  19.60%   51-64, 83-89, 108-114, 135-145, 160-166, 196-202, 222-228, 251-257, 277-283, 302-308, 334-340, 361-367, 389-395, 425-431, 456-462, 486-492
+src\taskman_api\routers\projects.py                          75     23     34      6  56.88%   40-43, 63-64, 80-88, 104-105, 121-128, 142-145
+src\taskman_api\routers\sprints.py                          108     59     52      5  33.75%   46-49, 69-70, 84-94, 102-111, 125-128, 138-151, 159-168, 182-185, 193-202
+src\taskman_api\routers\tasks.py                             96     73     44      0  16.43%   41-83, 91-107, 115-124, 133-146, 154-163, 172-185
+src\taskman_api\schemas\action_list.py                       82      3      2      0  94.05%   242-244
+src\taskman_api\schemas\base.py                              55      3      6      3  90.16%   22, 24, 28
+src\taskman_api\schemas\checklist.py                        110      6      2      0  92.86%   294-297, 303, 309
+src\taskman_api\schemas\plan.py                              91      8      6      0  85.57%   218-221, 227-230
+src\taskman_api\schemas\project.py                          163     40     26      3  66.67%   166, 185, 188-194, 210-222, 228-240, 246-252
+src\taskman_api\schemas\sprint.py                           154     40     22      1  65.34%   149, 154-156, 164-176, 182-194, 200-212
+src\taskman_api\schemas\task.py                             195     49     28      0  65.47%   216-218, 224-226, 234-246, 254-266, 272-284, 290-296
+src\taskman_api\services\action_list_service.py             159    131     42      0  13.93%   31-32, 41-43, 54-68, 80-96, 102-123, 127-149, 164-182, 186, 190, 197-213, 219-238, 244-252, 256-278, 284-306, 310-316, 322, 328
+src\taskman_api\services\base.py                            122     96     24      0  17.81%   59-61, 69-84, 92-112, 126-162, 176-194, 213-249, 263-281, 297-311, 325-329, 337-341
+src\taskman_api\services\checklist_service.py               296    265    136      0   7.18%   30, 35, 65-68, 84-119, 142-190, 208-258, 274-318, 336-377, 393-433, 451-496, 512-549, 563-574, 588-589, 615-639, 655-662, 678-685, 701-708, 724-731, 739-751
+src\taskman_api\services\conversation_service.py            201    172     72      0  10.62%   33, 38, 73-77, 94-118, 134-150, 164-165, 179-200, 214-215, 234-271, 290-316, 332-333, 349-364, 380-395, 411-426, 450-470, 486-495, 503-510
+src\taskman_api\services\phase_service.py                   179    147     84      0  12.17%   71-74, 78-83, 87-92, 114-121, 145-163, 189-225, 253-268, 294-302, 328-378, 404-408, 431-436, 462-466, 495-519, 554-588, 612-634
+src\taskman_api\services\plan_service.py                    235    208    108      0   7.87%   29, 34, 63-66, 82-117, 131-151, 165-195, 213-269, 287-343, 361-397, 413-428, 452-474, 490-497, 513-520, 538-545, 553-560
+src\taskman_api\services\project_service.py                 121    100     48      0  12.43%   44-48, 68-85, 115-175, 198-212, 232-246, 265-266, 290-300, 321-331, 361-373, 395-405, 429-439
+src\taskman_api\services\sprint_service.py                  165    136     60      0  12.89%   54-59, 79-96, 113-157, 169-173, 177-179, 183-186, 209-229, 262-325, 344-345, 369-380, 401-412, 433-442, 464-472, 502-513, 535-544, 568-577
+src\taskman_api\services\task_service.py                     92     69     28      0  19.17%   53-57, 71-92, 109-132, 166-185, 210-229, 255-256, 280-281, 310-329, 359-394, 416-424, 447-458
+------------------------------------------------------------------------------------------------------
+TOTAL                                                      5481   3031   1392     44  36.37%
+
+13 files skipped due to complete coverage.
+Coverage HTML written to dir htmlcov
+Coverage JSON written to file coverage.json
+
+
+================================================= 12 passed in 5.29s ==================================================

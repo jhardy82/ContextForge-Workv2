@@ -1,0 +1,69 @@
+C:\Users\James\AppData\Local\Programs\Python\Python311\Lib\site-packages\pytest_asyncio\plugin.py:217: PytestDeprecationWarning: The configuration option "asyncio_default_fixture_loop_scope" is unset.
+The event loop scope for asynchronous fixtures will default to the fixture caching scope. Future versions of pytest-asyncio will default the loop scope for asynchronous fixtures to function scope. Set the default fixture loop scope explicitly in order to avoid unexpected behavior in the future. Valid fixture loop scopes are: "function", "class", "module", "package", "session"
+
+  warnings.warn(PytestDeprecationWarning(_DEFAULT_FIXTURE_LOOP_SCOPE_UNSET))
+================================================= test session starts =================================================
+platform win32 -- Python 3.11.9, pytest-8.3.3, pluggy-1.6.0 -- C:\Users\James\AppData\Local\Programs\Python\Python311\python.exe
+cachedir: .pytest_cache
+hypothesis profile 'default' -> database=DirectoryBasedExampleDatabase(WindowsPath('C:/Users/James/Documents/Github/GHrepos/SCCMScripts/TaskMan-v2/backend-api/.hypothesis/examples'))
+benchmark: 5.1.0 (defaults: timer=time.perf_counter disable_gc=False min_rounds=5 min_time=0.000005 max_time=1.0 calibration_precision=10 warmup=False warmup_iterations=100000)
+metadata: {'Python': '3.11.9', 'Platform': 'Windows-10-10.0.19045-SP0', 'Packages': {'pytest': '8.3.3', 'pluggy': '1.6.0'}, 'Plugins': {'anyio': '4.10.0', 'dash': '3.1.1', 'Faker': '30.8.2', 'hypothesis': '6.115.2', 'asyncio': '0.26.0', 'benchmark': '5.1.0', 'console-scripts': '1.4.1', 'html': '4.1.1', 'json-report': '1.5.0', 'metadata': '3.1.1', 'mock': '3.15.1', 'postgresql': '6.1.1', 'randomly': '3.15.0', 'rich': '0.2.0', 'timeout': '2.3.1', 'xdist': '3.6.1'}, 'CI': 'true'}
+Using --randomly-seed=3595677127
+rootdir: C:\Users\James\Documents\Github\GHrepos\SCCMScripts\TaskMan-v2\backend-api
+configfile: pytest_override.ini
+plugins: anyio-4.10.0, dash-3.1.1, Faker-30.8.2, hypothesis-6.115.2, asyncio-0.26.0, benchmark-5.1.0, console-scripts-1.4.1, html-4.1.1, json-report-1.5.0, metadata-3.1.1, mock-3.15.1, postgresql-6.1.1, randomly-3.15.0, rich-0.2.0, timeout-2.3.1, xdist-3.6.1
+asyncio: mode=Mode.AUTO, asyncio_default_fixture_loop_scope=None, asyncio_default_test_loop_scope=function
+collecting ... collected 2 items
+
+tests/integration/api/test_action_lists_api.py::TestActionListIntegration::test_validation_errors {"method": "POST", "path": "/api/v1/action-lists", "query": null, "correlation_id": "29e4213d-b1f1-4bff-ad8f-84c3666277e7", "client_ip": "127.0.0.1", "event": "http_request", "timestamp": "2025-12-28T23:35:35.877977Z", "level": "info"}
+{"error": "1 validation error for ActionListResponse\ntitle\n  Field required [type=missing, input_value=<ActionList(id='AL-0001',...Test', status='active')>, input_type=ActionList]\n    For further information visit https://errors.pydantic.dev/2.11/v/missing", "event": "action_list_create_failed", "timestamp": "2025-12-28T23:35:35.899535Z", "level": "error"}
+{"method": "POST", "path": "/api/v1/action-lists", "status_code": 400, "duration_ms": 22.58, "correlation_id": "29e4213d-b1f1-4bff-ad8f-84c3666277e7", "event": "http_response", "timestamp": "2025-12-28T23:35:35.900605Z", "level": "warning"}
+FAILED
+tests/integration/api/test_action_lists_api.py::TestActionListIntegration::test_action_list_lifecycle {"method": "POST", "path": "/api/v1/action-lists", "query": null, "correlation_id": "379f402b-326b-4871-b6f8-4a8e5c711a9f", "client_ip": "127.0.0.1", "event": "http_request", "timestamp": "2025-12-28T23:35:36.157810Z", "level": "info"}
+{"error": "1 validation error for ActionListResponse\ntitle\n  Field required [type=missing, input_value=<ActionList(id='AL-0002',...List', status='active')>, input_type=ActionList]\n    For further information visit https://errors.pydantic.dev/2.11/v/missing", "event": "action_list_create_failed", "timestamp": "2025-12-28T23:35:36.163008Z", "level": "error"}
+{"method": "POST", "path": "/api/v1/action-lists", "status_code": 400, "duration_ms": 6.03, "correlation_id": "379f402b-326b-4871-b6f8-4a8e5c711a9f", "event": "http_response", "timestamp": "2025-12-28T23:35:36.164009Z", "level": "warning"}
+FAILED
+
+====================================================== FAILURES =======================================================
+__________________________________ TestActionListIntegration.test_validation_errors ___________________________________
+
+self = <test_action_lists_api.TestActionListIntegration object at 0x00000166BE5E7990>
+client = <httpx.AsyncClient object at 0x00000166BE600FD0>
+
+    async def test_validation_errors(self, client: AsyncClient):
+        """Test error conditions."""
+    
+        # Create a list first
+        create_payload = {"id": "AL-INT-002", "title": "Validation Test", "status": "active"}
+        create_res = await client.post("/api/v1/action-lists", json=create_payload)
+        if create_res.status_code != 201:
+>           pytest.fail(f"Setup failed: {create_res.text}")
+E           Failed: Setup failed: {"detail":"1 validation error for ActionListResponse\ntitle\n  Field required [type=missing, input_value=<ActionList(id='AL-0001',...Test', status='active')>, input_type=ActionList]\n    For further information visit https://errors.pydantic.dev/2.11/v/missing"}
+
+tests\integration\api\test_action_lists_api.py:88: Failed
+________________________________ TestActionListIntegration.test_action_list_lifecycle _________________________________
+
+self = <test_action_lists_api.TestActionListIntegration object at 0x00000166BE2948D0>
+client = <httpx.AsyncClient object at 0x00000166BE77C550>
+
+    async def test_action_list_lifecycle(self, client: AsyncClient):
+        """Test complete action list lifecycle: Create -> Get -> Update -> Delete."""
+        # 1. Create
+        create_payload = {
+            "id": "AL-INT-001",
+            "title": "Integration Test List",
+            "description": "Test Description",
+            "status": "active",
+            "items": [{"id": "Task-1", "text": "Task 1"}, {"id": "Task-2", "text": "Task 2"}],
+        }
+        create_res = await client.post("/api/v1/action-lists", json=create_payload)
+        # If schema mismatch, we get 422.
+        if create_res.status_code != status.HTTP_201_CREATED:
+>           pytest.fail(f"Create failed: {create_res.text}")
+E           Failed: Create failed: {"detail":"1 validation error for ActionListResponse\ntitle\n  Field required [type=missing, input_value=<ActionList(id='AL-0002',...List', status='active')>, input_type=ActionList]\n    For further information visit https://errors.pydantic.dev/2.11/v/missing"}
+
+tests\integration\api\test_action_lists_api.py:25: Failed
+=============================================== short test summary info ===============================================
+FAILED tests/integration/api/test_action_lists_api.py::TestActionListIntegration::test_validation_errors - Failed: Setup failed: {"detail":"1 validation error for ActionListResponse\ntitle\n  Field required [type=missing, input_value=<ActionList(id='AL-0001',...Test', status='active')>, input_type=ActionList]\n    For further information visit https://errors.pydantic.dev/2.11/v/missing"}
+FAILED tests/integration/api/test_action_lists_api.py::TestActionListIntegration::test_action_list_lifecycle - Failed: Create failed: {"detail":"1 validation error for ActionListResponse\ntitle\n  Field required [type=missing, input_value=<ActionList(id='AL-0002',...List', status='active')>, input_type=ActionList]\n    For further information visit https://errors.pydantic.dev/2.11/v/missing"}
+================================================== 2 failed in 0.73s ==================================================

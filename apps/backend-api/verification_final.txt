@@ -1,0 +1,39 @@
+================================================= test session starts =================================================
+platform win32 -- Python 3.11.9, pytest-8.4.2, pluggy-1.6.0
+rootdir: C:\Users\James\Documents\Github\GHrepos\SCCMScripts\TaskMan-v2\backend-api
+configfile: pyproject.toml
+plugins: anyio-4.12.0, Faker-30.10.0, asyncio-0.26.0, cov-5.0.0, mock-3.15.1
+asyncio: mode=Mode.AUTO, asyncio_default_fixture_loop_scope=function, asyncio_default_test_loop_scope=function
+collected 11 items
+
+tests\unit\db\test_connection_manager.py .........F.                                                             [100%]
+
+====================================================== FAILURES =======================================================
+____________________________________________ test_get_session_usage_error _____________________________________________
+
+manager = <taskman_api.db.connection_manager.ConnectionManager object at 0x0000023E45233510>
+
+    @pytest.mark.asyncio
+    async def test_get_session_usage_error(manager):
+        # Setup Primary to succeed
+        mock_session = AsyncMock(spec=AsyncSession)
+        manager.PrimarySession = MagicMock(return_value=MockAsyncContextManager(target=mock_session))
+    
+        # Run loop that raises exception
+        with pytest.raises(ValueError, match="Usage Error"):
+            async for session in manager.get_session():
+                raise ValueError("Usage Error")
+    
+        # Verify rollback was called
+        # Note: explicit await check might be flaky with async generators in some pytest-asyncio versions
+>       assert mock_session.rollback.called
+E       AssertionError: assert False
+E        +  where False = <AsyncMock name='mock.rollback' id='2466471229648'>.called
+E        +    where <AsyncMock name='mock.rollback' id='2466471229648'> = <AsyncMock spec='AsyncSession' id='2466471159568'>.rollback
+
+tests\unit\db\test_connection_manager.py:230: AssertionError
+=============================================== short test summary info ===============================================
+FAILED tests/unit/db/test_connection_manager.py::test_get_session_usage_error - AssertionError: assert False
+ +  where False = <AsyncMock name='mock.rollback' id='2466471229648'>.called
+ +    where <AsyncMock name='mock.rollback' id='2466471229648'> = <AsyncMock spec='AsyncSession' id='2466471159568'>.rollback
+============================================ 1 failed, 10 passed in 0.66s =============================================

@@ -1,0 +1,24 @@
+================================================= test session starts =================================================
+platform win32 -- Python 3.11.9, pytest-8.4.2, pluggy-1.6.0 -- C:\Users\James\Documents\Github\GHrepos\SCCMScripts\TaskMan-v2\backend-api\.venv\Scripts\python.exe
+cachedir: .pytest_cache
+rootdir: C:\Users\James\Documents\Github\GHrepos\SCCMScripts\TaskMan-v2\backend-api
+configfile: pytest_full.ini
+plugins: anyio-4.12.0, Faker-30.10.0, asyncio-0.26.0, cov-5.0.0, mock-3.15.1
+asyncio: mode=Mode.AUTO, asyncio_default_fixture_loop_scope=function, asyncio_default_test_loop_scope=function
+collecting ... collected 208 items / 1 error
+
+======================================================= ERRORS ========================================================
+_____________________________________ ERROR collecting test_action_lists_debug.py _____________________________________
+ImportError while importing test module 'C:\Users\James\Documents\Github\GHrepos\SCCMScripts\TaskMan-v2\backend-api\test_action_lists_debug.py'.
+Hint: make sure your test modules/packages have valid Python names.
+Traceback:
+C:\Users\James\AppData\Local\Programs\Python\Python311\Lib\importlib\__init__.py:126: in import_module
+    return _bootstrap._gcd_import(name[level:], package, level)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+test_action_lists_debug.py:5: in <module>
+    from db.session import AsyncSessionLocal, engine
+E   ModuleNotFoundError: No module named 'db'
+=============================================== short test summary info ===============================================
+ERROR test_action_lists_debug.py
+!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!! Interrupted: 1 error during collection !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
+================================================== 1 error in 2.09s ===================================================

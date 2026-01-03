@@ -1,0 +1,8 @@
+DEBUG: sys.path is ['c:\\Users\\James\\Documents\\Github\\GHrepos\\SCCMScripts\\TaskMan-v2\\backend-api', 'c:\\Users\\James\\Documents\\Github\\GHrepos\\SCCMScripts\\TaskMan-v2\\backend-api\\src', 'C:\\Users\\James\\Documents\\Github\\GHrepos\\SCCMScripts\\TaskMan-v2\\backend-api', 'C:\\Users\\James\\Documents\\Github\\GHrepos\\SCCMScripts\\TaskMan-v2\\backend-api\\src', 'C:\\Users\\James\\Documents\\Github\\GHrepos\\SCCMScripts', 'C:\\Users\\James\\AppData\\Roaming\\uv\\python\\cpython-3.12.11-windows-x86_64-none\\python312.zip', 'C:\\Users\\James\\AppData\\Roaming\\uv\\python\\cpython-3.12.11-windows-x86_64-none\\DLLs', 'C:\\Users\\James\\AppData\\Roaming\\uv\\python\\cpython-3.12.11-windows-x86_64-none\\Lib', 'C:\\Users\\James\\AppData\\Roaming\\uv\\python\\cpython-3.12.11-windows-x86_64-none', 'C:\\Users\\James\\Documents\\Github\\GHrepos\\SCCMScripts\\.venv', 'C:\\Users\\James\\Documents\\Github\\GHrepos\\SCCMScripts\\.venv\\Lib\\site-packages', '__editable__.contextforge_orch_helper-0.1.0.finder.__path_hook__', 'C:\\Users\\James\\Documents\\Github\\GHrepos\\SCCMScripts\\.venv\\Lib\\site-packages\\win32', 'C:\\Users\\James\\Documents\\Github\\GHrepos\\SCCMScripts\\.venv\\Lib\\site-packages\\win32\\lib', 'C:\\Users\\James\\Documents\\Github\\GHrepos\\SCCMScripts\\.venv\\Lib\\site-packages\\Pythonwin']
+App Name: TaskMan API
+Environment: development
+Database Host: localhost
+Database Port: 5434
+Database Name: taskman_v2
+Attempting to connect to PostgreSQL...
+Successfully connected to PostgreSQL!

@@ -1,0 +1,349 @@
+================================================= test session starts =================================================
+platform win32 -- Python 3.11.9, pytest-8.3.3, pluggy-1.6.0
+benchmark: 5.1.0 (defaults: timer=time.perf_counter disable_gc=False min_rounds=5 min_time=0.000005 max_time=1.0 calibration_precision=10 warmup=False warmup_iterations=100000)
+Using --randomly-seed=444925135
+rootdir: C:\Users\James\Documents\Github\GHrepos\SCCMScripts\TaskMan-v2\backend-api
+configfile: pyproject.toml
+testpaths: tests
+plugins: anyio-4.10.0, dash-3.1.1, Faker-30.8.2, hypothesis-6.115.2, asyncio-0.26.0, benchmark-5.1.0, console-scripts-1.4.1, cov-5.0.0, html-4.1.1, json-report-1.5.0, metadata-3.1.1, mock-3.15.1, postgresql-6.1.1, randomly-3.15.0, rich-0.2.0, timeout-2.3.1, xdist-3.6.1
+asyncio: mode=Mode.AUTO, asyncio_default_fixture_loop_scope=function, asyncio_default_test_loop_scope=function
+collected 185 items / 1 error
+
+<Dir backend-api>
+  <Dir tests>
+    <Dir unit>
+      <Dir db>
+        <Dir repositories>
+          <Module test_task_repository.py>
+            <Class TestTaskRepository>
+              <Coroutine test_find_by_owner>
+              <Coroutine test_find_by_status_and_priority>
+              <Coroutine test_find_by_project>
+              <Coroutine test_find_high_priority_tasks>
+              <Coroutine test_find_by_status>
+              <Coroutine test_find_by_priority>
+              <Coroutine test_find_by_sprint>
+              <Coroutine test_find_blocked_tasks>
+              <Coroutine test_find_by_project_with_status_filter>
+      <Dir services>
+        <Module test_base_service.py>
+          <Class TestBaseServiceGet>
+            <Coroutine test_get_success>
+            <Coroutine test_get_not_found>
+          <Class TestBaseServiceUtility>
+            <Coroutine test_exists_true>
+            <Coroutine test_count_success>
+            <Coroutine test_exists_false>
+          <Class TestBaseServiceList>
+            <Coroutine test_list_success>
+            <Coroutine test_list_empty_result>
+          <Class TestBaseServiceCreate>
+            <Coroutine test_create_success>
+            <Coroutine test_create_conflict_error>
+          <Class TestBaseServiceDelete>
+            <Coroutine test_delete_not_found>
+            <Coroutine test_delete_success>
+          <Class TestBaseServiceUpdate>
+            <Coroutine test_update_not_found>
+            <Coroutine test_update_success>
+      <Dir schemas>
+        <Module test_task_schemas.py>
+          <Class TestTaskResponse>
+            <Function test_response_from_orm_model>
+            <Function test_response_serialization>
+          <Class TestTaskCreateRequest>
+            <Function test_title_max_length_validation>
+            <Function test_business_value_score_range>
+            <Function test_enum_field_validation>
+            <Function test_task_id_pattern_validation_failure>
+            <Function test_valid_task_create_request>
+            <Function test_task_id_pattern_validation_success>
+            <Function test_estimate_points_non_negative>
+            <Function test_required_fields_validation>
+            <Function test_default_values>
+          <Class TestTaskUpdateRequest>
+            <Function test_partial_update_all_fields_optional>
+            <Function test_update_with_multiple_fields>
+            <Function test_update_validation_rules_still_apply>
+      <Module test_config.py>
+        <Class TestDatabaseConfig>
+          <Function test_empty_user_rejected>
+          <Function test_connection_string_generation>
+          <Function test_invalid_port_too_low>
+          <Function test_async_connection_string_generation>
+          <Function test_valid_database_config>
+          <Function test_invalid_port_too_high>
+          <Function test_default_values>
+        <Class TestGetSettings>
+          <Function test_settings_cached>
+          <Function test_cache_clear>
+        <Class TestRedisConfig>
+          <Function test_invalid_url_pattern>
+          <Function test_valid_redis_config>
+          <Function test_default_values>
+          <Function test_timeout_validation>
+          <Function test_db_number_validation>
+        <Class TestSettings>
+          <Function test_valid_settings_development>
+          <Function test_extra_fields_rejected>
+          <Function test_invalid_environment>
+          <Function test_development_allows_insecure_secrets>
+          <Function test_secret_key_min_length_32>
+          <Function test_optional_redis_config>
+          <Function test_valid_settings_production>
+          <Function test_production_rejects_insecure_jwt_secret>
+          <Function test_with_redis_config>
+          <Function test_production_rejects_insecure_secret_key>
+          <Function test_environment_helpers>
+      <Dir services>
+        <Module test_project_service.py>
+          <Class TestProjectServiceSprints>
+            <Coroutine test_remove_sprint>
+            <Coroutine test_add_duplicate_sprint_idempotent>
+            <Coroutine test_add_sprint>
+          <Class TestProjectServiceCRUD>
+            <Coroutine test_update_partial_single_field>
+            <Coroutine test_create_with_minimum_fields>
+            <Coroutine test_create_with_all_fields>
+          <Class TestProjectServiceStatus>
+            <Coroutine test_change_status_not_found>
+            <Coroutine test_get_by_status>
+            <Coroutine test_change_status>
+            <Coroutine test_get_by_status_no_results>
+          <Class TestProjectServiceMetrics>
+            <Coroutine test_get_metrics_no_tasks>
+            <Coroutine test_get_metrics_success>
+            <Coroutine test_get_metrics_project_not_found>
+          <Class TestProjectServiceQueries>
+            <Coroutine test_get_by_owner>
+            <Coroutine test_get_by_owner_no_results>
+      <Dir schemas>
+        <Module test_schemas.py>
+          <Class TestSprintSchemas>
+            <Function test_sprint_create_request_valid>
+            <Function test_sprint_update_request_partial>
+            <Function test_sprint_response_with_metrics>
+            <Function test_sprint_velocity_points_non_negative>
+            <Function test_sprint_id_pattern_validation>
+          <Class TestBaseSchemaConfiguration>
+            <Function test_strict_type_validation>
+            <Function test_from_attributes_orm_mode>
+          <Class TestProjectSchemas>
+            <Function test_project_response_serialization>
+            <Function test_project_create_request_valid>
+            <Function test_project_id_pattern_validation>
+            <Function test_project_update_request_partial>
+          <Class TestActionListSchemas>
+            <Function test_action_list_with_associations>
+            <Function test_action_list_create_request_valid>
+            <Function test_action_list_response_with_metadata>
+            <Function test_action_list_update_request_partial>
+            <Function test_action_list_soft_delete_fields>
+      <Dir db>
+        <Dir repositories>
+          <Module test_base_repository.py>
+            <Class TestBaseRepository>
+              <Coroutine test_exists_false>
+              <Coroutine test_find_all_success>
+              <Coroutine test_find_by_id_success>
+              <Coroutine test_find_by_id_not_found>
+              <Coroutine test_update_success>
+              <Coroutine test_create_conflict>
+              <Coroutine test_delete_not_found>
+              <Coroutine test_create_success>
+              <Coroutine test_count>
+              <Coroutine test_exists_true>
+              <Coroutine test_find_all_validation_limit_exceeded>
+              <Coroutine test_delete_success>
+              <Coroutine test_update_not_found>
+      <Package infrastructure>
+        <Module test_health.py>
+          <Class TestHealthChecker>
+            <Coroutine test_check_readiness_healthy>
+            <Coroutine test_check_startup_complete>
+            <Coroutine test_check_database_healthy>
+            <Coroutine test_check_startup_not_complete>
+            <Coroutine test_check_readiness_unhealthy>
+            <Coroutine test_check_database_unhealthy>
+            <Coroutine test_check_liveness_always_returns_true>
+          <Class TestHealthStatus>
+            <Function test_health_status_degraded>
+            <Function test_health_status_unhealthy>
+            <Function test_health_status_creation>
+      <Dir db>
+        <Dir repositories>
+          <Module test_repositories.py>
+            <Class TestActionListRepository>
+              <Coroutine test_find_orphaned>
+              <Coroutine test_find_by_owner>
+            <Class TestProjectRepository>
+              <Coroutine test_find_by_status>
+              <Coroutine test_find_active_projects>
+            <Class TestSprintRepository>
+              <Coroutine test_find_active_sprints>
+              <Coroutine test_find_by_status>
+      <Dir services>
+        <Module test_task_service.py>
+          <Class TestTaskServiceSearch>
+            <Coroutine test_get_blocked_tasks>
+            <Coroutine test_search_by_status>
+            <Coroutine test_search_by_status_and_priority>
+            <Coroutine test_get_high_priority_tasks>
+          <Class TestTaskServiceInvalidTransitions>
+            <Coroutine test_ready_to_blocked_invalid>
+            <Coroutine test_dropped_to_ready_invalid>
+            <Coroutine test_done_to_in_progress_invalid>
+            <Coroutine test_done_to_new_invalid>
+            <Coroutine test_new_to_done_invalid>
+          <Class TestTaskServiceBulkOperations>
+            <Coroutine test_bulk_update_fails_fast>
+            <Coroutine test_bulk_update_success>
+            <Coroutine test_bulk_update_empty_list>
+          <Class TestTaskServiceStatusTransitions>
+            <Coroutine test_new_to_ready>
+            <Coroutine test_in_progress_to_blocked>
+            <Coroutine test_task_not_found>
+            <Coroutine test_in_progress_to_done>
+          <Class TestTaskServiceAssignment>
+            <Coroutine test_assign_to_nonexistent_project>
+            <Coroutine test_assign_to_project>
+            <Coroutine test_assign_to_sprint>
+            <Coroutine test_assign_to_nonexistent_sprint>
+          <Class TestTaskServiceStatusValidation>
+            <Function test_ready_to_in_progress_valid>
+            <Function test_done_to_any_invalid>
+            <Function test_new_to_ready_valid>
+      <Package core>
+        <Module test_result.py>
+          <Class TestResultPatternMatching>
+            <Function test_pattern_match_err>
+            <Function test_pattern_match_ok>
+          <Class TestErr>
+            <Function test_err_ok_raises>
+            <Function test_err_is_err_returns_true>
+            <Function test_err_unwrap_raises>
+            <Function test_err_unwrap_err_returns_error>
+            <Function test_err_err_returns_error>
+            <Function test_err_is_ok_returns_false>
+            <Function test_err_match_args>
+          <Class TestOk>
+            <Function test_ok_ok_returns_value>
+            <Function test_ok_match_args>
+            <Function test_ok_err_raises>
+            <Function test_ok_unwrap_err_raises>
+            <Function test_ok_is_ok_returns_true>
+            <Function test_ok_is_err_returns_false>
+            <Function test_ok_unwrap_returns_value>
+      <Dir services>
+        <Module test_action_list_service.py>
+          <Class TestActionListServiceReorder>
+            <Coroutine test_reorder_items_invalid_length>
+            <Coroutine test_reorder_items_success>
+          <Class TestActionListServiceStatus>
+            <Coroutine test_mark_complete>
+          <Class TestActionListServiceQueries>
+            <Coroutine test_get_orphaned>
+            <Coroutine test_get_soft_deleted>
+          <Class TestActionListServiceItems>
+            <Coroutine test_remove_item>
+            <Coroutine test_add_item>
+        <Module test_sprint_service.py>
+          <Class TestSprintServiceQueries>
+            <Coroutine test_get_current_sprints>
+            <Coroutine test_get_by_project>
+          <Class TestSprintServiceVelocity>
+            <Coroutine test_calculate_velocity>
+          <Class TestSprintServiceBurndown>
+            <Coroutine test_get_burndown>
+          <Class TestSprintServiceStatus>
+            <Coroutine test_change_status>
+          <Class TestSprintServiceMetrics>
+            <Coroutine test_update_metrics>
+      <Package infrastructure>
+        <Module test_logging.py>
+          <Class TestSensitiveDataSanitization>
+            <Function test_sanitize_secret_field>
+            <Function test_sanitize_token_field>
+            <Function test_sanitize_multiple_sensitive_fields>
+            <Function test_sanitize_password_field>
+            <Function test_sanitize_case_insensitive>
+          <Class TestRequestContext>
+            <Function test_bind_request_context>
+            <Function test_bind_and_clear_multiple_times>
+            <Function test_clear_request_context>
+          <Class TestLoggingConfiguration>
+            <Function test_get_logger_returns_bound_logger>
+            <Function test_configure_logging_creates_logger>
+            <Function test_get_logger_without_name>
+            <Function test_configure_logging_with_custom_level>
+
+======================================================= ERRORS ========================================================
+_______________________________________ ERROR collecting tests/integration/api ________________________________________
+C:\Users\James\AppData\Local\Programs\Python\Python311\Lib\importlib\__init__.py:126: in import_module
+    return _bootstrap._gcd_import(name[level:], package, level)
+<frozen importlib._bootstrap>:1204: in _gcd_import
+    ???
+<frozen importlib._bootstrap>:1176: in _find_and_load
+    ???
+<frozen importlib._bootstrap>:1147: in _find_and_load_unlocked
+    ???
+<frozen importlib._bootstrap>:690: in _load_unlocked
+    ???
+C:\Users\James\AppData\Local\Programs\Python\Python311\Lib\site-packages\_pytest\assertion\rewrite.py:184: in exec_module
+    exec(co, module.__dict__)
+tests\integration\api\conftest.py:32: in <module>
+    from taskman_api.main import create_app
+src\taskman_api\main.py:25: in <module>
+    from taskman_api.infrastructure.metrics import configure_metrics, configure_prometheus
+src\taskman_api\infrastructure\metrics.py:36: in <module>
+    from prometheus_fastapi_instrumentator import Instrumentator
+E   ModuleNotFoundError: No module named 'prometheus_fastapi_instrumentator'
+
+---------- coverage: platform win32, python 3.11.9-final-0 -----------
+Name                                                        Stmts   Miss Branch BrPart   Cover   Missing
+--------------------------------------------------------------------------------------------------------
+src\taskman_api\api\deps.py                                    26     13      0      0  50.00%   32-41, 62, 76, 88, 102
+src\taskman_api\api\middleware\error_handler.py                23     17      0      0  26.09%   32-57, 69-76
+src\taskman_api\api\middleware\request_logger.py               29     18      0      0  37.93%   51, 66-127
+src\taskman_api\api\v1\action_lists.py                         47     30     20      0  25.37%   43-49, 69-75, 98-104, 124-130, 149-155
+src\taskman_api\api\v1\health.py                               41     24     10      0  33.33%   42-48, 80-90, 156-165, 226-235, 273
+src\taskman_api\api\v1\projects.py                             55     36     24      0  24.05%   41-47, 67-73, 96-102, 122-128, 147-153, 180-186
+src\taskman_api\api\v1\sprints.py                              55     36     24      0  24.05%   41-47, 67-73, 96-102, 122-128, 147-153, 179-185
+src\taskman_api\api\v1\tasks.py                                88     60     40      0  21.88%   37-43, 63-69, 92-98, 118-124, 143-149, 172-178, 200-206, 228-234, 263-277, 296-302
+src\taskman_api\config.py                                      61     16      6      0  67.16%   98-99, 110-111, 220-239, 245, 251, 257, 286
+src\taskman_api\core\errors.py                                 78     60     36      0  15.79%   31-37, 48-57, 72-78, 101-109, 134-146, 169-177, 199-205, 226-230, 253-259
+src\taskman_api\core\result.py                                 37     14      0      0  62.16%   34, 37, 40, 43, 47, 50, 54, 63, 66, 69, 72, 76, 79, 83
+src\taskman_api\db\base.py                                     10      1      0      0  90.00%   65
+src\taskman_api\db\models\action_list.py                       33     11      6      0  56.41%   25-27, 31-33, 37-39, 93, 98
+src\taskman_api\db\repositories\action_list_repository.py      67     50      0      0  25.37%   36, 54-66, 90-102, 126-138, 162-174, 196-208, 230-242, 266-279
+src\taskman_api\db\repositories\base.py                        91     70     10      0  20.79%   61-62, 79-96, 118-135, 162-186, 209-223, 245-257, 279-286, 305-311
+src\taskman_api\db\repositories\project_repository.py          57     39      4      0  29.51%   38, 56-68, 92-104, 126, 146-161, 185-199, 219-223
+src\taskman_api\db\repositories\sprint_repository.py           78     59     12      0  21.11%   38, 56-68, 94-106, 128, 152-173, 197-209, 233-245, 269-290
+src\taskman_api\db\repositories\task_repository.py             76     57      4      0  23.75%   37, 55-67, 91-103, 127-139, 165-177, 203-215, 241-253, 275, 291-303
+src\taskman_api\db\session.py                                  38     24      8      0  30.43%   39-63, 77-87, 112-117, 126-130, 140-143
+src\taskman_api\infrastructure\health.py                       68     48     12      0  25.00%   87-88, 103, 124-171, 191-208, 239-264
+src\taskman_api\infrastructure\logging.py                      36     22      8      0  31.82%   73-78, 94-99, 120-165, 217-218, 234
+src\taskman_api\infrastructure\metrics.py                      48     39     10      0  15.52%   38-249
+src\taskman_api\main.py                                        54     42     10      0  18.75%   28-155
+src\taskman_api\middleware\__init__.py                          2      2      0      0   0.00%   7-9
+src\taskman_api\middleware\logging_middleware.py               85     85     32      0   0.00%   19-272
+src\taskman_api\schemas\project.py                            100      3      2      0  95.10%   177-179
+src\taskman_api\schemas\sprint.py                              85      3      2      0  94.25%   158-160
+src\taskman_api\schemas\task.py                               124      3      2      0  96.03%   234-236
+src\taskman_api\services\action_list_service.py                84     66     34      0  15.25%   50-52, 76-110, 129-132, 153-164, 184-209, 230-241, 262-271, 293-302, 321-330
+src\taskman_api\services\base.py                               63     44     22      0  22.35%   53-55, 79-91, 113-120, 149-168, 190, 215-225, 247, 263
+src\taskman_api\services\project_service.py                    89     72     36      0  13.60%   48-52, 82-142, 165-179, 199-213, 232-233, 257-267, 288-298
+src\taskman_api\services\sprint_service.py                     94     75     36      0  14.62%   50-54, 77-97, 130-193, 212-213, 237-248, 269-280, 301-310, 332-340
+src\taskman_api\services\task_service.py                       82     63     36      0  16.10%   51-53, 87-106, 131-150, 176-177, 201-202, 231-250, 291-322, 344-353, 376-387
+--------------------------------------------------------------------------------------------------------
+TOTAL                                                        2304   1202    446      0  40.07%
+
+17 files skipped due to complete coverage.
+Coverage HTML written to dir htmlcov
+Coverage JSON written to file coverage.json
+
+FAIL Required test coverage of 70.0% not reached. Total coverage: 40.07%
+=============================================== short test summary info ===============================================
+ERROR tests/integration/api - ModuleNotFoundError: No module named 'prometheus_fastapi_instrumentator'
+!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!! Interrupted: 1 error during collection !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
+======================================== 185 tests collected, 1 error in 3.40s ========================================

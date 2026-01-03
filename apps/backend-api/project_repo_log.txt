@@ -1,0 +1,357 @@
+================================================= test session starts =================================================
+platform win32 -- Python 3.11.9, pytest-8.3.3, pluggy-1.6.0 -- C:\Users\James\AppData\Local\Programs\Python\Python311\python.exe
+cachedir: .pytest_cache
+hypothesis profile 'default' -> database=DirectoryBasedExampleDatabase(WindowsPath('C:/Users/James/Documents/Github/GHrepos/SCCMScripts/TaskMan-v2/backend-api/.hypothesis/examples'))
+benchmark: 5.1.0 (defaults: timer=time.perf_counter disable_gc=False min_rounds=5 min_time=0.000005 max_time=1.0 calibration_precision=10 warmup=False warmup_iterations=100000)
+metadata: {'Python': '3.11.9', 'Platform': 'Windows-10-10.0.19045-SP0', 'Packages': {'pytest': '8.3.3', 'pluggy': '1.6.0'}, 'Plugins': {'anyio': '4.10.0', 'dash': '3.1.1', 'Faker': '30.8.2', 'hypothesis': '6.115.2', 'asyncio': '0.26.0', 'benchmark': '5.1.0', 'console-scripts': '1.4.1', 'cov': '5.0.0', 'html': '4.1.1', 'json-report': '1.5.0', 'metadata': '3.1.1', 'mock': '3.15.1', 'postgresql': '6.1.1', 'randomly': '3.15.0', 'rich': '0.2.0', 'timeout': '2.3.1', 'xdist': '3.6.1'}, 'CI': 'true'}
+Using --randomly-seed=4025692068
+rootdir: C:\Users\James\Documents\Github\GHrepos\SCCMScripts\TaskMan-v2\backend-api
+configfile: pyproject.toml
+plugins: anyio-4.10.0, dash-3.1.1, Faker-30.8.2, hypothesis-6.115.2, asyncio-0.26.0, benchmark-5.1.0, console-scripts-1.4.1, cov-5.0.0, html-4.1.1, json-report-1.5.0, metadata-3.1.1, mock-3.15.1, postgresql-6.1.1, randomly-3.15.0, rich-0.2.0, timeout-2.3.1, xdist-3.6.1
+asyncio: mode=Mode.AUTO, asyncio_default_fixture_loop_scope=function, asyncio_default_test_loop_scope=function
+collecting ... collected 5 items
+
+tests/unit/db/repositories/test_project_repository.py::TestProjectRepositoryEdgeCases::test_exists ERROR         [ 20%]
+tests/unit/db/repositories/test_project_repository.py::TestProjectRepositoryEdgeCases::test_update_project_method ERROR [ 40%]
+tests/unit/db/repositories/test_project_repository.py::TestProjectRepositoryEdgeCases::test_create_project_method FAILED [ 60%]
+tests/unit/db/repositories/test_project_repository.py::TestProjectRepositoryEdgeCases::test_get_by_owner ERROR   [ 80%]
+tests/unit/db/repositories/test_project_repository.py::TestProjectRepositoryEdgeCases::test_search_filters_and_pagination FAILED [100%]
+
+======================================================= ERRORS ========================================================
+____________________________ ERROR at setup of TestProjectRepositoryEdgeCases.test_exists _____________________________
+
+    @pytest.fixture
+    def sample_project() -> Project:
+        """Create sample project for testing."""
+>       return Project(
+            id="P-TEST-001",
+            name="Test Project",
+            mission="Test project mission",
+            status=ProjectStatus.ACTIVE,
+            start_date=date(2025, 1, 1),
+            owner="test.owner",
+            sponsors=["sponsor1", "sponsor2"],
+            stakeholders=["stakeholder1"],
+            repositories=["https://github.com/test/repo"],
+            comms_channels=["#test-channel"],
+            okrs=[],
+            kpis=[],
+            roadmap=[],
+            risks=[],
+            assumptions=[],
+            constraints=[],
+            dependencies_external=[],
+            sprints=[],
+            related_projects=[],
+            shared_components=[],
+            compliance_requirements=[],
+            governance={},
+            success_metrics=[],
+            mpv_policy={},
+            observability={},
+        )
+
+tests\unit\db\repositories\conftest.py:63: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _
+C:\Users\James\AppData\Local\Programs\Python\Python311\Lib\site-packages\sqlalchemy\orm\state.py:571: in _initialize_instance
+    with util.safe_reraise():
+C:\Users\James\AppData\Local\Programs\Python\Python311\Lib\site-packages\sqlalchemy\util\langhelpers.py:224: in __exit__
+    raise exc_value.with_traceback(exc_tb)
+C:\Users\James\AppData\Local\Programs\Python\Python311\Lib\site-packages\sqlalchemy\orm\state.py:569: in _initialize_instance
+    manager.original_init(*mixed[1:], **kwargs)
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _
+
+self = <Project(id='P-TEST-001', name='Test Project', status='ProjectStatus.ACTIVE')>
+kwargs = {'assumptions': [], 'comms_channels': ['#test-channel'], 'compliance_requirements': [], 'constraints': [], ...}
+cls_ = <class 'taskman_api.models.project.Project'>, k = 'sprints'
+
+    def _declarative_constructor(self: Any, **kwargs: Any) -> None:
+        """A simple constructor that allows initialization from kwargs.
+    
+        Sets attributes on the constructed instance using the names and
+        values in ``kwargs``.
+    
+        Only keys that are present as
+        attributes of the instance's class are allowed. These could be,
+        for example, any mapped columns or relationships.
+        """
+        cls_ = type(self)
+        for k in kwargs:
+            if not hasattr(cls_, k):
+>               raise TypeError(
+                    "%r is an invalid keyword argument for %s" % (k, cls_.__name__)
+                )
+E               TypeError: 'sprints' is an invalid keyword argument for Project
+
+C:\Users\James\AppData\Local\Programs\Python\Python311\Lib\site-packages\sqlalchemy\orm\decl_base.py:2173: TypeError
+_____________________ ERROR at setup of TestProjectRepositoryEdgeCases.test_update_project_method _____________________
+
+    @pytest.fixture
+    def sample_project() -> Project:
+        """Create sample project for testing."""
+>       return Project(
+            id="P-TEST-001",
+            name="Test Project",
+            mission="Test project mission",
+            status=ProjectStatus.ACTIVE,
+            start_date=date(2025, 1, 1),
+            owner="test.owner",
+            sponsors=["sponsor1", "sponsor2"],
+            stakeholders=["stakeholder1"],
+            repositories=["https://github.com/test/repo"],
+            comms_channels=["#test-channel"],
+            okrs=[],
+            kpis=[],
+            roadmap=[],
+            risks=[],
+            assumptions=[],
+            constraints=[],
+            dependencies_external=[],
+            sprints=[],
+            related_projects=[],
+            shared_components=[],
+            compliance_requirements=[],
+            governance={},
+            success_metrics=[],
+            mpv_policy={},
+            observability={},
+        )
+
+tests\unit\db\repositories\conftest.py:63: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _
+C:\Users\James\AppData\Local\Programs\Python\Python311\Lib\site-packages\sqlalchemy\orm\state.py:571: in _initialize_instance
+    with util.safe_reraise():
+C:\Users\James\AppData\Local\Programs\Python\Python311\Lib\site-packages\sqlalchemy\util\langhelpers.py:224: in __exit__
+    raise exc_value.with_traceback(exc_tb)
+C:\Users\James\AppData\Local\Programs\Python\Python311\Lib\site-packages\sqlalchemy\orm\state.py:569: in _initialize_instance
+    manager.original_init(*mixed[1:], **kwargs)
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _
+
+self = <Project(id='P-TEST-001', name='Test Project', status='ProjectStatus.ACTIVE')>
+kwargs = {'assumptions': [], 'comms_channels': ['#test-channel'], 'compliance_requirements': [], 'constraints': [], ...}
+cls_ = <class 'taskman_api.models.project.Project'>, k = 'sprints'
+
+    def _declarative_constructor(self: Any, **kwargs: Any) -> None:
+        """A simple constructor that allows initialization from kwargs.
+    
+        Sets attributes on the constructed instance using the names and
+        values in ``kwargs``.
+    
+        Only keys that are present as
+        attributes of the instance's class are allowed. These could be,
+        for example, any mapped columns or relationships.
+        """
+        cls_ = type(self)
+        for k in kwargs:
+            if not hasattr(cls_, k):
+>               raise TypeError(
+                    "%r is an invalid keyword argument for %s" % (k, cls_.__name__)
+                )
+E               TypeError: 'sprints' is an invalid keyword argument for Project
+
+C:\Users\James\AppData\Local\Programs\Python\Python311\Lib\site-packages\sqlalchemy\orm\decl_base.py:2173: TypeError
+_________________________ ERROR at setup of TestProjectRepositoryEdgeCases.test_get_by_owner __________________________
+
+    @pytest.fixture
+    def sample_project() -> Project:
+        """Create sample project for testing."""
+>       return Project(
+            id="P-TEST-001",
+            name="Test Project",
+            mission="Test project mission",
+            status=ProjectStatus.ACTIVE,
+            start_date=date(2025, 1, 1),
+            owner="test.owner",
+            sponsors=["sponsor1", "sponsor2"],
+            stakeholders=["stakeholder1"],
+            repositories=["https://github.com/test/repo"],
+            comms_channels=["#test-channel"],
+            okrs=[],
+            kpis=[],
+            roadmap=[],
+            risks=[],
+            assumptions=[],
+            constraints=[],
+            dependencies_external=[],
+            sprints=[],
+            related_projects=[],
+            shared_components=[],
+            compliance_requirements=[],
+            governance={},
+            success_metrics=[],
+            mpv_policy={},
+            observability={},
+        )
+
+tests\unit\db\repositories\conftest.py:63: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _
+C:\Users\James\AppData\Local\Programs\Python\Python311\Lib\site-packages\sqlalchemy\orm\state.py:571: in _initialize_instance
+    with util.safe_reraise():
+C:\Users\James\AppData\Local\Programs\Python\Python311\Lib\site-packages\sqlalchemy\util\langhelpers.py:224: in __exit__
+    raise exc_value.with_traceback(exc_tb)
+C:\Users\James\AppData\Local\Programs\Python\Python311\Lib\site-packages\sqlalchemy\orm\state.py:569: in _initialize_instance
+    manager.original_init(*mixed[1:], **kwargs)
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _
+
+self = <Project(id='P-TEST-001', name='Test Project', status='ProjectStatus.ACTIVE')>
+kwargs = {'assumptions': [], 'comms_channels': ['#test-channel'], 'compliance_requirements': [], 'constraints': [], ...}
+cls_ = <class 'taskman_api.models.project.Project'>, k = 'sprints'
+
+    def _declarative_constructor(self: Any, **kwargs: Any) -> None:
+        """A simple constructor that allows initialization from kwargs.
+    
+        Sets attributes on the constructed instance using the names and
+        values in ``kwargs``.
+    
+        Only keys that are present as
+        attributes of the instance's class are allowed. These could be,
+        for example, any mapped columns or relationships.
+        """
+        cls_ = type(self)
+        for k in kwargs:
+            if not hasattr(cls_, k):
+>               raise TypeError(
+                    "%r is an invalid keyword argument for %s" % (k, cls_.__name__)
+                )
+E               TypeError: 'sprints' is an invalid keyword argument for Project
+
+C:\Users\James\AppData\Local\Programs\Python\Python311\Lib\site-packages\sqlalchemy\orm\decl_base.py:2173: TypeError
+====================================================== FAILURES =======================================================
+______________________________ TestProjectRepositoryEdgeCases.test_create_project_method ______________________________
+
+self = <test_project_repository.TestProjectRepositoryEdgeCases object at 0x000002B5F09B1B90>
+async_session = <sqlalchemy.ext.asyncio.session.AsyncSession object at 0x000002B5F0D42910>
+
+    async def test_create_project_method(self, async_session: AsyncSession):
+        """Test explicit create_project helper."""
+        repo = ProjectRepository(async_session)
+    
+        project = await repo.create_project(
+            project_id="P-NEW-001",
+            name="New Project",
+            description="Created via helper",
+            status="active",
+            owner="creator"
+        )
+    
+        assert project.id == "P-NEW-001"
+        assert project.name == "New Project"
+        assert project.status == "active"
+    
+>       stored = await repo.get("P-NEW-001")
+E       AttributeError: 'ProjectRepository' object has no attribute 'get'
+
+tests\unit\db\repositories\test_project_repository.py:144: AttributeError
+__________________________ TestProjectRepositoryEdgeCases.test_search_filters_and_pagination __________________________
+
+self = <test_project_repository.TestProjectRepositoryEdgeCases object at 0x000002B5F09B0390>
+async_session = <sqlalchemy.ext.asyncio.session.AsyncSession object at 0x000002B5F0AC1350>
+
+    async def test_search_filters_and_pagination(self, async_session: AsyncSession):
+        """Test search with combined filters and pagination."""
+        repo = ProjectRepository(async_session)
+    
+        # Create 3 active projects owned by alice
+        for i in range(3):
+>           p = Project(
+                id=f"P-SEARCH-{i}",
+                name=f"Project {i}",
+                status=ProjectStatus.ACTIVE,
+                owner="alice",
+                mission="mission",
+                start_date=date(2025, 1, 1),
+                sprints=[], repositories=[], comms_channels=[], okrs=[], kpis=[], stakeholders=[], sponsors=[], roadmap=[], risks=[], assumptions=[], constraints=[], dependencies_external=[], related_projects=[], shared_components=[], compliance_requirements=[], governance={}, success_metrics=[], mpv_policy={}, observability={}
+            )
+
+tests\unit\db\repositories\test_project_repository.py:77: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _
+<string>:4: in __init__
+    ???
+C:\Users\James\AppData\Local\Programs\Python\Python311\Lib\site-packages\sqlalchemy\orm\state.py:571: in _initialize_instance
+    with util.safe_reraise():
+C:\Users\James\AppData\Local\Programs\Python\Python311\Lib\site-packages\sqlalchemy\util\langhelpers.py:224: in __exit__
+    raise exc_value.with_traceback(exc_tb)
+C:\Users\James\AppData\Local\Programs\Python\Python311\Lib\site-packages\sqlalchemy\orm\state.py:569: in _initialize_instance
+    manager.original_init(*mixed[1:], **kwargs)
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _
+
+self = <Project(id='P-SEARCH-0', name='Project 0', status='ProjectStatus.ACTIVE')>
+kwargs = {'assumptions': [], 'comms_channels': [], 'compliance_requirements': [], 'constraints': [], ...}
+cls_ = <class 'taskman_api.models.project.Project'>, k = 'sprints'
+
+    def _declarative_constructor(self: Any, **kwargs: Any) -> None:
+        """A simple constructor that allows initialization from kwargs.
+    
+        Sets attributes on the constructed instance using the names and
+        values in ``kwargs``.
+    
+        Only keys that are present as
+        attributes of the instance's class are allowed. These could be,
+        for example, any mapped columns or relationships.
+        """
+        cls_ = type(self)
+        for k in kwargs:
+            if not hasattr(cls_, k):
+>               raise TypeError(
+                    "%r is an invalid keyword argument for %s" % (k, cls_.__name__)
+                )
+E               TypeError: 'sprints' is an invalid keyword argument for Project
+
+C:\Users\James\AppData\Local\Programs\Python\Python311\Lib\site-packages\sqlalchemy\orm\decl_base.py:2173: TypeError
+
+---------- coverage: platform win32, python 3.11.9-final-0 -----------
+Name                                                     Stmts   Miss Branch BrPart   Cover   Missing
+-----------------------------------------------------------------------------------------------------
+src\taskman_api\config.py                                   62     16      6      0  67.65%   102-103, 114-115, 224-243, 249, 255, 261, 290
+src\taskman_api\core\errors.py                              78     60     36      0  15.79%   31-37, 48-57, 72-78, 101-109, 134-146, 169-177, 199-205, 226-230, 253-259
+src\taskman_api\core\result.py                              37     14      0      0  62.16%   34, 37, 40, 43, 47, 50, 54, 63, 66, 69, 72, 76, 79, 83
+src\taskman_api\db\base.py                                   6      1      0      0  83.33%   32
+src\taskman_api\db\connection_manager.py                    91     68     10      1  23.76%   66-68, 75-124, 135-165, 170-183
+src\taskman_api\db\session.py                               27      8      4      0  61.29%   48-50, 63-64, 73-75, 85
+src\taskman_api\dependencies.py                             43     43      0      0   0.00%   7-96
+src\taskman_api\main.py                                    104    104     18      0   0.00%   6-340
+src\taskman_api\middleware\__init__.py                       2      2      0      0   0.00%   7-9
+src\taskman_api\middleware\logging_middleware.py            85     85     32      0   0.00%   19-272
+src\taskman_api\models\action_list.py                       39      9      6      1  68.89%   34, 39-41, 45-47, 83, 88
+src\taskman_api\models\project.py                           45      1      0      0  97.78%   91
+src\taskman_api\models\sprint.py                            51      3      0      0  94.12%   43, 47, 100
+src\taskman_api\repositories\action_list_repository.py      43     28     10      0  28.30%   23, 27-32, 36-39, 54-77, 88-95, 99-101, 105-107, 111-112
+src\taskman_api\repositories\base.py                        33     12      0      0  63.64%   34-37, 41-44, 55-57, 61-62, 66-71
+src\taskman_api\repositories\project_repository.py          46     28     12      0  31.03%   24-27, 31-34, 38-41, 55-71, 105-117
+src\taskman_api\repositories\sprint_repository.py           51     37     14      0  21.54%   20, 24-27, 31-34, 38-41, 45-48, 62-78, 91-105, 117-131
+src\taskman_api\repositories\task_repository.py             78     62     42      0  13.33%   22, 26-29, 33-34, 38-41, 45-48, 52-55, 73-98, 142-180, 201-233
+src\taskman_api\routers\__init__.py                          7      7      0      0   0.00%   6-13
+src\taskman_api\routers\action_lists.py                    114    114     56      0   0.00%   9-276
+src\taskman_api\routers\agent.py                            30     30      6      0   0.00%   1-72
+src\taskman_api\routers\diagnostic.py                       20     20      0      0   0.00%   5-40
+src\taskman_api\routers\projects.py                         73     73     32      0   0.00%   7-143
+src\taskman_api\routers\sprints.py                         108    108     52      0   0.00%   7-202
+src\taskman_api\routers\tasks.py                            94     94     42      0   0.00%   7-183
+src\taskman_api\schemas\__init__.py                          7      7      0      0   0.00%   8-71
+src\taskman_api\schemas\action_list.py                      82     82      2      0   0.00%   5-146
+src\taskman_api\schemas\base.py                             53     53      6      0   0.00%   5-122
+src\taskman_api\schemas\enums.py                            62     62      0      0   0.00%   5-99
+src\taskman_api\schemas\project.py                         108    108      2      0   0.00%   5-182
+src\taskman_api\schemas\sprint.py                          109    109      4      0   0.00%   5-189
+src\taskman_api\schemas\task.py                            138    138      4      0   0.00%   5-243
+src\taskman_api\services\__init__.py                         6      6      0      0   0.00%   6-12
+src\taskman_api\services\action_list_service.py             86     86     16      0   0.00%   5-164
+src\taskman_api\services\base.py                           110    110     24      0   0.00%   6-310
+src\taskman_api\services\project_service.py                 97     97     36      0   0.00%   6-335
+src\taskman_api\services\sprint_service.py                 141    141     48      0   0.00%   6-470
+src\taskman_api\services\task_service.py                    92     92     32      0   0.00%   6-453
+-----------------------------------------------------------------------------------------------------
+TOTAL                                                     2603   2118    552      2  15.44%
+
+7 files skipped due to complete coverage.
+Coverage HTML written to dir htmlcov
+Coverage JSON written to file coverage.json
+
+FAIL Required test coverage of 70.0% not reached. Total coverage: 15.44%
+=============================================== short test summary info ===============================================
+ERROR tests/unit/db/repositories/test_project_repository.py::TestProjectRepositoryEdgeCases::test_exists - TypeError: 'sprints' is an invalid keyword argument for Project
+ERROR tests/unit/db/repositories/test_project_repository.py::TestProjectRepositoryEdgeCases::test_update_project_method - TypeError: 'sprints' is an invalid keyword argument for Project
+ERROR tests/unit/db/repositories/test_project_repository.py::TestProjectRepositoryEdgeCases::test_get_by_owner - TypeError: 'sprints' is an invalid keyword argument for Project
+FAILED tests/unit/db/repositories/test_project_repository.py::TestProjectRepositoryEdgeCases::test_create_project_method - AttributeError: 'ProjectRepository' object has no attribute 'get'
+FAILED tests/unit/db/repositories/test_project_repository.py::TestProjectRepositoryEdgeCases::test_search_filters_and_pagination - TypeError: 'sprints' is an invalid keyword argument for Project
+============================================= 2 failed, 3 errors in 2.89s =============================================

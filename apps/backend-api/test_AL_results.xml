@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="utf-8"?><testsuites><testsuite name="pytest" errors="0" failures="2" skipped="0" tests="2" time="0.901" timestamp="2025-12-28T16:35:51.868977-07:00" hostname="DESKTOP-94QBM57"><testcase classname="tests.integration.api.test_action_lists_api.TestActionListIntegration" name="test_validation_errors" time="0.170"><failure message="Failed: Setup failed: {&quot;detail&quot;:&quot;1 validation error for ActionListResponse\ntitle\n  Field required [type=missing, input_value=&lt;ActionList(id='AL-0001',...Test', status='active')&gt;, input_type=ActionList]\n    For further information visit https://errors.pydantic.dev/2.11/v/missing&quot;}">self = &lt;test_action_lists_api.TestActionListIntegration object at 0x0000025AFFC79610&gt;
+client = &lt;httpx.AsyncClient object at 0x0000025AFFC55350&gt;
+
+    async def test_validation_errors(self, client: AsyncClient):
+        """Test error conditions."""
+    
+        # Create a list first
+        create_payload = {"id": "AL-INT-002", "title": "Validation Test", "status": "active"}
+        create_res = await client.post("/api/v1/action-lists", json=create_payload)
+        if create_res.status_code != 201:
+&gt;           pytest.fail(f"Setup failed: {create_res.text}")
+E           Failed: Setup failed: {"detail":"1 validation error for ActionListResponse\ntitle\n  Field required [type=missing, input_value=&lt;ActionList(id='AL-0001',...Test', status='active')&gt;, input_type=ActionList]\n    For further information visit https://errors.pydantic.dev/2.11/v/missing"}
+
+tests\integration\api\test_action_lists_api.py:88: Failed</failure></testcase><testcase classname="tests.integration.api.test_action_lists_api.TestActionListIntegration" name="test_action_list_lifecycle" time="0.038"><failure message="Failed: Create failed: {&quot;detail&quot;:&quot;1 validation error for ActionListResponse\ntitle\n  Field required [type=missing, input_value=&lt;ActionList(id='AL-0002',...List', status='active')&gt;, input_type=ActionList]\n    For further information visit https://errors.pydantic.dev/2.11/v/missing&quot;}">self = &lt;test_action_lists_api.TestActionListIntegration object at 0x0000025AFE71A8D0&gt;
+client = &lt;httpx.AsyncClient object at 0x0000025AFFDCC650&gt;
+
+    async def test_action_list_lifecycle(self, client: AsyncClient):
+        """Test complete action list lifecycle: Create -&gt; Get -&gt; Update -&gt; Delete."""
+        # 1. Create
+        create_payload = {
+            "id": "AL-INT-001",
+            "title": "Integration Test List",
+            "description": "Test Description",
+            "status": "active",
+            "items": [{"id": "Task-1", "text": "Task 1"}, {"id": "Task-2", "text": "Task 2"}],
+        }
+        create_res = await client.post("/api/v1/action-lists", json=create_payload)
+        # If schema mismatch, we get 422.
+        if create_res.status_code != status.HTTP_201_CREATED:
+&gt;           pytest.fail(f"Create failed: {create_res.text}")
+E           Failed: Create failed: {"detail":"1 validation error for ActionListResponse\ntitle\n  Field required [type=missing, input_value=&lt;ActionList(id='AL-0002',...List', status='active')&gt;, input_type=ActionList]\n    For further information visit https://errors.pydantic.dev/2.11/v/missing"}
+
+tests\integration\api\test_action_lists_api.py:25: Failed</failure></testcase></testsuite></testsuites>

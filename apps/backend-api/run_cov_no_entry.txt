@@ -1,0 +1,28 @@
+warning: `VIRTUAL_ENV=C:\Users\James\Documents\Github\GHrepos\SCCMScripts\.venv` does not match the project environment path `.venv` and will be ignored; use `--active` to target the active environment instead
+================================================= test session starts =================================================
+platform win32 -- Python 3.11.9, pytest-8.4.2, pluggy-1.6.0 -- C:\Users\James\Documents\Github\GHrepos\SCCMScripts\TaskMan-v2\backend-api\.venv\Scripts\python.exe
+cachedir: .pytest_cache
+rootdir: C:\Users\James\Documents\Github\GHrepos\SCCMScripts\TaskMan-v2\backend-api
+configfile: pyproject.toml
+plugins: anyio-4.12.0, Faker-30.10.0, asyncio-0.26.0, cov-5.0.0, mock-3.15.1
+asyncio: mode=Mode.AUTO, asyncio_default_fixture_loop_scope=function, asyncio_default_test_loop_scope=function
+collecting ... collected 16 items
+
+tests/unit/core/test_result.py::TestOk::test_ok_is_ok_returns_true PASSED
+tests/unit/core/test_result.py::TestOk::test_ok_is_err_returns_false PASSED
+tests/unit/core/test_result.py::TestOk::test_ok_unwrap_returns_value PASSED
+tests/unit/core/test_result.py::TestOk::test_ok_ok_returns_value PASSED
+tests/unit/core/test_result.py::TestOk::test_ok_unwrap_err_raises PASSED
+tests/unit/core/test_result.py::TestOk::test_ok_err_raises PASSED
+tests/unit/core/test_result.py::TestOk::test_ok_match_args PASSED
+tests/unit/core/test_result.py::TestErr::test_err_is_ok_returns_false PASSED
+tests/unit/core/test_result.py::TestErr::test_err_is_err_returns_true PASSED
+tests/unit/core/test_result.py::TestErr::test_err_unwrap_raises PASSED
+tests/unit/core/test_result.py::TestErr::test_err_ok_raises PASSED
+tests/unit/core/test_result.py::TestErr::test_err_unwrap_err_returns_error PASSED
+tests/unit/core/test_result.py::TestErr::test_err_err_returns_error PASSED
+tests/unit/core/test_result.py::TestErr::test_err_match_args PASSED
+tests/unit/core/test_result.py::TestResultPatternMatching::test_pattern_match_ok PASSED
+tests/unit/core/test_result.py::TestResultPatternMatching::test_pattern_match_err PASSED
+
+================================================= 16 passed in 0.24s ==================================================

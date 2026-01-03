@@ -1,0 +1,80 @@
+================================================= test session starts =================================================
+platform win32 -- Python 3.11.9, pytest-8.4.2, pluggy-1.6.0 -- C:\Users\James\Documents\Github\GHrepos\SCCMScripts\TaskMan-v2\backend-api\.venv\Scripts\python.exe
+cachedir: .pytest_cache
+rootdir: C:\Users\James\Documents\Github\GHrepos\SCCMScripts\TaskMan-v2\backend-api
+configfile: pytest_full.ini
+plugins: anyio-4.12.0, Faker-30.10.0, asyncio-0.26.0, cov-5.0.0, mock-3.15.1
+asyncio: mode=Mode.AUTO, asyncio_default_fixture_loop_scope=function, asyncio_default_test_loop_scope=function
+collecting ... collected 2 items
+
+tests/integration/api/test_action_lists_api.py::TestActionListIntegration::test_action_list_lifecycle FAILED     [ 50%]
+tests/integration/api/test_action_lists_api.py::TestActionListIntegration::test_validation_errors PASSED         [100%]
+
+====================================================== FAILURES =======================================================
+________________________________ TestActionListIntegration.test_action_list_lifecycle _________________________________
+
+self = <test_action_lists_api.TestActionListIntegration object at 0x0000027C8FD32350>
+client = <httpx.AsyncClient object at 0x0000027C90079850>
+
+    async def test_action_list_lifecycle(self, client: AsyncClient):
+        """Test complete action list lifecycle: Create -> Get -> Update -> Delete."""
+        # 1. Create
+        create_payload = {
+            "id": "AL-INT-001",
+            "title": "Integration Test List",
+            "description": "Test Description",
+            "status": "active",
+            "items": [{"id": "Task-1", "text": "Task 1"}, {"id": "Task-2", "text": "Task 2"}],
+        }
+        create_res = await client.post("/api/v1/action-lists", json=create_payload)
+        # If schema mismatch, we get 422.
+        if create_res.status_code != status.HTTP_201_CREATED:
+            pytest.fail(f"Create failed: {create_res.text}")
+    
+        assert create_res.status_code == status.HTTP_201_CREATED
+        created_data = create_res.json()
+        list_id = created_data["id"]
+        # Service overwrites ID with AL-xxxx format, so it won't be AL-INT-001
+        assert list_id.startswith("AL-")
+        assert created_data["title"] == "Integration Test List"
+        # task_ids in response might be just IDs or full items depending on response schema mapping from entity
+        # Entity has task_ids=[dict, dict]. Response has items=[dict, dict].
+        assert len(created_data["items"]) == 2
+    
+        # 2. Get
+        get_res = await client.get(f"/api/v1/action-lists/{list_id}")
+        assert get_res.status_code == status.HTTP_200_OK
+        assert get_res.json()["title"] == "Integration Test List"
+    
+        # 3. Update (Rename)
+        update_payload = {"title": "Updated List Name"}
+        update_res = await client.put(f"/api/v1/action-lists/{list_id}", json=update_payload)
+        assert update_res.status_code == status.HTTP_200_OK
+        assert update_res.json()["title"] == "Updated List Name"
+    
+        # 4. Add Item
+        add_item_payload = {"text": "New Task Item", "order": 0}
+        add_res = await client.post(f"/api/v1/action-lists/{list_id}/items", json=add_item_payload)
+>       assert add_res.status_code == status.HTTP_200_OK
+E       assert 400 == 200
+E        +  where 400 = <Response [400 Bad Request]>.status_code
+E        +  and   200 = status.HTTP_200_OK
+
+tests\integration\api\test_action_lists_api.py:51: AssertionError
+------------------------------------------------ Captured stdout call -------------------------------------------------
+{"method": "POST", "path": "/api/v1/action-lists", "query": null, "correlation_id": "01c69676-2c99-4572-b4d5-105fae995af4", "client_ip": "127.0.0.1", "event": "http_request", "timestamp": "2025-12-29T00:06:24.532880Z", "level": "info"}
+{"list_id": "AL-0001", "event": "action_list_created", "timestamp": "2025-12-29T00:06:24.557879Z", "level": "info"}
+{"method": "POST", "path": "/api/v1/action-lists", "status_code": 201, "duration_ms": 24.89, "correlation_id": "01c69676-2c99-4572-b4d5-105fae995af4", "event": "http_response", "timestamp": "2025-12-29T00:06:24.557879Z", "level": "info"}
+{"method": "GET", "path": "/api/v1/action-lists/AL-0001", "query": null, "correlation_id": "d32c099d-2a5e-4b58-ac3c-74e198ba18b5", "client_ip": "127.0.0.1", "event": "http_request", "timestamp": "2025-12-29T00:06:24.558879Z", "level": "info"}
+{"list_id": "AL-0001", "event": "action_list_retrieved", "timestamp": "2025-12-29T00:06:24.560878Z", "level": "info"}
+{"method": "GET", "path": "/api/v1/action-lists/AL-0001", "status_code": 200, "duration_ms": 2.62, "correlation_id": "d32c099d-2a5e-4b58-ac3c-74e198ba18b5", "event": "http_response", "timestamp": "2025-12-29T00:06:24.561883Z", "level": "info"}
+{"method": "PUT", "path": "/api/v1/action-lists/AL-0001", "query": null, "correlation_id": "c1a447d0-c744-47c9-b733-c30840dfc739", "client_ip": "127.0.0.1", "event": "http_request", "timestamp": "2025-12-29T00:06:24.561883Z", "level": "info"}
+{"list_id": "AL-0001", "event": "action_list_updated", "timestamp": "2025-12-29T00:06:24.568880Z", "level": "info"}
+{"method": "PUT", "path": "/api/v1/action-lists/AL-0001", "status_code": 200, "duration_ms": 8.24, "correlation_id": "c1a447d0-c744-47c9-b733-c30840dfc739", "event": "http_response", "timestamp": "2025-12-29T00:06:24.569879Z", "level": "info"}
+{"method": "POST", "path": "/api/v1/action-lists/AL-0001/items", "query": null, "correlation_id": "4923df29-5ce2-4734-93e1-6f6f8c28f99a", "client_ip": "127.0.0.1", "event": "http_request", "timestamp": "2025-12-29T00:06:24.570879Z", "level": "info"}
+{"method": "POST", "path": "/api/v1/action-lists/AL-0001/items", "status_code": 400, "duration_ms": 8.11, "correlation_id": "4923df29-5ce2-4734-93e1-6f6f8c28f99a", "event": "http_response", "timestamp": "2025-12-29T00:06:24.579405Z", "level": "warning"}
+=============================================== short test summary info ===============================================
+FAILED tests/integration/api/test_action_lists_api.py::TestActionListIntegration::test_action_list_lifecycle - assert 400 == 200
+ +  where 400 = <Response [400 Bad Request]>.status_code
+ +  and   200 = status.HTTP_200_OK
+============================================= 1 failed, 1 passed in 0.52s =============================================

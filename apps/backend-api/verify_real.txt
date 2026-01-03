@@ -1,0 +1,22 @@
+============================================================
+Dual-Database Connectivity Verification
+============================================================
+Primary URL: postgresql+asyncpg://contextforge:contextforge@localhost:5434/taskman_v2
+Fallback URL: sqlite+aiosqlite:///taskman.db
+
+1. Initializing Tables...
+2025-12-27 17:18:01 [warning  ] primary_db_init_failed         error=[WinError 1225] The remote computer refused the network connection
+2025-12-27 17:18:01 [info     ] fallback_db_initialized
+   ✅ Initialization call completed
+
+2. Checking Health...
+2025-12-27 17:18:05 [error    ] primary_db_health_check_failed error=[WinError 1225] The remote computer refused the network connection
+2025-12-27 17:18:05 [warning  ] switched_to_fallback_db
+   Mode: FALLBACK
+   Primary: {'connected': False, 'latency_ms': None, 'error': '[WinError 1225] The remote computer refused the network connection'}
+   Fallback: {'connected': True, 'latency_ms': 1.2, 'error': None}
+   ⚠️ Primary is DOWN (Expected if no Postgres running)
+   ✅ Fallback is UP
+
+3. Testing Session Acquisition...
+   ✅ Got valid session! Result: 1

@@ -1,0 +1,4 @@
+Traceback (most recent call last):
+  File "C:\Users\James\Documents\Github\GHrepos\SCCMScripts\TaskMan-v2\backend-api\scripts\debug_tasks.py", line 8, in <module>
+    from db.session import get_session
+ImportError: cannot import name 'get_session' from 'db.session' (C:\Users\James\Documents\Github\GHrepos\SCCMScripts\TaskMan-v2\backend-api\db\session.py)

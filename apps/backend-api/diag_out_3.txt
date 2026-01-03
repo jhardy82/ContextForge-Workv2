@@ -1,0 +1,7 @@
+--- DIAGNOSTIC START ---
+CWD: C:\Users\James\Documents\Github\GHrepos\SCCMScripts\TaskMan-v2\backend-api
+sys.path: ['C:\\Users\\James\\Documents\\Github\\GHrepos\\SCCMScripts\\TaskMan-v2\\backend-api\\scripts', 'C:\\Users\\James\\Documents\\Github\\GHrepos\\Core-Framework\\src', 'C:\\Users\\James\\AppData\\Local\\Programs\\Python\\Python311\\python311.zip', 'C:\\Users\\James\\AppData\\Local\\Programs\\Python\\Python311\\DLLs', 'C:\\Users\\James\\AppData\\Local\\Programs\\Python\\Python311\\Lib', 'C:\\Users\\James\\AppData\\Local\\Programs\\Python\\Python311', 'C:\\Users\\James\\Documents\\Github\\GHrepos\\SCCMScripts\\TaskMan-v2\\backend-api\\.venv', 'C:\\Users\\James\\Documents\\Github\\GHrepos\\SCCMScripts\\TaskMan-v2\\backend-api\\.venv\\Lib\\site-packages', 'C:\\Users\\James\\Documents\\Github\\GHrepos\\SCCMScripts\\TaskMan-v2\\backend-api\\src']
+Added C:\Users\James\Documents\Github\GHrepos\SCCMScripts\TaskMan-v2\backend-api to path.
+Importing main...
+Main imported SUCCESSFULLY.
+--- DIAGNOSTIC END ---

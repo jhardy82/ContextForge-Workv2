@@ -1,0 +1,408 @@
+================================================= test session starts =================================================
+platform win32 -- Python 3.11.9, pytest-8.4.2, pluggy-1.6.0 -- C:\Users\James\Documents\Github\GHrepos\SCCMScripts\TaskMan-v2\backend-api\.venv\Scripts\python.exe
+cachedir: .pytest_cache
+rootdir: C:\Users\James\Documents\Github\GHrepos\SCCMScripts\TaskMan-v2\backend-api
+configfile: pytest_full.ini
+plugins: anyio-4.12.0, Faker-30.10.0, asyncio-0.26.0, cov-5.0.0, mock-3.15.1
+asyncio: mode=Mode.AUTO, asyncio_default_fixture_loop_scope=function, asyncio_default_test_loop_scope=function
+collecting ... collected 13 items
+
+tests/unit/services/test_base_service.py::TestBaseServiceCreate::test_create_success FAILED                      [  7%]
+tests/unit/services/test_base_service.py::TestBaseServiceCreate::test_create_conflict_error FAILED               [ 15%]
+tests/unit/services/test_base_service.py::TestBaseServiceGet::test_get_success FAILED                            [ 23%]
+tests/unit/services/test_base_service.py::TestBaseServiceGet::test_get_not_found FAILED                          [ 30%]
+tests/unit/services/test_base_service.py::TestBaseServiceUpdate::test_update_success FAILED                      [ 38%]
+tests/unit/services/test_base_service.py::TestBaseServiceUpdate::test_update_not_found FAILED                    [ 46%]
+tests/unit/services/test_base_service.py::TestBaseServiceDelete::test_delete_success FAILED                      [ 53%]
+tests/unit/services/test_base_service.py::TestBaseServiceDelete::test_delete_not_found FAILED                    [ 61%]
+tests/unit/services/test_base_service.py::TestBaseServiceList::test_list_success FAILED                          [ 69%]
+tests/unit/services/test_base_service.py::TestBaseServiceList::test_list_empty_result FAILED                     [ 76%]
+tests/unit/services/test_base_service.py::TestBaseServiceUtility::test_exists_true FAILED                        [ 84%]
+tests/unit/services/test_base_service.py::TestBaseServiceUtility::test_exists_false FAILED                       [ 92%]
+tests/unit/services/test_base_service.py::TestBaseServiceUtility::test_count_success FAILED                      [100%]
+
+====================================================== FAILURES =======================================================
+______________________________________ TestBaseServiceCreate.test_create_success ______________________________________
+
+self = <test_base_service.TestBaseServiceCreate object at 0x0000024AC2BAFD10>
+mock_task_repository = <Mock id='2520117920528'>
+sample_task = <Task(id=T-TEST-001, title='Test Task...', status='TaskStatus.NEW')>
+
+    @pytest.mark.asyncio
+    async def test_create_success(self, mock_task_repository, sample_task):
+        """Test successful entity creation."""
+        # Arrange
+        service = BaseService(mock_task_repository, Task, TaskResponse)
+        request = TaskCreateRequest(
+            id="T-TEST-001",
+            title="Test Task",
+            summary="Summary",
+            description="Description",
+            owner="test.owner",
+            priority=Priority.P1,
+            primary_project="P-TEST-001",
+            primary_sprint="S-TEST-001",
+        )
+    
+        # Act
+        result = await service.create(request)
+    
+        # Assert
+>       assert isinstance(result, Ok)
+E       assert False
+E        +  where False = isinstance(<taskman_api.core.result.Err object at 0x0000024AC2AA7B50>, Ok)
+
+tests\unit\services\test_base_service.py:41: AssertionError
+__________________________________ TestBaseServiceCreate.test_create_conflict_error ___________________________________
+
+self = <test_base_service.TestBaseServiceCreate object at 0x0000024AC2C00650>
+mock_task_repository = <Mock id='2520120166032'>
+
+    @pytest.mark.asyncio
+    async def test_create_conflict_error(self, mock_task_repository):
+        """Test creation with duplicate ID returns ConflictError."""
+        # Arrange
+        service = BaseService(mock_task_repository, Task, TaskResponse)
+        request = TaskCreateRequest(
+            id="T-DUPLICATE",
+            title="Task",
+            summary="Summary",
+            description="Description",
+            owner="owner",
+            priority=Priority.P1,
+            primary_project="P-001",
+            primary_sprint="S-001",
+        )
+    
+        # Mock repository to return ConflictError
+        mock_task_repository.create = AsyncMock(
+            return_value=Err(
+                ConflictError(
+                    message="Entity already exists",
+                    entity_type="Task",
+                    entity_id="T-DUPLICATE",
+                )
+            )
+        )
+    
+        # Act
+        result = await service.create(request)
+    
+        # Assert
+        assert isinstance(result, Err)
+        error = result.err()
+>       assert isinstance(error, ConflictError)
+E       assert False
+E        +  where False = isinstance(AppError("9 validation errors for TaskResponse\nid\n  Field required [type=missing, input_value={'error': ConflictError('Entity already exists')}, input_type=dict]\n    For further information visit https://errors.pydantic.dev/2.12/v/missing\ntitle\n  Field required [type=missing, input_value={'error': ConflictError('Entity already exists')}, input_type=dict]\n    For further information visit https://errors.pydantic.dev/2.12/v/missing\nsummary\n  Field required [type=missing, input_value={'error': ConflictError('Entity already exists')}, input_type=dict]\n    For further information visit https://errors.pydantic.dev/2.12/v/missing\ndescription\n  Field required [type=missing, input_value={'error': ConflictError('Entity already exists')}, input_type=dict]\n    For further information visit https://errors.pydantic.dev/2.12/v/missing\nstatus\n  Field required [type=missing, input_value={'error': ConflictError('Entity already exists')}, input_type=dict]\n    For further information visit https://errors.pydantic.dev/2.12/v/missing\nowner\n  Field required [type=missing, input_value={'error': ConflictError('Entity already exists')}, input_type=dict]\n    For further information visit https://errors.pydantic.dev/2.12/v/missing\npriority\n  Field required [type=missing, input_value={'error': ConflictError('Entity already exists')}, input_type=dict]\n    For further information visit https://errors.pydantic.dev/2.12/v/missing\nprimary_project\n  Field required [type=missing, input_value={'error': ConflictError('Entity already exists')}, input_type=dict]\n    For further information visit https://errors.pydantic.dev/2.12/v/missing\nprimary_sprint\n  Field required [type=missing, input_value={'error': ConflictError('Entity already exists')}, input_type=dict]\n    For further information visit https://errors.pydantic.dev/2.12/v/missing"), ConflictError)
+
+tests\unit\services\test_base_service.py:80: AssertionError
+_________________________________________ TestBaseServiceGet.test_get_success _________________________________________
+
+self = <test_base_service.TestBaseServiceGet object at 0x0000024AC2C012D0>
+mock_task_repository = <Mock id='2520120412880'>
+sample_task = <Task(id=T-TEST-001, title='Test Task...', status='TaskStatus.NEW')>
+
+    @pytest.mark.asyncio
+    async def test_get_success(self, mock_task_repository, sample_task):
+        """Test successful entity retrieval."""
+        # Arrange
+        service = BaseService(mock_task_repository, Task, TaskResponse)
+    
+        # Act
+        result = await service.get("T-TEST-001")
+    
+        # Assert
+>       assert isinstance(result, Ok)
+E       assert False
+E        +  where False = isinstance(<taskman_api.core.result.Err object at 0x0000024AC2E05AD0>, Ok)
+
+tests\unit\services\test_base_service.py:97: AssertionError
+________________________________________ TestBaseServiceGet.test_get_not_found ________________________________________
+
+self = <test_base_service.TestBaseServiceGet object at 0x0000024AC2C01AD0>
+mock_task_repository = <Mock id='2520120558032'>
+
+    @pytest.mark.asyncio
+    async def test_get_not_found(self, mock_task_repository):
+        """Test get with non-existent ID returns NotFoundError."""
+        # Arrange
+        service = BaseService(mock_task_repository, Task, TaskResponse)
+    
+        # Mock repository to return NotFoundError
+        mock_task_repository.find_by_id = AsyncMock(
+            return_value=Err(
+                NotFoundError(
+                    message="Task not found",
+                    entity_type="Task",
+                    entity_id="T-NONEXISTENT",
+                )
+            )
+        )
+    
+        # Act
+        result = await service.get("T-NONEXISTENT")
+    
+        # Assert
+        assert isinstance(result, Err)
+        error = result.err()
+>       assert isinstance(error, NotFoundError)
+E       assert False
+E        +  where False = isinstance(AppError("object Mock can't be used in 'await' expression"), NotFoundError)
+
+tests\unit\services\test_base_service.py:126: AssertionError
+______________________________________ TestBaseServiceUpdate.test_update_success ______________________________________
+
+self = <test_base_service.TestBaseServiceUpdate object at 0x0000024AC2C02610>
+mock_task_repository = <Mock id='2520120569424'>
+sample_task = <Task(id=T-TEST-001, title='Test Task...', status='TaskStatus.NEW')>
+
+    @pytest.mark.asyncio
+    async def test_update_success(self, mock_task_repository, sample_task):
+        """Test successful entity update."""
+        # Arrange
+        service = BaseService(mock_task_repository, Task, TaskResponse)
+        update_request = TaskUpdateRequest(title="Updated Title")
+    
+        # Act
+        result = await service.update("T-TEST-001", update_request)
+    
+        # Assert
+>       assert isinstance(result, Ok)
+E       assert False
+E        +  where False = isinstance(<taskman_api.core.result.Err object at 0x0000024AC2DBF490>, Ok)
+
+tests\unit\services\test_base_service.py:144: AssertionError
+_____________________________________ TestBaseServiceUpdate.test_update_not_found _____________________________________
+
+self = <test_base_service.TestBaseServiceUpdate object at 0x0000024AC2C02E10>
+mock_task_repository = <Mock id='2520120030992'>
+
+    @pytest.mark.asyncio
+    async def test_update_not_found(self, mock_task_repository):
+        """Test update with non-existent ID returns NotFoundError."""
+        # Arrange
+        service = BaseService(mock_task_repository, Task, TaskResponse)
+        update_request = TaskUpdateRequest(title="Updated")
+    
+        # Mock repository to return NotFoundError
+        mock_task_repository.find_by_id = AsyncMock(
+            return_value=Err(
+                NotFoundError(
+                    message="Task not found",
+                    entity_type="Task",
+                    entity_id="T-NONEXISTENT",
+                )
+            )
+        )
+    
+        # Act
+        result = await service.update("T-NONEXISTENT", update_request)
+    
+        # Assert
+        assert isinstance(result, Err)
+        error = result.err()
+>       assert isinstance(error, NotFoundError)
+E       assert False
+E        +  where False = isinstance(AppError("object Mock can't be used in 'await' expression"), NotFoundError)
+
+tests\unit\services\test_base_service.py:174: AssertionError
+______________________________________ TestBaseServiceDelete.test_delete_success ______________________________________
+
+self = <test_base_service.TestBaseServiceDelete object at 0x0000024AC2C03A90>
+mock_task_repository = <Mock id='2520120747408'>
+
+    @pytest.mark.asyncio
+    async def test_delete_success(self, mock_task_repository):
+        """Test successful entity deletion."""
+        # Arrange
+        service = BaseService(mock_task_repository, Task, TaskResponse)
+    
+        # Act
+        result = await service.delete("T-TEST-001")
+    
+        # Assert
+>       assert isinstance(result, Ok)
+E       assert False
+E        +  where False = isinstance(<taskman_api.core.result.Err object at 0x0000024AC2DF8790>, Ok)
+
+tests\unit\services\test_base_service.py:191: AssertionError
+_____________________________________ TestBaseServiceDelete.test_delete_not_found _____________________________________
+
+self = <test_base_service.TestBaseServiceDelete object at 0x0000024AC2C082D0>
+mock_task_repository = <Mock id='2520120566608'>
+
+    @pytest.mark.asyncio
+    async def test_delete_not_found(self, mock_task_repository):
+        """Test delete with non-existent ID returns NotFoundError."""
+        # Arrange
+        service = BaseService(mock_task_repository, Task, TaskResponse)
+    
+        # Mock repository to return NotFoundError
+        mock_task_repository.delete = AsyncMock(
+            return_value=Err(
+                NotFoundError(
+                    message="Task not found",
+                    entity_type="Task",
+                    entity_id="T-NONEXISTENT",
+                )
+            )
+        )
+    
+        # Act
+        result = await service.delete("T-NONEXISTENT")
+    
+        # Assert
+        assert isinstance(result, Err)
+        error = result.err()
+>       assert isinstance(error, NotFoundError)
+E       assert False
+E        +  where False = isinstance(AppError("object Mock can't be used in 'await' expression"), NotFoundError)
+
+tests\unit\services\test_base_service.py:218: AssertionError
+________________________________________ TestBaseServiceList.test_list_success ________________________________________
+
+self = <test_base_service.TestBaseServiceList object at 0x0000024AC2C02550>
+mock_task_repository = <Mock id='2520120645968'>
+sample_task = <Task(id=T-TEST-001, title='Test Task...', status='TaskStatus.NEW')>
+
+    @pytest.mark.asyncio
+    async def test_list_success(self, mock_task_repository, sample_task):
+        """Test successful entity listing with pagination."""
+        # Arrange
+        service = BaseService(mock_task_repository, Task, TaskResponse)
+    
+        # Act
+        result = await service.list(limit=50, offset=0)
+    
+        # Assert
+>       assert isinstance(result, Ok)
+E       assert False
+E        +  where False = isinstance(<taskman_api.core.result.Err object at 0x0000024AC2DFA590>, Ok)
+
+tests\unit\services\test_base_service.py:234: AssertionError
+_____________________________________ TestBaseServiceList.test_list_empty_result ______________________________________
+
+self = <test_base_service.TestBaseServiceList object at 0x0000024AC2BEB550>
+mock_task_repository = <Mock id='2520120888464'>
+
+    @pytest.mark.asyncio
+    async def test_list_empty_result(self, mock_task_repository):
+        """Test list with no results returns empty list."""
+        # Arrange
+        service = BaseService(mock_task_repository, Task, TaskResponse)
+    
+        # Mock repository to return empty list
+        mock_task_repository.find_all = AsyncMock(return_value=Ok([]))
+    
+        # Act
+        result = await service.list()
+    
+        # Assert
+>       assert isinstance(result, Ok)
+E       assert False
+E        +  where False = isinstance(<taskman_api.core.result.Err object at 0x0000024AC2EBAF90>, Ok)
+
+tests\unit\services\test_base_service.py:254: AssertionError
+_______________________________________ TestBaseServiceUtility.test_exists_true _______________________________________
+
+self = <test_base_service.TestBaseServiceUtility object at 0x0000024AC2C09010>
+mock_task_repository = <Mock id='2520121344144'>
+
+    @pytest.mark.asyncio
+    async def test_exists_true(self, mock_task_repository):
+        """Test exists returns True for existing entity."""
+        # Arrange
+        service = BaseService(mock_task_repository, Task, TaskResponse)
+    
+        # Act
+        result = await service.exists("T-TEST-001")
+    
+        # Assert
+        assert isinstance(result, Ok)
+>       assert result.ok() is True
+E       assert <taskman_api.core.result.Ok object at 0x0000024AC2EB4FD0> is True
+E        +  where <taskman_api.core.result.Ok object at 0x0000024AC2EB4FD0> = ok()
+E        +    where ok = <taskman_api.core.result.Ok object at 0x0000024AC2A2CE50>.ok
+
+tests\unit\services\test_base_service.py:274: AssertionError
+______________________________________ TestBaseServiceUtility.test_exists_false _______________________________________
+
+self = <test_base_service.TestBaseServiceUtility object at 0x0000024AC2C09450>
+mock_task_repository = <Mock id='2520121062160'>
+
+    @pytest.mark.asyncio
+    async def test_exists_false(self, mock_task_repository):
+        """Test exists returns False for non-existent entity."""
+        # Arrange
+        service = BaseService(mock_task_repository, Task, TaskResponse)
+    
+        # Mock repository to return False
+        mock_task_repository.exists = AsyncMock(return_value=Ok(False))
+    
+        # Act
+        result = await service.exists("T-NONEXISTENT")
+    
+        # Assert
+        assert isinstance(result, Ok)
+>       assert result.ok() is False
+E       assert <taskman_api.core.result.Ok object at 0x0000024AC2E1FD10> is False
+E        +  where <taskman_api.core.result.Ok object at 0x0000024AC2E1FD10> = ok()
+E        +    where ok = <taskman_api.core.result.Ok object at 0x0000024AC2E1DD50>.ok
+
+tests\unit\services\test_base_service.py:291: AssertionError
+______________________________________ TestBaseServiceUtility.test_count_success ______________________________________
+
+self = <test_base_service.TestBaseServiceUtility object at 0x0000024AC2C09890>
+mock_task_repository = <Mock id='2520120422032'>
+
+    @pytest.mark.asyncio
+    async def test_count_success(self, mock_task_repository):
+        """Test count returns total entity count."""
+        # Arrange
+        service = BaseService(mock_task_repository, Task, TaskResponse)
+    
+        # Mock repository to return count
+        mock_task_repository.count = AsyncMock(return_value=Ok(42))
+    
+        # Act
+        result = await service.count()
+    
+        # Assert
+        assert isinstance(result, Ok)
+>       assert result.ok() == 42
+E       assert <taskman_api.core.result.Ok object at 0x0000024AC2F1BB90> == 42
+E        +  where <taskman_api.core.result.Ok object at 0x0000024AC2F1BB90> = ok()
+E        +    where ok = <taskman_api.core.result.Ok object at 0x0000024AC2E904D0>.ok
+
+tests\unit\services\test_base_service.py:307: AssertionError
+=============================================== short test summary info ===============================================
+FAILED tests/unit/services/test_base_service.py::TestBaseServiceCreate::test_create_success - assert False
+ +  where False = isinstance(<taskman_api.core.result.Err object at 0x0000024AC2AA7B50>, Ok)
+FAILED tests/unit/services/test_base_service.py::TestBaseServiceCreate::test_create_conflict_error - assert False
+ +  where False = isinstance(AppError("9 validation errors for TaskResponse\nid\n  Field required [type=missing, input_value={'error': ConflictError('Entity already exists')}, input_type=dict]\n    For further information visit https://errors.pydantic.dev/2.12/v/missing\ntitle\n  Field required [type=missing, input_value={'error': ConflictError('Entity already exists')}, input_type=dict]\n    For further information visit https://errors.pydantic.dev/2.12/v/missing\nsummary\n  Field required [type=missing, input_value={'error': ConflictError('Entity already exists')}, input_type=dict]\n    For further information visit https://errors.pydantic.dev/2.12/v/missing\ndescription\n  Field required [type=missing, input_value={'error': ConflictError('Entity already exists')}, input_type=dict]\n    For further information visit https://errors.pydantic.dev/2.12/v/missing\nstatus\n  Field required [type=missing, input_value={'error': ConflictError('Entity already exists')}, input_type=dict]\n    For further information visit https://errors.pydantic.dev/2.12/v/missing\nowner\n  Field required [type=missing, input_value={'error': ConflictError('Entity already exists')}, input_type=dict]\n    For further information visit https://errors.pydantic.dev/2.12/v/missing\npriority\n  Field required [type=missing, input_value={'error': ConflictError('Entity already exists')}, input_type=dict]\n    For further information visit https://errors.pydantic.dev/2.12/v/missing\nprimary_project\n  Field required [type=missing, input_value={'error': ConflictError('Entity already exists')}, input_type=dict]\n    For further information visit https://errors.pydantic.dev/2.12/v/missing\nprimary_sprint\n  Field required [type=missing, input_value={'error': ConflictError('Entity already exists')}, input_type=dict]\n    For further information visit https://errors.pydantic.dev/2.12/v/missing"), ConflictError)
+FAILED tests/unit/services/test_base_service.py::TestBaseServiceGet::test_get_success - assert False
+ +  where False = isinstance(<taskman_api.core.result.Err object at 0x0000024AC2E05AD0>, Ok)
+FAILED tests/unit/services/test_base_service.py::TestBaseServiceGet::test_get_not_found - assert False
+ +  where False = isinstance(AppError("object Mock can't be used in 'await' expression"), NotFoundError)
+FAILED tests/unit/services/test_base_service.py::TestBaseServiceUpdate::test_update_success - assert False
+ +  where False = isinstance(<taskman_api.core.result.Err object at 0x0000024AC2DBF490>, Ok)
+FAILED tests/unit/services/test_base_service.py::TestBaseServiceUpdate::test_update_not_found - assert False
+ +  where False = isinstance(AppError("object Mock can't be used in 'await' expression"), NotFoundError)
+FAILED tests/unit/services/test_base_service.py::TestBaseServiceDelete::test_delete_success - assert False
+ +  where False = isinstance(<taskman_api.core.result.Err object at 0x0000024AC2DF8790>, Ok)
+FAILED tests/unit/services/test_base_service.py::TestBaseServiceDelete::test_delete_not_found - assert False
+ +  where False = isinstance(AppError("object Mock can't be used in 'await' expression"), NotFoundError)
+FAILED tests/unit/services/test_base_service.py::TestBaseServiceList::test_list_success - assert False
+ +  where False = isinstance(<taskman_api.core.result.Err object at 0x0000024AC2DFA590>, Ok)
+FAILED tests/unit/services/test_base_service.py::TestBaseServiceList::test_list_empty_result - assert False
+ +  where False = isinstance(<taskman_api.core.result.Err object at 0x0000024AC2EBAF90>, Ok)
+FAILED tests/unit/services/test_base_service.py::TestBaseServiceUtility::test_exists_true - assert <taskman_api.core.result.Ok object at 0x0000024AC2EB4FD0> is True
+ +  where <taskman_api.core.result.Ok object at 0x0000024AC2EB4FD0> = ok()
+ +    where ok = <taskman_api.core.result.Ok object at 0x0000024AC2A2CE50>.ok
+FAILED tests/unit/services/test_base_service.py::TestBaseServiceUtility::test_exists_false - assert <taskman_api.core.result.Ok object at 0x0000024AC2E1FD10> is False
+ +  where <taskman_api.core.result.Ok object at 0x0000024AC2E1FD10> = ok()
+ +    where ok = <taskman_api.core.result.Ok object at 0x0000024AC2E1DD50>.ok
+FAILED tests/unit/services/test_base_service.py::TestBaseServiceUtility::test_count_success - assert <taskman_api.core.result.Ok object at 0x0000024AC2F1BB90> == 42
+ +  where <taskman_api.core.result.Ok object at 0x0000024AC2F1BB90> = ok()
+ +    where ok = <taskman_api.core.result.Ok object at 0x0000024AC2E904D0>.ok
+================================================= 13 failed in 0.75s ==================================================

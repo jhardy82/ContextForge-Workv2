@@ -1,0 +1,18 @@
+Starting Legacy Data Migration (Dry Run: True, Use SQLite: True)
+Trackers Directory: C:\Users\James\Documents\Github\GHrepos\SCCMScripts\trackers
+Using SQLite (Fallback) Database
+Traceback (most recent call last):
+  File "C:\Users\James\Documents\Github\GHrepos\SCCMScripts\TaskMan-v2\backend-api\src\scripts\import_legacy_trackers.py", line 347, in <module>
+    asyncio.run(main(dry_run=is_dry_run, use_sqlite=use_sqlite))
+  File "C:\Users\James\AppData\Local\Programs\Python\Python311\Lib\asyncio\runners.py", line 190, in run
+    return runner.run(main)
+           ^^^^^^^^^^^^^^^^
+  File "C:\Users\James\AppData\Local\Programs\Python\Python311\Lib\asyncio\runners.py", line 118, in run
+    return self._loop.run_until_complete(task)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\James\AppData\Local\Programs\Python\Python311\Lib\asyncio\base_events.py", line 654, in run_until_complete
+    return future.result()
+           ^^^^^^^^^^^^^^^
+  File "C:\Users\James\Documents\Github\GHrepos\SCCMScripts\TaskMan-v2\backend-api\src\scripts\import_legacy_trackers.py", line 300, in main
+    from taskman_api.models import Base
+ImportError: cannot import name 'Base' from 'taskman_api.models' (C:\Users\James\Documents\Github\GHrepos\SCCMScripts\TaskMan-v2\backend-api\src\taskman_api\models\__init__.py)

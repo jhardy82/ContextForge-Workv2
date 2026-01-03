@@ -1,0 +1,132 @@
+================================================= test session starts =================================================
+platform win32 -- Python 3.11.9, pytest-8.3.3, pluggy-1.6.0 -- C:\Users\James\AppData\Local\Programs\Python\Python311\python.exe
+cachedir: .pytest_cache
+hypothesis profile 'default' -> database=DirectoryBasedExampleDatabase(WindowsPath('C:/Users/James/Documents/Github/GHrepos/SCCMScripts/TaskMan-v2/backend-api/.hypothesis/examples'))
+benchmark: 5.1.0 (defaults: timer=time.perf_counter disable_gc=False min_rounds=5 min_time=0.000005 max_time=1.0 calibration_precision=10 warmup=False warmup_iterations=100000)
+metadata: {'Python': '3.11.9', 'Platform': 'Windows-10-10.0.19045-SP0', 'Packages': {'pytest': '8.3.3', 'pluggy': '1.6.0'}, 'Plugins': {'anyio': '4.10.0', 'dash': '3.1.1', 'Faker': '30.8.2', 'hypothesis': '6.115.2', 'asyncio': '0.26.0', 'benchmark': '5.1.0', 'console-scripts': '1.4.1', 'cov': '5.0.0', 'html': '4.1.1', 'json-report': '1.5.0', 'metadata': '3.1.1', 'mock': '3.15.1', 'postgresql': '6.1.1', 'randomly': '3.15.0', 'rich': '0.2.0', 'timeout': '2.3.1', 'xdist': '3.6.1'}, 'CI': 'true'}
+Using --randomly-seed=1185131385
+rootdir: C:\Users\James\Documents\Github\GHrepos\SCCMScripts\TaskMan-v2\backend-api
+configfile: pytest_override.ini
+plugins: anyio-4.10.0, dash-3.1.1, Faker-30.8.2, hypothesis-6.115.2, asyncio-0.26.0, benchmark-5.1.0, console-scripts-1.4.1, cov-5.0.0, html-4.1.1, json-report-1.5.0, metadata-3.1.1, mock-3.15.1, postgresql-6.1.1, randomly-3.15.0, rich-0.2.0, timeout-2.3.1, xdist-3.6.1
+asyncio: mode=Mode.AUTO, asyncio_default_fixture_loop_scope=function, asyncio_default_test_loop_scope=function
+collecting ... collected 3 items
+
+tests/integration/api/test_sprints_api.py::TestSprintIntegration::test_sprint_management FAILED                  [ 33%]
+tests/integration/api/test_sprints_api.py::TestSprintIntegration::test_sprint_validation_errors PASSED           [ 66%]
+tests/integration/api/test_sprints_api.py::TestSprintIntegration::test_sprint_velocity_calculation FAILED        [100%]
+
+====================================================== FAILURES =======================================================
+____________________________________ TestSprintIntegration.test_sprint_management _____________________________________
+
+self = <test_sprints_api.TestSprintIntegration object at 0x000001972BE6BF10>
+client = <httpx.AsyncClient object at 0x000001972C3C8750>
+
+    async def test_sprint_management(self, client: AsyncClient):
+        """Test complete sprint lifecycle: Create -> Get -> Update -> Delete."""
+        sprint_id = f"{SPRINT_PREFIX}-LIFE-001"
+    
+        # 1. Create
+        create_payload = {
+            "id": sprint_id,
+            "name": "Lifecycle Sprint",
+            "goal": "Test Sprint Goal",
+            "status": "planning",
+            "start_date": "2025-02-01",
+            "end_date": "2025-02-14",
+            "cadence": "biweekly",
+            "primary_project": self.project_id,
+            "owner": "scrum.master",
+        }
+        create_res = await client.post("/api/v1/sprints", json=create_payload)
+>       assert create_res.status_code == status.HTTP_201_CREATED
+E       assert 404 == 201
+E        +  where 404 = <Response [404 Not Found]>.status_code
+E        +  and   201 = status.HTTP_201_CREATED
+
+tests\integration\api\test_sprints_api.py:45: AssertionError
+------------------------------------------------ Captured stdout setup ------------------------------------------------
+{"method": "POST", "path": "/api/v1/projects", "query": null, "correlation_id": "fc6b0b28-2011-4646-a164-e970a795d78b", "client_ip": "127.0.0.1", "event": "http_request", "timestamp": "2025-12-28T23:06:49.184468Z", "level": "info"}
+{"method": "POST", "path": "/api/v1/projects", "status_code": 422, "duration_ms": 15.95, "correlation_id": "fc6b0b28-2011-4646-a164-e970a795d78b", "event": "http_response", "timestamp": "2025-12-28T23:06:49.200877Z", "level": "warning"}
+------------------------------------------------ Captured stdout call -------------------------------------------------
+{"method": "POST", "path": "/api/v1/sprints", "query": null, "correlation_id": "e83b1552-4a7d-4c5d-8a67-3aa28e366f96", "client_ip": "127.0.0.1", "event": "http_request", "timestamp": "2025-12-28T23:06:49.203877Z", "level": "info"}
+{"method": "POST", "path": "/api/v1/sprints", "status_code": 404, "duration_ms": 27.76, "correlation_id": "e83b1552-4a7d-4c5d-8a67-3aa28e366f96", "event": "http_response", "timestamp": "2025-12-28T23:06:49.230914Z", "level": "warning"}
+_______________________________ TestSprintIntegration.test_sprint_velocity_calculation ________________________________
+
+self = <test_sprints_api.TestSprintIntegration object at 0x000001972C303C50>
+client = <httpx.AsyncClient object at 0x000001972C417650>
+
+    async def test_sprint_velocity_calculation(self, client: AsyncClient):
+        """Test sprint progress/velocity metrics."""
+        # Setup sprint
+        sprint_id = f"{SPRINT_PREFIX}-VELOCITY"
+        await client.post(
+            "/api/v1/sprints",
+            json={
+                "id": sprint_id,
+                "name": "Velocity Sprint",
+                "primary_project": self.project_id,
+                "start_date": "2025-02-01",
+                "end_date": "2025-02-14",
+                "goal": "Test Velocity",
+                "owner": "scrum.master",
+            },
+        )
+    
+        # Add tasks (Simulated by creating tasks assigned to this sprint)
+        # Using task API client
+        await client.post(
+            "/api/v1/tasks",
+            json={
+                "id": f"{SPRINT_PREFIX}-T1",
+                "title": "Task 1",
+                "primary_sprint": sprint_id,
+                "estimate_points": 5,
+                "status": "done",
+            },
+        )
+        await client.post(
+            "/api/v1/tasks",
+            json={
+                "id": f"{SPRINT_PREFIX}-T2",
+                "title": "Task 2",
+                "primary_sprint": sprint_id,
+                "estimate_points": 3,
+                "status": "in_progress",
+            },
+        )
+    
+        # Fetch Progress
+        res = await client.get(f"/api/v1/sprints/{sprint_id}/progress")
+>       assert res.status_code == status.HTTP_200_OK
+E       assert 404 == 200
+E        +  where 404 = <Response [404 Not Found]>.status_code
+E        +  and   200 = status.HTTP_200_OK
+
+tests\integration\api\test_sprints_api.py:141: AssertionError
+------------------------------------------------ Captured stdout setup ------------------------------------------------
+{"method": "POST", "path": "/api/v1/projects", "query": null, "correlation_id": "f80ea60a-9e01-4e96-8715-6800396ed56f", "client_ip": "127.0.0.1", "event": "http_request", "timestamp": "2025-12-28T23:06:49.779595Z", "level": "info"}
+{"method": "POST", "path": "/api/v1/projects", "status_code": 422, "duration_ms": 3.21, "correlation_id": "f80ea60a-9e01-4e96-8715-6800396ed56f", "event": "http_response", "timestamp": "2025-12-28T23:06:49.783110Z", "level": "warning"}
+------------------------------------------------ Captured stdout call -------------------------------------------------
+{"method": "POST", "path": "/api/v1/sprints", "query": null, "correlation_id": "7b94edde-4259-4257-9c83-92b21650fe5b", "client_ip": "127.0.0.1", "event": "http_request", "timestamp": "2025-12-28T23:06:49.785112Z", "level": "info"}
+{"method": "POST", "path": "/api/v1/sprints", "status_code": 404, "duration_ms": 22.26, "correlation_id": "7b94edde-4259-4257-9c83-92b21650fe5b", "event": "http_response", "timestamp": "2025-12-28T23:06:49.807503Z", "level": "warning"}
+{"method": "POST", "path": "/api/v1/tasks", "query": null, "correlation_id": "b16f9f64-52da-4e20-b946-0b3022fbd075", "client_ip": "127.0.0.1", "event": "http_request", "timestamp": "2025-12-28T23:06:49.808502Z", "level": "info"}
+{"method": "POST", "path": "/api/v1/tasks", "status_code": 422, "duration_ms": 15.94, "correlation_id": "b16f9f64-52da-4e20-b946-0b3022fbd075", "event": "http_response", "timestamp": "2025-12-28T23:06:49.824501Z", "level": "warning"}
+{"method": "POST", "path": "/api/v1/tasks", "query": null, "correlation_id": "ef18f197-ee4d-4f4a-b176-68a098b179fb", "client_ip": "127.0.0.1", "event": "http_request", "timestamp": "2025-12-28T23:06:49.825503Z", "level": "info"}
+{"method": "POST", "path": "/api/v1/tasks", "status_code": 422, "duration_ms": 1.91, "correlation_id": "ef18f197-ee4d-4f4a-b176-68a098b179fb", "event": "http_response", "timestamp": "2025-12-28T23:06:49.827504Z", "level": "warning"}
+{"method": "GET", "path": "/api/v1/sprints/S-INT-VELOCITY/progress", "query": null, "correlation_id": "cdabfcad-7a88-4ea4-bec8-dcdce6f1b140", "client_ip": "127.0.0.1", "event": "http_request", "timestamp": "2025-12-28T23:06:49.828503Z", "level": "info"}
+{"method": "GET", "path": "/api/v1/sprints/S-INT-VELOCITY/progress", "status_code": 404, "duration_ms": 5.59, "correlation_id": "cdabfcad-7a88-4ea4-bec8-dcdce6f1b140", "event": "http_response", "timestamp": "2025-12-28T23:06:49.833579Z", "level": "warning"}
+================================================== warnings summary ===================================================
+..\..\..\..\..\..\AppData\Local\Programs\Python\Python311\Lib\site-packages\_pytest\config\__init__.py:1441
+  C:\Users\James\AppData\Local\Programs\Python\Python311\Lib\site-packages\_pytest\config\__init__.py:1441: PytestConfigWarning: Unknown config option: python_paths
+  
+    self._warn_or_fail_if_strict(f"Unknown config option: {key}\n")
+
+-- Docs: https://docs.pytest.org/en/stable/how-to/capture-warnings.html
+=============================================== short test summary info ===============================================
+FAILED tests/integration/api/test_sprints_api.py::TestSprintIntegration::test_sprint_management - assert 404 == 201
+ +  where 404 = <Response [404 Not Found]>.status_code
+ +  and   201 = status.HTTP_201_CREATED
+FAILED tests/integration/api/test_sprints_api.py::TestSprintIntegration::test_sprint_velocity_calculation - assert 404 == 200
+ +  where 404 = <Response [404 Not Found]>.status_code
+ +  and   200 = status.HTTP_200_OK
+======================================= 2 failed, 1 passed, 1 warning in 1.27s ========================================

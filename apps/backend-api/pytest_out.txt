@@ -1,0 +1,74 @@
+🎉 Sacred Geometry Bash Compatibility Layer Loaded!
+   - Use bash commands naturally in PowerShell
+   - Type 'Get-BashHelp' for command reference
+[OK] ContextForge Profile (Agent+ShellIntegration v3.1 [Rec])
+src=src: The term 'src=src' is not recognized as a name of a cmdlet, function, script file, or executable program.
+Check the spelling of the name, or if a path was included, verify that the path is correct and try again.
+================================================= test session starts =================================================
+platform win32 -- Python 3.11.9, pytest-8.3.3, pluggy-1.6.0 -- C:\Users\James\AppData\Local\Programs\Python\Python311\python.exe
+cachedir: .pytest_cache
+hypothesis profile 'default' -> database=DirectoryBasedExampleDatabase(WindowsPath('C:/Users/James/Documents/Github/GHrepos/SCCMScripts/TaskMan-v2/backend-api/.hypothesis/examples'))
+benchmark: 5.1.0 (defaults: timer=time.perf_counter disable_gc=False min_rounds=5 min_time=0.000005 max_time=1.0 calibration_precision=10 warmup=False warmup_iterations=100000)
+metadata: {'Python': '3.11.9', 'Platform': 'Windows-10-10.0.19045-SP0', 'Packages': {'pytest': '8.3.3', 'pluggy': '1.6.0'}, 'Plugins': {'anyio': '4.10.0', 'dash': '3.1.1', 'Faker': '30.8.2', 'hypothesis': '6.115.2', 'asyncio': '0.26.0', 'benchmark': '5.1.0', 'console-scripts': '1.4.1', 'cov': '5.0.0', 'html': '4.1.1', 'json-report': '1.5.0', 'metadata': '3.1.1', 'mock': '3.15.1', 'postgresql': '6.1.1', 'randomly': '3.15.0', 'rich': '0.2.0', 'timeout': '2.3.1', 'xdist': '3.6.1'}, 'CI': 'true'}
+Using --randomly-seed=528499874
+rootdir: C:\Users\James\Documents\Github\GHrepos\SCCMScripts\TaskMan-v2\backend-api
+configfile: pyproject.toml
+plugins: anyio-4.10.0, dash-3.1.1, Faker-30.8.2, hypothesis-6.115.2, asyncio-0.26.0, benchmark-5.1.0, console-scripts-1.4.1, cov-5.0.0, html-4.1.1, json-report-1.5.0, metadata-3.1.1, mock-3.15.1, postgresql-6.1.1, randomly-3.15.0, rich-0.2.0, timeout-2.3.1, xdist-3.6.1
+asyncio: mode=Mode.AUTO, asyncio_default_fixture_loop_scope=function, asyncio_default_test_loop_scope=function
+collecting ... collected 6 items
+
+tests/unit/services/test_sprint_service.py::TestSprintServiceMetrics::test_update_metrics PASSED                 [ 16%]
+tests/unit/services/test_sprint_service.py::TestSprintServiceStatus::test_change_status PASSED                   [ 33%]
+tests/unit/services/test_sprint_service.py::TestSprintServiceQueries::test_get_current_sprints PASSED            [ 50%]
+tests/unit/services/test_sprint_service.py::TestSprintServiceQueries::test_get_by_project PASSED                 [ 66%]
+tests/unit/services/test_sprint_service.py::TestSprintServiceVelocity::test_calculate_velocity PASSED            [ 83%]
+tests/unit/services/test_sprint_service.py::TestSprintServiceBurndown::test_get_burndown PASSED                  [100%]
+
+---------- coverage: platform win32, python 3.11.9-final-0 -----------
+Name                                                        Stmts   Miss Branch BrPart   Cover   Missing
+--------------------------------------------------------------------------------------------------------
+src\taskman_api\api\deps.py                                    26     26      0      0   0.00%   6-102
+src\taskman_api\api\middleware\__init__.py                      2      2      0      0   0.00%   3-5
+src\taskman_api\api\middleware\error_handler.py                23     23      0      0   0.00%   6-76
+src\taskman_api\api\middleware\request_logger.py               29     29      0      0   0.00%   15-127
+src\taskman_api\api\v1\action_lists.py                         47     47     20      0   0.00%   6-155
+src\taskman_api\api\v1\health.py                               41     41     10      0   0.00%   16-273
+src\taskman_api\api\v1\projects.py                             55     55     24      0   0.00%   6-186
+src\taskman_api\api\v1\sprints.py                              55     55     24      0   0.00%   6-185
+src\taskman_api\api\v1\tasks.py                                88     88     40      0   0.00%   7-302
+src\taskman_api\config.py                                      61     16      6      0  67.16%   98-99, 110-111, 220-239, 245, 251, 257, 286
+src\taskman_api\core\errors.py                                 78     60     36      0  15.79%   31-37, 48-57, 72-78, 101-109, 134-146, 169-177, 199-205, 226-230, 253-259
+src\taskman_api\core\result.py                                 37     12      0      0  67.57%   37, 40, 43, 50, 54, 63, 66, 69, 72, 76, 79, 83
+src\taskman_api\db\base.py                                     10      1      0      0  90.00%   65
+src\taskman_api\db\models\action_list.py                       33     11      6      0  56.41%   25-27, 31-33, 37-39, 93, 98
+src\taskman_api\db\repositories\action_list_repository.py      67     50      0      0  25.37%   36, 54-66, 90-102, 126-138, 162-174, 196-208, 230-242, 266-279
+src\taskman_api\db\repositories\base.py                        91     70     10      0  20.79%   61-62, 79-96, 118-135, 162-186, 209-223, 245-257, 279-286, 305-311
+src\taskman_api\db\repositories\project_repository.py          57     39      4      0  29.51%   38, 56-68, 92-104, 126, 146-161, 185-199, 219-223
+src\taskman_api\db\repositories\sprint_repository.py           78     59     12      0  21.11%   38, 56-68, 94-106, 128, 152-173, 197-209, 233-245, 269-290
+src\taskman_api\db\repositories\task_repository.py             76     57      4      0  23.75%   37, 55-67, 91-103, 127-139, 165-177, 203-215, 241-253, 275, 291-303
+src\taskman_api\db\session.py                                  38     24      8      0  30.43%   39-63, 77-87, 112-117, 126-130, 140-143
+src\taskman_api\infrastructure\__init__.py                      2      2      0      0   0.00%   10-12
+src\taskman_api\infrastructure\health.py                       68     68     12      0   0.00%   34-264
+src\taskman_api\infrastructure\logging.py                      36     36      8      0   0.00%   32-234
+src\taskman_api\infrastructure\metrics.py                      48     48     10      0   0.00%   27-249
+src\taskman_api\main.py                                        54     54     10      0   0.00%   12-155
+src\taskman_api\middleware\__init__.py                          2      2      0      0   0.00%   7-9
+src\taskman_api\middleware\logging_middleware.py               85     85     32      0   0.00%   19-272
+src\taskman_api\schemas\project.py                            100      3      2      0  95.10%   177-179
+src\taskman_api\schemas\sprint.py                              85      3      2      0  94.25%   158-160
+src\taskman_api\schemas\task.py                               124      3      2      0  96.03%   234-236
+src\taskman_api\services\action_list_service.py                84     66     34      0  15.25%   50-52, 76-110, 129-132, 153-164, 184-209, 230-241, 262-271, 293-302, 321-330
+src\taskman_api\services\base.py                               63     24     22      4  52.94%   79-91, 119-120, 153, 154->exit, 167-168, 190, 215-225, 247, 263
+src\taskman_api\services\project_service.py                    89     72     36      0  13.60%   48-52, 82-142, 165-179, 199-213, 232-233, 257-267, 288-298
+src\taskman_api\services\sprint_service.py                     94     17     36     14  70.00%   80, 81->85, 91, 92->exit, 133, 134->138, 144, 145->exit, 158, 159->exit, 247-248, 279-280, 301-310, 336, 337->exit
+src\taskman_api\services\task_service.py                       82     63     36      0  16.10%   51-53, 87-106, 131-150, 176-177, 201-202, 231-250, 291-322, 344-353, 376-387
+--------------------------------------------------------------------------------------------------------
+TOTAL                                                        2304   1311    446     18  36.84%
+
+15 files skipped due to complete coverage.
+Coverage HTML written to dir htmlcov
+Coverage JSON written to file coverage.json
+
+FAIL Required test coverage of 70.0% not reached. Total coverage: 36.84%
+
+================================================== 6 passed in 2.14s ==================================================

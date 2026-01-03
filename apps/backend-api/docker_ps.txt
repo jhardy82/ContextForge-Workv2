@@ -1,0 +1,2 @@
+CONTAINER ID   NAMES              STATUS                   PORTS
+0e924f5507c3   taskman-postgres   Up 4 minutes (healthy)   0.0.0.0:5434->5432/tcp, [::]:5434->5432/tcp
