@@ -1,0 +1,244 @@
+# Validation Flow Configuration
+# Flow-based orchestration for CF_CORE validation agent swarm
+
+name: CF_CORE Validation Flow
+version: 1.0.0
+type: validation_swarm
+
+# Flow Configuration
+flow:
+  id: validation-swarm
+  description: Multi-agent validation swarm for task management workflows
+  topology: hierarchical
+  execution_mode: dag  # Directed Acyclic Graph
+
+# Agents Configuration
+agents:
+  - id: integrity
+    name: Data Integrity Validator
+    type: analyst
+    priority: critical
+    dependencies: []
+    capabilities:
+      - database_validation
+      - foreign_key_checking
+      - json_validation
+      - timestamp_verification
+      - constraint_checking
+    failure_policy: abort  # Abort flow if this fails
+
+  - id: crud
+    name: CRUD Validator
+    type: coder
+    priority: high
+    dependencies:
+      - integrity
+    capabilities:
+      - create_operations
+      - read_operations
+      - update_operations
+      - delete_operations
+      - edge_case_testing
+    failure_policy: continue  # Continue flow even if fails
+
+  - id: state
+    name: State Transition Validator
+    type: analyst
+    priority: high
+    dependencies:
+      - integrity
+    capabilities:
+      - state_machine_validation
+      - transition_rules
+      - terminal_state_checking
+      - workflow_verification
+    failure_policy: continue
+
+  - id: relationship
+    name: Relationship Validator
+    type: researcher
+    priority: medium
+    dependencies:
+      - integrity
+    capabilities:
+      - dependency_graph_analysis
+      - circular_dependency_detection
+      - bidirectional_consistency
+      - orphaned_records
+    failure_policy: continue
+
+  - id: audit
+    name: Audit Trail Validator
+    type: analyst
+    priority: medium
+    dependencies:
+      - integrity
+    capabilities:
+      - evidence_validation
+      - audit_compliance
+      - correlation_tracking
+      - evidence_structure_checking
+    failure_policy: continue
+
+  - id: performance
+    name: Performance Validator
+    type: optimizer
+    priority: low
+    dependencies:
+      - crud
+      - state
+      - relationship
+      - audit
+    capabilities:
+      - benchmarking
+      - load_testing
+      - query_optimization
+      - concurrent_operations
+      - scalability_testing
+    failure_policy: continue
+    optional: true  # Only run if explicitly enabled
+
+# Execution Phases
+phases:
+  - name: Phase 1 - Foundation
+    description: Critical data integrity validation
+    agents:
+      - integrity
+    parallel: false
+
+  - name: Phase 2 - Core Validation
+    description: Parallel execution of core validators
+    agents:
+      - crud
+      - state
+      - relationship
+      - audit
+    parallel: true
+
+  - name: Phase 3 - Performance
+    description: Optional performance benchmarking
+    agents:
+      - performance
+    parallel: false
+    optional: true
+
+# Coordination Rules
+coordination:
+  # Integrity must pass before continuing
+  - agent: integrity
+    on_failure: abort_flow
+
+  # Core validators can fail individually
+  - agents:
+      - crud
+      - state
+      - relationship
+      - audit
+    on_failure: continue_flow
+    aggregate_status: true
+
+  # Performance is optional
+  - agent: performance
+    on_failure: warn_only
+    skip_if: performance_disabled
+
+# Reporting Configuration
+reporting:
+  format: json
+  output_dir: validation_reports
+  include_evidence: true
+  generate_summary: true
+
+  metrics:
+    - total_checks
+    - passed
+    - failed
+    - warnings
+    - critical_failures
+    - success_rate
+    - agent_durations
+
+  status_levels:
+    - name: PASSED
+      condition: failed == 0
+    - name: PASSED_WITH_WARNINGS
+      condition: success_rate >= 90 && critical_failures == 0
+    - name: DEGRADED
+      condition: success_rate >= 70 && critical_failures == 0
+    - name: FAILED
+      condition: success_rate < 70 || critical_failures > 0
+
+# Evidence Logging
+evidence:
+  enabled: true
+  directory: evidence
+  format: json
+  include_fields:
+    - validation_id
+    - agent_id
+    - timestamp
+    - action
+    - results
+    - duration
+    - status
+
+# Performance Thresholds
+thresholds:
+  create_100_tasks: 5.0      # seconds
+  list_1000_tasks: 1.0       # seconds
+  update_task: 0.1           # seconds
+  query_filtered: 0.5        # seconds
+  concurrent_creates: 10.0   # seconds
+
+# Monitoring
+monitoring:
+  enabled: true
+  real_time_updates: true
+  progress_indicators: true
+
+  alerts:
+    - type: critical_failure
+      condition: critical_failures > 0
+      action: immediate_notification
+
+    - type: performance_degradation
+      condition: success_rate < 80
+      action: log_warning
+
+    - type: blocked_agents
+      condition: blocked_count > 0
+      action: abort_flow
+
+# Scheduling (optional)
+scheduling:
+  enabled: false
+  cron: "0 2 * * *"  # Daily at 2 AM
+  timezone: UTC
+
+# Integration
+integration:
+  dbcli:
+    enabled: true
+    command: "dbcli validate flow"
+
+  ci_cd:
+    enabled: false
+    pre_commit: true
+    pre_push: false
+
+  slack:
+    enabled: false
+    webhook_url: ""
+    notify_on:
+      - failure
+      - success
+
+# Metadata
+metadata:
+  author: ContextForge Team
+  created: 2025-11-17
+  version: 1.0.0
+  description: >
+    Flow-based orchestration configuration for CF_CORE validation agent swarm.
+    Implements hierarchical execution with dependency management and phase-based
+    coordination for comprehensive task management workflow validation.

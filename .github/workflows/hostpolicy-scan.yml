@@ -1,0 +1,114 @@
+name: HostPolicy Scan
+
+on:
+  pull_request:
+    branches: [ "main", "develop" ]
+  push:
+    branches: [ "main" ]
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+concurrency:
+  group: hostpolicy-${{ github.ref }}
+  cancel-in-progress: true
+
+jobs:
+  scan:
+    name: HostPolicy Compliance
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 1
+
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+
+      - name: Cache virtualenv
+        id: cache-venv
+        uses: actions/cache@v4
+        with:
+          path: .venv
+          key: venv-${{ runner.os }}-${{ hashFiles('pyproject.toml') }}
+          restore-keys: |
+            venv-${{ runner.os }}-
+
+      - name: Install dependencies (if needed)
+        if: steps.cache-venv.outputs.cache-hit != 'true'
+        run: |
+          python -m venv .venv
+          . .venv/bin/activate
+          python -m pip install --upgrade pip
+          pip install -e .
+
+      - name: HostPolicy Scan
+        run: |
+          . .venv/bin/activate
+          python python/hostpolicy_scanner.py . \
+            --report logs/hostpolicy_scan_report.json \
+            --strict-missing-header \
+            --fail-threshold-total 1 \
+            --json
+        continue-on-error: true
+        id: scan
+
+      - name: Parse scan summary
+        id: summary
+        run: |
+          python - <<'PY'
+import json, pathlib, sys
+report_path = pathlib.Path('logs/hostpolicy_scan_report.json')
+if not report_path.exists():
+    print('::warning::Report not found')
+    print('has_report=false')
+    sys.exit(0)
+data = json.loads(report_path.read_text())
+summary = data.get('summary', {})
+print(f"header_coverage={summary.get('header_coverage_pct',0):.2f}")
+print(f"violation_count={summary.get('violation_count',0)}")
+print(f"missing_headers={summary.get('missing_header_count',0)}")
+print(f"legacy_constructs={summary.get('legacy_construct_violations',0)}")
+print(f"construct_no_header={summary.get('construct_no_header_violations',0)}")
+print(f"artifact_hash={data.get('artifact_hash','')}")
+with open(os.environ['GITHUB_OUTPUT'],'a') as fh:
+    for k,v in summary.items():
+        fh.write(f"{k}={v}\n")
+PY
+        shell: bash
+
+      - name: Upload scan report artifact
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: hostpolicy-scan-report
+          path: logs/hostpolicy_scan_report.json
+          if-no-files-found: warn
+          retention-days: 7
+
+      - name: Fail on policy breach
+        if: steps.scan.outcome == 'success'
+        run: |
+          # The scanner already used thresholds, but we double-enforce here in case of future changes.
+          python - <<'PY'
+import json, sys, pathlib
+data = json.loads(pathlib.Path('logs/hostpolicy_scan_report.json').read_text())
+s = data['summary']
+# Fail if ANY missing header OR any violation (defense-in-depth for early adoption)
+if s['missing_header_count'] > 0 or s['violation_count'] > 0:
+    print(f"::error::HostPolicy violations detected (missing={s['missing_header_count']}, total={s['violation_count']})")
+    sys.exit(1)
+print('No HostPolicy violations – compliance OK')
+PY
+        shell: bash
+
+      - name: Mark scan failure (scanner non-zero)
+        if: steps.scan.outcome != 'success'
+        run: |
+          echo "Scanner exited with failure status (enforced by thresholds)." >&2
+          exit 1

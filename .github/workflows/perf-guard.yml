@@ -1,0 +1,87 @@
+name: Performance Guardrail
+
+on:
+  pull_request:
+    paths:
+      - "cf_cli.py"
+      - "tests/perf/**"
+      - "python/tools/perf_*.py"
+      - "perf/benchmark-baseline.json"
+      - ".github/workflows/perf-guard.yml"
+  push:
+    branches: [main]
+    paths:
+      - "cf_cli.py"
+      - "tests/perf/**"
+      - "python/tools/perf_*.py"
+      - "perf/benchmark-baseline.json"
+
+jobs:
+  perf-guard:
+    runs-on: windows-latest
+    timeout-minutes: 15
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Set up Python 3.12
+        uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+          cache: true
+          cache-dependency-path: |
+            requirements.txt
+            requirements-dev.txt
+
+      - name: Cache virtual environment (optional)
+        uses: actions/cache@v4
+        with:
+          path: .venv
+          key: venv-${{ runner.os }}-${{ hashFiles('requirements*.txt') }}
+          restore-keys: |
+            venv-${{ runner.os }}-
+
+      - name: Install dependencies
+        run: |
+          python -m venv .venv
+          .\.venv\Scripts\activate
+          python -m pip install --upgrade pip
+          pip install -r requirements-dev.txt
+
+      - name: Run performance regression test
+        run: |
+          .\.venv\Scripts\activate
+          python -m pytest tests/perf/test_startup_regression.py -q
+
+      - name: Capture post-guard benchmark
+        run: |
+          .\.venv\Scripts\activate
+          python python/tools/perf_post_guard_benchmark.py
+
+      - name: Generate diff report
+        run: |
+          .\.venv\Scripts\activate
+          python python/tools/perf_diff_report.py
+
+      - name: Append benchmark history
+        run: |
+          .\.venv\Scripts\activate
+          python python/tools/perf_append_history.py
+
+      - name: Evaluate classification
+        run: |
+          $diff = Get-Content perf/benchmark-diff-report.md -Raw
+          if ($diff -match 'Classification: regression') { Write-Host 'Regression detected'; exit 1 }
+          Write-Host 'Performance classification acceptable.'
+
+      - name: Upload performance artifacts
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: perf-guard-artifacts
+          path: |
+            perf/benchmark-baseline.json
+            perf/benchmark-post-guard.json
+            perf/benchmark-diff-report.md
+            perf/env-fingerprint.json
+            perf/thresholds.json
+            perf/benchmark-history.jsonl

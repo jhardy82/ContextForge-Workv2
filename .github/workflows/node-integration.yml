@@ -1,0 +1,70 @@
+name: Node.js Integration Tests
+
+on:
+  pull_request:
+    paths:
+      - 'vs-code-task-manager/**'
+      - 'cf_core/**'
+      - '.github/workflows/node-integration.yml'
+  push:
+    branches: [main]
+    paths:
+      - 'vs-code-task-manager/**'
+      - 'cf_core/**'
+  workflow_dispatch:
+
+jobs:
+  integration-test:
+    runs-on: ubuntu-latest
+    services:
+      postgres:
+        image: postgres:17-alpine
+        env:
+          POSTGRES_USER: postgres
+          POSTGRES_PASSWORD: password
+          POSTGRES_DB: taskman_test
+        ports:
+          - 5432:5432
+        options: >-
+          --health-cmd pg_isready
+          --health-interval 10s
+          --health-timeout 5s
+          --health-retries 5
+
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Setup Python 3.12
+        uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+
+      - name: Setup Node.js 20
+        uses: actions/setup-node@v4
+        with:
+          node-version: '20'
+
+      - name: Install Python Dependencies
+        run: pip install .[dev] psycopg2-binary
+
+      - name: Install Node Dependencies
+        working-directory: ./vs-code-task-manager
+        run: npm ci
+
+      - name: Initialize Database Schema
+        env:
+          CF_DB_URL: postgresql://postgres:password@localhost:5432/taskman_test
+        run: |
+          python scripts/migration/init_postgres_schema.py
+          python scripts/migration/03_add_dtm_columns.py
+
+      - name: Verify Node.js API
+        working-directory: ./vs-code-task-manager
+        env:
+          DB_HOST: localhost
+          DB_PORT: 5432
+          DB_USER: postgres
+          DB_PASSWORD: password
+          DB_NAME: taskman_test
+        run: npx tsx test_api.ts

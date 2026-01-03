@@ -1,0 +1,27 @@
+name: Guardrail - No Quiet Flags
+
+on:
+  pull_request:
+    types: [opened, synchronize, reopened]
+  push:
+    branches: [main]
+
+jobs:
+  scan-quiet-flags:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Scan for forbidden quiet flags in tests/docs/workflows/notebooks
+        shell: bash
+        run: |
+          set -euo pipefail
+          echo "Scanning for forbidden quiet flags..."
+          # Allowed opt-in cases can be whitelisted via grep -v patterns if needed
+          if git grep -nE "(^|\s)(pytest\s+-q|--disable-warnings|--quiet)" -- \
+               tests/ docs/ .github/workflows/ notebooks/ 2>/dev/null; then
+            echo "Forbidden quiet flags detected. Please remove -q/--disable-warnings/--quiet from tests/docs/workflows/notebooks." >&2
+            exit 1
+          fi
+          echo "No forbidden quiet flags found."

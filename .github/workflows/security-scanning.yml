@@ -1,0 +1,244 @@
+# Security Scanning Workflow - P0-006 CI/CD Enhancement
+# Authority: ContextForge Work Codex | UCL Compliance
+# Comprehensive security scanning for Python dependencies, secrets, and code vulnerabilities
+
+name: Security Scanning
+
+on:
+  push:
+    branches: [main, master, develop]
+    paths:
+      - '*.py'
+      - 'pyproject.toml'
+      - 'requirements*.txt'
+      - '.github/workflows/security-scanning.yml'
+  pull_request:
+    branches: [main, master, develop]
+  schedule:
+    - cron: '0 2 * * *'
+  workflow_dispatch:
+    inputs:
+      fail_on_findings:
+        description: 'Fail workflow on security findings'
+        required: false
+        default: true
+        type: boolean
+
+env:
+  PYTHON_VERSION: '3.12'
+
+jobs:
+  # Job 1: Dependency Vulnerability Scanning
+  dependency-audit:
+    name: 📦 Dependency Audit (pip-audit)
+    runs-on: ubuntu-latest
+    permissions:
+      contents: read
+      security-events: write
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      - name: Set up Python ${{ env.PYTHON_VERSION }}
+        uses: actions/setup-python@v5
+        with:
+          python-version: ${{ env.PYTHON_VERSION }}
+          cache: 'pip'
+
+      - name: Install dependencies
+        run: |
+          python -m pip install --upgrade pip
+          pip install pip-audit
+
+      - name: Run pip-audit
+        id: audit
+        continue-on-error: true
+        run: |
+          echo "::group::pip-audit Dependency Scan"
+          pip-audit --format json --output pip-audit-report.json || true
+          pip-audit --format markdown --output pip-audit-report.md || true
+          pip-audit
+          echo "::endgroup::"
+
+      - name: Upload pip-audit report
+        uses: actions/upload-artifact@v4
+        with:
+          name: pip-audit-report
+          path: |
+            pip-audit-report.json
+            pip-audit-report.md
+          retention-days: 30
+
+      - name: Check for HIGH/CRITICAL vulnerabilities
+        if: inputs.fail_on_findings == 'true' || inputs.fail_on_findings == ''
+        run: |
+          if [ -f pip-audit-report.json ]; then
+            HIGH_CRIT=$(jq '[.[] | select(.vuln.fix_versions != null)] | length' pip-audit-report.json 2>/dev/null || echo "0")
+            if [ "$HIGH_CRIT" -gt 0 ]; then
+              echo "::error::Found $HIGH_CRIT fixable vulnerabilities"
+              exit 1
+            fi
+          fi
+
+  # Job 2: Static Application Security Testing (SAST)
+  sast-bandit:
+    name: 🔍 SAST - Bandit
+    runs-on: ubuntu-latest
+    permissions:
+      contents: read
+      security-events: write
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      - name: Set up Python ${{ env.PYTHON_VERSION }}
+        uses: actions/setup-python@v5
+        with:
+          python-version: ${{ env.PYTHON_VERSION }}
+          cache: 'pip'
+
+      - name: Install Bandit
+        run: |
+          python -m pip install --upgrade pip
+          pip install bandit[toml]
+
+      - name: Run Bandit security scan
+        id: bandit
+        continue-on-error: true
+        run: |
+          echo "::group::Bandit Security Scan"
+          bandit -r python/ src/ cf_core/ cli/ \
+            -f json -o bandit-report.json \
+            --severity-level medium \
+            --confidence-level medium \
+            -x "**/tests/**,**/test_*,**/*_test.py" \
+            || true
+          bandit -r python/ src/ cf_core/ cli/ \
+            -f sarif -o bandit-report.sarif \
+            --severity-level medium \
+            --confidence-level medium \
+            -x "**/tests/**,**/test_*,**/*_test.py" \
+            || true
+          bandit -r python/ src/ cf_core/ cli/ \
+            --severity-level medium \
+            --confidence-level medium \
+            -x "**/tests/**,**/test_*,**/*_test.py"
+          echo "::endgroup::"
+
+      - name: Upload Bandit SARIF to GitHub Security
+        uses: github/codeql-action/upload-sarif@v3
+        if: always()
+        with:
+          sarif_file: bandit-report.sarif
+          category: bandit
+
+      - name: Upload Bandit report artifact
+        uses: actions/upload-artifact@v4
+        with:
+          name: bandit-report
+          path: |
+            bandit-report.json
+            bandit-report.sarif
+          retention-days: 30
+
+  # Job 3: Secret Detection
+  secret-scanning:
+    name: 🔐 Secret Detection (gitleaks)
+    runs-on: ubuntu-latest
+    permissions:
+      contents: read
+      security-events: write
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 0  # Full history for comprehensive scan
+
+      - name: Run Gitleaks
+        uses: gitleaks/gitleaks-action@v2
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          GITLEAKS_ENABLE_COMMENTS: false
+        continue-on-error: true
+
+      - name: Upload Gitleaks report
+        uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: gitleaks-report
+          path: results.sarif
+          retention-days: 30
+          if-no-files-found: ignore
+
+  # Job 4: License Compliance
+  license-check:
+    name: 📜 License Compliance
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      - name: Set up Python ${{ env.PYTHON_VERSION }}
+        uses: actions/setup-python@v5
+        with:
+          python-version: ${{ env.PYTHON_VERSION }}
+          cache: 'pip'
+
+      - name: Install pip-licenses
+        run: |
+          python -m pip install --upgrade pip
+          pip install pip-licenses
+          pip install -e . || pip install -r requirements.txt 2>/dev/null || true
+
+      - name: Generate license report
+        run: |
+          echo "::group::License Report"
+          pip-licenses --format=markdown --output-file=licenses.md || true
+          pip-licenses --format=json --output-file=licenses.json || true
+          pip-licenses
+          echo "::endgroup::"
+
+      - name: Check for copyleft licenses
+        run: |
+          if [ -f licenses.json ]; then
+            COPYLEFT=$(jq '[.[] | select(.License | test("GPL|AGPL|LGPL"; "i"))] | length' licenses.json 2>/dev/null || echo "0")
+            if [ "$COPYLEFT" -gt 0 ]; then
+              echo "::warning::Found $COPYLEFT packages with copyleft licenses - review required"
+            fi
+          fi
+
+      - name: Upload license report
+        uses: actions/upload-artifact@v4
+        with:
+          name: license-report
+          path: |
+            licenses.md
+            licenses.json
+          retention-days: 30
+          if-no-files-found: ignore
+
+  # Job 5: Security Summary
+  security-summary:
+    name: 📊 Security Summary
+    needs: [dependency-audit, sast-bandit, secret-scanning, license-check]
+    runs-on: ubuntu-latest
+    if: always()
+    steps:
+      - name: Download all reports
+        uses: actions/download-artifact@v4
+        with:
+          path: reports
+        continue-on-error: true
+
+      - name: Generate summary
+        run: |
+          echo "## 🔒 Security Scan Summary" >> $GITHUB_STEP_SUMMARY
+          echo "" >> $GITHUB_STEP_SUMMARY
+          echo "| Check | Status |" >> $GITHUB_STEP_SUMMARY
+          echo "|-------|--------|" >> $GITHUB_STEP_SUMMARY
+          echo "| Dependency Audit | ${{ needs.dependency-audit.result == 'success' && '✅ Passed' || '⚠️ Review' }} |" >> $GITHUB_STEP_SUMMARY
+          echo "| SAST (Bandit) | ${{ needs.sast-bandit.result == 'success' && '✅ Passed' || '⚠️ Review' }} |" >> $GITHUB_STEP_SUMMARY
+          echo "| Secret Detection | ${{ needs.secret-scanning.result == 'success' && '✅ Passed' || '⚠️ Review' }} |" >> $GITHUB_STEP_SUMMARY
+          echo "| License Check | ${{ needs.license-check.result == 'success' && '✅ Passed' || '⚠️ Review' }} |" >> $GITHUB_STEP_SUMMARY
+          echo "" >> $GITHUB_STEP_SUMMARY
+          echo "📅 Scan completed: $(date -u '+%Y-%m-%d %H:%M:%S UTC')" >> $GITHUB_STEP_SUMMARY

@@ -1,0 +1,149 @@
+name: TaskMan-v2 Docker Build
+
+on:
+  push:
+    branches: [main, remediation-*]
+    paths:
+      - 'TaskMan-v2/**'
+      - '.github/workflows/taskman-docker-build.yml'
+  pull_request:
+    branches: [main]
+    paths:
+      - 'TaskMan-v2/**'
+  workflow_dispatch:
+
+env:
+  REGISTRY: ghcr.io
+  IMAGE_NAME_BACKEND: ${{ github.repository }}/taskman-backend
+  IMAGE_NAME_FRONTEND: ${{ github.repository }}/taskman-frontend
+
+jobs:
+  build-backend:
+    name: Build Backend Docker Image
+    runs-on: ubuntu-latest
+    permissions:
+      contents: read
+      packages: write
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      - name: Set up Docker Buildx
+        uses: docker/setup-buildx-action@v3
+
+      - name: Log in to Container Registry
+        if: github.event_name != 'pull_request'
+        uses: docker/login-action@v3
+        with:
+          registry: ${{ env.REGISTRY }}
+          username: ${{ github.actor }}
+          password: ${{ secrets.GITHUB_TOKEN }}
+
+      - name: Extract metadata (tags, labels)
+        id: meta
+        uses: docker/metadata-action@v5
+        with:
+          images: ${{ env.REGISTRY }}/${{ env.IMAGE_NAME_BACKEND }}
+          tags: |
+            type=ref,event=branch
+            type=sha,prefix=
+            type=raw,value=latest,enable={{is_default_branch}}
+
+      - name: Build and push Backend
+        uses: docker/build-push-action@v5
+        with:
+          context: ./TaskMan-v2/backend-api
+          file: ./TaskMan-v2/backend-api/Dockerfile
+          push: ${{ github.event_name != 'pull_request' }}
+          tags: ${{ steps.meta.outputs.tags }}
+          labels: ${{ steps.meta.outputs.labels }}
+          cache-from: type=gha
+          cache-to: type=gha,mode=max
+
+  build-frontend:
+    name: Build Frontend Docker Image
+    runs-on: ubuntu-latest
+    permissions:
+      contents: read
+      packages: write
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      - name: Set up Docker Buildx
+        uses: docker/setup-buildx-action@v3
+
+      - name: Log in to Container Registry
+        if: github.event_name != 'pull_request'
+        uses: docker/login-action@v3
+        with:
+          registry: ${{ env.REGISTRY }}
+          username: ${{ github.actor }}
+          password: ${{ secrets.GITHUB_TOKEN }}
+
+      - name: Extract metadata (tags, labels)
+        id: meta
+        uses: docker/metadata-action@v5
+        with:
+          images: ${{ env.REGISTRY }}/${{ env.IMAGE_NAME_FRONTEND }}
+          tags: |
+            type=ref,event=branch
+            type=sha,prefix=
+            type=raw,value=latest,enable={{is_default_branch}}
+
+      - name: Build and push Frontend
+        uses: docker/build-push-action@v5
+        with:
+          context: ./TaskMan-v2
+          file: ./TaskMan-v2/Dockerfile
+          push: ${{ github.event_name != 'pull_request' }}
+          tags: ${{ steps.meta.outputs.tags }}
+          labels: ${{ steps.meta.outputs.labels }}
+          cache-from: type=gha
+          cache-to: type=gha,mode=max
+
+  docker-compose-test:
+    name: Test Docker Compose Stack
+    needs: [build-backend, build-frontend]
+    runs-on: ubuntu-latest
+    if: github.event_name != 'pull_request'
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      - name: Create .env file
+        run: |
+          cat > TaskMan-v2/backend-api/.env << EOF
+          DATABASE_URL=postgresql://contextforge:contextforge@db:5432/taskman_v2
+          ENVIRONMENT=ci
+          LOG_LEVEL=INFO
+          EOF
+
+      - name: Start Docker Compose stack
+        working-directory: ./TaskMan-v2
+        run: |
+          docker compose -f docker-compose.taskman-v2.yml up -d
+          sleep 30  # Wait for services to start
+
+      - name: Check Backend Health
+        run: |
+          curl -f http://localhost:3001/api/v1/health || exit 1
+          echo "✅ Backend health check passed"
+
+      - name: Check Frontend Health
+        run: |
+          curl -f http://localhost:5174/health || exit 1
+          echo "✅ Frontend health check passed"
+
+      - name: Show Container Logs on Failure
+        if: failure()
+        working-directory: ./TaskMan-v2
+        run: docker compose -f docker-compose.taskman-v2.yml logs
+
+      - name: Cleanup
+        if: always()
+        working-directory: ./TaskMan-v2
+        run: docker compose -f docker-compose.taskman-v2.yml down -v

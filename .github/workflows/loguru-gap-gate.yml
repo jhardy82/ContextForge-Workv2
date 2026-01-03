@@ -1,0 +1,142 @@
+name: Governance - Loguru Gap Gate
+
+on:
+  pull_request:
+    branches: ["**"]
+    paths:
+      - "python/**"
+      - ".github/**"
+  push:
+    branches: [main]
+    paths:
+      - "python/**"
+      - ".github/**"
+  workflow_dispatch: {}
+
+concurrency:
+  group: gap-gate-${{ github.workflow }}-${{ github.ref }}
+  cancel-in-progress: false
+
+permissions:
+  contents: read
+
+jobs:
+  gap-report:
+    name: Generate and Enforce Gap Report
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 1
+
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: "3.11"
+
+      - name: Generate gap report
+        run: |
+          python python/tools/generate_loguru_gap_report.py
+
+      - name: Upload gap report artifact
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: loguru-gap-report
+          path: build/artifacts/logging/loguru_gap_report.json
+          if-no-files-found: warn
+          retention-days: 30
+
+      - name: Enforce offenders == 0
+        run: |
+          python - << 'PY'
+          import json, sys, pathlib
+          p = pathlib.Path('build/artifacts/logging/loguru_gap_report.json')
+          if not p.exists():
+              print('[gap-gate] report not found, failing for safety')
+              sys.exit(1)
+          data = json.loads(p.read_text(encoding='utf-8'))
+          count = int(data.get('totals',{}).get('offender_count', 0))
+          files = int(data.get('totals',{}).get('files_scanned', 0))
+          print(f"[gap-gate] offenders={count} files_scanned={files}")
+          if count > 0:
+              # Print top offenders for quick triage
+              top = data.get('top10_offenders', [])
+              print('[gap-gate] top offenders:')
+              for i, ent in enumerate(top, 1):
+                  path = ent.get('path','?')
+                  occ = ent.get('structlog_occurrences', 0)
+                  print(f"  {i:>2}. {path} (structlog x{occ})")
+              sys.exit(1)
+          PY
+
+      - name: Install minimal Python dependencies (loguru/structlog)
+        run: |
+          python -m pip install --upgrade pip
+          if [ -f requirements.txt ]; then
+            pip install -r requirements.txt
+          else
+            pip install loguru structlog
+          fi
+
+      - name: Run rotation smoke (tiny thresholds)
+        env:
+          UNIFIED_LOG_PATH: build/logs/smoke_unified.log.jsonl
+          UNIFIED_LOG_ROTATE_MAX_MB: "0.001"
+          UNIFIED_LOG_ROTATE_BACKUPS: "2"
+        run: |
+          mkdir -p build/artifacts/logging
+          # Run smoke and capture JSON summary
+          python python/tools/smoke_rotate.py > build/artifacts/logging/smoke_rotation_summary.json
+
+      - name: Upload smoke artifacts
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: log-rotation-smoke
+          path: |
+            build/artifacts/logging/smoke_rotation_summary.json
+            build/logs/
+          if-no-files-found: warn
+          retention-days: 14
+
+      - name: Verify rotation evidence exists
+        run: |
+          python - << 'PY'
+          import json, sys, pathlib, glob
+          summary_p = pathlib.Path('build/artifacts/logging/smoke_rotation_summary.json')
+          if not summary_p.exists():
+              print('::error::smoke_rotation_summary.json missing; smoke did not run or failed')
+              sys.exit(1)
+          try:
+              summary = json.loads(summary_p.read_text(encoding='utf-8'))
+          except Exception as e:
+              print(f"::error::failed to parse smoke summary: {e}")
+              sys.exit(1)
+          log_dir = pathlib.Path('build/logs')
+          if not log_dir.exists():
+              print('::error::build/logs directory missing after smoke; cannot verify rotation')
+              sys.exit(1)
+          files = [pathlib.Path(p) for p in glob.glob('build/logs/**/*', recursive=True) if pathlib.Path(p).is_file()]
+          evidence_found = False
+          for fp in files:
+              try:
+                  text = fp.read_text(encoding='utf-8', errors='ignore')
+              except Exception:
+                  continue
+              if '"action":"log_rotation"' in text:
+                  print(f"[rotation] evidence found in {fp}")
+                  evidence_found = True
+                  break
+          hint = int(summary.get('rotations_seen_hint', 0))
+          if not evidence_found and hint == 0:
+              # Emit GitHub annotation and fail
+              print('::error file=python/tools/smoke_rotate.py,line=1,col=1::No log_rotation evidence detected in build/logs; rotation may have failed')
+              print('[rotation] files scanned:')
+              for fp in files:
+                  print(f" - {fp}")
+              sys.exit(1)
+          else:
+              print(f"[rotation] verification passed (evidence_found={evidence_found}, hint={hint})")
+          PY

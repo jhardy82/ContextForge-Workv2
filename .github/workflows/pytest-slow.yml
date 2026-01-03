@@ -1,0 +1,52 @@
+name: Pytest Slow Tests
+
+on:
+  # Manual trigger
+  workflow_dispatch:
+
+  # Scheduled run (daily at 2 AM UTC)
+  schedule:
+    - cron: "0 2 * * *"
+
+  # Optional: trigger from main branch pushes
+  push:
+    branches: [main]
+    paths:
+      - "tests/**/*.py"
+      - "python/**/*.py"
+
+jobs:
+  test-slow:
+    runs-on: windows-latest
+
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Set up Python 3.12
+        uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+
+      - name: Set up virtual environment
+        run: |
+          python -m venv .venv
+          .\.venv\Scripts\activate
+          python -m pip install --upgrade pip
+
+      - name: Install dependencies
+        run: |
+          .\.venv\Scripts\activate
+          pip install -r requirements-dev.txt
+
+      - name: Run Slow Tests Only
+        run: |
+          .\.venv\Scripts\activate
+          python python/run_rich_harness.py --mode quiet --suite "slow" --pattern "test_*.py"
+
+      - name: Upload Slow Test Artifacts
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: slow-test-artifacts
+          path: |
+            logs/tests/duckdb/

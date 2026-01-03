@@ -1,0 +1,70 @@
+name: Submodule Integrity
+
+on:
+  push:
+    branches: [ main, master ]
+  pull_request:
+    branches: [ main, master ]
+  schedule:
+    - cron: '17 3 * * *' # Daily at 03:17 UTC
+  workflow_dispatch:
+
+jobs:
+  verify-submodules:
+    name: Verify Recursive Clone & Submodule Health
+    runs-on: ${{ matrix.os }}
+    strategy:
+      matrix:
+        os: [ubuntu-latest, windows-latest]
+    steps:
+      - name: Checkout (recursive)
+        uses: actions/checkout@v4
+        with:
+          submodules: recursive
+
+      - name: Git Version
+        run: git --version
+
+      - name: Sync & Update Submodules
+        run: |
+          git submodule sync --recursive
+          git submodule update --init --recursive --depth 1
+
+      - name: List Submodule Status
+        run: |
+          git submodule status --recursive
+
+      - name: Validate Submodule Status
+        shell: bash
+        run: |
+          set -euo pipefail
+          echo "Checking for detached / missing / modified submodules"
+          BAD=0
+          while read -r line; do
+            # Lines starting with '-' indicate missing (not initialized)
+            # Lines starting with '+' indicate local modifications
+            # Lines starting with 'U' indicate merge conflicts
+            first_char=$(echo "$line" | cut -c1)
+            if [[ "$first_char" == "-" || "$first_char" == "+" || "$first_char" == "U" ]]; then
+              echo "Problematic submodule line: $line" >&2
+              BAD=1
+            fi
+          done < <(git submodule status --recursive)
+          if [[ $BAD -ne 0 ]]; then
+            echo "One or more submodules are in a bad state" >&2
+            exit 1
+          fi
+          echo "All submodules clean."
+
+      - name: Fail if Placeholder Remotes Still Present
+        shell: bash
+        run: |
+          set -euo pipefail
+          # TaskMan-v2 is now vendored as a regular directory, no longer a submodule
+          if grep -q "claudekit-skills-fork" .gitmodules; then
+            echo "WARNING: Placeholder claudekit-skills-fork remote still present. Replace with actual fork URL before finalization." >&2
+          fi
+
+      - name: Summary
+        run: |
+          echo "Submodule integrity verification complete."

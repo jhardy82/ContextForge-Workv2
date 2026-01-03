@@ -1,0 +1,61 @@
+name: Harness Dashboard Smoke
+
+on:
+  pull_request:
+  push:
+    branches: [main]
+
+permissions:
+  contents: read
+
+jobs:
+  smoke:
+    runs-on: windows-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+
+      - name: Setup Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+
+      - name: Create venv
+        shell: pwsh
+        run: python -m venv .venv
+
+      - name: Install dependencies
+        shell: pwsh
+        run: |
+          .\.venv\Scripts\python -m pip install --upgrade pip
+          .\.venv\Scripts\python -m pip install .[dev]
+
+      - name: Check for pytest plugin conflicts
+        shell: pwsh
+        run: .\.venv\Scripts\python -m python.ci.check_plugin_conflicts
+
+      - name: Run harness (unit-only)
+        shell: pwsh
+        run: .\.venv\Scripts\python python\run_rich_harness.py --mode quiet --pattern test_*\.py --pytest-args -m unit
+
+      - name: Validate harness artifacts (invariants + events)
+        shell: pwsh
+        run: .\.venv\Scripts\python -m python.ci.validate_harness_artifacts
+
+      - name: Run monitor (short, visible)
+        shell: pwsh
+        run: .\.venv\Scripts\python -m python.monitoring.monitor_cli watch-pytest --duration 5 --no-screen
+
+      # Event count assertion is included in the validator
+
+      - name: Upload harness artifacts
+        uses: actions/upload-artifact@v4
+        with:
+          name: harness-dashboard-state
+          path: |
+            logs/tests/duckdb/*.json
+            logs/tests/duckdb/*.log
+          if-no-files-found: error
+          retention-days: 7

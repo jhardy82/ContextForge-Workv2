@@ -1,0 +1,121 @@
+# CI/CD Artifact Validation Workflow - validates build artifacts for security, integrity, and compliance
+name: Artifact Validation
+
+on:
+  workflow_call:
+    inputs:
+      artifact-paths:
+        description: 'Comma-separated paths to artifacts for validation'
+        required: false
+        type: string
+        default: 'build/artifacts/**/*,dist/**/*,*.whl,*.tar.gz'
+      validation-level:
+        description: 'Validation level: basic, standard, strict'
+        required: false
+        type: string
+        default: 'standard'
+  push:
+    branches: [main, develop]
+    paths:
+      - 'build/artifacts/**'
+      - 'dist/**'
+      - '*.whl'
+      - '*.tar.gz'
+  pull_request:
+    paths:
+      - 'build/artifacts/**'
+      - 'dist/**'
+      - '*.whl'
+      - '*.tar.gz'
+
+jobs:
+  validate-artifacts:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+
+      - name: Install uv
+        uses: astral-sh/setup-uv@v7
+        with:
+          python-version: "3.12"
+          enable-cache: true
+
+      - name: Install Python deps
+        run: uv sync --locked --all-extras --dev
+
+      - name: Run Artifact Validation
+        run: |
+          uv run python scripts/validate-artifacts.py \
+            --paths "${{ inputs.artifact-paths || 'build/artifacts/**/*,dist/**/*,*.whl,*.tar.gz' }}" \
+            --level "${{ inputs.validation-level || 'standard' }}" \
+            --output-format json \
+            --output-file validation-report.json
+        env:
+          VALIDATION_LEVEL: ${{ inputs.validation-level || 'standard' }}
+
+      - name: Security Scan Artifacts
+        run: |
+          # Install security tools
+          pip install safety bandit semgrep
+
+          # Scan Python packages for known vulnerabilities
+          if ls *.whl *.tar.gz 1> /dev/null 2>&1; then
+            safety check --json --output safety-report.json || true
+          fi
+
+      - name: Validate Manifest Schema
+        run: |
+          uv run python scripts/validate-artifacts.py \
+            --validate-manifest \
+            --manifest-path artifact-manifest.jsonl \
+            --schema-path schemas/artifact-manifest.schema.json
+
+      - name: Generate Validation Summary
+        if: always()
+        run: |
+          uv run python scripts/validate-artifacts.py \
+            --generate-summary \
+            --input validation-report.json \
+            --output validation-summary.md
+
+      - name: Upload Validation Report
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: artifact-validation-report
+          path: |
+            validation-report.json
+            validation-summary.md
+            safety-report.json
+          retention-days: 30
+
+      - name: Comment PR with Validation Results
+        if: github.event_name == 'pull_request' && always()
+        uses: actions/github-script@v7
+        with:
+          script: |
+            const fs = require('fs');
+
+            try {
+              const summary = fs.readFileSync('validation-summary.md', 'utf8');
+
+              github.rest.issues.createComment({
+                issue_number: context.issue.number,
+                owner: context.repo.owner,
+                repo: context.repo.repo,
+                body: `## 🔍 Artifact Validation Results\n\n${summary}`
+              });
+            } catch (error) {
+              console.log('No validation summary found or error creating comment:', error);
+            }
+
+      - name: Fail on Critical Issues
+        run: |
+          uv run python scripts/validate-artifacts.py \
+            --check-exit-code \
+            --report validation-report.json \
+            --fail-on critical,high

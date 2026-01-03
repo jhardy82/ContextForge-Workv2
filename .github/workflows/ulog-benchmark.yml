@@ -1,0 +1,57 @@
+name: Manual - Unified Logging Benchmark
+
+on:
+  workflow_dispatch:
+    inputs:
+      iterations:
+        description: "Number of iterations for each benchmark path"
+        required: false
+        default: 20000
+        type: number
+
+concurrency:
+  group: ulog-benchmark-${{ github.ref }}
+  cancel-in-progress: false
+
+permissions:
+  contents: read
+
+jobs:
+  run-benchmark:
+    name: Run ulog vs structlog benchmark
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 1
+
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: "3.11"
+          cache: "pip"
+          cache-dependency-path: |
+            requirements.txt
+            requirements-extra.txt
+
+      - name: Install minimal dependencies
+        run: |
+          python -m pip install --upgrade pip
+          pip install "structlog>=23,<24" "loguru>=0.6,<1.0"
+
+      - name: Run benchmark
+        env:
+          # Force quiet backend to avoid console mirror spam during tight loops
+          UNIFIED_LOG_BACKEND: direct
+        run: |
+          python python/tools/bench_ulog_vs_structlog.py --iterations ${{ inputs.iterations || 20000 }}
+
+      - name: Upload benchmark artifact
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: ulog-benchmark-${{ inputs.iterations || 'default' }}
+          path: build/artifacts/benchmarks/ulog_vs_structlog.json
+          if-no-files-found: error
+          retention-days: 30

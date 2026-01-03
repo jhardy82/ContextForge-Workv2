@@ -1,0 +1,59 @@
+name: Spectre Pester
+
+on:
+  push:
+    branches: [ main ]
+  pull_request:
+    branches: [ main ]
+
+jobs:
+  tests:
+    runs-on: windows-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Setup PowerShell module cache
+        id: cache-ps
+        uses: actions/cache@v4
+        with:
+          path: |
+            C:\Users\runneradmin\Documents\PowerShell\Modules
+            C:\Users\runneradmin\Documents\WindowsPowerShell\Modules
+          key: ps-modules-${{ runner.os }}-${{ hashFiles('**/modules/**') }}
+
+      - name: Install Pester 5.x
+        shell: pwsh
+        run: |
+          Set-PSRepository -Name PSGallery -InstallationPolicy Trusted
+          Install-Module Pester -Scope CurrentUser -Force
+
+      - name: Ensure ContextForge Spectre module available
+        shell: pwsh
+        run: |
+          # No explicit install required; runner script imports local module
+          Write-Host "ContextForge.Spectre will be imported by the script."
+
+      - name: Run Spectre tests (quiet)
+        shell: pwsh
+        env:
+          CF_SPECTRE_QUIET: "1"
+        run: |
+          pwsh -NoProfile -File ./scripts/Invoke-SpectrePester.ps1
+
+      - name: Upload NUnit XML
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: pester-spectre-nunit
+          path: artifacts/test-results/pester-spectre.xml
+
+      - name: Print NUnit path
+        if: always()
+        shell: pwsh
+        run: |
+          if (Test-Path "artifacts/test-results/pester-spectre.xml") {
+            Get-Item artifacts/test-results/pester-spectre.xml | Format-List *
+          } else {
+            Write-Host "NUnit report missing" -ForegroundColor Yellow
+          }

@@ -1,0 +1,215 @@
+name: Validate GitHub Actions Workflows
+
+on:
+  push:
+    paths:
+      - ".github/workflows/**"
+    branches:
+      - main
+      - develop
+      - "feature/**"
+      - "fix/**"
+  pull_request:
+    paths:
+      - ".github/workflows/**"
+
+# Prevent concurrent validation runs
+concurrency:
+  group: ${{ github.workflow }}-${{ github.ref }}
+  cancel-in-progress: true
+
+jobs:
+  validate-workflows:
+    name: Validate Workflows with actionlint
+    runs-on: ubuntu-latest
+
+    permissions:
+      contents: read
+      pull-requests: write # For PR comments
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 0 # Full history for better context
+
+      - name: Get changed workflow files
+        id: changed-files
+        uses: tj-actions/changed-files@v44
+        with:
+          files: |
+            .github/workflows/**/*.yml
+            .github/workflows/**/*.yaml
+
+      - name: Install actionlint
+        if: steps.changed-files.outputs.any_changed == 'true'
+        run: |
+          echo "📦 Installing actionlint..."
+
+          # Download latest release
+          ACTIONLINT_VERSION=$(curl -s https://api.github.com/repos/rhysd/actionlint/releases/latest | grep '"tag_name"' | sed -E 's/.*"v([^"]+)".*/\1/')
+          echo "Version: $ACTIONLINT_VERSION"
+
+          curl -sL "https://github.com/rhysd/actionlint/releases/download/v${ACTIONLINT_VERSION}/actionlint_${ACTIONLINT_VERSION}_linux_amd64.tar.gz" -o actionlint.tar.gz
+          tar -xzf actionlint.tar.gz actionlint
+          chmod +x actionlint
+          sudo mv actionlint /usr/local/bin/
+
+          # Verify installation
+          actionlint --version
+          echo "✅ actionlint installed successfully"
+
+      - name: Validate workflows
+        if: steps.changed-files.outputs.any_changed == 'true'
+        id: validate
+        run: |
+          echo "🔍 Validating GitHub Actions workflows..."
+          echo ""
+
+          # Create output directory for reports
+          mkdir -p validation-reports
+
+          # Initialize counters
+          TOTAL=0
+          PASSED=0
+          FAILED=0
+
+          # Validate each changed workflow
+          echo "${{ steps.changed-files.outputs.all_changed_files }}" | tr ' ' '\n' | while read -r workflow; do
+            if [ -z "$workflow" ]; then
+              continue
+            fi
+
+            TOTAL=$((TOTAL + 1))
+            echo "━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━"
+            echo "📄 Validating: $workflow"
+            echo ""
+
+            # Run actionlint on the workflow
+            if actionlint "$workflow" 2>&1 | tee "validation-reports/$(basename "$workflow").log"; then
+              echo "✅ Valid"
+              PASSED=$((PASSED + 1))
+            else
+              echo "❌ Invalid"
+              FAILED=$((FAILED + 1))
+            fi
+            echo ""
+          done
+
+          # Save summary
+          echo "TOTAL=$TOTAL" >> $GITHUB_OUTPUT
+          echo "PASSED=$PASSED" >> $GITHUB_OUTPUT
+          echo "FAILED=$FAILED" >> $GITHUB_OUTPUT
+
+          # Set status
+          if [ "$FAILED" -gt 0 ]; then
+            echo "status=failed" >> $GITHUB_OUTPUT
+            echo ""
+            echo "━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━"
+            echo "❌ VALIDATION FAILED"
+            echo "━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━"
+            echo "Passed: $PASSED / $TOTAL"
+            echo "Failed: $FAILED / $TOTAL"
+            echo ""
+            exit 1
+          else
+            echo "status=success" >> $GITHUB_OUTPUT
+            echo ""
+            echo "━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━"
+            echo "✅ ALL WORKFLOWS VALID"
+            echo "━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━"
+            echo "Validated: $TOTAL workflow(s)"
+            echo ""
+            exit 0
+          fi
+
+      - name: Upload validation reports
+        if: always() && steps.changed-files.outputs.any_changed == 'true'
+        uses: actions/upload-artifact@v4
+        with:
+          name: workflow-validation-reports
+          path: validation-reports/
+          retention-days: 30
+
+      - name: Comment on PR (if validation failed)
+        if: failure() && github.event_name == 'pull_request'
+        uses: actions/github-script@v7
+        with:
+          script: |
+            const fs = require('fs');
+            const path = require('path');
+
+            // Read validation reports
+            const reportsDir = 'validation-reports';
+            let errorDetails = '';
+
+            if (fs.existsSync(reportsDir)) {
+              const files = fs.readdirSync(reportsDir);
+
+              for (const file of files) {
+                const content = fs.readFileSync(path.join(reportsDir, file), 'utf8');
+                if (content.trim()) {
+                  errorDetails += `\n### ❌ ${file.replace('.log', '')}\n\n\`\`\`\n${content}\n\`\`\`\n`;
+                }
+              }
+            }
+
+            const comment = `## ❌ Workflow Validation Failed
+
+            One or more GitHub Actions workflows have validation errors.
+
+            ${errorDetails}
+
+            ### 🔧 How to fix:
+
+            1. Review the errors above
+            2. Fix the workflow files locally
+            3. Test with: \`.\scripts\validate-all-workflows.ps1\`
+            4. Push the fixes
+
+            ### 📚 Resources:
+
+            - [Workflow syntax](https://docs.github.com/en/actions/using-workflows/workflow-syntax-for-github-actions)
+            - [Pre-commit validation setup](./docs/development/pre-commit-validation-setup.md)
+
+            ---
+            *Validation powered by [actionlint](https://github.com/rhysd/actionlint)*
+            `;
+
+            await github.rest.issues.createComment({
+              owner: context.repo.owner,
+              repo: context.repo.repo,
+              issue_number: context.issue.number,
+              body: comment
+            });
+
+      - name: Summary
+        if: always() && steps.changed-files.outputs.any_changed == 'true'
+        run: |
+          echo "## Workflow Validation Summary" >> $GITHUB_STEP_SUMMARY
+          echo "" >> $GITHUB_STEP_SUMMARY
+
+          if [ "${{ steps.validate.outputs.status }}" = "success" ]; then
+            echo "✅ **Status**: All workflows valid" >> $GITHUB_STEP_SUMMARY
+            echo "" >> $GITHUB_STEP_SUMMARY
+            echo "📊 **Results**:" >> $GITHUB_STEP_SUMMARY
+            echo "- Total validated: ${{ steps.validate.outputs.TOTAL }}" >> $GITHUB_STEP_SUMMARY
+            echo "- Passed: ${{ steps.validate.outputs.PASSED }}" >> $GITHUB_STEP_SUMMARY
+          else
+            echo "❌ **Status**: Validation failed" >> $GITHUB_STEP_SUMMARY
+            echo "" >> $GITHUB_STEP_SUMMARY
+            echo "📊 **Results**:" >> $GITHUB_STEP_SUMMARY
+            echo "- Total validated: ${{ steps.validate.outputs.TOTAL }}" >> $GITHUB_STEP_SUMMARY
+            echo "- Passed: ${{ steps.validate.outputs.PASSED }}" >> $GITHUB_STEP_SUMMARY
+            echo "- Failed: ${{ steps.validate.outputs.FAILED }}" >> $GITHUB_STEP_SUMMARY
+            echo "" >> $GITHUB_STEP_SUMMARY
+            echo "See validation reports artifact for details." >> $GITHUB_STEP_SUMMARY
+          fi
+
+      - name: No workflows changed
+        if: steps.changed-files.outputs.any_changed != 'true'
+        run: |
+          echo "ℹ️ No workflow files changed - skipping validation"
+          echo ""
+          echo "## Workflow Validation" >> $GITHUB_STEP_SUMMARY
+          echo "ℹ️ No workflow files changed in this commit" >> $GITHUB_STEP_SUMMARY

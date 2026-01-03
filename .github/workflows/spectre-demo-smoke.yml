@@ -1,0 +1,196 @@
+name: Spectre Demo Smoke
+
+on:
+  workflow_dispatch:
+  push:
+    branches:
+      - main
+      - master
+      - develop
+      - feature/**
+  pull_request:
+
+concurrency:
+  group: spectre-demo-smoke-${{ github.ref }}
+  cancel-in-progress: false
+
+permissions:
+  contents: read
+
+jobs:
+  smoke:
+    name: Run ContextForge.Spectre demo and validate artifacts
+    runs-on: windows-latest
+    timeout-minutes: 10
+
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Setup PowerShell 7
+        uses: actions/setup-powershell@v1
+        with:
+          pwsh-version: '7.5.x'
+
+      - name: Install PwshSpectreConsole module
+        shell: pwsh
+        run: |
+          Install-Module -Name PwshSpectreConsole -RequiredVersion 2.3.0 -Force -Scope CurrentUser -Repository PSGallery
+          Import-Module PwshSpectreConsole -ErrorAction Stop
+          Write-Host "✅ PwshSpectreConsole $(Get-Module PwshSpectreConsole | Select-Object -ExpandProperty Version) installed"
+
+      - name: Run Spectre demo in CI mode
+        shell: pwsh
+        run: |
+          $ErrorActionPreference = 'Stop'
+
+          Write-Host "Running ContextForge.Spectre demo with -CI -NoPause flags..."
+          & pwsh -NoProfile -File .\scripts\Invoke-ContextForgeSpectreDemo.ps1 -CI -NoPause
+
+          $exitCode = $LASTEXITCODE
+          if ($exitCode -ne 0) {
+            throw "Demo script failed with exit code: $exitCode"
+          }
+
+          Write-Host "✅ Demo completed successfully (exit code: 0)"
+
+      - name: Validate artifact files exist
+        shell: pwsh
+        run: |
+          $ErrorActionPreference = 'Stop'
+          $artifactsRoot = Join-Path $PWD 'artifacts\spectre-demo'
+
+          Write-Host "Validating artifacts in: $artifactsRoot"
+
+          # Check JSONL log file
+          $jsonlPath = Join-Path $artifactsRoot 'spectre-demo.jsonl'
+          if (!(Test-Path $jsonlPath)) {
+            throw "JSONL log file not found: $jsonlPath"
+          }
+          $jsonlSize = (Get-Item $jsonlPath).Length
+          Write-Host "✅ JSONL log found: $jsonlPath ($jsonlSize bytes)"
+
+          # Check transcript file
+          $transcriptPath = Join-Path $artifactsRoot 'spectre-demo-transcript.txt'
+          if (!(Test-Path $transcriptPath)) {
+            throw "Transcript file not found: $transcriptPath"
+          }
+          $transcriptSize = (Get-Item $transcriptPath).Length
+          Write-Host "✅ Transcript found: $transcriptPath ($transcriptSize bytes)"
+
+          # Validate files are not empty
+          if ($jsonlSize -lt 100) {
+            throw "JSONL log file is too small (expected >100 bytes, got $jsonlSize)"
+          }
+          if ($transcriptSize -lt 50) {
+            throw "Transcript file is too small (expected >50 bytes, got $transcriptSize)"
+          }
+
+          Write-Host "✅ All artifact validations passed"
+
+      - name: Validate JSONL structure and hash record
+        shell: pwsh
+        run: |
+          $ErrorActionPreference = 'Stop'
+          $jsonlPath = Join-Path $PWD 'artifacts\spectre-demo\spectre-demo.jsonl'
+
+          Write-Host "Validating JSONL structure and events..."
+
+          # Read all JSONL records
+          $records = Get-Content $jsonlPath | ForEach-Object { ConvertFrom-Json $_ }
+          $recordCount = $records.Count
+          Write-Host "  Total JSONL records: $recordCount"
+
+          # Check for required event types
+          $requiredEvents = @('startup', 'import', 'utf8_config_applied', 'artifacts', 'artifacts_hash')
+          $foundEvents = $records | Select-Object -ExpandProperty type | Sort-Object -Unique
+
+          foreach ($requiredEvent in $requiredEvents) {
+            if ($foundEvents -notcontains $requiredEvent) {
+              throw "Required JSONL event type not found: $requiredEvent"
+            }
+            Write-Host "  ✅ Found event type: $requiredEvent"
+          }
+
+          # Validate artifacts_hash record (governance compliance)
+          $hashRecord = $records | Where-Object { $_.type -eq 'artifacts_hash' } | Select-Object -Last 1
+          if (!$hashRecord) {
+            throw "artifacts_hash record not found in JSONL"
+          }
+
+          if (!$hashRecord.artifacts.jsonl_log.hash) {
+            throw "JSONL hash not found in artifacts_hash record"
+          }
+          Write-Host "  ✅ JSONL hash: $($hashRecord.artifacts.jsonl_log.hash)"
+
+          if (!$hashRecord.artifacts.transcript.hash) {
+            throw "Transcript hash not found in artifacts_hash record"
+          }
+          Write-Host "  ✅ Transcript hash: $($hashRecord.artifacts.transcript.hash)"
+
+          # Validate hash algorithm
+          if ($hashRecord.artifacts.jsonl_log.algorithm -ne 'SHA256') {
+            throw "Expected SHA256 algorithm, got: $($hashRecord.artifacts.jsonl_log.algorithm)"
+          }
+          Write-Host "  ✅ Hash algorithm: SHA256"
+
+          Write-Host "✅ JSONL structure validation passed"
+
+      - name: Validate UTF-8 encoding
+        shell: pwsh
+        run: |
+          $ErrorActionPreference = 'Stop'
+          $artifactsRoot = Join-Path $PWD 'artifacts\spectre-demo'
+
+          Write-Host "Validating UTF-8 encoding of artifact files..."
+
+          # Check JSONL encoding
+          $jsonlPath = Join-Path $artifactsRoot 'spectre-demo.jsonl'
+          $jsonlContent = Get-Content $jsonlPath -Raw
+
+          # Validate UTF-8 by checking for Sacred Geometry symbols in utf8_config event
+          if ($jsonlContent -notmatch '\\u25b3|△') {
+            Write-Warning "Sacred Geometry symbols may not be present in JSONL (expected in demo output)"
+          }
+          Write-Host "  ✅ JSONL appears to be valid UTF-8"
+
+          # Check transcript encoding
+          $transcriptPath = Join-Path $artifactsRoot 'spectre-demo-transcript.txt'
+          $transcriptContent = Get-Content $transcriptPath -Raw -Encoding UTF8
+
+          if ($transcriptContent -match 'ContextForge Spectre Demo') {
+            Write-Host "  ✅ Transcript contains expected header"
+          } else {
+            Write-Warning "Transcript header not found (may indicate encoding issue)"
+          }
+
+          Write-Host "✅ UTF-8 encoding validation passed"
+
+      - name: Upload demo artifacts
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: spectre-demo-artifacts-${{ github.run_id }}
+          path: |
+            artifacts/spectre-demo/spectre-demo.jsonl
+            artifacts/spectre-demo/spectre-demo-transcript.txt
+          retention-days: 7
+          if-no-files-found: error
+
+      - name: Display artifact summary
+        if: success()
+        shell: pwsh
+        run: |
+          $artifactsRoot = Join-Path $PWD 'artifacts\spectre-demo'
+
+          Write-Host "`n========================================="
+          Write-Host "  ContextForge.Spectre Demo - SUCCESS"
+          Write-Host "=========================================`n"
+
+          Write-Host "Artifacts:"
+          Get-ChildItem $artifactsRoot | ForEach-Object {
+            Write-Host "  • $($_.Name) - $($_.Length) bytes"
+          }
+
+          Write-Host "`n✅ All validations passed"
+          Write-Host "✅ Demo artifacts available in workflow artifacts"

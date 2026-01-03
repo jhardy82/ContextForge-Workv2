@@ -1,0 +1,220 @@
+name: Coverage Check
+# ContextForge Coverage Check Workflow
+# Purpose: Enforce coverage thresholds using P0-007 configuration
+# Created: 2025-12-06
+# Team: ALPHA (Solution Architecture + DevOps)
+# Dependencies: P0-007 coverage configuration in pyproject.toml
+
+on:
+    pull_request:
+        branches: [main, develop]
+        paths:
+            - "cf_core/**"
+            - "python/**"
+            - "cli/**"
+            - "tests/**"
+            - "pyproject.toml"
+    push:
+        branches: [main]
+        paths:
+            - "cf_core/**"
+            - "python/**"
+            - "cli/**"
+            - "tests/**"
+    workflow_dispatch:
+        inputs:
+            coverage_threshold:
+                description: "Coverage threshold percentage"
+                required: false
+                default: "70"
+                type: string
+
+permissions:
+    contents: read
+    pull-requests: write
+    checks: write
+
+env:
+    PYTHON_VERSION: "3.11"
+    COVERAGE_THRESHOLD: ${{ github.event.inputs.coverage_threshold || '70' }}
+
+jobs:
+    coverage-check:
+        name: Coverage Validation
+        runs-on: ubuntu-latest
+
+        steps:
+            - name: Checkout repository
+              uses: actions/checkout@v4
+              with:
+                  fetch-depth: 0
+
+            - name: Set up Python ${{ env.PYTHON_VERSION }}
+              uses: actions/setup-python@v5
+              with:
+                  python-version: ${{ env.PYTHON_VERSION }}
+                  cache: "pip"
+
+            - name: Install dependencies
+              run: |
+                  python -m pip install --upgrade pip
+                  pip install pytest pytest-cov coverage[toml]
+                  pip install -r requirements.txt || true
+                  pip install -r requirements-testing-enhanced.txt || true
+
+            - name: Run coverage tests
+              id: coverage
+              run: |
+                  # Run pytest with coverage using pyproject.toml configuration
+                  # This validates P0-007 coverage paths are correct
+                  python -m pytest \
+                    --cov=cf_core \
+                    --cov=python \
+                    --cov=cli/python \
+                    --cov-config=pyproject.toml \
+                    --cov-report=term-missing \
+                    --cov-report=xml:coverage.xml \
+                    --cov-report=html:coverage_html \
+                    --cov-fail-under=${{ env.COVERAGE_THRESHOLD }} \
+                    --tb=short \
+                    -q \
+                    tests/ cf_core/tests/ \
+                    2>&1 | tee coverage_output.txt || true
+
+                  # Extract coverage percentage
+                  COVERAGE_PCT=$(python -c "
+                  import re
+                  with open('coverage_output.txt', 'r') as f:
+                      content = f.read()
+                  match = re.search(r'TOTAL\s+\d+\s+\d+\s+\d+\s+\d+\s+(\d+)%', content)
+                  if match:
+                      print(match.group(1))
+                  else:
+                      # Try branch coverage format
+                      match = re.search(r'Total coverage: ([\d.]+)%', content)
+                      if match:
+                          print(int(float(match.group(1))))
+                      else:
+                          print('0')
+                  ")
+                  echo "coverage_percentage=$COVERAGE_PCT" >> $GITHUB_OUTPUT
+                  echo "::notice::Total Coverage: ${COVERAGE_PCT}%"
+
+            - name: Check coverage threshold
+              id: threshold_check
+              run: |
+                  COVERAGE=${{ steps.coverage.outputs.coverage_percentage }}
+                  THRESHOLD=${{ env.COVERAGE_THRESHOLD }}
+
+                  if [ "$COVERAGE" -ge "$THRESHOLD" ]; then
+                    echo "✅ Coverage ${COVERAGE}% meets threshold ${THRESHOLD}%"
+                    echo "status=pass" >> $GITHUB_OUTPUT
+                  else
+                    echo "❌ Coverage ${COVERAGE}% below threshold ${THRESHOLD}%"
+                    echo "status=fail" >> $GITHUB_OUTPUT
+                    exit 1
+                  fi
+
+            - name: Generate coverage badge
+              if: always()
+              run: |
+                  COVERAGE=${{ steps.coverage.outputs.coverage_percentage }}
+                  if [ "$COVERAGE" -ge 80 ]; then
+                    COLOR="brightgreen"
+                  elif [ "$COVERAGE" -ge 70 ]; then
+                    COLOR="green"
+                  elif [ "$COVERAGE" -ge 50 ]; then
+                    COLOR="yellow"
+                  else
+                    COLOR="red"
+                  fi
+                  echo "BADGE_URL=https://img.shields.io/badge/coverage-${COVERAGE}%25-${COLOR}" >> $GITHUB_ENV
+
+            - name: Upload coverage report
+              if: always()
+              uses: actions/upload-artifact@v4
+              with:
+                  name: coverage-report
+                  path: |
+                      coverage.xml
+                      coverage_html/
+                      coverage_output.txt
+                  retention-days: 30
+
+            - name: Post coverage comment on PR
+              if: github.event_name == 'pull_request' && always()
+              uses: actions/github-script@v7
+              with:
+                  script: |
+                      const fs = require('fs');
+                      const coverage = '${{ steps.coverage.outputs.coverage_percentage }}';
+                      const threshold = '${{ env.COVERAGE_THRESHOLD }}';
+                      const status = '${{ steps.threshold_check.outputs.status }}';
+
+                      // Read coverage details
+                      let details = '';
+                      try {
+                        const output = fs.readFileSync('coverage_output.txt', 'utf8');
+                        // Extract key lines
+                        const lines = output.split('\n').filter(line =>
+                          line.includes('cf_core') ||
+                          line.includes('python/') ||
+                          line.includes('TOTAL')
+                        ).slice(0, 20);
+                        details = lines.join('\n');
+                      } catch (e) {
+                        details = 'Coverage details not available';
+                      }
+
+                      const emoji = status === 'pass' ? '✅' : '❌';
+                      const body = `## ${emoji} Coverage Report
+
+                      | Metric | Value |
+                      |--------|-------|
+                      | **Total Coverage** | ${coverage}% |
+                      | **Threshold** | ${threshold}% |
+                      | **Status** | ${status === 'pass' ? 'PASSING' : 'FAILING'} |
+
+                      <details>
+                      <summary>Coverage Details (click to expand)</summary>
+
+                      \`\`\`
+                      ${details}
+                      \`\`\`
+
+                      </details>
+
+                      ---
+                      *Coverage validated using P0-007 configuration from pyproject.toml*
+                      `;
+
+                      github.rest.issues.createComment({
+                        issue_number: context.issue.number,
+                        owner: context.repo.owner,
+                        repo: context.repo.repo,
+                        body: body
+                      });
+
+    coverage-report-summary:
+        name: Coverage Summary
+        needs: coverage-check
+        runs-on: ubuntu-latest
+        if: always()
+
+        steps:
+            - name: Download coverage artifacts
+              uses: actions/download-artifact@v4
+              with:
+                  name: coverage-report
+                  path: coverage/
+
+            - name: Generate summary
+              run: |
+                  echo "## 📊 Coverage Summary" >> $GITHUB_STEP_SUMMARY
+                  echo "" >> $GITHUB_STEP_SUMMARY
+                  echo "Coverage check completed. See artifacts for detailed report." >> $GITHUB_STEP_SUMMARY
+                  echo "" >> $GITHUB_STEP_SUMMARY
+                  echo "### Configuration" >> $GITHUB_STEP_SUMMARY
+                  echo "- **Source:** \`pyproject.toml\` (P0-007 configuration)" >> $GITHUB_STEP_SUMMARY
+                  echo "- **Packages:** cf_core, python, cli/python" >> $GITHUB_STEP_SUMMARY
+                  echo "- **Threshold:** ${{ env.COVERAGE_THRESHOLD }}%" >> $GITHUB_STEP_SUMMARY

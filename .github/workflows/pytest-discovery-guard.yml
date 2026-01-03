@@ -1,0 +1,81 @@
+name: Pytest Discovery Guard
+
+on:
+  pull_request:
+    paths:
+      - "conftest.py"
+      - "tests/**/conftest.py"
+      - "tests/**/*.py"
+      - "python/**/*.py"
+      - ".github/workflows/pytest-discovery-guard.yml"
+  push:
+    branches: [main]
+    paths:
+      - "conftest.py"
+      - "tests/**/conftest.py"
+      - "tests/**/*.py"
+      - "python/**/*.py"
+      - ".github/workflows/pytest-discovery-guard.yml"
+
+jobs:
+  discovery-guard:
+    runs-on: windows-latest
+
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Set up Python 3.12
+        uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+
+      - name: Restore venv cache
+        id: cache-venv
+        uses: actions/cache/restore@v4
+        with:
+          path: .venv
+          key: venv-${{ runner.os }}-py3.12-${{ hashFiles('requirements*.txt', 'pyproject.toml') }}
+          restore-keys: |
+            venv-${{ runner.os }}-py3.12-
+
+      - name: Set up virtual environment
+        shell: pwsh
+        run: |
+          if (-not (Test-Path ".venv")) {
+            python -m venv .venv
+          }
+          .\.venv\Scripts\activate
+          python -m pip install --upgrade pip
+
+      - name: Install dependencies
+        if: steps.cache-venv.outputs.cache-hit != 'true'
+        shell: pwsh
+        run: |
+          .\.venv\Scripts\activate
+          pip install -r requirements-dev.txt
+
+      - name: Run Discovery Check via Harness
+        run: |
+          .\.venv\Scripts\activate
+          python python/run_rich_harness.py --mode quiet --pattern "test_*.py" --pytest-args -- --collect-only -q
+
+      - name: Verify Plugin Policy (pytest-sugar)
+        run: |
+          .\.venv\Scripts\activate
+          python python/ci/verify_richer_policy.py
+
+      - name: Save venv cache
+        if: always()
+        uses: actions/cache/save@v4
+        with:
+          path: .venv
+          key: venv-${{ runner.os }}-py3.12-${{ hashFiles('requirements*.txt', 'pyproject.toml') }}
+
+      - name: Upload Discovery Artifacts
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: discovery-artifacts
+          path: |
+            logs/tests/duckdb/
+            logs/tests/rich_install.debug.log

@@ -1,0 +1,251 @@
+# CF-130 Test Suite - Migrated to uv (December 2024)
+# Using astral-sh/setup-uv@v7 for 10-100x faster dependency installation
+name: CF-130 Test Suite
+
+on:
+  pull_request:
+    paths:
+      - "tests/**/*.py"
+      - "src/cli_plugins/**/*.py"
+      - "src/config/**/*.py"
+      - "TaskMan-v2/src/**/*.ts"
+      - "TaskMan-v2/src/**/*.tsx"
+      - "mcp-servers/**/*.py"
+      - ".github/workflows/cf-130-test-suite.yml"
+      - "pyproject.toml"
+      - "uv.lock"
+  push:
+    branches: [main]
+    paths:
+      - "tests/**/*.py"
+      - "src/cli_plugins/**/*.py"
+      - "src/config/**/*.py"
+      - "TaskMan-v2/src/**/*.ts"
+      - "TaskMan-v2/src/**/*.tsx"
+      - "mcp-servers/**/*.py"
+      - ".github/workflows/cf-130-test-suite.yml"
+      - "pyproject.toml"
+      - "uv.lock"
+  workflow_dispatch:
+
+jobs:
+  # ============================================
+  # Phase 1.1: REST API Tests (Python)
+  # ============================================
+  api-tests:
+    name: REST API Tests
+    runs-on: windows-latest
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+
+      - name: Install uv
+        uses: astral-sh/setup-uv@v7
+        with:
+          python-version: "3.12"
+          enable-cache: true
+          cache-suffix: "api-tests"
+
+      - name: Install dependencies
+        run: uv sync --locked --dev
+
+      - name: Run API Tests
+        run: |
+          New-Item -ItemType Directory -Force -Path "build/artifacts/tests/api" | Out-Null
+          uv run pytest tests/api/ `
+            -v --tb=short `
+            --junitxml="build/artifacts/tests/api/junit.xml" `
+            2>&1 | Tee-Object -Variable testOutput
+          Write-Host $testOutput
+
+      - name: Upload API Test Results
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: api-test-results
+          path: build/artifacts/tests/api/
+
+  # ============================================
+  # Phase 1.3: Python MCP Tests
+  # ============================================
+  mcp-tests:
+    name: MCP Server Tests
+    runs-on: windows-latest
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+
+      - name: Install uv
+        uses: astral-sh/setup-uv@v7
+        with:
+          python-version: "3.12"
+          enable-cache: true
+          cache-suffix: "mcp-tests"
+
+      - name: Install dependencies
+        run: uv sync --locked --dev
+
+      - name: Run MCP Tests
+        run: |
+          New-Item -ItemType Directory -Force -Path "build/artifacts/tests/mcp" | Out-Null
+          uv run pytest tests/mcp/ `
+            -v --tb=short `
+            --junitxml="build/artifacts/tests/mcp/junit.xml" `
+            2>&1 | Tee-Object -Variable testOutput
+          Write-Host $testOutput
+
+      - name: Upload MCP Test Results
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: mcp-test-results
+          path: build/artifacts/tests/mcp/
+
+  # ============================================
+  # Phase 1.4: CLI Plugin Tests (P3)
+  # ============================================
+  cli-plugin-tests:
+    name: CLI Plugin Tests
+    runs-on: windows-latest
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+
+      - name: Install uv
+        uses: astral-sh/setup-uv@v7
+        with:
+          python-version: "3.12"
+          enable-cache: true
+          cache-suffix: "cli-plugin-tests"
+
+      - name: Install dependencies
+        run: uv sync --locked --dev
+
+      - name: Run CLI Plugin Tests
+        run: |
+          New-Item -ItemType Directory -Force -Path "build/artifacts/tests/cli-plugins" | Out-Null
+          uv run pytest tests/cli_plugins/ `
+            -v --tb=short `
+            --junitxml="build/artifacts/tests/cli-plugins/junit.xml" `
+            2>&1 | Tee-Object -Variable testOutput
+          Write-Host $testOutput
+
+      - name: Upload CLI Plugin Test Results
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: cli-plugin-test-results
+          path: build/artifacts/tests/cli-plugins/
+
+  # ============================================
+  # Phase 1.5: Config Integration Tests (P4)
+  # ============================================
+  config-integration-tests:
+    name: Config Integration Tests
+    runs-on: windows-latest
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+
+      - name: Install uv
+        uses: astral-sh/setup-uv@v7
+        with:
+          python-version: "3.12"
+          enable-cache: true
+          cache-suffix: "config-tests"
+
+      - name: Install dependencies
+        run: uv sync --locked --dev
+
+      - name: Run Config Integration Tests
+        run: |
+          New-Item -ItemType Directory -Force -Path "build/artifacts/tests/config" | Out-Null
+          uv run pytest tests/integration/config/ `
+            -v --tb=short `
+            --junitxml="build/artifacts/tests/config/junit.xml" `
+            2>&1 | Tee-Object -Variable testOutput
+          Write-Host $testOutput
+
+      - name: Upload Config Test Results
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: config-test-results
+          path: build/artifacts/tests/config/
+
+  # ============================================
+  # Phase 1.2: Frontend Tests (TypeScript/Vitest)
+  # ============================================
+  frontend-tests:
+    name: Frontend Component Tests
+    runs-on: windows-latest
+    defaults:
+      run:
+        working-directory: TaskMan-v2
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+
+      - name: Setup Node.js 20
+        uses: actions/setup-node@v4
+        with:
+          node-version: "20"
+
+      - name: Install dependencies
+        run: npm ci
+
+      - name: Run Vitest
+        run: |
+          New-Item -ItemType Directory -Force -Path "../build/artifacts/tests/frontend" | Out-Null
+          npx vitest run --reporter=junit --outputFile="../build/artifacts/tests/frontend/junit.xml"
+
+      - name: Upload Frontend Test Results
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: frontend-test-results
+          path: build/artifacts/tests/frontend/
+
+  # ============================================
+  # Summary Job (waits for all tests)
+  # ============================================
+  test-summary:
+    name: Test Summary
+    needs: [api-tests, mcp-tests, cli-plugin-tests, config-integration-tests, frontend-tests]
+    runs-on: ubuntu-latest
+    if: always()
+    steps:
+      - name: Download all artifacts
+        uses: actions/download-artifact@v4
+        with:
+          path: test-results
+
+      - name: Generate Summary
+        run: |
+          echo "## CF-130 Test Suite Results" >> $GITHUB_STEP_SUMMARY
+          echo "" >> $GITHUB_STEP_SUMMARY
+          echo "| Test Suite | Status |" >> $GITHUB_STEP_SUMMARY
+          echo "|------------|--------|" >> $GITHUB_STEP_SUMMARY
+          echo "| REST API Tests | ${{ needs.api-tests.result == 'success' && '✅ Passed' || '❌ Failed' }} |" >> $GITHUB_STEP_SUMMARY
+          echo "| MCP Server Tests | ${{ needs.mcp-tests.result == 'success' && '✅ Passed' || '❌ Failed' }} |" >> $GITHUB_STEP_SUMMARY
+          echo "| CLI Plugin Tests | ${{ needs.cli-plugin-tests.result == 'success' && '✅ Passed' || '❌ Failed' }} |" >> $GITHUB_STEP_SUMMARY
+          echo "| Config Integration Tests | ${{ needs.config-integration-tests.result == 'success' && '✅ Passed' || '❌ Failed' }} |" >> $GITHUB_STEP_SUMMARY
+          echo "| Frontend Tests | ${{ needs.frontend-tests.result == 'success' && '✅ Passed' || '❌ Failed' }} |" >> $GITHUB_STEP_SUMMARY
+          echo "" >> $GITHUB_STEP_SUMMARY
+          echo "See individual job logs for detailed results." >> $GITHUB_STEP_SUMMARY
+
+      - name: Check overall status
+        if: |
+          needs.api-tests.result == 'failure' ||
+          needs.mcp-tests.result == 'failure' ||
+          needs.cli-plugin-tests.result == 'failure' ||
+          needs.config-integration-tests.result == 'failure' ||
+          needs.frontend-tests.result == 'failure'
+        run: |
+          echo "One or more test suites failed"
+          exit 1

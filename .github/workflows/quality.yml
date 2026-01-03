@@ -1,0 +1,95 @@
+# Quality Gates - Migrated to uv (December 2024)
+# Using astral-sh/setup-uv@v7 for 10-100x faster dependency installation
+name: Quality Gates
+
+on:
+  pull_request:
+  push:
+    branches: [main]
+
+jobs:
+  validate:
+    runs-on: windows-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+
+      - name: Install uv
+        uses: astral-sh/setup-uv@v7
+        with:
+          python-version: "3.12"
+          enable-cache: true
+
+      - name: Install Python deps
+        run: uv sync --locked --all-extras --dev
+
+      - name: Guard - Enforce pytest-richer policy
+        shell: pwsh
+        run: uv run python python\ci\verify_richer_policy.py
+      - name: Run Validate-Stacks
+        shell: pwsh
+        run: pwsh -NoProfile -ExecutionPolicy Bypass -File build/Validate-Stacks.ps1
+      - name: PowerShell Coverage
+        shell: pwsh
+        run: pwsh -NoProfile -ExecutionPolicy Bypass -File build/Generate-PowerShellCoverage.ps1
+      - name: Autofix Sweep (PSSA + Ruff) (Non-Blocking)
+        shell: pwsh
+        run: |
+          $ErrorActionPreference='Continue'
+          Write-Host 'Starting autofix sweep'
+          if (Test-Path build/Invoke-PSSA-Mode.ps1) {
+            pwsh -NoProfile -ExecutionPolicy Bypass -File build/Invoke-PSSA-Mode.ps1 -Mode All -AutoFix -Path . -EnableCache 2>&1 | Write-Host
+          } elseif (Test-Path build/Invoke-PSSA.ps1) {
+            pwsh -NoProfile -ExecutionPolicy Bypass -File build/Invoke-PSSA.ps1 -AutoFix -Path . 2>&1 | Write-Host
+          }
+          if (Test-Path build/Invoke-Ruff.ps1) {
+            pwsh -NoProfile -ExecutionPolicy Bypass -File build/Invoke-Ruff.ps1 -AutoFix -Path . 2>&1 | Write-Host
+          }
+          Write-Host 'Autofix sweep complete'
+      - name: Generate Autofix Patch Artifact
+        shell: pwsh
+        run: |
+          New-Item -ItemType Directory -Force -Path build | Out-Null
+          git diff --binary > build/autofix.patch
+          if(-not (Get-Content build/autofix.patch)) { 'No changes produced by autofix tools.' | Out-File build/autofix.patch -Encoding UTF8 }
+      - name: Upload Autofix Patch
+        uses: actions/upload-artifact@v4
+        with:
+          name: autofix-patch
+          path: build/autofix.patch
+      - name: Python Linting Validation (Blocking)
+        shell: pwsh
+        run: |
+          Write-Host 'Running Python linting validation to prevent regression'
+          uv run ruff check . --output-format=github
+          if ($LASTEXITCODE -ne 0) {
+            Write-Error "Python linting validation failed. This prevents regression of the 169 errors we fixed."
+            exit 1
+          }
+          Write-Host 'Python linting validation passed'
+      - name: Upload coverage artifacts
+        uses: actions/upload-artifact@v4
+        with:
+          name: coverage-artifacts
+          path: |
+            build/artifacts/coverage/python/coverage.xml
+            build/artifacts/coverage/powershell/coverage.xml
+            build/artifacts/validation/stack_validation.json
+      - name: Evidence Coverage Gate
+        shell: pwsh
+        run: |
+          New-Item -ItemType Directory -Force -Path "build/artifacts/validation" | Out-Null
+          uv run python python\coverage_gate.py --limit 20 --threshold 0.8 --json-out build/artifacts/validation/evidence_coverage.json
+      - name: Upload Evidence Coverage Report
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: evidence-coverage
+          path: build/artifacts/validation/evidence_coverage.json
+      - name: Fail if validation issues
+        shell: pwsh
+        run: |
+          $json = Get-Content build/artifacts/validation/stack_validation.json -Raw | ConvertFrom-Json
+          if($json.status -ne 'ok'){ Write-Error "Validation status=$($json.status)"; exit 3 }

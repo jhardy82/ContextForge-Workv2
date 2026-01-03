@@ -1,0 +1,101 @@
+name: Harness Smoke
+
+on:
+  workflow_dispatch:
+  push:
+    branches:
+      - main
+      - master
+      - develop
+      - feature/**
+  pull_request:
+
+concurrency:
+  group: harness-smoke-${{ github.ref }}
+  cancel-in-progress: false
+
+permissions:
+  contents: read
+
+jobs:
+  smoke:
+    name: Run harness smoke and validate artifacts
+    runs-on: windows-latest
+    timeout-minutes: 20
+    env:
+      PYTEST_DISABLE_PLUGIN_AUTOLOAD: "1"
+
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Setup Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+          cache: "pip"
+
+      - name: Install dependencies (pytest + rich + pytest-sugar)
+        shell: pwsh
+        run: |
+          python -m pip install --upgrade pip
+          pip install pytest rich pytest-sugar pytest-cov
+
+      - name: Run harness (smoke)
+        shell: pwsh
+        run: |
+          python python/run_rich_harness.py --mode quiet --pattern test_smoke_min.py
+
+      - name: Validate harness pointer/state artifacts
+        shell: pwsh
+        run: |
+          $ErrorActionPreference = 'Stop'
+          $root = Get-Location
+          $logDir = Join-Path $root 'logs/tests/duckdb'
+          if (!(Test-Path $logDir)) { throw "Log dir not found: $logDir" }
+
+          $ptr = Join-Path $logDir 'LATEST.harness.pointer.json'
+          if (!(Test-Path $ptr)) { throw "Pointer not found: $ptr" }
+
+          $ptrJson = Get-Content $ptr -Raw | ConvertFrom-Json
+          if (-not $ptrJson.run_id) { throw "Pointer missing run_id" }
+          if (-not $ptrJson.state) { throw "Pointer missing state path" }
+
+          $statePath = $ptrJson.state
+          if (!(Test-Path $statePath)) { throw "State file missing: $statePath" }
+          $state = Get-Content $statePath -Raw | ConvertFrom-Json
+
+          if ($ptrJson.run_id -ne $state.run_id) {
+            throw "Invariant failed: pointer.run_id does not match state.run_id"
+          }
+
+          foreach ($k in @('run_id','collected','completed','passed','failed','skipped','duration_seconds','started_at','finished_at','exit_code','events_files','coverage','artifacts')) {
+            if ($null -eq $state.$k) { throw "State missing key: $k" }
+          }
+
+          if ($state.completed -ne ($state.passed + $state.failed + $state.skipped)) {
+            throw "Invariant failed: completed != passed+failed+skipped"
+          }
+          if ([int]$state.collected -lt [int]$state.completed) {
+            throw "Invariant failed: collected < completed"
+          }
+          if ([double]$state.duration_seconds -lt 0) {
+            throw "Invariant failed: duration_seconds negative"
+          }
+          if ($state.events_files) {
+            foreach ($f in $state.events_files) {
+              if ($f -and !(Test-Path $f)) { throw "Missing events file: $f" }
+            }
+          }
+
+          Write-Host "Harness artifacts validated for run $($state.run_id)."
+
+      - name: Upload harness artifacts
+        uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: harness-logs-${{ github.run_id }}
+          path: |
+            logs/tests/duckdb/**
+          if-no-files-found: error
+          retention-days: 7
