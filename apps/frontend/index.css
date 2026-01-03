@@ -1,0 +1,127 @@
+@import 'tailwindcss';
+@import "tw-animate-css";
+
+@layer base {
+  * {
+    @apply border-border;
+  }
+}
+
+:root {
+  /* TaskMan v3 Theme - Deep Space / Aurora */
+  /* Background: Deep rich slate/blue (Night Sky) */
+  --background: oklch(0.14 0.05 260);
+  --foreground: oklch(0.98 0 0);
+
+  /* Card: Slightly lighter, transparent for glassmorphism */
+  --card: oklch(0.18 0.04 260);
+  --card-foreground: oklch(0.98 0 0);
+
+  --popover: oklch(0.16 0.04 260);
+  --popover-foreground: oklch(0.98 0 0);
+
+  /* Primary: Vibrant Electric Blue/Cyan */
+  --primary: oklch(0.65 0.2 240);
+  --primary-foreground: oklch(0.1 0.05 260);
+
+  /* Secondary: Muted Cool Grey */
+  --secondary: oklch(0.25 0.02 260);
+  --secondary-foreground: oklch(0.9 0 0);
+
+  /* Muted: Low contrast background */
+  --muted: oklch(0.2 0.02 260);
+  --muted-foreground: oklch(0.7 0 0);
+
+  /* Accent: Aurora Purple/Pink for hover states/highlights */
+  --accent: oklch(0.65 0.2 310);
+  --accent-foreground: oklch(0.98 0 0);
+
+  --destructive: oklch(0.6 0.25 20);
+  --destructive-foreground: oklch(0.98 0 0);
+
+  --border: oklch(0.3 0.05 260);
+  --input: oklch(0.25 0.05 260);
+  --ring: oklch(0.65 0.2 240);
+
+  /* Task Status Colors - Neon variants */
+  --status-new: oklch(0.7 0.15 230);        /* Cyan */
+  --status-in-progress: oklch(0.7 0.2 60);  /* Amber/Orange */
+  --status-pending: oklch(0.8 0.15 90);     /* Yellow */
+  --status-completed: oklch(0.7 0.2 145);   /* Neon Green */
+  --status-blocked: oklch(0.65 0.25 25);    /* Red */
+
+  --radius: 0.75rem; /* More rounded for modern feel */
+}
+
+@theme {
+  --color-background: var(--background);
+  --color-foreground: var(--foreground);
+  --color-card: var(--card);
+  --color-card-foreground: var(--card-foreground);
+  --color-popover: var(--popover);
+  --color-popover-foreground: var(--popover-foreground);
+  --color-primary: var(--primary);
+  --color-primary-foreground: var(--primary-foreground);
+  --color-secondary: var(--secondary);
+  --color-secondary-foreground: var(--secondary-foreground);
+  --color-muted: var(--muted);
+  --color-muted-foreground: var(--muted-foreground);
+  --color-accent: var(--accent);
+  --color-accent-foreground: var(--accent-foreground);
+  --color-destructive: var(--destructive);
+  --color-destructive-foreground: var(--destructive-foreground);
+  --color-border: var(--border);
+  --color-input: var(--input);
+  --color-ring: var(--ring);
+
+  /* Task Status Color Mappings */
+  --color-status-new: var(--status-new);
+  --color-status-in-progress: var(--status-in-progress);
+  --color-status-pending: var(--status-pending);
+  --color-status-completed: var(--status-completed);
+  --color-status-blocked: var(--status-blocked);
+
+  --radius-xl: calc(var(--radius) * 2);
+  --radius-2xl: calc(var(--radius) * 3);
+  --radius-full: 9999px;
+
+  /* Animations */
+  --animate-aurora: aurora 20s linear infinite;
+
+  @keyframes aurora {
+    0% {
+      background-position: 50% 50%, 50% 50%;
+    }
+    100% {
+      background-position: 350% 50%, 350% 50%;
+    }
+  }
+}
+
+@layer utilities {
+  .bg-aurora {
+    background-color: #0f172a;
+    background-image:
+      radial-gradient(at 0% 0%, hsla(253,16%,7%,1) 0, transparent 50%),
+      radial-gradient(at 50% 0%, hsla(225,39%,30%,1) 0, transparent 50%),
+      radial-gradient(at 100% 0%, hsla(339,49%,30%,1) 0, transparent 50%);
+    background-size: 100% 100%;
+    animation: aurora 60s linear infinite alternate;
+  }
+
+  .glass {
+    @apply bg-white/5 backdrop-blur-xl border border-white/10 shadow-lg;
+  }
+
+  .glass-card {
+    @apply bg-slate-900/40 backdrop-blur-md border border-white/5 shadow-sm hover:border-primary/50 transition-colors;
+  }
+
+  .neon-border {
+    @apply border border-transparent hover:border-cyan-400 hover:shadow-[0_0_10px_rgba(34,211,238,0.5)] transition-all duration-300;
+  }
+
+  .neon-text {
+    @apply text-transparent bg-clip-text bg-gradient-to-r from-cyan-400 to-purple-600 drop-shadow-[0_0_5px_rgba(192,132,252,0.5)];
+  }
+}

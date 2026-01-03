@@ -1,0 +1,28 @@
+{
+  "$schema": "./schema.json",
+  "id": "AL-phase-4-coverage-optimization",
+  "title": "Phase 4 Coverage Optimization",
+  "description": "Test coverage optimization action list for phase 4",
+  "geometry_shape": "Pentagon",
+  "status": "in_progress",
+  "priority": "medium",
+  "project_id": "P-TASKMAN-MCP",
+  "metadata": {
+    "phase": "4",
+    "category": "coverage_optimization",
+    "created_at": "2025-12-04T00:00:00Z"
+  },
+  "items": [
+    {"id": "c001", "text": "Identify uncovered code paths", "validation_criteria": "Coverage report analyzed", "expected_result": "Gaps identified", "order": 1},
+    {"id": "c002", "text": "Write tests for uncovered functions", "validation_criteria": "Tests written", "expected_result": "Coverage increased", "order": 2},
+    {"id": "c003", "text": "Add edge case tests", "validation_criteria": "Edge cases covered", "expected_result": "Robustness improved", "order": 3},
+    {"id": "c004", "text": "Add error path tests", "validation_criteria": "Error paths covered", "expected_result": "Error handling verified", "order": 4},
+    {"id": "c005", "text": "Add boundary condition tests", "validation_criteria": "Boundaries tested", "expected_result": "Limits verified", "order": 5},
+    {"id": "c006", "text": "Add integration tests", "validation_criteria": "Integration tested", "expected_result": "Components work together", "order": 6},
+    {"id": "c007", "text": "Add performance tests", "validation_criteria": "Performance measured", "expected_result": "Baselines established", "order": 7},
+    {"id": "c008", "text": "Add security tests", "validation_criteria": "Security tested", "expected_result": "Vulnerabilities identified", "order": 8},
+    {"id": "c009", "text": "Review test quality", "validation_criteria": "Tests reviewed", "expected_result": "Quality improved", "order": 9},
+    {"id": "c010", "text": "Document test coverage", "validation_criteria": "Docs updated", "expected_result": "Coverage documented", "order": 10}
+  ],
+  "notes": "Coverage optimization fixtures for phase 4 testing"
+}

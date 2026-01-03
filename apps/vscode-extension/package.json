@@ -1,0 +1,534 @@
+{
+  "name": "taskman-v2-extension",
+  "displayName": "TaskMan-v2 Extension",
+  "description": "TaskMan-v2 project management extension with DTM integration, TreeView sidebar, and comprehensive task orchestration",
+  "version": "1.0.2",
+  "publisher": "contextforge",
+  "engines": {
+    "vscode": "^1.95.0"
+  },
+  "categories": [
+    "Other",
+    "Notebooks"
+  ],
+  "keywords": [
+    "todo",
+    "task",
+    "productivity",
+    "management"
+  ],
+  "activationEvents": [
+    "onView:taskman.view"
+  ],
+  "main": "./out/extension.js",
+  "contributes": {
+    "viewsContainers": {
+      "activitybar": [
+        {
+          "id": "taskman-container",
+          "title": "TaskMan",
+          "icon": "$(checklist)"
+        }
+      ],
+      "panel": [
+        {
+          "id": "taskman-panel",
+          "title": "TaskMan",
+          "icon": "$(checklist)"
+        }
+      ]
+    },
+    "views": {
+      "taskman-container": [
+        {
+          "id": "taskman.view",
+          "name": "Tasks",
+          "when": "workspaceFolderCount != 0",
+          "icon": "$(checklist)"
+        },
+        {
+          "id": "taskman.actionLists",
+          "name": "Action Lists",
+          "when": "workspaceFolderCount != 0",
+          "icon": "$(list-ordered)"
+        }
+      ],
+      "explorer": [
+        {
+          "id": "taskman.explorer",
+          "name": "TaskMan-v2",
+          "when": "workspaceFolderCount != 0",
+          "icon": "$(checklist)"
+        }
+      ],
+      "taskman-panel": [
+        {
+          "id": "taskman.details",
+          "name": "TaskMan Details",
+          "type": "webview",
+          "when": "config.taskman.showWebviewDetails",
+          "icon": "$(info)"
+        }
+      ]
+    },
+    "commands": [
+      {
+        "command": "taskman.add",
+        "title": "Add Task",
+        "icon": "$(add)"
+      },
+      {
+        "command": "taskman.edit",
+        "title": "Edit Task",
+        "icon": "$(edit)"
+      },
+      {
+        "command": "taskman.toggle",
+        "title": "Toggle Complete",
+        "icon": "$(check)"
+      },
+      {
+        "command": "taskman.delete",
+        "title": "Delete Task",
+        "icon": "$(trash)"
+      },
+      {
+        "command": "taskman.move",
+        "title": "Move Task",
+        "icon": "$(move)"
+      },
+      {
+        "command": "taskman.openDetails",
+        "title": "Open Details",
+        "icon": "$(info)"
+      },
+      {
+        "command": "taskman.refresh",
+        "title": "Refresh",
+        "icon": "$(refresh)"
+      },
+      {
+        "command": "taskman.addGroup",
+        "title": "Add Group",
+        "icon": "$(folder)"
+      },
+      {
+        "command": "taskman.settings",
+        "title": "Settings",
+        "icon": "$(settings-gear)"
+      },
+      {
+        "command": "taskman.loadFromDatabase",
+        "title": "Load from Database",
+        "icon": "$(database)"
+      },
+      {
+        "command": "taskman.syncWithDTM",
+        "title": "Sync with DTM",
+        "icon": "$(sync)"
+      },
+      {
+        "command": "taskman.connectDatabase",
+        "title": "Connect to Database",
+        "icon": "$(plug)"
+      },
+      {
+        "command": "taskman.databaseSettings",
+        "title": "Database Connection Settings",
+        "icon": "$(database)"
+      },
+      {
+        "command": "taskman.testConnection",
+        "title": "Test Database Connection",
+        "icon": "$(pulse)"
+      },
+      {
+        "command": "taskman.exportTasks",
+        "title": "Export Tasks",
+        "icon": "$(export)"
+      },
+      {
+        "command": "taskman.importTasks",
+        "title": "Import Tasks",
+        "icon": "$(symbol-misc)"
+      },
+      {
+        "command": "taskman.openSharedConfig",
+        "title": "Open Shared Config",
+        "icon": "$(file-code)"
+      },
+      {
+        "command": "taskman.showSyncStatus",
+        "title": "Show Sync Status",
+        "icon": "$(sync)"
+      },
+      {
+        "command": "taskman.refreshActionLists",
+        "title": "Refresh Action Lists",
+        "icon": "$(refresh)"
+      },
+      {
+        "command": "taskman.viewActionList",
+        "title": "View Action List",
+        "icon": "$(eye)"
+      },
+      {
+        "command": "taskman.toggleActionListItem",
+        "title": "Toggle Action List Item",
+        "icon": "$(check)"
+      }
+    ],
+    "menus": {
+      "view/title": [
+        {
+          "command": "taskman.add",
+          "when": "view == taskman.view || view == taskman.explorer",
+          "group": "navigation@1"
+        },
+        {
+          "command": "taskman.addGroup",
+          "when": "view == taskman.view || view == taskman.explorer",
+          "group": "navigation@2"
+        },
+        {
+          "command": "taskman.refresh",
+          "when": "view == taskman.view || view == taskman.explorer",
+          "group": "navigation@3"
+        },
+        {
+          "command": "taskman.loadFromDatabase",
+          "when": "view == taskman.view || view == taskman.explorer",
+          "group": "navigation@4"
+        },
+        {
+          "command": "taskman.refreshActionLists",
+          "when": "view == taskman.actionLists",
+          "group": "navigation@1"
+        },
+        {
+          "command": "taskman.syncWithDTM",
+          "when": "view == taskman.view || view == taskman.explorer",
+          "group": "1_database@1"
+        },
+        {
+          "command": "taskman.connectDatabase",
+          "when": "view == taskman.view || view == taskman.explorer",
+          "group": "1_database@2"
+        },
+        {
+          "command": "taskman.settings",
+          "when": "view == taskman.view || view == taskman.explorer",
+          "group": "2_settings@1"
+        },
+        {
+          "command": "taskman.exportTasks",
+          "when": "view == taskman.view || view == taskman.explorer",
+          "group": "3_export@1"
+        },
+        {
+          "command": "taskman.importTasks",
+          "when": "view == taskman.view || view == taskman.explorer",
+          "group": "3_export@2"
+        },
+        {
+          "command": "taskman.openSharedConfig",
+          "when": "view == taskman.view || view == taskman.explorer",
+          "group": "2_settings@2"
+        },
+        {
+          "command": "taskman.showSyncStatus",
+          "when": "view == taskman.view || view == taskman.explorer",
+          "group": "2_settings@3"
+        }
+      ],
+      "view/item/context": [
+        {
+          "command": "taskman.toggle",
+          "when": "(view == taskman.view || view == taskman.explorer) && viewItem == todo",
+          "group": "inline@1"
+        },
+        {
+          "command": "taskman.edit",
+          "when": "(view == taskman.view || view == taskman.explorer) && viewItem == todo",
+          "group": "inline@2"
+        },
+        {
+          "command": "taskman.delete",
+          "when": "(view == taskman.view || view == taskman.explorer) && (viewItem == todo || viewItem == group)",
+          "group": "inline@3"
+        },
+        {
+          "command": "taskman.add",
+          "when": "(view == taskman.view || view == taskman.explorer) && viewItem == group",
+          "group": "group@1"
+        },
+        {
+          "command": "taskman.move",
+          "when": "(view == taskman.view || view == taskman.explorer) && viewItem == todo",
+          "group": "group@2"
+        },
+        {
+          "command": "taskman.openDetails",
+          "when": "(view == taskman.view || view == taskman.explorer) && viewItem == todo",
+          "group": "group@3"
+        }
+      ]
+    },
+    "keybindings": [
+      {
+        "command": "taskman.add",
+        "key": "ctrl+shift+t",
+        "mac": "cmd+shift+t",
+        "when": "focusedView == taskman.view || focusedView == taskman.explorer"
+      },
+      {
+        "command": "taskman.toggle",
+        "key": "ctrl+enter",
+        "mac": "cmd+enter",
+        "when": "focusedView == taskman.view || focusedView == taskman.explorer"
+      },
+      {
+        "command": "taskman.delete",
+        "key": "ctrl+backspace",
+        "mac": "cmd+backspace",
+        "when": "focusedView == taskman.view || focusedView == taskman.explorer"
+      }
+    ],
+    "configuration": {
+      "title": "TaskMan-v2",
+      "properties": {
+        "taskman.storageMode": {
+          "type": "string",
+          "enum": [
+            "global",
+            "workspace"
+          ],
+          "default": "workspace",
+          "description": "Whether to store tasks globally or per workspace"
+        },
+        "taskman.defaultGroups": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          },
+          "default": [
+            "Today",
+            "Upcoming",
+            "Completed"
+          ],
+          "description": "Default task groups to create"
+        },
+        "taskman.showWebviewDetails": {
+          "type": "boolean",
+          "default": true,
+          "description": "Show the webview details panel"
+        },
+        "taskman.groupOrdering": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          },
+          "default": [
+            "Today",
+            "Upcoming",
+            "Completed"
+          ],
+          "description": "Order of groups in the tree view"
+        },
+        "taskman.sortBy": {
+          "type": "string",
+          "enum": [
+            "created",
+            "title",
+            "completed",
+            "dueDate",
+            "priority"
+          ],
+          "default": "created",
+          "description": "How to sort todos within groups"
+        },
+        "taskman.sortOrder": {
+          "type": "string",
+          "enum": [
+            "asc",
+            "desc"
+          ],
+          "default": "asc",
+          "description": "Sort order for tasks"
+        },
+        "taskman.hideEmptyGroups": {
+          "type": "boolean",
+          "default": false,
+          "description": "Hide groups that contain no tasks"
+        },
+        "taskman.database.type": {
+          "type": "string",
+          "enum": [
+            "local",
+            "sqlite",
+            "dtm-api"
+          ],
+          "default": "local",
+          "description": "Database backend type for task storage"
+        },
+        "taskman.database.sqlitePath": {
+          "type": "string",
+          "default": "db/trackers.sqlite",
+          "description": "Path to SQLite database file (relative to workspace)"
+        },
+        "taskman.database.dtmApiUrl": {
+          "type": "string",
+          "default": "http://localhost:3001/api",
+          "description": "DTM API server URL for remote task management"
+        },
+        "taskman.database.autoRefresh": {
+          "type": "boolean",
+          "default": true,
+          "description": "Automatically refresh data from database"
+        },
+        "taskman.database.refreshInterval": {
+          "type": "number",
+          "default": 30,
+          "description": "Auto-refresh interval in seconds"
+        },
+        "taskman.dtm.enableIntegration": {
+          "type": "boolean",
+          "default": true,
+          "description": "Enable DTM (Dynamic Task Manager) integration"
+        },
+        "taskman.dtm.serverPort": {
+          "type": "number",
+          "default": 3001,
+          "description": "DTM server port number"
+        },
+        "taskman.dtm.autoStart": {
+          "type": "boolean",
+          "default": true,
+          "description": "Automatically start DTM server if not running"
+        },
+        "taskman.ui.compactView": {
+          "type": "boolean",
+          "default": false,
+          "description": "Use compact view for task display"
+        },
+        "taskman.ui.showTaskDetails": {
+          "type": "boolean",
+          "default": true,
+          "description": "Show detailed task information in tree view"
+        },
+        "taskman.ui.showDueDates": {
+          "type": "boolean",
+          "default": true,
+          "description": "Display due dates for tasks"
+        },
+        "taskman.ui.showPriority": {
+          "type": "boolean",
+          "default": true,
+          "description": "Display priority indicators for tasks"
+        },
+        "taskman.ui.theme": {
+          "type": "string",
+          "enum": [
+            "auto",
+            "light",
+            "dark"
+          ],
+          "default": "auto",
+          "description": "Theme for TaskMan UI elements"
+        },
+        "taskman.notifications.enabled": {
+          "type": "boolean",
+          "default": true,
+          "description": "Enable notifications for task updates"
+        },
+        "taskman.notifications.dueDates": {
+          "type": "boolean",
+          "default": true,
+          "description": "Show notifications for approaching due dates"
+        },
+        "taskman.notifications.statusChanges": {
+          "type": "boolean",
+          "default": true,
+          "description": "Show notifications when task status changes"
+        },
+        "taskman.sync.enableAutoSync": {
+          "type": "boolean",
+          "default": true,
+          "description": "Automatically sync tasks with external systems"
+        },
+        "taskman.sync.conflictResolution": {
+          "type": "string",
+          "enum": [
+            "prompt",
+            "local-wins",
+            "remote-wins",
+            "merge"
+          ],
+          "default": "prompt",
+          "description": "How to resolve sync conflicts"
+        },
+        "taskman.workspace.trackWorkspaceChanges": {
+          "type": "boolean",
+          "default": true,
+          "description": "Track and create tasks for workspace file changes"
+        },
+        "taskman.workspace.excludePatterns": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          },
+          "default": [
+            "node_modules/**",
+            ".git/**",
+            "*.log",
+            "*.tmp"
+          ],
+          "description": "File patterns to exclude from workspace tracking"
+        }
+      }
+    }
+  },
+  "scripts": {
+    "vscode:prepublish": "npm run compile",
+    "compile": "tsc -p ./",
+    "watch": "tsc -watch -p ./",
+    "pretest": "npm run compile && npm run lint",
+    "lint": "eslint src",
+    "test": "node ./out/test/runTest.js",
+    "test:e2e": "npm run compile && node ./out/test/runTest.js",
+    "package": "vsce package",
+    "publish": "vsce publish"
+  },
+  "dependencies": {
+    "node-fetch": "^2.7.0"
+  },
+  "devDependencies": {
+    "@types/chai": "^5.2.3",
+    "@types/glob": "^8.1.0",
+    "@types/mocha": "^10.0.10",
+    "@types/nock": "^10.0.3",
+    "@types/node": "^18.17.0",
+    "@types/node-fetch": "^2.6.4",
+    "@types/sinon": "^20.0.0",
+    "@types/vscode": "^1.95.0",
+    "@eslint/js": "^9.28.0",
+    "@vscode/test-electron": "^2.5.2",
+    "@vscode/vsce": "^2.32.0",
+    "chai": "^6.2.1",
+    "eslint": "^9.28.0",
+    "typescript-eslint": "^8.38.0",
+    "glob": "^8.1.0",
+    "mocha": "^10.2.0",
+    "nock": "^14.0.10",
+    "sinon": "^21.0.0",
+    "typescript": "~5.7.2"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/spark-template/vscode-todos"
+  },
+  "bugs": {
+    "url": "https://github.com/spark-template/vscode-todos/issues"
+  },
+  "homepage": "https://github.com/spark-template/vscode-todos#readme"
+}

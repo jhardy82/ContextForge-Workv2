@@ -1,0 +1,162 @@
+{
+  "manifest_version": "0.3",
+  "name": "taskman-mcp",
+  "display_name": "TaskMan MCP Server",
+  "version": "0.1.1",
+  "description": "Task and project management MCP server with full CRUD operations, sprint tracking, and action lists",
+  "long_description": "TaskMan MCP v2 is a comprehensive task management server implementing the Model Context Protocol (MCP). It provides 47+ tools for managing tasks, projects, sprints, and action lists through a REST API backend.\n\n## Features\n\n- **Task Management**: Create, read, update, delete tasks with status tracking\n- **Project Management**: Organize tasks into projects with metrics and analytics\n- **Sprint Planning**: Manage sprints with task assignment and progress tracking\n- **Action Lists**: Lightweight checklists with item management\n- **Observability**: OpenTelemetry tracing and Prometheus metrics\n- **Resilience**: Circuit breaker patterns and fallback caching\n\n## Requirements\n\nRequires a running TaskMan backend API (default: http://localhost:3001/api/v1)",
+  "author": {
+    "name": "James Hardy",
+    "url": "https://github.com/jhardy82"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/jhardy82/SCCMScripts"
+  },
+  "homepage": "https://github.com/jhardy82/SCCMScripts/tree/main/TaskMan-v2/mcp-server-ts",
+  "license": "MIT",
+  "keywords": [
+    "task-management",
+    "project-management",
+    "mcp",
+    "productivity",
+    "sprint-planning",
+    "action-lists"
+  ],
+  "server": {
+    "type": "node",
+    "entry_point": "dist/index.js",
+    "mcp_config": {
+      "command": "node",
+      "args": ["${__dirname}/dist/index.js"],
+      "env": {
+        "NODE_ENV": "production",
+        "TASKMAN_MCP_TRANSPORT": "stdio",
+        "TASK_MANAGER_API_ENDPOINT": "${user_config.api_endpoint}",
+        "LOG_LEVEL": "${user_config.log_level}",
+        "ENABLE_METRICS": "false",
+        "ENABLE_TRACING": "false"
+      }
+    }
+  },
+  "compatibility": {
+    "platforms": ["darwin", "win32", "linux"],
+    "runtimes": {
+      "node": ">=20.0.0"
+    }
+  },
+  "user_config": {
+    "api_endpoint": {
+      "type": "string",
+      "title": "Backend API Endpoint",
+      "description": "URL of the TaskMan backend API server",
+      "default": "http://localhost:3001/api/v1",
+      "required": true
+    },
+    "log_level": {
+      "type": "string",
+      "title": "Log Level",
+      "description": "Logging verbosity (silent, error, warn, info, debug)",
+      "default": "info",
+      "required": false
+    }
+  },
+  "tools": [
+    {
+      "name": "activate_taskman_server",
+      "description": "Check TaskMan MCP server status and backend connectivity"
+    },
+    {
+      "name": "activate_task_tools",
+      "description": "Prepare task management tools for use"
+    },
+    {
+      "name": "task_create",
+      "description": "Create a new task with title, description, priority, and project assignment"
+    },
+    {
+      "name": "task_read",
+      "description": "Get task details by ID"
+    },
+    {
+      "name": "task_update",
+      "description": "Update task attributes (title, status, priority, etc.)"
+    },
+    {
+      "name": "task_delete",
+      "description": "Delete a task by ID"
+    },
+    {
+      "name": "task_list",
+      "description": "List tasks with filtering by project, sprint, or status"
+    },
+    {
+      "name": "task_search",
+      "description": "Search tasks by text query across multiple fields"
+    },
+    {
+      "name": "task_set_status",
+      "description": "Change task status (planned, new, pending, in_progress, completed, blocked, cancelled)"
+    },
+    {
+      "name": "task_assign",
+      "description": "Assign a task to a user"
+    },
+    {
+      "name": "task_bulk_update",
+      "description": "Update multiple tasks at once"
+    },
+    {
+      "name": "task_bulk_assign_sprint",
+      "description": "Assign multiple tasks to a sprint"
+    },
+    {
+      "name": "project_create",
+      "description": "Create a new project"
+    },
+    {
+      "name": "project_read",
+      "description": "Get project details by ID"
+    },
+    {
+      "name": "project_update",
+      "description": "Update project attributes"
+    },
+    {
+      "name": "project_delete",
+      "description": "Delete a project by ID"
+    },
+    {
+      "name": "project_list",
+      "description": "List all projects with optional filtering"
+    },
+    {
+      "name": "project_get_metrics",
+      "description": "Get project analytics and task statistics"
+    },
+    {
+      "name": "project_add_comment",
+      "description": "Add a comment to a project"
+    },
+    {
+      "name": "action_list_create",
+      "description": "Create a new action list (checklist)"
+    },
+    {
+      "name": "action_list_list",
+      "description": "List action lists with filtering"
+    },
+    {
+      "name": "action_list_update",
+      "description": "Update action list attributes"
+    },
+    {
+      "name": "action_list_add_item",
+      "description": "Add an item to an action list"
+    },
+    {
+      "name": "action_list_toggle_item",
+      "description": "Toggle completion status of an action list item"
+    }
+  ]
+}
