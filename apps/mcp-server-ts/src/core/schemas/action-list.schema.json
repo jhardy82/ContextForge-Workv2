@@ -1,0 +1,202 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "$id": "https://taskman-mcp.dev/schemas/action-list.schema.json",
+  "title": "TaskMan MCP Action List Schema",
+  "description": "Schema for structured workflow execution plans in TaskMan MCP, integrating Sacred Geometry patterns, phase-based execution, and comprehensive validation criteria.",
+  "type": "object",
+  "required": [
+    "id",
+    "title",
+    "geometry_shape",
+    "status",
+    "priority",
+    "project_id",
+    "items"
+  ],
+  "properties": {
+    "$schema": {
+      "type": "string",
+      "description": "JSON Schema reference"
+    },
+    "id": {
+      "type": "string",
+      "pattern": "^AL-[a-z0-9-]+$",
+      "description": "Unique identifier for the action list with AL- prefix"
+    },
+    "title": {
+      "type": "string",
+      "minLength": 1,
+      "description": "Human-readable title for the action list"
+    },
+    "description": {
+      "type": "string",
+      "description": "Detailed description of the action list purpose and scope"
+    },
+    "geometry_shape": {
+      "type": "string",
+      "enum": [
+        "Circle",
+        "Triangle",
+        "Spiral",
+        "Pentagon",
+        "Fractal"
+      ],
+      "description": "Sacred Geometry shape associated with this action list for pattern validation"
+    },
+    "status": {
+      "type": "string",
+      "enum": [
+        "planned",
+        "new",
+        "pending",
+        "active",
+        "in_progress",
+        "blocked",
+        "completed",
+        "archived",
+        "cancelled"
+      ],
+      "description": "Current execution status of the action list"
+    },
+    "priority": {
+      "type": "string",
+      "enum": [
+        "low",
+        "medium",
+        "high",
+        "critical"
+      ],
+      "description": "Priority level for execution"
+    },
+    "project_id": {
+      "type": "string",
+      "description": "ID of the associated project"
+    },
+    "metadata": {
+      "type": "object",
+      "description": "Additional metadata for the action list",
+      "properties": {
+        "phase": {
+          "type": "string",
+          "description": "Phase identifier (e.g., '2.2', '2.3')"
+        },
+        "tools_count": {
+          "type": "integer",
+          "minimum": 0,
+          "description": "Number of tools being validated"
+        },
+        "estimated_tests": {
+          "type": "integer",
+          "minimum": 0,
+          "description": "Estimated number of test scenarios"
+        },
+        "integration_scenarios": {
+          "type": "integer",
+          "minimum": 0,
+          "description": "Number of integration scenarios"
+        },
+        "correlation_id": {
+          "type": "string",
+          "pattern": "^QSE-[0-9]{8}-[0-9]{4}-[a-f0-9]{8}$",
+          "description": "QSE correlation ID for evidence tracking"
+        }
+      },
+      "additionalProperties": true
+    },
+    "items": {
+      "type": "array",
+      "minItems": 1,
+      "description": "Array of action items to execute",
+      "items": {
+        "type": "object",
+        "required": [
+          "id",
+          "text",
+          "validation_criteria",
+          "expected_result",
+          "order"
+        ],
+        "properties": {
+          "id": {
+            "type": "string",
+            "pattern": "^[a-z0-9-]+$",
+            "description": "Unique identifier for the action item"
+          },
+          "text": {
+            "type": "string",
+            "minLength": 1,
+            "description": "Description of the action to perform"
+          },
+          "validation_criteria": {
+            "type": "string",
+            "minLength": 1,
+            "description": "Criteria for determining successful completion"
+          },
+          "test_data": {
+            "description": "Input data for testing this action (object or array of test cases)",
+            "oneOf": [
+              {
+                "type": "object",
+                "additionalProperties": true
+              },
+              {
+                "type": "array",
+                "items": {
+                  "type": "object",
+                  "additionalProperties": true
+                }
+              }
+            ]
+          },
+          "expected_result": {
+            "type": "string",
+            "minLength": 1,
+            "description": "Expected outcome of the action"
+          },
+          "order": {
+            "type": "integer",
+            "minimum": 1,
+            "description": "Execution order (1-indexed)"
+          },
+          "status": {
+            "type": "string",
+            "enum": [
+              "planned",
+              "new",
+              "pending",
+              "active",
+              "in_progress",
+              "blocked",
+              "completed",
+              "archived",
+              "cancelled"
+            ],
+            "default": "pending",
+            "description": "Current execution status of this action item"
+          },
+          "workflow": {
+            "type": "array",
+            "description": "Multi-step workflow for complex integration scenarios",
+            "items": {
+              "type": "string",
+              "minLength": 1
+            }
+          },
+          "dependencies": {
+            "type": "array",
+            "description": "IDs of action items that must complete before this one",
+            "items": {
+              "type": "string"
+            }
+          }
+        },
+        "additionalProperties": false
+      }
+    },
+    "notes": {
+      "type": "string",
+      "description": "Additional notes or commentary about the action list"
+    }
+  },
+  "additionalProperties": false
+}

@@ -1,0 +1,389 @@
+[build-system]
+requires = ["setuptools>=61.0"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "contextforge-orch-helper"
+version = "0.1.0"
+description = "Unified ContextForge helper & orchestration environment (all plugins required)"
+authors = [{ name = "ContextForge" }]
+requires-python = ">=3.11"
+# NOTE: Per user directive (2025-08-29) all former optional / extra plugins are now REQUIRED.
+# Version strategy: align on narrow minor ranges for stability; add upper bounds where missing to curb silent major drift.
+dependencies = [
+    # Core CLI & framework
+    "click>=8.1.7,<8.2.0",
+    "typer>=0.12.3,<0.13.0",
+    "rich>=13.7,<14.0",
+    "python-dateutil>=2.9.0.post0",
+    "packaging>=24.0",
+    "typing_extensions>=4.12,<5.0",
+
+    # Data & serialization
+    "pydantic>=2.11,<3.0",
+    "orjson>=3.10,<4.0",
+    "PyYAML>=6.0",
+    "msgspec>=0.18.0,<0.19.0",
+    "jsonschema>=4.22,<5.0",
+    "python-dotenv>=1.0,<2.0",
+
+    # Analytics / processing
+    "pandas>=2.2,<2.3",
+    "pyarrow>=16.0,<17.0",
+    "tqdm>=4.66,<5.0",
+    "polars>=1.5,<2.0",
+
+    # Database / performance / hashing
+    "duckdb>=1.0.0,<2.0.0",
+    "xxhash>=3.4.1,<4.0.0",
+
+    # Web / API (now required)
+    "fastapi>=0.115.0,<0.120.0",
+    "uvicorn>=0.32.0,<1.0.0",
+    "prometheus-client>=0.21.0,<0.22.0",
+    "sentry-sdk>=2.35.0,<3.0.0",
+
+    # Observability & telemetry
+    "structlog>=25.0.0,<26.0.0",
+    "opentelemetry-api>=1.36.0,<1.37.0",
+    "opentelemetry-sdk>=1.36.0,<1.37.0",
+    "opentelemetry-exporter-otlp>=1.36.0,<1.37.0",
+
+    # Hot reload support (Sprint 2 - T-011)
+    "watchfiles>=0.21.0,<1.0.0",
+
+    # Quality / testing (moved from dev extras into required set)
+    "pytest>=8.2,<9.0",
+    "pytest-cov>=5.0,<6.0",
+    "pytest-xdist>=3.5.0,<4.0.0",
+    "pytest-timeout>=2.3.1,<3.0.0",
+    "pytest-randomly>=3.15.0,<4.0.0",
+    "pytest-benchmark>=5.0.0,<6.0.0",
+    "pytest-sugar>=1.0.0,<2.0.0",  # Production-ready terminal output (~500K downloads/week)
+    "hypothesis>=6.100.0,<7.0.0",
+    "ruff>=0.8.0,<1.0.0",
+    "mypy>=1.15.0,<2.0.0",
+    "pip-audit>=2.7.0,<3.0.0",
+    "pre-commit>=3.7.0,<4.0.0",
+    # YAML formatting & lint (auto-fix + enforcement)
+    "yamlfix>=1.15.0,<2.0.0",
+    "yamllint>=1.35.0,<2.0.0",
+    # Database & ORM (added 2025-12-24)
+    "sqlalchemy>=2.0,<3.0",
+    "alembic>=1.17,<2.0",
+    "asyncpg>=0.30,<1.0",
+    "psycopg2-binary>=2.9,<3.0",
+    "aiosqlite>=0.21,<1.0",
+    # Auth & Security (added 2025-12-24)
+    "python-jose[cryptography]>=3.5,<4.0",
+    "passlib[bcrypt]>=1.7,<2.0",
+    "bcrypt>=4.0,<6.0",
+    # Documentation (added 2025-12-24)
+    "mkdocs>=1.5,<2.0",
+    "mkdocs-material>=9.5,<10.0",
+    # Utilities (added 2025-12-24)
+    "tenacity>=8.3,<9.0",
+    "tabulate>=0.9,<1.0",
+    "psutil>=5.9,<6.0",
+    "requests>=2.32,<3.0",
+    "pydantic-settings>=2.12.0",
+    "lxml>=6.0.2",
+    "python-frontmatter>=1.1.0",
+    "textual>=6.2.1",
+]
+
+[project.scripts]
+burst-select = "python.scaling.burst_selector:main"
+
+# Optional dependencies section retained (currently empty) for future truly-optional add-ons.
+[project.optional-dependencies]
+dev = []
+
+[tool.setuptools.packages.find]
+# Include both modern src layout and transitional 'python' namespace modules.
+where = ["src", "python"]
+
+[tool.coverage.run]
+# FOCUSED source coverage - core modules only to prevent overwhelming output
+# Strategic scope: key functionality without development tools/deprecated code
+# P0-007 FIX (2025-12-06): Corrected invalid paths - mcp-servers/python didn't exist, cli/ too broad
+source = [
+    "python/ulog",                     # Core logging system
+    "python/dbcli",                    # Database CLI core
+    "python/cf_cli",                   # CF CLI core
+    "python/qse",                      # QSE framework
+    "python/common",                   # Common utilities
+    "python/src/mcp_stdio_harness",    # MCP STDIO harness (actual location)
+    "cf_core",                         # Domain-driven core (includes cf_core/mcp/)
+    "cli/python",                      # CLI Python modules only (excludes PowerShell)
+    "src"                              # Modern src layout modules
+]
+branch = true
+# Exclude test files, build artifacts, virtual environment, and deprecated code
+omit = [
+    "tests/*",
+    "*/test_*",
+    "*_test.py",
+    "*/__pycache__/*",
+    "build/*",
+    ".venv/*",
+    "htmlcov/*",
+    "*.egg-info/*",
+    # Strategic exclusions - development/deprecated code
+    "python/tools/*",        # 66 files - development tools
+    "python/api/*",          # 46 files - API development
+    "python/trackers/*",     # 24 files - tracker experiments
+    "python/monitoring/*",   # 14 files - monitoring experiments
+    "python/orch/*",         # 13 files - orchestration experiments
+    "python/cf_work/*",      # 11 files - CF development work
+    "python/terminal_ui/*",  # 10 files - terminal UI experiments
+    "python/logging_backup_*/*", # 8 files - backup code
+    "python/cf_logging/*",   # 8 files - logging experiments
+]
+
+[tool.coverage.report]
+skip_empty = true
+fail_under = 70  # P0-007: Target 70% coverage for production quality
+# Enhanced reporting for Rich terminal compatibility
+show_missing = true
+precision = 2
+# Exclude specific lines/patterns from coverage
+exclude_lines = [
+    "pragma: no cover",
+    "def __repr__",
+    "if self.debug:",
+    "if settings.DEBUG",
+    "raise AssertionError",
+    "raise NotImplementedError",
+    "if 0:",
+    "if __name__ == .__main__.:",
+    "class .*\\bProtocol\\):",
+    "@(abc\\.)?abstractmethod",
+]
+
+[tool.pytest.ini_options]
+pythonpath = [".", "cli/python", "src"]
+testpaths = ["tests", "python", "cf_core"]
+norecursedirs = [".git", ".venv", "node_modules", "backup_*", "TaskMan-v2", "mcp", "projects", "analytics", "_deprecated", "_future", "_wip"]
+python_files = ["test_*.py", "*_test.py"]
+python_classes = ["Test*", "*Tests"]
+python_functions = ["test_*"]
+
+# Professional PyTest Configuration: ContextForge Terminal Output Standard
+# Comprehensive logging with ContextForge compliance patterns
+# Based on pytest.org + Microsoft Learn + Rich integration best practices
+addopts = [
+    "--strict-markers",
+    "--strict-config",
+    # === CONTEXTFORGE TERMINAL OUTPUT STANDARD ===
+    "--color=yes",                 # Enable colors for ContextForge compliance
+    "-v",                          # Verbose: structured test organization display
+    "--tb=short",                  # Short tracebacks for ContextForge standard
+    "-r", "fE",                    # Show Failures and Errors in structured format
+    # === CONTEXTFORGE PROGRESS AND TIMING ===
+    "--durations=10",              # Progress indicators for slow tests (≥5s rule)
+    "--durations-min=1.0",         # ContextForge threshold for progress display
+    "--maxfail=50",                # Increased limit to capture more failures at once
+    # === EVIDENCE COLLECTION (CONTEXTFORGE STANDARD) ===
+    "--capture=sys",               # Capture for evidence while allowing Rich display
+    # === PLUGIN MANAGEMENT (CONTEXTFORGE COMPATIBLE) ===
+    "-p", "no:rerunfailures",      # Disable for consistent ContextForge output
+    # === COVERAGE (ON-DEMAND ONLY) ===
+    # Coverage DISABLED by default for clean ContextForge summaries
+    # To enable: pytest --cov --cov-report=term:skip-covered
+    # Full coverage: pytest --cov --cov-report=html:htmlcov --cov-report=xml:coverage.xml
+]
+
+# Professional Testing Command Patterns (Evidence-Based):
+# Default Organized Summary: pytest               # Professional verbose summaries with timing
+# Ultra-Quiet Mode:         pytest -q             # Minimal output (. for pass, F for fail)
+# Debug Investigation:      pytest -vv --tb=long --log-cli-level=DEBUG  # Full diagnostics
+# Fast Failure Mode:        pytest -x             # Stop on first failure
+# Coverage Analysis:        pytest --cov          # On-demand coverage reporting
+# CI/CD Pipeline:          pytest --json-report --json-report-file=results.json
+# Rich Enhanced UI:        python run_rich_harness.py --pattern "test_*.py"
+
+# === COMPREHENSIVE LOGGING CONFIGURATION ===
+# Enable CLI logging for comprehensive traceability
+log_cli = true
+log_cli_level = "INFO"
+log_cli_format = "%(asctime)s [%(levelname)8s] %(name)s: %(message)s"
+log_cli_date_format = "%Y-%m-%d %H:%M:%S"
+
+# Enhanced markers for ISTQB/ISO 25010 testing
+markers = [
+    # ISTQB Test Design Techniques
+    "istqb: ISTQB test design technique validation",
+    "equivalence_partitioning: Equivalence partitioning technique tests",
+    "boundary_value: Boundary value analysis technique tests",
+    "decision_table: Decision table testing technique tests",
+    "state_transition: State transition testing technique tests",
+    "experience_based: Experience-based testing technique tests",
+
+    # ISO 25010 Quality Characteristics
+    "iso25010: ISO 25010 quality characteristic validation",
+    "functional_suitability: Functional suitability characteristic tests",
+    "performance_efficiency: Performance efficiency characteristic tests",
+    "compatibility: Compatibility characteristics tests",
+    "usability: Usability characteristic tests",
+    "reliability: Reliability characteristic tests",
+    "security: Security characteristic tests",
+    "maintainability: Maintainability characteristic tests",
+    "portability: Portability characteristic tests",
+
+    # Test Types
+    "unit: Unit tests",
+    "integration: Integration tests",
+    "system: System tests",
+    "acceptance: Acceptance tests",
+    "regression: Regression tests",
+    "performance: Performance tests",
+    "security: Security tests",
+    "usability: Usability tests",
+    "domain: Domain entity tests",
+    "repositories: Repository layer tests",
+    "smoke: Smoke tests",
+    "sanity: Sanity tests",
+    "dtm: DTM (Decision Tracking Module) integration tests",
+
+    # Constitutional Framework Specific
+    "constitutional: Constitutional validation framework tests",
+    "cof_validation: COF 13-dimension validation tests",
+    "ucl_compliance: UCL 5-law compliance tests",
+    "evidence_generation: Evidence generation and integrity tests",
+    "audit_trail: Audit trail and traceability tests",
+
+    # Cognitive Architecture Specific
+    "cognitive: Cognitive architecture enhancement tests",
+    "meta_cognitive: Meta-cognitive analysis tests",
+    "decision_pathway: Cognitive decision pathway tests",
+    "complexity_analysis: Cognitive complexity analysis tests",
+    "strategic_analysis: Strategic decision analysis tests",
+
+    # Phase Classification
+    "phase1: Phase 1 Constitutional Foundation tests",
+    "phase2: Phase 2 Cognitive Architecture tests",
+    "phase1_phase2_integration: Phase 1 to Phase 2 integration tests",
+
+    # Test Execution Characteristics
+    "slow: Tests that take significant time to run",
+    "fast: Tests that run quickly",
+    "memory_intensive: Tests that use significant memory",
+    "cpu_intensive: Tests that use significant CPU",
+    "io_intensive: Tests that perform significant I/O operations",
+
+    # Quality Gates
+    "quality_gate: Quality gate validation tests",
+    "coverage_validation: Code coverage validation tests",
+    "performance_benchmark: Performance benchmark tests",
+    "security_validation: Security validation tests",
+
+    # Risk-Based Testing
+    "high_risk: High risk functionality tests",
+    "medium_risk: Medium risk functionality tests",
+    "low_risk: Low risk functionality tests",
+    "critical_path: Critical path functionality tests",
+    "quantum: Quantum orchestration system testing marker",
+    "e2e: End-to-end acceptance tests",
+    "comprehensive: Comprehensive test suite",
+    "async_test: Asynchronous test cases",
+    "order: Test execution order control",
+    "memory_profile: Memory profiling tests",
+    "property_based: Property-based testing with Hypothesis",
+    "failover: Failover testing scenarios",
+    "load: Load testing scenarios",
+
+    # Plugin-specific markers (pytest plugins)
+    "asyncio: Asyncio-specific test cases",
+    "timeout: Timeout-controlled test cases",
+    "anyio: AnyIO async library test cases",
+    "mpv: Minimum viable product testing",
+    "production: Production environment tests",
+    "unicode_sensitive: Unicode handling sensitive tests",
+    "limit_leaks: Memory leak detection tests",
+    "limit_memory: Memory usage limitation tests",
+    # Missing markers from test collection
+    "component_isolated: Component isolation tests",
+    "orchestration: Orchestration framework tests",
+    "coverage: Coverage validation tests",
+    "models: Model layer tests (cf_core/models)",
+    "utils: Utility function tests",
+    "config: Configuration tests (cf_core/config)",
+    "repositories: Repository layer tests (cf_core/repositories)",
+    "services: Service layer tests (cf_core/services)",
+    "cli: CLI command tests (cf_core/cli)",
+
+    # ContextForge Terminal Output Standard
+    "contextforge: ContextForge framework compliance tests",
+    "terminal_output: Terminal output standard compliance tests",
+    "rich_console: Rich console formatting tests",
+    "evidence_tier: Evidence collection and preservation tests",
+    "progress_indicator: Progress indication compliance tests",
+    "color_scheme: Color scheme standardization tests",
+    "structured_output: Structured output flow tests (9-component)",
+
+    # Additional markers for test suite recovery (CF-159)
+    "critical: Critical functionality tests (high priority)",
+    "mcp: MCP (Model Context Protocol) integration tests",
+    "encoding: Character encoding and UTF-8 handling tests",
+    "flaky: Tests with known intermittent failures (retry candidates)",
+    "xdist_group: Tests grouped for pytest-xdist parallel execution",
+    "progress_demo: Progress indicator demonstration tests",
+    "accessibility: Accessibility compliance tests",
+]
+
+# Filter warnings
+filterwarnings = [
+    "error",
+    "ignore::UserWarning",
+    "ignore::DeprecationWarning",
+    "ignore::PendingDeprecationWarning",
+    "ignore::pytest.PytestUnraisableExceptionWarning",
+    "ignore::pytest.PytestCollectionWarning",
+]
+
+[tool.pytest-timeout]
+# Timeout configuration (in seconds)
+timeout = 300
+timeout_method = "thread"
+
+[tool.pytest-asyncio]
+# Asyncio configuration
+asyncio_mode = "auto"
+
+[tool.ruff]
+line-length = 130
+extend-exclude = [
+    "analysis/Complete-Tool-Capability-Assessment.ipynb",
+    # Hybrid review temporary exclusions (Nudge 6) — notebooks & legacy/deprecated paths
+    "analysis/",
+    "notebooks/",
+    "docs/reference/",
+    "docs/roadmap/code-samples/",
+    "workflows/",
+    "python/agents/",
+    "python/performance/",
+    "python/tools/pytest_capture.py",
+    "python/trackers/csv_cli.py",
+    "python/dbcli/app_backup.py",
+    "python/dbcli/app_enhanced.py",
+    "dbcli_with_duplicates_backup.py",
+]
+
+# Ruff lint configuration (hybrid scope): focus on core active modules while deferring
+# widespread remediation of argument default call patterns (B008) and exception chaining (B904).
+# These ignores are temporary and must be tracked in Review Report with follow-up tasks.
+[tool.ruff.lint]
+select = ["E", "F", "B", "UP"]
+ignore = [
+    "B008",  # Typer/FastAPI dependency injection defaults – refactor planned
+    "B904",  # Will add explicit exception chaining in follow-up hardening
+    "B007",  # Loop var unused inside excluded notebooks; safe to defer
+    "B012",  # finally+break patterns in legacy capture helper slated for rewrite
+    "E402",  # Import ordering in bootstrap scripts (defer until restructure)
+    "F401",  # Re-export / unused imports in transitional __init__ & backups
+]
+
+[tool.mypy]
+python_version = "3.12"
+ignore_missing_imports = true

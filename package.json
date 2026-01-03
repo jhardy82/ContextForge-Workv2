@@ -1,0 +1,34 @@
+{
+  "name": "contextforge-workv2",
+  "version": "1.0.0",
+  "private": true,
+  "description": "ContextForge Workv2 - Full-stack task management and context orchestration platform",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/Jacintalama/ContextForge-Workv2.git"
+  },
+  "workspaces": [
+    "apps/*",
+    "packages/*"
+  ],
+  "scripts": {
+    "dev": "pnpm -r dev",
+    "build": "pnpm -r build",
+    "test": "pnpm -r test",
+    "lint": "pnpm -r lint",
+    "typecheck": "pnpm -r typecheck",
+    "clean": "pnpm -r clean",
+    "frontend:dev": "pnpm --filter frontend dev",
+    "frontend:build": "pnpm --filter frontend build",
+    "vscode:compile": "pnpm --filter vscode-extension compile",
+    "mcp-ts:build": "pnpm --filter mcp-server-ts build"
+  },
+  "devDependencies": {
+    "typescript": "^5.7.2"
+  },
+  "packageManager": "pnpm@9.15.0",
+  "engines": {
+    "node": ">=20.0.0",
+    "pnpm": ">=9.0.0"
+  }
+}

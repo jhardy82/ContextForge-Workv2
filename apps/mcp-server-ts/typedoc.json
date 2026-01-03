@@ -1,0 +1,35 @@
+{
+  "$schema": "https://typedoc.org/schema.json",
+  "name": "TaskMan MCP Server API",
+  "entryPoints": ["./src/index.ts"],
+  "out": "docs/api",
+  "readme": "README.md",
+  "excludePrivate": true,
+  "excludeInternal": true,
+  "includeVersion": true,
+  "categorizeByGroup": true,
+  "plugin": ["typedoc-plugin-markdown"],
+  "categoryOrder": [
+    "Core Types",
+    "Schemas",
+    "Errors",
+    "Features",
+    "Backend",
+    "Infrastructure",
+    "*"
+  ],
+  "navigationLinks": {
+    "GitHub": "https://github.com/jhardy82/SCCMScripts",
+    "Linear": "https://linear.app/cf-work/project/p-taskman-mcp-typescript-2e7e24e0dc5c"
+  },
+  "jsDocCompatibility": {
+    "exampleTag": true,
+    "defaultTag": true,
+    "ignoreUnescapedBraces": true
+  },
+  "validation": {
+    "notExported": true,
+    "invalidLink": true,
+    "notDocumented": false
+  }
+}
