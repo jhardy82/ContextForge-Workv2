@@ -1,0 +1,97 @@
+# ContextForge-Workv2 .gitignore
+# Comprehensive bloat prevention
+
+# === Binaries & Executables ===
+*.exe
+*.dll
+*.so
+*.dylib
+*.pdb
+
+# === IDE Test Artifacts ===
+.vscode-test/
+*.vscode-test/
+
+# === Large Generated Files ===
+*.pb
+*.mcpb
+*.pack
+
+# === Python ===
+__pycache__/
+*.py[cod]
+*$py.class
+.venv/
+.venv_*/
+*.egg-info/
+.eggs/
+dist/
+build/
+*.whl
+
+# === Node.js ===
+node_modules/
+.npm/
+.pnpm-store/
+
+# === Build Outputs ===
+dist/
+out/
+build/
+coverage/
+htmlcov/
+.nyc_output/
+
+# === Caches ===
+.pytest_cache/
+.mypy_cache/
+.ruff_cache/
+.hypothesis/
+.tox/
+.vite/
+*.tsbuildinfo
+
+# === Logs ===
+logs/
+*.log
+npm-debug.log*
+
+# === Environment ===
+.env
+.env.local
+.env.*.local
+!.env.example
+!.env.*.example
+
+# === Screenshots & Media ===
+*.jpg
+*.jpeg
+*.png
+*.gif
+*.mp4
+*.mov
+!docs/**/*.png
+!docs/**/*.gif
+
+# === Temp/Scratch Files ===
+*.scratch.*
+temp_*
+PLAN.md
+SCRATCHPAD.md
+TODO.md
+
+# === IDE ===
+.idea/
+*.swp
+*.swo
+*~
+
+# === OS ===
+.DS_Store
+Thumbs.db
+
+# === Lock files (keep package manager locks) ===
+# Uncomment if you want to ignore lock files
+# package-lock.json
+# pnpm-lock.yaml
+# uv.lock
