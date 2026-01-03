@@ -1,0 +1,22 @@
+[build-system]
+requires = ["setuptools>=61.0"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "cf_core"
+version = "0.1.0"
+description = "ContextForge Core Library"
+authors = [{name = "ContextForge Team", email = "dev@contextforge.local"}]
+readme = "README.md"
+requires-python = ">=3.10"
+dependencies = [
+    "pydantic>=2.9.2",
+    "sqlalchemy>=2.0.35",
+    "typer>=0.12.5",
+    "structlog>=24.4.0",
+    "rich>=10.0.0",
+    "duckdb>=0.9.0",
+]
+
+[project.scripts]
+cf = "cf_core.cli.main:run_cli"

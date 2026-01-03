@@ -1,0 +1,57 @@
+
+class UpdateProjectInput(BaseModel):
+    """Input schema for update_project tool."""
+
+    project_id: str = Field(
+        ...,
+        pattern=r"^P-[a-zA-Z0-9_-]+$",
+        description="Project ID to update (required)",
+    )
+    name: str | None = Field(
+        None,
+        min_length=1,
+        max_length=200,
+        description="New project name",
+    )
+    description: str | None = Field(
+        None,
+        max_length=5000,
+        description="New project description",
+    )
+    owner: str | None = Field(
+        None,
+        description="New project owner",
+    )
+    status: str | None = Field(
+        None,
+        description="New project status",
+    )
+    target_end_date: datetime | None = Field(
+        None,
+        description="New target end date",
+    )
+    # Phase 2 Fields
+    mission: str | None = Field(
+        None,
+        description="New mission statement",
+    )
+    vision: str | None = Field(
+        None,
+        description="New vision statement",
+    )
+    roadmap_url: str | None = Field(
+        None,
+        description="New roadmap URL",
+    )
+    observability: dict | None = Field(
+        None,
+        description="New observability data",
+    )
+    budget: float | None = Field(
+        None,
+        description="New budget",
+    )
+    spend: float | None = Field(
+        None,
+        description="New spend amount",
+    )
